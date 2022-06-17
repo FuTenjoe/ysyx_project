@@ -3,7 +3,8 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "sdb.h"
-
+#include <memory/paddr.h>
+#include <stdbool.h>
 static int is_batch_mode = false;
 
 void init_regex();
@@ -32,11 +33,23 @@ static int cmd_c(char *args) {
   return 0;
 }
 
-
 static int cmd_q(char *args) {
-  return -1;
+return -1;
 }
 
+static int cmd_si(char *args);
+
+static int cmd_info(char *args);
+
+static int cmd_x(char *args);
+
+static int cmd_q(char *args);
+
+static int cmd_w(char *args);
+
+static int cmd_d(char *args);
+
+static int cmd_biaodashi(char *args);
 static int cmd_help(char *args);
 
 static struct {
@@ -47,7 +60,12 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-
+  { "si", "Excecute NEMU", cmd_si },
+  { "info", "Print", cmd_info },
+  { "x", "扫描", cmd_x },
+  {"biaodashi","表达式求值",cmd_biaodashi},
+  {"w","添加监视点",cmd_w},
+  {"d","删除监视点",cmd_d},
   /* TODO: Add more commands */
 
 };
@@ -77,6 +95,66 @@ static int cmd_help(char *args) {
   return 0;
 }
 
+static int cmd_si(char *args) {
+  /* extract the first argument */
+  char *arg = strtok(NULL, " ");
+  if (arg == NULL) {
+    cpu_exec(1);
+  }
+  else {
+    int N = atoi(arg);
+    cpu_exec(N);
+    }
+  return 0;
+}
+
+static int cmd_info(char *args) {
+  /* extract the first argument */
+  char *arg = strtok(NULL, " ");
+  if (arg == NULL) {
+  }
+  else {
+    if (strcmp(arg,"r") == 0)
+     isa_reg_display();
+    if (strcmp(arg,"w") == 0)
+     print_wp();
+    }
+  return 0;
+}
+
+
+static int cmd_x(char *args) {
+  /* extract the first argument */
+  char *arg = strtok(NULL, " ");
+  int arg_l = atoi(arg);
+  arg = strtok(NULL, " ");
+  word_t addr = strtol(arg,NULL,16);
+  for (int i=0;i<arg_l;i++){
+  	printf("%ld\n",paddr_read(addr, 4));
+  	addr +=4;
+  }
+  return 0;
+}
+
+static int cmd_biaodashi(char *args) {
+bool *bds = NULL;
+
+printf("%ld",expr(args,bds));
+  return 0;
+}
+
+static int cmd_w(char *args){
+WP* str=new_wp(args);
+printf("监视点序号%d   表达式%s 值0x%08x\n",str->NO , str->exp, str->value);
+return 0 ;
+}
+
+static int cmd_d(char *args){
+int no = atoi(args);
+free_wp(no);
+return 0;
+}
+
 void sdb_set_batch_mode() {
   is_batch_mode = true;
 }
@@ -86,7 +164,6 @@ void sdb_mainloop() {
     cmd_c(NULL);
     return;
   }
-
   for (char *str; (str = rl_gets()) != NULL; ) {
     char *str_end = str + strlen(str);
 
@@ -125,4 +202,4 @@ void init_sdb() {
 
   /* Initialize the watchpoint pool. */
   init_wp_pool();
-}
+  }
