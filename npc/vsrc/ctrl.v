@@ -93,5 +93,5 @@ always@(*)begin
     if(opcode == 32'h0010_0073)
         ebreak();
 end
-endfunction
+
 endmodule
