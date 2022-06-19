@@ -59,6 +59,19 @@ static long load_img(char*img_file){
   fclose(fp);
   return size;
 }
+//加ebreak
+typedef struct {
+  word_t gpr[32];
+  vaddr_t pc;
+} CPU_state;
+
+CPU_state cpu = {};
+
+uint32_t ebreak_flag = 0;
+extern "C" void ebreak(){
+  ebreak_flag = 1;
+}
+
 //加difftest
 void (*ref_difftest_memcpy)(paddr_t addr, void *buf, size_t n, bool direction) = NULL;
 void (*ref_difftest_regcpy)(void *dut, bool direction) = NULL;
@@ -72,17 +85,25 @@ void (*ref_difftest_raise_intr)(word_t NO) = NULL;
 
 
 
-int port = 1234;
-//Vysyx_22040175_top *top; 
-int main(int argc, char **argv, char **env) {
-  int i;
-  int clk;
-  Verilated::commandArgs(argc, argv);
+
+
+//Verilated::commandArgs(argc, argv);
+  VerilatedContext *contextp = new VerilatedContext;
   // init top verilog instance
   Vysyx_22040175_top* top = new Vysyx_22040175_top;
   // init trace dump
   Verilated::traceEverOn(true);
   VerilatedVcdC* tfp = new VerilatedVcdC;
+
+
+
+
+int port = 1234;
+//Vysyx_22040175_top *top; 
+int main(int argc, char **argv, char **env) {
+  int i;
+  int clk;
+  
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
   // initialize simulation inputs
