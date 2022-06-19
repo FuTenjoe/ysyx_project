@@ -4,6 +4,7 @@
 #include "Vysyx_22040175_top.h"
 #include "Vysyx_22040175_top__Syms.h"
 #include "verilated_vcd_c.h"
+#include "verilated_dpi.h"
 
 //============================================================
 // Constructors

@@ -5,7 +5,17 @@
 #include "Vysyx_22040175_top___024root.h"
 #include "Vysyx_22040175_top__Syms.h"
 
+#include "verilated_dpi.h"
+
 //==========
+
+extern "C" void ebreak();
+
+VL_INLINE_OPT void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__ebreak_TOP() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__ebreak_TOP\n"); );
+    // Body
+    ebreak();
+}
 
 VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__1(Vysyx_22040175_top___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused

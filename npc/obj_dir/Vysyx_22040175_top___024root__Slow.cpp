@@ -5,6 +5,8 @@
 #include "Vysyx_22040175_top___024root.h"
 #include "Vysyx_22040175_top__Syms.h"
 
+#include "verilated_dpi.h"
+
 //==========
 
 
