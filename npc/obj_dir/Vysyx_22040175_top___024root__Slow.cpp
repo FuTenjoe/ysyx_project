@@ -220,7 +220,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
     }
     vlSelf->ysyx_22040175_top__DOT__alu_src2 = ((2U 
                                                  & (IData)(vlSelf->ysyx_22040175_top__DOT__alu_src_sel))
-                                                 ? vlSelf->curr_pc
+                                                 ? vlSelf->pc
                                                  : 
                                                 ((1U 
                                                   & (IData)(vlSelf->ysyx_22040175_top__DOT__alu_src_sel))
@@ -240,12 +240,11 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
     vlSelf->next_pc = ((IData)(vlSelf->ysyx_22040175_top__DOT__ena)
                         ? (((IData)(vlSelf->ysyx_22040175_top__DOT__branch) 
                             & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__zero)))
-                            ? (vlSelf->curr_pc + vlSelf->ysyx_22040175_top__DOT__imm)
+                            ? (vlSelf->pc + vlSelf->ysyx_22040175_top__DOT__imm)
                             : ((IData)(vlSelf->ysyx_22040175_top__DOT__jump)
-                                ? (vlSelf->curr_pc 
-                                   + vlSelf->ysyx_22040175_top__DOT__imm)
-                                : ((IData)(4U) + vlSelf->curr_pc)))
-                        : vlSelf->curr_pc);
+                                ? (vlSelf->pc + vlSelf->ysyx_22040175_top__DOT__imm)
+                                : ((IData)(4U) + vlSelf->pc)))
+                        : vlSelf->pc);
 }
 
 void Vysyx_22040175_top___024root___eval_initial(Vysyx_22040175_top___024root* vlSelf) {
@@ -283,7 +282,7 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->inst = VL_RAND_RESET_I(32);
-    vlSelf->curr_pc = VL_RAND_RESET_I(32);
+    vlSelf->pc = VL_RAND_RESET_I(32);
     vlSelf->next_pc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_22040175_top__DOT__rst_n = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__ena = VL_RAND_RESET_I(1);

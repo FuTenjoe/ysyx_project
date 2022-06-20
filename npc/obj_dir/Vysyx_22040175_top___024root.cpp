@@ -174,8 +174,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
     // Body
     __Vdlyvset__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0 = 0U;
     vlSelf->ysyx_22040175_top__DOT__ena = vlSelf->ysyx_22040175_top__DOT__rst_n;
-    vlSelf->curr_pc = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
-                        ? vlSelf->next_pc : 0x80000000U);
+    vlSelf->pc = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
+                   ? vlSelf->next_pc : 0x80000000U);
     if ((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
           & (IData)(vlSelf->ysyx_22040175_top__DOT__reg_wen)) 
          & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__reg_waddr)))) {
@@ -245,7 +245,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                                                   [vlSelf->ysyx_22040175_top__DOT__reg2_raddr]);
     vlSelf->ysyx_22040175_top__DOT__alu_src2 = ((2U 
                                                  & (IData)(vlSelf->ysyx_22040175_top__DOT__alu_src_sel))
-                                                 ? vlSelf->curr_pc
+                                                 ? vlSelf->pc
                                                  : 
                                                 ((1U 
                                                   & (IData)(vlSelf->ysyx_22040175_top__DOT__alu_src_sel))
@@ -265,12 +265,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
     vlSelf->next_pc = ((IData)(vlSelf->ysyx_22040175_top__DOT__ena)
                         ? (((IData)(vlSelf->ysyx_22040175_top__DOT__branch) 
                             & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__zero)))
-                            ? (vlSelf->curr_pc + vlSelf->ysyx_22040175_top__DOT__imm)
+                            ? (vlSelf->pc + vlSelf->ysyx_22040175_top__DOT__imm)
                             : ((IData)(vlSelf->ysyx_22040175_top__DOT__jump)
-                                ? (vlSelf->curr_pc 
-                                   + vlSelf->ysyx_22040175_top__DOT__imm)
-                                : ((IData)(4U) + vlSelf->curr_pc)))
-                        : vlSelf->curr_pc);
+                                ? (vlSelf->pc + vlSelf->ysyx_22040175_top__DOT__imm)
+                                : ((IData)(4U) + vlSelf->pc)))
+                        : vlSelf->pc);
 }
 
 void Vysyx_22040175_top___024root___eval(Vysyx_22040175_top___024root* vlSelf) {

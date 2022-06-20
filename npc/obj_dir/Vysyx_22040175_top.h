@@ -31,7 +31,7 @@ class Vysyx_22040175_top VL_NOT_FINAL {
     VL_IN8(&clk,0,0);
     VL_IN8(&rst,0,0);
     VL_IN(&inst,31,0);
-    VL_OUT(&curr_pc,31,0);
+    VL_OUT(&pc,31,0);
     VL_OUT(&next_pc,31,0);
 
     // CELLS
