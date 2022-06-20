@@ -4,7 +4,7 @@ module  ysyx_22040175_top(
 	input                         clk,
     input                         rst,
 	input [31:0] inst,
-	output[`CPU_WIDTH-1:0]        curr_pc,
+	output[`CPU_WIDTH-1:0]        pc,
     output[`CPU_WIDTH-1:0]        next_pc
 );
 wire rst_n;
@@ -43,7 +43,7 @@ pc_reg u_pc_reg_0(
     .rst_n                          ( rst_n                         ),
     .ena                            ( ena                           ),
     .next_pc                        ( next_pc                       ),
-    .curr_pc                        ( curr_pc                       )
+    .curr_pc                        ( pc                       )
 );
 
 muxpc u_mux_pc_0(
@@ -52,7 +52,7 @@ muxpc u_mux_pc_0(
     .zero                           ( zero                          ),
     .jump                           ( jump                          ),
     .imm                            ( imm                           ),
-    .curr_pc                        ( curr_pc                       ),
+    .curr_pc                        ( pc                       ),
     .next_pc                        ( next_pc                       )
 );
 
@@ -94,7 +94,7 @@ mux_alu u_mux_alu_0(
     .reg1_rdata                     ( reg1_rdata                    ),
     .reg2_rdata                     ( reg2_rdata                    ),
     .imm                            ( imm                           ),
-    .curr_pc                        ( curr_pc                       ),
+    .curr_pc                        ( pc                       ),
     .alu_src1                       ( alu_src1                      ),
     .alu_src2                       ( alu_src2                      )
 );
