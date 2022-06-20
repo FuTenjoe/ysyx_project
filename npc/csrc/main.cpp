@@ -73,12 +73,12 @@ static inline void host_write(void *addr, int len, word_t data);
 //加为DPIC函数
 extern "C" void pmem_read(long long raddr,long long *rdata){
   if(raddr <= CONFIG_MBASE){
-    *rdata = host_read(guest_to_host(addr), 8);
+    *rdata = host_read(guest_to_host(raddr), 8);
     printf("rdata = 0x%llx\n",*rdata);
   }
   else{
     *rdata = 0;
-    printf("Warning: Invalid Instruction !\n")
+    printf("Warning: Invalid Instruction !\n");
   }
 }
 
@@ -151,16 +151,16 @@ int main(int argc, char **argv, char **env) {
       top->eval();
     }
     if(main_time % 2 == 1){
-      printf("main_time = %d\n",main_time);
+      printf("main_time = %ld\n",main_time);
       top->clk = 1;
       top->eval();
       if(main_time >= 3){
         difftest_step(top->pc);
       }
-      printf("PC:0x%0lx;Inst:0x%x;\n",top->pc,top->Inst);
+      printf("PC:0x%0lx;Inst:0x%x;\n",top->pc,top->inst);
 
       if(unknown_code_flag || top->unknown_code){
-        printf("Warning: An unknown Inst! pc: %lx;Inst: %x\n",top->pc,top->Inst);
+        printf("Warning: An unknown Inst! pc: %lx;Inst: %x\n",top->pc,top->inst);
         npc_state = NPC_ABORT;
         break;
       }
@@ -171,7 +171,7 @@ int main(int argc, char **argv, char **env) {
         break;
       }
       cpu.pc = top ->pc;
-      current_inst = top ->Inst;
+      current_inst = top ->inst;
       top ->eval();
   tfp->dump(main_time);
   main_time++;
