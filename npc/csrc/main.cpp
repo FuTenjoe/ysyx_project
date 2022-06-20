@@ -55,7 +55,7 @@ static int port = 1234;
 //导出寄存器值 DPIC
 uint64_t *cpu_gpr = NULL;
 extern "C" void set_gpr_ptr(const svOpenArrayHandle r){
-  cpu_gpr = (uint64_t *) ((VerilatedDpiOpenVar*)r) -> datap();
+  cpu_gpr = (uint64_t *) (((VerilatedDpiOpenVar*)r) -> datap());
 }
 //函数声明
 void init_imem();
