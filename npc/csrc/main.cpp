@@ -160,7 +160,7 @@ int main(int argc, char **argv, char **env) {
       printf("PC:0x%0lx;Inst:0x%x;\n",top->pc,top->inst);
 
       if(unknown_code_flag || top->unknown_code){
-        printf("Warning: An unknown Inst! pc: %lx;Inst: %x\n",top->pc,top->inst);
+        printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
         npc_state = NPC_ABORT;
         break;
       }
@@ -204,14 +204,14 @@ static inline word_t host_read(void *addr, int len) {
     case 2: return *(uint16_t *)addr;
     case 4: return *(uint32_t *)addr;
     case 8: return *(uint64_t *)addr;
-    default: {printf("host_to_read is error !\n");assert(0);return 4096};
+    default: {printf("host_to_read is error !\n");assert(0);return 4096;};
   }
 }
 static inline void host_write(void *addr, int len,word_t data){
   switch (len){
     case 1: *(uint8_t *)addr = data; return;
     case 2: *(uint16_t *)addr = data; return;
-    case 4: *(uint 32_t *)addr = data;return;
+    case 4: *(uint32_t *)addr = data;return;
     case 8:*(uint64_t *)addr = data;return;
     default:(printf("hoost_write is error !\n"); assert(0));
   }
