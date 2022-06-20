@@ -66,7 +66,7 @@ int is_exit_status_bad();
 void init_difftest(long img_size, int port);
 void difftest_step(vaddr_t pc);
 static void checkregs(CPU_state *ref, vaddr_t pc);
-bool isa_difftest_checkregs(void *addr, int len, word_t data);
+bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc);
 static inline void host_write(void *addr, int len, word_t data);
 
 
@@ -274,7 +274,7 @@ void init_difftest(long img_size,int port){
   ref_difftest_init(port);
   cpu.pc = CONFIG_MBASE;
   ref_difftest_memcpy(CONFIG_MBASE,guest_to_host(CONFIG_MBASE), img_size, DIFFTEST_TO_REF);
-  for(int i = 0; i < 32, i++){
+  for(int i = 0; i < 32;i++){
     cpu.gpr[i] = 0;
   }
   ref_difftest_regcpy(&cpu, DIFFTEST_TO_REF);
