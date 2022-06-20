@@ -273,7 +273,7 @@ void init_difftest(long img_size,int port){
 
   ref_difftest_init(port);
   cpu.pc = CONFIG_MBASE;
-  ref_difftest_memcpy(CONFIG_MBASE,guest_to_host(CONFIG_MBASE, img_size, DIFFTEST_TO_REF));
+  ref_difftest_memcpy(CONFIG_MBASE,guest_to_host(CONFIG_MBASE), img_size, DIFFTEST_TO_REF);
   for(int i = 0; i < 32, i++){
     cpu.gpr[i] = 0;
   }
