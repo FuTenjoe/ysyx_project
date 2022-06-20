@@ -302,7 +302,7 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
   }
   for (i=0; i<32;i++){
     if(ref_r->gpr[i] != cpu_gpr[i]){
-      printf("False: Reg is false! ref_gpr[%d]: 0x%08lx;npc_gpr[%d]; 0x%08lx; Instruction is 0x%x\n",i,ref_r->gpr[i],i,cpu_gpr[i],top->Inst);
+      printf("False: Reg is false! ref_gpr[%d]: 0x%08lx;npc_gpr[%d]; 0x%08lx; Instruction is 0x%x\n",i,ref_r->gpr[i],i,cpu_gpr[i],top->inst);
       DIF_result = false;
     }
   }
