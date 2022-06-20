@@ -157,7 +157,7 @@ int main(int argc, char **argv, char **env) {
       if(main_time >= 3){
         difftest_step(top->pc);
       }
-      printf("PC:0x%0lx;Inst:0x%x;\n",top->pc,top->inst);
+      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
 
       if(unknown_code_flag || top->unknown_code){
         printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
@@ -197,7 +197,7 @@ uint8_t *guest_to_host(paddr_t paddr){
   //printf("guest to host success addr = %hhn\n",tmpl);
   return tmpl;
 }
-static inline word_t host_read(void *addr, int len) {
+inline word_t host_read(void *addr, int len) {
    //printf("host_read success addr");
   switch (len) {
     case 1: return *(uint8_t  *)addr;
@@ -213,7 +213,7 @@ static inline void host_write(void *addr, int len,word_t data){
     case 2: *(uint16_t *)addr = data; return;
     case 4: *(uint32_t *)addr = data;return;
     case 8:*(uint64_t *)addr = data;return;
-    default:(printf("hoost_write is error !\n"); assert(0));
+    default:(printf("hoost_write is error !\n"); assert(0););
   }
     
     
@@ -249,7 +249,7 @@ int is_exit_status_bad(){
   return !good;
 }
 //Difftest初始化
-void init_difftest(long img_size,imt port){
+void init_difftest(long img_size,int port){
   char const *ref_so_file = "/home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv6-spike-so";
   assert(ref_so_file != NULL);
   void *handle;
