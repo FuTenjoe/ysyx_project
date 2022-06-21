@@ -20,10 +20,6 @@ typedef  word_t vaddr_t;
 
 static uint8_t *pimem =NULL;
 
-
-
-
-
 enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
 uint32_t current_inst = 0;
 
@@ -184,8 +180,6 @@ int main(int argc, char **argv, char **env) {
     return is_exit_status_bad();
 
 }
-
-
 
 void init_imem(){
   pimem = (uint8_t *) malloc(CONFIG_MSIZE);

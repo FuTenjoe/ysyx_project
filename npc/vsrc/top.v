@@ -4,14 +4,14 @@ module  ysyx_22040175_top(
 	input                         clk,
     input                         rst,
 	input [31:0] inst,
-	output[`CPU_WIDTH-1:0]        pc,
-    output[`CPU_WIDTH-1:0]        next_pc
+	output[`CPU_WIDTH-1:0]        pc
+   // output[`CPU_WIDTH-1:0]        next_pc
 );
 wire rst_n;
 assign rst_n = !rst;
 wire                         ena;
 //wire [`CPU_WIDTH-1:0]        curr_pc;    // current pc addr
-//wire [`CPU_WIDTH-1:0]        next_pc;    // next pc addr
+wire [`CPU_WIDTH-1:0]        next_pc;    // next pc addr
 
 wire                         branch;     // branch flag
 wire                         zero;       // alu result is zero
@@ -43,7 +43,7 @@ pc_reg u_pc_reg_0(
     .rst_n                          ( rst_n                         ),
     .ena                            ( ena                           ),
     .next_pc                        ( next_pc                       ),
-    .curr_pc                        ( pc                       )
+    .curr_pc                        ( pc                            )
 );
 
 muxpc u_mux_pc_0(
