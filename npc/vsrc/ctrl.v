@@ -70,8 +70,8 @@ always @(*) begin
                 `INST_BNE: begin
                     branch     = 1'b1;
                     alu_op     = `ALU_SUB;
-                default:unknown_code = inst;
                 end
+                 default:unknown_code = inst;
             endcase
         end
         `INST_JAL: begin // only jal
