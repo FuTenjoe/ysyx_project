@@ -27,11 +27,27 @@ void Vysyx_22040175_top___024root::__Vconfigure(Vysyx_22040175_top__Syms* _vlSym
 Vysyx_22040175_top___024root::~Vysyx_22040175_top___024root() {
 }
 
+void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__ebreak_TOP();
+
 void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root___settle__TOP__2\n"); );
     // Body
+    vlSelf->unknown_code = 0U;
+    if ((0x33U == (0x7fU & vlSelf->inst))) {
+        if ((0U != (7U & (vlSelf->inst >> 0xcU)))) {
+            vlSelf->unknown_code = vlSelf->inst;
+        }
+    } else if ((0x13U == (0x7fU & vlSelf->inst))) {
+        if ((0U != (7U & (vlSelf->inst >> 0xcU)))) {
+            vlSelf->unknown_code = vlSelf->inst;
+        }
+    } else if ((0x63U == (0x7fU & vlSelf->inst))) {
+        if ((1U != (7U & (vlSelf->inst >> 0xcU)))) {
+            vlSelf->unknown_code = vlSelf->inst;
+        }
+    }
     vlSelf->ysyx_22040175_top__DOT__jump = 0U;
     if ((0x33U != (0x7fU & vlSelf->inst))) {
         if ((0x13U != (0x7fU & vlSelf->inst))) {
@@ -149,6 +165,9 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         } else if ((0x37U == (0x7fU & vlSelf->inst))) {
             vlSelf->ysyx_22040175_top__DOT__reg_wen = 1U;
         }
+    }
+    if ((0U != vlSelf->unknown_code)) {
+        Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__ebreak_TOP();
     }
     vlSelf->ysyx_22040175_top__DOT__reg2_rdata = ((0U 
                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__reg2_raddr))
@@ -291,6 +310,7 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->inst = VL_RAND_RESET_I(32);
     vlSelf->pc = VL_RAND_RESET_I(32);
+    vlSelf->unknown_code = VL_RAND_RESET_I(32);
     vlSelf->ysyx_22040175_top__DOT__rst_n = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__ena = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__next_pc = VL_RAND_RESET_I(32);

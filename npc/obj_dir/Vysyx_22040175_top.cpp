@@ -15,6 +15,7 @@ Vysyx_22040175_top::Vysyx_22040175_top(VerilatedContext* _vcontextp__, const cha
     , rst{vlSymsp->TOP.rst}
     , inst{vlSymsp->TOP.inst}
     , pc{vlSymsp->TOP.pc}
+    , unknown_code{vlSymsp->TOP.unknown_code}
     , rootp{&(vlSymsp->TOP)}
 {
 }
