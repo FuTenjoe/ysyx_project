@@ -145,6 +145,7 @@ int main(int argc, char **argv, char **env) {
     if(main_time % 2 == 0){
       top->clk = 0;
       top->eval();
+       npc_state = NPC_END;
     }
     if(main_time % 2 == 1){
       printf("main_time = %ld\n",main_time);
