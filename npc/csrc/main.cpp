@@ -150,16 +150,16 @@ int main(int argc, char **argv, char **env) {
       printf("main_time = %ld\n",main_time);
       top->clk = 1;
       top->eval();
-      if(main_time >= 3){
+    /*  if(main_time >= 3){
         difftest_step(top->pc);
-      }
+      }*/
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
 
-    /*  if(unknown_code_flag || top->unknown_code){
+      if(unknown_code_flag || top->unknown_code){
         printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
         npc_state = NPC_ABORT;
         break;
-      }*/
+      }
       printf("a0: 0x%lx\n",cpu_gpr[10]);
     }
       if(npc_state == NPC_ABORT){
