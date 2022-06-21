@@ -147,7 +147,7 @@ int main(int argc, char **argv, char **env) {
       top->eval();
     }
     if(main_time % 2 == 1){
-     // printf("main_time = %ld\n",main_time);
+      printf("main_time = %ld\n",main_time);
       top->clk = 1;
       top->eval();
     /*  if(main_time >= 3){
