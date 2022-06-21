@@ -121,7 +121,7 @@ const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
   char* img_file = *(argv + 1);
-  init_imem();
+  //init_imem();
   long img_size = load_img(img_file);
   contextp -> commandArgs(argc,argv);
   Verilated::traceEverOn(true);
