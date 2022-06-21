@@ -376,11 +376,23 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__1(Vysyx_22040175_t
     vlSelf->ysyx_22040175_top__DOT__imm = ((4U & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
                                             ? ((2U 
                                                 & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
-                                                ? 0x88888888U
+                                                ? (
+                                                   ((- (IData)(
+                                                               (vlSelf->inst 
+                                                                >> 0x1fU))) 
+                                                    << 7U) 
+                                                   | (0x7fU 
+                                                      & vlSelf->inst))
                                                 : (
                                                    (1U 
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
-                                                    ? 0x88888888U
+                                                    ? 
+                                                   (((- (IData)(
+                                                                (vlSelf->inst 
+                                                                 >> 0x1fU))) 
+                                                     << 7U) 
+                                                    | (0x7fU 
+                                                       & vlSelf->inst))
                                                     : 
                                                    (0xfffff000U 
                                                     & vlSelf->inst)))
