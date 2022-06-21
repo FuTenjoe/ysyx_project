@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "Vysyx_22040175_top.h"
 #include "verilated.h"
+#include "verilated_dpi.h"
 #include <dlfcn.h>
 #include "assert.h"
 #include <dlfcn.h>  //动态链接库相关函数
