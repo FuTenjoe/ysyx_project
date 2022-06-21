@@ -20,7 +20,7 @@ always @(*) begin
              imm = {{12{inst[31]}},inst[19:12],inst[20],inst[30:21], 1'b0};
         `IMM_GEN_U: 
              imm = {inst[31:12],12'b0};
-          default :imm = 3'h888;
+          default :imm = 8'h88;
     endcase
 end
 
