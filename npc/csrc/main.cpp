@@ -245,7 +245,7 @@ void init_difftest(long img_size,int port){
   void *handle;
   handle = dlopen(ref_so_file,RTLD_LAZY); //将动态库加载到内存中
   if(handle == NULL){
-    printf("库打开失败！\n")；
+    printf("库打开失败！\n");
     return 0;
   }
   assert(handle);
