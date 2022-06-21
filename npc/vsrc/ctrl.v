@@ -90,6 +90,7 @@ always @(*) begin
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM; // x0 + imm
         end
+        default:unknown_code = inst;
     endcase 
 end
 

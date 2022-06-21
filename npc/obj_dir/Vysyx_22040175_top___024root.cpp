@@ -17,14 +17,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top_
     ebreak();
 }
 
-extern "C" svLogic unknown_inst();
+extern "C" void unknown_inst();
 
-VL_INLINE_OPT void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__unknown_inst_TOP(CData/*0:0*/ &unknown_inst__Vfuncrtn) {
+VL_INLINE_OPT void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__unknown_inst_TOP() {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__unknown_inst_TOP\n"); );
     // Body
-    svLogic unknown_inst__Vfuncrtn__Vcvt;
-    unknown_inst__Vfuncrtn__Vcvt = unknown_inst();
-    unknown_inst__Vfuncrtn = (1U & unknown_inst__Vfuncrtn__Vcvt);
+    unknown_inst();
 }
 
 VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__1(Vysyx_22040175_top___024root* vlSelf) {
