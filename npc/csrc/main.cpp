@@ -178,7 +178,6 @@ int main(int argc, char **argv, char **env) {
     delete top;
     delete contextp;
     return is_exit_status_bad();
-
 }
 
 void init_imem(){
@@ -210,7 +209,6 @@ static inline void host_write(void *addr, int len,word_t data){
     case 8: *(uint64_t *)addr = data;return;
     default:{printf("hoost_write is error !\n"); assert(0);};
   }
-  
 }
 
 

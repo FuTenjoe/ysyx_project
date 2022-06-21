@@ -14,7 +14,8 @@ module ctrl (
     output reg [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op, // immediate extend opcode
 
     output reg [`ALU_OP_WIDTH-1:0]     alu_op,     // alu opcode
-    output reg [`ALU_SRC_WIDTH-1:0]    alu_src_sel // alu source select flag
+    output reg [`ALU_SRC_WIDTH-1:0]    alu_src_sel ,// alu source select flag
+    output [`CPU_WIDTH-1:0] unknown_code
 );
 
 wire [`OPCODE_WIDTH-1:0] opcode = inst[`OPCODE_WIDTH-1:0];            
@@ -35,6 +36,7 @@ always @(*) begin
     imm_gen_op  = `IMM_GEN_I;
     alu_op      = `ALU_AND;
     alu_src_sel = `ALU_SRC_REG;
+    unknown_code = 32'd0;
     case (opcode)
         `INST_TYPE_R: begin
             reg_wen     = 1'b1;
@@ -45,6 +47,7 @@ always @(*) begin
             case (funct3)
                 `INST_ADD_SUB: 
                     alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
+                default:unknown_code = inst;
             endcase
         end
         `INST_TYPE_I: begin
@@ -55,6 +58,7 @@ always @(*) begin
             case (funct3)
                 `INST_ADDI: 
                     alu_op = `ALU_ADD; 
+                default:unknown_code = inst;
             endcase
         end
         `INST_TYPE_B: begin
@@ -66,6 +70,7 @@ always @(*) begin
                 `INST_BNE: begin
                     branch     = 1'b1;
                     alu_op     = `ALU_SUB;
+                default:unknown_code = inst;
                 end
             endcase
         end
@@ -91,6 +96,12 @@ end
 import "DPI-C" function void ebreak();
 always@(*)begin
     if(opcode == 32'h0010_0073)
+        ebreak();
+end
+
+import "DPI-C" function unknown_inst();
+always@(*)begin
+    if(unknown_code != 32'd0)
         ebreak();
 end
 

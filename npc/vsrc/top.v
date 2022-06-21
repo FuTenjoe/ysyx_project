@@ -3,8 +3,9 @@
 module  ysyx_22040175_top(
 	input                         clk,
     input                         rst,
-	input [31:0] inst,
-	output[`CPU_WIDTH-1:0]        pc
+	input [31:0]                 inst,
+	output[`CPU_WIDTH-1:0]        pc,
+    output [`CPU_WIDTH-1:0] unknown_code
    // output[`CPU_WIDTH-1:0]        next_pc
 );
 wire rst_n;
@@ -68,7 +69,8 @@ ctrl u_ctrl_0(
     .reg_waddr                      ( reg_waddr                     ),
     .imm_gen_op                     ( imm_gen_op                    ),
     .alu_op                         ( alu_op                        ),
-    .alu_src_sel                    ( alu_src_sel                   )
+    .alu_src_sel                    ( alu_src_sel                   ),
+    .unknown_code           (unknown_code)
 );
 
 reg_file u_reg_file_0(
