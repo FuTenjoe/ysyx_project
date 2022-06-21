@@ -602,6 +602,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                                                    - vlSelf->ysyx_22040175_top__DOT__alu_src2);
         vlSelf->ysyx_22040175_top__DOT__zero = (0U 
                                                 == vlSelf->ysyx_22040175_top__DOT__alu_res);
+    } else {
+        vlSelf->ysyx_22040175_top__DOT__alu_res = (vlSelf->ysyx_22040175_top__DOT__alu_src1 
+                                                   - vlSelf->ysyx_22040175_top__DOT__alu_src2);
+        vlSelf->ysyx_22040175_top__DOT__zero = (0U 
+                                                == vlSelf->ysyx_22040175_top__DOT__alu_res);
     }
     vlSelf->ysyx_22040175_top__DOT__next_pc = ((IData)(vlSelf->ysyx_22040175_top__DOT__ena)
                                                 ? (
