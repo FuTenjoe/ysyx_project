@@ -160,7 +160,7 @@ int main(int argc, char **argv, char **env) {
         npc_state = NPC_ABORT;
         break;
       }*/
-      printf("a0: 0x%lx\n",cpu_gpr[10]); 
+      //printf("a0: 0x%lx\n",cpu_gpr[10]); 
     }
       if(npc_state == NPC_ABORT){
         printf("false:ABORT!The false PC is 0x%0lx\n",cpu.pc);
