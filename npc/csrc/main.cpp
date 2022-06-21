@@ -240,7 +240,7 @@ int is_exit_status_bad(){
 }
 //Difftest初始化
 void init_difftest(long img_size,int port){
-  char const *ref_so_file = "ysyx-workbench/nemu/tools/spike-diff/build/riscv6-spike-so";
+  char const *ref_so_file = "/home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv6-spike-so";
   assert(ref_so_file != NULL);
   void *handle;
   handle = dlopen(ref_so_file,RTLD_LAZY); //将动态库加载到内存中
