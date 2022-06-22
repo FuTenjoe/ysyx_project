@@ -112,7 +112,7 @@ alu u_alu_0(
 wire [63:0] rdata;
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always@(*)begin
-    pmem_read(raddr,rdata);
+    pmem_read(pc,rdata);
 end
 
 
