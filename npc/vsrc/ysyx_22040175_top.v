@@ -4,14 +4,14 @@ module  ysyx_22040175_top(
 	input                         clk,
     input                         rst,
 	input [31:0]                 inst,
-	output[`CPU_WIDTH-1:0]        pc,
+	//output[`CPU_WIDTH-1:0]        pc,
     output [`CPU_WIDTH-1:0]       unknown_code
    // output[`CPU_WIDTH-1:0]        next_pc
 );
 wire rst_n;
 assign rst_n = !rst;
 wire                         ena;
-//wire [`CPU_WIDTH-1:0]        curr_pc;    // current pc addr
+wire [`CPU_WIDTH-1:0]        curr_pc;    // current pc addr
 wire [`CPU_WIDTH-1:0]        next_pc;    // next pc addr
 
 wire                         branch;     // branch flag
@@ -111,7 +111,7 @@ alu u_alu_0(
 wire [63:0] rdata;
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always@(*)begin
-    pmem_read(pc,rdata);
+    pmem_read(raddr,rdata);
 end
 
 
