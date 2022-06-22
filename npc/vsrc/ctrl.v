@@ -76,13 +76,13 @@ always @(*) begin
         end
         `INST_JAL: begin // only jal /jalr
             case(funct3)
-            000:begin
+            000:begin         //jalr
             jump        = 1'b1;
             reg_wen     = 1'b1;
             reg_waddr   = rd;
             imm_gen_op  = `IMM_GEN_I;
-            alu_op      = `ALU_ADD;
-            alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
+            alu_op      = `ALU_JALR;
+            alu_src_sel = `ALU_SRC_FOUR_PC; //pc ?
             end
             default:begin
             jump        = 1'b1;
