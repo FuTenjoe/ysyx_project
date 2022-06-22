@@ -127,7 +127,7 @@ int main(int argc, char **argv, char **env) {
   Verilated::traceEverOn(true);
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
-
+  
   npc_state = NPC_RUNNING;
   //while(!contextp -> gotFinish()){
   while(main_time < 10){
