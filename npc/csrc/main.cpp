@@ -129,7 +129,8 @@ int main(int argc, char **argv, char **env) {
   tfp->open ("Vysyx_22040175.vcd");
 
   npc_state = NPC_RUNNING;
-  while(!contextp -> gotFinish()){
+  //while(!contextp -> gotFinish()){
+  while(main_time < 10){
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
