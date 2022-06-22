@@ -21,7 +21,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     // PORTS
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
-    VL_OUT(inst,31,0);
+    VL_IN(inst,31,0);
     VL_OUT(pc,31,0);
     VL_OUT(unknown_code,31,0);
 
@@ -53,7 +53,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     CData/*0:0*/ __Vclklast__TOP____VinpClk__TOP__ysyx_22040175_top__DOT__rst_n;
     CData/*0:0*/ __Vchglast__TOP__ysyx_22040175_top__DOT__rst_n;
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata;
-    VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
+    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vysyx_22040175_top__Syms* vlSymsp;  // Symbol table
