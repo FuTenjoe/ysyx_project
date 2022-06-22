@@ -111,15 +111,16 @@ always @(*) begin
                 alu_src_sel = `ALU_SRC_IMM_PC; // x0 + imm
         end
 
-        `INST_TYPE_IE:begin
-            ebreak();
-        end
+        
         default:unknown_code = inst;
     endcase 
 end
 
 import "DPI-C" function void ebreak();
-
+always@(*)begin
+    if(inst == 32'h0010_0073)
+        ebreak();
+end
 
 import "DPI-C" function void unknown_inst();
 always@(*)begin
