@@ -109,6 +109,8 @@ alu u_alu_0(
     .zero                           ( zero                          ),
     .alu_res                        ( alu_res                       )
 );
+wire [31:0] inst_unuse;
+assign inst_unuse = rdata[63:32];
 wire [63:0] rdata;
 assign inst = rdata[31:0];
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
