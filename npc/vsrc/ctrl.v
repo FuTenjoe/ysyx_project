@@ -92,6 +92,7 @@ always @(*) begin
             alu_op      = `ALU_ADD;
             alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
             end
+            endcase
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
