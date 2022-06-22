@@ -11,7 +11,8 @@ module  ysyx_22040175_top(
 wire rst_n;
 assign rst_n = !rst;
 wire                         ena;
-wire [`CPU_WIDTH-1:0]        curr_pc;    // current pc addr
+//wire [`CPU_WIDTH-1:0]        curr_pc;    // current pc addr
+wire [`CPU_WIDTH-1:0]        pc;    // current pc addr
 wire [`CPU_WIDTH-1:0]        next_pc;    // next pc addr
 
 wire                         branch;     // branch flag
