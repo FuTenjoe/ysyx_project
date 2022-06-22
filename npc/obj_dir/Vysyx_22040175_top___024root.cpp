@@ -186,7 +186,21 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_
         if ((8U & vlSelf->inst)) {
             vlSelf->unknown_code = vlSelf->inst;
         } else if ((4U & vlSelf->inst)) {
-            vlSelf->unknown_code = vlSelf->inst;
+            if ((2U & vlSelf->inst)) {
+                if ((1U & vlSelf->inst)) {
+                    vlSelf->ysyx_22040175_top__DOT__reg_wen = 1U;
+                    vlSelf->ysyx_22040175_top__DOT__reg1_raddr = 0U;
+                    vlSelf->ysyx_22040175_top__DOT__reg_waddr 
+                        = (0x1fU & (vlSelf->inst >> 7U));
+                    vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 4U;
+                    vlSelf->ysyx_22040175_top__DOT__alu_op = 3U;
+                    vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 3U;
+                } else {
+                    vlSelf->unknown_code = vlSelf->inst;
+                }
+            } else {
+                vlSelf->unknown_code = vlSelf->inst;
+            }
         } else if ((2U & vlSelf->inst)) {
             if ((1U & vlSelf->inst)) {
                 vlSelf->ysyx_22040175_top__DOT__reg_wen = 1U;
