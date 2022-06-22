@@ -15,15 +15,15 @@ module ctrl (
 
     output reg [`ALU_OP_WIDTH-1:0]     alu_op,     // alu opcode
     output reg [`ALU_SRC_WIDTH-1:0]    alu_src_sel ,// alu source select flag
-    output [`CPU_WIDTH-1:0] unknown_code
+    output [`CPU_WIDTH-1:0]            unknown_code
 );
 
-wire [`OPCODE_WIDTH-1:0] opcode = inst[`OPCODE_WIDTH-1:0];            
-wire [`FUNCT3_WIDTH-1:0] funct3 = inst[`FUNCT3_WIDTH+`FUNCT3_BASE-1:`FUNCT3_BASE];
-wire [`FUNCT7_WIDTH-1:0] funct7 = inst[`FUNCT7_WIDTH+`FUNCT7_BASE-1:`FUNCT7_BASE]; 
-wire [`REG_ADDR_WIDTH-1:0] rd   = inst[`REG_ADDR_WIDTH+`RD_BASE-1:`RD_BASE]; 
-wire [`REG_ADDR_WIDTH-1:0] rs1  = inst[`REG_ADDR_WIDTH+`RS1_BASE-1:`RS1_BASE]; 
-wire [`REG_ADDR_WIDTH-1:0] rs2  = inst[`REG_ADDR_WIDTH+`RS2_BASE-1:`RS2_BASE]; 
+wire [`OPCODE_WIDTH-1:0] opcode = inst[`OPCODE_WIDTH-1:0];            [6:0]
+wire [`FUNCT3_WIDTH-1:0] funct3 = inst[`FUNCT3_WIDTH+`FUNCT3_BASE-1:`FUNCT3_BASE];  //   [3+12-1:12] [14:12]
+wire [`FUNCT7_WIDTH-1:0] funct7 = inst[`FUNCT7_WIDTH+`FUNCT7_BASE-1:`FUNCT7_BASE];  // [31:25]
+wire [`REG_ADDR_WIDTH-1:0] rd   = inst[`REG_ADDR_WIDTH+`RD_BASE-1:`RD_BASE];   //[5+7-1:7]  [11:7]
+wire [`REG_ADDR_WIDTH-1:0] rs1  = inst[`REG_ADDR_WIDTH+`RS1_BASE-1:`RS1_BASE];  //[19:15]
+wire [`REG_ADDR_WIDTH-1:0] rs2  = inst[`REG_ADDR_WIDTH+`RS2_BASE-1:`RS2_BASE];   //[24:20]
 
 
 always @(*) begin
@@ -90,6 +90,15 @@ always @(*) begin
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM; // x0 + imm
         end
+        `INST_AUIPC:begin //only auipc
+                reg_wen     = 1'b1;
+                reg1_raddr  = {funct7,rs2,rs1,funct3}<<12; // x0 = 0
+                reg_waddr   = rd;
+                imm_gen_op  = `IMM_GEN_U;
+                alu_op      = `ALU_ADD;
+                alu_src_sel = `ALU_SRC_IMM; // x0 + imm
+        end
+
         `INST_TYPE_IE:begin
             ebreak();
         end
