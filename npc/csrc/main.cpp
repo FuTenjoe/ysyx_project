@@ -153,6 +153,7 @@ int main(int argc, char **argv, char **env) {
   main_time++;
 
   }
+    if (Verilated::gotFinish())  exit(0);
     tfp->close();
     delete top;
     delete contextp;
