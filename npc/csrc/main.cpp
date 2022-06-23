@@ -124,6 +124,7 @@ int main(int argc, char **argv, char **env) {
   int a = 0;
      if(top->clk==1){
       top->inst = pmem_read(top->pc,8);
+      printf("main_time = %ld\n",main_time);
       a= a+1;
      }
      if (a>2){
