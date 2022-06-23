@@ -124,7 +124,7 @@ int main(int argc, char **argv, char **env) {
     /*  if(main_time >= 3){
         difftest_step(top->pc);
       }*/
-      printf("PC:0x%0x;Inst:0x%lx;\n",top->pc,top->inst);
+      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
 
       if(unknown_code_flag || top->unknown_code){
         printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
