@@ -102,7 +102,7 @@ int main(int argc, char **argv, char **env) {
   Verilated::traceEverOn(true);
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
-  top->inst = pmem_read(top->pc,8);
+  
   npc_state = NPC_RUNNING;
   //while(!contextp -> gotFinish()){
   while(main_time < 10){
@@ -117,6 +117,7 @@ int main(int argc, char **argv, char **env) {
     }
     else{
       top->rst = 0;
+      
     }
     if(main_time % 2 == 0){
       top->clk = 0;
@@ -127,6 +128,7 @@ int main(int argc, char **argv, char **env) {
     if(main_time % 2 == 1){
       printf("main_time = %ld\n",main_time);
       top->clk = 1;
+      top->inst = pmem_read(top->pc,8);
       top->eval();
     /*  if(main_time >= 3){
         difftest_step(top->pc);
