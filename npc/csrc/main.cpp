@@ -77,7 +77,7 @@ static inline void host_write(void *addr, int len, word_t data);
 }*/
 static word_t pmem_read(paddr_t addr, int len) {
   word_t ret = host_read(guest_to_host(addr), len);
-   printf("pmem_read success addr");
+  //printf("pmem_read success addr");
   return ret;
 }
 
