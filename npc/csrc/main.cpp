@@ -159,12 +159,14 @@ int main(int argc, char **argv, char **env) {
 
 void init_imem(){
   pimem = (uint8_t *) malloc(CONFIG_MSIZE);
-  printf("pimem _ success");
+ // printf("pimem _ success");
   assert(pimem);
 }
 
 uint8_t *guest_to_host(paddr_t paddr){
   uint8_t *tmpl = pimem + paddr -CONFIG_MBASE;
+  printf("guest to host success pimem = %hhn\n",pimem);
+   printf("guest to host success paddr  = %hhn\n",paddr );
   printf("guest to host success addr = %hhn\n",tmpl);
   return tmpl;
 }
