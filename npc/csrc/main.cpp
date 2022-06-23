@@ -159,7 +159,7 @@ int main(int argc, char **argv, char **env) {
 
 void init_imem(){
   pimem = (uint8_t *) malloc(CONFIG_MSIZE);
-  //printf("pimem _ success");
+  printf("pimem _ success");
   assert(pimem);
 }
 
