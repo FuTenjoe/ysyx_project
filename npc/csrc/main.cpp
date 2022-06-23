@@ -100,16 +100,10 @@ int main(int argc, char **argv, char **env) {
   Verilated::traceEverOn(true);
   VerilatedVcdC* tfp = new VerilatedVcdC;
 
-   while(main_time < 50){
-      int i;
+   
+  int i;
   int clk;
-  //Verilated::commandArgs(argc, argv);
-  VerilatedContext *contextp = new VerilatedContext;
-  // init top verilog instance
-  Vysyx_22040175_top* top = new Vysyx_22040175_top;
-  // init trace dump
-  Verilated::traceEverOn(true);
-  VerilatedVcdC* tfp = new VerilatedVcdC;
+  
 
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
