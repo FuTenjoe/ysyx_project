@@ -115,7 +115,7 @@ int main(int argc, char **argv, char **env) {
       top->eval();
       
       printf("main_time = %ld\n",main_time);
-      printf("PC:0x%0x;Inst:0x%lx;\n",top->pc,top->inst);
+      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
     }
     if(main_time % 2 == 1){
       printf("main_time = %ld\n",main_time);
@@ -127,7 +127,7 @@ int main(int argc, char **argv, char **env) {
       printf("PC:0x%0x;Inst:0x%lx;\n",top->pc,top->inst);
 
       if(unknown_code_flag || top->unknown_code){
-        printf("Warning: An unknown Inst! pc: %x;Inst: %lx\n",top->pc,top->inst);
+        printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
         npc_state = NPC_ABORT;
         break;
       }

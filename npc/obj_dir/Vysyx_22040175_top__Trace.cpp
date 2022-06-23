@@ -24,7 +24,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
     // Body
     {
         if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[1U])) {
-            tracep->chgBit(oldp+0,(vlSelf->ysyx_22040175_top__DOT__rst_n));
+            tracep->chgBit(oldp+0,(vlSelf->ysyx_22040175_top__DOT__ena));
             tracep->chgBit(oldp+1,(vlSelf->ysyx_22040175_top__DOT__branch));
             tracep->chgBit(oldp+2,(vlSelf->ysyx_22040175_top__DOT__zero));
             tracep->chgBit(oldp+3,(vlSelf->ysyx_22040175_top__DOT__jump));
@@ -33,16 +33,16 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgIData(oldp+6,(vlSelf->ysyx_22040175_top__DOT__alu_res),32);
             tracep->chgCData(oldp+7,(vlSelf->ysyx_22040175_top__DOT__reg1_raddr),5);
             tracep->chgCData(oldp+8,(vlSelf->ysyx_22040175_top__DOT__reg2_raddr),5);
-            tracep->chgIData(oldp+9,(vlSelf->ysyx_22040175_top__DOT__reg2_rdata),32);
-            tracep->chgCData(oldp+10,(vlSelf->ysyx_22040175_top__DOT__imm_gen_op),3);
-            tracep->chgIData(oldp+11,(vlSelf->ysyx_22040175_top__DOT__imm),32);
-            tracep->chgCData(oldp+12,(vlSelf->ysyx_22040175_top__DOT__alu_op),4);
-            tracep->chgCData(oldp+13,(vlSelf->ysyx_22040175_top__DOT__alu_src_sel),2);
-            tracep->chgIData(oldp+14,(vlSelf->ysyx_22040175_top__DOT__alu_src1),32);
-            tracep->chgIData(oldp+15,(vlSelf->ysyx_22040175_top__DOT__alu_src2),32);
-        }
-        if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
-            tracep->chgBit(oldp+16,(vlSelf->ysyx_22040175_top__DOT__ena));
+            tracep->chgIData(oldp+9,(((0U == (IData)(vlSelf->ysyx_22040175_top__DOT__reg1_raddr))
+                                       ? 0U : vlSelf->ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f
+                                      [vlSelf->ysyx_22040175_top__DOT__reg1_raddr])),32);
+            tracep->chgIData(oldp+10,(vlSelf->ysyx_22040175_top__DOT__reg2_rdata),32);
+            tracep->chgCData(oldp+11,(vlSelf->ysyx_22040175_top__DOT__imm_gen_op),3);
+            tracep->chgIData(oldp+12,(vlSelf->ysyx_22040175_top__DOT__imm),32);
+            tracep->chgCData(oldp+13,(vlSelf->ysyx_22040175_top__DOT__alu_op),4);
+            tracep->chgCData(oldp+14,(vlSelf->ysyx_22040175_top__DOT__alu_src_sel),2);
+            tracep->chgIData(oldp+15,(vlSelf->ysyx_22040175_top__DOT__alu_src1),32);
+            tracep->chgIData(oldp+16,(vlSelf->ysyx_22040175_top__DOT__alu_src2),32);
             tracep->chgIData(oldp+17,(vlSelf->ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f[0]),32);
             tracep->chgIData(oldp+18,(vlSelf->ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f[1]),32);
             tracep->chgIData(oldp+19,(vlSelf->ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f[2]),32);
@@ -78,9 +78,10 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
         }
         tracep->chgBit(oldp+49,(vlSelf->clk));
         tracep->chgBit(oldp+50,(vlSelf->rst));
-        tracep->chgQData(oldp+51,(vlSelf->inst),64);
-        tracep->chgIData(oldp+53,(vlSelf->pc),32);
-        tracep->chgIData(oldp+54,(vlSelf->unknown_code),32);
+        tracep->chgIData(oldp+51,(vlSelf->inst),32);
+        tracep->chgIData(oldp+52,(vlSelf->pc),32);
+        tracep->chgIData(oldp+53,(vlSelf->unknown_code),32);
+        tracep->chgBit(oldp+54,(vlSelf->ysyx_22040175_top__DOT__rst_n));
         tracep->chgIData(oldp+55,(((IData)(vlSelf->ysyx_22040175_top__DOT__ena)
                                     ? (((IData)(vlSelf->ysyx_22040175_top__DOT__branch) 
                                         & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__zero)))
@@ -92,25 +93,16 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                             : ((IData)(4U) 
                                                + vlSelf->pc)))
                                     : vlSelf->pc)),32);
-        tracep->chgIData(oldp+56,(((0U == (IData)(vlSelf->ysyx_22040175_top__DOT__reg1_raddr))
-                                    ? 0U : vlSelf->ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f
-                                   [vlSelf->ysyx_22040175_top__DOT__reg1_raddr])),32);
-        tracep->chgIData(oldp+57,((IData)(vlSelf->inst)),32);
-        tracep->chgCData(oldp+58,((0x7fU & (IData)(vlSelf->inst))),7);
-        tracep->chgCData(oldp+59,((7U & (IData)((vlSelf->inst 
-                                                 >> 0xcU)))),3);
-        tracep->chgCData(oldp+60,((0x7fU & (IData)(
-                                                   (vlSelf->inst 
-                                                    >> 0x19U)))),7);
-        tracep->chgCData(oldp+61,((0x1fU & (IData)(
-                                                   (vlSelf->inst 
-                                                    >> 7U)))),5);
-        tracep->chgCData(oldp+62,((0x1fU & (IData)(
-                                                   (vlSelf->inst 
-                                                    >> 0xfU)))),5);
-        tracep->chgCData(oldp+63,((0x1fU & (IData)(
-                                                   (vlSelf->inst 
-                                                    >> 0x14U)))),5);
+        tracep->chgCData(oldp+56,((0x7fU & vlSelf->inst)),7);
+        tracep->chgCData(oldp+57,((7U & (vlSelf->inst 
+                                         >> 0xcU))),3);
+        tracep->chgCData(oldp+58,((vlSelf->inst >> 0x19U)),7);
+        tracep->chgCData(oldp+59,((0x1fU & (vlSelf->inst 
+                                            >> 7U))),5);
+        tracep->chgCData(oldp+60,((0x1fU & (vlSelf->inst 
+                                            >> 0xfU))),5);
+        tracep->chgCData(oldp+61,((0x1fU & (vlSelf->inst 
+                                            >> 0x14U))),5);
     }
 }
 
@@ -122,6 +114,5 @@ void Vysyx_22040175_top___024root__traceCleanup(void* voidSelf, VerilatedVcd* /*
         vlSymsp->__Vm_activity = false;
         vlSymsp->TOP.__Vm_traceActivity[0U] = 0U;
         vlSymsp->TOP.__Vm_traceActivity[1U] = 0U;
-        vlSymsp->TOP.__Vm_traceActivity[2U] = 0U;
     }
 }
