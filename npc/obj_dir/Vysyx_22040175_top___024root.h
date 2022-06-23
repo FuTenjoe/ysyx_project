@@ -21,9 +21,9 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     // PORTS
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
-    VL_IN(inst,31,0);
     VL_OUT(pc,31,0);
     VL_OUT(unknown_code,31,0);
+    VL_IN64(inst,63,0);
 
     // LOCAL SIGNALS
     CData/*0:0*/ ysyx_22040175_top__DOT__rst_n;
