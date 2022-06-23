@@ -120,7 +120,7 @@ int main(int argc, char **argv, char **env) {
   }
   int a = 0;
      if(top->clk==1){
-      top->inst = pmem_read(top->curr_pc,8);
+      top->inst = pmem_read(top->pc,8);
       a= a+1;
      }
      if (a>2){
