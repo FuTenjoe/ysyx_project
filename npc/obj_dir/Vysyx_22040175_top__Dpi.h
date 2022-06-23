@@ -16,7 +16,7 @@ extern "C" {
     // DPI import at vsrc/ctrl.v:119:30
     extern void ebreak();
     // DPI import at vsrc/ysyx_22040175_top.v:114:30
-    extern void pmem_read(long long raddr, long long* rdata);
+    extern void pmem_read(int raddr, int* rdata);
     // DPI import at vsrc/ctrl.v:125:30
     extern void unknown_inst();
 
