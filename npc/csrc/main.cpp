@@ -97,6 +97,15 @@ int main(int argc, char **argv, char **env) {
   VerilatedVcdC* tfp = new VerilatedVcdC;
 
    while(main_time < 50){
+     char* img_file = *(argv + 1);
+    init_imem();
+    long img_size = load_img(img_file);
+    contextp -> commandArgs(argc,argv);
+    Verilated::traceEverOn(true);
+    top->trace (tfp, 99);
+    tfp->open ("Vysyx_22040175.vcd");
+    top->inst = pmem_read(top->pc,8);
+    npc_state = NPC_RUNNING;
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
