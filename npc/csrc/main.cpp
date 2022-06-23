@@ -106,6 +106,7 @@ int main(int argc, char **argv, char **env) {
       npc_state = NPC_END;
       break;
     }
+    top->inst = pmem_read(top->pc,8);
     if(main_time < 4){
       top->rst = 1;
       //init_difftest(img_size,port);
@@ -116,7 +117,7 @@ int main(int argc, char **argv, char **env) {
     if(main_time % 2 == 0){
       top->clk = 0;
       top->eval();
-      top->inst = pmem_read(top->pc,8);
+      
       printf("main_time = %ld\n",main_time);
       printf("PC:0x%0x;Inst:0x%lx;\n",top->pc,top->inst);
     }
