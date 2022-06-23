@@ -100,7 +100,7 @@ int main(int argc, char **argv, char **env) {
   Verilated::traceEverOn(true);
   VerilatedVcdC* tfp = new VerilatedVcdC;
 
-   while(main_time < 10){
+   while(main_time < 50){
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
