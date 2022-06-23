@@ -91,8 +91,7 @@ vluint64_t main_time = 0;
 const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
-  int i;
-  int clk;
+  
   //Verilated::commandArgs(argc, argv);
   VerilatedContext *contextp = new VerilatedContext;
   // init top verilog instance
@@ -117,6 +116,7 @@ int main(int argc, char **argv, char **env) {
     if(main_time % 2 == 0){
       top->clk = 0;
       top->eval();
+      top->inst = pmem_read(top->pc,8);
       printf("main_time = %ld\n",main_time);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
     }
