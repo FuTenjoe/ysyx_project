@@ -91,6 +91,16 @@ vluint64_t main_time = 0;
 const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
+  int i;
+  int clk;
+  //Verilated::commandArgs(argc, argv);
+  VerilatedContext *contextp = new VerilatedContext;
+  // init top verilog instance
+  Vysyx_22040175_top* top = new Vysyx_22040175_top;
+  // init trace dump
+  Verilated::traceEverOn(true);
+  VerilatedVcdC* tfp = new VerilatedVcdC;
+
    while(main_time < 10){
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
