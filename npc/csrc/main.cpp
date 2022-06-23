@@ -81,35 +81,7 @@ static word_t pmem_read(paddr_t addr, int len) {
   return ret;
 }
 
-extern "C" void pmem_write (long long waddr, long long wdata, char wmask){
-  long long addr = waddr & ~0x7ull;
-  int len = 0;
-  switch(wmask){
-    //8bit
-    case 0x1:len = 1; break;
-    case 0x2:len = 1;addr = addr + 1;break;
-    case 0x4:len = 1;addr = addr + 2;break;
-    case 0x8:len = 1;addr = addr + 3;break;
-    case 0x10:len = 1;addr = addr + 4;break;
-    case 0x20:len = 1;addr = addr + 5;break;
-    case 0x40:len = 1;addr = addr + 6;break;
-    case -128:len = 1;addr = addr + 7;break;
-    //16 bit
-    case 0x3:len = 2;break;
-    case 0xc:len = 2;addr = addr + 2;break;
-    case 0x30:len = 2;addr = addr + 4;break;
-    case -64:len = 2; addr = addr + 6;break;
-    //32 bit
-    case 0xF: len = 4;break;
-    case -16:len = 4;addr = addr + 4;break;
-    //64 bit
-    case -1:len = 8;break;
-    default:printf("False: Wmask is %x false !\n",wmask);
-  }
-  printf("waddr = %llx\n",waddr);
-  printf("addr = %llx\n",addr);
-  host_write(guest_to_host(addr),len,wdata);
-}
+
 
 
 
@@ -245,68 +217,3 @@ int is_exit_status_bad(){
   return !good;
 }
 //Difftest初始化
-void init_difftest(long img_size,int port){
-  char const *ref_so_file = "./home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so.bin";
-  if(ref_so_file != NULL){
-    printf("文件加载成功！\n");
-  }
-  assert(ref_so_file != NULL);
-  void *handle;
-  handle = dlopen(ref_so_file,RTLD_LAZY); //将动态库加载到内存中
-  if(handle == NULL){
-    printf("库打开失败！\n");
-  }
-  assert(handle);
-  //用函数指针指向动态库中的对应函数，以便调用
-  ref_difftest_memcpy = (void(*)(paddr_t, void*, size_t, bool))dlsym(handle,"difftest_memcpy");
-  assert(ref_difftest_memcpy);
-
-  ref_difftest_regcpy = (void(*)(void*,bool))dlsym(handle,"difftest_regcpy");
-  assert(ref_difftest_regcpy);
-
-  ref_difftest_exec = (void(*)(uint64_t))dlsym(handle,"difftest_exec");
-  assert(ref_difftest_exec);
-  
-  ref_difftest_raise_intr = (void(*)(uint64_t))dlsym(handle,"difftest_raise_intr");
-  assert(ref_difftest_raise_intr);
-
-  void(*ref_difftest_init)(int) = (void(*)(int))dlsym(handle,"difftest_init");
-  assert(ref_difftest_init);
-
-  ref_difftest_init(port);
-  cpu.pc = CONFIG_MBASE;
-  ref_difftest_memcpy(CONFIG_MBASE,guest_to_host(CONFIG_MBASE), img_size, DIFFTEST_TO_REF);
-  for(int i = 0; i < 32;i++){
-    cpu.gpr[i] = 0;
-  }
-  ref_difftest_regcpy(&cpu, DIFFTEST_TO_REF);
-}
-//Difftest在CPU中比较功能的实现
-void difftest_step (vaddr_t dnpc){
-  CPU_state ref_r;
-  ref_difftest_regcpy(&ref_r, DIFFTEST_TO_DUT);
-  checkregs(&ref_r, dnpc);
-  ref_difftest_exec(1);
-}
-
-static void checkregs(CPU_state *ref, vaddr_t dnpc){
-  if(!isa_difftest_checkregs(ref,dnpc)){
-    npc_state = NPC_ABORT;
-  }
-}
-
-bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
-  int i = 0;
-  bool DIF_result = true;
-  if(ref_r -> pc != dnpc){
-    printf("False: PC is false! ref_dnpc is 0x%0lx;npc_dnpc is 0x%0lx; Instruction is 0x%x\n",ref_r->pc,dnpc,current_inst);
-    DIF_result = false;
-  }
-  for (i=0; i<32;i++){
-    if(ref_r->gpr[i] != cpu_gpr[i]){
-      printf("False: Reg is false! ref_gpr[%d]: 0x%08lx;npc_gpr[%d]; 0x%08lx; Instruction is 0x%x\n",i,ref_r->gpr[i],i,cpu_gpr[i],top->inst);
-      DIF_result = false;
-    }
-  }
-  return DIF_result;
-}
