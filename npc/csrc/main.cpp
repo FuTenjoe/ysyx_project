@@ -67,7 +67,7 @@ static inline void host_write(void *addr, int len, word_t data);
 
 
 //加为DPIC函数
-extern "C" void pmem_read(paddr_t raddr,word_t *rdata){
+/*extern "C" void pmem_read(paddr_t raddr,word_t *rdata){
   if(raddr <= CONFIG_MBASE){
     *rdata = host_read(guest_to_host(raddr), 8);
     printf("rdata = 0x%lx\n",*rdata);
@@ -76,6 +76,11 @@ extern "C" void pmem_read(paddr_t raddr,word_t *rdata){
     *rdata = 0;
     printf("Warning: Invalid Instruction !\n");
   }
+}*/
+static word_t pmem_read(paddr_t addr, int len) {
+  word_t ret = host_read(guest_to_host(addr), len);
+   //printf("pmem_read success addr");
+  return ret;
 }
 
 extern "C" void pmem_write (long long waddr, long long wdata, char wmask){
@@ -127,6 +132,7 @@ int main(int argc, char **argv, char **env) {
   Verilated::traceEverOn(true);
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
+  top->inst = pmem_read(top->pc,8);
   npc_state = NPC_RUNNING;
   //while(!contextp -> gotFinish()){
   while(main_time < 10){
