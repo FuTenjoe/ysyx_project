@@ -101,65 +101,51 @@ int main(int argc, char **argv, char **env) {
   VerilatedVcdC* tfp = new VerilatedVcdC;
 
    while(main_time < 50){
-     char* img_file = *(argv + 1);
-    init_imem();
-    long img_size = load_img(img_file);
-    contextp -> commandArgs(argc,argv);
-    Verilated::traceEverOn(true);
-    top->trace (tfp, 99);
-    tfp->open ("Vysyx_22040175.vcd");
-    //top->inst = pmem_read(top->pc,8);
-    npc_state = NPC_RUNNING;
-    if(ebreak_flag){
-      printf("ebreak: program is finished !\n");
-      npc_state = NPC_END;
-      break;
-    }
-   
-    top->rst = (main_time < 4);
-      //init_difftest(img_size,port);
-    
-    if(main_time % 2 == 0){
-      top->clk = 0;
-      top->eval();
-      top->inst = pmem_read(top->pc,8);
-      printf("main_time = %ld\n",main_time);
-      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
-    }
-    if(main_time % 2 == 1){
-      printf("main_time = %ld\n",main_time);
-      top->clk = 1;
-      top->eval();
-    /*  if(main_time >= 3){
-        difftest_step(top->pc);
-      }*/
-      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
+      int i;
+  int clk;
+  //Verilated::commandArgs(argc, argv);
+  VerilatedContext *contextp = new VerilatedContext;
+  // init top verilog instance
+  Vysyx_22040175_top* top = new Vysyx_22040175_top;
+  // init trace dump
+  Verilated::traceEverOn(true);
+  VerilatedVcdC* tfp = new VerilatedVcdC;
 
-      if(unknown_code_flag || top->unknown_code){
-        printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
-        npc_state = NPC_ABORT;
-        break;
-      }
-      //printf("a0: 0x%lx\n",cpu_gpr[10]); 
-    }
-      if(npc_state == NPC_ABORT){
-        printf("false:ABORT!The false PC is 0x%0lx\n",cpu.pc);
-        break;
-      }
-      cpu.pc = top ->pc;
-      current_inst = top ->inst;
-      top ->eval();
-  tfp->dump(main_time);
-  main_time++;
+  top->trace (tfp, 99);
+  tfp->open ("Vysyx_22040175.vcd");
+  // initialize simulation inputs
+  top->clk = 1;
+  top->rst = 1;
+  // run simulation for 100 clock periods
+  char* img_file = *(argv + 1);
+  
+  printf("开始imem初始化\n");
+  init_imem();
+  long img_size = load_img(img_file);
+  //init_difftest(img_size,port);
+  for (i=0; i<500; i++) {
+    top->rst = (i < 2);
+    // dump variables into VCD file and toggle clock
+    for (clk=0; clk<2; clk++) {
+      tfp->dump (2*i+clk);
+      top->clk = !top->clk;
+      top->eval ();
+  }
+  int a = 0;
+     if(top->clk==1){
+      top->inst = pmem_read(top->curr_pc,8);
+      a= a+1;
+     }
+     if (a>2){
+       //difftest_step(top->curr_pc,top->next_pc);
+     }
 
   }
-    if (Verilated::gotFinish())  exit(0);
-    tfp->close();
-    delete top;
-    delete contextp;
-    return is_exit_status_bad();
+  if (Verilated::gotFinish())  exit(0);
+  tfp->close();
+  exit(0);
+  return is_exit_status_bad();
 }
-
 
 void init_imem(){
   pimem = (uint8_t *) malloc(CONFIG_MSIZE);
