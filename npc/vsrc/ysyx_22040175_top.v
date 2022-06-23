@@ -60,7 +60,7 @@ muxpc u_mux_pc_0(
 
 
 ctrl u_ctrl_0(
-    .inst                           ( inst                          ),
+    .inst                           ( inst[31:0]                          ),
     .branch                         ( branch                        ),
     .jump                           ( jump                          ),
     .reg_wen                        ( reg_wen                       ),
@@ -86,7 +86,7 @@ reg_file u_reg_file_0(
 );
 
 imm_gen u_imm_gen_0(
-    .inst                           ( inst                          ),
+    .inst                           ( inst[31:0]                      ),
     .imm_gen_op                     ( imm_gen_op                    ),
     .imm                            ( imm                           )
 );
