@@ -108,7 +108,7 @@ int main(int argc, char **argv, char **env) {
     Verilated::traceEverOn(true);
     top->trace (tfp, 99);
     tfp->open ("Vysyx_22040175.vcd");
-    top->inst = pmem_read(top->pc,8);
+    //top->inst = pmem_read(top->pc,8);
     npc_state = NPC_RUNNING;
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
@@ -126,7 +126,7 @@ int main(int argc, char **argv, char **env) {
     if(main_time % 2 == 0){
       top->clk = 0;
       top->eval();
-      
+      top->inst = pmem_read(top->pc,8);
       printf("main_time = %ld\n",main_time);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
     }
