@@ -15,8 +15,6 @@ extern "C" {
     // DPI IMPORTS
     // DPI import at vsrc/ctrl.v:119:30
     extern void ebreak();
-    // DPI import at vsrc/ctrl.v:125:30
-    extern void unknown_inst();
 
 #ifdef __cplusplus
 }
