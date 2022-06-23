@@ -116,13 +116,9 @@ int main(int argc, char **argv, char **env) {
       break;
     }
    
-    if(main_time < 4){
-      top->rst = 1;
+    top->rst = (main_time < 4);
       //init_difftest(img_size,port);
-    }
-    else{
-      top->rst = 0;
-    }
+    
     if(main_time % 2 == 0){
       top->clk = 0;
       top->eval();
