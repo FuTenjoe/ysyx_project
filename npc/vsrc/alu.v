@@ -19,8 +19,7 @@ always @(*) begin
             alu_res = alu_src1 -  alu_src2;
             zero = (alu_res == `CPU_WIDTH'b0) ? 1'b1 : 1'b0;
         end
-        `ALU_JALR:
-            alu_res = (alu_src1 +alu_src2) & 32'hffff_fffe;
+        
         default:begin
             alu_res = alu_src1 -  alu_src2;
             zero = (alu_res == `CPU_WIDTH'b0) ? 1'b1 : 1'b0;

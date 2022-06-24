@@ -15,7 +15,8 @@ module ctrl (
 
     output reg [`ALU_OP_WIDTH-1:0]     alu_op,     // alu opcode
     output reg [`ALU_SRC_WIDTH-1:0]    alu_src_sel ,// alu source select flag
-    output [`CPU_WIDTH-1:0]            unknown_code
+    output [`CPU_WIDTH-1:0]            unknown_code,
+    output    jalr
 );
 
 wire [`OPCODE_WIDTH-1:0] opcode = inst[`OPCODE_WIDTH-1:0];          //  [6:0]
@@ -30,6 +31,7 @@ always @(*) begin
     branch      = 1'b0;
     jump        = 1'b0;
     reg_wen     = 1'b0;
+    jalr = 1'b0;
     reg1_raddr  = `REG_ADDR_WIDTH'b0;
     reg2_raddr  = `REG_ADDR_WIDTH'b0;
     reg_waddr   = `REG_ADDR_WIDTH'b0;
@@ -79,10 +81,11 @@ always @(*) begin
             000:begin         //jalr
             jump        = 1'b1;
             reg_wen     = 1'b1;
+            jalr = 1'b1;
             reg_waddr   = rd;
             imm_gen_op  = `IMM_GEN_I;
-            alu_op      = `ALU_JALR;
-            alu_src_sel = `ALU_SRC_FOUR_PC; //pc ?
+            alu_op      = `ALU_ADD;
+            alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
             end
             default:begin
             jump        = 1'b1;
