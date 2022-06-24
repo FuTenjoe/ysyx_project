@@ -19,11 +19,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top_
 
 extern "C" void set_gpr_ptr(const svOpenArrayHandle a);
 
-VL_INLINE_OPT void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_reg_file_0__DOT__set_gpr_ptr__Vdpioc2_TOP(const VlUnpacked<QData/*63:0*/, 32> &a) {
+VL_INLINE_OPT void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_reg_file_0__DOT__set_gpr_ptr__Vdpioc2_TOP(const VlUnpacked<IData/*31:0*/, 32> &a) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_reg_file_0__DOT__set_gpr_ptr__Vdpioc2_TOP\n"); );
     // Body
     static const int a__Vopenprops__ulims[2] = {0, 31};
-    static const VerilatedVarProps a__Vopenprops(VLVT_UINT64, VLVD_IN, VerilatedVarProps::Packed(), 63, 0, VerilatedVarProps::Unpacked(), 1, a__Vopenprops__ulims);
+    static const VerilatedVarProps a__Vopenprops(VLVT_UINT32, VLVD_IN, VerilatedVarProps::Packed(), 31, 0, VerilatedVarProps::Unpacked(), 1, a__Vopenprops__ulims);
     VerilatedDpiOpenVar a__Vopenarray (&a__Vopenprops, &a);
     set_gpr_ptr(&a__Vopenarray);
 }
@@ -493,7 +493,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
     // Variables
     CData/*4:0*/ __Vdlyvdim0__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0;
     CData/*0:0*/ __Vdlyvset__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0;
-    QData/*63:0*/ __Vdlyvval__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0;
+    IData/*31:0*/ __Vdlyvval__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0;
     // Body
     __Vdlyvset__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0 = 0U;
     vlSelf->ysyx_22040175_top__DOT__ena = vlSelf->ysyx_22040175_top__DOT__rst_n;
@@ -504,7 +504,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
           & (IData)(vlSelf->ysyx_22040175_top__DOT__reg_wen)) 
          & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__reg_waddr)))) {
         __Vdlyvval__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0 
-            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__alu_res));
+            = vlSelf->ysyx_22040175_top__DOT__alu_res;
         __Vdlyvset__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0 = 1U;
         __Vdlyvdim0__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0 
             = vlSelf->ysyx_22040175_top__DOT__reg_waddr;
@@ -625,9 +625,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__5(Vysyx_22040175_t
     vlSelf->ysyx_22040175_top__DOT__alu_src1 = ((0U 
                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__reg1_raddr))
                                                  ? 0U
-                                                 : (IData)(
-                                                           vlSelf->ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f
-                                                           [vlSelf->ysyx_22040175_top__DOT__reg1_raddr]));
+                                                 : 
+                                                vlSelf->ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f
+                                                [vlSelf->ysyx_22040175_top__DOT__reg1_raddr]);
     if ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__alu_src_sel))) {
         vlSelf->ysyx_22040175_top__DOT__alu_src1 = 
             ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__alu_src_sel))
@@ -637,9 +637,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__5(Vysyx_22040175_t
     vlSelf->ysyx_22040175_top__DOT__reg2_rdata = ((0U 
                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__reg2_raddr))
                                                    ? 0U
-                                                   : (IData)(
-                                                             vlSelf->ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f
-                                                             [vlSelf->ysyx_22040175_top__DOT__reg2_raddr]));
+                                                   : 
+                                                  vlSelf->ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f
+                                                  [vlSelf->ysyx_22040175_top__DOT__reg2_raddr]);
     vlSelf->ysyx_22040175_top__DOT__alu_src2 = ((2U 
                                                  & (IData)(vlSelf->ysyx_22040175_top__DOT__alu_src_sel))
                                                  ? vlSelf->pc
