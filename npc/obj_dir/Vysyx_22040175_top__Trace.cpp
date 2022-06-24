@@ -94,9 +94,8 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                                + vlSelf->ysyx_22040175_top__DOT__imm)
                                             : (((IData)(vlSelf->ysyx_22040175_top__DOT__jump) 
                                                 & (IData)(vlSelf->ysyx_22040175_top__DOT__jalr))
-                                                ? (0xfffffffeU 
-                                                   & (vlSelf->ysyx_22040175_top__DOT__reg1_rdata 
-                                                      + vlSelf->ysyx_22040175_top__DOT__imm))
+                                                ? (vlSelf->ysyx_22040175_top__DOT__reg1_rdata 
+                                                   + vlSelf->ysyx_22040175_top__DOT__imm)
                                                 : ((IData)(4U) 
                                                    + vlSelf->pc))))
                                     : vlSelf->pc)),32);
