@@ -93,7 +93,7 @@ VerilatedVcdC* tfp = new VerilatedVcdC;
 
 
 
-vluint64_t main_time = 0;
+vluint64_t i = 0;
 const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
@@ -101,7 +101,7 @@ int main(int argc, char **argv, char **env) {
   Verilated::traceEverOn(true);
   
    
-  int i=0;
+  
   int clk;
   int a = 0;
 
