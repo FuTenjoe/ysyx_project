@@ -107,7 +107,7 @@ int main(int argc, char **argv, char **env) {
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
   // initialize simulation inputs
-  top->clk = 1;
+  top->clk = 0;
   top->rst = 1;
   // run simulation for 100 clock periods
   char* img_file = *(argv + 1);
@@ -134,7 +134,7 @@ int main(int argc, char **argv, char **env) {
       tfp->dump (2*i+clk);
       top->clk = !top->clk;
       top->eval ();
-      a= a+1;
+      
   }
   
      if(top->clk==1){
@@ -143,7 +143,7 @@ int main(int argc, char **argv, char **env) {
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",1,cpu_gpr[1],top->inst);
-      
+      a= a+1;
 
       if (a>3){
        //printf("a =%d \n",a);
