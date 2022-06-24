@@ -146,11 +146,13 @@ int main(int argc, char **argv, char **env) {
       }
      
   }
-  return is_exit_status_bad();
-  if (Verilated::gotFinish())  exit(0);
+  
+
   tfp->close();
   delete top;
-  exit(0);
+  delete contextp;
+  return is_exit_status_bad();
+  if (Verilated::gotFinish())  exit(0);
   
 }
 
