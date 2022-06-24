@@ -133,6 +133,8 @@ int main(int argc, char **argv, char **env) {
   int a = 0;
      if(top->clk==1){
       top->inst = pmem_read(top->pc,8);
+      printf("main_time = %ld\n",i);
+       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       a= a+1;
      }
      if (a>2){
