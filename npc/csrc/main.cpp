@@ -106,12 +106,12 @@ int main(int argc, char **argv, char **env) {
   init_imem();
   long img_size = load_img(img_file);
   init_difftest(img_size,port);
-  top->inst = pmem_read(top->pc,8);
+  
   //npc_state = NPC_RUNNING;
   
   //while(!contextp -> gotFinish()){
   while(main_time < 10){
-    
+    top->inst = pmem_read(top->pc,8);
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
