@@ -222,7 +222,7 @@ void init_difftest(long img_size,int port){
   }
   assert(ref_so_file != NULL);
   void *handle;
-  handle = dlopen("./home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so.so",RTLD_LAZY); //将动态库加载到内存中
+  handle = dlopen("./home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so",RTLD_LAZY); //将动态库加载到内存中
   if(handle == NULL){
     printf("库打开失败！\n");
     printf("dlopen error. msg:%s", dlerror());
