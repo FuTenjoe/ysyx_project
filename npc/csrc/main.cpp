@@ -111,14 +111,14 @@ int main(int argc, char **argv, char **env) {
   top->rst = 1;
   // run simulation for 100 clock periods
   char* img_file = *(argv + 1);
-  
+  init_imem();
   printf("开始imem初始化\n");
   
   long img_size = load_img(img_file);
-  init_difftest(img_size,port);
+  
   for (i=0; i<18; i++) {
     top->rst = (i < 2);
-    init_imem();
+    
     // dump variables into VCD file and toggle clock
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
@@ -133,7 +133,6 @@ int main(int argc, char **argv, char **env) {
     for (clk=0; clk<2; clk++) {
       tfp->dump (2*i+clk);
       top->clk = !top->clk;
-      
       top->eval ();
   }
   
@@ -147,7 +146,7 @@ int main(int argc, char **argv, char **env) {
 
       if (a>2){
        //printf("a =%d \n",a);
-       
+       init_difftest(img_size,port);
        difftest_step(top->pc);
      }
       
