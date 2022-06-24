@@ -117,8 +117,8 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   
-  //for (i=0; i<40; i++) {
-    while(!contextp -> gotFinish()){
+  for (i=0; i<40; i++) {
+    //while(!contextp -> gotFinish()){
      //for (i=0;i<15 ; i++) {
       i = i + 1;
     top->rst = (i < 2);
