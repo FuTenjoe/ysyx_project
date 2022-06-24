@@ -77,25 +77,12 @@ always @(*) begin
             endcase
         end
         `INST_JAL: begin // only jal /jalr
-            case(funct3)
-            000:begin         //jalr
-            jump        = 1'b1;
-            reg_wen     = 1'b1;
-            jalr = 1'b1;
-            reg_waddr   = rd;
-            imm_gen_op  = `IMM_GEN_I;
-            alu_op      = `ALU_ADD;
-            alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
-            end
-            default:begin
             jump        = 1'b1;
             reg_wen     = 1'b1;
             reg_waddr   = rd;
             imm_gen_op  = `IMM_GEN_J;
             alu_op      = `ALU_ADD;
             alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
-            end
-            endcase
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
@@ -113,7 +100,21 @@ always @(*) begin
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM_PC; // x0 + imm
         end
-
+        1100111:begin
+            case(funct3)  
+                000:begin         //jalr
+                jump        = 1'b1;
+                reg_wen     = 1'b1;
+                jalr = 1'b1;
+                reg_waddr   = rd;
+                imm_gen_op  = `IMM_GEN_I;
+                alu_op      = `ALU_ADD;
+                alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
+                end
+                default:unknown_code = inst;
+            endcase
+            
+        end
         
         default:unknown_code = inst;
     endcase 
