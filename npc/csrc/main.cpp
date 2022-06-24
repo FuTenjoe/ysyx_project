@@ -228,8 +228,8 @@ static long load_img(char*img_file){
   return size;
 }
 int is_exit_status_bad(){
-  //int good = (npc_state == NPC_END && cpu_gpr[10] == 0);
-  int good = (cpu_gpr[10] == 0);
+  int good = (npc_state == NPC_END && cpu_gpr[10] == 0);
+  //int good = (cpu_gpr[10] == 0);
   if(good){
     printf("\033[1;32m HIT GOOD TRAP! \033[0m \n");
   }
