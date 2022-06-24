@@ -118,6 +118,7 @@ int main(int argc, char **argv, char **env) {
   init_difftest(img_size,port);
   for (i=0; i<18; i++) {
     top->rst = (i < 2);
+    init_imem();
     // dump variables into VCD file and toggle clock
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
@@ -143,9 +144,10 @@ int main(int argc, char **argv, char **env) {
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",1,cpu_gpr[1],top->inst);
       a= a+1;
+
       if (a>2){
        //printf("a =%d \n",a);
-       init_imem();
+       
        difftest_step(top->pc);
      }
       
