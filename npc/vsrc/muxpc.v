@@ -20,7 +20,7 @@ always @(*) begin
     else if (jump &(!jalr))            // jal 
         next_pc = curr_pc + imm;
     else if (jump &jalr)            // jalr
-        next_pc = (reg1_rdata + imm) ;
+        next_pc = (reg1_rdata + imm)[31:0] ;
         
     else 
         next_pc = curr_pc + `CPU_WIDTH'h4;   
