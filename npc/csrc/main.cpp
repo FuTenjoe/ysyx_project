@@ -116,7 +116,7 @@ int main(int argc, char **argv, char **env) {
   printf("开始imem初始化\n");
   init_imem();
   long img_size = load_img(img_file);
-  //init_difftest(img_size,port);
+  init_difftest(img_size,port);
   for (i=0; i<50; i++) {
     top->rst = (i < 2);
     // dump variables into VCD file and toggle clock
@@ -133,12 +133,12 @@ int main(int argc, char **argv, char **env) {
   int a = 0;
      if(top->clk==1){
       top->inst = pmem_read(top->pc,8);
-      printf("main_time = %ld\n",i);
+      printf("main_time = %d\n",i);
        printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       a= a+1;
      }
      if (a>2){
-       //difftest_step(top->curr_pc,top->next_pc);
+       difftest_step(top->curr_pc,top->next_pc);
      }
       if(npc_state == NPC_ABORT){
         printf("false:ABORT!The false PC is 0x%0lx\n",cpu.pc);

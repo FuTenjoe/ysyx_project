@@ -38,7 +38,7 @@ always @(*) begin
     alu_src_sel = `ALU_SRC_REG;
     unknown_code = 32'd0;
     case (opcode)
-        `INST_TYPE_R: begin
+        `INST_TYPE_R: begin                         
             reg_wen     = 1'b1;
             reg1_raddr  = rs1;
             reg2_raddr  = rs2;
