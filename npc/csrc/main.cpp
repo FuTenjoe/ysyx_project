@@ -119,7 +119,7 @@ int main(int argc, char **argv, char **env) {
   
   //for (i=0; i<40; i++) {
     while(!contextp -> gotFinish()){
-     for (i=0;i<20 ; i++) {
+     for (i=0;i<15 ; i++) {
       
     top->rst = (i < 2);
       
