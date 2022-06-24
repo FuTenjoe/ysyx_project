@@ -117,7 +117,7 @@ int main(int argc, char **argv, char **env) {
   init_imem();
   long img_size = load_img(img_file);
   init_difftest(img_size,port);
-  for (i=0; i<15; i++) {
+  for (i=0; i<200; i++) {
     top->rst = (i < 2);
     // dump variables into VCD file and toggle clock
     if(ebreak_flag){
