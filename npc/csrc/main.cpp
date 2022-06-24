@@ -121,7 +121,7 @@ int main(int argc, char **argv, char **env) {
       top->rst = 1;
       //init_difftest(img_size,port);
        printf("复位 !\n");
-       top->inst = pmem_read(top->pc,8);
+       
     }
     else{
       top->rst = 0;
