@@ -116,7 +116,7 @@ always @(*) begin
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM_PC; // x0 + imm
         end
-        1100111:begin
+        7'b1100111:begin
             case(funct3)  
                 3'b000:begin         //jalr
                 jump        = 1'b1;
