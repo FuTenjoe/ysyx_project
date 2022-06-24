@@ -100,7 +100,7 @@ int main(int argc, char **argv, char **env) {
   contextp -> commandArgs(argc,argv);
   Verilated::traceEverOn(true);
   
-  int i;
+   
   
   int clk;
   int a = 0;
@@ -151,6 +151,7 @@ int main(int argc, char **argv, char **env) {
      }
       if(top->clk==0){
         top->inst = pmem_read(top->pc,8);
+        top->eval ();
         if (a>2){
        //printf("a =%d \n",a);
        
