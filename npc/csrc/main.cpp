@@ -136,6 +136,7 @@ int main(int argc, char **argv, char **env) {
       printf("main_time = %d\n",i);
        printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       a= a+1;
+      printf("a =%d \n",a);
      }
      if (a>2){
        difftest_step(top->pc);
