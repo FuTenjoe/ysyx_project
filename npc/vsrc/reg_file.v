@@ -14,7 +14,7 @@ module reg_file (
     output reg [`CPU_WIDTH-1:0]      reg2_rdata  // register 2 read data
 );
 
-reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]; 
+reg [31:0] reg_f [0:`REG_DATA_DEPTH-1]; 
 
 // register write
 always @(posedge clk or negedge rst_n) begin
