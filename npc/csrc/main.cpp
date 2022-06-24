@@ -113,7 +113,7 @@ int main(int argc, char **argv, char **env) {
   char* img_file = *(argv + 1);
   
   printf("开始imem初始化\n");
-  init_imem();
+  
   long img_size = load_img(img_file);
   init_difftest(img_size,port);
   for (i=0; i<18; i++) {
@@ -145,6 +145,7 @@ int main(int argc, char **argv, char **env) {
       a= a+1;
       if (a>2){
        //printf("a =%d \n",a);
+       init_imem();
        difftest_step(top->pc);
      }
       
