@@ -76,6 +76,16 @@ always @(*) begin
                  default:unknown_code = inst;
             endcase
         end
+        0100011:begin    //sd
+            jump        = 1'b0;
+            reg_wen     = 1'b1;
+            jalr = 1'b0;
+            reg1_raddr  = rs1;
+            reg2_raddr  = rs2;
+            reg_waddr   = rs2;
+            imm_gen_op  = `INST_TYPE_S;
+            alu_src_sel = `ALU_SRC_IMM;
+        end
         `INST_JAL: begin // only jal 
             jump        = 1'b1;
             reg_wen     = 1'b1;
