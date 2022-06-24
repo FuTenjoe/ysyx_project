@@ -1,5 +1,7 @@
 #include <am.h>
 #include <klib-macros.h>
+//自己加
+#include <klib.h>
 
 extern char _heap_start;
 int main(const char *args);
@@ -18,6 +20,8 @@ void putch(char ch) {
 }
 
 void halt(int code) {
+  printf("Exit with code = %d\n", code);
+  asm volatile("mv a0, %0; ebreak" : :"r"(code));
   while (1);
 }
 
