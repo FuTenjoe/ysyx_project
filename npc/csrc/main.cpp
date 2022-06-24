@@ -119,8 +119,8 @@ int main(int argc, char **argv, char **env) {
   
   //for (i=0; i<40; i++) {
     while(!contextp -> gotFinish()){
-     for (i=0;i<15 ; i++) {
-      
+     //for (i=0;i<15 ; i++) {
+      i = 0;
     top->rst = (i < 2);
       
     // dump variables into VCD file and toggle clock
@@ -164,8 +164,8 @@ int main(int argc, char **argv, char **env) {
         printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
         break;
       }
-     
-  }
+      i = i + 1;
+  
     }
   
 
@@ -174,9 +174,6 @@ int main(int argc, char **argv, char **env) {
   delete contextp;
   return is_exit_status_bad();
   if (Verilated::gotFinish())  exit(0);
-  
-    
-   
   
 }
 
