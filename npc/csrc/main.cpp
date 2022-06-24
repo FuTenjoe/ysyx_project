@@ -120,6 +120,11 @@ int main(int argc, char **argv, char **env) {
   for (i=0; i<500; i++) {
     top->rst = (i < 2);
     // dump variables into VCD file and toggle clock
+    if(ebreak_flag){
+      printf("ebreak: program is finished !\n");
+      npc_state = NPC_END;
+      break;
+    }
     for (clk=0; clk<2; clk++) {
       tfp->dump (2*i+clk);
       top->clk = !top->clk;
@@ -133,10 +138,15 @@ int main(int argc, char **argv, char **env) {
      if (a>2){
        //difftest_step(top->curr_pc,top->next_pc);
      }
-
+      if(npc_state == NPC_ABORT){
+        printf("false:ABORT!The false PC is 0x%0lx\n",cpu.pc);
+        break;
+      }
+     
   }
   if (Verilated::gotFinish())  exit(0);
   tfp->close();
+  delete top;
   exit(0);
   return is_exit_status_bad();
 }
