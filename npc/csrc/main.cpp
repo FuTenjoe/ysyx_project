@@ -99,7 +99,7 @@ const vluint64_t max_sim_time = 2000;
 int main(int argc, char **argv, char **env) {
   
  Verilated::traceEverOn(true);
-
+  contextp -> commandArgs(argc,argv);
    
   int i=0;
   int clk;
