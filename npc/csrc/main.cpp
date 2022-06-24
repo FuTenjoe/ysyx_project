@@ -100,7 +100,7 @@ int main(int argc, char **argv, char **env) {
   contextp -> commandArgs(argc,argv);
   Verilated::traceEverOn(true);
   
-  
+  int i;
   
   int clk;
   int a = 0;
