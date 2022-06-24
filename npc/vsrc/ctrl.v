@@ -76,7 +76,7 @@ always @(*) begin
                  default:unknown_code = inst;
             endcase
         end
-        0100011:begin    //sd
+        7'b0100011:begin    //sd
             case(funct3)
             3'b011:begin
             jump        = 1'b0;
@@ -91,7 +91,7 @@ always @(*) begin
             default:unknown_code = inst;
             endcase
         end
-        `INST_JAL: begin // only jal 
+        7'b1101111:: begin // only jal 
             jump        = 1'b1;
             reg_wen     = 1'b1;
             jalr = 1'b0;
