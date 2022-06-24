@@ -17,6 +17,8 @@ extern "C" {
     extern void ebreak();
     // DPI import at vsrc/reg_file.v:40:30
     extern void set_gpr_ptr(const svOpenArrayHandle a);
+    // DPI import at vsrc/ctrl.v:130:30
+    extern void unknown_inst();
 
 #ifdef __cplusplus
 }

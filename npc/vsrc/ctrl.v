@@ -103,7 +103,7 @@ always @(*) begin
         end
         1100111:begin
             case(funct3)  
-                000:begin         //jalr
+                3'b000:begin         //jalr
                 jump        = 1'b1;
                 reg_wen     = 1'b1;
                 jalr = 1'b1;

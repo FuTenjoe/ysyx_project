@@ -17,6 +17,14 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top_
     ebreak();
 }
 
+extern "C" void unknown_inst();
+
+VL_INLINE_OPT void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__unknown_inst_TOP() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__unknown_inst_TOP\n"); );
+    // Body
+    unknown_inst();
+}
+
 extern "C" void set_gpr_ptr(const svOpenArrayHandle a);
 
 VL_INLINE_OPT void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_reg_file_0__DOT__set_gpr_ptr__Vdpioc2_TOP(const VlUnpacked<QData/*63:0*/, 32> &a) {
@@ -162,6 +170,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__1(Vysyx_22040175_t
                 vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 4U;
             }
         }
+    }
+    if ((0U != vlSelf->unknown_code)) {
+        Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__unknown_inst_TOP();
     }
     vlSelf->ysyx_22040175_top__DOT__imm = ((4U & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
                                             ? ((2U 
@@ -368,10 +379,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__5(Vysyx_22040175_t
                                                     (((IData)(vlSelf->ysyx_22040175_top__DOT__jump) 
                                                       & (IData)(vlSelf->ysyx_22040175_top__DOT__jalr))
                                                       ? 
-                                                     ((IData)(5U) 
-                                                      + 
-                                                      (vlSelf->pc 
-                                                       + vlSelf->ysyx_22040175_top__DOT__imm))
+                                                     (0xfffffffeU 
+                                                      & (vlSelf->pc 
+                                                         + vlSelf->ysyx_22040175_top__DOT__imm))
                                                       : 
                                                      ((IData)(4U) 
                                                       + vlSelf->pc))))
