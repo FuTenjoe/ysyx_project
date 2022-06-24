@@ -216,7 +216,7 @@ int is_exit_status_bad(){
 }
 //Difftest初始化
 void init_difftest(long img_size,int port){
-  char const *ref_so_file = "./home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so.bin";
+  char const *ref_so_file = "./home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so.so";
   if(ref_so_file != NULL){
     printf("文件加载成功！\n");
   }
