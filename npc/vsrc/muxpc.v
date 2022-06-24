@@ -10,7 +10,7 @@ module muxpc (
     input      [`CPU_WIDTH-1:0] curr_pc, // current pc addr
     output reg [`CPU_WIDTH-1:0] next_pc, // next pc addr
    // input      [`CPU_WIDTH-1:0]     reg1_rdata
-   input ebreak
+   input ebreak_flag
     );
 
 always @(*) begin
@@ -23,6 +23,8 @@ always @(*) begin
     else if (jump &jalr)            // jalr
         //next_pc = reg1_rdata + imm;
         next_pc = curr_pc + 32'd24;
+    else if (ebreak_flag)    
+        next_pc = 32'd0;    
     else 
         next_pc = curr_pc + `CPU_WIDTH'h4;   
 end

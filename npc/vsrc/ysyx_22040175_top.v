@@ -37,7 +37,7 @@ wire [`CPU_WIDTH-1:0]        alu_src1;   // alu source 1
 wire [`CPU_WIDTH-1:0]        alu_src2;   // alu source 2
 wire [`CPU_WIDTH-1:0]        alu_res;    // alu result
 wire jalr;
-wire ebreak;
+wire ebreak_flag;
 assign reg_wdata = alu_res;
 
 pc_reg u_pc_reg_0(
@@ -57,7 +57,7 @@ muxpc u_mux_pc_0(
     .curr_pc                        ( pc                       ),
     .next_pc                        ( next_pc                       ),
     .jalr(jalr),
-    .ebreak(ebreak)
+    .ebreak_flag(ebreak_flag)
     //.reg1_rdata(reg1_rdata)
 );
 
@@ -76,7 +76,7 @@ ctrl u_ctrl_0(
     .alu_src_sel                    ( alu_src_sel                   ),
     .unknown_code           (unknown_code),
     .jalr(jalr),
-    .ebreak_flag(ebreak)
+    .ebreak_flag(ebreak_flag)
 );
 
 reg_file u_reg_file_0(
