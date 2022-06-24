@@ -42,22 +42,18 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
     if ((0x40U & vlSelf->inst)) {
         if ((0x20U & vlSelf->inst)) {
             if ((0x10U & vlSelf->inst)) {
-                vlSelf->unknown_code = ((IData)(0xaU) 
-                                        + vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             } else if ((8U & vlSelf->inst)) {
                 if ((4U & vlSelf->inst)) {
                     if ((2U & vlSelf->inst)) {
                         if ((1U & (~ vlSelf->inst))) {
-                            vlSelf->unknown_code = 
-                                ((IData)(0xaU) + vlSelf->inst);
+                            vlSelf->unknown_code = vlSelf->inst;
                         }
                     } else {
-                        vlSelf->unknown_code = ((IData)(0xaU) 
-                                                + vlSelf->inst);
+                        vlSelf->unknown_code = vlSelf->inst;
                     }
                 } else {
-                    vlSelf->unknown_code = ((IData)(0xaU) 
-                                            + vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else if ((4U & vlSelf->inst)) {
                 if ((2U & vlSelf->inst)) {
@@ -67,12 +63,10 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                             vlSelf->unknown_code = vlSelf->inst;
                         }
                     } else {
-                        vlSelf->unknown_code = ((IData)(0xaU) 
-                                                + vlSelf->inst);
+                        vlSelf->unknown_code = vlSelf->inst;
                     }
                 } else {
-                    vlSelf->unknown_code = ((IData)(0xaU) 
-                                            + vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else if ((2U & vlSelf->inst)) {
                 if ((1U & vlSelf->inst)) {
@@ -81,30 +75,25 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                         vlSelf->unknown_code = vlSelf->inst;
                     }
                 } else {
-                    vlSelf->unknown_code = ((IData)(0xaU) 
-                                            + vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else {
-                vlSelf->unknown_code = ((IData)(0xaU) 
-                                        + vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             }
         } else {
-            vlSelf->unknown_code = ((IData)(0xaU) + vlSelf->inst);
+            vlSelf->unknown_code = vlSelf->inst;
         }
     } else if ((0x20U & vlSelf->inst)) {
         if ((0x10U & vlSelf->inst)) {
             if ((8U & vlSelf->inst)) {
-                vlSelf->unknown_code = ((IData)(0xaU) 
-                                        + vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             } else if ((4U & vlSelf->inst)) {
                 if ((2U & vlSelf->inst)) {
                     if ((1U & (~ vlSelf->inst))) {
-                        vlSelf->unknown_code = ((IData)(0xaU) 
-                                                + vlSelf->inst);
+                        vlSelf->unknown_code = vlSelf->inst;
                     }
                 } else {
-                    vlSelf->unknown_code = ((IData)(0xaU) 
-                                            + vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else if ((2U & vlSelf->inst)) {
                 if ((1U & vlSelf->inst)) {
@@ -113,37 +102,32 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                         vlSelf->unknown_code = vlSelf->inst;
                     }
                 } else {
-                    vlSelf->unknown_code = ((IData)(0xaU) 
-                                            + vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else {
-                vlSelf->unknown_code = ((IData)(0xaU) 
-                                        + vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             }
         } else if ((8U & vlSelf->inst)) {
-            vlSelf->unknown_code = ((IData)(0xaU) + vlSelf->inst);
+            vlSelf->unknown_code = vlSelf->inst;
         } else if ((4U & vlSelf->inst)) {
-            vlSelf->unknown_code = ((IData)(0xaU) + vlSelf->inst);
+            vlSelf->unknown_code = vlSelf->inst;
         } else if ((2U & vlSelf->inst)) {
             if ((1U & (~ vlSelf->inst))) {
-                vlSelf->unknown_code = ((IData)(0xaU) 
-                                        + vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             }
         } else {
-            vlSelf->unknown_code = ((IData)(0xaU) + vlSelf->inst);
+            vlSelf->unknown_code = vlSelf->inst;
         }
     } else if ((0x10U & vlSelf->inst)) {
         if ((8U & vlSelf->inst)) {
-            vlSelf->unknown_code = ((IData)(0xaU) + vlSelf->inst);
+            vlSelf->unknown_code = vlSelf->inst;
         } else if ((4U & vlSelf->inst)) {
             if ((2U & vlSelf->inst)) {
                 if ((1U & (~ vlSelf->inst))) {
-                    vlSelf->unknown_code = ((IData)(0xaU) 
-                                            + vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else {
-                vlSelf->unknown_code = ((IData)(0xaU) 
-                                        + vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             }
         } else if ((2U & vlSelf->inst)) {
             if ((1U & vlSelf->inst)) {
@@ -151,14 +135,13 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                     vlSelf->unknown_code = vlSelf->inst;
                 }
             } else {
-                vlSelf->unknown_code = ((IData)(0xaU) 
-                                        + vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             }
         } else {
-            vlSelf->unknown_code = ((IData)(0xaU) + vlSelf->inst);
+            vlSelf->unknown_code = vlSelf->inst;
         }
     } else {
-        vlSelf->unknown_code = ((IData)(0xaU) + vlSelf->inst);
+        vlSelf->unknown_code = vlSelf->inst;
     }
     vlSelf->ysyx_22040175_top__DOT__jalr = 0U;
     if ((0x40U & vlSelf->inst)) {
