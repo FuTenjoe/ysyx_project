@@ -119,7 +119,7 @@ int main(int argc, char **argv, char **env) {
   
   //for (i=0; i<40; i++) {
     while(!contextp -> gotFinish()){
-      i = 0;
+     for (i=0; ; i++) {
       
     top->rst = (i < 2);
       
@@ -159,13 +159,14 @@ int main(int argc, char **argv, char **env) {
      }
       
      }
-      i = i+1;
+      
       if(npc_state == NPC_ABORT){
         printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
         break;
       }
      
   }
+    }
   
 
   tfp->close();
