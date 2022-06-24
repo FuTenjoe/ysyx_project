@@ -76,9 +76,10 @@ always @(*) begin
                  default:unknown_code = inst;
             endcase
         end
-        `INST_JAL: begin // only jal /jalr
+        `INST_JAL: begin // only jal 
             jump        = 1'b1;
             reg_wen     = 1'b1;
+            jalr = 1'b0;
             reg_waddr   = rd;
             imm_gen_op  = `IMM_GEN_J;
             alu_op      = `ALU_ADD;
@@ -113,7 +114,7 @@ always @(*) begin
                 end
                 default:unknown_code = inst;
             endcase
-            
+
         end
         
         default:unknown_code = inst;
