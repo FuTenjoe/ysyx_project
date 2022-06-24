@@ -102,7 +102,7 @@ int main(int argc, char **argv, char **env) {
   tfp->open ("Vysyx_22040175.vcd");
   top->inst = pmem_read(top->pc,8);
   npc_state = NPC_RUNNING;
- 
+  char* img_file = *(argv + 1);
   long img_size = load_img(img_file);
   //while(!contextp -> gotFinish()){
   while(main_time < 10){
