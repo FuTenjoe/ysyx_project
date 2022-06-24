@@ -120,7 +120,7 @@ int main(int argc, char **argv, char **env) {
   //for (i=0; i<40; i++) {
     while(!contextp -> gotFinish()){
      //for (i=0;i<15 ; i++) {
-      i = 0;
+      i = i + 1;
     top->rst = (i < 2);
       
     // dump variables into VCD file and toggle clock
@@ -164,7 +164,7 @@ int main(int argc, char **argv, char **env) {
         printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
         break;
       }
-      i = i + 1;
+      
   
     }
   
