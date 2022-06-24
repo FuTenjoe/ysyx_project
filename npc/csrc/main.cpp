@@ -145,7 +145,7 @@ int main(int argc, char **argv, char **env) {
        difftest_step(top->pc);
      }
       if(npc_state == NPC_ABORT){
-        printf("false:ABORT!The false PC is 0x%0lx\n",cpu.pc);
+        printf("false:ABORT!The false PC is 0x%0lx\n",top->pc);
         break;
       }
      
