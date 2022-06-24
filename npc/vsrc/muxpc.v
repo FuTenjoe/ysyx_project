@@ -10,6 +10,7 @@ module muxpc (
     input      [`CPU_WIDTH-1:0] curr_pc, // current pc addr
     output reg [`CPU_WIDTH-1:0] next_pc // next pc addr
    // input      [`CPU_WIDTH-1:0]     reg1_rdata
+   input ebreak;
     );
 
 always @(*) begin
