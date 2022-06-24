@@ -111,7 +111,7 @@ int main(int argc, char **argv, char **env) {
   
   //while(!contextp -> gotFinish()){
   while(main_time < 10){
-    
+    top->inst = pmem_read(top->pc,8);
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
@@ -129,8 +129,7 @@ int main(int argc, char **argv, char **env) {
     }
     if(main_time % 2 == 0){
       top->clk = 0;
-      if(main_time >=4){
-      top->inst = pmem_read(top->pc,8);}
+     
       
       top->eval();
       printf("main_time = %ld\n",main_time);
@@ -140,7 +139,7 @@ int main(int argc, char **argv, char **env) {
       printf("main_time = %ld\n",main_time);
       top->clk = 1;
       top->eval();
-      top->inst = pmem_read(top->pc,8);
+      
       if(main_time > 7){
         difftest_step(top->pc);
       }
