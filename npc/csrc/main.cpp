@@ -128,7 +128,7 @@ int main(int argc, char **argv, char **env) {
     }
     if(main_time % 2 == 0){
       top->clk = 0;
-      if(main_time >1 ){
+      if(main_time >5 ){
       top->inst = pmem_read(top->pc,8);}
       top->eval();
       printf("main_time = %ld\n",main_time);
