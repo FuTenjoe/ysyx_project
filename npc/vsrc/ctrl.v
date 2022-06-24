@@ -52,7 +52,7 @@ always @(*) begin
                 default:unknown_code = inst;
             endcase
         end
-        7'b0010011: begin
+        7'b0010011: begin       //addi
             reg_wen     = 1'b1;
             reg1_raddr  = rs1;
             reg_waddr   = rd;

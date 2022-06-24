@@ -132,7 +132,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         } else if ((2U & vlSelf->inst)) {
             if ((1U & vlSelf->inst)) {
                 if ((0U != (7U & (vlSelf->inst >> 0xcU)))) {
-                    vlSelf->unknown_code = 0U;
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else {
                 vlSelf->unknown_code = vlSelf->inst;
