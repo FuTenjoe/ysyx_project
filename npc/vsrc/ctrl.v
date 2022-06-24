@@ -127,10 +127,10 @@ always@(*)begin
         ebreak();
 end
 
-/*import "DPI-C" function void unknown_inst();
+import "DPI-C" function void unknown_inst();
 always@(*)begin
     if(unknown_code != 32'd0)
         unknown_inst();
-end*/
+end
 
 endmodule
