@@ -120,6 +120,7 @@ int main(int argc, char **argv, char **env) {
     if(main_time < 4){
       top->rst = 1;
       init_difftest(img_size,port);
+       printf("复位 !\n");
     }
     else{
       top->rst = 0;
