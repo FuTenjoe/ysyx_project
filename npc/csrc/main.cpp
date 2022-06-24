@@ -142,7 +142,7 @@ int main(int argc, char **argv, char **env) {
      }
      if (a>2){
        //printf("a =%d \n",a);
-       difftest_step(top->pc);
+       //difftest_step(top->pc);
      }
       if(npc_state == NPC_ABORT){
         printf("false:ABORT!The false PC is 0x%0lx\n",top->pc);
