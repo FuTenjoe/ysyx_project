@@ -82,7 +82,12 @@ static word_t pmem_read(paddr_t addr, int len) {
   return ret;
 }
 
-
+VerilatedContext *contextp = new VerilatedContext;
+  // init top verilog instance
+Vysyx_22040175_top* top = new Vysyx_22040175_top;
+  // init trace dump
+Verilated::traceEverOn(true);
+VerilatedVcdC* tfp = new VerilatedVcdC;
 
 
 
@@ -93,12 +98,7 @@ const vluint64_t max_sim_time = 2000;
 int main(int argc, char **argv, char **env) {
   
   //Verilated::commandArgs(argc, argv);
-  VerilatedContext *contextp = new VerilatedContext;
-  // init top verilog instance
-  Vysyx_22040175_top* top = new Vysyx_22040175_top;
-  // init trace dump
-  Verilated::traceEverOn(true);
-  VerilatedVcdC* tfp = new VerilatedVcdC;
+  
 
    
   int i;
