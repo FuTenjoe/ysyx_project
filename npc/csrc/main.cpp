@@ -117,7 +117,7 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   
-  for (i=0; i<20; i++) {
+  for (i=0; i<40; i++) {
     top->rst = (i < 2);
     
     // dump variables into VCD file and toggle clock
