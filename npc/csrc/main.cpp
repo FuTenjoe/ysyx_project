@@ -215,3 +215,53 @@ int is_exit_status_bad(){
   return !good;
 }
 //Difftest初始化
+void init_difftest(long img_size,int port){
+  char const *ref_so_file = "./home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so.bin";
+  if(ref_so_file != NULL){
+    printf("文件加载成功！\n");
+  }
+  assert(ref_so_file != NULL);
+  void *handle;
+  handle = dlopen(ref_so_file,RTLD_LAZY); //将动态库加载到内存中
+  if(handle == NULL){
+    printf("库打开失败！\n");
+  }
+  assert(handle);
+  //用函数指针指向动态库中的对应函数，以便调用
+  ref_difftest_memcpy = (void(*)(paddr_t, void*, size_t, bool))dlsym(handle,"difftest_memcpy");
+  assert(ref_difftest_memcpy);
+
+  ref_difftest_regcpy = (void(*)(void*,bool))dlsym(handle,"difftest_regcpy");
+  assert(ref_difftest_regcpy);
+
+  ref_difftest_exec = (void(*)(uint64_t))dlsym(handle,"difftest_exec");
+  assert(ref_difftest_exec);
+  
+  ref_difftest_raise_intr = (void(*)(uint64_t))dlsym(handle,"difftest_raise_intr");
+  assert(ref_difftest_raise_intr);
+
+  void(*ref_difftest_init)(int) = (void(*)(int))dlsym(handle,"difftest_init");
+  assert(ref_difftest_init);
+
+  ref_difftest_init(port);
+  cpu.pc = CONFIG_MBASE;
+  ref_difftest_memcpy(CONFIG_MBASE,guest_to_host(CONFIG_MBASE), img_size, DIFFTEST_TO_REF);
+  for(int i = 0; i < 32;i++){
+    cpu.gpr[i] = 0;
+  }
+  ref_difftest_regcpy(&cpu, DIFFTEST_TO_REF);
+}
+//Difftest在CPU中比较功能的实现
+void difftest_step (vaddr_t dnpc){
+  CPU_state ref_r;
+  ref_difftest_regcpy(&ref_r, DIFFTEST_TO_DUT);
+  checkregs(&ref_r, dnpc);
+  ref_difftest_exec(1);
+}
+
+
+static void checkregs(CPU_state *ref, vaddr_t dnpc){
+  if(!isa_difftest_checkregs(ref,dnpc)){
+    npc_state = NPC_ABORT;
+  }
+}
