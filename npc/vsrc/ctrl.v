@@ -60,7 +60,7 @@ always @(*) begin
             case (funct3)
                 `INST_ADDI: 
                     alu_op = `ALU_ADD; 
-                default:unknown_code = inst + 1'b1;
+                default:unknown_code = 0;
             endcase
         end
         `INST_TYPE_B: begin
