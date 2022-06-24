@@ -91,7 +91,7 @@ always @(*) begin
             default:unknown_code = inst;
             endcase
         end
-        7'b1101111: begin // only jal 
+        `INST_JAL: begin // only jal 
             jump        = 1'b1;
             reg_wen     = 1'b1;
             jalr = 1'b0;
@@ -132,7 +132,7 @@ always @(*) begin
 
         end
         
-        default:unknown_code = inst;
+        default:unknown_code = 0;
     endcase 
 end
 
