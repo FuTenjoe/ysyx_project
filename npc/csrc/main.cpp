@@ -105,7 +105,7 @@ int main(int argc, char **argv, char **env) {
   printf("开始imem初始化\n");
   init_imem();
   long img_size = load_img(img_file);
-  init_difftest(img_size,port);
+  
   
   //npc_state = NPC_RUNNING;
   
@@ -124,6 +124,7 @@ int main(int argc, char **argv, char **env) {
     }
     else{
       top->rst = 0;
+      init_difftest(img_size,port);
       top->inst = pmem_read(top->pc,8);
     }
     if(main_time % 2 == 0){
