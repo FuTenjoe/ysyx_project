@@ -128,6 +128,7 @@ int main(int argc, char **argv, char **env) {
     for (clk=0; clk<2; clk++) {
       tfp->dump (2*i+clk);
       top->clk = !top->clk;
+      difftest_step(top->pc);
       top->eval ();
   }
   
@@ -139,7 +140,7 @@ int main(int argc, char **argv, char **env) {
       printf("a =%d \n",a);
      }
      if (a>2){
-       difftest_step(top->pc);
+      // difftest_step(top->pc);
        printf("difftest_step");
      }
       if(npc_state == NPC_ABORT){
