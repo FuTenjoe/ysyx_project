@@ -97,73 +97,7 @@ const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
   
-  //Verilated::commandArgs(argc, argv);
-  Verilated::traceEverOn(true);
-
-   
-  int i;
-  int clk;
-  int a = 0;
-
-  top->trace (tfp, 99);
-  tfp->open ("Vysyx_22040175.vcd");
-  // initialize simulation inputs
-  top->clk = 1;
-  top->rst = 1;
-  // run simulation for 100 clock periods
-  char* img_file = *(argv + 1);
   
-  printf("开始imem初始化\n");
-  init_imem();
-  long img_size = load_img(img_file);
-  init_difftest(img_size,port);
-  for (i=0; i<18; i++) {
-    top->rst = (i < 2);
-    // dump variables into VCD file and toggle clock
-    if(ebreak_flag){
-      printf("ebreak: program is finished !\n");
-      npc_state = NPC_END;
-      break;
-    }
-    if(unknown_code_flag || top->unknown_code){
-        printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
-        npc_state = NPC_ABORT;
-        break;
-      }
-    for (clk=0; clk<2; clk++) {
-      tfp->dump (2*i+clk);
-      top->clk = !top->clk;
-      
-      top->eval ();
-  }
-  
-     if(top->clk==1){
-      top->inst = pmem_read(top->pc,8);
-      printf("main_time = %d\n",i);
-      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
-      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
-      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",1,cpu_gpr[1],top->inst);
-      a= a+1;
-      if (a>2){
-       //printf("a =%d \n",a);
-       difftest_step(top->pc);
-     }
-      
-     }
-     
-      if(npc_state == NPC_ABORT){
-        printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
-        break;
-      }
-     
-  }
-  
-
-  tfp->close();
-  delete top;
-  delete contextp;
-  return is_exit_status_bad();
-  if (Verilated::gotFinish())  exit(0);
   
 }
 
