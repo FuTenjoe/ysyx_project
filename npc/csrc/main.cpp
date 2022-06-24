@@ -101,7 +101,11 @@ int main(int argc, char **argv, char **env) {
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
   char* img_file = *(argv + 1);
+  
+  printf("开始imem初始化\n");
+  init_imem();
   long img_size = load_img(img_file);
+  init_difftest(img_size,port);
   top->inst = pmem_read(top->pc,8);
   //npc_state = NPC_RUNNING;
   
