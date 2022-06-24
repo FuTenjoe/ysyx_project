@@ -216,13 +216,13 @@ int is_exit_status_bad(){
 }
 //Difftest初始化
 void init_difftest(long img_size,int port){
-  char const *ref_so_file = "./home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so.bin";
+  char const *ref_so_file = "./home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so";
   if(ref_so_file != NULL){
     printf("文件加载成功！\n");
   }
   assert(ref_so_file != NULL);
   void *handle;
-  handle = dlopen("./home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so",RTLD_LAZY); //将动态库加载到内存中
+  handle = dlopen(ref_so_file,RTLD_LAZY); //将动态库加载到内存中
   if(handle == NULL){
     printf("库打开失败！\n");
     printf("dlopen error. msg:%s", dlerror());
