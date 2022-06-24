@@ -135,7 +135,7 @@ int main(int argc, char **argv, char **env) {
       top->clk = !top->clk;
       
       top->eval ();
-      if (a>3){
+      if (a>2){
        //printf("a =%d \n",a);
        difftest_step(top->pc);
      }
