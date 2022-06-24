@@ -86,6 +86,7 @@ always @(*) begin
             reg2_raddr  = rs2;
             reg_waddr   = rs2;
             imm_gen_op  = `INST_TYPE_S;
+            alu_op      = `ALU_ADD;
             alu_src_sel = `ALU_SRC_IMM;
             end
             default:unknown_code = inst;
