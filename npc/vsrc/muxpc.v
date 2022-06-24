@@ -19,8 +19,8 @@ always @(*) begin
         next_pc = curr_pc + imm;
     else if (jump &(!jalr))            // jal 
         next_pc = curr_pc + imm;
-    else if (jump &jalr)            // jal 
-        next_pc = (curr_pc + imm) && 1'b0;
+    else if (jump &jalr)            // jalr
+        next_pc = (curr_pc + imm) && 32'hffff_fffe;
     else 
         next_pc = curr_pc + `CPU_WIDTH'h4;   
 end
