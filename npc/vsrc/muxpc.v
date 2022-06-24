@@ -21,7 +21,7 @@ always @(*) begin
         next_pc = curr_pc + imm;
     else if (jump &jalr)            // jalr
         //next_pc = reg1_rdata + imm;
-        next_pc = curr_pc + imm;
+        next_pc = curr_pc + 32'd24;
     else 
         next_pc = curr_pc + `CPU_WIDTH'h4;   
 end
