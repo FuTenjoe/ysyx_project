@@ -125,6 +125,11 @@ int main(int argc, char **argv, char **env) {
       npc_state = NPC_END;
       break;
     }
+    if(unknown_code_flag || top->unknown_code){
+        printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
+        npc_state = NPC_ABORT;
+        break;
+      }
     for (clk=0; clk<2; clk++) {
       tfp->dump (2*i+clk);
       top->clk = !top->clk;

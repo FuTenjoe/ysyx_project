@@ -77,6 +77,8 @@ always @(*) begin
             endcase
         end
         0100011:begin    //sd
+            case(funct3)
+            3'b011:begin
             jump        = 1'b0;
             reg_wen     = 1'b1;
             jalr = 1'b0;
@@ -85,6 +87,9 @@ always @(*) begin
             reg_waddr   = rs2;
             imm_gen_op  = `INST_TYPE_S;
             alu_src_sel = `ALU_SRC_IMM;
+            end
+            default:unknown_code = inst;
+            endcase
         end
         `INST_JAL: begin // only jal 
             jump        = 1'b1;
