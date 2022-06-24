@@ -127,7 +127,7 @@ always @(*) begin
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
                 end
-                default:unknown_code = inst+1;
+                default:unknown_code = inst;
             endcase
 
         end
