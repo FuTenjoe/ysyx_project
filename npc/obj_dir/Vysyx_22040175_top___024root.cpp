@@ -367,9 +367,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__5(Vysyx_22040175_t
                                                      : 
                                                     (((IData)(vlSelf->ysyx_22040175_top__DOT__jump) 
                                                       & (IData)(vlSelf->ysyx_22040175_top__DOT__jalr))
-                                                      ? 
-                                                     ((IData)(0x1eU) 
-                                                      + vlSelf->pc)
+                                                      ? vlSelf->pc
                                                       : 
                                                      ((IData)(4U) 
                                                       + vlSelf->pc))))

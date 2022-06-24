@@ -212,9 +212,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
                                                 + vlSelf->ysyx_22040175_top__DOT__imm)
                                              : (((IData)(vlSelf->ysyx_22040175_top__DOT__jump) 
                                                  & (IData)(vlSelf->ysyx_22040175_top__DOT__jalr))
-                                                 ? 
-                                                ((IData)(0x1eU) 
-                                                 + vlSelf->pc)
+                                                 ? vlSelf->pc
                                                  : 
                                                 ((IData)(4U) 
                                                  + vlSelf->pc))))
