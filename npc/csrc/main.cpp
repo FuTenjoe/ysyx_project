@@ -227,7 +227,7 @@ void init_difftest(long img_size,int port){
     printf("库打开失败！\n");
     printf("dlopen error. msg:%s", dlerror());
   }
-  assert(handle);
+  //assert(handle);
   //用函数指针指向动态库中的对应函数，以便调用
   ref_difftest_memcpy = (void(*)(paddr_t, void*, size_t, bool))dlsym(handle,"difftest_memcpy");
   assert(ref_difftest_memcpy);
