@@ -150,7 +150,8 @@ int main(int argc, char **argv, char **env) {
       a= a+1;
      }
       if(top->clk==0){
-       
+         printf("main_time = %d\n",i);
+        printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
         top->eval ();
         if (a>2){
        //printf("a =%d \n",a);
