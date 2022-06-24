@@ -134,20 +134,15 @@ int main(int argc, char **argv, char **env) {
         npc_state = NPC_ABORT;
         break;
       }
-    for (clk=0; clk<2; clk++) {
+  /*  for (clk=0; clk<2; clk++) {
       tfp->dump (2*i+clk);
       top->clk = !top->clk;
       top->eval ();
-      if (a>2){
-       //printf("a =%d \n",a);
-       
-       difftest_step(top->pc);
-     }
-     else{
-      init_difftest(img_size,port);
-     }
-  }
-  
+      
+  }*/
+      tfp->dump (2*i+clk);
+      top->clk = !top->clk;
+      top->eval ();
      if(top->clk==1){
       top->inst = pmem_read(top->pc,8);
       printf("main_time = %d\n",i);
@@ -156,6 +151,16 @@ int main(int argc, char **argv, char **env) {
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",1,cpu_gpr[1],top->inst);
       a= a+1;
       
+     }
+     if(top->clk==0){
+        if (a>2){
+       //printf("a =%d \n",a);
+       
+         difftest_step(top->pc);
+        }
+        else{
+          init_difftest(img_size,port);
+        }
      }
      
       if(npc_state == NPC_ABORT){
