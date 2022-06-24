@@ -81,7 +81,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__1(Vysyx_22040175_t
             }
         }
     } else {
-        vlSelf->unknown_code = vlSelf->inst;
+        vlSelf->unknown_code = 0U;
     }
     vlSelf->ysyx_22040175_top__DOT__jump = 0U;
     if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
