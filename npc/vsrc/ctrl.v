@@ -82,12 +82,12 @@ always @(*) begin
             jump        = 1'b0;
             reg_wen     = 1'b1;
             jalr = 1'b0;
-            reg1_raddr  = rs1;
+            reg1_raddr  = 0;
             reg2_raddr  = rs2;
-            reg_waddr   = rs2;
+            reg_waddr   = rs1 + {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
             alu_op      = `ALU_ADD;
-            alu_src_sel = `ALU_SRC_IMM;
+            alu_src_sel = `ALU_SRC_REG;
             end
             default:unknown_code = inst;
             endcase
