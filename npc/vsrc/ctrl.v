@@ -52,7 +52,7 @@ always @(*) begin
                 default:unknown_code = inst;
             endcase
         end
-        `INST_TYPE_I: begin
+        7'b0010011: begin
             reg_wen     = 1'b1;
             reg1_raddr  = rs1;
             reg_waddr   = rd;
@@ -60,7 +60,7 @@ always @(*) begin
             case (funct3)
                 `INST_ADDI: 
                     alu_op = `ALU_ADD; 
-                default:unknown_code = 0;
+                default:unknown_code = inst;
             endcase
         end
         `INST_TYPE_B: begin

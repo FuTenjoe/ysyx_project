@@ -138,8 +138,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__1(Vysyx_22040175_t
         } else if ((2U & vlSelf->inst)) {
             if ((1U & vlSelf->inst)) {
                 if ((0U != (7U & (vlSelf->inst >> 0xcU)))) {
-                    vlSelf->unknown_code = ((IData)(1U) 
-                                            + vlSelf->inst);
+                    vlSelf->unknown_code = 0U;
                 }
             } else {
                 vlSelf->unknown_code = vlSelf->inst;
