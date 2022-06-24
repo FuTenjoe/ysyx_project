@@ -119,9 +119,10 @@ int main(int argc, char **argv, char **env) {
   
   //for (i=0; i<40; i++) {
     while(!contextp -> gotFinish()){
-      int i = 0;
-    top->rst = (i < 2);
+     i = 0;
       i++;
+    top->rst = (i < 2);
+      
     // dump variables into VCD file and toggle clock
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
