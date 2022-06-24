@@ -221,7 +221,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
                                                  + vlSelf->pc)
                                                  : 
                                                 ((IData)(vlSelf->ysyx_22040175_top__DOT__ebreak_flag)
-                                                  ? 0U
+                                                  ? 0x80000000U
                                                   : 
                                                  ((IData)(4U) 
                                                   + vlSelf->pc)))))
