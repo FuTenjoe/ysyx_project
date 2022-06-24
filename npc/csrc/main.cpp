@@ -102,8 +102,10 @@ int main(int argc, char **argv, char **env) {
   tfp->open ("Vysyx_22040175.vcd");
   top->inst = pmem_read(top->pc,8);
   npc_state = NPC_RUNNING;
+  char* img_file = *(argv + 1);
   //while(!contextp -> gotFinish()){
   while(main_time < 10){
+    
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
