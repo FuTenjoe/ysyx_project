@@ -41,7 +41,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgIData(oldp+14,(vlSelf->ysyx_22040175_top__DOT__alu_src1),32);
             tracep->chgIData(oldp+15,(vlSelf->ysyx_22040175_top__DOT__alu_src2),32);
             tracep->chgBit(oldp+16,(vlSelf->ysyx_22040175_top__DOT__jalr));
-            tracep->chgBit(oldp+17,(vlSelf->ysyx_22040175_top__DOT__ebreak));
+            tracep->chgBit(oldp+17,(vlSelf->ysyx_22040175_top__DOT__ebreak_flag));
         }
         if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
             tracep->chgBit(oldp+18,(vlSelf->ysyx_22040175_top__DOT__ena));
@@ -96,8 +96,11 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                                 & (IData)(vlSelf->ysyx_22040175_top__DOT__jalr))
                                                 ? ((IData)(0x18U) 
                                                    + vlSelf->pc)
-                                                : ((IData)(4U) 
-                                                   + vlSelf->pc))))
+                                                : ((IData)(vlSelf->ysyx_22040175_top__DOT__ebreak_flag)
+                                                    ? 0U
+                                                    : 
+                                                   ((IData)(4U) 
+                                                    + vlSelf->pc)))))
                                     : vlSelf->pc)),32);
         tracep->chgIData(oldp+89,(((0U == (IData)(vlSelf->ysyx_22040175_top__DOT__reg1_raddr))
                                     ? 0U : (IData)(
