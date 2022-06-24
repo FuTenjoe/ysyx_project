@@ -138,8 +138,8 @@ int main(int argc, char **argv, char **env) {
       a= a+1;
       printf("a =%d \n",a);
      }
-     if (a>1){
-       //difftest_step(top->pc);
+     if (a>2){
+       difftest_step(top->pc);
        printf("difftest_step");
      }
       if(npc_state == NPC_ABORT){
