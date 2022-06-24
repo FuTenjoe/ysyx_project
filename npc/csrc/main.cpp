@@ -135,13 +135,13 @@ int main(int argc, char **argv, char **env) {
      if(top->clk==1){
       top->inst = pmem_read(top->pc,8);
       printf("main_time = %d\n",i);
-       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
+      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       a= a+1;
       
       
      }
      if (a>2){
-       printf("a =%d \n",a);
+       //printf("a =%d \n",a);
        difftest_step(top->pc);
      }
       if(npc_state == NPC_ABORT){
