@@ -33,7 +33,7 @@ uint32_t unknown_code_flag = 0;
 //DPIC
 extern "C" void ebreak(){
   ebreak_flag = 1;
-  printf("ebreak");
+  printf("ebreak\n");
 }
 extern "C" void unknown_inst(){
   unknown_code_flag = 1;
