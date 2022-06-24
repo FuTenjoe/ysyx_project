@@ -133,7 +133,7 @@ always @(*) begin
 
         end
         
-        default:unknown_code = inst +32'd10;
+        default:unknown_code = inst ;
     endcase 
 end
 
