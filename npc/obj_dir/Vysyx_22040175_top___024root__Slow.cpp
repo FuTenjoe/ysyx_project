@@ -39,16 +39,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__ebreak_TOP();
     }
     vlSelf->unknown_code = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U == (0x7fU & vlSelf->inst))) {
             if ((0U != (7U & (vlSelf->inst >> 0xcU)))) {
                 vlSelf->unknown_code = vlSelf->inst;
@@ -75,16 +78,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         vlSelf->unknown_code = vlSelf->inst;
     }
     vlSelf->ysyx_22040175_top__DOT__jump = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U != (0x7fU & vlSelf->inst))) {
             if ((0x13U != (0x7fU & vlSelf->inst))) {
                 if ((0x63U != (0x7fU & vlSelf->inst))) {
@@ -103,16 +109,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         }
     }
     vlSelf->ysyx_22040175_top__DOT__branch = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U != (0x7fU & vlSelf->inst))) {
             if ((0x13U != (0x7fU & vlSelf->inst))) {
                 if ((0x63U == (0x7fU & vlSelf->inst))) {
@@ -125,16 +134,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         }
     }
     vlSelf->ysyx_22040175_top__DOT__jalr = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U != (0x7fU & vlSelf->inst))) {
             if ((0x13U != (0x7fU & vlSelf->inst))) {
                 if ((0x63U != (0x7fU & vlSelf->inst))) {
@@ -153,16 +165,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         }
     }
     vlSelf->ysyx_22040175_top__DOT__alu_op = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U == (0x7fU & vlSelf->inst))) {
             if ((0U == (7U & (vlSelf->inst >> 0xcU)))) {
                 vlSelf->ysyx_22040175_top__DOT__alu_op 
@@ -188,16 +203,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         }
     }
     vlSelf->ysyx_22040175_top__DOT__reg1_raddr = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U == (0x7fU & vlSelf->inst))) {
             vlSelf->ysyx_22040175_top__DOT__reg1_raddr 
                 = (0x1fU & (vlSelf->inst >> 0xfU));
@@ -216,16 +234,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         }
     }
     vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U == (0x7fU & vlSelf->inst))) {
             vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 0U;
         } else if ((0x13U == (0x7fU & vlSelf->inst))) {
@@ -243,16 +264,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         }
     }
     vlSelf->ysyx_22040175_top__DOT__reg2_raddr = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U == (0x7fU & vlSelf->inst))) {
             vlSelf->ysyx_22040175_top__DOT__reg2_raddr 
                 = (0x1fU & (vlSelf->inst >> 0x14U));
@@ -264,16 +288,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         }
     }
     vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U != (0x7fU & vlSelf->inst))) {
             if ((0x13U != (0x7fU & vlSelf->inst))) {
                 if ((0x63U == (0x7fU & vlSelf->inst))) {
@@ -293,16 +320,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
     }
     vlSelf->ysyx_22040175_top__DOT__rst_n = (1U & (~ (IData)(vlSelf->rst)));
     vlSelf->ysyx_22040175_top__DOT__reg_waddr = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U == (0x7fU & vlSelf->inst))) {
             vlSelf->ysyx_22040175_top__DOT__reg_waddr 
                 = (0x1fU & (vlSelf->inst >> 7U));
@@ -326,16 +356,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         }
     }
     vlSelf->ysyx_22040175_top__DOT__reg_wen = 0U;
-    if (((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+    if ((((((((0x33U == (0x7fU & vlSelf->inst)) | (0x13U 
+                                                   == 
+                                                   (0x7fU 
+                                                    & vlSelf->inst))) 
+             | (0x63U == (0x7fU & vlSelf->inst))) | 
+            (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
                                                   == 
                                                   (0x7fU 
                                                    & vlSelf->inst))) 
-            | (0x63U == (0x7fU & vlSelf->inst))) | 
-           (0x6fU == (0x7fU & vlSelf->inst))) | (0x37U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->inst))) 
-         | (0x17U == (0x7fU & vlSelf->inst)))) {
+          | (0x17U == (0x7fU & vlSelf->inst))) | (0x67U 
+                                                  == 
+                                                  (0x7fU 
+                                                   & vlSelf->inst)))) {
         if ((0x33U == (0x7fU & vlSelf->inst))) {
             vlSelf->ysyx_22040175_top__DOT__reg_wen = 1U;
         } else if ((0x13U == (0x7fU & vlSelf->inst))) {
