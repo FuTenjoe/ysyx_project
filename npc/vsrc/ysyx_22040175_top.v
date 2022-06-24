@@ -76,7 +76,7 @@ ctrl u_ctrl_0(
     .alu_src_sel                    ( alu_src_sel                   ),
     .unknown_code           (unknown_code),
     .jalr(jalr),
-    .ebreak(ebreak)
+    .ebreak_flag(ebreak)
 );
 
 reg_file u_reg_file_0(

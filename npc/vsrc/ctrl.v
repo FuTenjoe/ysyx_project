@@ -17,7 +17,7 @@ module ctrl (
     output reg [`ALU_SRC_WIDTH-1:0]    alu_src_sel ,// alu source select flag
     output [`CPU_WIDTH-1:0]            unknown_code,
     output    jalr,
-    output ebreak
+    output ebreak_flag
 );
 
 wire [`OPCODE_WIDTH-1:0] opcode = inst[`OPCODE_WIDTH-1:0];          //  [6:0]
@@ -40,7 +40,7 @@ always @(*) begin
     alu_op      = `ALU_AND;
     alu_src_sel = `ALU_SRC_REG;
     unknown_code = 32'd0;
-    ebreak = 1'd0;
+    ebreak_flag = 1'd0;
     case (opcode)
         `INST_TYPE_R: begin                         
             reg_wen     = 1'b1;
@@ -143,7 +143,7 @@ import "DPI-C" function void ebreak();
 always@(*)begin
     if(inst == 32'h0010_0073)begin
         ebreak();
-        ebreak = 1'b1;
+        ebreak_flag = 1'b1;
     end
 end
 
