@@ -8,8 +8,8 @@ module muxpc (
     input jalr,
     input      [`CPU_WIDTH-1:0] imm,     // immediate  
     input      [`CPU_WIDTH-1:0] curr_pc, // current pc addr
-    output reg [`CPU_WIDTH-1:0] next_pc  // next pc addr
-   
+    output reg [`CPU_WIDTH-1:0] next_pc , // next pc addr
+    input reg [`CPU_WIDTH-1:0]      reg1_rdata
     );
 
 always @(*) begin
@@ -20,7 +20,7 @@ always @(*) begin
     else if (jump &(!jalr))            // jal 
         next_pc = curr_pc + imm;
     else if (jump &jalr)            // jalr
-        next_pc = (curr_pc + imm) & 32'hffff_fffe;
+        next_pc = (reg1_rdata + imm) & 32'hffff_fffe;
         
     else 
         next_pc = curr_pc + `CPU_WIDTH'h4;   

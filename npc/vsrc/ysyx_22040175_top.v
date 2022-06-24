@@ -55,7 +55,8 @@ muxpc u_mux_pc_0(
     .imm                            ( imm                           ),
     .curr_pc                        ( pc                       ),
     .next_pc                        ( next_pc                       ),
-    .jalr(jalr)
+    .jalr(jalr),
+    .reg1_rdata(reg1_rdata)
 );
 
 
