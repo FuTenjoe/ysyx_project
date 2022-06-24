@@ -97,7 +97,62 @@ const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
   
-  
+  Verilated::traceEverOn(true);
+  top->trace (tfp, 99);
+  tfp->open ("Vysyx_22040175.vcd");
+  top->inst = pmem_read(top->pc,8);
+  npc_state = NPC_RUNNING;
+  //while(!contextp -> gotFinish()){
+  while(main_time < 10){
+    if(ebreak_flag){
+      printf("ebreak: program is finished !\n");
+      npc_state = NPC_END;
+      break;
+    }
+    if(main_time < 4){
+      top->rst = 1;
+      init_difftest(img_size,port);
+    }
+    else{
+      top->rst = 0;
+    }
+    if(main_time % 2 == 0){
+      top->clk = 0;
+      top->eval();
+      printf("main_time = %ld\n",main_time);
+      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
+    }
+    if(main_time % 2 == 1){
+      printf("main_time = %ld\n",main_time);
+      top->clk = 1;
+      top->eval();
+      if(main_time >= 3){
+        difftest_step(top->pc);
+      }
+      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
+
+      if(unknown_code_flag || top->unknown_code){
+        printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
+        npc_state = NPC_ABORT;
+        break;
+      }
+      //printf("a0: 0x%lx\n",cpu_gpr[10]); 
+    }
+      if(npc_state == NPC_ABORT){
+        printf("false:ABORT!The false PC is 0x%0lx\n",cpu.pc);
+        break;
+      }
+      cpu.pc = top ->pc;
+      current_inst = top ->inst;
+      top ->eval();
+  tfp->dump(main_time);
+  main_time++;
+
+  }
+    tfp->close();
+    delete top;
+    delete contextp;
+    return is_exit_status_bad();
   
 }
 
