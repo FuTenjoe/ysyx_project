@@ -117,7 +117,7 @@ int main(int argc, char **argv, char **env) {
       npc_state = NPC_END;
       break;
     }
-    if(main_time < 4){
+    if(main_time < 3){
       top->rst = 1;
       //init_difftest(img_size,port);
        printf("复位 !\n");
