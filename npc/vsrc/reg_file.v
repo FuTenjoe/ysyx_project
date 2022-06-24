@@ -14,7 +14,7 @@ module reg_file (
     output reg [`CPU_WIDTH-1:0]      reg2_rdata  // register 2 read data
 );
 
-reg [`CPU_WIDTH-1:0] reg_f [0:`REG_DATA_DEPTH-1]; 
+reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]; 
 
 // register write
 always @(posedge clk or negedge rst_n) begin
@@ -37,6 +37,6 @@ always @(*) begin
     else
         reg2_rdata = reg_f[reg2_raddr];
 end
-import "DPI-C" function void set_gpr_ptr(input logic [31:0] a []);
+import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
 initial set_gpr_ptr(reg_f);  // rf为通用寄存器的二维数组变量
 endmodule
