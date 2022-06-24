@@ -121,15 +121,16 @@ int main(int argc, char **argv, char **env) {
       top->rst = 1;
       //init_difftest(img_size,port);
        printf("复位 !\n");
+       top->inst = pmem_read(top->pc,8);
     }
     else{
       top->rst = 0;
-      
+      top->inst = pmem_read(top->pc,8);
     }
     if(main_time % 2 == 0){
       top->clk = 0;
       
-      top->inst = pmem_read(top->pc,8);
+      
       top->eval();
       printf("main_time = %ld\n",main_time);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
