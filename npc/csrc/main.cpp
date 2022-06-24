@@ -108,7 +108,7 @@ int main(int argc, char **argv, char **env) {
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
   // initialize simulation inputs
-  top->clk = 0;
+  top->clk = 1;
   top->rst = 1;
   // run simulation for 100 clock periods
   char* img_file = *(argv + 1);
@@ -148,8 +148,10 @@ int main(int argc, char **argv, char **env) {
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",1,cpu_gpr[1],top->inst);
       a= a+1;
-
-      if (a>2){
+     }
+      if(top->clk==0){
+        top->inst = pmem_read(top->pc,8);
+        if (a>2){
        //printf("a =%d \n",a);
        
        difftest_step(top->pc);
@@ -157,10 +159,6 @@ int main(int argc, char **argv, char **env) {
      else{
       init_difftest(img_size,port);
      }
-      
-     }
-      if(top->clk==0){
-        top->inst = pmem_read(top->pc,8);
       }
       if(npc_state == NPC_ABORT){
         printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
