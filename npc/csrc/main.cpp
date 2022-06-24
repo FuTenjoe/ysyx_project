@@ -146,8 +146,11 @@ int main(int argc, char **argv, char **env) {
 
       if (a>2){
        //printf("a =%d \n",a);
-       init_difftest(img_size,port);
+       
        difftest_step(top->pc);
+     }
+     else{
+      init_difftest(img_size,port);
      }
       
      }
