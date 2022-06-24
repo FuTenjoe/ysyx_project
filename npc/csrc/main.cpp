@@ -126,6 +126,7 @@ int main(int argc, char **argv, char **env) {
     else{
       top->rst = 0;
       top->inst = pmem_read(top->pc,8);
+      top->eval();
     }
     if(main_time % 2 == 0){
       top->clk = 0;
