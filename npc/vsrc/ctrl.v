@@ -144,6 +144,7 @@ always@(*)begin
     if(inst == 32'h0010_0073)begin
         ebreak();
         ebreak = 1'b1;
+    end
 end
 
 import "DPI-C" function void unknown_inst();
