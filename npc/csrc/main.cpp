@@ -149,7 +149,7 @@ int main(int argc, char **argv, char **env) {
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",1,cpu_gpr[1],top->inst);
       a= a+1;
 
-      if (a>2){
+      if (a>1){
        //printf("a =%d \n",a);
        
        difftest_step(top->pc);
