@@ -103,7 +103,7 @@ int main(int argc, char **argv, char **env) {
    
   int i;
   int clk;
-  
+  int a = 0;
 
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
@@ -130,7 +130,7 @@ int main(int argc, char **argv, char **env) {
       top->clk = !top->clk;
       top->eval ();
   }
-  int a = 0;
+  
      if(top->clk==1){
       top->inst = pmem_read(top->pc,8);
       printf("main_time = %d\n",i);
