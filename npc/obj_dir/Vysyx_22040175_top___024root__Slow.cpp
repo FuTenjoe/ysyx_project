@@ -660,7 +660,11 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                                      : 
                                                     (((IData)(vlSelf->ysyx_22040175_top__DOT__jump) 
                                                       & (IData)(vlSelf->ysyx_22040175_top__DOT__jalr))
-                                                      ? 0U
+                                                      ? 
+                                                     (0U 
+                                                      != 
+                                                      (vlSelf->pc 
+                                                       + vlSelf->ysyx_22040175_top__DOT__imm))
                                                       : 
                                                      ((IData)(4U) 
                                                       + vlSelf->pc))))
