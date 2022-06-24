@@ -76,6 +76,16 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__1(Vysyx_22040175_t
             }
         }
     }
+    vlSelf->ysyx_22040175_top__DOT__jalr = 0U;
+    if ((0x33U != (0x7fU & vlSelf->inst))) {
+        if ((0x13U != (0x7fU & vlSelf->inst))) {
+            if ((0x63U != (0x7fU & vlSelf->inst))) {
+                if ((0x6fU == (0x7fU & vlSelf->inst))) {
+                    vlSelf->ysyx_22040175_top__DOT__jalr = 0U;
+                }
+            }
+        }
+    }
     vlSelf->ysyx_22040175_top__DOT__alu_op = 0U;
     if ((0x33U == (0x7fU & vlSelf->inst))) {
         if ((0U == (7U & (vlSelf->inst >> 0xcU)))) {
@@ -349,13 +359,20 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__5(Vysyx_22040175_t
                                                    (vlSelf->pc 
                                                     + vlSelf->ysyx_22040175_top__DOT__imm)
                                                     : 
-                                                   ((IData)(vlSelf->ysyx_22040175_top__DOT__jump)
+                                                   (((IData)(vlSelf->ysyx_22040175_top__DOT__jump) 
+                                                     & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__jalr)))
                                                      ? 
                                                     (vlSelf->pc 
                                                      + vlSelf->ysyx_22040175_top__DOT__imm)
                                                      : 
-                                                    ((IData)(4U) 
-                                                     + vlSelf->pc)))
+                                                    (((IData)(vlSelf->ysyx_22040175_top__DOT__jump) 
+                                                      & (IData)(vlSelf->ysyx_22040175_top__DOT__jalr))
+                                                      ? 
+                                                     ((IData)(0x1eU) 
+                                                      + vlSelf->pc)
+                                                      : 
+                                                     ((IData)(4U) 
+                                                      + vlSelf->pc))))
                                                 : vlSelf->pc);
 }
 
