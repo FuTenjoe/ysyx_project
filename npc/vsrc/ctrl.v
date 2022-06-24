@@ -60,7 +60,7 @@ always @(*) begin
             case (funct3)
                 `INST_ADDI: 
                     alu_op = `ALU_ADD; 
-                default:unknown_code = inst;
+                default:unknown_code = inst + 1'b1;
             endcase
         end
         `INST_TYPE_B: begin
@@ -73,7 +73,7 @@ always @(*) begin
                     branch     = 1'b1;
                     alu_op     = `ALU_SUB;
                 end
-                 default:unknown_code = inst + 1'b1;
+                 default:unknown_code = inst;
             endcase
         end
         7'b0100011:begin    //sd
