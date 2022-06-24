@@ -97,22 +97,10 @@ const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
   
-  Verilated::traceEverOn(true);
-  top->trace (tfp, 99);
-  tfp->open ("Vysyx_22040175.vcd");
-  char* img_file = *(argv + 1);
-  
-  printf("开始imem初始化\n");
-  init_imem();
-  long img_size = load_img(img_file);
-  init_difftest(img_size,port);
-  
-  //npc_state = NPC_RUNNING;
-  
-  //while(!contextp -> gotFinish()){
-  while(main_time < 10){
-    
-    int i;
+ Verilated::traceEverOn(true);
+
+   
+  int i;
   int clk;
   int a = 0;
 
@@ -176,6 +164,8 @@ int main(int argc, char **argv, char **env) {
   return is_exit_status_bad();
   if (Verilated::gotFinish())  exit(0);
   
+    
+   
   
 }
 
