@@ -141,7 +141,7 @@ int main(int argc, char **argv, char **env) {
       //difftest_step(top->pc);
      }
      if (a>2){
-      // difftest_step(top->pc);
+       difftest_step(top->pc);
        printf("difftest_step");
      }
       if(npc_state == NPC_ABORT){
