@@ -117,9 +117,11 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   
-  for (i=0; i<40; i++) {
+  //for (i=0; i<40; i++) {
+    while(!contextp -> gotFinish()){
+      int i = 0;
     top->rst = (i < 2);
-    
+      i++;
     // dump variables into VCD file and toggle clock
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
