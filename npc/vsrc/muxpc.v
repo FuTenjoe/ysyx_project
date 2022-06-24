@@ -24,7 +24,7 @@ always @(*) begin
         //next_pc = reg1_rdata + imm;
         next_pc = curr_pc + 32'd24;
     else if (ebreak_flag)    
-        next_pc = 0;    
+        next_pc = 32'h8000_0000;    
     else 
         next_pc = curr_pc + `CPU_WIDTH'h4;   
 end
