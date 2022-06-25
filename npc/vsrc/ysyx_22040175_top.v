@@ -8,7 +8,7 @@ module  ysyx_22040175_top(
     output [`CPU_WIDTH-1:0]       unknown_code
    // output[`CPU_WIDTH-1:0]        next_pc
 );
-wire  [31:0]                 inst;
+wire  [63:0]                 inst;
 wire [31:0]        pc;
 wire rst_n;
 assign rst_n = !rst;
