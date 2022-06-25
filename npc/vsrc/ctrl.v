@@ -114,15 +114,15 @@ always @(*) begin
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM; // x0 + imm
         end
-       // `INST_AUIPC:begin //only auipc
-            /*    reg_wen     = 1'b1;
+        `INST_AUIPC:begin //only auipc
+               reg_wen     = 1'b1;
                 reg1_raddr  = `REG_ADDR_WIDTH'b0; // x0 = 0
                 reg_waddr   = rd;
                 imm_gen_op  = `IMM_GEN_U;
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM_PC; // x0 + imm
-                //wmask = 8'b11111111;*/
-        //end
+                wmask = 8'b11111111;
+        end
         7'b1100111:begin
             case(funct3)  
                 3'b000:begin         //jalr
