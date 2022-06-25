@@ -62,15 +62,14 @@ void init_difftest(long img_size, int port);
 void difftest_step(vaddr_t pc);
 static void checkregs(CPU_state *ref, vaddr_t pc);
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc);
-//static inline void host_write(void *addr, int len, word_t data);
-void host_write(void *addr, int len, word_t data);
+static inline void host_write(void *addr, int len, word_t data);
+
 
 //加为DPIC函数
 extern "C" void pmem_read(long long raddr,long long *rdata){
   if(raddr >= CONFIG_MBASE){
-    *rdata = host_read(guest_to_host(raddr), 8);
-    printf("raddr = 0x%llx\n",raddr);
-    printf("rdata = 0x%llx\n",*rdata);
+    *rdata = host_read(guest_to_host(raddr& ~0x7ull), 8);
+    printf("rdata = 0x%lx\n",*rdata);
   }
   else{
     *rdata = 0;
@@ -79,7 +78,7 @@ extern "C" void pmem_read(long long raddr,long long *rdata){
 }
 
 extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
-  long long addr = waddr;
+  long long addr = waddr & ~0x7ull;
   int len = 0;
   switch(wmask){
     //8bit
@@ -104,9 +103,10 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
      default:printf("False: Wmask is %x false!",wmask);
   }
   printf("waddr = %llx\n",waddr);
+  printf("addr = %llx\n",addr);
+  printf("len = %llx\n",len);
   printf("wdata = %llx\n",wdata);
-  printf("len = %d\n",len);
-  host_write(guest_to_host(waddr),len,wdata);
+  host_write(guest_to_host(addr),len,wdata);
 }
 
 /*static word_t pmem_read(paddr_t addr, int len) {
@@ -121,97 +121,79 @@ Vysyx_22040175_top* top = new Vysyx_22040175_top;
   // init trace dump
 
 VerilatedVcdC* tfp = new VerilatedVcdC;
-
-
-
-
-vluint64_t maintime = 0;
+vluint64_t main_time = 0;
 const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
   contextp -> commandArgs(argc,argv);
   Verilated::traceEverOn(true);
-  
-   
-  
-  int clk;
-  int a = 0;
-
-  top->trace (tfp, 99);
-  tfp->open ("Vysyx_22040175.vcd");
-  // initialize simulation inputs
-  top->clk = 1;
-  top->rst = 1;
-  // run simulation for 100 clock periods
-  char* img_file = *(argv + 1);
+  top -> trace(tfp,99);
+  tfp ->open("Vysyx_22040175_TOP.vcd");
+  char * img_file = *(argv + 1);
   init_imem();
-  printf("开始imem初始化\n");
-  
   long img_size = load_img(img_file);
-  int i;
-  for (i=0;i<40 ; i++) {
-    //while(!contextp -> gotFinish()){
-     //for (i=0;i<15 ; i++) {
+  npc_state = NPC_RUNNING;
+  //while(!contextp -> gotFinish()){
+    while(main_time <15){
       
-    top->rst = (i < 2);
-      
-    // dump variables into VCD file and toggle clock
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
       break;
     }
-    if(unknown_code_flag || top->unknown_code){
-        printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
+    if(main_time < 3){
+      top ->rst = 1;
+      //init_difftest(img_size,port);
+    }
+    else{
+      top ->rst = 0;
+    }
+    if(main_time%2 == 0){
+      
+          top ->clk = 0;
+      
+      
+      top ->eval();
+      printf("main_time = %ld\n",main_time);
+      printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
+      printf("npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",2,cpu_gpr[2],top->inst);
+    }
+    if(main_time %2 == 1){
+      
+        top ->clk = !top ->clk;
+      
+      printf("main_time = %ld\n",main_time);
+      top ->clk = 1;
+      top ->eval();
+      if(main_time >= 4){
+       // difftest_step(top->pc);
+      }
+      printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
+      if(unknown_code_flag || top->unknown_code){
+        printf("Warning : An unknoen Inst!pc : %xInst: %x\n", top->pc,top->inst);
         npc_state = NPC_ABORT;
         break;
       }
-  /*  for (clk=0; clk<2; clk++) {
-      tfp->dump (2*i+clk);
-      top->clk = !top->clk;
-      top->eval ();
-      
-  }*/
-      tfp->dump (2*i+clk);
-      top->clk = !top->clk;
-      top->eval ();
-     if(top->clk==1){
-      //top->inst = pmem_read(top->pc,8); //使用DPIC
-      printf("main_time = %d\n",i);
-      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
-      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
-      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",1,cpu_gpr[1],top->inst);
-      
-      
-     }
-     if(top->clk==0){
-        a= a+1;
-         printf("main_time = %d\n",i);
-      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
-        if (a>2){
-       //printf("a =%d \n",a);
-       
-         difftest_step(top->pc);
-        }
-        else{
-          init_difftest(img_size,port);
-        }
-     }
-     
-      if(npc_state == NPC_ABORT){
-        printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
-        break;
-      }
-      
-  
+      printf("a0; 0x%lx\n",cpu_gpr[10]);
     }
+    if(npc_state == NPC_ABORT){
+      printf("False:ABORT!The false PCis 0x%0lx\n",cpu.pc);
+      break;
+    }
+    cpu.pc = top->pc;
   
-
-  tfp->close();
+    top->eval();
+    tfp->dump(main_time);
+    main_time++;
+  }
+  tfp -> close();
+  delete tfp;
   delete top;
   delete contextp;
   return is_exit_status_bad();
-  if (Verilated::gotFinish())  exit(0);
+   
+  
+  
   
 }
 
@@ -222,11 +204,11 @@ void init_imem(){
 }
 
 uint8_t *guest_to_host(paddr_t paddr){
-  //uint8_t *tmpl = pimem + paddr -CONFIG_MBASE;
+  uint8_t *tmpl = pimem + paddr -CONFIG_MBASE;
   //printf("guest to host success pimem = %hhn\n",pimem);
-  printf("guest to host success paddr  = %d\n",paddr );
-  //printf("guest to host success addr = %hhn\n",pimem + paddr -CONFIG_MBASE);
-  return pimem + paddr -CONFIG_MBASE;
+  //printf("guest to host success paddr  = %d\n",paddr );
+  //printf("guest to host success addr = %hhn\n",tmpl);
+  return tmpl;
 }
 inline word_t host_read(void *addr, int len) {
    //printf("host_read success addr");
@@ -238,20 +220,13 @@ inline word_t host_read(void *addr, int len) {
     default: {printf("host_to_read is error !\n");assert(0);return 4096;};
   }
 }
-inline void host_write(void *addr, int len,word_t data){
-  printf("host_write1 ok!\n");
-  uint8_t a;
-  uint16_t b;
-  uint32_t c;
-  uint64_t* d;
-  //printf("host_write wdata=%ld",data);
+static inline void host_write(void *addr, int len,word_t data){
   switch (len){
-    case 1: a=*(uint8_t *)addr;a = data; return;
-    case 2: b=*(uint16_t *)addr; b= data; return;
-    case 4: c=*(uint32_t *)addr;c = data;return;
-    case 8: d =(uint64_t *)addr;printf("host_write data=%ld!\n",data);printf("host_write addr=%ld!\n",addr);printf("host_write d=%ld!\n",d);*d = data;printf("host_write ok!\n");return;
-    //case 8: *(uint64_t *)addr=data;printf("host_write data=%ld!\n",data);printf("host_write addr=%ld!\n",*(uint64_t *)addr);*d = data;printf("host_write ok!\n");return;
-    default:{printf("host_write is error !\n"); assert(0);};
+    case 1: *(uint8_t *)addr = data; return;
+    case 2: *(uint16_t *)addr = data; return;
+    case 4: *(uint32_t *)addr = data;return;
+    case 8: *(uint64_t *)addr = data;return;
+    default:{printf("hoost_write is error !\n"); assert(0);};
   }
 }
 
