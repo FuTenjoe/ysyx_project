@@ -79,7 +79,7 @@ always @(*) begin
             endcase
         end
         7'b0100011:begin    //sd
-         /*  case(funct3)
+           case(funct3)
             3'b011:begin
             jump        = 1'b0;
             reg_wen     = 1'b1;
@@ -92,7 +92,7 @@ always @(*) begin
             alu_src_sel = `ALU_SRC_REG;
             end
             default:unknown_code = inst;
-            endcase*/
+            endcase
         end
         `INST_JAL: begin // only jal 
             jump        = 1'b1;
