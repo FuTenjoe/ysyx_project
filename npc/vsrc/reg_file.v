@@ -11,7 +11,7 @@ module reg_file (
     input      [`REG_ADDR_WIDTH-1:0] reg1_raddr, // register 1 read address
     input      [`REG_ADDR_WIDTH-1:0] reg2_raddr, // register 2 read address
     output reg [`CPU_WIDTH-1:0]      reg1_rdata, // register 1 read data
-    output reg [`CPU_WIDTH-1:0]      reg2_rdata , // register 2 read data
+    output reg [`CPU_WIDTH-1:0]      reg2_rdata  // register 2 read data
     //input  [7:0] wmask
    
 );
