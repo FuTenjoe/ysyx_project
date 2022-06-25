@@ -54,7 +54,7 @@ extern "C" void set_gpr_ptr(const svOpenArrayHandle r){
 }
 //函数声明
 void init_imem();
-uint8_t *guest_to_host(paddr_t paddr);
+uint8_t *guest_to_host(long long paddr);
 static long load_img(char *img_file);
 word_t host_read(void *addr, int len);
 int is_exit_status_bad();
@@ -221,7 +221,7 @@ void init_imem(){
   assert(pimem);
 }
 
-uint8_t *guest_to_host(paddr_t paddr){
+uint8_t *guest_to_host(long long paddr){
   uint8_t *tmpl = pimem + paddr -CONFIG_MBASE;
   //printf("guest to host success pimem = %hhn\n",pimem);
   //printf("guest to host success paddr  = %d\n",paddr );
