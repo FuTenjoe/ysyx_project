@@ -150,6 +150,7 @@ int main(int argc, char **argv, char **env) {
       top ->eval();
       printf("main_time = %ld\n",main_time);
       printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
+      printf("npc_gpr[%d]; 0x%08lx; Instruction is 0x%x\n",2,cpu_gpr[2],top->inst);
     }
     if(main_time %2 == 1){
       printf("main_time = %ld\n",main_time);
