@@ -283,11 +283,15 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         if ((1U & (~ (vlSelf->inst >> 5U)))) {
             if ((0x10U & vlSelf->inst)) {
                 if ((1U & (~ (vlSelf->inst >> 3U)))) {
-                    if ((1U & (~ (vlSelf->inst >> 2U)))) {
+                    if ((4U & vlSelf->inst)) {
                         if ((2U & vlSelf->inst)) {
                             if ((1U & vlSelf->inst)) {
-                                vlSelf->ysyx_22040175_top__DOT__wmask = 0xfU;
+                                vlSelf->ysyx_22040175_top__DOT__wmask = 0xffU;
                             }
+                        }
+                    } else if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
+                            vlSelf->ysyx_22040175_top__DOT__wmask = 0xfU;
                         }
                     }
                 }
