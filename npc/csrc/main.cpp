@@ -226,7 +226,7 @@ uint8_t *guest_to_host(paddr_t paddr){
   //printf("guest to host success pimem = %hhn\n",pimem);
   printf("guest to host success paddr  = %d\n",paddr );
   //printf("guest to host success addr = %hhn\n",tmpl);
-  return tmpl;
+  return *tmpl;
 }
 inline word_t host_read(void *addr, int len) {
    //printf("host_read success addr");
@@ -238,7 +238,7 @@ inline word_t host_read(void *addr, int len) {
     default: {printf("host_to_read is error !\n");assert(0);return 4096;};
   }
 }
-inline void host_write(void *addr, int len,word_t data){
+static inline void host_write(void *addr, int len,word_t data){
   printf("host_write1 ok!\n");
   switch (len){
     case 1: *(uint8_t *)addr = data; return;
