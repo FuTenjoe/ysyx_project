@@ -63,7 +63,7 @@ void difftest_step(vaddr_t pc);
 static void checkregs(CPU_state *ref, vaddr_t pc);
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc);
 //static inline void host_write(void *addr, int len, word_t data);
-static inline void host_write(void *addr, int len, word_t data);
+inline void host_write(void *addr, int len, word_t data);
 
 //加为DPIC函数
 extern "C" void pmem_read(long long raddr,long long *rdata){
@@ -238,7 +238,7 @@ inline word_t host_read(void *addr, int len) {
     default: {printf("host_to_read is error !\n");assert(0);return 4096;};
   }
 }
-static inline void host_write(void *addr, int len,word_t data){
+inline void host_write(void *addr, int len,word_t data){
   printf("host_write1 ok!\n");
   uint8_t a;
   uint16_t b;
