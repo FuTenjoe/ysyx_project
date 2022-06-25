@@ -1,3 +1,5 @@
+//test.cpp
+//#include "nvboard.h"     //Defines common routines
 #include "verilated_vcd_c.h"
 #include <cassert>
 #include <stdio.h>
@@ -33,7 +35,6 @@ uint32_t unknown_code_flag = 0;
 //DPIC
 extern "C" void ebreak(){
   ebreak_flag = 1;
-  printf("ebreakexternc\n");
 }
 extern "C" void unknown_inst(){
   unknown_code_flag = 1;
@@ -66,8 +67,8 @@ static inline void host_write(void *addr, int len, word_t data);
 
 
 //加为DPIC函数
-extern "C" void pmem_read(long long raddr,long long *rdata){
-  if(raddr >= CONFIG_MBASE){
+/*extern "C" void pmem_read(paddr_t raddr,word_t *rdata){
+  if(raddr <= CONFIG_MBASE){
     *rdata = host_read(guest_to_host(raddr), 8);
     printf("rdata = 0x%lx\n",*rdata);
   }
@@ -75,138 +76,125 @@ extern "C" void pmem_read(long long raddr,long long *rdata){
     *rdata = 0;
     printf("Warning: Invalid Instruction !\n");
   }
-}
-
-extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
-  long long addr = waddr ;
-  int len = 0;
-  switch(wmask){
-    //8bit
-    case 0x1: len = 1; break;
-    case 0x2: len = 1; addr = addr +1; break;
-    case 0x4: len = 1; addr = addr +2; break;
-    case 0x8: len = 1; addr = addr +3; break;
-    case 0x10: len = 1; addr = addr + 4;break;
-    case 0x20: len = 1; addr = addr + 5;break;
-    case 0x40: len = 1; addr = addr + 6;break;
-    case -128: len = 1; addr = addr + 7;break;
-    //16bit
-    case 0x3: len = 2;break;
-    case 0xc: len = 2; addr = addr + 2;break;
-    case 0x30: len = 2; addr = addr + 4;break;
-    case -64: len = 2; addr = addr + 6;break;
-     //32bit
-     case 0xF: len = 4;break;
-     case -16: len = 4;addr = addr + 4;break;
-     //64bit
-     case -1: len = 8 ;break;
-     default:printf("False: Wmask is %x false!",wmask);
-  }
-  printf("waddr = %llx\n",waddr);
-  printf("addr = %llx\n",addr);
-  printf("len = %llx\n",len);
-  printf("wdata = %llx\n",wdata);
-  host_write(guest_to_host(addr),len,wdata);
-}
-
-/*static word_t pmem_read(paddr_t addr, int len) {
+}*/
+static word_t pmem_read(paddr_t addr, int len) {
   word_t ret = host_read(guest_to_host(addr), len);
    //printf("pmem_read success addr");
   return ret;
-}*/
+}
+
+extern "C" void pmem_write (long long waddr, long long wdata, char wmask){
+  long long addr = waddr & ~0x7ull;
+  int len = 0;
+  switch(wmask){
+    //8bit
+    case 0x1:len = 1; break;
+    case 0x2:len = 1;addr = addr + 1;break;
+    case 0x4:len = 1;addr = addr + 2;break;
+    case 0x8:len = 1;addr = addr + 3;break;
+    case 0x10:len = 1;addr = addr + 4;break;
+    case 0x20:len = 1;addr = addr + 5;break;
+    case 0x40:len = 1;addr = addr + 6;break;
+    case -128:len = 1;addr = addr + 7;break;
+    //16 bit
+    case 0x3:len = 2;break;
+    case 0xc:len = 2;addr = addr + 2;break;
+    case 0x30:len = 2;addr = addr + 4;break;
+    case -64:len = 2; addr = addr + 6;break;
+    //32 bit
+    case 0xF: len = 4;break;
+    case -16:len = 4;addr = addr + 4;break;
+    //64 bit
+    case -1:len = 8;break;
+    default:printf("False: Wmask is %x false !\n",wmask);
+  }
+  printf("waddr = %llx\n",waddr);
+  printf("addr = %llx\n",addr);
+  host_write(guest_to_host(addr),len,wdata);
+}
+
+
 
 VerilatedContext *contextp = new VerilatedContext;
   // init top verilog instance
 Vysyx_22040175_top* top = new Vysyx_22040175_top;
   // init trace dump
-
 VerilatedVcdC* tfp = new VerilatedVcdC;
+
 vluint64_t main_time = 0;
 const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
-  contextp -> commandArgs(argc,argv);
-  Verilated::traceEverOn(true);
-  top -> trace(tfp,99);
-  tfp ->open("Vysyx_22040175_TOP.vcd");
-  char * img_file = *(argv + 1);
+  char* img_file = *(argv + 1);
   init_imem();
   long img_size = load_img(img_file);
+  contextp -> commandArgs(argc,argv);
+  Verilated::traceEverOn(true);
+  top->trace (tfp, 99);
+  tfp->open ("Vysyx_22040175.vcd");
+  top->inst = pmem_read(top->pc,8);
   npc_state = NPC_RUNNING;
   //while(!contextp -> gotFinish()){
-    while(main_time <15){
-      
+  while(main_time < 10){
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
       break;
     }
-    if(main_time < 3){
-      top ->rst = 1;
-      init_difftest(img_size,port);
+    if(main_time < 4){
+      top->rst = 1;
+      //init_difftest(img_size,port);
     }
     else{
-      top ->rst = 0;
+      top->rst = 0;
     }
-    if(main_time%2 == 0){
-      
-          top ->clk = 0;
-      
-      
-      top ->eval();
+    if(main_time % 2 == 0){
+      top->clk = 0;
+      top->eval();
       printf("main_time = %ld\n",main_time);
-      printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
-      printf("npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",2,cpu_gpr[2],top->inst);
+      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
     }
-    if(main_time %2 == 1){
-      
-        top ->clk = !top ->clk;
-      
+    if(main_time % 2 == 1){
       printf("main_time = %ld\n",main_time);
-      top ->clk = 1;
-      top ->eval();
-      if(main_time >= 4){
+      top->clk = 1;
+      top->eval();
+    /*  if(main_time >= 3){
         difftest_step(top->pc);
-      }
-      printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
+      }*/
+      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
+
       if(unknown_code_flag || top->unknown_code){
-        printf("Warning : An unknoen Inst!pc : %xInst: %x\n", top->pc,top->inst);
+        printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
         npc_state = NPC_ABORT;
         break;
       }
-      printf("a0; 0x%lx\n",cpu_gpr[10]);
+      //printf("a0: 0x%lx\n",cpu_gpr[10]); 
     }
-    if(npc_state == NPC_ABORT){
-      printf("False:ABORT!The false PCis 0x%0lx\n",cpu.pc);
-      break;
-    }
-    cpu.pc = top->pc;
-  
-    top->eval();
-    tfp->dump(main_time);
-    main_time++;
+      if(npc_state == NPC_ABORT){
+        printf("false:ABORT!The false PC is 0x%0lx\n",cpu.pc);
+        break;
+      }
+      cpu.pc = top ->pc;
+      current_inst = top ->inst;
+      top ->eval();
+  tfp->dump(main_time);
+  main_time++;
+
   }
-  tfp -> close();
-  delete tfp;
-  delete top;
-  delete contextp;
-  return is_exit_status_bad();
-   
-  
-  
-  
+    tfp->close();
+    delete top;
+    delete contextp;
+    return is_exit_status_bad();
 }
 
 void init_imem(){
   pimem = (uint8_t *) malloc(CONFIG_MSIZE);
- // printf("pimem _ success");
+  //printf("pimem _ success");
   assert(pimem);
 }
 
 uint8_t *guest_to_host(paddr_t paddr){
   uint8_t *tmpl = pimem + paddr -CONFIG_MBASE;
-  //printf("guest to host success pimem = %hhn\n",pimem);
-  //printf("guest to host success paddr  = %d\n",paddr );
   //printf("guest to host success addr = %hhn\n",tmpl);
   return tmpl;
 }
@@ -250,7 +238,6 @@ static long load_img(char*img_file){
 }
 int is_exit_status_bad(){
   int good = (npc_state == NPC_END && cpu_gpr[10] == 0);
-  //int good = (cpu_gpr[10] == 0);
   if(good){
     printf("\033[1;32m HIT GOOD TRAP! \033[0m \n");
   }
@@ -261,7 +248,7 @@ int is_exit_status_bad(){
 }
 //Difftest初始化
 void init_difftest(long img_size,int port){
-  char const *ref_so_file = "/home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so";
+  char const *ref_so_file = "./home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so.bin";
   if(ref_so_file != NULL){
     printf("文件加载成功！\n");
   }
@@ -270,7 +257,6 @@ void init_difftest(long img_size,int port){
   handle = dlopen(ref_so_file,RTLD_LAZY); //将动态库加载到内存中
   if(handle == NULL){
     printf("库打开失败！\n");
-    printf("dlopen error. msg:%s", dlerror());
   }
   assert(handle);
   //用函数指针指向动态库中的对应函数，以便调用
@@ -305,17 +291,17 @@ void difftest_step (vaddr_t dnpc){
   ref_difftest_exec(1);
 }
 
-
 static void checkregs(CPU_state *ref, vaddr_t dnpc){
   if(!isa_difftest_checkregs(ref,dnpc)){
     npc_state = NPC_ABORT;
   }
 }
+
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
   int i = 0;
   bool DIF_result = true;
   if(ref_r -> pc != dnpc){
-    printf("False: PC is false! ref_dnpc is 0x%0lx;npc_dnpc is 0x%0lx; Instruction is 0x%x\n",ref_r->pc,dnpc,top->inst);
+    printf("False: PC is false! ref_dnpc is 0x%0lx;npc_dnpc is 0x%0lx; Instruction is 0x%x\n",ref_r->pc,dnpc,current_inst);
     DIF_result = false;
   }
   for (i=0; i<32;i++){
