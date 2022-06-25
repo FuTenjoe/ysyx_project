@@ -93,7 +93,7 @@ reg_file u_reg_file_0(
     .reg1_raddr                     ( reg1_raddr                    ),
     .reg2_raddr                     ( reg2_raddr                    ),
     .reg1_rdata                     ( reg1_rdata                    ),
-    .reg2_rdata                     ( reg2_rdata                    )
+    .reg2_rdata                     ( reg2_rdata                    ),
     .wmask (wmask),
     .s_flag(s_flag)
 );
