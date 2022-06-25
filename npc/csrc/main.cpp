@@ -78,7 +78,7 @@ extern "C" void pmem_read(long long raddr,long long *rdata){
 }
 
 extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
-  long long addr = waddr & ~0x7ull;
+  long long addr = waddr ;
   int len = 0;
   switch(wmask){
     //8bit
