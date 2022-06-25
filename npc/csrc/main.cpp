@@ -144,11 +144,11 @@ int main(int argc, char **argv, char **env) {
     else{
       top ->rst = 0;
     }
-    if(main_time%2 == 1){
+    if(main_time%2 == 0){
       top ->clk = 0;
       top ->eval();
     }
-    if(main_time %2 == 0){
+    if(main_time %2 == 1){
       printf("main_time = %ld\n",main_time);
       top ->clk = 1;
       top ->eval();
