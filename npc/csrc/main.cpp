@@ -152,7 +152,7 @@ int main(int argc, char **argv, char **env) {
       printf("main_time = %ld\n",main_time);
       top ->clk = 1;
       top ->eval();
-      if(main_time >= 5){
+      if(main_time >= 4){
         difftest_step(top->pc);
       }
       printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
