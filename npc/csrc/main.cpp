@@ -240,12 +240,13 @@ inline word_t host_read(void *addr, int len) {
 }
 static inline void host_write(void *addr, int len,word_t data){
   printf("host_write1 ok!\n");
-  printf("host_write wdata=%ld",data);
+  uint64_t b;
+  //printf("host_write wdata=%ld",data);
   switch (len){
     case 1: *(uint8_t *)addr = data; return;
     case 2: *(uint16_t *)addr = data; return;
     case 4: *(uint32_t *)addr = data;return;
-    case 8: printf("host_write data=%ld!\n",data);*(uint64_t *)addr = data;printf("host_write ok!\n");return;
+    case 8: b= *(uint64_t *)addr;printf("host_write data=%ld!\n",data);b = data;printf("host_write ok!\n");return;
     default:{printf("host_write is error !\n"); assert(0);};
   }
 }
