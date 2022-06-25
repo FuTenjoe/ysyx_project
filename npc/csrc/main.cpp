@@ -104,8 +104,6 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   }
   printf("waddr = %llx\n",waddr);
   printf("addr = %llx\n",addr);
-  printf("len = %llx\n",len);
-  printf("wdata = %llx\n",wdata);
   host_write(guest_to_host(addr),len,wdata);
 }
 
@@ -121,79 +119,95 @@ Vysyx_22040175_top* top = new Vysyx_22040175_top;
   // init trace dump
 
 VerilatedVcdC* tfp = new VerilatedVcdC;
-vluint64_t main_time = 0;
+
+
+
+
+vluint64_t maintime = 0;
 const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
   contextp -> commandArgs(argc,argv);
   Verilated::traceEverOn(true);
-  top -> trace(tfp,99);
-  tfp ->open("Vysyx_22040175_TOP.vcd");
-  char * img_file = *(argv + 1);
+  
+   
+  
+  int clk;
+  int a = 0;
+
+  top->trace (tfp, 99);
+  tfp->open ("Vysyx_22040175.vcd");
+  // initialize simulation inputs
+  top->clk = 1;
+  top->rst = 1;
+  // run simulation for 100 clock periods
+  char* img_file = *(argv + 1);
   init_imem();
+  printf("开始imem初始化\n");
+  
   long img_size = load_img(img_file);
-  npc_state = NPC_RUNNING;
-  //while(!contextp -> gotFinish()){
-    while(main_time <15){
+  int i;
+  for (i=0;i<20 ; i++) {
+    //while(!contextp -> gotFinish()){
+     //for (i=0;i<15 ; i++) {
       
+    top->rst = (i < 2);
+      
+    // dump variables into VCD file and toggle clock
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
       break;
     }
-    if(main_time < 3){
-      top ->rst = 1;
-      //init_difftest(img_size,port);
-    }
-    else{
-      top ->rst = 0;
-    }
-    if(main_time%2 == 0){
-      
-          top ->clk = 0;
-      
-      
-      top ->eval();
-      printf("main_time = %ld\n",main_time);
-      printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
-      printf("npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",2,cpu_gpr[2],top->inst);
-    }
-    if(main_time %2 == 1){
-      
-        top ->clk = !top ->clk;
-      
-      printf("main_time = %ld\n",main_time);
-      top ->clk = 1;
-      top ->eval();
-      if(main_time >= 4){
-       // difftest_step(top->pc);
-      }
-      printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
-      if(unknown_code_flag || top->unknown_code){
-        printf("Warning : An unknoen Inst!pc : %xInst: %x\n", top->pc,top->inst);
+    if(unknown_code_flag || top->unknown_code){
+        printf("Warning: An unknown Inst! pc: %x;Inst: %x\n",top->pc,top->inst);
         npc_state = NPC_ABORT;
         break;
       }
-      printf("a0; 0x%lx\n",cpu_gpr[10]);
-    }
-    if(npc_state == NPC_ABORT){
-      printf("False:ABORT!The false PCis 0x%0lx\n",cpu.pc);
-      break;
-    }
-    cpu.pc = top->pc;
+  /*  for (clk=0; clk<2; clk++) {
+      tfp->dump (2*i+clk);
+      top->clk = !top->clk;
+      top->eval ();
+      
+  }*/
+      tfp->dump (2*i+clk);
+      top->clk = !top->clk;
+      top->eval ();
+     if(top->clk==1){
+      //top->inst = pmem_read(top->pc,8); //使用DPIC
+      printf("main_time = %d\n",i);
+      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
+      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
+      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",1,cpu_gpr[1],top->inst);
+      
+      
+     }
+     if(top->clk==0){
+        a= a+1;
+        if (a>2){
+       //printf("a =%d \n",a);
+       
+         difftest_step(top->pc);
+        }
+        else{
+          init_difftest(img_size,port);
+        }
+     }
+     
+      if(npc_state == NPC_ABORT){
+        printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
+        break;
+      }
+      
   
-    top->eval();
-    tfp->dump(main_time);
-    main_time++;
-  }
-  tfp -> close();
-  delete tfp;
+    }
+  
+
+  tfp->close();
   delete top;
   delete contextp;
   return is_exit_status_bad();
-   
-  
-  
+  if (Verilated::gotFinish())  exit(0);
   
 }
 
