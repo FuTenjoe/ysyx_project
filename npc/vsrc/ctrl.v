@@ -17,7 +17,8 @@ module ctrl (
     output reg [`ALU_SRC_WIDTH-1:0]    alu_src_sel ,// alu source select flag
     output [`CPU_WIDTH-1:0]            unknown_code,
     output    jalr,
-    output ebreak_flag
+    output ebreak_flag,
+    output reg [7:0]wmask
 );
 
 wire [`OPCODE_WIDTH-1:0] opcode = inst[`OPCODE_WIDTH-1:0];          //  [6:0]
@@ -41,6 +42,7 @@ always @(*) begin
     alu_src_sel = `ALU_SRC_REG;
     unknown_code = 32'd0;
     ebreak_flag = 1'd0;
+    wmask = 8'd0;
     case (opcode)
         `INST_TYPE_R: begin                         
             reg_wen     = 1'b1;
@@ -59,6 +61,7 @@ always @(*) begin
             reg1_raddr  = rs1;
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_IMM;
+            wmask = 8'hF;
             case (funct3)
                 `INST_ADDI: 
                     alu_op = `ALU_ADD; 

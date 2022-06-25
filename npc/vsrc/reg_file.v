@@ -11,17 +11,18 @@ module reg_file (
     input      [`REG_ADDR_WIDTH-1:0] reg1_raddr, // register 1 read address
     input      [`REG_ADDR_WIDTH-1:0] reg2_raddr, // register 2 read address
     output reg [`CPU_WIDTH-1:0]      reg1_rdata, // register 1 read data
-    output reg [`CPU_WIDTH-1:0]      reg2_rdata  // register 2 read data
+    output reg [`CPU_WIDTH-1:0]      reg2_rdata , // register 2 read data
+    input  [7:0] wmask
    
 );
 
 reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]; 
 
 // register write
-always @(posedge clk or negedge rst_n) begin
+/*always @(posedge clk or negedge rst_n) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)) // x0 read only
         reg_f[reg_waddr] <= reg_wdata; 
-end
+end*/
 
 // register 1 read
 always @(*) begin
@@ -41,7 +42,12 @@ end
 import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
 initial set_gpr_ptr(reg_f);  // rf为通用寄存器的二维数组变量
 
-
+import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
+//wire [63:0] rdata;
+always @(*) begin
+    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)) 
+        pmem_write(reg_waddr, reg_wdata, wmask);
+end
 
 
 endmodule
