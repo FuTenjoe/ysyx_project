@@ -61,7 +61,7 @@ always @(*) begin
             reg1_raddr  = rs1;
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_IMM;
-            wmask = 8'b11111111;;
+            
             case (funct3)
                 `INST_ADDI: 
                     alu_op = `ALU_ADD; 
