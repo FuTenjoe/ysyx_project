@@ -132,7 +132,7 @@ int main(int argc, char **argv, char **env) {
   Verilated::traceEverOn(true);
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
-  top->inst = pmem_read(top->pc,8);
+  //top->inst = pmem_read(top->pc,8);
   npc_state = NPC_RUNNING;
   //while(!contextp -> gotFinish()){
   while(main_time < 10){
