@@ -160,7 +160,7 @@ int main(int argc, char **argv, char **env) {
     }
     if(main_time %2 == 1){
       
-          top ->clk = !top ->clk;
+        top ->clk = !top ->clk;
       
       printf("main_time = %ld\n",main_time);
       top ->clk = 1;
