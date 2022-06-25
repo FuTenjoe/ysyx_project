@@ -78,8 +78,8 @@ ctrl u_ctrl_0(
     .alu_src_sel                    ( alu_src_sel                   ),
     .unknown_code           (unknown_code),
     .jalr(jalr),
-    .ebreak_flag(ebreak_flag),
-    .wmask(wmask)
+    .ebreak_flag(ebreak_flag)
+    //.wmask(wmask)
 );
 
 reg_file u_reg_file_0(
@@ -91,8 +91,8 @@ reg_file u_reg_file_0(
     .reg1_raddr                     ( reg1_raddr                    ),
     .reg2_raddr                     ( reg2_raddr                    ),
     .reg1_rdata                     ( reg1_rdata                    ),
-    .reg2_rdata                     ( reg2_rdata                    ),
-    .wmask (wmask)
+    .reg2_rdata                     ( reg2_rdata                    )
+    //.wmask (wmask)
 );
 
 imm_gen u_imm_gen_0(
