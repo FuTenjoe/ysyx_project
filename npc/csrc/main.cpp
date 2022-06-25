@@ -239,11 +239,12 @@ inline word_t host_read(void *addr, int len) {
   }
 }
 static inline void host_write(void *addr, int len,word_t data){
+  printf("host_write1 ok!\n");return;
   switch (len){
-    case 1: return *(uint8_t *)addr = data; 
-    case 2: return *(uint16_t *)addr = data; 
-    case 4: return *(uint32_t *)addr = data;
-    case 8: return *(uint64_t *)addr = data;printf("host_write ok!\n");
+    case 1: *(uint8_t *)addr = data; return;
+    case 2: *(uint16_t *)addr = data; return;
+    case 4: *(uint32_t *)addr = data;return;
+    case 8: *(uint64_t *)addr = data;printf("host_write ok!\n");return;
     default:{printf("host_write is error !\n"); assert(0);};
   }
 }
