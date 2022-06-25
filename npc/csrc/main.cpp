@@ -132,7 +132,7 @@ int main(int argc, char **argv, char **env) {
   long img_size = load_img(img_file);
   npc_state = NPC_RUNNING;
   //while(!contextp -> gotFinish()){
-    while(main_time <10){
+    while(main_time <11){
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
@@ -157,7 +157,7 @@ int main(int argc, char **argv, char **env) {
       top ->clk = 1;
       top ->eval();
       if(main_time >= 4){
-        difftest_step(top->pc);
+        //difftest_step(top->pc);
       }
       printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
       if(unknown_code_flag || top->unknown_code){
