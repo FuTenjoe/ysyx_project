@@ -124,7 +124,7 @@ const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
   contextp -> commandArgs(argc,argv);
-  Verilated::traceEverO
+  Verilated::traceEverOn
   n(true);
   top -> trace(tfp,99);
   tfp ->open("Vysyx_22040175_TOP.vcd");
