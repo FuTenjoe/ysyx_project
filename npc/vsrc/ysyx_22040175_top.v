@@ -79,8 +79,8 @@ ctrl u_ctrl_0(
     .alu_src_sel                    ( alu_src_sel                   ),
     .unknown_code           (unknown_code),
     .jalr(jalr),
-    .ebreak_flag(ebreak_flag)
-    .wmask(wmask)
+    .ebreak_flag(ebreak_flag),
+    .wmask(wmask),
     .s_flag(s_flag)
 );
 
