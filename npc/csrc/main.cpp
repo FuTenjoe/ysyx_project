@@ -66,7 +66,7 @@ static inline void host_write(void *addr, int len, word_t data);
 
 
 //加为DPIC函数
-/*extern "C" void pmem_read(paddr_t raddr,word_t *rdata){
+extern "C" void pmem_read(paddr_t raddr,word_t *rdata){
   if(raddr <= CONFIG_MBASE){
     *rdata = host_read(guest_to_host(raddr), 8);
     printf("rdata = 0x%lx\n",*rdata);
@@ -75,13 +75,43 @@ static inline void host_write(void *addr, int len, word_t data);
     *rdata = 0;
     printf("Warning: Invalid Instruction !\n");
   }
-}*/
+}
 
-static word_t pmem_read(paddr_t addr, int len) {
+extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
+  long long addr = waddr & ~0x7ull;
+  int len = 0;
+  switch(wmask){
+    //8bit
+    case 0x1: len = 1; break;
+    case 0x2: len = 1; addr = addr +1; break;
+    case 0x4: len = 1; addr = addr +2; break;
+    case 0x8: len = 1; addr = addr +3; break;
+    case 0x10: len = 1; addr = addr + 4;break;
+    case 0x20: len = 1; addr = addr + 5;break;
+    case 0x40: len = 1; addr = addr + 6;break;
+    case -128: len = 1; addr = addr + 7;break;
+    //16bit
+    case 0x3: len = 2;break;
+    case 0xc: len = 2; addr = addr + 2;break;
+    case 0x30: len 2; addr = addr + 4;break;
+    case -64: len = 2; addr = addr + 6;break;
+     //32bit
+     case 0xF: len = 4;break;
+     case -16: len = 4;addr = addr + 4;break;
+     //64bit
+     case -1: len = 8 ;break;
+     default:printf("False: Wmask is %x false!",wmask);
+  }
+  printf("waddr = %llx\n",waddr);
+  printf("addr = %llx\n",addr);
+  host_write(guest_to_host(addr),len,wdata);
+}
+
+/*static word_t pmem_read(paddr_t addr, int len) {
   word_t ret = host_read(guest_to_host(addr), len);
    //printf("pmem_read success addr");
   return ret;
-}
+}*/
 
 VerilatedContext *contextp = new VerilatedContext;
   // init top verilog instance
