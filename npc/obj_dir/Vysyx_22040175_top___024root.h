@@ -21,9 +21,9 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     // PORTS
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
+    VL_OUT(inst,31,0);
     VL_OUT(pc,31,0);
     VL_OUT(unknown_code,31,0);
-    VL_OUT64(inst,63,0);
 
     // LOCAL SIGNALS
     CData/*0:0*/ ysyx_22040175_top__DOT__rst_n;
@@ -46,6 +46,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     IData/*31:0*/ ysyx_22040175_top__DOT__alu_src1;
     IData/*31:0*/ ysyx_22040175_top__DOT__alu_src2;
     IData/*31:0*/ ysyx_22040175_top__DOT__alu_res;
+    QData/*63:0*/ ysyx_22040175_top__DOT__rdata;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f;
 
     // LOCAL VARIABLES

@@ -76,29 +76,25 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
             = __Vdlyvval__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0;
     }
     Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__pmem_read_TOP((QData)((IData)(vlSelf->pc)), vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata);
-    vlSelf->inst = vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata;
+    vlSelf->ysyx_22040175_top__DOT__rdata = vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata;
+    vlSelf->inst = (IData)(vlSelf->ysyx_22040175_top__DOT__rdata);
     vlSelf->ysyx_22040175_top__DOT__reg_wen = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 4U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 3U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 2U)))) {
-                        if ((1U & (IData)((vlSelf->inst 
-                                           >> 1U)))) {
-                            if ((1U & (IData)(vlSelf->inst))) {
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 4U)))) {
+                if ((8U & vlSelf->inst)) {
+                    if ((4U & vlSelf->inst)) {
+                        if ((2U & vlSelf->inst)) {
+                            if ((1U & vlSelf->inst)) {
                                 vlSelf->ysyx_22040175_top__DOT__reg_wen = 1U;
                             }
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
-                            if ((0U == (7U & (IData)(
-                                                     (vlSelf->inst 
-                                                      >> 0xcU))))) {
+                } else if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
+                            if ((0U == (7U & (vlSelf->inst 
+                                              >> 0xcU)))) {
                                 vlSelf->ysyx_22040175_top__DOT__reg_wen = 1U;
                             }
                         }
@@ -106,244 +102,218 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x20U & vlSelf->inst)) {
+        if ((0x10U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 3U)))) {
+                if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
                             vlSelf->ysyx_22040175_top__DOT__reg_wen = 1U;
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+                } else if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__reg_wen = 1U;
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-        if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-            if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x10U & vlSelf->inst)) {
+        if ((1U & (~ (vlSelf->inst >> 3U)))) {
+            if ((4U & vlSelf->inst)) {
+                if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__reg_wen = 1U;
                     }
                 }
-            } else if ((1U & (IData)((vlSelf->inst 
-                                      >> 1U)))) {
-                if ((1U & (IData)(vlSelf->inst))) {
+            } else if ((2U & vlSelf->inst)) {
+                if ((1U & vlSelf->inst)) {
                     vlSelf->ysyx_22040175_top__DOT__reg_wen = 1U;
                 }
             }
         }
     }
     vlSelf->ysyx_22040175_top__DOT__reg_waddr = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 4U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 3U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 2U)))) {
-                        if ((1U & (IData)((vlSelf->inst 
-                                           >> 1U)))) {
-                            if ((1U & (IData)(vlSelf->inst))) {
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 4U)))) {
+                if ((8U & vlSelf->inst)) {
+                    if ((4U & vlSelf->inst)) {
+                        if ((2U & vlSelf->inst)) {
+                            if ((1U & vlSelf->inst)) {
                                 vlSelf->ysyx_22040175_top__DOT__reg_waddr 
-                                    = (0x1fU & (IData)(
-                                                       (vlSelf->inst 
-                                                        >> 7U)));
+                                    = (0x1fU & (vlSelf->inst 
+                                                >> 7U));
                             }
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
-                            if ((0U == (7U & (IData)(
-                                                     (vlSelf->inst 
-                                                      >> 0xcU))))) {
+                } else if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
+                            if ((0U == (7U & (vlSelf->inst 
+                                              >> 0xcU)))) {
                                 vlSelf->ysyx_22040175_top__DOT__reg_waddr 
-                                    = (0x1fU & (IData)(
-                                                       (vlSelf->inst 
-                                                        >> 7U)));
+                                    = (0x1fU & (vlSelf->inst 
+                                                >> 7U));
                             }
                         }
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x20U & vlSelf->inst)) {
+        if ((0x10U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 3U)))) {
+                if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
                             vlSelf->ysyx_22040175_top__DOT__reg_waddr 
-                                = (0x1fU & (IData)(
-                                                   (vlSelf->inst 
-                                                    >> 7U)));
+                                = (0x1fU & (vlSelf->inst 
+                                            >> 7U));
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+                } else if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__reg_waddr 
-                            = (0x1fU & (IData)((vlSelf->inst 
-                                                >> 7U)));
+                            = (0x1fU & (vlSelf->inst 
+                                        >> 7U));
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-        if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-            if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x10U & vlSelf->inst)) {
+        if ((1U & (~ (vlSelf->inst >> 3U)))) {
+            if ((4U & vlSelf->inst)) {
+                if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__reg_waddr 
-                            = (0x1fU & (IData)((vlSelf->inst 
-                                                >> 7U)));
+                            = (0x1fU & (vlSelf->inst 
+                                        >> 7U));
                     }
                 }
-            } else if ((1U & (IData)((vlSelf->inst 
-                                      >> 1U)))) {
-                if ((1U & (IData)(vlSelf->inst))) {
+            } else if ((2U & vlSelf->inst)) {
+                if ((1U & vlSelf->inst)) {
                     vlSelf->ysyx_22040175_top__DOT__reg_waddr 
-                        = (0x1fU & (IData)((vlSelf->inst 
-                                            >> 7U)));
+                        = (0x1fU & (vlSelf->inst >> 7U));
                 }
             }
         }
     }
     vlSelf->unknown_code = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-                vlSelf->unknown_code = (IData)(vlSelf->inst);
-            } else if ((1U & (IData)((vlSelf->inst 
-                                      >> 3U)))) {
-                if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (~ (IData)(vlSelf->inst)))) {
-                            vlSelf->unknown_code = (IData)(vlSelf->inst);
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((0x10U & vlSelf->inst)) {
+                vlSelf->unknown_code = vlSelf->inst;
+            } else if ((8U & vlSelf->inst)) {
+                if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & (~ vlSelf->inst))) {
+                            vlSelf->unknown_code = vlSelf->inst;
                         }
                     } else {
-                        vlSelf->unknown_code = (IData)(vlSelf->inst);
+                        vlSelf->unknown_code = vlSelf->inst;
                     }
                 } else {
-                    vlSelf->unknown_code = (IData)(vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
-            } else if ((1U & (IData)((vlSelf->inst 
-                                      >> 2U)))) {
-                if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
-                        if ((0U != (7U & (IData)((vlSelf->inst 
-                                                  >> 0xcU))))) {
-                            vlSelf->unknown_code = (IData)(vlSelf->inst);
+            } else if ((4U & vlSelf->inst)) {
+                if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
+                        if ((0U != (7U & (vlSelf->inst 
+                                          >> 0xcU)))) {
+                            vlSelf->unknown_code = vlSelf->inst;
                         }
                     } else {
-                        vlSelf->unknown_code = (IData)(vlSelf->inst);
+                        vlSelf->unknown_code = vlSelf->inst;
                     }
                 } else {
-                    vlSelf->unknown_code = (IData)(vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
-            } else if ((1U & (IData)((vlSelf->inst 
-                                      >> 1U)))) {
-                if ((1U & (IData)(vlSelf->inst))) {
-                    if ((1U != (7U & (IData)((vlSelf->inst 
-                                              >> 0xcU))))) {
-                        vlSelf->unknown_code = (IData)(vlSelf->inst);
+            } else if ((2U & vlSelf->inst)) {
+                if ((1U & vlSelf->inst)) {
+                    if ((1U != (7U & (vlSelf->inst 
+                                      >> 0xcU)))) {
+                        vlSelf->unknown_code = vlSelf->inst;
                     }
                 } else {
-                    vlSelf->unknown_code = (IData)(vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else {
-                vlSelf->unknown_code = (IData)(vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             }
         } else {
-            vlSelf->unknown_code = (IData)(vlSelf->inst);
+            vlSelf->unknown_code = vlSelf->inst;
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-            if ((1U & (IData)((vlSelf->inst >> 3U)))) {
-                vlSelf->unknown_code = (IData)(vlSelf->inst);
-            } else if ((1U & (IData)((vlSelf->inst 
-                                      >> 2U)))) {
-                if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-                    if ((1U & (~ (IData)(vlSelf->inst)))) {
-                        vlSelf->unknown_code = (IData)(vlSelf->inst);
+    } else if ((0x20U & vlSelf->inst)) {
+        if ((0x10U & vlSelf->inst)) {
+            if ((8U & vlSelf->inst)) {
+                vlSelf->unknown_code = vlSelf->inst;
+            } else if ((4U & vlSelf->inst)) {
+                if ((2U & vlSelf->inst)) {
+                    if ((1U & (~ vlSelf->inst))) {
+                        vlSelf->unknown_code = vlSelf->inst;
                     }
                 } else {
-                    vlSelf->unknown_code = (IData)(vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
-            } else if ((1U & (IData)((vlSelf->inst 
-                                      >> 1U)))) {
-                if ((1U & (IData)(vlSelf->inst))) {
-                    if ((0U != (7U & (IData)((vlSelf->inst 
-                                              >> 0xcU))))) {
-                        vlSelf->unknown_code = (IData)(vlSelf->inst);
+            } else if ((2U & vlSelf->inst)) {
+                if ((1U & vlSelf->inst)) {
+                    if ((0U != (7U & (vlSelf->inst 
+                                      >> 0xcU)))) {
+                        vlSelf->unknown_code = vlSelf->inst;
                     }
                 } else {
-                    vlSelf->unknown_code = (IData)(vlSelf->inst);
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else {
-                vlSelf->unknown_code = (IData)(vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             }
-        } else if ((1U & (IData)((vlSelf->inst >> 3U)))) {
-            vlSelf->unknown_code = (IData)(vlSelf->inst);
-        } else if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-            vlSelf->unknown_code = (IData)(vlSelf->inst);
-        } else if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-            if ((1U & (~ (IData)(vlSelf->inst)))) {
-                vlSelf->unknown_code = (IData)(vlSelf->inst);
+        } else if ((8U & vlSelf->inst)) {
+            vlSelf->unknown_code = vlSelf->inst;
+        } else if ((4U & vlSelf->inst)) {
+            vlSelf->unknown_code = vlSelf->inst;
+        } else if ((2U & vlSelf->inst)) {
+            if ((1U & (~ vlSelf->inst))) {
+                vlSelf->unknown_code = vlSelf->inst;
             }
         } else {
-            vlSelf->unknown_code = (IData)(vlSelf->inst);
+            vlSelf->unknown_code = vlSelf->inst;
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 3U)))) {
-            vlSelf->unknown_code = (IData)(vlSelf->inst);
-        } else if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-            if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-                if ((1U & (~ (IData)(vlSelf->inst)))) {
-                    vlSelf->unknown_code = (IData)(vlSelf->inst);
+    } else if ((0x10U & vlSelf->inst)) {
+        if ((8U & vlSelf->inst)) {
+            vlSelf->unknown_code = vlSelf->inst;
+        } else if ((4U & vlSelf->inst)) {
+            if ((2U & vlSelf->inst)) {
+                if ((1U & (~ vlSelf->inst))) {
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else {
-                vlSelf->unknown_code = (IData)(vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             }
-        } else if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-            if ((1U & (IData)(vlSelf->inst))) {
-                if ((0U != (7U & (IData)((vlSelf->inst 
-                                          >> 0xcU))))) {
-                    vlSelf->unknown_code = (IData)(vlSelf->inst);
+        } else if ((2U & vlSelf->inst)) {
+            if ((1U & vlSelf->inst)) {
+                if ((0U != (7U & (vlSelf->inst >> 0xcU)))) {
+                    vlSelf->unknown_code = vlSelf->inst;
                 }
             } else {
-                vlSelf->unknown_code = (IData)(vlSelf->inst);
+                vlSelf->unknown_code = vlSelf->inst;
             }
         } else {
-            vlSelf->unknown_code = (IData)(vlSelf->inst);
+            vlSelf->unknown_code = vlSelf->inst;
         }
     } else {
-        vlSelf->unknown_code = (IData)(vlSelf->inst);
+        vlSelf->unknown_code = vlSelf->inst;
     }
     vlSelf->ysyx_22040175_top__DOT__branch = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 4U))))) {
-                if ((1U & (~ (IData)((vlSelf->inst 
-                                      >> 3U))))) {
-                    if ((1U & (~ (IData)((vlSelf->inst 
-                                          >> 2U))))) {
-                        if ((1U & (IData)((vlSelf->inst 
-                                           >> 1U)))) {
-                            if ((1U & (IData)(vlSelf->inst))) {
-                                if ((1U == (7U & (IData)(
-                                                         (vlSelf->inst 
-                                                          >> 0xcU))))) {
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 4U)))) {
+                if ((1U & (~ (vlSelf->inst >> 3U)))) {
+                    if ((1U & (~ (vlSelf->inst >> 2U)))) {
+                        if ((2U & vlSelf->inst)) {
+                            if ((1U & vlSelf->inst)) {
+                                if ((1U == (7U & (vlSelf->inst 
+                                                  >> 0xcU)))) {
                                     vlSelf->ysyx_22040175_top__DOT__branch = 1U;
                                 }
                             }
@@ -354,27 +324,22 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
         }
     }
     vlSelf->ysyx_22040175_top__DOT__jalr = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 4U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 3U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 2U)))) {
-                        if ((1U & (IData)((vlSelf->inst 
-                                           >> 1U)))) {
-                            if ((1U & (IData)(vlSelf->inst))) {
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 4U)))) {
+                if ((8U & vlSelf->inst)) {
+                    if ((4U & vlSelf->inst)) {
+                        if ((2U & vlSelf->inst)) {
+                            if ((1U & vlSelf->inst)) {
                                 vlSelf->ysyx_22040175_top__DOT__jalr = 0U;
                             }
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
-                            if ((0U == (7U & (IData)(
-                                                     (vlSelf->inst 
-                                                      >> 0xcU))))) {
+                } else if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
+                            if ((0U == (7U & (vlSelf->inst 
+                                              >> 0xcU)))) {
                                 vlSelf->ysyx_22040175_top__DOT__jalr = 1U;
                             }
                         }
@@ -384,27 +349,22 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
         }
     }
     vlSelf->ysyx_22040175_top__DOT__jump = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 4U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 3U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 2U)))) {
-                        if ((1U & (IData)((vlSelf->inst 
-                                           >> 1U)))) {
-                            if ((1U & (IData)(vlSelf->inst))) {
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 4U)))) {
+                if ((8U & vlSelf->inst)) {
+                    if ((4U & vlSelf->inst)) {
+                        if ((2U & vlSelf->inst)) {
+                            if ((1U & vlSelf->inst)) {
                                 vlSelf->ysyx_22040175_top__DOT__jump = 1U;
                             }
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
-                            if ((0U == (7U & (IData)(
-                                                     (vlSelf->inst 
-                                                      >> 0xcU))))) {
+                } else if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
+                            if ((0U == (7U & (vlSelf->inst 
+                                              >> 0xcU)))) {
                                 vlSelf->ysyx_22040175_top__DOT__jump = 1U;
                             }
                         }
@@ -413,85 +373,75 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
             }
         }
     }
-    if ((0x100073U == (IData)(vlSelf->inst))) {
+    if ((0x100073U == vlSelf->inst)) {
         Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__ebreak_TOP();
         vlSelf->ysyx_22040175_top__DOT__ebreak_flag = 1U;
     }
     vlSelf->ysyx_22040175_top__DOT__alu_op = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 4U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 3U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 2U)))) {
-                        if ((1U & (IData)((vlSelf->inst 
-                                           >> 1U)))) {
-                            if ((1U & (IData)(vlSelf->inst))) {
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 4U)))) {
+                if ((8U & vlSelf->inst)) {
+                    if ((4U & vlSelf->inst)) {
+                        if ((2U & vlSelf->inst)) {
+                            if ((1U & vlSelf->inst)) {
                                 vlSelf->ysyx_22040175_top__DOT__alu_op = 3U;
                             }
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
-                            if ((0U == (7U & (IData)(
-                                                     (vlSelf->inst 
-                                                      >> 0xcU))))) {
+                } else if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
+                            if ((0U == (7U & (vlSelf->inst 
+                                              >> 0xcU)))) {
                                 vlSelf->ysyx_22040175_top__DOT__alu_op = 3U;
                             }
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
-                        if ((1U == (7U & (IData)((vlSelf->inst 
-                                                  >> 0xcU))))) {
+                } else if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
+                        if ((1U == (7U & (vlSelf->inst 
+                                          >> 0xcU)))) {
                             vlSelf->ysyx_22040175_top__DOT__alu_op = 4U;
                         }
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x20U & vlSelf->inst)) {
+        if ((0x10U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 3U)))) {
+                if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
                             vlSelf->ysyx_22040175_top__DOT__alu_op = 3U;
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
-                        if ((0U == (7U & (IData)((vlSelf->inst 
-                                                  >> 0xcU))))) {
+                } else if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
+                        if ((0U == (7U & (vlSelf->inst 
+                                          >> 0xcU)))) {
                             vlSelf->ysyx_22040175_top__DOT__alu_op 
-                                = ((0U == (0x7fU & (IData)(
-                                                           (vlSelf->inst 
-                                                            >> 0x19U))))
+                                = ((0U == (vlSelf->inst 
+                                           >> 0x19U))
                                     ? 3U : 4U);
                         }
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-        if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-            if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x10U & vlSelf->inst)) {
+        if ((1U & (~ (vlSelf->inst >> 3U)))) {
+            if ((4U & vlSelf->inst)) {
+                if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__alu_op = 3U;
                     }
                 }
-            } else if ((1U & (IData)((vlSelf->inst 
-                                      >> 1U)))) {
-                if ((1U & (IData)(vlSelf->inst))) {
-                    if ((0U == (7U & (IData)((vlSelf->inst 
-                                              >> 0xcU))))) {
+            } else if ((2U & vlSelf->inst)) {
+                if ((1U & vlSelf->inst)) {
+                    if ((0U == (7U & (vlSelf->inst 
+                                      >> 0xcU)))) {
                         vlSelf->ysyx_22040175_top__DOT__alu_op = 3U;
                     }
                 }
@@ -499,165 +449,141 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
         }
     }
     vlSelf->ysyx_22040175_top__DOT__reg1_raddr = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 4U))))) {
-                if ((1U & (~ (IData)((vlSelf->inst 
-                                      >> 3U))))) {
-                    if ((1U & (~ (IData)((vlSelf->inst 
-                                          >> 2U))))) {
-                        if ((1U & (IData)((vlSelf->inst 
-                                           >> 1U)))) {
-                            if ((1U & (IData)(vlSelf->inst))) {
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 4U)))) {
+                if ((1U & (~ (vlSelf->inst >> 3U)))) {
+                    if ((1U & (~ (vlSelf->inst >> 2U)))) {
+                        if ((2U & vlSelf->inst)) {
+                            if ((1U & vlSelf->inst)) {
                                 vlSelf->ysyx_22040175_top__DOT__reg1_raddr 
-                                    = (0x1fU & (IData)(
-                                                       (vlSelf->inst 
-                                                        >> 0xfU)));
+                                    = (0x1fU & (vlSelf->inst 
+                                                >> 0xfU));
                             }
                         }
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x20U & vlSelf->inst)) {
+        if ((0x10U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 3U)))) {
+                if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
                             vlSelf->ysyx_22040175_top__DOT__reg1_raddr = 0U;
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+                } else if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__reg1_raddr 
-                            = (0x1fU & (IData)((vlSelf->inst 
-                                                >> 0xfU)));
+                            = (0x1fU & (vlSelf->inst 
+                                        >> 0xfU));
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-        if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-            if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x10U & vlSelf->inst)) {
+        if ((1U & (~ (vlSelf->inst >> 3U)))) {
+            if ((4U & vlSelf->inst)) {
+                if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__reg1_raddr = 0U;
                     }
                 }
-            } else if ((1U & (IData)((vlSelf->inst 
-                                      >> 1U)))) {
-                if ((1U & (IData)(vlSelf->inst))) {
+            } else if ((2U & vlSelf->inst)) {
+                if ((1U & vlSelf->inst)) {
                     vlSelf->ysyx_22040175_top__DOT__reg1_raddr 
-                        = (0x1fU & (IData)((vlSelf->inst 
-                                            >> 0xfU)));
+                        = (0x1fU & (vlSelf->inst >> 0xfU));
                 }
             }
         }
     }
     vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 4U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 3U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 2U)))) {
-                        if ((1U & (IData)((vlSelf->inst 
-                                           >> 1U)))) {
-                            if ((1U & (IData)(vlSelf->inst))) {
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 4U)))) {
+                if ((8U & vlSelf->inst)) {
+                    if ((4U & vlSelf->inst)) {
+                        if ((2U & vlSelf->inst)) {
+                            if ((1U & vlSelf->inst)) {
                                 vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 2U;
                             }
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
-                            if ((0U == (7U & (IData)(
-                                                     (vlSelf->inst 
-                                                      >> 0xcU))))) {
+                } else if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
+                            if ((0U == (7U & (vlSelf->inst 
+                                              >> 0xcU)))) {
                                 vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 2U;
                             }
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+                } else if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 0U;
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x20U & vlSelf->inst)) {
+        if ((0x10U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 3U)))) {
+                if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
                             vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 1U;
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+                } else if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 0U;
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-        if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-            if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x10U & vlSelf->inst)) {
+        if ((1U & (~ (vlSelf->inst >> 3U)))) {
+            if ((4U & vlSelf->inst)) {
+                if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 3U;
                     }
                 }
-            } else if ((1U & (IData)((vlSelf->inst 
-                                      >> 1U)))) {
-                if ((1U & (IData)(vlSelf->inst))) {
+            } else if ((2U & vlSelf->inst)) {
+                if ((1U & vlSelf->inst)) {
                     vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 1U;
                 }
             }
         }
     }
     vlSelf->ysyx_22040175_top__DOT__reg2_raddr = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 4U))))) {
-                if ((1U & (~ (IData)((vlSelf->inst 
-                                      >> 3U))))) {
-                    if ((1U & (~ (IData)((vlSelf->inst 
-                                          >> 2U))))) {
-                        if ((1U & (IData)((vlSelf->inst 
-                                           >> 1U)))) {
-                            if ((1U & (IData)(vlSelf->inst))) {
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 4U)))) {
+                if ((1U & (~ (vlSelf->inst >> 3U)))) {
+                    if ((1U & (~ (vlSelf->inst >> 2U)))) {
+                        if ((2U & vlSelf->inst)) {
+                            if ((1U & vlSelf->inst)) {
                                 vlSelf->ysyx_22040175_top__DOT__reg2_raddr 
-                                    = (0x1fU & (IData)(
-                                                       (vlSelf->inst 
-                                                        >> 0x14U)));
+                                    = (0x1fU & (vlSelf->inst 
+                                                >> 0x14U));
                             }
                         }
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-                if ((1U & (~ (IData)((vlSelf->inst 
-                                      >> 2U))))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x20U & vlSelf->inst)) {
+        if ((0x10U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 3U)))) {
+                if ((1U & (~ (vlSelf->inst >> 2U)))) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
                             vlSelf->ysyx_22040175_top__DOT__reg2_raddr 
-                                = (0x1fU & (IData)(
-                                                   (vlSelf->inst 
-                                                    >> 0x14U)));
+                                = (0x1fU & (vlSelf->inst 
+                                            >> 0x14U));
                         }
                     }
                 }
@@ -665,57 +591,50 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
         }
     }
     vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 0U;
-    if ((1U & (IData)((vlSelf->inst >> 6U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 4U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 3U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 2U)))) {
-                        if ((1U & (IData)((vlSelf->inst 
-                                           >> 1U)))) {
-                            if ((1U & (IData)(vlSelf->inst))) {
+    if ((0x40U & vlSelf->inst)) {
+        if ((0x20U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 4U)))) {
+                if ((8U & vlSelf->inst)) {
+                    if ((4U & vlSelf->inst)) {
+                        if ((2U & vlSelf->inst)) {
+                            if ((1U & vlSelf->inst)) {
                                 vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 3U;
                             }
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
-                            if ((0U == (7U & (IData)(
-                                                     (vlSelf->inst 
-                                                      >> 0xcU))))) {
+                } else if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
+                            if ((0U == (7U & (vlSelf->inst 
+                                              >> 0xcU)))) {
                                 vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 0U;
                             }
                         }
                     }
-                } else if ((1U & (IData)((vlSelf->inst 
-                                          >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+                } else if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 2U;
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 5U)))) {
-        if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-            if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-                if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                    if ((1U & (IData)((vlSelf->inst 
-                                       >> 1U)))) {
-                        if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x20U & vlSelf->inst)) {
+        if ((0x10U & vlSelf->inst)) {
+            if ((1U & (~ (vlSelf->inst >> 3U)))) {
+                if ((4U & vlSelf->inst)) {
+                    if ((2U & vlSelf->inst)) {
+                        if ((1U & vlSelf->inst)) {
                             vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 4U;
                         }
                     }
                 }
             }
         }
-    } else if ((1U & (IData)((vlSelf->inst >> 4U)))) {
-        if ((1U & (~ (IData)((vlSelf->inst >> 3U))))) {
-            if ((1U & (IData)((vlSelf->inst >> 2U)))) {
-                if ((1U & (IData)((vlSelf->inst >> 1U)))) {
-                    if ((1U & (IData)(vlSelf->inst))) {
+    } else if ((0x10U & vlSelf->inst)) {
+        if ((1U & (~ (vlSelf->inst >> 3U)))) {
+            if ((4U & vlSelf->inst)) {
+                if ((2U & vlSelf->inst)) {
+                    if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 4U;
                     }
                 }
@@ -736,30 +655,24 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                 & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
                                                 ? (
                                                    ((- (IData)(
-                                                               (1U 
-                                                                & (IData)(
-                                                                          (vlSelf->inst 
-                                                                           >> 0x1fU))))) 
+                                                               (vlSelf->inst 
+                                                                >> 0x1fU))) 
                                                     << 7U) 
                                                    | (0x7fU 
-                                                      & (IData)(vlSelf->inst)))
+                                                      & vlSelf->inst))
                                                 : (
                                                    (1U 
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
                                                     ? 
                                                    (((- (IData)(
-                                                                (1U 
-                                                                 & (IData)(
-                                                                           (vlSelf->inst 
-                                                                            >> 0x1fU))))) 
+                                                                (vlSelf->inst 
+                                                                 >> 0x1fU))) 
                                                      << 7U) 
                                                     | (0x7fU 
-                                                       & (IData)(vlSelf->inst)))
+                                                       & vlSelf->inst))
                                                     : 
-                                                   ((IData)(
-                                                            (vlSelf->inst 
-                                                             >> 0xcU)) 
-                                                    << 0xcU)))
+                                                   (0xfffff000U 
+                                                    & vlSelf->inst)))
                                             : ((2U 
                                                 & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
                                                 ? (
@@ -767,78 +680,52 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
                                                     ? 
                                                    (((- (IData)(
-                                                                (1U 
-                                                                 & (IData)(
-                                                                           (vlSelf->inst 
-                                                                            >> 0x1fU))))) 
+                                                                (vlSelf->inst 
+                                                                 >> 0x1fU))) 
                                                      << 0x14U) 
                                                     | ((0xff000U 
-                                                        & ((IData)(
-                                                                   (vlSelf->inst 
-                                                                    >> 0xcU)) 
-                                                           << 0xcU)) 
+                                                        & vlSelf->inst) 
                                                        | ((0x800U 
-                                                           & ((IData)(
-                                                                      (vlSelf->inst 
-                                                                       >> 0x14U)) 
-                                                              << 0xbU)) 
+                                                           & (vlSelf->inst 
+                                                              >> 9U)) 
                                                           | (0x7feU 
-                                                             & ((IData)(
-                                                                        (vlSelf->inst 
-                                                                         >> 0x15U)) 
-                                                                << 1U)))))
+                                                             & (vlSelf->inst 
+                                                                >> 0x14U)))))
                                                     : 
                                                    (((- (IData)(
-                                                                (1U 
-                                                                 & (IData)(
-                                                                           (vlSelf->inst 
-                                                                            >> 0x1fU))))) 
+                                                                (vlSelf->inst 
+                                                                 >> 0x1fU))) 
                                                      << 0xcU) 
                                                     | ((0x800U 
-                                                        & ((IData)(
-                                                                   (vlSelf->inst 
-                                                                    >> 7U)) 
-                                                           << 0xbU)) 
+                                                        & (vlSelf->inst 
+                                                           << 4U)) 
                                                        | ((0x7e0U 
-                                                           & ((IData)(
-                                                                      (vlSelf->inst 
-                                                                       >> 0x19U)) 
-                                                              << 5U)) 
+                                                           & (vlSelf->inst 
+                                                              >> 0x14U)) 
                                                           | (0x1eU 
-                                                             & ((IData)(
-                                                                        (vlSelf->inst 
-                                                                         >> 8U)) 
-                                                                << 1U))))))
+                                                             & (vlSelf->inst 
+                                                                >> 7U))))))
                                                 : (
                                                    (1U 
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
                                                     ? 
                                                    (((- (IData)(
-                                                                (1U 
-                                                                 & (IData)(
-                                                                           (vlSelf->inst 
-                                                                            >> 0x1fU))))) 
+                                                                (vlSelf->inst 
+                                                                 >> 0x1fU))) 
                                                      << 0xcU) 
                                                     | ((0xfe0U 
-                                                        & ((IData)(
-                                                                   (vlSelf->inst 
-                                                                    >> 0x19U)) 
-                                                           << 5U)) 
+                                                        & (vlSelf->inst 
+                                                           >> 0x14U)) 
                                                        | (0x1fU 
-                                                          & (IData)(
-                                                                    (vlSelf->inst 
-                                                                     >> 7U)))))
+                                                          & (vlSelf->inst 
+                                                             >> 7U))))
                                                     : 
                                                    (((- (IData)(
-                                                                (1U 
-                                                                 & (IData)(
-                                                                           (vlSelf->inst 
-                                                                            >> 0x1fU))))) 
+                                                                (vlSelf->inst 
+                                                                 >> 0x1fU))) 
                                                      << 0xcU) 
-                                                    | (0xfffU 
-                                                       & (IData)(
-                                                                 (vlSelf->inst 
-                                                                  >> 0x14U)))))));
+                                                    | (vlSelf->inst 
+                                                       >> 0x14U)))));
     vlSelf->ysyx_22040175_top__DOT__alu_src2 = ((2U 
                                                  & (IData)(vlSelf->ysyx_22040175_top__DOT__alu_src_sel))
                                                  ? vlSelf->pc
