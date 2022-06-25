@@ -19,10 +19,10 @@ module reg_file (
 reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]; 
 
 // register write
-/*always @(posedge clk or negedge rst_n) begin
+always @(posedge clk or negedge rst_n) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)) // x0 read only
         reg_f[reg_waddr] <= reg_wdata; 
-end*/
+end
 
 // register 1 read
 always @(*) begin
