@@ -70,7 +70,7 @@ extern "C" void pmem_read(long long raddr,long long *rdata){
   if(raddr >= CONFIG_MBASE){
     *rdata = host_read(guest_to_host(raddr), 8);
     printf("raddr = 0x%llx\n",raddr);
-    printf("rdata = 0x%lx\n",*rdata);
+    printf("rdata = 0x%llx\n",*rdata);
   }
   else{
     *rdata = 0;
