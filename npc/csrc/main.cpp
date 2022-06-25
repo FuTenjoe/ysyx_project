@@ -155,9 +155,9 @@ int main(int argc, char **argv, char **env) {
       if(main_time >= 3){
         difftest_step(top->pc);
       }
-      printf("PC: 0x%0lx; Inst: 0x%x;\n",top->pc,top->inst);
+      printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
       if(unknown_code_flag || top->unknown_code){
-        printf("Warning : An unknoen Inst!pc : %lxInst: %x\n", top->pc,top->inst);
+        printf("Warning : An unknoen Inst!pc : %xInst: %x\n", top->pc,top->inst);
         npc_state = NPC_ABORT;
         break;
       }
@@ -165,9 +165,9 @@ int main(int argc, char **argv, char **env) {
     }
     if(npc_state == NPC_ABORT){
       printf("False:ABORT!The false PCis 0x%0lx\n",cpu.pc);
-      break
+      break;
     }
-    cpu.pc -> top->pc;
+    cpu.pc = top->pc;
   
     top->eval();
     tfp->dump(main_time);
