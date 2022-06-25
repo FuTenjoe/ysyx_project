@@ -120,7 +120,7 @@ alu u_alu_0(
 );
 
 //wire [63:0] rdata;
-assign inst = rdata[31:0];
+
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 //import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 wire [63:0] rdata;
@@ -128,6 +128,6 @@ always @(*) begin
   pmem_read(pc, rdata);
   
 end
-
+assign inst = rdata[31:0];
 
 endmodule
