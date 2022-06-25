@@ -238,7 +238,7 @@ inline word_t host_read(void *addr, int len) {
     default: {printf("host_to_read is error !\n");assert(0);return 4096;};
   }
 }
-static inline void host_write(void *addr, int len,word_t data){
+static inline void host_write(void *addr, int len,long long data){
   printf("host_write1 ok!\n");
   switch (len){
     case 1: *(uint8_t *)addr = data; return;
