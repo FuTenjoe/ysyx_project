@@ -184,7 +184,7 @@ int main(int argc, char **argv, char **env) {
      }
      if(top->clk==0){
         a= a+1;
-        if (a>3){
+        if (a>2){
        //printf("a =%d \n",a);
        
          difftest_step(top->pc);
