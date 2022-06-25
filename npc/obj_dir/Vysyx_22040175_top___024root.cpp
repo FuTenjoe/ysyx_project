@@ -313,7 +313,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
                         }
                     } else if ((2U & vlSelf->inst)) {
                         if ((1U & vlSelf->inst)) {
-                            vlSelf->ysyx_22040175_top__DOT__wmask = 0xfU;
+                            vlSelf->ysyx_22040175_top__DOT__wmask = 0xffU;
                         }
                     }
                 }
