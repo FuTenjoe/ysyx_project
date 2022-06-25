@@ -244,7 +244,7 @@ static inline void host_write(void *addr, int len,word_t data){
     case 1: *(uint8_t *)addr = data; return;
     case 2: *(uint16_t *)addr = data; return;
     case 4: *(uint32_t *)addr = data;return;
-    case 8:printf("addr=%llx!\n",*(uint64_t *)addr); *(uint64_t *)addr = data;printf("host_write ok!\n");return;
+    case 8: *(uint64_t *)addr = data;printf("host_write ok!\n");return;
     default:{printf("host_write is error !\n"); assert(0);};
   }
 }
