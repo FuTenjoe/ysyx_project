@@ -18,7 +18,8 @@ module ctrl (
     output [`CPU_WIDTH-1:0]            unknown_code,
     output    jalr,
     output ebreak_flag,
-    output reg [7:0]wmask
+    output reg [7:0]wmask,
+    output reg s_flag,
 );
 
 wire [`OPCODE_WIDTH-1:0] opcode = inst[`OPCODE_WIDTH-1:0];          //  [6:0]
@@ -43,6 +44,7 @@ always @(*) begin
     unknown_code = 32'd0;
     ebreak_flag = 1'd0;
     wmask = 8'd0;
+    s_flag = 1'd0;
     case (opcode)
         `INST_TYPE_R: begin                         
             reg_wen     = 1'b1;
@@ -50,9 +52,12 @@ always @(*) begin
             reg2_raddr  = rs2;
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_REG;
+            
             case (funct3)
-                `INST_ADD_SUB: 
+                `INST_ADD_SUB: begin
                     alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
+                    s_flag = 1'd0;
+                end
                 default:unknown_code = inst;
             endcase
         end
@@ -63,8 +68,10 @@ always @(*) begin
             alu_src_sel = `ALU_SRC_IMM;
             
             case (funct3)
-                `INST_ADDI: 
+                `INST_ADDI: begin
                     alu_op = `ALU_ADD; 
+                    s_flag = 1'd0;
+                end
                 default:unknown_code = inst;
             endcase
         end
@@ -77,12 +84,13 @@ always @(*) begin
                 `INST_BNE: begin
                     branch     = 1'b1;
                     alu_op     = `ALU_SUB;
+                    s_flag = 1'd0;
                 end
                  default:unknown_code = inst;
             endcase
         end
         7'b0100011:begin    //sd
-         /*  case(funct3)
+           case(funct3)
             3'b011:begin
             jump        = 1'b0;
             reg_wen     = 1'b1;
@@ -93,9 +101,11 @@ always @(*) begin
             imm_gen_op  = `INST_TYPE_S;
             alu_op      = `ALU_ADD;
             alu_src_sel = `ALU_SRC_REG;
+            wmask =  8'b11111111;
+            s_flag = 1'd1;
             end
             default:unknown_code = inst;
-            endcase*/
+            endcase
         end
         `INST_JAL: begin // only jal 
             jump        = 1'b1;
@@ -105,6 +115,7 @@ always @(*) begin
             imm_gen_op  = `IMM_GEN_J;
             alu_op      = `ALU_ADD;
             alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
+            s_flag = 1'd0;
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
@@ -113,6 +124,7 @@ always @(*) begin
                 imm_gen_op  = `IMM_GEN_U;
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM; // x0 + imm
+                s_flag = 1'd0;
         end
         `INST_AUIPC:begin //only auipc
                reg_wen     = 1'b1;
@@ -121,7 +133,8 @@ always @(*) begin
                 imm_gen_op  = `IMM_GEN_U;
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM_PC; // x0 + imm
-                wmask = 8'b11111111;
+                s_flag = 1'd0;
+               // wmask = 8'b11111111;
         end
         7'b1100111:begin
             case(funct3)  
@@ -133,6 +146,7 @@ always @(*) begin
                 imm_gen_op  = `IMM_GEN_I;
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
+                s_flag = 1'd0;
                 end
                 default:unknown_code = inst;
             endcase

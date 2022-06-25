@@ -42,6 +42,7 @@ wire jalr;
 wire ebreak_flag;
 assign reg_wdata = alu_res;
 wire [7:0]wmask;
+wire s_flag;
 pc_reg u_pc_reg_0(
     .clk                            ( clk                           ),
     .rst_n                          ( rst_n                         ),
@@ -79,7 +80,8 @@ ctrl u_ctrl_0(
     .unknown_code           (unknown_code),
     .jalr(jalr),
     .ebreak_flag(ebreak_flag)
-    //.wmask(wmask)
+    .wmask(wmask)
+    .s_flag(s_flag)
 );
 
 reg_file u_reg_file_0(
@@ -92,7 +94,8 @@ reg_file u_reg_file_0(
     .reg2_raddr                     ( reg2_raddr                    ),
     .reg1_rdata                     ( reg1_rdata                    ),
     .reg2_rdata                     ( reg2_rdata                    )
-    //.wmask (wmask)
+    .wmask (wmask),
+    .s_flag(s_flag)
 );
 
 imm_gen u_imm_gen_0(
