@@ -19,10 +19,10 @@ module reg_file (
 reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]; 
 
 // register write
-always @(posedge clk or negedge rst_n) begin
+/*always @(posedge clk or negedge rst_n) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)) // x0 read only
         reg_f[reg_waddr] <= reg_wdata; 
-end
+end*/
 
 // register 1 read
 always @(*) begin
@@ -44,10 +44,10 @@ initial set_gpr_ptr(reg_f);  // rf为通用寄存器的二维数组变量
 
 import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
-/*always @(*) begin
+always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)) 
         pmem_write(reg_waddr, reg_wdata, wmask);
-end*/
+end
 
 
 endmodule
