@@ -121,6 +121,7 @@ always @(*) begin
                 imm_gen_op  = `IMM_GEN_U;
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM_PC; // x0 + imm
+                wmask = 8'b11111111;
         end
         7'b1100111:begin
             case(funct3)  
