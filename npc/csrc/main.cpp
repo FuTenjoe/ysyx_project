@@ -109,7 +109,7 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   //long long *rdata;
   //*rdata= host_read(guest_to_host(waddr), 8);
   printf("ok");
-  *rdata = wdata;
+ // *rdata = wdata;
   host_write(guest_to_host(waddr),len,wdata);
 }
 
