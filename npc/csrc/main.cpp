@@ -69,7 +69,7 @@ static inline void host_write(void *addr, int len, word_t data);
 extern "C" void pmem_read(long long raddr,long long *rdata){
   if(raddr >= CONFIG_MBASE){
     *rdata = host_read(guest_to_host(raddr& ~0x7ull), 8);
-    printf("rdata = 0x%lx\n",*rdata);
+    //printf("rdata = 0x%lx\n",*rdata);
   }
   else{
     *rdata = 0;
@@ -124,7 +124,8 @@ const vluint64_t max_sim_time = 2000;
 //Vysyx_22040175_top *top; 
 int main(int argc, char **argv, char **env) {
   contextp -> commandArgs(argc,argv);
-  Verilated::traceEverOn(true);
+  Verilated::traceEverO
+  n(true);
   top -> trace(tfp,99);
   tfp ->open("Vysyx_22040175_TOP.vcd");
   char * img_file = *(argv + 1);
