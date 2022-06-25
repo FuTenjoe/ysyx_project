@@ -184,6 +184,8 @@ int main(int argc, char **argv, char **env) {
      }
      if(top->clk==0){
         a= a+1;
+         printf("main_time = %d\n",i);
+      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
         if (a>2){
        //printf("a =%d \n",a);
        
