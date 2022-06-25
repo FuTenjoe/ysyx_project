@@ -136,7 +136,7 @@ int main(int argc, char **argv, char **env) {
   npc_state = NPC_RUNNING;
   //while(!contextp -> gotFinish()){
   while(main_time < 10){
-     printf("ebreak: program is finished !\n");
+    
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
@@ -144,6 +144,7 @@ int main(int argc, char **argv, char **env) {
     }
     if(main_time < 4){
       top->rst = 1;
+      printf("main_time = %ld\n",main_time);
       //init_difftest(img_size,port);
     }
     else{
