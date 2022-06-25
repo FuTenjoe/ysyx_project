@@ -104,6 +104,8 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   }
   printf("waddr = %llx\n",waddr);
   printf("addr = %llx\n",addr);
+  printf("len = %llx\n",len);
+  printf("wdata = %llx\n",wdata);
   host_write(guest_to_host(addr),len,wdata);
 }
 
