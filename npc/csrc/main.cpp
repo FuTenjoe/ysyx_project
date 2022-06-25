@@ -62,8 +62,8 @@ void init_difftest(long img_size, int port);
 void difftest_step(vaddr_t pc);
 static void checkregs(CPU_state *ref, vaddr_t pc);
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc);
-static inline void host_write(void *addr, int len, word_t data);
-
+//static inline void host_write(void *addr, int len, word_t data);
+static inline void host_write(void *addr, int len, long long data);
 
 //加为DPIC函数
 extern "C" void pmem_read(long long raddr,long long *rdata){
