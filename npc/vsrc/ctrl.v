@@ -19,7 +19,7 @@ module ctrl (
     output    jalr,
     output ebreak_flag,
     output reg [7:0]wmask,
-    output reg s_flag,
+    output reg s_flag
 );
 
 wire [`OPCODE_WIDTH-1:0] opcode = inst[`OPCODE_WIDTH-1:0];          //  [6:0]
