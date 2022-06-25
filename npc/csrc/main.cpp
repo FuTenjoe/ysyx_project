@@ -135,6 +135,7 @@ int main(int argc, char **argv, char **env) {
   npc_state = NPC_RUNNING;
   //while(!contextp -> gotFinish()){
     while(main_time <15){
+      top->clk = 1;
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
@@ -148,13 +149,19 @@ int main(int argc, char **argv, char **env) {
       top ->rst = 0;
     }
     if(main_time%2 == 0){
-      top ->clk = 0;
+      for(int clk = 0;clk <2;clk++){
+          top ->clk = !top ->clk;
+      }
+      
       top ->eval();
       printf("main_time = %ld\n",main_time);
       printf("PC: 0x%0x; Inst: 0x%x;\n",top->pc,top->inst);
       printf("npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",2,cpu_gpr[2],top->inst);
     }
     if(main_time %2 == 1){
+      for(int clk = 0;clk <2;clk++){
+          top ->clk = !top ->clk;
+      }
       printf("main_time = %ld\n",main_time);
       top ->clk = 1;
       top ->eval();
