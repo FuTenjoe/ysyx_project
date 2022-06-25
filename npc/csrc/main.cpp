@@ -9,7 +9,7 @@
 #include <dlfcn.h>  //动态链接库相关函数
 //加run和target
 #define CONFIG_MBASE 0x80000000
-#define CONFIG_MSIZE 0X2800000
+#define CONFIG_MSIZE 0X28000000
 
 typedef uint64_t word_t;
 typedef  uint32_t paddr_t;
@@ -106,10 +106,7 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   printf("waddr = %llx\n",waddr);
   printf("wdata = %llx\n",wdata);
   printf("len = %d\n",len);
-  //long long *rdata;
-  //*rdata= host_read(guest_to_host(waddr), 8);
-  printf("ok");
- // *rdata = wdata;
+  
   host_write(guest_to_host(waddr),len,wdata);
 }
 
