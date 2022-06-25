@@ -126,7 +126,8 @@ import "DPI-C" function void pmem_read(input longint raddr, output longint rdata
 wire [63:0] rdata;
 always @(*) begin
   pmem_read(pc, rdata);
-  inst = rdata[31:0];
+  
 end
+assign inst = rdata[31:0];
 
 endmodule
