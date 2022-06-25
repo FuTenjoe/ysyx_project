@@ -132,7 +132,7 @@ int main(int argc, char **argv, char **env) {
   long img_size = load_img(img_file);
   npc_state = NPC_RUNNING;
   //while(!contextp -> gotFinish()){
-    while(main_time <40){
+    while(main_time <10){
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
