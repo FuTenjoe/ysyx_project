@@ -3,7 +3,7 @@
 module reg_file (
     input                            clk,
     input                            rst_n,
-
+    
     input                            reg_wen,    // register write enable
     input      [`REG_ADDR_WIDTH-1:0] reg_waddr,  // register write address
     input      [`CPU_WIDTH-1:0]      reg_wdata,  // register write data
@@ -12,6 +12,8 @@ module reg_file (
     input      [`REG_ADDR_WIDTH-1:0] reg2_raddr, // register 2 read address
     output reg [`CPU_WIDTH-1:0]      reg1_rdata, // register 1 read data
     output reg [`CPU_WIDTH-1:0]      reg2_rdata  // register 2 read data
+    input [31:0] pc,
+    output [63:0] inst
 );
 
 reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]; 
