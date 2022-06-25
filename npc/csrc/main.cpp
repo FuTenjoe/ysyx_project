@@ -93,7 +93,7 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
     //16bit
     case 0x3: len = 2;break;
     case 0xc: len = 2; addr = addr + 2;break;
-    case 0x30: len 2; addr = addr + 4;break;
+    case 0x30: len = 2; addr = addr + 4;break;
     case -64: len = 2; addr = addr + 6;break;
      //32bit
      case 0xF: len = 4;break;

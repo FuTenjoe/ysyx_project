@@ -3,13 +3,13 @@
 module  ysyx_22040175_top(
 	input                         clk,
     input                         rst,
-	//input [31:0]                 inst,
-	//output[`CPU_WIDTH-1:0]        pc,
+	output [63:0]                 inst,
+	output[31:0]        pc,
     output [`CPU_WIDTH-1:0]       unknown_code
    // output[`CPU_WIDTH-1:0]        next_pc
 );
-wire  [63:0]                 inst;
-wire [31:0]        pc;
+//wire  [63:0]                 inst;
+//wire [31:0]        pc;
 wire rst_n;
 assign rst_n = !rst;
 wire                         ena;
