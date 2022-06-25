@@ -135,7 +135,7 @@ int main(int argc, char **argv, char **env) {
   npc_state = NPC_RUNNING;
   //while(!contextp -> gotFinish()){
     while(main_time <15){
-      top->clk = 1;
+      top->clk = 0;
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
       npc_state = NPC_END;
