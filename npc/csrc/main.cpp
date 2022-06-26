@@ -137,7 +137,7 @@ int main(int argc, char **argv, char **env) {
   int clk;
   int a = 0;
 
-  top->trace (tfp, 99);
+  top->trace (tfp, 199);
   tfp->open ("Vysyx_22040175.vcd");
   // initialize simulation inputs
   top->clk = 1;

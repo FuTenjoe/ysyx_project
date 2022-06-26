@@ -936,7 +936,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
         Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_ctrl_0__DOT__unknown_inst_TOP();
     }
     vlSelf->ysyx_22040175_top__DOT__s_flag = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_ctrl_0__DOT__s_buf_flag1) 
-                                              & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_ctrl_0__DOT__s_buf_flag2)));
+                                              & (IData)(vlSelf->ysyx_22040175_top__DOT__u_ctrl_0__DOT__s_buf_flag2));
     vlSelf->ysyx_22040175_top__DOT__reg2_rdata = ((0U 
                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__reg2_raddr))
                                                    ? 0U
