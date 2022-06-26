@@ -64,6 +64,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     CData/*0:0*/ __Vchglast__TOP__ysyx_22040175_top__DOT__rst_n;
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata;
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__pmem_read__1__rdata;
+    QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__pmem_read__2__rdata;
     QData/*63:0*/ __Vchglast__TOP__ysyx_22040175_top__DOT__rdata;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellinp__u_mux_pc_0__reg_f;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellout__u_reg_file_0__reg_f;

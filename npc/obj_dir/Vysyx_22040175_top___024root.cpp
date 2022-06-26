@@ -1945,18 +1945,19 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__5(Vysyx_22040175_t
                                                       ((IData)(4U) 
                                                        + vlSelf->pc)))))
                                                 : vlSelf->pc);
-    Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__pmem_read_TOP((QData)((IData)(vlSelf->pc)), vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata);
-    vlSelf->ysyx_22040175_top__DOT__rdata = vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata;
     if (vlSelf->ysyx_22040175_top__DOT__rd_flag) {
+        Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__pmem_read_TOP((QData)((IData)(vlSelf->pc)), vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata);
+        vlSelf->ysyx_22040175_top__DOT__rdata = vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata;
         Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__pmem_read_TOP((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__alu_res)), vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__1__rdata);
         vlSelf->ysyx_22040175_top__DOT__rd_data_lw 
             = vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__1__rdata;
         vlSelf->ysyx_22040175_top__DOT__reg_wdata_buf 
             = (IData)(vlSelf->ysyx_22040175_top__DOT__rd_data_lw);
     } else {
-        vlSelf->ysyx_22040175_top__DOT__reg_wdata_buf 
-            = vlSelf->ysyx_22040175_top__DOT__alu_res;
+        Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__pmem_read_TOP((QData)((IData)(vlSelf->pc)), vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__2__rdata);
+        vlSelf->ysyx_22040175_top__DOT__rdata = vlSelf->__Vtask_ysyx_22040175_top__DOT__pmem_read__2__rdata;
     }
+    vlSelf->ysyx_22040175_top__DOT__reg_wdata_buf = vlSelf->ysyx_22040175_top__DOT__alu_res;
     if ((((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
             & (IData)(vlSelf->ysyx_22040175_top__DOT__reg_wen)) 
            & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__reg_waddr))) 
