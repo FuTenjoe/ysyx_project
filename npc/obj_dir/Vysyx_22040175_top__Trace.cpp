@@ -170,7 +170,9 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                                  ? 
                                                 ((IData)(
                                                          vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_mux_pc_0__reg_f
-                                                         [1U]) 
+                                                         [
+                                                         (0x1fU 
+                                                          & vlSelf->ysyx_22040175_top__DOT__s_imm)]) 
                                                  + vlSelf->ysyx_22040175_top__DOT__imm)
                                                  : 
                                                 ((IData)(vlSelf->ysyx_22040175_top__DOT__ebreak_flag)

@@ -79,6 +79,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+19,"ysyx_22040175_top u_mux_pc_0 ebreak_flag", false,-1);
         {int i; for (i=0; i<32; i++) {
                 tracep->declQuad(c+90+i*2,"ysyx_22040175_top u_mux_pc_0 reg_f", true,(i+0), 63,0);}}
+        tracep->declBus(c+22,"ysyx_22040175_top u_mux_pc_0 s_imm", false,-1, 31,0);
         tracep->declBus(c+222,"ysyx_22040175_top u_ctrl_0 inst", false,-1, 31,0);
         tracep->declBit(c+2,"ysyx_22040175_top u_ctrl_0 branch", false,-1);
         tracep->declBit(c+4,"ysyx_22040175_top u_ctrl_0 jump", false,-1);
@@ -315,7 +316,9 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
                                                   ? 
                                                  ((IData)(
                                                           vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_mux_pc_0__reg_f
-                                                          [1U]) 
+                                                          [
+                                                          (0x1fU 
+                                                           & vlSelf->ysyx_22040175_top__DOT__s_imm)]) 
                                                   + vlSelf->ysyx_22040175_top__DOT__imm)
                                                   : 
                                                  ((IData)(vlSelf->ysyx_22040175_top__DOT__ebreak_flag)
