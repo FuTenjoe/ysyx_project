@@ -41,7 +41,7 @@ wire [`CPU_WIDTH-1:0]        alu_src2;   // alu source 2
 wire [`CPU_WIDTH-1:0]        alu_res;    // alu result
 wire jalr;
 wire ebreak_flag;
-
+assign reg_wdata = alu_res;
 wire [7:0]wmask;
 wire s_flag;
 wire [31:0] s_imm;
@@ -141,14 +141,9 @@ alu u_alu_0(
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 //import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 wire [63:0] rdata;
-wire [63:0] rd_data_lw;
-reg [31:0] reg_wdata_buf;
 always @(*) begin
   pmem_read(pc, rdata);
-  pmem_read(alu_res, rd_data_lw);
-  reg_wdata_buf = rd_data_lw[31:0];
-  
 end
 assign inst = rdata[31:0];
-assign reg_wdata = (rd_flag == 1'd1)? reg_wdata_buf[31:0]:alu_res;
+
 endmodule

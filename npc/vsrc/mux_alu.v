@@ -10,6 +10,7 @@ module mux_alu (
 
     output reg [`CPU_WIDTH-1:0]     alu_src1,   // alu source 1
     output reg [`CPU_WIDTH-1:0]     alu_src2    // alu source 2
+   
 );
 
 always @(*) begin
