@@ -13,7 +13,8 @@ module reg_file (
     output reg [`CPU_WIDTH-1:0]      reg1_rdata, // register 1 read data
     output reg [`CPU_WIDTH-1:0]      reg2_rdata, // register 2 read data
     input  [7:0] wmask,
-    input s_flag
+    input s_flag,
+    input time_set
    
 );
 
@@ -46,7 +47,7 @@ initial set_gpr_ptr(reg_f);  // rf为通用寄存器的二维数组变量
 import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
 always @(*) begin
-    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)) 
+    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(time_set==1'd1)) 
         pmem_write( reg_f[reg_waddr], reg_wdata, wmask);
 end
 

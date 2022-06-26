@@ -5,7 +5,8 @@ module  ysyx_22040175_top(
     input                         rst,
 	output [31:0]                 inst,
 	output[31:0]        pc,
-    output [`CPU_WIDTH-1:0]       unknown_code
+    output [`CPU_WIDTH-1:0]       unknown_code,
+    input time_set
    // output[`CPU_WIDTH-1:0]        next_pc
 );
 //wire  [63:0]                 inst;
@@ -95,7 +96,8 @@ reg_file u_reg_file_0(
     .reg1_rdata                     ( reg1_rdata                    ),
     .reg2_rdata                     ( reg2_rdata                    ),
     .wmask (wmask),
-    .s_flag(s_flag)
+    .s_flag(s_flag),
+    .time_set(time_set)
 );
 
 imm_gen u_imm_gen_0(

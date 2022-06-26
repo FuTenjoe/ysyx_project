@@ -175,8 +175,10 @@ int main(int argc, char **argv, char **env) {
       tfp->dump (2*i+clk);
       top->clk = !top->clk;
       top->eval ();
+
      if(top->clk==1){
       //top->inst = pmem_read(top->pc,8); //使用DPIC
+      top->time_sset = 1'd1;
       printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
@@ -185,6 +187,7 @@ int main(int argc, char **argv, char **env) {
       
      }
      if(top->clk==0){
+        top->time_sset = 1'd0;
         a= a+1;
          printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
