@@ -52,6 +52,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     IData/*31:0*/ ysyx_22040175_top__DOT__alu_res;
     IData/*31:0*/ ysyx_22040175_top__DOT__s_imm;
     QData/*63:0*/ ysyx_22040175_top__DOT__rdata;
+    QData/*63:0*/ ysyx_22040175_top__DOT__u_reg_file_0__DOT__buff;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f;
 
     // LOCAL VARIABLES

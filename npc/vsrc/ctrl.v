@@ -50,7 +50,7 @@ always @(*) begin
     s_flag = 1'd0;
     expand_signed = 4'd0;
     case (opcode)
-        `INST_TYPE_R: begin                         
+        7'b0110011: begin                         
             reg_wen     = 1'b1;
             reg1_raddr  = rs1;
             reg2_raddr  = rs2;
