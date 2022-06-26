@@ -88,7 +88,7 @@ always @(*) begin
                     reg1_raddr  = rs1;
                     reg2_raddr  = 0;
                     reg_waddr   = rd;
-                    s_imm =0;
+                    s_imm ={{20{inst[31]}},inst[31:20]};
                     imm_gen_op  = `IMM_GEN_I;
                     alu_op      = `ALU_ADD;
                     alu_src_sel = `ALU_SRC_REG;
