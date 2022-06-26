@@ -52,7 +52,7 @@ always @(*) begin
             reg2_raddr  = rs2;
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_REG;
-            
+            wmask =  8'b0;
             case (funct3)
                 `INST_ADD_SUB: begin
                     alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
@@ -67,6 +67,7 @@ always @(*) begin
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_IMM;
             s_flag = 1'd0;
+             wmask =  8'b0;
             case (funct3)
                 `INST_ADDI: begin
                     alu_op = `ALU_ADD; 
@@ -80,6 +81,7 @@ always @(*) begin
             reg2_raddr  = rs2;
             imm_gen_op  = `IMM_GEN_B;
             alu_src_sel = `ALU_SRC_REG;
+            wmask =  8'b0;
             case (funct3)
                 `INST_BNE: begin
                     branch     = 1'b1;
@@ -90,7 +92,7 @@ always @(*) begin
             endcase
         end
         7'b0100011:begin    //sd
-         /*  case(funct3)
+           case(funct3)
             3'b011:begin
             jump        = 1'b0;
             reg_wen     = 1'b1;
@@ -105,7 +107,7 @@ always @(*) begin
             s_flag = 1'd1;
             end
             default:unknown_code = inst;
-            endcase*/
+            endcase
         end
         `INST_JAL: begin // only jal 
             jump        = 1'b1;
@@ -116,6 +118,7 @@ always @(*) begin
             alu_op      = `ALU_ADD;
             alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
             s_flag = 1'd0;
+            wmask =  8'b0;
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
@@ -125,6 +128,7 @@ always @(*) begin
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM; // x0 + imm
                 s_flag = 1'd0;
+                wmask =  8'b0;
         end
         `INST_AUIPC:begin //only auipc
                reg_wen     = 1'b1;
@@ -134,7 +138,7 @@ always @(*) begin
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM_PC; // x0 + imm
                 s_flag = 1'd0;
-               // wmask = 8'b11111111;
+                wmask =  8'b0;
         end
         7'b1100111:begin
             case(funct3)  
@@ -147,6 +151,7 @@ always @(*) begin
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
                 s_flag = 1'd0;
+                wmask =  8'b0;
                 end
                 default:unknown_code = inst;
             endcase
