@@ -16,7 +16,7 @@ module reg_file (
     input s_flag,
     input time_set,
     input [31:0] s_imm,
-    input [3:0] expand_signed,
+    input [3:0] expand_signed
     
    
 );
