@@ -144,9 +144,10 @@ wire [63:0] rdata;
 wire [63:0] rd_data_lw;
 always @(*) begin
   pmem_read(pc, rdata);
-  if(rd_flag==1'd1)
+  if(rd_flag==1'd1)begin
   pmem_read(alu_res, rd_data_lw);
-  reg_waddr = rd_data_lw[31:0];
+  reg_wdata = rd_data_lw[31:0];
+  end
   else
   reg_wdata = alu_res;
 end
