@@ -21,7 +21,7 @@ module ctrl (
     output reg [7:0]wmask,
     output reg s_flag,
     output reg s_buf_flag1,
-    output reg s_buf_flag2,
+    output reg s_buf_flag2
 );
 
 wire [`OPCODE_WIDTH-1:0] opcode = inst[`OPCODE_WIDTH-1:0];          //  [6:0]

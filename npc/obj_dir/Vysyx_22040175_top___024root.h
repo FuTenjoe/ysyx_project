@@ -42,6 +42,8 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     CData/*0:0*/ ysyx_22040175_top__DOT__ebreak_flag;
     CData/*7:0*/ ysyx_22040175_top__DOT__wmask;
     CData/*0:0*/ ysyx_22040175_top__DOT__s_flag;
+    CData/*0:0*/ ysyx_22040175_top__DOT__u_ctrl_0__DOT__s_buf_flag1;
+    CData/*0:0*/ ysyx_22040175_top__DOT__u_ctrl_0__DOT__s_buf_flag2;
     IData/*31:0*/ ysyx_22040175_top__DOT__next_pc;
     IData/*31:0*/ ysyx_22040175_top__DOT__reg2_rdata;
     IData/*31:0*/ ysyx_22040175_top__DOT__imm;
