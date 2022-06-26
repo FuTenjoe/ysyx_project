@@ -54,7 +54,7 @@ always @(*) begin
     4'd0:
         pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
     4'd1:
-        pmem_write(reg_f[reg_waddr] + s_imm, {{32{reg_wdata[31]},reg_wdata[31:0]}, wmask);
+        pmem_write(reg_f[reg_waddr] + s_imm, {{32{reg_wdata[31]}},reg_wdata[31:0]}, wmask);
     endcase
 end
 
