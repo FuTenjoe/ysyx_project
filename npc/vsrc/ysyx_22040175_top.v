@@ -46,7 +46,7 @@ wire [7:0]wmask;
 wire s_flag;
 wire [31:0] s_imm;
 wire [3:0] expand_signed;
-wire [63:0] jalr_buf;
+wire [63:0] reg_f [0:`REG_DATA_DEPTH-1]
 pc_reg u_pc_reg_0(
     .clk                            ( clk                           ),
     .rst_n                          ( rst_n                         ),
@@ -65,7 +65,7 @@ muxpc u_mux_pc_0(
     .next_pc                        ( next_pc                       ),
     .jalr(jalr),
     .ebreak_flag(ebreak_flag),
-    .jalr_buf(jalr_buf)
+    .reg_f(reg_f)
     //.reg1_rdata(reg1_rdata)
 );
 
@@ -106,7 +106,7 @@ reg_file u_reg_file_0(
     .time_set(time_set),
     .s_imm(s_imm),
     .expand_signed(expand_signed),
-    .jalr_buf(jalr_buf)
+    .reg_f(reg_f)
 );
 
 imm_gen u_imm_gen_0(

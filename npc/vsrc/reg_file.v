@@ -17,11 +17,11 @@ module reg_file (
     input time_set,
     input [31:0] s_imm,
     input [3:0] expand_signed,
-    output [63:0] jalr_buf
+    output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]
    
 );
 
-reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]; 
+
 reg [63:0] buff;
 // register write
 always @(posedge clk or negedge rst_n) begin
@@ -35,7 +35,7 @@ always @(posedge clk or negedge rst_n) begin
         4'd2: reg_f[reg_waddr] <= reg_wdata[31:0];            //addw
         4'd3:begin
             reg_f[reg_waddr] <= reg_wdata;    //jalr
-            jalr_buf <= reg_f[10];
+            
         end
         endcase
 end
