@@ -17,7 +17,7 @@ always @(*) begin
     case (alu_op)
         `ALU_ADD:   //0011
         if(rd_flag == 1'd0)
-            alu_res = alu_src1 +  alu_src2;
+            alu_res = (alu_src1 +  alu_src2)[31:0];
         else
             alu_res = rd_buf_lw[31:0];
         `ALU_SUB:begin //0100
