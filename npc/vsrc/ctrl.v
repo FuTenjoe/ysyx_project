@@ -66,16 +66,32 @@ always @(*) begin
             endcase
         end
         7'b0010011: begin       //addi
-            reg_wen     = 1'b1;
-            reg1_raddr  = rs1;
-            reg_waddr   = rd;
-            alu_src_sel = `ALU_SRC_IMM;
-            wmask =  8'b0;
             case (funct3)
                 `INST_ADDI: begin
+                    reg_wen     = 1'b1;
+                    reg1_raddr  = rs1;
+                    reg_waddr   = rd;
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b0;
                     alu_op = `ALU_ADD; 
                     s_flag = 1'd0;
+                    expand_signed = 4'd0;
+                    s_imm = 32'd0;
                 end
+                3'b011:begin   //sltiu
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    jalr = 1'b0;
+                    reg1_raddr  = rs1;
+                    reg2_raddr  = rs2;
+                    reg_waddr   = rd;
+                    s_imm =0;
+                    imm_gen_op  = `IMM_GEN_I;   //I型指令
+                    alu_op      = `ALU_SLTU;
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b0;
+                    s_flag = 1'd0;
+                    expand_signed =4'd2;    //截断为32位     
                 default:unknown_code = inst;
             endcase
         end
