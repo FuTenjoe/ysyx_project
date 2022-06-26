@@ -19,7 +19,9 @@ module ctrl (
     output    jalr,
     output ebreak_flag,
     output reg [7:0]wmask,
-    output reg s_flag
+    output reg s_flag,
+    output reg s_buf_flag1,
+    output reg s_buf_flag2,
 );
 
 wire [`OPCODE_WIDTH-1:0] opcode = inst[`OPCODE_WIDTH-1:0];          //  [6:0]
@@ -45,6 +47,8 @@ always @(*) begin
     ebreak_flag = 1'd0;
     wmask = 8'd0;
     s_flag = 1'd0;
+    s_buf_flag1 = 1'd0;
+    s_buf_flag2 =1'd0;
     case (opcode)
         `INST_TYPE_R: begin                         
             reg_wen     = 1'b1;
@@ -56,7 +60,8 @@ always @(*) begin
             case (funct3)
                 `INST_ADD_SUB: begin
                     alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
-                    s_flag = 1'd0;
+                    s_buf_flag1 = 1'd0;
+                    s_buf_flag2 = s_buf_flag1;
                 end
                 default:unknown_code = inst;
             endcase
@@ -66,12 +71,12 @@ always @(*) begin
             reg1_raddr  = rs1;
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_IMM;
-            s_flag = 1'd0;
-             wmask =  8'b0;
+            wmask =  8'b0;
             case (funct3)
                 `INST_ADDI: begin
                     alu_op = `ALU_ADD; 
-                    s_flag = 1'd0;
+                    s_buf_flag1 = 1'd0;
+                    s_buf_flag2 = s_buf_flag1;
                 end
                 default:unknown_code = inst;
             endcase
@@ -86,7 +91,8 @@ always @(*) begin
                 `INST_BNE: begin
                     branch     = 1'b1;
                     alu_op     = `ALU_SUB;
-                    s_flag = 1'd0;
+                    s_buf_flag1 = 1'd0;
+                    s_buf_flag2 = s_buf_flag1;
                 end
                  default:unknown_code = inst;
             endcase
@@ -104,7 +110,9 @@ always @(*) begin
             alu_op      = `ALU_ADD;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b11111111;
-            s_flag = 1'd1;
+            s_buf_flag2 = s_buf_flag1;
+            s_buf_flag1 = 1'd1;
+            
             end
             default:unknown_code = inst;
             endcase
@@ -117,7 +125,8 @@ always @(*) begin
             imm_gen_op  = `IMM_GEN_J;
             alu_op      = `ALU_ADD;
             alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
-            s_flag = 1'd0;
+            s_buf_flag1 = 1'd0;
+            s_buf_flag2 = s_buf_flag1;
             wmask =  8'b0;
         end
         `INST_LUI: begin // only lui
@@ -127,7 +136,8 @@ always @(*) begin
                 imm_gen_op  = `IMM_GEN_U;
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM; // x0 + imm
-                s_flag = 1'd0;
+                s_buf_flag1 = 1'd0;
+                s_buf_flag2 = s_buf_flag1;
                 wmask =  8'b0;
         end
         `INST_AUIPC:begin //only auipc
@@ -137,7 +147,8 @@ always @(*) begin
                 imm_gen_op  = `IMM_GEN_U;
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_IMM_PC; // x0 + imm
-                s_flag = 1'd0;
+                s_buf_flag1 = 1'd0;
+                s_buf_flag2 = s_buf_flag1;
                 wmask =  8'b0;
         end
         7'b1100111:begin
@@ -150,7 +161,8 @@ always @(*) begin
                 imm_gen_op  = `IMM_GEN_I;
                 alu_op      = `ALU_ADD;
                 alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
-                s_flag = 1'd0;
+                s_buf_flag1 = 1'd0;
+                s_buf_flag2 = s_buf_flag1;
                 wmask =  8'b0;
                 end
                 default:unknown_code = inst;
@@ -161,7 +173,7 @@ always @(*) begin
         default:unknown_code = inst ;
     endcase 
 end
-
+assign s_flag = s_buf_flag1 &s_buf_flag2;
 import "DPI-C" function void ebreak();
 always@(*)begin
     if(inst == 32'h0010_0073)begin
