@@ -85,7 +85,7 @@ ctrl u_ctrl_0(
     .ebreak_flag(ebreak_flag),
     .wmask(wmask),
     .s_flag(s_flag),
-    .s_imm(s_imm)
+    .s_imm(s_imm),
     .expand_signed(expand_signed)
 );
 
