@@ -30,7 +30,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgBit(oldp+3,(vlSelf->ysyx_22040175_top__DOT__jump));
             tracep->chgBit(oldp+4,(vlSelf->ysyx_22040175_top__DOT__reg_wen));
             tracep->chgCData(oldp+5,(vlSelf->ysyx_22040175_top__DOT__reg_waddr),5);
-            tracep->chgIData(oldp+6,(vlSelf->ysyx_22040175_top__DOT__reg_wdata),32);
+            tracep->chgIData(oldp+6,(vlSelf->ysyx_22040175_top__DOT__reg_wdata_buf),32);
             tracep->chgCData(oldp+7,(vlSelf->ysyx_22040175_top__DOT__reg1_raddr),5);
             tracep->chgCData(oldp+8,(vlSelf->ysyx_22040175_top__DOT__reg2_raddr),5);
             tracep->chgIData(oldp+9,(vlSelf->ysyx_22040175_top__DOT__reg2_rdata),32);

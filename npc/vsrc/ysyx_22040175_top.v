@@ -144,12 +144,14 @@ wire [63:0] rdata;
 wire [63:0] rd_data_lw;
 reg [31:0] reg_wdata_buf;
 always @(*) begin
-  pmem_read(pc, rdata);
+ 
   if(rd_flag==1'd1)begin
+     pmem_read(pc, rdata);
   pmem_read(alu_res, rd_data_lw);
   reg_wdata_buf = rd_data_lw[31:0];
   end
   else
+   pmem_read(pc, rdata);
   reg_wdata_buf = alu_res;
 end
 assign inst = rdata[31:0];

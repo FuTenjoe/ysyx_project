@@ -46,13 +46,13 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     CData/*3:0*/ ysyx_22040175_top__DOT__expand_signed;
     CData/*0:0*/ ysyx_22040175_top__DOT__rd_flag;
     IData/*31:0*/ ysyx_22040175_top__DOT__next_pc;
-    IData/*31:0*/ ysyx_22040175_top__DOT__reg_wdata;
     IData/*31:0*/ ysyx_22040175_top__DOT__reg2_rdata;
     IData/*31:0*/ ysyx_22040175_top__DOT__imm;
     IData/*31:0*/ ysyx_22040175_top__DOT__alu_src1;
     IData/*31:0*/ ysyx_22040175_top__DOT__alu_src2;
     IData/*31:0*/ ysyx_22040175_top__DOT__alu_res;
     IData/*31:0*/ ysyx_22040175_top__DOT__s_imm;
+    IData/*31:0*/ ysyx_22040175_top__DOT__reg_wdata_buf;
     QData/*63:0*/ ysyx_22040175_top__DOT__rdata;
     QData/*63:0*/ ysyx_22040175_top__DOT__rd_data_lw;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__reg_f;
