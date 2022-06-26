@@ -5,7 +5,7 @@ module alu(
     input      [`CPU_WIDTH-1:0]    alu_src1, // alu source 1
     input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
     output reg                     zero,     // alu result is zero
-    output reg [`CPU_WIDTH-1:0]    alu_res,   // alu result
+    output reg [63:0]    alu_res,   // alu result
     input rd_flag
 );
 
