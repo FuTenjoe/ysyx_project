@@ -21,11 +21,11 @@ always @(*) begin
             alu_res = rd_buf_lw[31:0];
         `ALU_SUB:begin //0100
             alu_res = alu_src1 -  alu_src2;
-            zero = (alu_res == `CPU_WIDTH'b0) ? 1'b1 : 1'b0;
+            zero = (alu_res == 64'b0) ? 1'b1 : 1'b0;
         end
         `ALU_SUBN:begin //1100
             alu_res = alu_src1 -  alu_src2;
-            zero = (alu_res == `CPU_WIDTH'b0) ? 1'b0 : 1'b1;
+            zero = (alu_res == 64'b0) ? 1'b0 : 1'b1;
         end
         `ALU_SLTU:begin//1001
             if(alu_src1<alu_src2)
