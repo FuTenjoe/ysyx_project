@@ -191,10 +191,10 @@ int main(int argc, char **argv, char **env) {
         if (a>2){
        //printf("a =%d \n",a);
        
-         difftest_step(top->pc);
+         //difftest_step(top->pc);
         }
         else{
-          init_difftest(img_size,port);
+         // init_difftest(img_size,port);
         }
      }
      
