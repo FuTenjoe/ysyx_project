@@ -100,7 +100,7 @@
 `define ALU_SLTU `ALU_OP_WIDTH'b1001 // set less than (unsigned) 
 `define ALU_BLT  `ALU_OP_WIDTH'b1010 // branch less than
 `define ALU_BLTU `ALU_OP_WIDTH'b1011 // branch less than (unsigned)
-`define ALU_JAL  `ALU_OP_WIDTH'b1100  
+`define ALU_SUBN  `ALU_OP_WIDTH'b1100  
 `define ALU_JALR `ALU_OP_WIDTH'b1101  
 
 // ALU select soure

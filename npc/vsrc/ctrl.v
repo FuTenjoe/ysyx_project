@@ -61,6 +61,7 @@ always @(*) begin
                 `INST_ADD_SUB: begin
                     alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
                     s_flag = 1'd0;
+                    expand_signed = 4'd0;
                 end
                 default:unknown_code = inst;
             endcase
@@ -136,21 +137,6 @@ always @(*) begin
                 default:unknown_code = inst;
             endcase
         end
-        `INST_TYPE_B: begin
-            reg1_raddr  = rs1;
-            reg2_raddr  = rs2;
-            imm_gen_op  = `IMM_GEN_B;
-            alu_src_sel = `ALU_SRC_REG;
-            wmask =  8'b0;
-            case (funct3)
-                `INST_BNE: begin
-                    branch     = 1'b1;
-                    alu_op     = `ALU_SUB;
-                    s_flag = 1'd0;
-                end
-                 default:unknown_code = inst;
-            endcase
-        end
         7'b0100011:begin    //sd
            case(funct3)
             3'b011:begin
@@ -181,6 +167,7 @@ always @(*) begin
             alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
             s_flag = 1'd0;
             wmask =  8'b0;
+            expand_signed = 4'd0;
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
@@ -191,6 +178,7 @@ always @(*) begin
                 alu_src_sel = `ALU_SRC_IMM; // x0 + imm
                 s_flag = 1'd0;
                 wmask =  8'b0;
+                expand_signed = 4'd0;
         end
         `INST_AUIPC:begin //only auipc
                reg_wen     = 1'b1;
@@ -201,6 +189,7 @@ always @(*) begin
                 alu_src_sel = `ALU_SRC_IMM_PC; // x0 + imm
                 s_flag = 1'd0;
                 wmask =  8'b0;
+                expand_signed = 4'd0;
         end
         7'b1100111:begin
             case(funct3)  
@@ -214,12 +203,33 @@ always @(*) begin
                 alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
                 s_flag = 1'd0;
                 wmask =  8'b0;
+                expand_signed = 4'd0;
                 end
                 default:unknown_code = inst;
             endcase
 
         end
-        
+        `INST_TYPE_B: begin
+            reg1_raddr  = rs1;
+            reg2_raddr  = rs2;
+            imm_gen_op  = `IMM_GEN_B;
+            alu_src_sel = `ALU_SRC_REG;
+            wmask =  8'b0;
+            case (funct3)
+                `INST_BNE: begin     //bne
+                    branch     = 1'b1;
+                    alu_op     = `ALU_SUB;
+                    s_flag = 1'd0;
+                end
+                3'b000:begin
+                    branch     = 1'b1;
+                    alu_op     = `ALU_SUBN;
+                    s_flag = 1'd0;
+                end
+                 default:unknown_code = inst;
+            endcase
+        end
+            
         default:unknown_code = inst ;
     endcase 
 end
