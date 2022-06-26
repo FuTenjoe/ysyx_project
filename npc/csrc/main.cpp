@@ -149,7 +149,7 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   int i;
-  for (i=0;i<40 ; i++) {
+  for (i=0; ; i++) {
     //while(!contextp -> gotFinish()){
      //for (i=0;i<15 ; i++) {
       
@@ -191,10 +191,10 @@ int main(int argc, char **argv, char **env) {
         if (a>2){
        //printf("a =%d \n",a);
        
-         //difftest_step(top->pc);
+         difftest_step(top->pc);
         }
         else{
-         // init_difftest(img_size,port);
+          init_difftest(img_size,port);
         }
      }
      
