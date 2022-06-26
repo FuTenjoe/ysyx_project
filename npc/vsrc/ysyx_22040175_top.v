@@ -46,7 +46,7 @@ wire [7:0]wmask;
 wire s_flag;
 wire [31:0] s_imm;
 wire [3:0] expand_signed;
-wire [63:0] reg_f [0:`REG_DATA_DEPTH-1]
+wire [63:0] reg_f [0:`REG_DATA_DEPTH-1];
 pc_reg u_pc_reg_0(
     .clk                            ( clk                           ),
     .rst_n                          ( rst_n                         ),
