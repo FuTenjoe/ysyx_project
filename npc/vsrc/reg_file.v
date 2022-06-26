@@ -35,7 +35,7 @@ always @(posedge clk or negedge rst_n) begin
         4'd2: reg_f[reg_waddr] <= reg_wdata[31:0];            //addw
         4'd3:begin
             reg_f[reg_waddr] <= reg_wdata;    //jalr
-            jalr_buf <= reg_f[s_imm[4:0]];
+            jalr_buf <= reg_f[5'd1];
         end
         endcase
 end
