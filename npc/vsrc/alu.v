@@ -41,7 +41,7 @@ always @(*) begin
 end
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
-  pmem_read(alu_res, rd_buf_lw);
+  pmem_read(alu_src1 +  alu_src2, rd_buf_lw);
 end
 endmodule
 
