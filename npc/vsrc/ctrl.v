@@ -94,7 +94,10 @@ always @(*) begin
                     alu_src_sel = `ALU_SRC_REG;
                     wmask =  8'b0;
                     s_flag = 1'd0;
-                    expand_signed =4'd2;       //
+                    expand_signed =4'd2;    //截断为32位     
+                end    
+                default:unknown_code = inst;
+        endcase
             end
         7'b0000011:begin     //lw
             case (funct3)
