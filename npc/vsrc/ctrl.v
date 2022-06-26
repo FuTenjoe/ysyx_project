@@ -92,8 +92,8 @@ always @(*) begin
                     imm_gen_op  = `IMM_GEN_I;
                     alu_op      = `ALU_ADD;
                     alu_src_sel = `ALU_SRC_IMM;
-                    wmask =  8'b11111111;
-                    s_flag = 1'd1;
+                    wmask =  8'b0;
+                    s_flag = 1'd0;
                     expand_signed =4'd1;       //
                 end
                 default:unknown_code = inst;

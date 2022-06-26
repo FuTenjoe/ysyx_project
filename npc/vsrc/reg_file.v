@@ -25,7 +25,9 @@ reg [63:0] reg_f [0:`REG_DATA_DEPTH-1];
 // register write
 always @(posedge clk or negedge rst_n) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0)) // x0 read only
-        reg_f[reg_waddr] <= reg_wdata; 
+        case(expand_signed)
+        4'd0:reg_f[reg_waddr] <= reg_wdata; 
+        4'd1:reg_f[reg_waddr] <= {{32{reg_wdata[31]}},reg_wdata[31:0]}; 
 end
 
 // register 1 read
@@ -50,12 +52,9 @@ import "DPI-C" function void pmem_write(input longint waddr, input longint wdata
 //wire [63:0] rdata;
 always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(time_set==1'd1)) 
-    case(expand_signed)
-    4'd0:
         pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
-    4'd1:
-        pmem_write(reg_f[reg_waddr] + s_imm, {{32{reg_wdata[31]}},reg_wdata[31:0]}, wmask);
-    endcase
+
+  
 end
 
 
