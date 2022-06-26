@@ -62,15 +62,14 @@ void init_difftest(long img_size, int port);
 void difftest_step(vaddr_t pc);
 static void checkregs(CPU_state *ref, vaddr_t pc);
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc);
-//static inline void host_write(void *addr, int len, word_t data);
-void host_write(void *addr, int len, word_t data);
+static inline void host_write(void *addr, int len, word_t data);
+
 
 //加为DPIC函数
 extern "C" void pmem_read(long long raddr,long long *rdata){
   if(raddr >= CONFIG_MBASE){
-    *rdata = host_read(guest_to_host(raddr), 8);
-    printf("raddr = 0x%llx\n",raddr);
-    printf("rdata = 0x%llx\n",*rdata);
+    *rdata = host_read(guest_to_host(raddr& ~0x7ull), 8);
+    printf("rdata = 0x%lx\n",*rdata);
   }
   else{
     *rdata = 0;
@@ -79,7 +78,7 @@ extern "C" void pmem_read(long long raddr,long long *rdata){
 }
 
 extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
-  long long addr = waddr;
+  long long addr = waddr & ~0x7ull;
   int len = 0;
   switch(wmask){
     //8bit
@@ -104,9 +103,8 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
      default:printf("False: Wmask is %x false!",wmask);
   }
   printf("waddr = %llx\n",waddr);
-  printf("wdata = %llx\n",wdata);
-  printf("len = %d\n",len);
-  host_write(guest_to_host(waddr),len,wdata);
+  printf("addr = %llx\n",addr);
+  host_write(guest_to_host(addr),len,wdata);
 }
 
 /*static word_t pmem_read(paddr_t addr, int len) {
@@ -149,7 +147,7 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   int i;
-  for (i=0;i<40 ; i++) {
+  for (i=0; ; i++) {
     //while(!contextp -> gotFinish()){
      //for (i=0;i<15 ; i++) {
       
@@ -186,8 +184,6 @@ int main(int argc, char **argv, char **env) {
      }
      if(top->clk==0){
         a= a+1;
-         printf("main_time = %d\n",i);
-      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
         if (a>2){
        //printf("a =%d \n",a);
        
@@ -222,11 +218,11 @@ void init_imem(){
 }
 
 uint8_t *guest_to_host(paddr_t paddr){
-  //uint8_t *tmpl = pimem + paddr -CONFIG_MBASE;
+  uint8_t *tmpl = pimem + paddr -CONFIG_MBASE;
   //printf("guest to host success pimem = %hhn\n",pimem);
-  printf("guest to host success paddr  = %d\n",paddr );
-  //printf("guest to host success addr = %hhn\n",pimem + paddr -CONFIG_MBASE);
-  return pimem + paddr -CONFIG_MBASE;
+  //printf("guest to host success paddr  = %d\n",paddr );
+  //printf("guest to host success addr = %hhn\n",tmpl);
+  return tmpl;
 }
 inline word_t host_read(void *addr, int len) {
    //printf("host_read success addr");
@@ -238,20 +234,13 @@ inline word_t host_read(void *addr, int len) {
     default: {printf("host_to_read is error !\n");assert(0);return 4096;};
   }
 }
-inline void host_write(void *addr, int len,word_t data){
-  printf("host_write1 ok!\n");
-  uint8_t a;
-  uint16_t b;
-  uint32_t c;
-  uint64_t* d;
-  //printf("host_write wdata=%ld",data);
+static inline void host_write(void *addr, int len,word_t data){
   switch (len){
-    case 1: a=*(uint8_t *)addr;a = data; return;
-    case 2: b=*(uint16_t *)addr; b= data; return;
-    case 4: c=*(uint32_t *)addr;c = data;return;
-    case 8: d =(uint64_t *)addr;printf("host_write data=%ld!\n",data);printf("host_write addr=%ld!\n",addr);*d = data;printf("host_write ok!\n");return;
-    //case 8: *(uint64_t *)addr=data;printf("host_write data=%ld!\n",data);printf("host_write addr=%ld!\n",*(uint64_t *)addr);*d = data;printf("host_write ok!\n");return;
-    default:{printf("host_write is error !\n"); assert(0);};
+    case 1: *(uint8_t *)addr = data; return;
+    case 2: *(uint16_t *)addr = data; return;
+    case 4: *(uint32_t *)addr = data;return;
+    case 8: *(uint64_t *)addr = data;return;
+    default:{printf("hoost_write is error !\n"); assert(0);};
   }
 }
 
