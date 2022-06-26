@@ -1731,7 +1731,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                      : 
                                                     (((IData)(vlSelf->ysyx_22040175_top__DOT__jump) 
                                                       & (IData)(vlSelf->ysyx_22040175_top__DOT__jalr))
-                                                      ? 0x800000a0U
+                                                      ? 
+                                                     ((IData)(vlSelf->ysyx_22040175_top__DOT__jalr_buf) 
+                                                      + vlSelf->ysyx_22040175_top__DOT__imm)
                                                       : 
                                                      ((IData)(vlSelf->ysyx_22040175_top__DOT__ebreak_flag)
                                                        ? 0x80000000U
