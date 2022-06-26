@@ -133,7 +133,8 @@ alu u_alu_0(
     .alu_src1                       ( alu_src1                      ),
     .alu_src2                       ( alu_src2                      ),
     .zero                           ( zero                          ),
-    .alu_res                        ( alu_res                       )
+    .alu_res                        ( alu_res                       )，
+    .rd_flag(rd_flag)
 );
 
 //wire [63:0] rdata;

@@ -1524,7 +1524,9 @@ void Vysyx_22040175_top___024root___settle__TOP__1(Vysyx_22040175_top___024root*
                 if ((1U & vlSelf->inst)) {
                     if ((2U == (7U & (vlSelf->inst 
                                       >> 0xcU)))) {
-                        vlSelf->ysyx_22040175_top__DOT__reg2_raddr = 0U;
+                        vlSelf->ysyx_22040175_top__DOT__reg2_raddr 
+                            = (0x1fU & (vlSelf->inst 
+                                        >> 0x14U));
                     }
                 }
             }
