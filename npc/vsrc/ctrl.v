@@ -221,11 +221,11 @@ always @(*) begin
                     alu_op     = `ALU_SUB;
                     s_flag = 1'd0;
                 end
-                /*3'b000:begin   //beq
+                3'b000:begin   //beq
                     branch     = 1'b1;
                     alu_op     = `ALU_SUBN;
                     s_flag = 1'd0;
-                end*/
+                end
                  default:unknown_code = inst;
             endcase
         end
