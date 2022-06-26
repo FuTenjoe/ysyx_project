@@ -130,7 +130,7 @@ always @(*) begin
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
                     reg1_raddr  = rs1;
-                    reg2_raddr  = 0;
+                    reg2_raddr  = rs2;
                     reg_waddr   = rd;
                     s_imm ={{20{inst[31]}},inst[31:20]};
                     imm_gen_op  = `IMM_GEN_I;
