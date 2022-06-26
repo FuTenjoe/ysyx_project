@@ -44,7 +44,9 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     CData/*7:0*/ ysyx_22040175_top__DOT__wmask;
     CData/*0:0*/ ysyx_22040175_top__DOT__s_flag;
     CData/*3:0*/ ysyx_22040175_top__DOT__expand_signed;
+    CData/*0:0*/ ysyx_22040175_top__DOT__rd_flag;
     IData/*31:0*/ ysyx_22040175_top__DOT__next_pc;
+    IData/*31:0*/ ysyx_22040175_top__DOT__reg_wdata;
     IData/*31:0*/ ysyx_22040175_top__DOT__reg2_rdata;
     IData/*31:0*/ ysyx_22040175_top__DOT__imm;
     IData/*31:0*/ ysyx_22040175_top__DOT__alu_src1;
@@ -52,6 +54,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     IData/*31:0*/ ysyx_22040175_top__DOT__alu_res;
     IData/*31:0*/ ysyx_22040175_top__DOT__s_imm;
     QData/*63:0*/ ysyx_22040175_top__DOT__rdata;
+    QData/*63:0*/ ysyx_22040175_top__DOT__rd_data_lw;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__reg_f;
 
     // LOCAL VARIABLES
@@ -60,9 +63,11 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     CData/*0:0*/ __Vclklast__TOP____VinpClk__TOP__ysyx_22040175_top__DOT__rst_n;
     CData/*0:0*/ __Vchglast__TOP__ysyx_22040175_top__DOT__rst_n;
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata;
+    QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__pmem_read__1__rdata;
+    QData/*63:0*/ __Vchglast__TOP__ysyx_22040175_top__DOT__rdata;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellinp__u_mux_pc_0__reg_f;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellout__u_reg_file_0__reg_f;
-    VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
+    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vysyx_22040175_top__Syms* vlSymsp;  // Symbol table
