@@ -5,11 +5,11 @@ module reg_file (
     input                            rst_n,
     
     input                            reg_wen,    // register write enable
-    input      [63:0] reg_waddr,  // register write address
+    input      [`REG_ADDR_WIDTH-1:0] reg_waddr,  // register write address
     input      [63:0]      reg_wdata,  // register write data
     
-    input      [63:0] reg1_raddr, // register 1 read address
-    input      [63:0] reg2_raddr, // register 2 read address
+    input      [`REG_ADDR_WIDTH-1:0] reg1_raddr, // register 1 read address
+    input      [`REG_ADDR_WIDTH-1:0] reg2_raddr, // register 2 read address
     output reg [`CPU_WIDTH-1:0]      reg1_rdata, // register 1 read data
     output reg [`CPU_WIDTH-1:0]      reg2_rdata, // register 2 read data
     input  [7:0] wmask,
@@ -29,7 +29,7 @@ always @(posedge clk or negedge rst_n) begin
         case(expand_signed)
         4'd0:reg_f[reg_waddr] <= reg_wdata; 
         4'd1:begin
-            reg_f[reg_waddr] <= {{32{reg_wdata[31]}},reg_wdata[31:0]};   //lw
+            reg_f[reg_waddr] <= {{32{reg_wdata[31]}},reg_wdata[31:0];   //lw
         end
         4'd2: reg_f[reg_waddr] <= reg_wdata[31:0];            //addw
         4'd3:begin
@@ -42,7 +42,7 @@ end
 // register 1 read
 always @(*) begin
     if(reg1_raddr == `REG_ADDR_WIDTH'b0)
-        reg1_rdata = 64'b0;
+        reg1_rdata = `CPU_WIDTH'b0;
     else
         reg1_rdata = reg_f[reg1_raddr];
 end

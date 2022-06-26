@@ -37,9 +37,9 @@ wire [`CPU_WIDTH-1:0]        imm;        // immediate
 
 wire [`ALU_OP_WIDTH-1:0]     alu_op;     // alu opcode
 wire [`ALU_SRC_WIDTH-1:0]    alu_src_sel;// alu source select flag
-wire [63:0]        alu_src1;   // alu source 1
-wire [63:0]         alu_src2;   // alu source 2
-wire [63:0]       alu_res;    // alu result
+wire [`CPU_WIDTH-1:0]        alu_src1;   // alu source 1
+wire [`CPU_WIDTH-1:0]        alu_src2;   // alu source 2
+wire [`63:0]        alu_res;    // alu result
 wire jalr;
 wire ebreak_flag;
 assign reg_wdata = alu_res;
