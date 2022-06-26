@@ -24,7 +24,7 @@ always @(*) begin
     else if (jump &jalr)            // jalr
         //next_pc = reg1_rdata + imm;
        // next_pc = (jalr_buf + imm);
-       next_pc = (jalr_buf + imm);
+       next_pc = 0x800000a0;
     else if (ebreak_flag)    
         next_pc = 32'h8000_0000;    
     else 
