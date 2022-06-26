@@ -77,11 +77,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
     __Vdlyvset__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0 = 0U;
     __Vdlyvset__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v1 = 0U;
     vlSelf->ysyx_22040175_top__DOT__ena = vlSelf->ysyx_22040175_top__DOT__rst_n;
-    if ((((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
-            & (IData)(vlSelf->ysyx_22040175_top__DOT__reg_wen)) 
-           & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__reg_waddr))) 
-          & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__s_flag))) 
-         & (IData)(vlSelf->time_set))) {
+    if (((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
+           & (IData)(vlSelf->ysyx_22040175_top__DOT__reg_wen)) 
+          & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__reg_waddr))) 
+         & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__s_flag)))) {
         if ((0U == (IData)(vlSelf->ysyx_22040175_top__DOT__expand_signed))) {
             __Vdlyvval__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v0 
                 = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__alu_res));
