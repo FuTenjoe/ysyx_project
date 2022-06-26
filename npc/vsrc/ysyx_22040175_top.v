@@ -45,6 +45,7 @@ assign reg_wdata = alu_res;
 wire [7:0]wmask;
 wire s_flag;
 wire [31:0] s_imm;
+wire [3:0] expand_signed;
 pc_reg u_pc_reg_0(
     .clk                            ( clk                           ),
     .rst_n                          ( rst_n                         ),
@@ -85,6 +86,7 @@ ctrl u_ctrl_0(
     .wmask(wmask),
     .s_flag(s_flag),
     .s_imm(s_imm)
+    .expand_signed(expand_signed)
 );
 
 reg_file u_reg_file_0(
@@ -100,7 +102,8 @@ reg_file u_reg_file_0(
     .wmask (wmask),
     .s_flag(s_flag),
     .time_set(time_set),
-    .s_imm(s_imm)
+    .s_imm(s_imm),
+    .expand_signed(expand_signed)
 );
 
 imm_gen u_imm_gen_0(

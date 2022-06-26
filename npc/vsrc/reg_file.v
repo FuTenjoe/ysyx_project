@@ -15,7 +15,8 @@ module reg_file (
     input  [7:0] wmask,
     input s_flag,
     input time_set,
-    input [31:0] s_imm
+    input [31:0] s_imm,
+    input [3:0] expand_signed
    
 );
 
@@ -49,7 +50,11 @@ import "DPI-C" function void pmem_write(input longint waddr, input longint wdata
 //wire [63:0] rdata;
 always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(time_set==1'd1)) 
+    case(expand_signed)
+    4'd0:
         pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
+    4'd1:
+        pmem_write(reg_f[reg_waddr] + s_imm, {{32{reg_wdata[31]},reg_wdata[31:0]}, wmask);
 end
 
 

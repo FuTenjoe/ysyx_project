@@ -20,7 +20,8 @@ module ctrl (
     output ebreak_flag,
     output reg [7:0]wmask,
     output reg s_flag,
-    output reg [31:0]s_imm
+    output reg [31:0]s_imm,
+    output reg [3:0] expand_signed
    
 );
 
@@ -47,7 +48,7 @@ always @(*) begin
     ebreak_flag = 1'd0;
     wmask = 8'd0;
     s_flag = 1'd0;
-    
+    expand_signed = 4'd0;
     case (opcode)
         `INST_TYPE_R: begin                         
             reg_wen     = 1'b1;
@@ -74,6 +75,26 @@ always @(*) begin
                 `INST_ADDI: begin
                     alu_op = `ALU_ADD; 
                     s_flag = 1'd0;
+                end
+                default:unknown_code = inst;
+            endcase
+        end
+        7'b0000011:begin     //lw
+            case (funct3)
+                3'b010: begin
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    jalr = 1'b0;
+                    reg1_raddr  = rs1;
+                    reg2_raddr  = rs2;
+                    reg_waddr   = rd;
+                    s_imm =0;
+                    imm_gen_op  = `IMM_GEN_I;
+                    alu_op      = `ALU_ADD;
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b11111111;
+                    s_flag = 1'd1;
+                    expand_signed =4'd1;       //
                 end
                 default:unknown_code = inst;
             endcase
@@ -108,6 +129,7 @@ always @(*) begin
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b11111111;
             s_flag = 1'd1;
+            expand_signed = 4'd0;
             end
             default:unknown_code = inst;
             endcase
