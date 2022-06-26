@@ -25,7 +25,7 @@ wire                         jump;       // jump flag
 
 wire                         reg_wen;    // register write enable
 wire [`REG_ADDR_WIDTH-1:0]   reg_waddr;  // register write address
-reg [`CPU_WIDTH-1:0]        reg_wdata;  // register write data
+wire [`CPU_WIDTH-1:0]        reg_wdata;  // register write data
 wire [`REG_ADDR_WIDTH-1:0]   reg1_raddr; // register 1 read address
 wire [`REG_ADDR_WIDTH-1:0]   reg2_raddr; // register 2 read address
 wire [`CPU_WIDTH-1:0]        reg1_rdata; // register 1 read data
