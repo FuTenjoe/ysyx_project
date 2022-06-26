@@ -16,9 +16,10 @@ always @(*) begin
     alu_res = `CPU_WIDTH'b0;
     case (alu_op)
         `ALU_ADD:   //0011
-        if(rd_flag == 1'd0)
+        if(rd_flag == 1'd0)begin
             alu_res = (alu_src1 +  alu_src2);
             alu_res = alu_res[31:0];
+        end
         else
             alu_res = rd_buf_lw[31:0];
         `ALU_SUB:begin //0100
