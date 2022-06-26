@@ -63,7 +63,7 @@ void difftest_step(vaddr_t pc);
 static void checkregs(CPU_state *ref, vaddr_t pc);
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc);
 //static inline void host_write(void *addr, int len, word_t data);
-static inline void host_write(void *addr, int len, word_t data);
+void host_write(void *addr, int len, word_t data);
 
 //加为DPIC函数
 extern "C" void pmem_read(long long raddr,long long *rdata){
@@ -106,7 +106,6 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   printf("waddr = %llx\n",waddr);
   printf("wdata = %llx\n",wdata);
   printf("len = %d\n",len);
-  
   host_write(guest_to_host(waddr),len,wdata);
 }
 
@@ -239,7 +238,7 @@ inline word_t host_read(void *addr, int len) {
     default: {printf("host_to_read is error !\n");assert(0);return 4096;};
   }
 }
-/*inline void host_write(void *addr, int len,word_t data){
+inline void host_write(void *addr, int len,word_t data){
   printf("host_write1 ok!\n");
   uint8_t a;
   uint16_t b;
@@ -253,15 +252,6 @@ inline word_t host_read(void *addr, int len) {
     case 8: d =(uint64_t *)addr;printf("host_write data=%ld!\n",data);printf("host_write addr=%ld!\n",addr);*d = data;printf("host_write ok!\n");return;
     //case 8: *(uint64_t *)addr=data;printf("host_write data=%ld!\n",data);printf("host_write addr=%ld!\n",*(uint64_t *)addr);*d = data;printf("host_write ok!\n");return;
     default:{printf("host_write is error !\n"); assert(0);};
-  }
-}*/
-static inline void host_write(void *addr, int len, word_t data) {
-  switch (len) {
-    case 1: *(uint8_t  *)addr = data; return;
-    case 2: *(uint16_t *)addr = data; return;
-    case 4: *(uint32_t *)addr = data; return;
-     case 8: *(uint64_t *)addr = data; return;
-     default: assert(0);
   }
 }
 
