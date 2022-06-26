@@ -9,7 +9,7 @@ module alu(
     input rd_flag
 );
 
-wire [63:0] rd_buf_lw;
+reg [63:0] rd_buf_lw;
 always @(*) begin
     zero = 1'b0;
     alu_res = `CPU_WIDTH'b0;
