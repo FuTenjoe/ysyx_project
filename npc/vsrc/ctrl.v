@@ -203,7 +203,8 @@ always @(*) begin
                 alu_src_sel = `ALU_SRC_FOUR_PC; //pc + 4
                 s_flag = 1'd0;
                 wmask =  8'b0;
-                expand_signed = 4'd0;
+                expand_signed = 4'd3;
+                s_imm = {{20{inst[31]}},inst[31:20]};
                 end
                 default:unknown_code = inst;
             endcase

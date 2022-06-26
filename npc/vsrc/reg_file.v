@@ -16,8 +16,8 @@ module reg_file (
     input s_flag,
     input time_set,
     input [31:0] s_imm,
-    input [3:0] expand_signed
-    
+    input [3:0] expand_signed,
+    output [63:0] jalr_buf
    
 );
 
@@ -32,7 +32,11 @@ always @(posedge clk or negedge rst_n) begin
             buff = reg_f[reg_wdata]+s_imm;
             reg_f[reg_waddr] <= {{32{buff[31]}},buff[31:0]};   //lw
         end
-        4'd2: reg_f[reg_waddr] <=   reg_wdata[31:0];            //addw
+        4'd2: reg_f[reg_waddr] <= reg_wdata[31:0];            //addw
+        4'd3:begin
+            reg_f[reg_waddr] <= reg_wdata;    //jalr
+            jalr_buf = reg_f[s_imm];
+        end
         endcase
 end
 
