@@ -65,7 +65,8 @@ muxpc u_mux_pc_0(
     .next_pc                        ( next_pc                       ),
     .jalr(jalr),
     .ebreak_flag(ebreak_flag),
-    .reg_f(reg_f)
+    .reg_f(reg_f),
+    .s_imm(s_imm)
     //.reg1_rdata(reg1_rdata)
 );
 
