@@ -22,13 +22,16 @@ module reg_file (
 );
 
 reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]; 
-
+reg [63:0] buff;
 // register write
 always @(posedge clk or negedge rst_n) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0)) // x0 read only
         case(expand_signed)
         4'd0:reg_f[reg_waddr] <= reg_wdata; 
-        4'd1:reg_f[reg_waddr] <= {{32{(reg_f[reg_wdata]+s_imm)[31]}},(reg_f[reg_wdata]+s_imm)[31:0]}; 
+        4'd1:begin
+            buff = reg_f[reg_wdata]+s_imm;
+        reg_f[reg_waddr] <= {{32{buff[31]}},buff[31:0]}; 
+        end
         endcase
 end
 
