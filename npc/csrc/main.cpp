@@ -69,7 +69,7 @@ void host_write(void *addr, int len, word_t data);
 extern "C" void pmem_read(long long raddr,long long *rdata){
   if(raddr >= CONFIG_MBASE){
     *rdata = host_read(guest_to_host(raddr), 8);
-    printf("raddr = 0x%llx\n",raddr);
+    //printf("raddr = 0x%llx\n",raddr);
     printf("rdata = 0x%llx\n",*rdata);
   }
   else{
@@ -105,7 +105,7 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   }
   printf("waddr = %llx\n",waddr);
   printf("wdata = %llx\n",wdata);
-  printf("len = %d\n",len);
+  //printf("len = %d\n",len);
   host_write(guest_to_host(waddr),len,wdata);
 }
 
