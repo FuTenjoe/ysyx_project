@@ -1485,7 +1485,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                 if ((1U & vlSelf->inst)) {
                     if ((2U == (7U & (vlSelf->inst 
                                       >> 0xcU)))) {
-                        vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 0U;
+                        vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 1U;
                     }
                 }
             }
