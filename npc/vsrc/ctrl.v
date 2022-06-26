@@ -173,7 +173,7 @@ always @(*) begin
         default:unknown_code = inst ;
     endcase 
 end
-assign s_flag = s_buf_flag1 &s_buf_flag2;
+assign s_flag = s_buf_flag1 &!s_buf_flag2;
 import "DPI-C" function void ebreak();
 always@(*)begin
     if(inst == 32'h0010_0073)begin
