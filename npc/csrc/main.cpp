@@ -195,6 +195,7 @@ int main(int argc, char **argv, char **env) {
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",8,cpu_gpr[8],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",1,cpu_gpr[1],top->inst);
+       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",15,cpu_gpr[15],top->inst);
         if (a>2){
        //printf("a =%d \n",a);
        
