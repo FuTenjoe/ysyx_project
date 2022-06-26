@@ -118,7 +118,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
         } else if ((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__expand_signed))) {
             vlSelf->ysyx_22040175_top__DOT__jalr_buf 
                 = vlSelf->ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f
-                [1U];
+                [0U];
             __Vdlyvval__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v3 
                 = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__alu_res));
             __Vdlyvset__ysyx_22040175_top__DOT__u_reg_file_0__DOT__reg_f__v3 = 1U;
