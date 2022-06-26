@@ -19,7 +19,8 @@ module ctrl (
     output    jalr,
     output ebreak_flag,
     output reg [7:0]wmask,
-    output reg s_flag
+    output reg s_flag,
+    output reg [31:0]s_imm
    
 );
 
@@ -100,7 +101,8 @@ always @(*) begin
             jalr = 1'b0;
             reg1_raddr  = 0;
             reg2_raddr  = rs2;
-            reg_waddr   = rs1 + {{20{inst[31]}},inst[31:25],inst[11:7]};
+            reg_waddr   = rs1;
+            s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
             alu_op      = `ALU_ADD;
             alu_src_sel = `ALU_SRC_REG;
