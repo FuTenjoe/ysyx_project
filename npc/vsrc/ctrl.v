@@ -193,7 +193,7 @@ always @(*) begin
         end
         7'b1100111:begin
             case(funct3)  
-            /*    3'b000:begin         //jalr
+                3'b000:begin         //jalr
                 jump        = 1'b1;
                 reg_wen     = 1'b1;
                 jalr = 1'b1;
@@ -204,7 +204,7 @@ always @(*) begin
                 s_flag = 1'd0;
                 wmask =  8'b0;
                 expand_signed = 4'd0;
-                end*/
+                end
                 default:unknown_code = inst;
             endcase
 
