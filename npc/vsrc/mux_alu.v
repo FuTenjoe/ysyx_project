@@ -8,8 +8,8 @@ module mux_alu (
     input      [`CPU_WIDTH-1:0]     imm,        // immediate
     input      [`CPU_WIDTH-1:0]     curr_pc,    // current pc addr
 
-    output reg [`CPU_WIDTH-1:0]     alu_src1,   // alu source 1
-    output reg [`CPU_WIDTH-1:0]     alu_src2    // alu source 2
+    output reg [63:0]     alu_src1,   // alu source 1
+    output reg [63:0]     alu_src2    // alu source 2
    
 );
 

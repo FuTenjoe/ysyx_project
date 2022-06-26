@@ -42,7 +42,7 @@ end
 // register 1 read
 always @(*) begin
     if(reg1_raddr == `REG_ADDR_WIDTH'b0)
-        reg1_rdata = `CPU_WIDTH'b0;
+        reg1_rdata = 64'b0;
     else
         reg1_rdata = reg_f[reg1_raddr];
 end
