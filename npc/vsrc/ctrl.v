@@ -21,7 +21,8 @@ module ctrl (
     output reg [7:0]wmask,
     output reg s_flag,
     output reg [31:0]s_imm,
-    output reg [3:0] expand_signed
+    output reg [3:0] expand_signed,
+    output reg rd_flag
    
 );
 
@@ -49,6 +50,7 @@ always @(*) begin
     wmask = 8'd0;
     s_flag = 1'd0;
     expand_signed = 4'd0;
+    rd_flag = 1'd0;
     case (opcode)
         7'b0110011: begin                         
             reg_wen     = 1'b1;
@@ -57,6 +59,7 @@ always @(*) begin
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b0;
+            rd_flag = 1'b0;
             case (funct3)
                 `INST_ADD_SUB: begin
                     alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
@@ -78,6 +81,7 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
                     s_imm = 32'd0;
+                    rd_flag = 1'd0;
                 end
                 3'b011:begin   //sltiu
                     jump        = 1'b0;
@@ -93,6 +97,7 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;    //截断为32位  
+                    rd_flag = 1'd0;
                 end   
                 default:unknown_code = inst;
             endcase
@@ -113,6 +118,7 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd2;    //截断为32位     
+                    rd_flag = 1'd0;
                 end    
                 default:unknown_code = inst;
         endcase
@@ -133,6 +139,7 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd1;       //
+                    rd_flag = 1'd1;
                 end
                 default:unknown_code = inst;
             endcase

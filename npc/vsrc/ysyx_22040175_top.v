@@ -41,12 +41,13 @@ wire [`CPU_WIDTH-1:0]        alu_src2;   // alu source 2
 wire [`CPU_WIDTH-1:0]        alu_res;    // alu result
 wire jalr;
 wire ebreak_flag;
-assign reg_wdata = alu_res;
+
 wire [7:0]wmask;
 wire s_flag;
 wire [31:0] s_imm;
 wire [3:0] expand_signed;
 wire [63:0] reg_f [0:`REG_DATA_DEPTH-1];
+wire rd_flag;
 pc_reg u_pc_reg_0(
     .clk                            ( clk                           ),
     .rst_n                          ( rst_n                         ),
@@ -89,7 +90,8 @@ ctrl u_ctrl_0(
     .wmask(wmask),
     .s_flag(s_flag),
     .s_imm(s_imm),
-    .expand_signed(expand_signed)
+    .expand_signed(expand_signed),
+    .rd_flag(rd_flag)
 );
 
 reg_file u_reg_file_0(
@@ -139,9 +141,14 @@ alu u_alu_0(
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 //import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 wire [63:0] rdata;
+wire [63:0] rd_data_lw;
 always @(*) begin
   pmem_read(pc, rdata);
-  
+  if(rd_flag==1'd1)
+  pmem_read(alu_res, rd_data_lw);
+  reg_waddr = rd_data_lw[31:0];
+  else
+  reg_wdata = alu_res;
 end
 assign inst = rdata[31:0];
 
