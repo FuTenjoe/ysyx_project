@@ -27,7 +27,7 @@ always @(posedge clk or negedge rst_n) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0)) // x0 read only
         case(expand_signed)
         4'd0:reg_f[reg_waddr] <= reg_wdata; 
-        4'd1:reg_f[reg_waddr] <= {{32{reg_wdata[31]}},reg_wdata[31:0]}; 
+        4'd1:reg_f[reg_waddr] <= reg_wdata[31:0]; 
         endcase
 end
 
