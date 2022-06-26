@@ -22,7 +22,7 @@ always @(*) begin
         next_pc = curr_pc + imm;
     else if (jump &jalr)            // jalr
         //next_pc = reg1_rdata + imm;
-        next_pc = curr_pc + 32'd24;
+        next_pc = (curr_pc + imm)&32'hffff_fffe;
     else if (ebreak_flag)    
         next_pc = 32'h8000_0000;    
     else 
