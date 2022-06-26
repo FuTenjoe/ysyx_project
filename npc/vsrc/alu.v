@@ -39,6 +39,7 @@ always @(*) begin
         end
     endcase
 end
+import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
   pmem_read(alu_res, rd_buf_lw);
 end
