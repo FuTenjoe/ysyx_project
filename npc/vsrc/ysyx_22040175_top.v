@@ -142,15 +142,16 @@ import "DPI-C" function void pmem_read(input longint raddr, output longint rdata
 //import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 wire [63:0] rdata;
 wire [63:0] rd_data_lw;
+reg [31:0] reg_wdata_buf;
 always @(*) begin
   pmem_read(pc, rdata);
   if(rd_flag==1'd1)begin
   pmem_read(alu_res, rd_data_lw);
-  reg_wdata = rd_data_lw[31:0];
+  reg_wdata_buf = rd_data_lw[31:0];
   end
   else
-  reg_wdata = alu_res;
+  reg_wdata_buf = alu_res;
 end
 assign inst = rdata[31:0];
-
+assign reg_wdata = reg_wdata_buf[31:0];
 endmodule
