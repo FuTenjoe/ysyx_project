@@ -147,7 +147,6 @@ always @(*) begin
   pmem_read(pc, rdata);
   pmem_read(alu_res, rd_data_lw);
   reg_wdata_buf = rd_data_lw[31:0];
-  else
   
 end
 assign inst = rdata[31:0];
