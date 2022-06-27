@@ -182,7 +182,7 @@ int main(int argc, char **argv, char **env) {
       printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
-      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",15,cpu_gpr[15],top->inst);
+      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",19,cpu_gpr[19],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",1,cpu_gpr[1],top->inst);
       
       
@@ -194,7 +194,7 @@ int main(int argc, char **argv, char **env) {
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
-      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",15,cpu_gpr[15],top->inst);
+      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",19,cpu_gpr[19],top->inst);
    
         if (a>2){
        //printf("a =%d \n",a);
