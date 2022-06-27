@@ -28,9 +28,28 @@ always @(*) begin
             zero = (alu_res == 64'b0) ? 1'b1 : 1'b0;
         end
         `ALU_SUBN:begin //1100
-            alu_res = alu_src1 -  alu_src2;
-            
             zero = (alu_res == 64'b0) ? 1'b0 : 1'b1;
+            alu_res = alu_src1[62:0] - alu_src2[62:0];
+            if(alu_src1[63] == 1'b0 && alu_src2[63] == 1'b0 )begin
+                if(alu_src1 - alu_src2 >= 64'd0) 
+                    alu_res = {1'b0,alu_res[62:0]};
+                else
+                    alu_res = {1'b1,alu_res[62:0]};
+            end
+            else if(alu_src1[63]==1'b0 && alu_src2[63]==1'b1)
+                    alu_res = {1'b0,alu_res[62:0]};
+            else if(alu_src1[63]==1'b1 && alu_src2[63]==1'b0)begin
+                    alu_res = alu_src1[62:0] + alu_src2[62:0];
+                    alu_res = {1'b1,alu_res[62:0]};
+            end
+            else if(alu_src1[63] == 1'b1 && alu_src2[63] == 1'b1 )begin
+                alu_res = alu_src2[62:0] - alu_src1[62:0];
+                if(alu_src2 - alu_src1 >= 64'd0) 
+                    alu_res = {1'b0,alu_res[62:0]};
+                else
+                    alu_res = {1'b1,alu_res[62:0]};
+            end
+            
         end
         `ALU_SLTU:begin//1001
             if(alu_src1<alu_src2)
