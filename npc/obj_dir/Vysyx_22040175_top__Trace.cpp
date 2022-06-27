@@ -47,8 +47,8 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgIData(oldp+13,(vlSelf->ysyx_22040175_top__DOT__imm),32);
             tracep->chgCData(oldp+14,(vlSelf->ysyx_22040175_top__DOT__alu_op),4);
             tracep->chgCData(oldp+15,(vlSelf->ysyx_22040175_top__DOT__alu_src_sel),2);
-            tracep->chgIData(oldp+16,(vlSelf->ysyx_22040175_top__DOT__alu_src1),32);
-            tracep->chgIData(oldp+17,(vlSelf->ysyx_22040175_top__DOT__alu_src2),32);
+            tracep->chgIData(oldp+16,((IData)(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mux_alu_0__alu_src1)),32);
+            tracep->chgIData(oldp+17,((IData)(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mux_alu_0__alu_src2)),32);
             tracep->chgBit(oldp+18,(vlSelf->ysyx_22040175_top__DOT__jalr));
             tracep->chgBit(oldp+19,(vlSelf->ysyx_22040175_top__DOT__ebreak_flag));
             tracep->chgCData(oldp+20,(vlSelf->ysyx_22040175_top__DOT__wmask),8);
@@ -159,18 +159,34 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgQData(oldp+217,(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_reg_file_0__reg_f[29]),64);
             tracep->chgQData(oldp+219,(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_reg_file_0__reg_f[30]),64);
             tracep->chgQData(oldp+221,(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_reg_file_0__reg_f[31]),64);
-            tracep->chgQData(oldp+223,((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__alu_src1))),64);
-            tracep->chgQData(oldp+225,((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__alu_src2))),64);
-            tracep->chgQData(oldp+227,(vlSelf->ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw),64);
+            tracep->chgQData(oldp+223,((QData)((IData)(
+                                                       ((0U 
+                                                         == (IData)(vlSelf->ysyx_22040175_top__DOT__reg1_raddr))
+                                                         ? 0ULL
+                                                         : 
+                                                        vlSelf->ysyx_22040175_top__DOT____Vcellout__u_reg_file_0__reg_f
+                                                        [vlSelf->ysyx_22040175_top__DOT__reg1_raddr])))),64);
+            tracep->chgQData(oldp+225,((QData)((IData)(
+                                                       ((0U 
+                                                         == (IData)(vlSelf->ysyx_22040175_top__DOT__reg2_raddr))
+                                                         ? 0ULL
+                                                         : 
+                                                        vlSelf->ysyx_22040175_top__DOT____Vcellout__u_reg_file_0__reg_f
+                                                        [vlSelf->ysyx_22040175_top__DOT__reg2_raddr])))),64);
+            tracep->chgQData(oldp+227,(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mux_alu_0__alu_src1),64);
+            tracep->chgQData(oldp+229,(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mux_alu_0__alu_src2),64);
+            tracep->chgQData(oldp+231,((QData)((IData)(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mux_alu_0__alu_src1))),64);
+            tracep->chgQData(oldp+233,((QData)((IData)(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mux_alu_0__alu_src2))),64);
+            tracep->chgQData(oldp+235,(vlSelf->ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw),64);
         }
-        tracep->chgBit(oldp+229,(vlSelf->clk));
-        tracep->chgBit(oldp+230,(vlSelf->rst));
-        tracep->chgIData(oldp+231,(vlSelf->inst),32);
-        tracep->chgIData(oldp+232,(vlSelf->pc),32);
-        tracep->chgIData(oldp+233,(vlSelf->unknown_code),32);
-        tracep->chgBit(oldp+234,(vlSelf->time_set));
-        tracep->chgBit(oldp+235,(vlSelf->ysyx_22040175_top__DOT__rst_n));
-        tracep->chgIData(oldp+236,(((IData)(vlSelf->ysyx_22040175_top__DOT__ena)
+        tracep->chgBit(oldp+237,(vlSelf->clk));
+        tracep->chgBit(oldp+238,(vlSelf->rst));
+        tracep->chgIData(oldp+239,(vlSelf->inst),32);
+        tracep->chgIData(oldp+240,(vlSelf->pc),32);
+        tracep->chgIData(oldp+241,(vlSelf->unknown_code),32);
+        tracep->chgBit(oldp+242,(vlSelf->time_set));
+        tracep->chgBit(oldp+243,(vlSelf->ysyx_22040175_top__DOT__rst_n));
+        tracep->chgIData(oldp+244,(((IData)(vlSelf->ysyx_22040175_top__DOT__ena)
                                      ? (((IData)(vlSelf->ysyx_22040175_top__DOT__branch) 
                                          & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__zero)))
                                          ? (vlSelf->pc 
@@ -195,15 +211,15 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                                  ((IData)(4U) 
                                                   + vlSelf->pc)))))
                                      : vlSelf->pc)),32);
-        tracep->chgCData(oldp+237,((0x7fU & vlSelf->inst)),7);
-        tracep->chgCData(oldp+238,((7U & (vlSelf->inst 
+        tracep->chgCData(oldp+245,((0x7fU & vlSelf->inst)),7);
+        tracep->chgCData(oldp+246,((7U & (vlSelf->inst 
                                           >> 0xcU))),3);
-        tracep->chgCData(oldp+239,((vlSelf->inst >> 0x19U)),7);
-        tracep->chgCData(oldp+240,((0x1fU & (vlSelf->inst 
+        tracep->chgCData(oldp+247,((vlSelf->inst >> 0x19U)),7);
+        tracep->chgCData(oldp+248,((0x1fU & (vlSelf->inst 
                                              >> 7U))),5);
-        tracep->chgCData(oldp+241,((0x1fU & (vlSelf->inst 
+        tracep->chgCData(oldp+249,((0x1fU & (vlSelf->inst 
                                              >> 0xfU))),5);
-        tracep->chgCData(oldp+242,((0x1fU & (vlSelf->inst 
+        tracep->chgCData(oldp+250,((0x1fU & (vlSelf->inst 
                                              >> 0x14U))),5);
     }
 }
