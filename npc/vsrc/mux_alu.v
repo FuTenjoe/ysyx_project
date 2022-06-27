@@ -3,13 +3,13 @@
 module mux_alu ( 
     input      [`ALU_SRC_WIDTH-1:0] alu_src_sel,// reg or imm to alu
 
-    input      [`CPU_WIDTH-1:0]     reg1_rdata, // register 1 read data
-    input      [`CPU_WIDTH-1:0]     reg2_rdata, // register 2 read data
+    input      [63:0]     reg1_rdata, // register 1 read data
+    input      [63:0]     reg2_rdata, // register 2 read data
     input      [`CPU_WIDTH-1:0]     imm,        // immediate
     input      [`CPU_WIDTH-1:0]     curr_pc,    // current pc addr
 
-    output reg [`CPU_WIDTH-1:0]     alu_src1,   // alu source 1
-    output reg [`CPU_WIDTH-1:0]     alu_src2    // alu source 2
+    output reg [63:0]     alu_src1,   // alu source 1
+    output reg [63:0]     alu_src2    // alu source 2
    
 );
 
