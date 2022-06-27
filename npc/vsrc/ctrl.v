@@ -61,11 +61,11 @@ always @(*) begin
             wmask =  8'b0;
             rd_flag = 1'b0;
             case (funct3)
-             /*   `INST_ADD_SUB: begin
+                `INST_ADD_SUB: begin
                     alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
-                end*/
+                end
                 default:unknown_code = inst;
             endcase
         end

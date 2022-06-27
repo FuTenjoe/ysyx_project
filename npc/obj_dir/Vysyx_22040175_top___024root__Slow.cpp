@@ -229,13 +229,6 @@ void Vysyx_22040175_top___024root___settle__TOP__1(Vysyx_22040175_top___024root*
                         vlSelf->ysyx_22040175_top__DOT__expand_signed = 0U;
                     }
                 }
-            } else if ((2U & vlSelf->inst)) {
-                if ((1U & vlSelf->inst)) {
-                    if ((0U == (7U & (vlSelf->inst 
-                                      >> 0xcU)))) {
-                        vlSelf->ysyx_22040175_top__DOT__expand_signed = 0U;
-                    }
-                }
             }
         } else if ((1U & (~ (vlSelf->inst >> 3U)))) {
             if ((1U & (~ (vlSelf->inst >> 2U)))) {
@@ -354,15 +347,6 @@ void Vysyx_22040175_top___024root___settle__TOP__1(Vysyx_22040175_top___024root*
                 } else {
                     vlSelf->unknown_code = vlSelf->inst;
                 }
-            } else if ((2U & vlSelf->inst)) {
-                if ((1U & vlSelf->inst)) {
-                    if ((0U != (7U & (vlSelf->inst 
-                                      >> 0xcU)))) {
-                        vlSelf->unknown_code = vlSelf->inst;
-                    }
-                } else {
-                    vlSelf->unknown_code = vlSelf->inst;
-                }
             } else {
                 vlSelf->unknown_code = vlSelf->inst;
             }
@@ -471,13 +455,6 @@ void Vysyx_22040175_top___024root___settle__TOP__1(Vysyx_22040175_top___024root*
             } else if ((4U & vlSelf->inst)) {
                 if ((2U & vlSelf->inst)) {
                     if ((1U & vlSelf->inst)) {
-                        vlSelf->ysyx_22040175_top__DOT__s_flag = 0U;
-                    }
-                }
-            } else if ((2U & vlSelf->inst)) {
-                if ((1U & vlSelf->inst)) {
-                    if ((0U == (7U & (vlSelf->inst 
-                                      >> 0xcU)))) {
                         vlSelf->ysyx_22040175_top__DOT__s_flag = 0U;
                     }
                 }
@@ -1145,16 +1122,6 @@ void Vysyx_22040175_top___024root___settle__TOP__1(Vysyx_22040175_top___024root*
                 if ((2U & vlSelf->inst)) {
                     if ((1U & vlSelf->inst)) {
                         vlSelf->ysyx_22040175_top__DOT__alu_op = 3U;
-                    }
-                }
-            } else if ((2U & vlSelf->inst)) {
-                if ((1U & vlSelf->inst)) {
-                    if ((0U == (7U & (vlSelf->inst 
-                                      >> 0xcU)))) {
-                        vlSelf->ysyx_22040175_top__DOT__alu_op 
-                            = ((0U == (vlSelf->inst 
-                                       >> 0x19U)) ? 3U
-                                : 4U);
                     }
                 }
             }
