@@ -13,7 +13,7 @@ module alu(
 reg [63:0] rd_buf_lw;
 always @(*) begin
     zero = 1'b0;
-    alu_res = `CPU_WIDTH'b0;
+    alu_res = 64'b0;
     case (alu_op)
         `ALU_ADD:   //0011
         if(rd_flag == 1'd0)begin

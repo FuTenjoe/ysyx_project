@@ -2,7 +2,7 @@
 `define SIM_PERIOD 20 // 20ns -> 50MHz 
 
 // processor numbers
-`define CPU_WIDTH 32 // rv32
+`define CPU_WIDTH 64 // rv32
 
 // instruction memory
 `define INST_MEM_ADDR_DEPTH 1024
