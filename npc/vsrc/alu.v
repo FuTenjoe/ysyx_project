@@ -46,7 +46,7 @@ always @(*) begin
             end
         end
         `ALU_SUBN:begin //1100
-            alu_res = alu_src1[62:0] - alu_src2[62:0];
+            alu_res = alu_src - alu_src2;
             zero = (alu_res == 64'b0) ? 1'b0 : 1'b1;
         end
         `ALU_SLTU:begin//1001
