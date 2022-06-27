@@ -29,7 +29,7 @@ wire [`REG_ADDR_WIDTH-1:0]   reg_waddr;  // register write address
 wire [63:0]        reg_wdata;  // register write data
 wire [`REG_ADDR_WIDTH-1:0]   reg1_raddr; // register 1 read address
 wire [`REG_ADDR_WIDTH-1:0]   reg2_raddr; // register 2 read address
-wire [`63:0]        reg1_rdata; // register 1 read data
+wire [63:0]        reg1_rdata; // register 1 read data
 wire [63:0]        reg2_rdata; // register 2 read data
 
 wire [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op; // immediate extend opcode
