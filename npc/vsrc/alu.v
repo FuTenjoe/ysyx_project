@@ -27,9 +27,9 @@ always @(*) begin
             //alu_res = alu_src1[62:0] - alu_src2[62:0];
             if(alu_src1[63] == 1'b0 && alu_src2[63] == 1'b0 )begin
                 alu_res = 64'hffffffff_80000001;
-                if(alu_src1 - alu_src2 >= 64'd0) 
+               // if(alu_src1 - alu_src2 >= 64'd0) 
                     //alu_res = {1'b0,alu_res[62:0]};
-                else
+                //else
                     //alu_res = {1'b1,alu_res[62:0]};
             end
             else if(alu_src1[63]==1'b0 && alu_src2[63]==1'b1)
@@ -43,9 +43,9 @@ always @(*) begin
             else if(alu_src1[63] == 1'b1 && alu_src2[63] == 1'b1 )begin
                 //alu_res = alu_src2[62:0] - alu_src1[62:0];
                 alu_res = 64'hffffffff_80000004;
-                if(alu_src2 - alu_src1 >= 64'd0) 
+                //if(alu_src2 - alu_src1 >= 64'd0) 
                     //alu_res = {1'b0,alu_res[62:0]};
-                else
+                //else
                     //alu_res = {1'b1,alu_res[62:0]};
             end
         end
