@@ -1790,7 +1790,7 @@ void Vysyx_22040175_top___024root___settle__TOP__1(Vysyx_22040175_top___024root*
         } else {
             vlSelf->ysyx_22040175_top__DOT__alu_res 
                 = ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mux_alu_0__alu_src1)) 
-                   - (QData)((IData)(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mux_alu_0__alu_src2)));
+                   + (QData)((IData)(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mux_alu_0__alu_src2)));
             vlSelf->ysyx_22040175_top__DOT__zero = 
                 (0ULL == vlSelf->ysyx_22040175_top__DOT__alu_res);
         }
