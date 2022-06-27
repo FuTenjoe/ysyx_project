@@ -308,7 +308,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullBit(oldp+236,(vlSelf->ysyx_22040175_top__DOT__rst_n));
         tracep->fullQData(oldp+237,(((IData)(vlSelf->ysyx_22040175_top__DOT__ena)
                                       ? (((IData)(vlSelf->ysyx_22040175_top__DOT__branch) 
-                                          & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__zero)))
+                                          & (IData)(vlSelf->ysyx_22040175_top__DOT__zero))
                                           ? ((QData)((IData)(vlSelf->pc)) 
                                              + vlSelf->ysyx_22040175_top__DOT__imm)
                                           : (((IData)(vlSelf->ysyx_22040175_top__DOT__jump) 
