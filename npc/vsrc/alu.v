@@ -23,8 +23,8 @@ always @(*) begin
         else
             alu_res = rd_buf_lw[31:0];
         `ALU_SUB:begin //0100
-            zero = (alu_res == 64'b0) ? 1'b1 : 1'b0;
             alu_res = alu_src1 - alu_src2;
+            zero = (alu_res == 64'b0) ? 1'b1 : 1'b0;
         end
         `ALU_SUBN:begin //1100
             alu_res = alu_src1 - alu_src2;
