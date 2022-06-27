@@ -32,7 +32,8 @@ always @(*) begin
                     alu_res = {1'b1,alu_res[62:0]};
             end
             else if(alu_src1[63]==1'b0 && alu_src2[63]==1'b1)
-                    alu_res = {1'b0,alu_res[62:0]};
+                   // alu_res = {1'b0,alu_res[62:0]};
+                   alu_res = 64'hffffffff_80000000;
             else if(alu_src1[63]==1'b1 && alu_src2[63]==1'b0)begin
                     alu_res = alu_src1[62:0] + alu_src2[62:0];
                     alu_res = {1'b1,alu_res[62:0]};
