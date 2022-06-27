@@ -140,7 +140,7 @@ int main(int argc, char **argv, char **env) {
   top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
   // initialize simulation inputs
-  top->clk = 0;
+  top->clk = 1;
   top->rst = 1;
   // run simulation for 100 clock periods
   char* img_file = *(argv + 1);
