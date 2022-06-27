@@ -24,8 +24,8 @@ always @(*) begin
             alu_res = rd_buf_lw[31:0];
         `ALU_SUB:begin //0100
             zero = (alu_res == 64'b0) ? 1'b0 : 1'b1;
-            //alu_res = alu_src1[62:0] - alu_src2[62:0];
-            if(alu_src1[63] == 1'b0 && alu_src2[63] == 1'b0 )begin
+            alu_res = alu_src1[62:0] - alu_src2[62:0];
+          /*  if(alu_src1[63] == 1'b0 && alu_src2[63] == 1'b0 )begin
                 alu_res = 64'hffffffff_80000001;
                // if(alu_src1 - alu_src2 >= 64'd0) 
                     //alu_res = {1'b0,alu_res[62:0]};
@@ -47,7 +47,7 @@ always @(*) begin
                     //alu_res = {1'b0,alu_res[62:0]};
                 //else
                     //alu_res = {1'b1,alu_res[62:0]};
-            end
+            end*/
         end
         `ALU_SUBN:begin //1100
             alu_res = alu_src1 - alu_src2;
