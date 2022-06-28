@@ -220,8 +220,8 @@ always @(*) begin
             jump        = 1'b0;
             reg_wen     = 1'b1;
             jalr = 1'b0;
-            reg1_raddr  = rs2;
-            reg2_raddr  = 0;
+            reg1_raddr  = 0;
+            reg2_raddr  = rs2;
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
