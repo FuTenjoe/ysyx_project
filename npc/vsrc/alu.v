@@ -24,6 +24,8 @@ always @(*) begin
             alu_res = rd_buf_lw[31:0];
         else if(rd_flag == 3'd2)
             alu_res = rd_buf_lw[63:0];
+        else if(rd_flag == 3'd3)
+            alu_res = alu_src1 +  alu_src2;
         end
         `ALU_SUB:begin //0100
             alu_res = alu_src1 - alu_src2;
