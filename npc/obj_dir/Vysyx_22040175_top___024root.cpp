@@ -1962,7 +1962,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                 if ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
                                    >> 1U)))) {
                     if ((1U & (IData)((QData)((IData)(vlSelf->inst))))) {
-                        vlSelf->ysyx_22040175_top__DOT__rd_flag = 0U;
+                        vlSelf->ysyx_22040175_top__DOT__rd_flag = 3U;
                     }
                 }
             } else if ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
