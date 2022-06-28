@@ -233,7 +233,7 @@ always @(*) begin
             rd_flag = 3'd3;
             end
             3'b001:begin    //sh
-        /*    jump        = 1'b0;
+            jump        = 1'b0;
             reg_wen     = 1'b1;
             jalr = 1'b0;
             reg1_raddr  = 0;
@@ -246,7 +246,7 @@ always @(*) begin
             wmask =  8'h3;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd5;*/
+            rd_flag = 3'd5;
             end
 
             default:unknown_code = inst;
