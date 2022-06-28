@@ -220,8 +220,8 @@ always @(*) begin
             jump        = 1'b0;
             reg_wen     = 1'b1;
             jalr = 1'b0;
-            reg1_raddr  = 0;
-            reg2_raddr  = rs2;
+            reg1_raddr  = rs2;
+            reg2_raddr  = 0;
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
@@ -236,8 +236,8 @@ always @(*) begin
             jump        = 1'b0;
             reg_wen     = 1'b1;
             jalr = 1'b0;
-            reg1_raddr  = rs1;
-            reg2_raddr  = 0;
+            reg1_raddr  = 0;
+            reg2_raddr  = rs2;
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
@@ -246,7 +246,7 @@ always @(*) begin
             wmask =  8'h3;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd3;
+            rd_flag = 3'd5;
             end
 
             default:unknown_code = inst;
