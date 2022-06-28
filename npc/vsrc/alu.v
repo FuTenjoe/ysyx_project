@@ -41,8 +41,8 @@ always @(*) begin
             else
                  alu_res = 32'd0;
         end
-        `ALU_SRL:
-            alu_res = {{alu_src2{alu_src1[63]}},alu_src1>>alu_src2[63-alu_src2:0]};
+        `ALU_SRL:begin
+            alu_res = alu_src1>>>alu_src2;
         default:begin
             alu_res = alu_src1 -  alu_src2;
             zero = (alu_res == `CPU_WIDTH'b0) ? 1'b1 : 1'b0;
