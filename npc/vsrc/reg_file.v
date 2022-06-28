@@ -32,10 +32,9 @@ always @(posedge clk or negedge rst_n) begin
             reg_f[reg_waddr] <= {{32{reg_wdata[31]}},reg_wdata[31:0]};   //lw  addw
         end
         4'd2: reg_f[reg_waddr] <= reg_wdata[31:0];            //addw错误
-        4'd3:begin
-            reg_f[reg_waddr] <= reg_wdata;    //jalr
+        
             
-        end
+       
         endcase
 end
 
