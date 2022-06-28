@@ -267,7 +267,7 @@ always @(*) begin
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
-                reg1_raddr  = `REG_ADDR_WIDTH'b0; // x0 = 0
+                reg1_raddr  = 64'b0; // x0 = 0
                 reg_waddr   = rd;
                 imm_gen_op  = `IMM_GEN_U;
                 alu_op      = `ALU_ADD;
@@ -275,7 +275,7 @@ always @(*) begin
                 s_flag = 1'd0;
                 wmask =  8'b0;
                 expand_signed = 4'd0;
-                rd_flag = 3'd0;
+                rd_flag = 3'd3;
         end
         `INST_AUIPC:begin //only auipc
                reg_wen     = 1'b1;
