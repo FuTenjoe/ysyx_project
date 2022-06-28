@@ -200,12 +200,12 @@ always @(*) begin
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
                     reg1_raddr  = rs1;
-                    reg2_raddr  = rs2;
+                    reg2_raddr  = 0;
                     reg_waddr   = rd;
                     s_imm = 64'd0;
                     imm_gen_op  = `IMM_GEN_I;
                     alu_op      = `ALU_ADD;
-                    alu_src_sel = `ALU_SRC_IMM;
+                    alu_src_sel = `ALU_SRC_REG;
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;       //不需扩展符号位
