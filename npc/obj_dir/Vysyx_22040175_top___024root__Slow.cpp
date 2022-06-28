@@ -2799,7 +2799,8 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                     = (vlSelf->ysyx_22040175_top__DOT__alu_src1 
                        + vlSelf->ysyx_22040175_top__DOT__alu_src2);
             } else if ((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__rd_flag))) {
-                vlSelf->ysyx_22040175_top__DOT__alu_res = 0xaaULL;
+                vlSelf->ysyx_22040175_top__DOT__alu_res 
+                    = vlSelf->ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw;
             }
         } else {
             vlSelf->ysyx_22040175_top__DOT__alu_res 

@@ -27,7 +27,7 @@ always @(*) begin
         else if(rd_flag == 3'd3)
             alu_res = alu_src1 +  alu_src2;
         else if(rd_flag == 3'd4)
-            alu_res = rd_buf_lw[63:0];
+            alu_res = rd_buf_lw[7:0];
         end
         `ALU_SUB:begin //0100
             alu_res = alu_src1 - alu_src2;
@@ -54,7 +54,7 @@ end
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
     if(rd_flag == 3'd1 || rd_flag == 3'd2||rd_flag == 3'd4)
-  pmem_read(alu_src1 +  alu_src2, rd_buf_lw);
+  pmem_read(alu_src1 +  0, rd_buf_lw);
   
 end
 endmodule
