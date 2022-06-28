@@ -117,7 +117,7 @@ always @(*) begin
                     alu_src_sel = `ALU_SRC_REG;
                     wmask =  8'b0;
                     s_flag = 1'd0;
-                    expand_signed =4'd1;    //截断为32位     
+                    expand_signed =4'd1;    
                     rd_flag = 3'd0;
                 end    
                 default:unknown_code = inst;
@@ -138,7 +138,7 @@ always @(*) begin
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
                     s_flag = 1'd0;
-                    expand_signed =4'd1;    //截断为32位     
+                    expand_signed =4'd1;    
                     rd_flag = 3'd0;
                 end    
                 default:unknown_code = inst;
@@ -169,13 +169,13 @@ always @(*) begin
                     reg1_raddr  = rs1;
                     reg2_raddr  = rs2;
                     reg_waddr   = rd;
-                    s_imm ={{20{inst[31]}},inst[31:20]};
+                    s_imm = 64'd0;
                     imm_gen_op  = `IMM_GEN_I;
                     alu_op      = `ALU_ADD;
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
                     s_flag = 1'd0;
-                    expand_signed =4'd1;       //
+                    expand_signed =4'd0;       //
                     rd_flag = 3'd2;
                 end
                 default:unknown_code = inst;

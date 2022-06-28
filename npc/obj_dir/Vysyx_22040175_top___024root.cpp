@@ -2707,7 +2707,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
             } else if ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__rd_flag))) {
                 vlSelf->ysyx_22040175_top__DOT__alu_res 
                     = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw));
-            } else if ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__rd_flag))) {
+            } else if ((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__rd_flag))) {
                 vlSelf->ysyx_22040175_top__DOT__alu_res 
                     = vlSelf->ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw;
             }
