@@ -22,7 +22,7 @@ module ctrl (
     output reg s_flag,
     output reg [31:0]s_imm,
     output reg [3:0] expand_signed,
-    output reg rd_flag
+    output reg [2:0]rd_flag
    
 );
 
@@ -59,7 +59,7 @@ always @(*) begin
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b0;
-            rd_flag = 1'b0;
+            rd_flag = 3'b0;
             case (funct3)
                 `INST_ADD_SUB: begin
                     alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
@@ -81,7 +81,7 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
                     s_imm = 32'd0;
-                    rd_flag = 1'd0;
+                    rd_flag = 3'd0;
                 end
                 3'b011:begin   //sltiu
                     jump        = 1'b0;
@@ -97,7 +97,7 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;    //截断为32位  
-                    rd_flag = 1'd0;
+                    rd_flag = 3'd0;
                 end   
                 default:unknown_code = inst;
             endcase
@@ -118,7 +118,7 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd1;    //截断为32位     
-                    rd_flag = 1'd0;
+                    rd_flag = 3'd0;
                 end    
                 default:unknown_code = inst;
         endcase
@@ -139,7 +139,7 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd1;    //截断为32位     
-                    rd_flag = 1'd0;
+                    rd_flag = 3'd0;
                 end    
                 default:unknown_code = inst;
         endcase
@@ -160,7 +160,23 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd1;       //
-                    rd_flag = 1'd1;
+                    rd_flag = 3'd1;
+                end
+                3'b011:begin //ld
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    jalr = 1'b0;
+                    reg1_raddr  = rs1;
+                    reg2_raddr  = rs2;
+                    reg_waddr   = rd;
+                    s_imm ={{20{inst[31]}},inst[31:20]};
+                    imm_gen_op  = `IMM_GEN_I;
+                    alu_op      = `ALU_ADD;
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b0;
+                    s_flag = 1'd0;
+                    expand_signed =4'd1;       //
+                    rd_flag = 3'd2;
                 end
                 default:unknown_code = inst;
             endcase
@@ -181,6 +197,7 @@ always @(*) begin
             wmask =  8'b11111111;
             s_flag = 1'd1;
             expand_signed = 4'd0;
+            rd_flag = 3'd0;
             end
             default:unknown_code = inst;
             endcase
@@ -196,6 +213,7 @@ always @(*) begin
             s_flag = 1'd0;
             wmask =  8'b0;
             expand_signed = 4'd0;
+            rd_flag = 3'd0;
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
@@ -207,6 +225,7 @@ always @(*) begin
                 s_flag = 1'd0;
                 wmask =  8'b0;
                 expand_signed = 4'd0;
+                rd_flag = 3'd0;
         end
         `INST_AUIPC:begin //only auipc
                reg_wen     = 1'b1;
@@ -218,6 +237,7 @@ always @(*) begin
                 s_flag = 1'd0;
                 wmask =  8'b0;
                 expand_signed = 4'd0;
+                rd_flag = 3'd0;
         end
         7'b1100111:begin
             case(funct3)  
@@ -233,6 +253,7 @@ always @(*) begin
                 wmask =  8'b0;
                 expand_signed = 4'd3;
                 s_imm = rs1;
+                rd_flag = 3'd0;
                 end
                 default:unknown_code = inst;
             endcase
@@ -244,6 +265,7 @@ always @(*) begin
             imm_gen_op  = `IMM_GEN_B;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b0;
+            rd_flag = 3'd0;
             case (funct3)
                 `INST_BNE: begin     //bne
                     branch     = 1'b1;

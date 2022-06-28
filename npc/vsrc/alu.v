@@ -7,7 +7,7 @@ module alu(
     input      [63:0]    alu_src2, // alu source 2
     output reg                     zero,     // alu result is zero
     output reg [63:0]    alu_res,   // alu result
-    input rd_flag
+    input [2:0]rd_flag
 );
 
 reg [63:0] rd_buf_lw;
@@ -15,13 +15,16 @@ always @(*) begin
     zero = 1'b0;
     alu_res = 64'b0;
     case (alu_op)
-        `ALU_ADD:   //0011
-        if(rd_flag == 1'd0)begin
+        `ALU_ADD: begin  //0011
+        if(rd_flag == 3'd0)begin
             alu_res = (alu_src1 +  alu_src2);
             alu_res = alu_res[31:0];
         end
-        else
+        else if(rd_flag == 3'd1)
             alu_res = rd_buf_lw[31:0];
+        else if(rd_flag == 3'd1)
+            alu_res = rd_buf_lw[63:0];
+        end
         `ALU_SUB:begin //0100
             alu_res = alu_src1 - alu_src2;
             zero = (alu_res == 64'b0) ? 1'b1 : 1'b0;
@@ -44,8 +47,9 @@ always @(*) begin
 end
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
-    if(rd_flag == 1'b1)
+    if(rd_flag == 3'd1 | rd_flag == 3'd2)
   pmem_read(alu_src1 +  alu_src2, rd_buf_lw);
+  
 end
 endmodule
 
