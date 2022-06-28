@@ -22,7 +22,7 @@ always @(*) begin
         end
         else if(rd_flag == 3'd1)
             alu_res = rd_buf_lw[31:0];
-        else if(rd_flag == 3'd1)
+        else if(rd_flag == 3'd2)
             alu_res = rd_buf_lw[63:0];
         end
         `ALU_SUB:begin //0100
