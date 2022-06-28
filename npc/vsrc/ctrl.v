@@ -82,7 +82,7 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
                     s_imm = 32'd0;
-                    rd_flag = 3'd3;
+                    rd_flag = 3'd0;
                 end
                 3'b011:begin   //sltiu
                     jump        = 1'b0;
