@@ -41,7 +41,7 @@ always @(*) begin
             else
                  alu_res = 32'd0;
         end
-        `ALU_SRL:begin
+        `ALU_SRL:
             alu_res = alu_src1>>>alu_src2;
         default:begin
             alu_res = alu_src1 -  alu_src2;
