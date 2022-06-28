@@ -110,7 +110,7 @@ always @(*) begin
                     s_imm =0;
                     imm_gen_op  = `IMM_GEN_I;   //I型指令
                     alu_op      = `ALU_SRL;
-                    alu_src_sel = `ALU_SRC_IMM;
+                    alu_src_sel = `ALU_SRC_REG;
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd3;    

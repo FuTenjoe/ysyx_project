@@ -213,7 +213,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                             if ((0U == (7U & (IData)(
                                                      ((QData)((IData)(vlSelf->inst)) 
                                                       >> 0xcU))))) {
-                                vlSelf->ysyx_22040175_top__DOT__expand_signed = 3U;
+                                vlSelf->ysyx_22040175_top__DOT__expand_signed = 0U;
                             }
                         }
                     }
