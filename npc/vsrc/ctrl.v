@@ -217,7 +217,7 @@ always @(*) begin
         7'b0100011:begin    //sd
            case(funct3)    
             3'b011:begin    //sd
-            jump        = 1'b0;
+        /*    jump        = 1'b0;
             reg_wen     = 1'b1;
             jalr = 1'b0;
             reg1_raddr  = 0;
@@ -230,7 +230,7 @@ always @(*) begin
             wmask =  8'b11111111;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd3;
+            rd_flag = 3'd3;*/
             end
             3'b001:begin    //sh
         /*    jump        = 1'b0;
