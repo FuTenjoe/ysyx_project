@@ -112,7 +112,7 @@ always @(*) begin
                     wmask =  8'b0;
                     alu_op = `ALU_ADD; 
                     s_flag = 1'd0;
-                    expand_signed = 4'd0;
+                    expand_signed = 4'd1;
                     s_imm = 32'd0;
                     rd_flag = 3'd0;
                 end
