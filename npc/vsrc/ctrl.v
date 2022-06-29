@@ -63,16 +63,22 @@ always @(*) begin
                 3'b000: begin
                     case(funct7)
                     7'b0000000:begin
-                        alu_op = `ALU_ADD ; // A:add B:sub 
+                        alu_op = `ALU_ADD ; // sub 
                         s_flag = 1'd0;
                         expand_signed = 4'd0;
                         rd_flag = 3'd3;
                     end
                     7'b0100000:begin
-                    alu_op =  `ALU_SUB; // A:add B:sub 
-                    s_flag = 1'd0;
-                    expand_signed = 4'd0;
-                    rd_flag = 3'd3;
+                        alu_op =  `ALU_SUB; // sub 
+                        s_flag = 1'd0;
+                        expand_signed = 4'd0;
+                        rd_flag = 3'd3;
+                    end
+                    7'b0000001:begin     //mul
+                        alu_op =  `ALU_MUL; 
+                        s_flag = 1'd0;
+                        expand_signed = 4'd0;
+                        rd_flag = 3'd0;
                     end
                     default:unknown_code = inst;
                     endcase
