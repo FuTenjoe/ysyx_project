@@ -368,6 +368,22 @@ always @(*) begin
                     expand_signed =4'd0;       //不需扩展符号位
                     rd_flag = 3'd4;
                 end
+                3'b001:begin      //lh
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    jalr = 1'b0;
+                    reg1_raddr  = rs1;
+                    reg2_raddr  = 0;
+                    reg_waddr   = rd;
+                    s_imm = 64'd0;
+                    imm_gen_op  = `IMM_GEN_I;
+                    alu_op      = `ALU_ADD;
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b0;
+                    s_flag = 1'd0;
+                    expand_signed =4'd1;       //不需扩展符号位
+                    rd_flag = 3'd6;
+                end
                 default:unknown_code = inst;
             endcase
         end
