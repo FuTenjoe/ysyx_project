@@ -280,10 +280,10 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
-                    end*/
+                    end
                 default:unknown_code = inst;
                 endcase
-            end
+            end*/
             default:unknown_code = inst;
             endcase
         end
