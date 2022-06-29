@@ -207,7 +207,7 @@ always @(*) begin
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
                 end    
-                defalut:unknown_code = inst;
+                default:unknown_code = inst;
                 endcase
             end
                 3'b001:begin  //sllw
