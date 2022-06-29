@@ -174,6 +174,19 @@ always @(*) begin
                     s_imm = 32'd0;
                     rd_flag = 3'd0;
                 end
+                3'b110:begin  //ori
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    reg1_raddr  = rs1;
+                    reg_waddr   = rd;
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b0;
+                    alu_op = `ALU_OR; 
+                    s_flag = 1'd0;
+                    expand_signed = 4'd0;
+                    s_imm = 32'd0;
+                    rd_flag = 3'd0;
+                end
                 3'b001:begin   //slli
                     if(funct7 == 7'd0 | funct7 == 7'd1)begin
                     jump        = 1'b0;
