@@ -70,7 +70,7 @@ always @(*) begin
         `ALU_DIVY:
             alu_res = alu_src1 % alu_src2;
         `ALU_SLTU:
-            alu_res = (rd_buf_lw < rd_buf_lw2) ? 64'd1 : 64'd0;
+            alu_res = (alu_src1 < alu_src2) ? 64'd1 : 64'd0;
         `ALU_XOR:
                 alu_res = alu_src1 ^ alu_src2;
         `ALU_OR:
