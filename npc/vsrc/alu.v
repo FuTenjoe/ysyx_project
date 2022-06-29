@@ -42,7 +42,7 @@ always @(*) begin
             zero = (alu_res == 64'b0) ? 1'b0 : 1'b1;
         end
         `ALU_SMT:begin
-             if(signed alu_src1 >= signed alu_src2)
+             if("signed" alu_src1 >= "signed" alu_src2)
                 zero = 32'd0;
             else
                  alu_res = 32'd1;
