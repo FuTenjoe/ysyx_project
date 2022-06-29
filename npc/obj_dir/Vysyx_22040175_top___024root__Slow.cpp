@@ -1947,7 +1947,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                     } else if ((4U == (7U & (IData)(
                                                     ((QData)((IData)(vlSelf->inst)) 
                                                      >> 0xcU))))) {
-                        vlSelf->ysyx_22040175_top__DOT__rd_flag = 4U;
+                        vlSelf->ysyx_22040175_top__DOT__rd_flag = 1U;
                     }
                 }
             }

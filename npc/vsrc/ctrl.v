@@ -209,7 +209,7 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;       //不需扩展符号位
-                    rd_flag = 3'd1;
+                    rd_flag = 3'd4;
                 end
                 default:unknown_code = inst;
             endcase
