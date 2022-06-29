@@ -22,7 +22,7 @@ always @(*) begin
              //imm = {{12{inst[31]}},inst[19:12],inst[20],inst[30:21], 1'b0};
              imm = {{44{inst[31]}},inst[19:12],inst[20],inst[30:21], 1'b0};
         `IMM_GEN_U: 
-             imm = {inst[31:12],12'b0};
+             imm = {{32{inst[31]}},inst[31:12],12'b0};
         `IMM_GEN_SRAI:
              imm = inst[25:20];
           default :imm = {{25{inst[31]}},inst[6:0]};
