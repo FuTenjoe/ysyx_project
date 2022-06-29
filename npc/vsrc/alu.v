@@ -30,11 +30,10 @@ always @(*) begin
             alu_res = alu_src1 +  alu_src2;
         else if(rd_flag == 3'd4)
             alu_res = rd_buf_lw[7:0];
-        else if(rd_flag == 3'd5)begin
+        else if(rd_flag == 3'd5)
             alu_res = alu_src2;
         else if(rd_flag == 3'd6)   //lh
             alu_res = rd_buf_lw[15:0];
-        end
         end
         `ALU_SUB:begin //0100
             alu_res = alu_src1 - alu_src2;
