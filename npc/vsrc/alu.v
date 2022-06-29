@@ -75,7 +75,10 @@ always @(*) begin
                  alu_res = 32'd0;
         end
         `ALU_SRL:    //算术右移
-            alu_res = alu_src1>>>alu_src2;
+            if(rd_flag == 3'd0)
+                alu_res = alu_src1>>>alu_src2;
+            else if(rd_flag == 3'd1)  //sraiw
+                alu_res = alu_src1[31:0]>>>alu_src2;
         `ALU_AND:begin
                 alu_res = alu_src1 & alu_src2;
         end
