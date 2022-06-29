@@ -2492,7 +2492,10 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                             vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 1U;
                         }
                     } else {
-                        vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 1U;
+                        vlSelf->ysyx_22040175_top__DOT__alu_src_sel 
+                            = ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
+                                              >> 0xcU)))
+                                ? 0U : 1U);
                     }
                 } else if ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
                                           >> 0xdU)))) {
