@@ -348,7 +348,22 @@ always @(*) begin
             expand_signed = 4'd0;
             rd_flag = 3'd5;   //选rs2
             end
-
+            3'b010:begin     //sw
+            jump        = 1'b0;
+            reg_wen     = 1'b1;
+            jalr = 1'b0;
+            reg1_raddr  = 0;
+            reg2_raddr  = rs2;
+            reg_waddr   = rs1;
+            s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
+            imm_gen_op  = `INST_TYPE_S;
+            alu_op      = `ALU_ADD;
+            alu_src_sel = `ALU_SRC_REG;
+            wmask =  8'hf;
+            s_flag = 1'd1;
+            expand_signed = 4'd0;
+            rd_flag = 3'd5;   //选rs2
+            end
             default:unknown_code = inst;
             endcase
         end
