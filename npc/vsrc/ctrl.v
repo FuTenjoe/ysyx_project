@@ -82,8 +82,8 @@ always @(*) begin
                     else
                         unknown_code = inst;
                 end
-                3'b010:begin
-                    alu_op = `ALU_SLT;   //sltu
+                3'b010:begin         //slt
+                    alu_op = `ALU_SLT;   
                     if(funct7 == 7'b0) begin
                         s_flag = 1'd0;
                         expand_signed = 4'd0;
