@@ -39,7 +39,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgQData(oldp+12,(vlSelf->ysyx_22040175_top__DOT__reg2_rdata),64);
             tracep->chgCData(oldp+14,(vlSelf->ysyx_22040175_top__DOT__imm_gen_op),3);
             tracep->chgQData(oldp+15,(vlSelf->ysyx_22040175_top__DOT__imm),64);
-            tracep->chgCData(oldp+17,(vlSelf->ysyx_22040175_top__DOT__alu_op),4);
+            tracep->chgCData(oldp+17,(vlSelf->ysyx_22040175_top__DOT__alu_op),5);
             tracep->chgCData(oldp+18,(vlSelf->ysyx_22040175_top__DOT__alu_src_sel),2);
             tracep->chgQData(oldp+19,(vlSelf->ysyx_22040175_top__DOT__alu_src1),64);
             tracep->chgQData(oldp+21,(vlSelf->ysyx_22040175_top__DOT__alu_src2),64);

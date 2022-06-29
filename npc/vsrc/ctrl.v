@@ -67,10 +67,19 @@ always @(*) begin
                     rd_flag = 3'd3;
                 end
                 3'b111:begin
-                    alu_op = (funct7 == 7'b0) ? `ALU_AND: `ALU_DIVY;
+                    alu_op = (funct7 == 7'b0) ? `ALU_AND: `ALU_DIVY;      //A:and  B:remu
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
                     rd_flag = 3'd6;
+                end
+                3'b011:begin
+                    alu_op = `ALU_SLTU;
+                    if(funct7 == 7'b0) 
+                        s_flag = 1'd0;
+                        expand_signed = 4'd0;
+                        rd_flag = 3'd6;
+                    else
+                        unknown_code = inst;
                 end
                 default:unknown_code = inst;
             endcase

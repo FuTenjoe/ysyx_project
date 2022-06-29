@@ -49,7 +49,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declQuad(c+13,"ysyx_22040175_top reg2_rdata", false,-1, 63,0);
         tracep->declBus(c+15,"ysyx_22040175_top imm_gen_op", false,-1, 2,0);
         tracep->declQuad(c+16,"ysyx_22040175_top imm", false,-1, 63,0);
-        tracep->declBus(c+18,"ysyx_22040175_top alu_op", false,-1, 3,0);
+        tracep->declBus(c+18,"ysyx_22040175_top alu_op", false,-1, 4,0);
         tracep->declBus(c+19,"ysyx_22040175_top alu_src_sel", false,-1, 1,0);
         tracep->declQuad(c+20,"ysyx_22040175_top alu_src1", false,-1, 63,0);
         tracep->declQuad(c+22,"ysyx_22040175_top alu_src2", false,-1, 63,0);
@@ -89,7 +89,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBus(c+9,"ysyx_22040175_top u_ctrl_0 reg1_raddr", false,-1, 4,0);
         tracep->declBus(c+10,"ysyx_22040175_top u_ctrl_0 reg2_raddr", false,-1, 4,0);
         tracep->declBus(c+15,"ysyx_22040175_top u_ctrl_0 imm_gen_op", false,-1, 2,0);
-        tracep->declBus(c+18,"ysyx_22040175_top u_ctrl_0 alu_op", false,-1, 3,0);
+        tracep->declBus(c+18,"ysyx_22040175_top u_ctrl_0 alu_op", false,-1, 4,0);
         tracep->declBus(c+19,"ysyx_22040175_top u_ctrl_0 alu_src_sel", false,-1, 1,0);
         tracep->declQuad(c+235,"ysyx_22040175_top u_ctrl_0 unknown_code", false,-1, 63,0);
         tracep->declBit(c+24,"ysyx_22040175_top u_ctrl_0 jalr", false,-1);
@@ -131,7 +131,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declQuad(c+241,"ysyx_22040175_top u_mux_alu_0 curr_pc", false,-1, 63,0);
         tracep->declQuad(c+20,"ysyx_22040175_top u_mux_alu_0 alu_src1", false,-1, 63,0);
         tracep->declQuad(c+22,"ysyx_22040175_top u_mux_alu_0 alu_src2", false,-1, 63,0);
-        tracep->declBus(c+18,"ysyx_22040175_top u_alu_0 alu_op", false,-1, 3,0);
+        tracep->declBus(c+18,"ysyx_22040175_top u_alu_0 alu_op", false,-1, 4,0);
         tracep->declQuad(c+20,"ysyx_22040175_top u_alu_0 alu_src1", false,-1, 63,0);
         tracep->declQuad(c+22,"ysyx_22040175_top u_alu_0 alu_src2", false,-1, 63,0);
         tracep->declBit(c+3,"ysyx_22040175_top u_alu_0 zero", false,-1);
@@ -190,7 +190,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullQData(oldp+13,(vlSelf->ysyx_22040175_top__DOT__reg2_rdata),64);
         tracep->fullCData(oldp+15,(vlSelf->ysyx_22040175_top__DOT__imm_gen_op),3);
         tracep->fullQData(oldp+16,(vlSelf->ysyx_22040175_top__DOT__imm),64);
-        tracep->fullCData(oldp+18,(vlSelf->ysyx_22040175_top__DOT__alu_op),4);
+        tracep->fullCData(oldp+18,(vlSelf->ysyx_22040175_top__DOT__alu_op),5);
         tracep->fullCData(oldp+19,(vlSelf->ysyx_22040175_top__DOT__alu_src_sel),2);
         tracep->fullQData(oldp+20,(vlSelf->ysyx_22040175_top__DOT__alu_src1),64);
         tracep->fullQData(oldp+22,(vlSelf->ysyx_22040175_top__DOT__alu_src2),64);
