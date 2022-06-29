@@ -116,7 +116,9 @@ always @(*) begin
                         expand_signed =4'd0;    
                         rd_flag = 3'd0;
                     end
-
+                    default:unknown_code = inst;
+                    endcase
+                end
                 default:unknown_code = inst;
             endcase
         end
