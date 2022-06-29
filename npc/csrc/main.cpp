@@ -190,7 +190,7 @@ int main(int argc, char **argv, char **env) {
       printf(" a1 = 0x%08lx; Instruction is 0x%x\n",cpu_gpr[11],top->inst);
      }
      if(top->clk==0){
-        top->time_set = 1;
+        top->time_set = 0;
         top->eval ();
         a= a+1;
          printf("main_time = %d\n",i);
