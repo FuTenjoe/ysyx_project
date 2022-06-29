@@ -452,8 +452,8 @@ always @(*) begin
                 alu_src_sel = `ALU_SRC_IMM; // x0 + imm
                 s_flag = 1'd0;
                 wmask =  8'b0;
-                expand_signed = 4'd1;
-                rd_flag = 3'd3;
+                expand_signed = 4'd0;
+                rd_flag = 3'd5;
         end
         `INST_AUIPC:begin //only auipc
                reg_wen     = 1'b1;

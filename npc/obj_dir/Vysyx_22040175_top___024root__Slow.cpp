@@ -692,7 +692,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                 if ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
                                    >> 1U)))) {
                     if ((1U & (IData)((QData)((IData)(vlSelf->inst))))) {
-                        vlSelf->ysyx_22040175_top__DOT__expand_signed = 0U;
+                        vlSelf->ysyx_22040175_top__DOT__expand_signed = 1U;
                     }
                 }
             } else if ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
