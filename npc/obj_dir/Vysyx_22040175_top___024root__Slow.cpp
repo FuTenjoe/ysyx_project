@@ -2803,7 +2803,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                         vlSelf->ysyx_22040175_top__DOT__rd_flag = 0U;
                     }
                 } else {
-                    vlSelf->ysyx_22040175_top__DOT__rd_flag = 5U;
+                    vlSelf->ysyx_22040175_top__DOT__rd_flag = 3U;
                 }
             }
         }
