@@ -77,6 +77,8 @@ always @(*) begin
                  alu_res = alu_src1 | alu_src2;
         `ALU_MUL:
                 alu_res = alu_src1 * alu_src2;
+        `ALU_DIVW:
+                alu_res = alu_src1[31:0] / alu_src2[31:0];
         default:begin
             alu_res = alu_src1 -  alu_src2;
             zero = (alu_res == `CPU_WIDTH'b0) ? 1'b1 : 1'b0;
