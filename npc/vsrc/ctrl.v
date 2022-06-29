@@ -312,7 +312,7 @@ always @(*) begin
             expand_signed = 4'd0;
             rd_flag = 3'd5;
             end
-            3'b000:begin   //sb
+          /*  3'b000:begin   //sb
             jump        = 1'b0;
             reg_wen     = 1'b1;
             jalr = 1'b0;
@@ -327,7 +327,7 @@ always @(*) begin
             s_flag = 1'd1;
             expand_signed = 4'd0;
             rd_flag = 3'd5;   //选rs2
-            end
+            end*/
 
             default:unknown_code = inst;
             endcase
