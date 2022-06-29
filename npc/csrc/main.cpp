@@ -176,10 +176,16 @@ int main(int argc, char **argv, char **env) {
       tfp->dump (2*i+clk);
       top->clk = !top->clk;
       top->eval ();
+    if(i%2==1){
+      top->time_set = 1;
+    }
+    esle if(1%2 == 0){
+      top->time_set = 0;
+    }
 
      if(top->clk==1){
       //top->inst = pmem_read(top->pc,8); //使用DPIC
-      top->time_set = 1;
+      
       top->eval ();
       printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
@@ -190,7 +196,7 @@ int main(int argc, char **argv, char **env) {
       printf(" a1 = 0x%08lx; Instruction is 0x%x\n",cpu_gpr[11],top->inst);
      }
      if(top->clk==0){
-        top->time_set = 0;
+        
         top->eval ();
         a= a+1;
          printf("main_time = %d\n",i);
