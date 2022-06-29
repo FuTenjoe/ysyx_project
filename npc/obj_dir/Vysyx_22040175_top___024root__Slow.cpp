@@ -692,7 +692,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                 if ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
                                    >> 1U)))) {
                     if ((1U & (IData)((QData)((IData)(vlSelf->inst))))) {
-                        vlSelf->ysyx_22040175_top__DOT__expand_signed = 1U;
+                        vlSelf->ysyx_22040175_top__DOT__expand_signed = 0U;
                     }
                 }
             } else if ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
@@ -3628,11 +3628,19 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                                                        & (IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
                                                                                 >> 0x14U)))))
-                                                    : (QData)((IData)(
+                                                    : 
+                                                   (((QData)((IData)(
+                                                                     (- (IData)(
+                                                                                (1U 
+                                                                                & (IData)(
+                                                                                ((QData)((IData)(vlSelf->inst)) 
+                                                                                >> 0x1fU))))))) 
+                                                     << 0x20U) 
+                                                    | (QData)((IData)(
                                                                       ((IData)(
                                                                                ((QData)((IData)(vlSelf->inst)) 
                                                                                 >> 0xcU)) 
-                                                                       << 0xcU)))))
+                                                                       << 0xcU))))))
                                             : ((2U 
                                                 & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
                                                 ? (
