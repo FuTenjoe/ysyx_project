@@ -179,7 +179,7 @@ int main(int argc, char **argv, char **env) {
     if(i%2==1){
       top->time_set = 1;
     }
-    esle if(1%2 == 0){
+    else if(1%2 == 0){
       top->time_set = 0;
     }
 
