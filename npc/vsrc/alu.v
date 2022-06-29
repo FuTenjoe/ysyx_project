@@ -56,7 +56,7 @@ always @(*) begin
             else
                 alu_res = alu_src1 & alu_src2;
         end
-        `ALU_SLL:
+        `ALU_SLLW:
             alu_res = rd_buf_lw[31:0] << rd_buf_lw2;
         `ALU_DIVY:
             alu_res = alu_src1 % alu_src2;
