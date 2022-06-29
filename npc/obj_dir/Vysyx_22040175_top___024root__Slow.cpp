@@ -4043,7 +4043,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                               & (IData)(
                                                         ((QData)((IData)(vlSelf->inst)) 
                                                          >> 0x19U)))))) {
-                                vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 0U;
+                                vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 5U;
                             }
                         }
                     }
