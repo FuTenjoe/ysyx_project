@@ -82,7 +82,7 @@ always @(*) begin
         `ALU_DIVYW:begin
                 signed_alu_src1 = alu_src1[31:0];
                 signed_alu_src2 = alu_src2[31:0];
-                alu_res = signed_alu_src1 %  signed_alu_src2 ;    //不确定
+                alu_res = signed_alu_src1[31:0] %  signed_alu_src2[31:0] ;    //不确定
         end
         default:begin
             alu_res = alu_src1 -  alu_src2;
