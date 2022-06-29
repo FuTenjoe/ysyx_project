@@ -237,7 +237,7 @@ void init_imem(){
 uint8_t *guest_to_host(paddr_t paddr){
   //uint8_t *tmpl = pimem + paddr -CONFIG_MBASE;
   //printf("guest to host success pimem = %hhn\n",pimem);
-  printf("guest to host success paddr  = %d\n",paddr );
+  printf("guest to host success paddr  = %llx\n",paddr );
   //printf("guest to host success addr = %hhn\n",pimem + paddr -CONFIG_MBASE);
   return pimem + paddr -CONFIG_MBASE;
 }
