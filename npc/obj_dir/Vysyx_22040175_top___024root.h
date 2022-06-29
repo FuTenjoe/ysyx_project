@@ -53,6 +53,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     QData/*63:0*/ ysyx_22040175_top__DOT__alu_res;
     QData/*63:0*/ ysyx_22040175_top__DOT__rdata;
     QData/*63:0*/ ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw;
+    QData/*63:0*/ ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw2;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__reg_f;
 
     // LOCAL VARIABLES
@@ -63,6 +64,8 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     QData/*63:0*/ ysyx_22040175_top__DOT____Vcellout__u_pc_reg_0__curr_pc;
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__pmem_read__0__rdata;
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_alu_0__DOT__pmem_read__5__rdata;
+    QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_alu_0__DOT__pmem_read__6__rdata;
+    QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_alu_0__DOT__pmem_read__7__rdata;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellinp__u_mux_pc_0__reg_f;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellout__u_reg_file_0__reg_f;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;

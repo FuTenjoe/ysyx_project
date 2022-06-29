@@ -87,7 +87,7 @@
 
 
 // ALU opcode
-`define ALU_OP_WIDTH 4
+`define ALU_OP_WIDTH 5
 `define ALU_AND  `ALU_OP_WIDTH'b0000
 `define ALU_OR   `ALU_OP_WIDTH'b0001
 `define ALU_XOR  `ALU_OP_WIDTH'b0010
@@ -102,6 +102,8 @@
 `define ALU_BLTU `ALU_OP_WIDTH'b1011 // branch less than (unsigned)
 `define ALU_SUBN  `ALU_OP_WIDTH'b1100  
 `define ALU_JALR `ALU_OP_WIDTH'b1101  
+`define ALU_DIV `ALU_OP_WIDTH'b1110  //除
+`define ALU_DIVY `ALU_OP_WIDTH'b1111  //取余数
 
 // ALU select soure
 `define ALU_SRC_WIDTH 2
