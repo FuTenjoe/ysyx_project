@@ -381,7 +381,7 @@ always @(*) begin
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
                     s_flag = 1'd0;
-                    expand_signed =4'd1;       //不需扩展符号位
+                    expand_signed =4'd1;       //需扩展符号位
                     rd_flag = 3'd6;
                 end
                 default:unknown_code = inst;
