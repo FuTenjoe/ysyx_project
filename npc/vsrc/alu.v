@@ -48,7 +48,7 @@ always @(*) begin
              if(signed_alu_src1 >= signed_alu_src2 )
                 zero = 1'd0;
             else
-                 alu_res = 1'd1;
+                 zero = 1'd1;
         end
         `ALU_SLTU:begin//1001
             if(alu_src1<alu_src2)

@@ -416,6 +416,9 @@ always @(*) begin
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b0;
             rd_flag = 3'd0;
+            reg_wen     = 1'b0;
+            jump        = 1'b0;
+            jalr        = 1'b0;
             case (funct3)
                 `INST_BNE: begin     //bne
                     branch     = 1'b1;
