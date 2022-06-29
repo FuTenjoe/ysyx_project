@@ -391,7 +391,7 @@ always @(*) begin
                     reg2_raddr  = rs2;
                     reg_waddr   = rd;
                     s_imm =0;
-                    imm_gen_op  = `IMM_GEN_I;   //不需要使用R型指令
+                    imm_gen_op  = `IMM_GEN_SRAI;   //不需要使用R型指令
                     alu_op      = `ALU_SRL;
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
