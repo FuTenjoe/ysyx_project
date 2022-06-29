@@ -53,7 +53,8 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     QData/*63:0*/ ysyx_22040175_top__DOT__alu_res;
     QData/*63:0*/ ysyx_22040175_top__DOT__rdata;
     QData/*63:0*/ ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw;
-    QData/*63:0*/ ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw2;
+    QData/*63:0*/ ysyx_22040175_top__DOT__u_alu_0__DOT__signed_alu_src1;
+    QData/*63:0*/ ysyx_22040175_top__DOT__u_alu_0__DOT__signed_alu_src2;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__reg_f;
 
     // LOCAL VARIABLES
