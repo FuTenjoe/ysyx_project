@@ -59,7 +59,7 @@ always @(*) begin
         `ALU_SLLW:begin
             if(rd_flag == 3'd6)begin
                 alu_res = rd_buf_lw << rd_buf_lw2;
-                alu_res = alu_res[31:0];
+                alu_res = rd_buf_lw;
             end
             else
                 alu_res = alu_src1 <<  alu_src2;
