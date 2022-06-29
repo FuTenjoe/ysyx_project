@@ -427,6 +427,11 @@ always @(*) begin
                     alu_op     = `ALU_SUBN;
                     s_flag = 1'd0;
                 end
+                3'b101:begin   //bge
+                    branch = 1'b1;
+                    alu_op = `ALU_SMT;
+                    s_flag = 1'd0;
+                end
                  default:unknown_code = inst;
             endcase
         end
