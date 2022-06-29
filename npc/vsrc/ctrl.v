@@ -86,6 +86,9 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    //有符号扩展 
                     rd_flag = 3'd3;
+                end
+            default::unknown_code = inst;
+            endcase
         end
         7'b0010011: begin       //addi
             case (funct3)
