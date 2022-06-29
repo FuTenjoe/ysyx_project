@@ -188,12 +188,12 @@ always @(*) begin
                     reg_waddr   = rd;
                     s_imm =0;
                     imm_gen_op  = `IMM_GEN_I;   //R型指令不需要立即数，任取一个
-                    alu_op      = `ALU_SLL;
+                    alu_op      = `ALU_SLLW;
                     alu_src_sel = `ALU_SRC_REG;
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd1;    //有符号扩展 
-                    rd_flag = 3'd3;
+                    rd_flag = 3'd6;
                 end
                 default:unknown_code = inst;
         endcase

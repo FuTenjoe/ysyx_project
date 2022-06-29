@@ -93,7 +93,7 @@
 `define ALU_XOR  `ALU_OP_WIDTH'b0010
 `define ALU_ADD  `ALU_OP_WIDTH'b0011
 `define ALU_SUB  `ALU_OP_WIDTH'b0100
-`define ALU_SLL  `ALU_OP_WIDTH'b0101 // shift left logical
+`define ALU_SLLW  `ALU_OP_WIDTH'b0101 // shift left logical  sllw 32位
 `define ALU_SRL  `ALU_OP_WIDTH'b0110 // shift right logical
 `define ALU_SRA  `ALU_OP_WIDTH'b0111 // shift right arith 
 `define ALU_SLT  `ALU_OP_WIDTH'b1000 // set less than  
