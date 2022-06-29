@@ -359,6 +359,14 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                     ((QData)((IData)(vlSelf->inst)) 
                                                      >> 0xcU))))) {
                         vlSelf->ysyx_22040175_top__DOT__expand_signed = 0U;
+                    } else if ((3U == (7U & (IData)(
+                                                    ((QData)((IData)(vlSelf->inst)) 
+                                                     >> 0xcU))))) {
+                        if ((0U == (0x7fU & (IData)(
+                                                    ((QData)((IData)(vlSelf->inst)) 
+                                                     >> 0x19U))))) {
+                            vlSelf->ysyx_22040175_top__DOT__expand_signed = 0U;
+                        }
                     }
                 }
             }
@@ -858,7 +866,19 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                               >> 0xcU))))) {
                         if ((7U != (7U & (IData)(((QData)((IData)(vlSelf->inst)) 
                                                   >> 0xcU))))) {
-                            vlSelf->unknown_code = (QData)((IData)(vlSelf->inst));
+                            if ((3U == (7U & (IData)(
+                                                     ((QData)((IData)(vlSelf->inst)) 
+                                                      >> 0xcU))))) {
+                                if ((0U != (0x7fU & (IData)(
+                                                            ((QData)((IData)(vlSelf->inst)) 
+                                                             >> 0x19U))))) {
+                                    vlSelf->unknown_code 
+                                        = (QData)((IData)(vlSelf->inst));
+                                }
+                            } else {
+                                vlSelf->unknown_code 
+                                    = (QData)((IData)(vlSelf->inst));
+                            }
                         }
                     }
                 } else {
@@ -1750,6 +1770,14 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                     ((QData)((IData)(vlSelf->inst)) 
                                                      >> 0xcU))))) {
                         vlSelf->ysyx_22040175_top__DOT__s_flag = 0U;
+                    } else if ((3U == (7U & (IData)(
+                                                    ((QData)((IData)(vlSelf->inst)) 
+                                                     >> 0xcU))))) {
+                        if ((0U == (0x7fU & (IData)(
+                                                    ((QData)((IData)(vlSelf->inst)) 
+                                                     >> 0x19U))))) {
+                            vlSelf->ysyx_22040175_top__DOT__s_flag = 0U;
+                        }
                     }
                 }
             }
@@ -1936,6 +1964,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                        ((QData)((IData)(vlSelf->inst)) 
                                                         >> 0x19U))))
                                 ? 0U : 0xfU);
+                    } else if ((3U == (7U & (IData)(
+                                                    ((QData)((IData)(vlSelf->inst)) 
+                                                     >> 0xcU))))) {
+                        vlSelf->ysyx_22040175_top__DOT__alu_op = 9U;
                     }
                 }
             }
@@ -2107,6 +2139,14 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                     ((QData)((IData)(vlSelf->inst)) 
                                                      >> 0xcU))))) {
                         vlSelf->ysyx_22040175_top__DOT__rd_flag = 6U;
+                    } else if ((3U == (7U & (IData)(
+                                                    ((QData)((IData)(vlSelf->inst)) 
+                                                     >> 0xcU))))) {
+                        if ((0U == (0x7fU & (IData)(
+                                                    ((QData)((IData)(vlSelf->inst)) 
+                                                     >> 0x19U))))) {
+                            vlSelf->ysyx_22040175_top__DOT__rd_flag = 6U;
+                        }
                     }
                 }
             }

@@ -62,6 +62,11 @@ always @(*) begin
             alu_res = alu_src1 % alu_src2;
         `ALU_SLTU:
             alu_res = (rd_buf_lw < rd_buf_lw2) ? 64'd1 : 64'd0;
+        `ALU_XOR :
+            if(rd_flag == 3'd6)
+                alu_res = rd_buf_lw ^ alu_src2;
+            else
+                alu_res = alu_src1 ^ alu_src2;
         default:begin
             alu_res = alu_src1 -  alu_src2;
             zero = (alu_res == `CPU_WIDTH'b0) ? 1'b1 : 1'b0;
