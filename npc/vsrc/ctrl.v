@@ -73,6 +73,7 @@ always @(*) begin
         7'b0010011: begin       //addi
             case (funct3)
                 `INST_ADDI: begin
+                    jump        = 1'b0;
                     reg_wen     = 1'b1;
                     reg1_raddr  = rs1;
                     reg_waddr   = rd;
@@ -114,6 +115,19 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;    
+                    rd_flag = 3'd0;
+                end
+                3'b111:begin
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    reg1_raddr  = rs1;
+                    reg_waddr   = rd;
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b0;
+                    alu_op = `ALU_AND; 
+                    s_flag = 1'd0;
+                    expand_signed = 4'd0;
+                    s_imm = 32'd0;
                     rd_flag = 3'd0;
                 end
                 default:unknown_code = inst;

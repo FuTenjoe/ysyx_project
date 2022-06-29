@@ -47,8 +47,10 @@ always @(*) begin
             else
                  alu_res = 32'd0;
         end
-        `ALU_SRL:
+        `ALU_SRL:    //算术右移
             alu_res = alu_src1>>>alu_src2;
+        `ALU_AND:
+            alu_res = alu_src1 & alu_src2;
         default:begin
             alu_res = alu_src1 -  alu_src2;
             zero = (alu_res == `CPU_WIDTH'b0) ? 1'b1 : 1'b0;
