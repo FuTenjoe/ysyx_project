@@ -179,7 +179,7 @@ always @(*) begin
                     reg_waddr   = rd;
                     s_imm =0;
                     imm_gen_op  = `IMM_GEN_SRAI;   //I型指令
-                    alu_op      = `ALU_SRL;
+                    alu_op      = `ALU_SRA;
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
                     s_flag = 1'd0;
@@ -409,7 +409,23 @@ always @(*) begin
                     reg_waddr   = rd;
                     s_imm =0;
                     imm_gen_op  = `IMM_GEN_SRAI;   //不需要使用R型指令
-                    alu_op      = `ALU_SRL;
+                    alu_op      = `ALU_SRA;
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b0;
+                    s_flag = 1'd0;
+                    expand_signed =4'd1;    
+                    rd_flag = 3'd1;
+                end  
+                7'b0000000,7'b0000001:begin    //srliw
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    jalr = 1'b0;
+                    reg1_raddr  = rs1;
+                    reg2_raddr  = rs2;
+                    reg_waddr   = rd;
+                    s_imm =0;
+                    imm_gen_op  = `IMM_GEN_SRAI;   //不需要使用R型指令
+                    alu_op      = `ALU_SRA;
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
                     s_flag = 1'd0;

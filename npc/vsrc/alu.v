@@ -74,7 +74,7 @@ always @(*) begin
             else
                  alu_res = 32'd0;
         end
-        `ALU_SRL:    //算术右移
+        `ALU_SRA:    //算术右移
             if(rd_flag == 3'd0)
                 alu_res = ($signed(alu_src1))>>>alu_src2;
             else if(rd_flag == 3'd1)  //sraiw
