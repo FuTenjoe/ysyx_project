@@ -107,6 +107,8 @@
 `define ALU_SLLI `ALU_OP_WIDTH'b10000  //slli
 `define ALU_SMT  `ALU_OP_WIDTH'b01000 // set more than  
 `define ALU_SMTU `ALU_OP_WIDTH'b01001 // set more than (unsigned) 
+`define ALU_MUL `ALU_OP_WIDTH'b01010 // 乘
+
 // ALU select soure
 `define ALU_SRC_WIDTH 2
 `define ALU_SRC_REG     `ALU_SRC_WIDTH'b00 // src1 = reg1, src2 = reg2
