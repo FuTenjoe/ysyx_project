@@ -174,7 +174,7 @@ always @(*) begin
                     reg_waddr   = rd;
                     s_imm =0;
                     imm_gen_op  = `IMM_GEN_SRAI;   //R型指令不需要立即数，任取一个
-                    alu_op      = `ALU_SLLW;
+                    alu_op      = `ALU_SLLI;
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
                     s_flag = 1'd0;

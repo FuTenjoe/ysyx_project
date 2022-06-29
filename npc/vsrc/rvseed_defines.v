@@ -88,23 +88,23 @@
 
 // ALU opcode
 `define ALU_OP_WIDTH 5
-`define ALU_AND  `ALU_OP_WIDTH'b0000
-`define ALU_OR   `ALU_OP_WIDTH'b0001
-`define ALU_XOR  `ALU_OP_WIDTH'b0010
-`define ALU_ADD  `ALU_OP_WIDTH'b0011
-`define ALU_SUB  `ALU_OP_WIDTH'b0100
-`define ALU_SLLW  `ALU_OP_WIDTH'b0101 // shift left logical  sllw 32位
-`define ALU_SRL  `ALU_OP_WIDTH'b0110 // shift right logical
-`define ALU_SRA  `ALU_OP_WIDTH'b0111 // shift right arith 
-`define ALU_SLT  `ALU_OP_WIDTH'b1000 // set less than  
-`define ALU_SLTU `ALU_OP_WIDTH'b1001 // set less than (unsigned) 
-`define ALU_BLT  `ALU_OP_WIDTH'b1010 // branch less than
-`define ALU_BLTU `ALU_OP_WIDTH'b1011 // branch less than (unsigned)
-`define ALU_SUBN  `ALU_OP_WIDTH'b1100  
-`define ALU_JALR `ALU_OP_WIDTH'b1101  
-`define ALU_DIV `ALU_OP_WIDTH'b1110  //除
-`define ALU_DIVY `ALU_OP_WIDTH'b1111  //取余数
-
+`define ALU_AND  `ALU_OP_WIDTH'b00000
+`define ALU_OR   `ALU_OP_WIDTH'b00001
+`define ALU_XOR  `ALU_OP_WIDTH'b00010
+`define ALU_ADD  `ALU_OP_WIDTH'b00011
+`define ALU_SUB  `ALU_OP_WIDTH'b00100
+`define ALU_SLLW  `ALU_OP_WIDTH'b00101 // shift left logical  sllw 32位
+`define ALU_SRL  `ALU_OP_WIDTH'b00110 // shift right logical
+`define ALU_SRA  `ALU_OP_WIDTH'b00111 // shift right arith 
+`define ALU_SLT  `ALU_OP_WIDTH'b01000 // set less than  
+`define ALU_SLTU `ALU_OP_WIDTH'b01001 // set less than (unsigned) 
+`define ALU_BLT  `ALU_OP_WIDTH'b01010 // branch less than
+`define ALU_BLTU `ALU_OP_WIDTH'b01011 // branch less than (unsigned)
+`define ALU_SUBN  `ALU_OP_WIDTH'b01100  
+`define ALU_JALR `ALU_OP_WIDTH'b01101  
+`define ALU_DIV `ALU_OP_WIDTH'b01110  //除
+`define ALU_DIVY `ALU_OP_WIDTH'b01111  //取余数
+`define ALU_SLLI `ALU_OP_WIDTH'b10000  //slli
 // ALU select soure
 `define ALU_SRC_WIDTH 2
 `define ALU_SRC_REG     `ALU_SRC_WIDTH'b00 // src1 = reg1, src2 = reg2
