@@ -42,7 +42,7 @@ always @(*) begin
             alu_res = alu_src1 - alu_src2;
             zero = (alu_res == 64'b0) ? 1'b0 : 1'b1;
         end
-        `ALU_SMT:begin
+        `ALU_BMT:begin
             signed_alu_src1 = alu_src1;
             signed_alu_src2 = alu_src2;
              if(signed_alu_src1 >= signed_alu_src2 )
@@ -50,6 +50,8 @@ always @(*) begin
             else
                  zero = 1'd1;
         end
+        `ALU_BLTU:
+             zero = (alu_src1 < alu_src2)? 1'b0:1'b1;
         `ALU_SLTU:begin//1001
             if(alu_src1<alu_src2)
                 alu_res = 32'd1;

@@ -105,8 +105,8 @@
 `define ALU_DIV `ALU_OP_WIDTH'b01110  //除
 `define ALU_DIVY `ALU_OP_WIDTH'b01111  //取余数
 `define ALU_SLLI `ALU_OP_WIDTH'b10000  //slli
-`define ALU_SMT  `ALU_OP_WIDTH'b10001 // set more than  
-`define ALU_SMTU `ALU_OP_WIDTH'b10010 // set more than (unsigned) 
+`define ALU_BMT  `ALU_OP_WIDTH'b10001 // set more than  
+`define ALU_BMTU `ALU_OP_WIDTH'b10010 // set more than (unsigned) 
 `define ALU_MUL `ALU_OP_WIDTH'b10011 // 乘
 `define ALU_DIVW `ALU_OP_WIDTH'b10100 //32位除
 `define ALU_DIVYW `ALU_OP_WIDTH'b10101  //32位取余数
