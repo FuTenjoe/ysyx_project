@@ -523,6 +523,11 @@ always @(*) begin
                     alu_op = `ALU_BMTU;
                     s_flag = 1'd0;
                 end
+                3'b100:begin
+                    branch = 1'b1;
+                    alu_op = `ALU_BLT;
+                    s_flag = 1'd0;
+                end
                  default:unknown_code = inst;
             endcase
         end

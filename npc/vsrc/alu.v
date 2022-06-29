@@ -50,6 +50,11 @@ always @(*) begin
             else
                  zero = 1'd1;
         end
+        `ALU_BLT:begin
+            signed_alu_src1 = $signed (alu_src1[31:0]);
+            signed_alu_src2 = $signed (alu_src2[31:0]);
+            zero = (signed_alu_src1 < signed_alu_src2)? 1'b0:1'b1;
+        end
         `ALU_BLTU:
             zero = (alu_src1 < alu_src2)? 1'b0:1'b1;
         `ALU_BMTU:
