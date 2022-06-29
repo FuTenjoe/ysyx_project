@@ -3059,15 +3059,16 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                                                              & (IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
                                                                                 >> 7U)))))))
-                                                    : (QData)((IData)(
-                                                                      (((- (IData)(
-                                                                                (1U 
-                                                                                & (IData)(
+                                                    : 
+                                                   (((- (QData)((IData)(
+                                                                        (1U 
+                                                                         & (IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
-                                                                                >> 0x1fU))))) 
-                                                                        << 0xcU) 
-                                                                       | (0xfffU 
-                                                                          & (IData)(
+                                                                                >> 0x1fU)))))) 
+                                                     << 0xcU) 
+                                                    | (QData)((IData)(
+                                                                      (0xfffU 
+                                                                       & (IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
                                                                                 >> 0x14U)))))))));
     vlSelf->ysyx_22040175_top__DOT__alu_src2 = ((2U 
