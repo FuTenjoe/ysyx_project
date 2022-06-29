@@ -263,7 +263,7 @@ always @(*) begin
                 default:unknown_code = inst;
                 endcase
             end
-            3'b110:begin                     //remw
+            /*3'b110:begin                     //remw
                 case(funct7)
                 7'b0000_001:begin             //remw
                     jump        = 1'b0;
@@ -280,7 +280,7 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
-                    end
+                    end*/
                 default:unknown_code = inst;
                 endcase
             end
