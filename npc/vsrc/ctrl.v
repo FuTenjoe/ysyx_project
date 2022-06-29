@@ -189,7 +189,9 @@ always @(*) begin
         end
         7'b0111011:begin           //addw
             case (funct3)
-            3'b000:begin
+            3'b000:begin     
+                case(funct7)      //addw
+                7'b0000000:begin
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
@@ -205,7 +207,10 @@ always @(*) begin
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
                 end    
-                3'b001:begin          //sllw
+                defalut:unknown_code = inst;
+                endcase
+            end
+                3'b001:begin  //sllw
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
