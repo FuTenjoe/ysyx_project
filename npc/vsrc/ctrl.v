@@ -59,7 +59,6 @@ always @(*) begin
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b0;
-            
             case (funct3)
                 `INST_ADD_SUB: begin
                     alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
@@ -69,6 +68,24 @@ always @(*) begin
                 end
                 default:unknown_code = inst;
             endcase
+        end
+        7'b0111011:begin              //sllw
+            case(funct3)                  
+                3'b001:begin          //sllw
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    jalr = 1'b0;
+                    reg1_raddr  = rs1;
+                    reg2_raddr  = rs2;
+                    reg_waddr   = rd;
+                    s_imm =0;
+                    imm_gen_op  = `IMM_GEN_I;   //R型指令不需要立即数，任取一个
+                    alu_op      = `ALU_SLL;
+                    alu_src_sel = `ALU_SRC_REG;
+                    wmask =  8'b0;
+                    s_flag = 1'd0;
+                    expand_signed =4'd1;    //有符号扩展 
+                    rd_flag = 3'd3;
         end
         7'b0010011: begin       //addi
             case (funct3)
@@ -117,7 +134,7 @@ always @(*) begin
                     expand_signed =4'd0;    
                     rd_flag = 3'd0;
                 end
-                3'b111:begin
+                3'b111:begin         //andi
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     reg1_raddr  = rs1;
