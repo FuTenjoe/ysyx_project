@@ -63,7 +63,7 @@ always @(*) begin
                 `INST_ADD_SUB: begin
                     alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
                     s_flag = 1'd0;
-                    expand_signed = 4'd1;
+                    expand_signed = 4'd0;
                     rd_flag = 3'd3;
                 end
                 3'b111:begin
@@ -114,7 +114,7 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
                     s_imm = 32'd0;
-                    rd_flag = 3'd0;
+                    rd_flag = 3'd5;
                 end
                 3'b011:begin   //sltiu
                     jump        = 1'b0;
