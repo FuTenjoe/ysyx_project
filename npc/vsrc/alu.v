@@ -51,7 +51,7 @@ always @(*) begin
         `ALU_SRL:    //算术右移
             alu_res = alu_src1>>>alu_src2;
         `ALU_AND:begin
-            if(rd_flag == 3'd6);
+            if(rd_flag == 3'd6)
                 alu_res = rd_buf_lw & rd_buf_lw2;
             else
                 alu_res = alu_src1 & alu_src2;
