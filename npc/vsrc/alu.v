@@ -79,6 +79,8 @@ always @(*) begin
                 alu_res = ($signed(alu_src1))>>>alu_src2;
             else if(rd_flag == 3'd1)  //sraiw
                 alu_res = ($signed(alu_src1[31:0]))>>>alu_src2;
+            else if(rd_flag == 3'd3)  //sraw
+                alu_res = ($signed(alu_src1[31:0]))>>>alu_src2[4:0];
         `ALU_SRL:
             if(rd_flag == 3'd0)
                 alu_res = alu_src1 >> alu_src2;
