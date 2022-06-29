@@ -358,7 +358,7 @@ always @(*) begin
                     expand_signed =4'd1;    
                     rd_flag = 3'd3;
                 end
-                7:b0000000:begin   //srlw
+                7'b0000000:begin   //srlw
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
