@@ -73,7 +73,7 @@ always @(*) begin
                     rd_flag = 3'd0;
                 end
                 3'b011:begin
-                    alu_op = `ALU_SLTU;
+                    alu_op = `ALU_SLTU;   //sltu
                     if(funct7 == 7'b0) begin
                         s_flag = 1'd0;
                         expand_signed = 4'd0;
@@ -81,6 +81,12 @@ always @(*) begin
                     end
                     else
                         unknown_code = inst;
+                end
+                3'b110:begin
+                    alu_op =(funct7==7'b0) ? `ALU_OR : `ALU_DIVY;
+                    s_flag = 1'd0;
+                    expand_signed = 4'd0;
+                    rd_flag = 3'd0;
                 end
                 default:unknown_code = inst;
             endcase

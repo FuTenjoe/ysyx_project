@@ -2492,10 +2492,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                             vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 1U;
                         }
                     } else {
-                        vlSelf->ysyx_22040175_top__DOT__alu_src_sel 
-                            = ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
-                                              >> 0xcU)))
-                                ? 0U : 1U);
+                        vlSelf->ysyx_22040175_top__DOT__alu_src_sel = 1U;
                     }
                 } else if ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
                                           >> 0xdU)))) {
@@ -2819,7 +2816,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                           >> 0xdU))))) {
                         if ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
                                            >> 0xcU)))) {
-                            vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 0U;
+                            vlSelf->ysyx_22040175_top__DOT__imm_gen_op = 5U;
                         }
                     }
                 } else if ((1U & (IData)(((QData)((IData)(vlSelf->inst)) 
@@ -2879,14 +2876,10 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                                    (1U 
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
                                                     ? (QData)((IData)(
-                                                                      (((- (IData)(
-                                                                                (1U 
-                                                                                & (IData)(
+                                                                      (0x3fU 
+                                                                       & (IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
-                                                                                >> 0x1fU))))) 
-                                                                        << 7U) 
-                                                                       | (0x7fU 
-                                                                          & (IData)((QData)((IData)(vlSelf->inst)))))))
+                                                                                >> 0x14U)))))
                                                     : (QData)((IData)(
                                                                       ((IData)(
                                                                                ((QData)((IData)(vlSelf->inst)) 
