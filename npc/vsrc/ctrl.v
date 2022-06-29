@@ -74,10 +74,11 @@ always @(*) begin
                 end
                 3'b011:begin
                     alu_op = `ALU_SLTU;
-                    if(funct7 == 7'b0) 
+                    if(funct7 == 7'b0) begin
                         s_flag = 1'd0;
                         expand_signed = 4'd0;
                         rd_flag = 3'd6;
+                    end
                     else
                         unknown_code = inst;
                 end
