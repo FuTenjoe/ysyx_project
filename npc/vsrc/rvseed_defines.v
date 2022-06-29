@@ -102,8 +102,8 @@
 `define ALU_BLTU `ALU_OP_WIDTH'b01011 // branch less than (unsigned)
 `define ALU_SUBN  `ALU_OP_WIDTH'b01100  
 `define ALU_JALR `ALU_OP_WIDTH'b01101  
-`define ALU_DIV `ALU_OP_WIDTH'b01110  //除
-`define ALU_DIVY `ALU_OP_WIDTH'b01111  //取余数
+`define ALU_DIVU `ALU_OP_WIDTH'b01110  //除
+`define ALU_DIVYU `ALU_OP_WIDTH'b01111  //取余数
 `define ALU_SLLI `ALU_OP_WIDTH'b10000  //slli
 `define ALU_BMT  `ALU_OP_WIDTH'b10001 // set more than  
 `define ALU_BMTU `ALU_OP_WIDTH'b10010 // set more than (unsigned) 

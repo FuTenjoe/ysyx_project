@@ -67,7 +67,7 @@ always @(*) begin
                     rd_flag = 3'd3;
                 end
                 3'b111:begin
-                    alu_op = (funct7 == 7'b0) ? `ALU_AND: `ALU_DIVY;      //A:and  B:remu
+                    alu_op = (funct7 == 7'b0) ? `ALU_AND: `ALU_DIVYU;      //A:and  B:remu
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
                     rd_flag = 3'd0;
@@ -93,11 +93,30 @@ always @(*) begin
                         unknown_code = inst;
                 end
                 3'b110:begin
-                    alu_op =(funct7==7'b0) ? `ALU_OR : `ALU_DIVY;
+                    alu_op =(funct7==7'b0) ? `ALU_OR : `ALU_DIVYU;
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
                     rd_flag = 3'd0;
                 end
+                3'b101:begin   //divu
+                    case(funct7)
+                    7'b0000_001:begin   //divu
+                        jump        = 1'b0;
+                        reg_wen     = 1'b1;
+                        jalr = 1'b0;
+                        reg1_raddr  = rs1;
+                        reg2_raddr  = rs2;
+                        reg_waddr   = rd;
+                        s_imm =0;
+                        imm_gen_op  = `IMM_GEN_I;   //不需要使用R型指令
+                        alu_op      = `ALU_DIVU;
+                        alu_src_sel = `ALU_SRC_REG;
+                        wmask =  8'b0;
+                        s_flag = 1'd0;
+                        expand_signed =4'd0;    
+                        rd_flag = 3'd0;
+                    end
+
                 default:unknown_code = inst;
             endcase
         end
