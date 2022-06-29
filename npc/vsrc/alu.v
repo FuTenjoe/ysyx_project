@@ -32,6 +32,9 @@ always @(*) begin
         else if(rd_flag == 3'd5)begin
             alu_res = alu_src1 +  alu_src2;
             alu_res = alu_res[15:0];
+        else if(rd_flag == 3'd5)begin
+            alu_res =  alu_src2;
+            
         end
         end
         `ALU_SUB:begin //0100
