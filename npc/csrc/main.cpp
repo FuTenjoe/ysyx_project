@@ -105,7 +105,7 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   }
   printf("waddr = %llx\n",waddr);
   printf("wdata = %llx\n",wdata);
-  printf("len = %llx\n",len);
+  printf("len = %x\n",len);
   //printf("len = %d\n",len);
   host_write(guest_to_host(waddr),len,wdata);
 }
@@ -243,7 +243,7 @@ void init_imem(){
 uint8_t *guest_to_host(paddr_t paddr){
   //uint8_t *tmpl = pimem + paddr -CONFIG_MBASE;
   //printf("guest to host success pimem = %hhn\n",pimem);
-  printf("guest to host success paddr  = %llx\n",paddr );
+  printf("guest to host success paddr  = %x\n",paddr );
   //printf("guest to host success addr = %hhn\n",pimem + paddr -CONFIG_MBASE);
   return pimem + paddr -CONFIG_MBASE;
 }
