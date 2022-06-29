@@ -283,7 +283,7 @@ always @(*) begin
                     end
                 default:unknown_code = inst;
                 endcase
-            end*/
+            end
             default:unknown_code = inst;
             endcase
         end
