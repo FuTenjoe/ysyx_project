@@ -60,11 +60,22 @@ always @(*) begin
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b0;
             case (funct3)
-                `INST_ADD_SUB: begin
-                    alu_op = (funct7 == `FUNCT7_INST_A) ? `ALU_ADD : `ALU_SUB; // A:add B:sub 
+                3'b000: begin
+                    case(funct7)
+                    7'b0000000:begin
+                        alu_op = `ALU_ADD ; // A:add B:sub 
+                        s_flag = 1'd0;
+                        expand_signed = 4'd0;
+                        rd_flag = 3'd3;
+                    end
+                    7'b0100000:begin
+                    alu_op =  `ALU_SUB; // A:add B:sub 
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
                     rd_flag = 3'd3;
+                    end
+                    default:unknown_code = inst;
+                    endcase
                 end
                 3'b111:begin
                     alu_op = (funct7 == 7'b0) ? `ALU_AND: `ALU_DIVYU;      //A:and  B:remu
