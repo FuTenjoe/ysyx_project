@@ -183,11 +183,11 @@ int main(int argc, char **argv, char **env) {
       top->eval ();
       printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
-      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
+      printf(" a0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[10],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",23,cpu_gpr[23],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",2,cpu_gpr[2],top->inst);
-      
-      
+      printf(" a5 = 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
+      printf(" a1 = 0x%08lx; Instruction is 0x%x\n",cpu_gpr[11],top->inst);
      }
      if(top->clk==0){
         top->time_set = 0;
@@ -196,11 +196,11 @@ int main(int argc, char **argv, char **env) {
          printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       
-      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",10,cpu_gpr[10],top->inst);
+      printf(" a0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[10],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",23,cpu_gpr[23],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",2,cpu_gpr[2],top->inst);
-      printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",15,cpu_gpr[15],top->inst);
-   
+      printf(" a5 = 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
+      printf(" a1 = 0x%08lx; Instruction is 0x%x\n",cpu_gpr[11],top->inst);
         if (a>2){
        //printf("a =%d \n",a);
        
