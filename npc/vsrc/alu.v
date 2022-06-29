@@ -11,6 +11,7 @@ module alu(
 );
 
 reg [63:0] rd_buf_lw;
+reg [63:0] rd_buf_lw2;
 always @(*) begin
     zero = 1'b0;
     alu_res = 64'b0;
@@ -49,8 +50,12 @@ always @(*) begin
         end
         `ALU_SRL:    //算术右移
             alu_res = alu_src1>>>alu_src2;
-        `ALU_AND:
-            alu_res = alu_src1 & alu_src2;
+        `ALU_AND:begin
+            if(rd_flag == 3'd6);
+                alu_res = rd_buf_lw & rd_buf_lw2;
+            else
+                alu_res = alu_src1 & alu_src2;
+        end
         `ALU_SLL:
             alu_res = alu_src1 << alu_src2;
         default:begin
@@ -63,6 +68,10 @@ import "DPI-C" function void pmem_read(input longint raddr, output longint rdata
 always @(*) begin
     if(rd_flag == 3'd1 | rd_flag == 3'd2 |rd_flag == 3'd4 )
         pmem_read(alu_src1 +  alu_src2, rd_buf_lw);
+    else if(rd_flag == 3'd6)begin
+        pmem_read(alu_src1 , rd_buf_lw);
+        pmem_read(alu_src2, rd_buf_lw2);
+    end
     
 end
 endmodule
