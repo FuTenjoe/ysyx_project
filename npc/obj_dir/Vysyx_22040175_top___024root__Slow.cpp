@@ -2996,67 +2996,70 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                                 ? (
                                                    (1U 
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
-                                                    ? (QData)((IData)(
-                                                                      (((- (IData)(
-                                                                                (1U 
-                                                                                & (IData)(
+                                                    ? 
+                                                   (((- (QData)((IData)(
+                                                                        (1U 
+                                                                         & (IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
-                                                                                >> 0x1fU))))) 
-                                                                        << 0x14U) 
-                                                                       | ((0xff000U 
-                                                                           & ((IData)(
+                                                                                >> 0x1fU)))))) 
+                                                     << 0x14U) 
+                                                    | (QData)((IData)(
+                                                                      ((0xff000U 
+                                                                        & ((IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
                                                                                 >> 0xcU)) 
-                                                                              << 0xcU)) 
-                                                                          | ((0x800U 
-                                                                              & ((IData)(
-                                                                                ((QData)((IData)(vlSelf->inst)) 
-                                                                                >> 0x14U)) 
-                                                                                << 0xbU)) 
-                                                                             | (0x7feU 
-                                                                                & ((IData)(
-                                                                                ((QData)((IData)(vlSelf->inst)) 
-                                                                                >> 0x15U)) 
-                                                                                << 1U)))))))
-                                                    : (QData)((IData)(
-                                                                      (((- (IData)(
-                                                                                (1U 
-                                                                                & (IData)(
-                                                                                ((QData)((IData)(vlSelf->inst)) 
-                                                                                >> 0x1fU))))) 
-                                                                        << 0xcU) 
+                                                                           << 0xcU)) 
                                                                        | ((0x800U 
                                                                            & ((IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
-                                                                                >> 7U)) 
+                                                                                >> 0x14U)) 
                                                                               << 0xbU)) 
-                                                                          | ((0x7e0U 
-                                                                              & ((IData)(
+                                                                          | (0x7feU 
+                                                                             & ((IData)(
+                                                                                ((QData)((IData)(vlSelf->inst)) 
+                                                                                >> 0x15U)) 
+                                                                                << 1U)))))))
+                                                    : 
+                                                   (((- (QData)((IData)(
+                                                                        (1U 
+                                                                         & (IData)(
+                                                                                ((QData)((IData)(vlSelf->inst)) 
+                                                                                >> 0x1fU)))))) 
+                                                     << 0xcU) 
+                                                    | (QData)((IData)(
+                                                                      ((0x800U 
+                                                                        & ((IData)(
+                                                                                ((QData)((IData)(vlSelf->inst)) 
+                                                                                >> 7U)) 
+                                                                           << 0xbU)) 
+                                                                       | ((0x7e0U 
+                                                                           & ((IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
                                                                                 >> 0x19U)) 
-                                                                                << 5U)) 
-                                                                             | (0x1eU 
-                                                                                & ((IData)(
+                                                                              << 5U)) 
+                                                                          | (0x1eU 
+                                                                             & ((IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
                                                                                 >> 8U)) 
                                                                                 << 1U))))))))
                                                 : (
                                                    (1U 
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__imm_gen_op))
-                                                    ? (QData)((IData)(
-                                                                      (((- (IData)(
-                                                                                (1U 
-                                                                                & (IData)(
+                                                    ? 
+                                                   (((- (QData)((IData)(
+                                                                        (1U 
+                                                                         & (IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
-                                                                                >> 0x1fU))))) 
-                                                                        << 0xcU) 
-                                                                       | ((0xfe0U 
-                                                                           & ((IData)(
+                                                                                >> 0x1fU)))))) 
+                                                     << 0xcU) 
+                                                    | (QData)((IData)(
+                                                                      ((0xfe0U 
+                                                                        & ((IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
                                                                                 >> 0x19U)) 
-                                                                              << 5U)) 
-                                                                          | (0x1fU 
-                                                                             & (IData)(
+                                                                           << 5U)) 
+                                                                       | (0x1fU 
+                                                                          & (IData)(
                                                                                 ((QData)((IData)(vlSelf->inst)) 
                                                                                 >> 7U)))))))
                                                     : 
