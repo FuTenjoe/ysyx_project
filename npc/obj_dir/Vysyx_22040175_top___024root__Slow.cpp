@@ -2717,6 +2717,8 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__pmem_read_TOP(0x80008fd8ULL, vlSelf->__Vtask_ysyx_22040175_top__DOT__u_alu_0__DOT__pmem_read__6__rdata);
         vlSelf->ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw 
             = vlSelf->__Vtask_ysyx_22040175_top__DOT__u_alu_0__DOT__pmem_read__6__rdata;
+        vlSelf->ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw 
+            = (0xaaULL + vlSelf->ysyx_22040175_top__DOT__u_alu_0__DOT__rd_buf_lw);
     }
     vlSelf->ysyx_22040175_top__DOT__zero = 0U;
     vlSelf->ysyx_22040175_top__DOT__alu_res = 0ULL;
