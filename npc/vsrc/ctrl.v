@@ -284,6 +284,9 @@ always @(*) begin
                 default:unknown_code = inst;
                 endcase
             end
+            default:unknown_code = inst;
+            endcase
+        end
         7'b0011011:begin        //addiw   
             case (funct3)
             3'b000:begin       //addiw
