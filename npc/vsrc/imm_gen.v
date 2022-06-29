@@ -11,7 +11,7 @@ always @(*) begin
     imm = `CPU_WIDTH'b0;
     case (imm_gen_op)
         `IMM_GEN_I: 
-             imm = {{20{inst[31]}},inst[31:20]};
+             imm = {{52{inst[31]}},inst[31:20]};
         `IMM_GEN_S: 
              imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
         `IMM_GEN_B: 
