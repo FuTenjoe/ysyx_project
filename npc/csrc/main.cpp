@@ -73,6 +73,7 @@ extern "C" void pmem_read(long long raddr,long long *rdata){
     printf("rdata = 0x%llx\n",*rdata);
   }
   else{
+    printf("raddr = %llx\n",raddr);
     *rdata = 0;
     printf("Warning: Invalid Instruction !\n");
   }
