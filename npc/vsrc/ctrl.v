@@ -193,7 +193,7 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd1;    //有符号扩展 
-                    rd_flag = 3'd6;
+                    rd_flag = 3'd0;
                 end
                 default:unknown_code = inst;
         endcase

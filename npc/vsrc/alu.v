@@ -57,12 +57,8 @@ always @(*) begin
                 alu_res = alu_src1 & alu_src2;
         end
         `ALU_SLLW:begin
-            if(rd_flag == 3'd6)begin
-                alu_res = rd_buf_lw << rd_buf_lw2;
-                alu_res = 1'b1;
-            end
-            else
                 alu_res = alu_src1 <<  alu_src2;
+                alu_res = alu_res[31:0];
         end
         `ALU_DIVY:
             alu_res = alu_src1 % alu_src2;
