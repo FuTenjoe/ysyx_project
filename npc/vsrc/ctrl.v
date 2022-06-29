@@ -368,7 +368,7 @@ always @(*) begin
                     expand_signed =4'd0;       //不需扩展符号位
                     rd_flag = 3'd4;
                 end
-                3'b001:begin      //lh
+              /*  3'b001:begin      //lh
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
@@ -383,7 +383,7 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;       //不需扩展符号位
                     rd_flag = 3'd6;
-                end
+                end*/
                 default:unknown_code = inst;
             endcase
         end
