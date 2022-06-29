@@ -164,6 +164,26 @@ always @(*) begin
                     s_imm = 32'd0;
                     rd_flag = 3'd0;
                 end
+                3'b001:begin   //slli
+                    if(funct7 == 7'd0 | funct7 == 7'd1)begin
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    jalr = 1'b0;
+                    reg1_raddr  = rs1;
+                    reg2_raddr  = rs2;
+                    reg_waddr   = rd;
+                    s_imm =0;
+                    imm_gen_op  = `IMM_GEN_SRAI;   //R型指令不需要立即数，任取一个
+                    alu_op      = `ALU_SLLW;
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b0;
+                    s_flag = 1'd0;
+                    expand_signed =4'd0;    //有符号扩展 
+                    rd_flag = 3'd0;
+                    end
+                    else
+                        unknown_code = inst;
+                end
                 default:unknown_code = inst;
             endcase
         end
