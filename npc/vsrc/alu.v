@@ -11,7 +11,8 @@ module alu(
 );
 
 reg [63:0] rd_buf_lw;
-reg [63:0] rd_buf_lw2;
+reg signed [63:0] signed_alu_src1;
+reg signed [63:0] signed_alu_src2;
 always @(*) begin
     zero = 1'b0;
     alu_res = 64'b0;
@@ -42,10 +43,12 @@ always @(*) begin
             zero = (alu_res == 64'b0) ? 1'b0 : 1'b1;
         end
         `ALU_SMT:begin
-             if("signed" alu_src1 >= "signed" alu_src2)
-                zero = 32'd0;
+            signed_alu_src1 = alu_src1;
+            signed_alu_src2 = alu_src2;
+             if(signed_alu_src1 >= signed_alu_src2 )
+                zero = 1'd0;
             else
-                 alu_res = 32'd1;
+                 alu_res = 1'd1;
         end
         `ALU_SLTU:begin//1001
             if(alu_src1<alu_src2)
