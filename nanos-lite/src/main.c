@@ -6,7 +6,9 @@ void init_ramdisk(void);
 void init_irq(void);
 void init_fs(void);
 void init_proc(void);
-
+void yield() {
+  asm volatile("li a7, -1; ecall");
+}
 int main() {
   extern const char logo[];
   printf("%s", logo);
