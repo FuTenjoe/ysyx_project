@@ -12,6 +12,3 @@
 #include <klib-macros.h>
 #include <debug.h>
 #endif
-void yield() {
-  asm volatile("li a7, -1; ecall");
-}
