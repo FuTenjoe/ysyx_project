@@ -7,7 +7,7 @@ typedef struct {
   word_t gpr[32];
   vaddr_t pc;
 //自己加pa3.1实现自陷操作
-  word_t sr[3]; //mepc,mcause,mstatus
+  uintptr_t sr[3]; //mepc,mcause,mstatus
   word_t mtvec;
 
 } riscv64_CPU_state;
