@@ -8,9 +8,9 @@ word_t isa_raise_intr(word_t NO, vaddr_t epc) {
   cpu.sr[0] = epc;
   cpu.sr[1] = NO;
   //rtl_j(cpu.mtvec);
-  vaddr_t rt = cpu.mtvec;
+  //vaddr_t rt = cpu.mtvec;
   printf("jump out");
-  return rt;
+  return 0xa00001800;
   //return 0;
 
   //return 0;
