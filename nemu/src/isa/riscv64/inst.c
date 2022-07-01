@@ -100,7 +100,7 @@ INSTPAT_START();//INSTPAT(模式字符串, 指令名称, 指令类型, 指令执
   //INSTPAT("??????? ????? ????? 001 ????? 11100 11", csrrw,   I, R(dest) = cpu.mtvec, cpu.mtvec = src1);
   INSTPAT("??????? ????? ????? 010 ????? 11100 11", csrrs,   I, R(dest) = cpu.sr[BITS(src2,3,0)], cpu.sr[BITS(src2,3,0)] = cpu.sr[BITS(src2,3,0)] | src1);
   INSTPAT("??????? ????? ????? 001 ????? 11100 11", csrrw,   I, R(dest) = cpu.sr[BITS(src2,3,0)], cpu.sr[BITS(src2,3,0)] = src1);
-  INSTPAT("0000000 00000 00000 000 00000 11100 11", ecall , I, s->dnpc = isa_raise_intr(3,s->pc),printf("current pc is %lx ",s->pc),printf("R(10) is:%lx\n",R(10)) );
+  INSTPAT("0000000 00000 00000 000 00000 11100 11", ecall , I, s->dnpc = isa_raise_intr(11,s->pc),printf("current pc is %lx ",s->pc),printf("R(10) is:%lx\n",R(10)) );
 
 
   INSTPAT("??????? ????? ????? 000 ????? 01000 11", sb     , S, Mw(src1 + dest, 1, src2));
