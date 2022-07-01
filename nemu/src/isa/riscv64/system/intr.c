@@ -8,7 +8,8 @@ word_t isa_raise_intr(word_t NO, vaddr_t epc) {
   cpu.mepc = epc;
   cpu.mcause = NO;
   //rtl_j(cpu.mtvec);
-  return cpu.mtvec;
+  epc = cpu.mtvec;
+  return 0;
 
   //return 0;
 }
