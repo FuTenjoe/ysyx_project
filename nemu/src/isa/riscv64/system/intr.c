@@ -5,8 +5,8 @@ word_t isa_raise_intr(word_t NO, vaddr_t epc) {
    * Then return the address of the interrupt/exception vector.
    */
   //自己加
-  cpu.mepc = epc;
-  cpu.mcause = NO;
+  cpu.sr[0] = epc;
+  cpu.sr[1] = NO;
   //rtl_j(cpu.mtvec);
   vaddr_t rt = cpu.mtvec;
   return rt;
