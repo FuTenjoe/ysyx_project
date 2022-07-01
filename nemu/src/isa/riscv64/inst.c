@@ -96,7 +96,7 @@ INSTPAT_START();//INSTPAT(模式字符串, 指令名称, 指令类型, 指令执
   //后加
   INSTPAT("??????? ????? ????? 110 ????? 00100 11", ori ,    I, R(dest) = src1|SEXT(BITS(src2,11,0),12),printf("current pc is %lx ",s->pc),printf("R(10) is:%lx\n",R(10)));
   INSTPAT("??????? ????? ????? 000 ????? 00000 11", lb ,    I, R(dest) = SEXT(BITS(Mr(src1 + src2, 1),7,0),8 ),printf("current pc is %lx ",s->pc),printf("R(10) is:%lx\n",R(10)) );
-
+  INSTPAT("0000000 00000 00000 000 00000 11100 11", ecall , I, s->dnpc = isa_raise_intr(5,s->pc),printf("current pc is %lx ",s->pc),printf("R(10) is:%lx\n",R(10)) );
 
 
   INSTPAT("??????? ????? ????? 000 ????? 01000 11", sb     , S, Mw(src1 + dest, 1, BITS(src2,7,0)),printf("current pc is %lx ",s->pc),printf("R(10) is:%lx\n",R(10)),printf("R(2) is:%lx\n",R(2)));
