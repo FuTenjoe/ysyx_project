@@ -1,6 +1,6 @@
 #ifndef ARCH_H__
 #define ARCH_H__
-
+typedef unsigned long int	uintptr_t;
 struct Context {
   // TODO: fix the order of these members to match trap.S
   //uintptr_t mepc, mcause, gpr[32], mstatus;
