@@ -3,16 +3,16 @@
 #include <klib.h>
 
 static Context* (*user_handler)(Event, Context*) = NULL;
-
+Context *c = NULL;
 Context* __am_irq_handle(Context *c) {
   if (user_handler) {
     Event ev = {0};
     switch (c->mcause) {
       default: ev.event = EVENT_ERROR; break;
     }
-    printf("mcause \n");
-    printf("mstatus \n");
-    printf("mepc \n");
+    printf("mcause = %llx\n",c->mcause);
+    printf("mstatus = %llx\n",c->mstatus);
+    printf("mepc = %llx\n",c->mepc);
     c = user_handler(ev, c);
     assert(c != NULL);
   }
