@@ -5,10 +5,10 @@ word_t isa_raise_intr(word_t NO, vaddr_t epc) {
    * Then return the address of the interrupt/exception vector.
    */
   //自己加
-  cpu.sr[1] = epc;
-  cpu.sr[2] = NO;
+  cpu.sr[833] = epc;
+  cpu.sr[834] = NO;
   //rtl_j(cpu.mtvec);
-  vaddr_t rt = cpu.sr[5];
+  vaddr_t rt = cpu.sr[773];
   printf("jump out");
   //return 0xa00001800;
   return rt;
