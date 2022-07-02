@@ -18,5 +18,7 @@ word_t isa_raise_intr(word_t NO, vaddr_t epc) {
 }
 
 word_t isa_query_intr() {
-  return INTR_EMPTY;
+  //return INTR_EMPTY;
+  //自家加实现mret
+  return cpu.sr[773];
 }
