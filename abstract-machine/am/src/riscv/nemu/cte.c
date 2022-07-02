@@ -3,7 +3,7 @@
 #include <klib.h>
 
 static Context* (*user_handler)(Event, Context*) = NULL;
-Context *c = NULL;
+
 Context* __am_irq_handle(Context *c) {
   if (user_handler) {
     Event ev = {0};
