@@ -1,5 +1,6 @@
 #include "am.h"
 #include <riscv/riscv.h>
+#include <arch/riscv64-nemu.h>
 #include <klib.h>
 
 static Context* (*user_handler)(Event, Context*) = NULL;
