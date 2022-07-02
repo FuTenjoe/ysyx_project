@@ -12,8 +12,8 @@ Context* __am_irq_handle(Context *c) {
       default: ev.event = EVENT_ERROR; break;
     }
     printf("mcause = %d\n",c->mcause);
-    printf("mstatus = %llx\n",c->mstatus);
-    printf("mepc = %llx\n",c->mepc);
+    printf("mstatus = %d\n",c->mstatus);
+    printf("mepc = %d\n",c->mepc);
     c = user_handler(ev, c);
     assert(c != NULL);
   }
