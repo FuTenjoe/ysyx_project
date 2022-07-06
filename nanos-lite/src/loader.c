@@ -11,19 +11,20 @@
 //自己加
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t get_ramdisk_size();
-Elf64_Ehdr *ehdr;
-Elf64_Phdr *phdr;
+Elf64_Ehdr ehdr = {0};
+Elf64_Phdr phdr = {0};
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
   //return 0;
   //自己加
   printf("eok\n");
-  ramdisk_read(ehdr, 0x80000001, get_ramdisk_size());
+  ramdisk_read(&ehdr, 0, get_ramdisk_size());
   //assert(*(uint32_t *)ehdr->e_ident == 0x7f454c46);
-  assert(*(uint32_t *)ehdr->e_ident == 0x464c457f);
+  assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
+  ramdisk_read(&phdr, ehdr.e_phoff, get_ramdisk_size());
   printf("eok2\n");
-  //return  phdr->p_vaddr;
-  return ehdr->e_entry;
+  return  phdr.p_vaddr;
+  //return ehdr->e_entry;
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
