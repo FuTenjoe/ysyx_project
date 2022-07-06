@@ -14,10 +14,10 @@ extern size_t get_ramdisk_size();
 Elf64_Ehdr ehdr = {0};
 Elf64_Phdr phdr = {0};
 static uintptr_t loader(PCB *pcb, const char *filename) {
-  //TODO();
-  //return 0;
+  TODO();
+  return 0;
   //自己加
-  printf("loderok1\n");
+ /* printf("loderok1\n");
   ramdisk_read(&ehdr, 0, get_ramdisk_size());
   //assert(*(uint32_t *)ehdr.e_ident == 0x7f454c46);
   printf("loderok2\n");
@@ -36,7 +36,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("eok4\n");
   printf("e_entryad = 0x%lx\n",ehdr.e_entry);
   return  ehdr.e_entry;
-  //return ehdr->e_entry;
+  //return ehdr->e_entry;*/
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
