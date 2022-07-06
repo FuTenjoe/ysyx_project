@@ -17,7 +17,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
   //return 0;
   //自己加
-  ramdisk_read(phdr, 0, get_ramdisk_size());
+  ramdisk_read(phdr, phdr->p_offset, get_ramdisk_size());
   //assert(*(uint32_t *)ehdr->e_ident == 0x7f454c46);
   assert(*(uint32_t *)ehdr->e_ident == 0x464c457f);
   return  phdr->p_vaddr;
