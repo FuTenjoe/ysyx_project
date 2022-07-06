@@ -21,7 +21,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   ramdisk_read(&ehdr, 0, get_ramdisk_size());
   //assert(*(uint32_t *)ehdr->e_ident == 0x7f454c46);
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
-  ramdisk_read(&phdr, ehdr.e_phoff, get_ramdisk_size());
+  ramdisk_read(&phdr, ehdr.e_phoff,ehdr.e_phentsize);
   printf("eok2\n");
   return  phdr.p_vaddr;
   //return ehdr->e_entry;
