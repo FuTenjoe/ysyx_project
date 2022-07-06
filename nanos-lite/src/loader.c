@@ -33,6 +33,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
     printf("eok32\n");
   }
   printf("eok4\n");
+  printf("e_entryad = 0x%lx\n",ehdr.e_entry);
   return  ehdr.e_entry;
   //return ehdr->e_entry;
 }
