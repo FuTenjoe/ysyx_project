@@ -24,6 +24,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   ramdisk_read(&phdr, ehdr.e_phoff,ehdr.e_phentsize);
   if(phdr.p_type == PT_LOAD){
     ramdisk_read(&(phdr.p_paddr), phdr.p_offset,phdr.p_filesz);
+    printf("eok2\n");
   }
   if(phdr.p_memsz > phdr.p_filesz){
     uint64_t length = phdr.p_paddr + phdr.p_filesz;
