@@ -22,6 +22,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("eok2\n");
   //assert(*(uint32_t *)ehdr->e_ident == 0x7f454c46);
   assert(*(uint32_t *)ehdr->e_ident == 0x464c457f);
+  printf("eok2\n");
   //return  phdr->p_vaddr;
   return ehdr->e_entry;
 }
