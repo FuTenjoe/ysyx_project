@@ -27,9 +27,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
     printf("eok2\n");
   }
   if(phdr.p_memsz > phdr.p_filesz){
+    printf("eok3\n");
     uint64_t length = phdr.p_paddr + phdr.p_filesz;
     ramdisk_read((void*)(length), 0x0, phdr.p_memsz - phdr.p_filesz);
-    printf("eok3\n");
+    printf("eok32\n");
   }
   printf("eok4\n");
   return  ehdr.e_entry;
