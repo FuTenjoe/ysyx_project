@@ -22,8 +22,15 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   //assert(*(uint32_t *)ehdr->e_ident == 0x7f454c46);
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
   ramdisk_read(&phdr, ehdr.e_phoff,ehdr.e_phentsize);
+  if(phdr.p_type == PT_LOAD){
+    ramdisk_read(&(phdr.p_paddr), phdr.p_offset,phdr.p_filesz);
+  }
+  if(phdr.p_memsz > phdr.p_filesz){
+    uint64_t length = phdr.p_paddr + phdr.p_filesz;
+    ramdisk_read(&(length), 0, phdr.p_memsz - phdr.p_filesz);
+  }
   printf("eok2\n");
-  return  phdr.p_vaddr;
+  return  ehdr.e_entry;
   //return ehdr->e_entry;
 }
 
