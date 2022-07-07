@@ -26,7 +26,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   for(uint32_t i=0;i < ehdr.e_phnum; i++){
     //ramdisk_read(&phdr, ehdr.e_phoff + i*sizeof(phdr),ehdr.e_phentsize);
     printf("for i = %d\n",i);
-    //ramdisk_read(&phdr, (ehdr.e_phoff + i*sizeof(phdr)),sizeof(Elf64_Phdr));
+    ramdisk_read(&phdr, (ehdr.e_phoff + i*sizeof(phdr)),sizeof(Elf64_Phdr));
     if(phdr.p_type == PT_LOAD){
       ramdisk_read((void*)(phdr.p_vaddr), phdr.p_offset + i*sizeof(phdr), phdr.p_filesz);
       printf("eok2\n");
