@@ -22,7 +22,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("ehdr.e_phnum = %lx\n",ehdr.e_phnum);
   printf("ehdr.e_machibne = %lx\n",ehdr.e_machine);
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
-  //assert(ehdr.e_machine == );
+  assert(ehdr.e_machine == 0xf3);
   //ramdisk_read(&phdr, sizeof(Elf64_Ehdr),ehdr.e_phnum);
   for(uint32_t i=0;i < ehdr.e_phnum; i++){
     printf("for i = %d\n",i);
