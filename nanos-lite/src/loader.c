@@ -23,7 +23,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
   for(uint32_t i=0;i < ehdr.e_phnum; i++){
     //ramdisk_read(&phdr, ehdr.e_phoff + i*sizeof(phdr),sizeof(Elf64_Phdr));
-    ramdisk_read(&phdr, ehdr.e_phoff + i*sizeof(phdr),sizeof(Elf64_Phdr));
+    ramdisk_read(&phdr, ehdr.e_phoff + i*sizeof(phdr),sizeof(Elf64_Ehdr));
     printf("for i = %d\n",i);
     if(phdr.p_type == PT_LOAD){
       ramdisk_read((void*)(phdr.p_vaddr), phdr.p_offset, phdr.p_filesz);
