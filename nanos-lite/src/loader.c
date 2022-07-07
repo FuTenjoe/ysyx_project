@@ -38,28 +38,6 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   }
   }
    return  ehdr.e_entry;
-  /*Elf_Ehdr *elf_head = (Elf_Ehdr*)malloc(sizeof(Elf_Ehdr));
-  printf("loderok1\n");
-  //Elf_Ehdr *elf_head =NULL;
-  ramdisk_read(elf_head,0,get_ramdisk_size());
-  printf("loderok1\n");
-  assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
-  assert(elf_head -> e_machine == PT_LOAD);
-
-  Elf_Phdr *pro_head = (Elf_Phdr*)malloc(sizeof(Elf_Phdr)*elf_head -> e_phnum);
-  //Elf_Phdr *pro_head=NULL;
-  ramdisk_read(pro_head,elf_head->e_phoff,ehdr.e_phentsize);
-
-  for(Elf64_Phdr *p =pro_head; p<pro_head +elf_head->e_phnum; p++){
-    ramdisk_read((void*)(p->p_vaddr),p->p_offset,p->p_filesz);
-    memset((void*)(p->p_vaddr +p->p_filesz),0,p->p_memsz - p->p_filesz);
-  }
-
-
-  printf("eok4\n");
-  printf("e_entryad = 0x%lx\n",ehdr.e_entry);
- // return  ehdr.e_entry;
-  return elf_head->e_entry;*/
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
