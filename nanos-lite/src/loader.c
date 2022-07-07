@@ -25,7 +25,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   for(Elf64_Phdr *p = phdr;p <  phdr + ehdr.e_phnum; p++){
    
     if(p->p_type == PT_LOAD){
-      ramdisk_read((void*)(phdr->p_vaddr), phdr->p_offset, phdr->p_filesz);
+      ramdisk_read((void*)(p->p_vaddr), p->p_offset, p->p_filesz);
       printf("eok2\n");
     }
     if(p->p_memsz > p->p_filesz){
