@@ -22,11 +22,11 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   ramdisk_read(&ehdr, 0, sizeof(Elf64_Ehdr));
   printf("ehdr.e_phnum = %lx\n",ehdr.e_phnum);
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
-  //ramdisk_read(&phdr, ehdr.e_phoff,ehdr.e_phentsize);
+  ramdisk_read(&phdr, sizeof(Elf_Ehdr),ehdr.e_phnum);
   for(uint32_t i=0;i < ehdr.e_phnum; i++){
     //ramdisk_read(&phdr, ehdr.e_phoff + i*sizeof(phdr),ehdr.e_phentsize);
     printf("for i = %d\n",i);
-    ramdisk_read(&phdr, (ehdr.e_phoff + i*sizeof(phdr)),sizeof(Elf64_Phdr));
+    //ramdisk_read(&phdr, (ehdr.e_phoff + i*sizeof(phdr)),sizeof(Elf64_Phdr));
     if(phdr.p_type == PT_LOAD){
       ramdisk_read((void*)(phdr.p_vaddr), phdr.p_offset + i*sizeof(phdr), phdr.p_filesz);
       printf("eok2\n");
