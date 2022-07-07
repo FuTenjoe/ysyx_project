@@ -32,7 +32,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
       printf("eok3\n");
       //uint64_t length = phdr.p_paddr + phdr.p_filesz;
       //ramdisk_read((void*)(length), 0x0, phdr.p_memsz - phdr.p_filesz);
-      memset((void*)(phdr.p_paddr +phdr.p_filesz),0,phdr.p_memsz - phdr.p_filesz);
+      //memset((void*)(phdr.p_paddr +phdr.p_filesz),0,phdr.p_memsz - phdr.p_filesz);
       printf("eok32\n");
   }
   }
