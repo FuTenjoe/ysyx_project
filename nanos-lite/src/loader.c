@@ -37,12 +37,14 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
     printf("eok32\n");
   }
   }*/
-  Elf_Ehdr *elf_head = (Elf_Ehdr*)malloc(sizeof(Elf_Ehdr));
+  //Elf_Ehdr *elf_head = (Elf_Ehdr*)malloc(sizeof(Elf_Ehdr));
+  Elf_Ehdr *elf_head =NULL;
   ramdisk_read(elf_head,0,sizeof(Elf_Ehdr));
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
   assert(elf_head -> e_machine == PT_LOAD);
 
-  Elf_Phdr *pro_head = (Elf_Phdr*)malloc(sizeof(Elf_Phdr)*elf_head -> e_phnum);
+  //Elf_Phdr *pro_head = (Elf_Phdr*)malloc(sizeof(Elf_Phdr)*elf_head -> e_phnum);
+  Elf_Phdr *pro_head=NULL;
   ramdisk_read(pro_head,sizeof(Elf_Ehdr),sizeof(Elf_Phdr)*elf_head ->e_phnum);
 
   for(Elf64_Phdr *p =pro_head; p<pro_head +elf_head->e_phnum; p++){
