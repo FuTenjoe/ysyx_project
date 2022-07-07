@@ -24,7 +24,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   ramdisk_read(&phdr, sizeof(Elf64_Ehdr),ehdr.e_phnum);
   for(uint32_t i=0;i < ehdr.e_phnum; i++){
     //ramdisk_read(&phdr, ehdr.e_phoff + i*sizeof(phdr),sizeof(Elf64_Phdr));
-     ramdisk_read(&phdr, sizeof(Elf64_Ehdr)+ i*sizeof(phdr),ehdr.e_phnum);
+     ramdisk_read(&phdr, sizeof(Elf64_Ehdr)+ i*sizeof(phdr),phdr.p_filesz);
     printf("for i = %d\n",i);
     if(phdr.p_type == PT_LOAD){
       ramdisk_read((void*)(phdr.p_vaddr), phdr.p_offset, phdr.p_filesz);
