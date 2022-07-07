@@ -18,9 +18,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   //return 0;
   //自己加
   printf("loderok1\n");
-  ramdisk_read(&ehdr, 0, 2*sizeof(Elf64_Ehdr));
+  ramdisk_read(&ehdr, 0, sizeof(Elf64_Ehdr));
   printf("ehdr.e_phnum = %lx\n",ehdr.e_phnum);
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
+  assert(ehdr.e_machine == PT_LOAD);
   //ramdisk_read(&phdr, sizeof(Elf64_Ehdr),ehdr.e_phnum);
   for(uint32_t i=0;i < ehdr.e_phnum; i++){
     printf("for i = %d\n",i);
