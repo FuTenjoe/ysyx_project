@@ -40,10 +40,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   //Elf_Ehdr *elf_head = (Elf_Ehdr*)malloc(sizeof(Elf_Ehdr));
   printf("loderok1\n");
   Elf_Ehdr *elf_head =NULL;
-  ramdisk_read(elf_head,0,sizeof(Elf_Ehdr));
+  ramdisk_read(elf_head,0,get_ramdisk_size());
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
   assert(elf_head -> e_machine == PT_LOAD);
-   printf("eok2\n");
+  
   //Elf_Phdr *pro_head = (Elf_Phdr*)malloc(sizeof(Elf_Phdr)*elf_head -> e_phnum);
   Elf_Phdr *pro_head=NULL;
   ramdisk_read(pro_head,sizeof(Elf_Ehdr),sizeof(Elf_Phdr)*elf_head ->e_phnum);
