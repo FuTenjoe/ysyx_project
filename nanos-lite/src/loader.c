@@ -23,7 +23,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("loderok2\n");
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
   for(int i = 0;i <ehdr.e_phnum; i++){
-    ramdisk_read(&phdr, ehdr.e_phoff,ehdr.e_phentsize);
+    ramdisk_read(&phdr, ehdr.e_phoff + i*sizeof(phdr),ehdr.e_phentsize);
   if(phdr.p_type == PT_LOAD){
     ramdisk_read((void*)(phdr.p_paddr), phdr.p_offset,phdr.p_filesz);
     printf("eok2\n");
