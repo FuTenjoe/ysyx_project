@@ -38,6 +38,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   }
   }*/
   //Elf_Ehdr *elf_head = (Elf_Ehdr*)malloc(sizeof(Elf_Ehdr));
+  printf("loderok1\n");
   Elf_Ehdr *elf_head =NULL;
   ramdisk_read(elf_head,0,sizeof(Elf_Ehdr));
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
