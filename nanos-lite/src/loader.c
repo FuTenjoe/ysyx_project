@@ -11,32 +11,33 @@
 //自己加
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t get_ramdisk_size();
-Elf64_Ehdr ehdr = {0};
-Elf64_Phdr phdr = {0};
+//Elf64_Ehdr ehdr = {0};
+//Elf64_Phdr phdr = {0};
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
-  //return 0;
-  //自己加
-  printf("loderok1\n");
-  ramdisk_read(&ehdr, 0, sizeof(Elf64_Ehdr));
-  printf("ehdr.e_phnum = %lx\n",ehdr.e_phnum);
-  assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
-  //ramdisk_read(phdr, sizeof(Elf_Ehdr),ehdr.e_phnum);
-  for(int i=0; i<ehdr.e_phnum; i++){
-    ramdisk_read(&phdr, ehdr.e_phoff +i*sizeof(phdr),sizeof(Elf64_Phdr));
-    if(phdr.p_type == PT_LOAD){
-      ramdisk_read((void*)(phdr.p_vaddr), phdr.p_offset, phdr.p_filesz);
-      printf("eok2\n");
+  
+  Elf_Ehdr elfhdr = {};
+  Elf_Phdr elfphdr = {};
+
+  ramdisk_read(&elfhdr, 0, sizeof(elfhdr));
+  assert(*(uint32_t *)elfhdr.e_ident == 0x464c457f);
+  uint16_t i = 0;
+  for(i=0; i<elfhdr.e_phnum; i++){
+    uint64_t phoff = elfhdr.e_phoff + elfhdr.e_phentsize * i;
+    //printf("phoff:%x\n",phoff);
+    ramdisk_read(&elfphdr, phoff, elfhdr.e_phentsize);
+
+    if(elfphdr.p_type == 0x1){
+      //ramdisk_read((void*)0x83000000, 0, 0x4f88);
+      ramdisk_read((void*)elfphdr.p_paddr, elfphdr.p_offset, elfphdr.p_memsz);
+      //ramdisk_read((void*)elfphdr.p_paddr, elfphdr.p_offset, (size_t*)elfphdr.p_memsz);
+      memset((void *)(elfphdr.p_vaddr+elfphdr.p_filesz), 0, (elfphdr.p_memsz-elfphdr.p_filesz));
+      
     }
-    if(phdr.p_memsz > phdr.p_filesz){
-      printf("eok3\n");
-      //uint64_t length = phdr.p_paddr + phdr.p_filesz;
-      //ramdisk_read((void*)(length), 0x0, phdr.p_memsz - phdr.p_filesz);
-      memset((void*)(phdr.p_vaddr + phdr.p_filesz),0,phdr.p_memsz - phdr.p_filesz);
-      printf("eok32\n");
   }
-  }
-   return  ehdr.e_entry;
+  
+  return elfhdr.e_entry;
+
 }
 void naive_uload(PCB *pcb, const char *filename) {
   uintptr_t entry = loader(pcb, filename);
