@@ -21,6 +21,6 @@ word_t isa_query_intr() {
   //return INTR_EMPTY;
   //自家加实现mret
   printf("mret 函数ok\n");
-  return cpu.sr[833] + 4;
+  return cpu.sr[833];
   
 }
