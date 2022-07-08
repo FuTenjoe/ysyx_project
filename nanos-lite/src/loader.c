@@ -29,7 +29,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
        ramdisk_read((void*)(p->p_vaddr),p->p_offset, p->p_memsz);
     }
     
-    //memset((void *)(p->p_vaddr + p->p_filesz), 0, p->p_memsz - p->p_filesz);
+    memset((void *)(p->p_vaddr + p->p_filesz), 0, p->p_memsz - p->p_filesz);
   }
   return elf_head->e_entry;
 }
