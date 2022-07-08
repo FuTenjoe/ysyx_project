@@ -11,8 +11,8 @@
 //自己加
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t get_ramdisk_size();
-Elf64_Ehdr ehdr = {0};
-Elf64_Phdr phdr = {0};
+//Elf64_Ehdr ehdr = {0};
+//Elf64_Phdr phdr = {0};
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
   //return 0;
@@ -23,10 +23,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   assert(elf_head ->e_machine == 0xf3);
 
   Elf_Phdr *pro_head = (Elf_Phdr*)malloc(sizeof(Elf_Phdr)*elf_head->e_phnum);
-  ramdisk_read(pro_head,sizeof(Elf_Ehdr),sizeof(Elf_Phdr)*elf_head->e_phnum);
+  //ramdisk_read(pro_head,sizeof(Elf_Ehdr),sizeof(Elf_Phdr)*elf_head->e_phnum);
   for(Elf_Phdr *p=pro_head; p<pro_head+elf_head->e_phnum; p++){
     ramdisk_read((void*)(p->p_vaddr),p->p_offset, p->p_filesz);
-     ramdisk_read((void *)(p->p_vaddr + p->p_filesz), 0, p->p_memsz - p->p_filesz);
+    memset((void *)(p->p_vaddr + p->p_filesz), 0, p->p_memsz - p->p_filesz);
   }
   return elf_head->e_entry;
 }
