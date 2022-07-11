@@ -7,7 +7,7 @@ void do_syscall(Context *c) {
   a[0] = c->GPR1;
 
   switch (a[0]) {
-    case -1:{
+    case 1:{
       yield();a[0] = 0;
       printf("a[0] = -1 ok");break;
       }
