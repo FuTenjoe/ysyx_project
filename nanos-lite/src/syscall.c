@@ -33,7 +33,7 @@ void do_syscall(Context *c) {
     }
     case 4:{
       write(a[1],&a[2],a[3]);
-      a[0] = 0;
+      //a[0] = 0;
       break;
       
     }
