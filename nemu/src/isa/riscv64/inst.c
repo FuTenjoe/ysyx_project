@@ -76,7 +76,7 @@ INSTPAT_START();//INSTPAT(模式字符串, 指令名称, 指令类型, 指令执
   INSTPAT("0000000 ????? ????? 100 ????? 01100 11", xor ,    R,  R(dest) = src1 ^ src2 );
   INSTPAT("0000001 ????? ????? 101 ????? 01110 11", divuw ,  R, R(dest) = SEXT(BITS(BITS(src1,31,0) /BITS(src2,31,0),31,0),32) );
   INSTPAT("0000001 ????? ????? 111 ????? 01110 11", remuw ,  R, R(dest) = SEXT(BITS(src1 % (unsigned int)src2,31,0),32) );
-  INSTPAT("0011000 00010 00000 000 00000 11100 11", mret ,   R, s->dnpc = isa_query_intr() );
+  INSTPAT("0011000 00010 00000 000 00000 11100 11", mret ,   R, s->dnpc = isa_query_intr(),cpu.sr[768]=0xa00001800 );
 
 
   INSTPAT("??????? ????? ????? 000 ????? 00100 11", addi   , I, R(dest) = src1 + src2 );
