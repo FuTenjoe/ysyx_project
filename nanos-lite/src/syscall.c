@@ -38,8 +38,7 @@ void do_syscall(Context *c) {
       break; //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
     case 4:{
-      write(a[1],&a[2],a[3]);
-      a[1] = 0;
+      a[1]=write(a[1],&a[2],a[3]);
       printf("gpr a0 = %lx",a[1]);
       putch('o');
       break;
