@@ -7,7 +7,7 @@ size_t write( int  fd, const void * buf,size_t count){
         if((fd == 1) | (fd == 2)){
           for(int i=0; i < count-1; i++){
             
-            char *out = (char*) buf;
+            char* out = (char*) buf;
               putch (*out);
           }
           return 0;
