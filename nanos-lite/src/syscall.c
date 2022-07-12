@@ -31,7 +31,8 @@ void do_syscall(Context *c) {
       halt(c->GPR1);break;   //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
     case 4:{
-      write(c->GPR1,c->GPR2,c->GPR3);
+      //write(c->GPR1,c->GPR2,c->GPR3);
+      panic("Unhandled syscall ID = %d", a[0]);
     }
     
     default: panic("Unhandled syscall ID = %d", a[0]);
