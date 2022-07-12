@@ -7,8 +7,8 @@ size_t write( int  fd, const void * buf,size_t count){
         if((fd == 1) | (fd == 2)){
           for(int i=0; i < count-1; i++){
             char* buf = (char *)malloc((count)*sizeof(buf));
-            char out = *(buf+i);
-              putch (out);
+            //char out = *(buf+i);
+              putch ('o');
           }
           return 0;
         }
