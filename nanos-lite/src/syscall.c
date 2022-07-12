@@ -31,7 +31,7 @@ void do_syscall(Context *c) {
     }
     case 4:{
       write(a[1],&a[2],a[3]);
-      a[0] = 0;
+      //a[0] = 0;
       break;
       //panic("Unhandled syscall ID = %d", a[0]);
     }
