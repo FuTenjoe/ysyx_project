@@ -12,12 +12,15 @@ void do_syscall(Context *c) {
   a[4] = c->GPRx;
   switch (a[0]) {
     case 1:{
-      yield();a[0] = 0;
+      //yield();a[0] = 0;
       printf("a[0] = 1 ok");break;
       }
     case 0:{
-      halt(c->GPR1);break;   //是否指向这个宏存疑，以及每个宏代表的寄存器
+     //syscall_exit();
+     break;   //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
+    case 4:
+
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 }
