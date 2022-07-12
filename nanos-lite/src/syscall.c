@@ -44,6 +44,7 @@ void do_syscall(Context *c) {
     case 4:{
       printf("gpr a0 = %lx\n",a[0]);
       c->GPRx = write((int)a[1],(void*)a[2],(size_t)a[3]);
+      printf("gpr x = %lx\n",c->GPRx);
       break;
       
     }
