@@ -34,6 +34,7 @@ void do_syscall(Context *c) {
     case 4:{
       write(a[1],&a[2],a[3]);
       //a[0] = 0;
+      printf("gpr a0 = %lx",a[1]);
       putch('o');
       break;
       
