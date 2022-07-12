@@ -3,6 +3,18 @@
 //自己加
 //extern void yield();
 //extern void halt(); 
+/*ssize_t write( int  fd, const   void   * buf,size_t nbytes){
+        if((fd == 1) | (fd == 2)){
+          for(int i=0; i < nbytes-1; i++){
+            char* buf = (char *)malloc((nbytes)*sizeof(char));
+            //char out = buf;
+              putch (*buf);
+          }
+          return 0;
+        }
+        else return -1;
+      };*/
+  
 void do_syscall(Context *c) {
   uintptr_t a[4];
   a[0] = c->GPR1;
@@ -20,6 +32,8 @@ void do_syscall(Context *c) {
     }
     case 4:{
       //write()
+      //write();
+      break;
     }
     
     default: panic("Unhandled syscall ID = %d", a[0]);
