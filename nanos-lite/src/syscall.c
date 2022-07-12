@@ -29,16 +29,17 @@ void do_syscall(Context *c) {
       yield();
       c->GPRx = 0;
       putch('1');
-      //printf("gpr a0 = %lx",a[1]);
+      printf("gpr a0 = %lx",a[0]);
       break;
       
       }
     case 0:{
       halt(c->GPRx); 
-      //printf("gpr a0 = %lx",a[1]);
+      printf("gpr a0 = %lx",a[0]);
       break; //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
     case 4:{
+      printf("gpr a0 = %lx",a[0]);
       c->GPRx = write((int)a[1],(void*)a[2],(size_t)a[3]);
       break;
       
