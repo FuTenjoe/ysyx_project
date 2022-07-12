@@ -14,7 +14,6 @@ size_t write( int  fd, const void * buf,size_t count){
         }
         else return -1;
         //putch('o');
-        return 0;
 };
   
 void do_syscall(Context *c) {
