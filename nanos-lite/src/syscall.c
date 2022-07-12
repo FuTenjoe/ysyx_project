@@ -12,7 +12,7 @@ int write( int  fd, const void * buf,size_t count){
             char* out = (char*) buf;
               putch ((out)[i]);
           }
-          return 0;
+          return i;
         }
         else return -1;
         //putch('o');
