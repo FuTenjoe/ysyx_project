@@ -19,7 +19,6 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   //自己加
   printf("loderok1\n");
   //ramdisk_read(&ehdr, 0, sizeof(Elf_Ehdr));
-  ramdisk_read(&ehdr, 0, 10);
   printf("ehdr.e_phnum = %lx\n",ehdr.e_phnum);
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
   //ramdisk_read(phdr, sizeof(Elf_Ehdr),ehdr.e_phnum);
