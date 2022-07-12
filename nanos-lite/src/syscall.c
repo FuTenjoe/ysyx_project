@@ -8,9 +8,7 @@ int write( int  fd, const void * buf,size_t count){
         if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < count; i++){
-            
-            char* out = (char*) buf;
-              putch ((out)[i]);
+            putch(((char*)buf)[i]);
           }
           return 0;
         }
