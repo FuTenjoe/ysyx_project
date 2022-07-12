@@ -11,7 +11,7 @@ size_t write( int  fd, char buf,size_t nbytes){
             //char out = buf;
               putch (buf);
           }
-          return 0;
+          return -1;
         }
         else return -1;
       };
