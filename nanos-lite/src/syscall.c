@@ -25,13 +25,14 @@ void do_syscall(Context *c) {
   a[4] = c->GPRx;
   switch (a[0]) {
     case 1:{
-      yield();a[0] = 0;
+      yield();a[4] = 0;
       }
     case 0:{
       halt(c->GPR2);  //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
     case 4:{
-      write(c->GPR2,c->GPR3,c->GPR4);
+      write(a[1],a[2],a[3]);
+      a[4] = 0;
     }
     
     default: panic("Unhandled syscall ID = %d", a[0]);
