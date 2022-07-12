@@ -3,7 +3,7 @@
 //自己加
 //extern void yield();
 //extern void halt(); 
-int s_write( int  fd, const void * buf,size_t count){
+int write( int  fd, const void * buf,size_t count){
   Log("sys_write:fd=%d,len=%d\n",fd,count);
         if((fd == 1) | (fd == 2)){
           int i;
@@ -43,7 +43,7 @@ void do_syscall(Context *c) {
     }
     case 4:{
       printf("gpr a0 = %lx\n",a[0]);
-      c->GPRx = s_write((int)a[1],(void*)a[2],(size_t)a[3]);
+      c->GPRx = write((int)a[1],(void*)a[2],(size_t)a[3]);
       printf("gpr x = %lx\n",c->GPRx);
       break;
       
