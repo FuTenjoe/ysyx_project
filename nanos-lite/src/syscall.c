@@ -5,12 +5,13 @@
 //extern void halt(); 
 int write( int  fd, const void * buf,size_t count){
         if((fd == 1) | (fd == 2)){
-          for(int i=0; i < count; i++){
+          int i;
+          for(i=0; i < count; i++){
             
             char* out = (char*) buf;
               putch ((out)[i]);
           }
-          return 0;
+          return i;
         }
         else return -1;
         //putch('o');
