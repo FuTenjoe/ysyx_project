@@ -3,18 +3,17 @@
 //自己加
 //extern void yield();
 //extern void halt(); 
-//size_t write( int  fd, const   void   * buf,size_t nbytes){
-/*size_t write( int  fd, char buf,size_t nbytes){
+size_t write( int  fd, const void * buf,size_t count){
         if((fd == 1) | (fd == 2)){
-          for(int i=0; i < nbytes-1; i++){
-            //char* buf = (char *)malloc((nbytes)*sizeof(char));
-            //char out = buf;
-              putch (buf+i);
+          for(int i=0; i < count-1; i++){
+            char* buf = (char *)malloc((count)*sizeof(char));
+            char out = *(buf+i);
+              putch (out);
           }
           return 0;
         }
         else return -1;
-      };*/
+      };
   
 void do_syscall(Context *c) {
   uintptr_t a[4];
@@ -30,8 +29,8 @@ void do_syscall(Context *c) {
     case 0:{
       halt(c->GPR2); break; //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
-  case 4:{
-      //a[0]=write(a[1],a[2],a[3]);
+    case 4:{
+      a[0]=write(a[1],&a[2],a[3]);
       break;
     }
     default: panic("Unhandled syscall ID = %d", a[0]);
