@@ -12,7 +12,7 @@ int write( int  fd, const void * buf,size_t count){
             char* out = (char*) buf;
               putch ((out)[i]);
           }
-          return i;
+          return 0;
         }
         else return -1;
         //putch('o');
@@ -43,7 +43,7 @@ void do_syscall(Context *c) {
     }
     case 4:{
       printf("gpr a0 = %lx\n",a[0]);
-      //c->GPRx = write((int)a[1],(void*)a[2],(size_t)a[3]);
+      c->GPRx = write((int)a[1],(void*)a[2],(size_t)a[3]);
       break;
       
     }
