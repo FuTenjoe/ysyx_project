@@ -10,7 +10,6 @@ size_t write( int  fd, char buf,size_t nbytes){
             //char* buf = (char *)malloc((nbytes)*sizeof(char));
             //char out = buf;
               putch (buf);
-              printf("%d",buf);
           }
           return 0;
         }
@@ -27,7 +26,6 @@ void do_syscall(Context *c) {
   switch (a[0]) {
     case 1:{
       yield();a[0] = 0;
-      printf("a[0] = 1 ok");break;
       }
     case 0:{
       halt(c->GPR1);break;   //是否指向这个宏存疑，以及每个宏代表的寄存器
