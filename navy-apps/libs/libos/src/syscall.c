@@ -64,12 +64,12 @@ int _write(int fd, void *buf, size_t count) {
   _syscall_(SYS_write, fd, (intptr_t)buf, count);
   return 0;
 }
-extern char end=0;
+extern char end;
 void *_sbrk(intptr_t increment) {
   //return (void *)-1;
   intptr_t old = end;
   if(_syscall_(SYS_brk, old + increment, 0,0)==0){
-      end = end + increment;
+      end = &end + increment;
       return (void*)old;
   }
   return (void *)-1;
