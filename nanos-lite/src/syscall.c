@@ -4,7 +4,7 @@
 //extern void yield();
 //extern void halt(); 
 int write( int  fd, const void * buf,size_t count){
-  Log("sys_write:fd=%d,len=%d\n",fd,count);
+  Log("sys_write:fd=%d,count=%d\n",fd,count);
         if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < count; i++){
