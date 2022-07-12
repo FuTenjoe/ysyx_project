@@ -8,7 +8,7 @@ size_t write( int  fd, const void * buf,size_t count){
           for(int i=0; i < count-1; i++){
             
             char* out = (char*) buf;
-              putch (*out);
+              putch (*(out+i));
           }
           return 0;
         }
@@ -19,10 +19,10 @@ size_t write( int  fd, const void * buf,size_t count){
   
 void do_syscall(Context *c) {
   uintptr_t a[4];
-  a[0] = c->GPR1;
-  a[1] = c->GPR2;
-  a[2] = c->GPR3;
-  a[3] = c->GPR4;
+  a[0] = c->GPR1;  //a7
+  a[1] = c->GPR2;  //a0
+  a[2] = c->GPR3;  //a1
+  a[3] = c->GPR4;  //a2
   //a[4] = c->GPRx;
   printf("gpr a0 = %lx",a[1]);
   switch (a[0]) {
