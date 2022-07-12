@@ -8,7 +8,7 @@ size_t write( int  fd, const void * buf,size_t count){
           for(int i=0; i < count-1; i++){
             
             char* out = (char*) buf;
-              putch (*(out));
+              putch ((out)[i]);
           }
           return 0;
         }
@@ -26,7 +26,8 @@ void do_syscall(Context *c) {
   printf("gpr a0 = %lx",a[1]);
   switch (a[0]) {
     case 1:{
-      yield();a[0] = 0;
+      yield();
+      c->GPRx = 0;
       putch('1');
       //printf("gpr a0 = %lx",a[1]);
       break;
@@ -38,9 +39,7 @@ void do_syscall(Context *c) {
       break; //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
     case 4:{
-      a[1]=write(a[1],&a[2],a[3]);
-      printf("gpr a0 = %lx",a[1]);
-      putch('o');
+      c->GPRx = write((int)a[1],(void*)a[2],(size_t)a[3]);
       break;
       
     }
