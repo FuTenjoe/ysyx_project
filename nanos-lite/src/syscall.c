@@ -9,7 +9,7 @@ size_t write( int  fd, char buf,size_t nbytes){
           for(int i=0; i < nbytes-1; i++){
             //char* buf = (char *)malloc((nbytes)*sizeof(char));
             //char out = buf;
-              putch (buf+i);
+              putch (buf);
           }
           return 0;
         }
