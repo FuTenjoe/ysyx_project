@@ -65,7 +65,7 @@ int _write(int fd, void *buf, size_t count) {
  // return 0;
  if((fd == 1) | (fd == 2)){
           for(int i=0; i < count-1; i++){
-            char* buf = (char *)malloc((nbytes)*sizeof(char));
+            char* buf = (char *)malloc((count)*sizeof(char));
             //char out = buf;
               putch (*buf);
           }
