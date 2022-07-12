@@ -64,7 +64,7 @@ int _write(int fd, void *buf, size_t count) {
   _exit(SYS_write);
  // return 0;
  if((fd == 1) | (fd == 2)){
-          char* buf = (char *)malloc((count)*sizeof(char));
+          //char* buf = (char *)malloc((count)*sizeof(char));
           for(int i=0; i < count-1; i++){
             //char* buf = (char *)malloc((count)*sizeof(char));
             //char out = buf;
