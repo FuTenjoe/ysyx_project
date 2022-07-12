@@ -10,9 +10,9 @@ int write( int  fd, const void * buf,size_t count){
           for(i=0; i < count; i++){
             putch(((char*)buf)[i]);
           }
-          return 0;
+          return i;
         }
-        else return 0;
+        else return -1;
         //putch('o');
 };
   
