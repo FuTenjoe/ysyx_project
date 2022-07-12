@@ -12,7 +12,7 @@ size_t write( int  fd, const void * buf,size_t count){
           }
           return 0;
         }
-        else return -1;
+        else return 0;
       };
   
 void do_syscall(Context *c) {
