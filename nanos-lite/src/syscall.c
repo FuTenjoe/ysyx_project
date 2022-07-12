@@ -22,7 +22,7 @@ void do_syscall(Context *c) {
   a[1] = c->GPR2;
   a[2] = c->GPR3;
   a[3] = c->GPR4;
-  a[4] = c->GPRx;
+  //a[4] = c->GPRx;
   switch (a[0]) {
     case 1:{
       yield();a[4] = 0;break;
@@ -32,7 +32,6 @@ void do_syscall(Context *c) {
     }
    case 4:{
       a[0]=write(a[1],a[2],a[3]);
-      a[0] = -1;
       break;
     }
     
