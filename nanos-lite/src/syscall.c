@@ -28,7 +28,7 @@ void do_syscall(Context *c) {
       yield();a[4] = 0;break;
       }
     case 0:{
-      halt(c->GPR2);  //是否指向这个宏存疑，以及每个宏代表的寄存器
+      halt(c->GPR2); break; //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
     case 4:{
       write(a[1],a[2],a[3]);
