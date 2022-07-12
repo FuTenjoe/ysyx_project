@@ -8,7 +8,7 @@ int write( int  fd, const void * buf,size_t count){
         if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < count; i++){
-            putch(((char*)buf)[i+1]);
+            putch(((char*)buf)[i]);
           }
           return 0;
         }
@@ -44,8 +44,8 @@ void do_syscall(Context *c) {
       c->GPRx = write((int)a[1],(void*)a[2],(size_t)a[3]);
       printf("gpr x = %lx\n",c->GPRx);
       break;
-      
     }
+    case 9:c->GPRx = 0;break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 }
