@@ -13,7 +13,7 @@ size_t write( int  fd, const void * buf,size_t count){
           return 0;
         }
         else return -1;
-      };
+};
   
 void do_syscall(Context *c) {
   uintptr_t a[4];
