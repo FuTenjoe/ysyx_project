@@ -17,26 +17,18 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
   //return 0;
   //自己加
-  printf("loderok1\n");
-  ramdisk_read(&ehdr, 0, sizeof(Elf_Ehdr));
-  printf("ehdr.e_phnum = %lx\n",ehdr.e_phnum);
-  assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
-  //ramdisk_read(phdr, sizeof(Elf_Ehdr),ehdr.e_phnum);
-  for(int i=0; i<ehdr.e_phnum; i++){
-    ramdisk_read(&phdr, ehdr.e_phoff +i*sizeof(phdr),sizeof(Elf64_Phdr));
-    if(phdr.p_type == PT_LOAD){
-      ramdisk_read((void*)(phdr.p_vaddr), phdr.p_offset, phdr.p_filesz);
-      printf("eok2\n");
-    }
-    if(phdr.p_memsz > phdr.p_filesz){
-      printf("eok3\n");
-      //uint64_t length = phdr.p_paddr + phdr.p_filesz;
-      //ramdisk_read((void*)(length), 0x0, phdr.p_memsz - phdr.p_filesz);
-      memset((void*)(phdr.p_vaddr + phdr.p_filesz),0,phdr.p_memsz - phdr.p_filesz);
-      printf("eok32\n");
+  Elf_Ehdr *elf_head = (Elf_Ehdr*)malloc(sizeof(Elf_Ehdr));
+  ramdisk_read(elf_head, 0 ,sizeof(Elf_Ehdr));
+  assert(*(uint32_t *)elf_head->e_ident == 0x464c457f);
+  assert(elf_head ->e_machine == 0xf3);
+
+  Elf_Phdr *pro_head = (Elf_Phdr*)malloc(sizeof(Elf_Phdr)*elf_head->e_phnum);
+  ramdisk_read(pro_head,sizeof(Elf_Ehdr),sizeof(Elf_Phdr)*elf_head->e_phnum);
+  for(Elf_Phdr *p=pro_head; p<pro_head+elf_head->e_phnum; p++){
+    ramdisk_read((void*)(p->p_vaddr),p->p_offset, p->p_filesz);
+    memset((void *)(p->p_vaddr + p->p_filesz), 0, p->p_memsz - p->p_filesz);
   }
-  }
-   return  ehdr.e_entry;
+  return elf_head->e_entry;
 }
 void naive_uload(PCB *pcb, const char *filename) {
   uintptr_t entry = loader(pcb, filename);
