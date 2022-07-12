@@ -10,6 +10,7 @@ size_t write( int  fd, char buf,size_t nbytes){
             //char* buf = (char *)malloc((nbytes)*sizeof(char));
             //char out = buf;
               putch (buf);
+              printf("%d",buf);
           }
           return 0;
         }
