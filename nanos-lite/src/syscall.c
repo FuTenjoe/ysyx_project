@@ -29,7 +29,7 @@ void do_syscall(Context *c) {
       yield();
       //c->GPRx = 0;
       a[0] = 0;
-      putch('1');
+      //putch('1');
       printf("gpr a0 = %lx\n",a[0]);
       break;
       
