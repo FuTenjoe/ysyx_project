@@ -25,10 +25,10 @@ void do_syscall(Context *c) {
   a[4] = c->GPRx;
   switch (a[0]) {
     case 1:{
-      yield();a[0] = 0;break;
+      yield();a[0] = 0;
       }
     case 0:{
-      halt(c->GPR1);break;   //是否指向这个宏存疑，以及每个宏代表的寄存器
+      halt(c->GPR1);  //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
     case 4:{
       write(c->GPR1,c->GPR2,c->GPR3);
