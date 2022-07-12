@@ -25,7 +25,7 @@ void do_syscall(Context *c) {
   //a[4] = c->GPRx;
   switch (a[0]) {
     case 1:{
-      yield();a[4] = 0;break;
+      yield();a[0] = 0;break;
       }
     case 0:{
       halt(c->GPR2); break; //是否指向这个宏存疑，以及每个宏代表的寄存器
