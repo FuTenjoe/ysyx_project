@@ -35,7 +35,7 @@ void do_syscall(Context *c) {
       
       }
     case 0:{
-      halt(c->GPR1); 
+      halt(c->GPRx); 
       printf("gpr a0 = %lx\n",a[0]);
       break; //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
