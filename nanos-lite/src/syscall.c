@@ -23,7 +23,7 @@ void do_syscall(Context *c) {
   a[2] = c->GPR3;  //a1
   a[3] = c->GPR4;  //a2
   //a[4] = c->GPRx;
-  printf("gpr a0 = %lx",a[1]);
+  printf("gpr a0 = %lx\n",a[1]);
   switch (a[0]) {
     case 1:{
       yield();
