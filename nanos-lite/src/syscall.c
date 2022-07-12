@@ -27,6 +27,7 @@ void do_syscall(Context *c) {
   switch (a[0]) {
     case 1:{
       yield();a[0] = 0;
+      putch('1');
       printf("gpr a0 = %lx",a[1]);
       break;
       
