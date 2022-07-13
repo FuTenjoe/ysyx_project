@@ -30,6 +30,15 @@ static Finfo file_table[] __attribute__((used)) = {
   [FD_STDERR] = {"stderr", 0, 0, invalid_read, invalid_write},
 #include "files.h"
 };
+//自己加
+extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
+int fs_open(char* pathname, int flags, int mode){
+  assert(pathname != NULL);
+  return 0;
+};
+size_t fs_read(int fd, void *buf, size_t count){
+  return ramdisk_read(buf, fd, count);
+};
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
