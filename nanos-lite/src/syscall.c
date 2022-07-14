@@ -6,18 +6,21 @@
 extern size_t fs_read(int fd, void *buf, size_t count);
 extern int fs_open(char* pathname, int flags, int mode);
 extern int fs_close(int fd);
-size_t sys_write( int  fd, const void * buf,size_t count){
+extern int fs_lseek(int fd, int offset, int whence);
+size_t fs_write( int  fd, const void * buf,size_t count);
+/*size_t sys_write( int  fd, const void * buf,size_t count){
   Log("sys_write:fd=%d,count=%d\n",fd,count);
+  size_t ret;
         if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < count; i++){
             putch(((char*)buf)[i]);
           }
-          return 0;
+          ret = 0;
         }
-        else return -1;
+        else ret = -1
         //putch('o');
-};
+};*/
 
 void do_syscall(Context *c) {
   uintptr_t a[4];
@@ -48,10 +51,11 @@ void do_syscall(Context *c) {
     }
     case SYS_write:{
       printf("gpr a0 = %lx\n",a[0]);
-      c->GPRx = sys_write((int)a[1],(void*)a[2],(size_t)a[3]);
+      c->GPRx = fs_write((int)a[1],(void*)a[2],(size_t)a[3]);
       printf("gpr x = %lx\n",c->GPRx);
       break;
     }
+    case SYS_lseek: c->GPRx = fs_lseek((int)a[1], (int)a[2], (int)a[3]);break;
     case SYS_close:{
       c->GPRx = fs_close((int)a[1]);break;
     }

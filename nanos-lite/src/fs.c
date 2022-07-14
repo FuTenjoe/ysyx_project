@@ -32,6 +32,7 @@ static Finfo file_table[] __attribute__((used)) = {
 };
 //自己加
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
+extern size_t ramdisk_write(const void *buf, size_t offset, size_t len);
 int fs_open(char* pathname, int flags, int mode){
   for(int i=0; ;i++){
       assert(file_table[i].name!=NULL);
@@ -49,9 +50,36 @@ int fs_close(int fd){
     return 0;
 }
 size_t fs_offset(int fd){
-  return file_table[fd].disk_offset;
+  return file_table[fd].disk_offset;  //为了调整loader中的偏移量
 }
-
+int fs_lseek(int fd, int offset, int whence){
+  int ret;
+  switch (whence)
+  {
+  case SEEK_SET: ret = file_table[fd].disk_offset;break;
+  case SEEK_CUR: {
+    assert(offset <= file_table[fd].size);
+    ret = file_table[fd].disk_offset + offset;
+    break;
+  }
+  case SEEK_END: ret = file_table[fd].disk_offset + file_table[fd].size;
+  default: ret = -1;
+    break;
+  }
+  return ret;
+}
+size_t fs_write( int  fd, const void * buf,size_t count){
+  Log("fs_write:fd=%d,count=%d\n",fd,count);
+        if((fd == 1) | (fd == 2)){
+          int i;
+          for(i=0; i < count; i++){
+            putch(((char*)buf)[i]);
+          }
+          return 0;
+        }
+        else return ramdisk_write(buf,file_table[fd].disk_offset,file_table[fd].size);
+        //putch('o');
+};
 void init_fs() {
   // TODO: initialize the size of /dev/fb
 }
