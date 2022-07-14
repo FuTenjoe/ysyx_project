@@ -43,16 +43,16 @@ void do_syscall(Context *c) {
       c->GPRx=fs_open((char*)a[1],a[2],a[3]);
       break;
     }
-    case 3:{
+    case SYS_read:{
       c->GPRx=fs_read((int)a[1],(void*)a[2],(size_t)a[3]);
     }
-    case 4:{
+    case SYS_write:{
       printf("gpr a0 = %lx\n",a[0]);
       c->GPRx = sys_write((int)a[1],(void*)a[2],(size_t)a[3]);
       printf("gpr x = %lx\n",c->GPRx);
       break;
     }
-    case 7:{
+    case SYS_close:{
       c->GPRx = fs_close((int)a[1]);break;
     }
     case 9:c->GPRx = 0;break;
