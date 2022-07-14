@@ -58,7 +58,7 @@ int fs_lseek(int fd, int offset, int whence){
   {
   case SEEK_SET: ret = offset;
   case SEEK_CUR: {
-    //assert(offset <= file_table[fd].size);
+    assert(offset <= file_table[fd].size);
     ret = file_table[fd].disk_offset + offset;
   }
   case SEEK_END: ret = file_table[fd].size + offset ;
