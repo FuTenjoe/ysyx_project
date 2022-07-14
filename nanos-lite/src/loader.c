@@ -11,14 +11,18 @@
 //自己加
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t get_ramdisk_size();
-Elf64_Ehdr ehdr = {0};
-Elf64_Phdr phdr = {0};
+extern int fs_open(const char* pathname, int flags, int mode);
+extern size_t fs_offset(int fd);
+Elf64_Ehdr ehdr = {};
+Elf64_Phdr phdr = {};
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
   //return 0;
   //自己加
+  int fd = fs_open(filename,0,0);
+  size_t offset = fs_offset(fd);
   printf("loderok1\n");
-  ramdisk_read(&ehdr, 0, sizeof(Elf_Ehdr));
+  ramdisk_read(&ehdr, offset, sizeof(Elf_Ehdr));
   printf("ehdr.e_phnum = %lx\n",ehdr.e_phnum);
   assert(*(uint32_t *)ehdr.e_ident == 0x464c457f);
   //ramdisk_read(phdr, sizeof(Elf_Ehdr),ehdr.e_phnum);

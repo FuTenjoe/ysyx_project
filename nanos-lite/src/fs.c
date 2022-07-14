@@ -41,13 +41,16 @@ int fs_open(char* pathname, int flags, int mode){
     }
   }
   //return 0;
-};
+}
 size_t fs_read(int fd, void *buf, size_t count){
   return ramdisk_read(buf, file_table[fd].disk_offset, file_table[fd].size);
-};
+}
 int fs_close(int fd){
     return 0;
-};
+}
+size_t fs_offset(int fd){
+  return file_table[fd].disk_offset;
+}
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
