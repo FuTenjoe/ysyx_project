@@ -22,7 +22,7 @@ extern void naive_uload(PCB *pcb, const char *filename);
 void init_proc() {
   switch_boot_pcb();
   Log("Initializing processes...");
-  naive_uload(NULL,"/bin/hello2");
+  naive_uload(NULL,"/bin/hello");
   // load program here
 
 }
