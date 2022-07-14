@@ -42,7 +42,6 @@ int fs_open(char* pathname, int flags, size_t mode){
       return i;
     }
   }
-  //return 0;
 }
 size_t fs_read(int fd, void *buf, size_t count){
   return ramdisk_read(buf, file_table[fd].disk_offset+open_offset, file_table[fd].size);
@@ -81,6 +80,15 @@ size_t fs_write( int  fd, const void * buf,size_t count){
         else return ramdisk_write(buf,file_table[fd].disk_offset+open_offset,file_table[fd].size);
         //putch('o');
 };
+void* f_open(const char *pathname, const char *mode){
+  for(int i=0; ;i++){
+      assert(file_table[i].name!=NULL);
+    if(strcmp(pathname,file_table[i].name)==0){
+      //printf("fs_open success!");
+      return &file_table[i];
+    }
+  }
+}
 void init_fs() {
   // TODO: initialize the size of /dev/fb
 }

@@ -7,7 +7,8 @@ extern size_t fs_read(int fd, void *buf, size_t count);
 extern int fs_open(char* pathname, int flags, size_t mode);
 extern int fs_close(int fd);
 extern int fs_lseek(int fd, int offset, int whence);
-size_t fs_write( int  fd, const void * buf,size_t count);
+extern size_t fs_write( int  fd, const void * buf,size_t count);
+extern void* f_open(const char *pathname, const char *mode);
 /*size_t sys_write( int  fd, const void * buf,size_t count){
   Log("sys_write:fd=%d,count=%d\n",fd,count);
   size_t ret;
@@ -44,7 +45,8 @@ void do_syscall(Context *c) {
       }
     case SYS_open:{
       printf("在进程中打开");
-      c->GPRx= fs_open((char *)a[1], (int)a[2], (size_t)a[3]);
+      //c->GPRx= fs_open((char *)a[1], (int)a[2], (size_t)a[3]);
+      c->GPRx= (size_t)f_open((char *)a[1],(char*)a[2]);
       break;
     }
     case SYS_read:{
