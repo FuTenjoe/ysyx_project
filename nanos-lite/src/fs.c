@@ -34,7 +34,7 @@ static Finfo file_table[] __attribute__((used)) = {
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t ramdisk_write(const void *buf, size_t offset, size_t len);
 int open_offset = 0;
-int fs_open(char* pathname, int flags, char * mode){
+int fs_open(char* pathname, int flags, size_t mode){
   for(int i=0; ;i++){
       assert(file_table[i].name!=NULL);
     if(strcmp(pathname,file_table[i].name)==0){
