@@ -76,7 +76,7 @@ size_t fs_read(int fd, void *buf, size_t count){
       return -1;
 }
 size_t fs_write( int  fd, const void * buf,size_t count){
-  Log("fs_write:fd=%d,open_offset=%d,count=%d\n",fd,open_offset,count);
+  Log("fs_write:fd=%d,open_offset=%d,count=%d\n",open_i,open_offset,count);
   assert(open_offset <= file_table[fd].size);
         if((fd == 1) | (fd == 2)){
           int i;
