@@ -44,7 +44,7 @@ int fs_open(char* pathname, int flags, size_t mode){
   }
 }
 size_t fs_read(int fd, void *buf, size_t count){
-   Log("fs_read:fd=%d,count=%d\n",fd,count);
+   Log("fs_read:fd=%d,open_offset=%d ,count=%d\n",fd,open_offset,count);
    if(open_offset <= file_table[fd].size)
       return ramdisk_read(buf, file_table[fd].disk_offset+open_offset, file_table[fd].size);
    else
