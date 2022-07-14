@@ -85,7 +85,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
             ramdisk_write(buf,file_table[open_i].disk_offset + open_offset,count);
           }
           //return i;
-          return i;
+          return 0;
         }
         else return -1;
         //else return 0;
