@@ -69,7 +69,7 @@ int fs_lseek(int fd, int offset, int whence){
 size_t fs_read(int fd, void *buf, size_t count){
    Log("fs_read:fd=%d,open_offset=%d ,count=%d\n",fd,open_offset,count);
    if(open_offset <= file_table[fd].size)
-      return ramdisk_read(buf, file_table[fd].disk_offset+open_offset,count);
+      return ramdisk_read(buf, open_offset,count);
    else
       return -1;
 }
@@ -79,8 +79,8 @@ size_t fs_write( int  fd, const void * buf,size_t count){
         if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < count; i++){
-            putch(((char*)(buf+open_offset))[i]);
-            ramdisk_write(buf+open_offset,file_table[fd].disk_offset,count);
+            putch(((char*)(buf))[i]);
+            ramdisk_write(buf,open_offset,count);
           }
           return i;
         }
