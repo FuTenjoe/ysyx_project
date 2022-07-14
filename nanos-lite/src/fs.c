@@ -78,11 +78,12 @@ size_t fs_read(int fd, void *buf, size_t count){
 size_t fs_write( int  fd, const void * buf,size_t count){
   Log("fs_write:open_i=%d,fd=%d,open_offset=%d,count=%d\n",open_i,fd,open_offset,count);
   assert(open_offset <= file_table[open_i].size);
+    ramdisk_write(buf,file_table[open_i].disk_offset + open_offset,count);
         if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < count; i++){
             putch(((char*)(buf))[i]);
-            ramdisk_write(buf,file_table[open_i].disk_offset + open_offset,count);
+            
           }
           //return i;
           return 0;
