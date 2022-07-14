@@ -11,7 +11,7 @@
 //自己加
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t get_ramdisk_size();
-extern int fs_open(const char* pathname, int flags, char* mode);
+extern int fs_open(const char* pathname, int flags, size_t mode);
 extern size_t fs_offset(int fd);
 Elf64_Ehdr ehdr = {};
 Elf64_Phdr phdr = {};
@@ -19,7 +19,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
   //return 0;
   //自己加
-  int fd = fs_open(filename,0, "r+");
+  int fd = fs_open(filename,0, (size_t)"r+");
   size_t offset = fs_offset(fd);
   printf("打开文件 %d\n",fd);
   printf("loderok1\n");
