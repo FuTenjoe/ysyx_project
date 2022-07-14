@@ -40,7 +40,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
       printf("eok32\n");
   }
   }
-   return  ehdr.e_entry;
+   return  ehdr.e_entry-offset;
 }
 void naive_uload(PCB *pcb, const char *filename) {
   uintptr_t entry = loader(pcb, filename);
