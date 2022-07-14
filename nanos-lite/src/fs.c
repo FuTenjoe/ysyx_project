@@ -34,11 +34,13 @@ static Finfo file_table[] __attribute__((used)) = {
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t ramdisk_write(const void *buf, size_t offset, size_t len);
 int open_offset = 0;
+int open_i = 0;
 int fs_open(char* pathname, int flags, size_t mode){
   for(int i=0; ;i++){
       assert(file_table[i].name!=NULL);
     if(strcmp(pathname,file_table[i].name)==0){
       //printf("fs_open success!");
+      open_i = i;
       return i;
     }
   }
@@ -75,7 +77,7 @@ size_t fs_read(int fd, void *buf, size_t count){
 }
 size_t fs_write( int  fd, const void * buf,size_t count){
   Log("fs_write:fd=%d,open_offset=%d,count=%d\n",fd,open_offset,count);
-  assert(open_offset <= file_table[4].size);
+  assert(open_offset <= file_table[fd].size);
         if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < count; i++){
@@ -83,9 +85,9 @@ size_t fs_write( int  fd, const void * buf,size_t count){
             //return ramdisk_write(buf,open_offset,count);
           }
           //return i;
-          return ramdisk_write(buf,file_table[fd].disk_offset + open_offset,count);
+          return ramdisk_write(buf,file_table[open_i].disk_offset + open_offset,count);
         }
-        else return ramdisk_write(buf+open_offset,file_table[fd].disk_offset + open_offset,count);
+        else return ramdisk_write(buf+open_offset,file_table[open_i].disk_offset + open_offset,count);
         //else return 0;
         //putch('o');
 };
