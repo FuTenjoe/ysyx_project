@@ -74,7 +74,6 @@ int fs_lseek(int fd, int offset, int whence){
 }
 size_t fs_write( int  fd, const void * buf,size_t count){
   Log("fs_write:fd=%d,open_offset=%d,count=%d\n",fd,open_offset,count);
-  assert(open_offset <= file_table[fd].size);
         if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < count; i++){
