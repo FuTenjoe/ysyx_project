@@ -21,7 +21,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   //自己加
   int fd = fs_open(filename,0, 0);
   size_t offset = fs_offset(fd);
-  printf("打开文件 %d\n",fd);
+  printf("打开文件 %d",fd);
   printf("loderok1\n");
   ramdisk_read(&ehdr, offset, sizeof(Elf_Ehdr));
   printf("ehdr.e_phnum = %lx\n",ehdr.e_phnum);
@@ -37,7 +37,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
       printf("eok3\n");
       //uint64_t length = phdr.p_paddr + phdr.p_filesz;
       //ramdisk_read((void*)(length), 0x0, phdr.p_memsz - phdr.p_filesz);
-      memset((void*)(phdr.p_vaddr + phdr.p_filesz),offset,phdr.p_memsz - phdr.p_filesz+offset);
+      memset((void*)(phdr.p_vaddr + phdr.p_filesz),0,phdr.p_memsz - phdr.p_filesz);
       printf("eok32\n");
   }
   }
