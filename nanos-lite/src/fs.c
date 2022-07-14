@@ -33,6 +33,7 @@ static Finfo file_table[] __attribute__((used)) = {
 //自己加
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t ramdisk_write(const void *buf, size_t offset, size_t len);
+int open_offset = 0;
 int fs_open(char* pathname, int flags, int mode){
   for(int i=0; ;i++){
       assert(file_table[i].name!=NULL);
@@ -44,7 +45,7 @@ int fs_open(char* pathname, int flags, int mode){
   //return 0;
 }
 size_t fs_read(int fd, void *buf, size_t count){
-  return ramdisk_read(buf, file_table[fd].disk_offset, file_table[fd].size);
+  return ramdisk_read(buf, file_table[fd].disk_offset+open_offset, file_table[fd].size);
 }
 int fs_close(int fd){
     return 0;
@@ -65,6 +66,7 @@ int fs_lseek(int fd, int offset, int whence){
   default: ret = -1;
   }
   printf("fs_lssek ret = %d\n",ret);
+  open_offset = ret;
   return ret;
 }
 size_t fs_write( int  fd, const void * buf,size_t count){
@@ -76,7 +78,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
           }
           return 0;
         }
-        else return ramdisk_write(buf,file_table[fd].disk_offset,file_table[fd].size);
+        else return ramdisk_write(buf,file_table[fd].disk_offset+open_offset,file_table[fd].size);
         //putch('o');
 };
 void init_fs() {
