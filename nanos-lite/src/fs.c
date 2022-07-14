@@ -36,7 +36,7 @@ int fs_open(char* pathname, int flags, int mode){
   for(int i=0; ;i++){
       assert(file_table[i].name!=NULL);
     if(strcmp(pathname,file_table[i].name)==0){
-      printf("fs_open success!");
+      //printf("fs_open success!");
       return i;
     }
   }
