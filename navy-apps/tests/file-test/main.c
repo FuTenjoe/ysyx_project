@@ -22,7 +22,7 @@ int main() {
   }
 
   for (i = 500; i < 1000; i ++) {
-   scanf(fp, "%d", &n);
+    fscanf(fp, "%d", &n);
     assert(n == i + 1); 
   }
 
