@@ -29,7 +29,7 @@ void do_syscall(Context *c) {
   a[2] = c->GPR3;  //a1
   a[3] = c->GPR4;  //a2
   //a[4] = c->GPRx;
-  printf("gpr return a0 = %lx\n",c->GPRx);
+  printf("gpr return a0 = %lx\n",a[0]);
   switch (a[0]) {
     case 0:{
       halt(c->GPR1); 
