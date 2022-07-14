@@ -91,7 +91,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
           }
           return 0;
         }
-      else  return 0;
+      else  return -1;
 };
 void init_fs() {
   // TODO: initialize the size of /dev/fb
