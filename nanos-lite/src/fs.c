@@ -43,7 +43,7 @@ int fs_open(char* pathname, int flags, int mode){
   //return 0;
 };
 size_t fs_read(int fd, void *buf, size_t count){
-  return ramdisk_read(buf, fd, count);
+  return ramdisk_read(buf, file_table[fd].disk_offset, count);
 };
 int fs_close(int fd){
     return 0;
