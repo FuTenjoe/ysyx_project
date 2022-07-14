@@ -57,15 +57,15 @@ size_t fs_offset(int fd){
   return file_table[fd].disk_offset;  //为了调整loader中的偏移量
 }
 int fs_lseek(int fd, int offset, int whence){
-  int ret;
+  int ret=0;
   switch (whence)
   {
   case SEEK_SET: ret = offset;break;
   case SEEK_CUR: {
     assert(offset <= file_table[fd].size);
-    ret = file_table[fd].disk_offset + offset;break;
+    ret = ret + offset;break;
   }
-  case SEEK_END: ret = file_table[fd].size + offset;break;
+  case SEEK_END: ret = ret + offset;break;
   default: ret = -1;
   }
   printf("fs_lssek ret = %d\n",ret);
