@@ -61,7 +61,11 @@ void do_syscall(Context *c) {
       printf("gpr x = %lx\n",c->GPRx);
       break;
     }
-    case SYS_lseek:printf("返回偏移量 = %lx\n",a[0]); c->GPRx = fs_lseek((int)a[1],(int)a[2],(int)a[3]);break;
+    case SYS_lseek:{
+      printf("返回偏移量 = %lx\n",a[0]); 
+      c->GPRx = fs_lseek((int)a[1],(int)a[2],(int)a[3]);
+      break;
+    }
     case SYS_close:{
       printf("关闭");
       c->GPRx = fs_close((int)a[1]);break;
