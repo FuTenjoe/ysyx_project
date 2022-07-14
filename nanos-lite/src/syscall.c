@@ -49,6 +49,8 @@ void do_syscall(Context *c) {
     case SYS_read:{
       printf("读");
       c->GPRx=fs_read((int)a[1],(void*)a[2],(size_t)a[3]);
+      //c->GPRx= 0;
+      break;
     }
     case SYS_write:{
       printf("写");
