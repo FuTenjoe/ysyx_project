@@ -59,12 +59,12 @@ void do_syscall(Context *c) {
       printf("写");
       printf("gpr a0 = %lx\n",a[0]);
       c->GPRx = fs_write((int)a[1],(void*)a[2],(size_t)a[3]);
-      printf("gpr x = %lx\n",c->GPRx);
+      printf("gpr x = %ld\n",c->GPRx);
       break;
     }
     case SYS_lseek:{ 
       c->GPRx = fs_lseek((int)a[1],(int)a[2],(int)a[3]);
-      printf("返回偏移量 = %lx\n",c->GPRx);
+      printf("返回偏移量 = %ld\n",c->GPRx);
       break;
     }
     case SYS_close:{
