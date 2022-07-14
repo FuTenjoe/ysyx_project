@@ -33,11 +33,20 @@ static Finfo file_table[] __attribute__((used)) = {
 //自己加
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 int fs_open(char* pathname, int flags, int mode){
-  assert(pathname != NULL);
-  return 0;
+  for(int i=0; ;i++){
+      assert(file_table[i].name!=NULL);
+    if(strcmp(pathname,file_table[i].name)==0){
+      printf("fs_open success!");
+      return i;
+    }
+  }
+  //return 0;
 };
 size_t fs_read(int fd, void *buf, size_t count){
   return ramdisk_read(buf, fd, count);
+};
+int fs_close(int fd){
+    return 0;
 };
 
 void init_fs() {
