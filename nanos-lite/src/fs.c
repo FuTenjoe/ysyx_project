@@ -56,12 +56,12 @@ int fs_lseek(int fd, int offset, int whence){
   int ret;
   switch (whence)
   {
-  case SEEK_SET: ret = file_table[fd].disk_offset;
+  case SEEK_SET: ret = offset;
   case SEEK_CUR: {
-    assert(offset <= file_table[fd].size);
+    //assert(offset <= file_table[fd].size);
     ret = file_table[fd].disk_offset + offset;
   }
-  case SEEK_END: ret = file_table[fd].disk_offset + file_table[fd].size;
+  case SEEK_END: ret = file_table[fd].size + offset ;
   default: ret = -1;
   }
   printf("fs_lssek ret = %d\n",ret);
