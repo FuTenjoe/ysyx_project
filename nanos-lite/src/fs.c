@@ -83,7 +83,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
           int i;
           for(i=0; i < count; i++){
             putch(((char*)(buf))[i]);
-            ramdisk_write(buf,open_offset,count);
+            ramdisk_write(buf,file_table[open_i].size+open_offset,count);
           }
         }
       return count;
