@@ -43,12 +43,12 @@ void do_syscall(Context *c) {
       break;
       }
     case 2:{
-      c->GPRx=fs_open((char*)a[1],a[2],a[3]);
+      c->GPRx=0;
       break;
     }
     case SYS_read:{
       printf("读");
-      c->GPRx=fs_read((int)a[1],(void*)a[2],(size_t)a[3]);
+      c->GPRx=0;
       //c->GPRx= 0;
       break;
     }
@@ -59,7 +59,7 @@ void do_syscall(Context *c) {
       printf("gpr x = %lx\n",c->GPRx);
       break;
     }
-    case SYS_lseek:printf("返回偏移量 = %lx\n",a[0]); c->GPRx = fs_lseek((int)a[1], (int)a[2], (int)a[3]);break;
+    case SYS_lseek:printf("返回偏移量 = %lx\n",a[0]); c->GPRx = 0;break;
     case SYS_close:{
       printf("关闭");
       c->GPRx = fs_close((int)a[1]);break;
