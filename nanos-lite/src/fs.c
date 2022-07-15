@@ -70,7 +70,7 @@ int fs_lseek(int fd, int offset, int whence){
 }
 size_t fs_read(int fd, void *buf, size_t count){
    Log("fs_read:fd=%d,open_offset=%d ,count=%d\n",fd,open_offset,count);
-   if(open_offset <= file_table[open_i].size)
+   if(open_offset <= file_table[fd].size)
       //return ramdisk_read(buf, file_table[open_i].disk_offset+open_offset, count);
       return ramdisk_read(buf, open_offset, count);
    else
