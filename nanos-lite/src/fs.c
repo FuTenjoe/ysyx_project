@@ -56,7 +56,7 @@ int fs_lseek(int fd, int offset, int whence){
   int ret = 0;
   switch (whence)
   {
-  case SEEK_SET: ret = ret+offset;break;
+  case SEEK_SET: ret = offset;break;
   case SEEK_CUR: {
     assert(offset <= file_table[fd].size);
     ret = ret + offset;break;
