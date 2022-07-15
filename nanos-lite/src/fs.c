@@ -9,6 +9,7 @@ typedef struct {
   size_t disk_offset;
   ReadFn read;
   WriteFn write;
+  size_t open_offset;
 } Finfo;
 
 enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB};
@@ -33,7 +34,7 @@ static Finfo file_table[] __attribute__((used)) = {
 //自己加
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t ramdisk_write(const void *buf, size_t offset, size_t len);
-int open_offset = 0;
+int lseek_offset = 0;
 int open_i = 0;
 int fs_open(char* pathname, int flags, size_t mode){
   for(int i=0; ;i++){
@@ -65,21 +66,21 @@ int fs_lseek(int fd, int offset, int whence){
   default: ret = -1;
   }
   printf("fs_lssek ret = %d\n",ret);
-  open_offset = ret;
+  file_table[fd].open_offset = ret;
   return ret;
 }
 size_t fs_read(int fd, void *buf, size_t count){
-   Log("fs_read:fd=%d,open_offset=%d ,count=%d\n",fd,open_offset,count);
-   if(open_offset <= file_table[fd].size)
+   Log("fs_read:fd=%d,lseek_offset=%d ,count=%d\n",fd,lseek_offset,count);
+   //if(lseek_offset <= file_table[fd].size)
+      return ramdisk_read(buf, file_table[fd].open_offset+lseek_offset, count);
+      file_table[fd].open_offset = file_table[fd].open_offset + count;
       //return ramdisk_read(buf, file_table[open_i].disk_offset+open_offset, count);
-      return ramdisk_read(buf, open_offset, count);
-   else
-      return -1;
+  
 }
 size_t fs_write( int  fd, const void * buf,size_t count){
-  Log("fs_write:open_i=%d,fd=%d,open_offset=%d,count=%d\n",open_i,fd,open_offset,count);
+  Log("fs_write:open_i=%d,fd=%d,open_offset=%d,count=%d\n",open_i,fd,file_table[open_i].open_offset,count);
   //assert(open_offset <= file_table[open_i].size);
-  if(open_offset + count <= file_table[open_i].size){
+  if(file_table[open_i].open_offset + count <= file_table[open_i].size){
     if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < count; i++){
@@ -90,7 +91,8 @@ size_t fs_write( int  fd, const void * buf,size_t count){
         }
     else return -1;
   }
-  else{
+  else return -1;
+/*  else{
     if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < file_table[open_i].size-open_offset; i++){
@@ -99,7 +101,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
           }
         }
     return file_table[open_i].size-open_offset;
-  }
+  }*/
         
     
 };
