@@ -90,7 +90,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
         }
     else return -1;
   }
-  else return 0;
+  else return -1;
 /*  else{
     if((fd == 1) | (fd == 2)){
           int i;
