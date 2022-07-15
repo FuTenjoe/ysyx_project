@@ -90,8 +90,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
         }
     else return -1;
   }
-  else return 0;
-/*  else{
+  else{
     if((fd == 1) | (fd == 2)){
           int i;
           for(i=0; i < file_table[open_i].size-open_offset; i++){
@@ -100,7 +99,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
           }
         }
     return file_table[open_i].size-open_offset;
-  }*/
+  }
         
     
 };
