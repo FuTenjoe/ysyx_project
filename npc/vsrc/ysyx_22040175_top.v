@@ -16,6 +16,7 @@ wire [63:0] next_pc;
 wire if_ena;
 wire [31:0]if_inst;
 wire [63:0]if_pc;
+assign pc = if_pc;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
