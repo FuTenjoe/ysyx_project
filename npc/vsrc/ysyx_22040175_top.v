@@ -305,7 +305,7 @@ mem_wb_regs u_mem_wb_regs(
 	.ebreak_flag_mem_wb_o(wb_ebreak_flag),
 	.rd_buf_flag_mem_wb_o(wb_rd_buf_flag),
 	.from_ex_alu_res_mem_wb_o(wb_from_ex_alu_res),
-	.rom_mem_alu_res_mem_wb_o(wb_from_mem_alu_res)
+	.from_mem_alu_res_mem_wb_o(wb_from_mem_alu_res)
     );
 wire [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;
