@@ -22,6 +22,7 @@ module ex_mem_regs(
 	input [`ALU_OP_WIDTH-1:0]     alu_op_ex_mem_i,
 	input      [63:0]    alu_src1_ex_mem_i, // alu source 1
     input      [`CPU_WIDTH-1:0]    alu_src2_ex_mem_i, // alu source 2
+	input  [`CPU_WIDTH-1:0] next_pc_ex_mem_i,
 
 	//output reg [31:0]pc_ex_mem_o,
 	output reg                           reg_wen_ex_mem_o,    // register write enable
@@ -40,7 +41,8 @@ module ex_mem_regs(
 	output reg[`ALU_OP_WIDTH-1:0]  alu_op_ex_mem_o,
 	output reg     [`CPU_WIDTH-1:0]    alu_src1_ex_mem_o, // alu source 1
     output reg     [`CPU_WIDTH-1:0]    alu_src2_ex_mem_o, // alu source 2
-	output reg [63:0] from_ex_alu_res_ex_mem_o
+	output reg [63:0] from_ex_alu_res_ex_mem_o,
+	output reg  [`CPU_WIDTH-1:0] next_pc_ex_mem_o
     
     );
 
@@ -63,6 +65,7 @@ module ex_mem_regs(
 			alu_src1_ex_mem_o <= 64'd0;
 			alu_src2_ex_mem_o <= 64'd0;
 			from_ex_alu_res_ex_mem_o <= 64'd0;
+			next_pc_ex_mem_o <= 32'h8000_0000
 		end
 		else begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
@@ -83,6 +86,7 @@ module ex_mem_regs(
 			alu_src1_ex_mem_o <= alu_src1_ex_mem_i;
 			alu_src2_ex_mem_o <= alu_src2_ex_mem_i;
 			from_ex_alu_res_ex_mem_o <= from_ex_alu_res_ex_mem_i;
+			next_pc_ex_mem_o <= next_pc_ex_mem_i;
 		end
 	end
 	
