@@ -6,12 +6,11 @@ module  ysyx_22040175_top(
 	output [31:0]                 inst,
 	output[31:0]        pc,
     output [`CPU_WIDTH-1:0]       unknown_code,
-    input time_set,
-    output ena
+    input time_set
+    
    // output[`CPU_WIDTH-1:0]        next_pc
 );
 
-assign ena = ex_ena;
 wire rst_n;
 assign rst_n = !rst;
 wire [63:0] next_pc;
