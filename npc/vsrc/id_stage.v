@@ -1,6 +1,8 @@
 `include "../vsrc/rvseed_defines.v"
 
 module id_stage (
+    input clk,
+    input rst_n,
     input      [`CPU_WIDTH-1:0]        inst,       // instruction input
     input reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     output reg                         branch,     // branch flag
