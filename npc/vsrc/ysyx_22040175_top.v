@@ -250,7 +250,7 @@ ex_mem_regs u_ex_mem_regs(
 	.rd_buf_flag_ex_mem_o(mem_rd_buf_flag),
 	.alu_op_ex_mem_o(mem_alu_op),
 	.alu_src1_ex_mem_o(mem_alu_src1), // alu source 1
-    .alu_src2_ex_mem_o(mem_alu_src2) // alu source 2
+    .alu_src2_ex_mem_o(mem_alu_src2), // alu source 2
     .from_ex_alu_res_ex_mem_o(mem_from_ex_alu_res)
 );
 wire [63:0] from_mem_alu_res;
