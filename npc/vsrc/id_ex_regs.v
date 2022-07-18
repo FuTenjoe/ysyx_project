@@ -65,7 +65,7 @@ module id_ex_regs(
     input [63:0] reg_f_id_ex_i [0:`REG_DATA_DEPTH-1],
 	output [63:0] reg_wdata_id_ex_o,
 	output reg time_set_id_ex_o,
-	output reg [63:0] reg_f_id_ex_o [0:`REG_DATA_DEPTH-1]
+	output reg [63:0] reg_f_id_ex_o [0:`REG_DATA_DEPTH-1],
 
 	input ena_id_ex_i,
 	output ena_id_ex_o
