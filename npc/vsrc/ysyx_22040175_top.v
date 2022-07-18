@@ -109,6 +109,7 @@ wire [63:0]   ex_reg2_rdata; // register 2 read data
 wire [63:0] to_ex_reg_f [0:`REG_DATA_DEPTH-1];
 wire ex_ena;
 wire ex_time_set;
+//wire [63:0] ex_reg_wdata;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -161,10 +162,10 @@ id_ex_regs u_id_ex_regs(
 
 
 	
-    input      [63:0]      reg_wdata_id_ex_i,  // register write data
+    //input [63:0]reg_wdata_id_ex_i(id_reg_waddr),  // register write data
     .time_set_id_ex_i(id_time_set),
     .reg_f_id_ex_i (to_id_reg_f),
-	output [63:0] reg_wdata_id_ex_o,
+	//output [63:0] reg_wdata_id_ex_o,
 	.time_set_id_ex_o(ex_time_set),
 	.reg_f_id_ex_o (to_ex_reg_f),
     .ena_id_ex_i(id_ena),
@@ -263,7 +264,7 @@ mem_stage u_mem_stage(
 );
 wire wb_reg_wen;
 wire    [`REG_ADDR_WIDTH-1:0] wb_reg_waddr;  // register write address
-wire    [63:0]      wb_reg_wdata;  // register write data
+//wire    [63:0]      wb_reg_wdata;  // register write data
 wire [7:0] wb_wmask;
 wire wb_s_flag;
 wire wb_time_set;
@@ -295,7 +296,7 @@ mem_wb_regs u_mem_wb_regs(
 	.rd_buf_flag_mem_wb_i(mem_rd_buf_flag),
     .reg_wen_mem_wb_o(wb_reg_wen),    // register write enable
     .reg_waddr_mem_wb_o(wb_reg_waddr),  // register write address
-    .reg_wdata_mem_wb_o(reg_wdata),  // register write data
+    //.reg_wdata_mem_wb_o(reg_wdata),  // register write data
     .wmask_mem_wb_o(wb_wmask),
     .s_flag_mem_wb_o(wb_s_flag),
     .time_set_mem_wb_o(wb_time_set),
