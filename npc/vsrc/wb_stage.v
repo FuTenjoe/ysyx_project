@@ -15,7 +15,7 @@ module wb_stage (
     input [31:0] s_imm,
     input [3:0] expand_signed,
     input [2:0]rd_buf_flag,
-    input ebreak_flag;
+    input ebreak_flag,
     output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]
    
 );
