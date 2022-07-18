@@ -267,32 +267,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgQData(oldp+436,(vlSelf->ysyx_22040175_top__DOT__from_ex_alu_res),64);
             tracep->chgQData(oldp+438,(vlSelf->ysyx_22040175_top__DOT__ex_alu_src1),64);
             tracep->chgQData(oldp+440,(vlSelf->ysyx_22040175_top__DOT__ex_alu_src2),64);
-            tracep->chgQData(oldp+442,(((IData)(vlSelf->ysyx_22040175_top__DOT__ex_ena)
-                                         ? (((IData)(vlSelf->ysyx_22040175_top__DOT__ex_branch) 
-                                             & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__zero)))
-                                             ? (vlSelf->ysyx_22040175_top__DOT__ex_pc 
-                                                + vlSelf->ysyx_22040175_top__DOT__ex_imm)
-                                             : (((IData)(vlSelf->ysyx_22040175_top__DOT__ex_jump) 
-                                                 & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__ex_jalr)))
-                                                 ? 
-                                                (vlSelf->ysyx_22040175_top__DOT__ex_pc 
-                                                 + vlSelf->ysyx_22040175_top__DOT__ex_imm)
-                                                 : 
-                                                (((IData)(vlSelf->ysyx_22040175_top__DOT__ex_jump) 
-                                                  & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_jalr))
-                                                  ? 
-                                                 (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT____Vcellinp__u_muxpc__reg_f
-                                                  [
-                                                  (0x1fU 
-                                                   & vlSelf->ysyx_22040175_top__DOT__ex_s_imm)] 
-                                                  + vlSelf->ysyx_22040175_top__DOT__ex_imm)
-                                                  : 
-                                                 ((IData)(vlSelf->ysyx_22040175_top__DOT__ex_ebreak_flag)
-                                                   ? 0x80000000ULL
-                                                   : 
-                                                  (4ULL 
-                                                   + vlSelf->ysyx_22040175_top__DOT__ex_pc)))))
-                                         : vlSelf->ysyx_22040175_top__DOT__ex_pc)),64);
+            tracep->chgQData(oldp+442,(vlSelf->ysyx_22040175_top__DOT__ex_next_pc),64);
             tracep->chgBit(oldp+444,(vlSelf->ysyx_22040175_top__DOT__mem_reg_wen));
             tracep->chgCData(oldp+445,(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr),5);
             tracep->chgBit(oldp+446,(vlSelf->ysyx_22040175_top__DOT__mem_ebreak_flag));
