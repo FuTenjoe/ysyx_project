@@ -20,7 +20,7 @@ always@(*)begin
             alu_res = rd_buf_lw[63:0];
         else if(rd_buf_flag == 3'd4)
             alu_res = rd_buf_lw[7:0]; 
-        else if(rd_flag == 3'd6)   //lh
+        else if(rd_buf_flag == 3'd6)   //lh
             alu_res = rd_buf_lw[15:0]; 
         end
         default: alu_res = alu_res;
