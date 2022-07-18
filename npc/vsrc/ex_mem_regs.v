@@ -49,7 +49,7 @@ module ex_mem_regs(
 		if(!rst_n)begin 
 			reg_wen_ex_mem_o <= 1'd0;
 			reg_waddr_ex_mem_o <= 5'd0;
-			reg_wdata_ex_mem_o <= 64'd0;
+			//reg_wdata_ex_mem_o <= 64'd0;
 			
 			wmask_ex_mem_o <= 8'd0;
 			s_flag_ex_mem_o <= 1'd0;
@@ -67,7 +67,7 @@ module ex_mem_regs(
 		else begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
 			reg_waddr_ex_mem_o <= reg_waddr_ex_mem_i;
-			reg_wdata_ex_mem_o <= reg_wdata_ex_mem_i;
+			//reg_wdata_ex_mem_o <= reg_wdata_ex_mem_i;
 			
 			wmask_ex_mem_o <= wmask_ex_mem_i;
 			s_flag_ex_mem_o <= s_flag_ex_mem_i;
