@@ -19,6 +19,7 @@ module wb_stage (
     output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]
    
 );
+reg [63:0] reg_wdata;
 always@(*)begin
     if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6 )
         reg_wdata <= from_mem_alu_res;
