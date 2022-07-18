@@ -11,7 +11,7 @@ module if_stage (
    
 );
 wire [`CPU_WIDTH-1:0] curr_pc;
-pc_reg (
+pc_reg u_pc_reg(
     .clk(clk),     // system clock
     .rst_n(rst_n),   // active low reset
     .ena(ena),     // system enable
