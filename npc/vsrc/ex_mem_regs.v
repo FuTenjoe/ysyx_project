@@ -39,7 +39,7 @@ module ex_mem_regs(
 	output reg [2:0] rd_buf_flag_ex_mem_o,
 	output reg[`ALU_OP_WIDTH-1:0]  alu_op_ex_mem_o,
 	output reg     [`CPU_WIDTH-1:0]    alu_src1_ex_mem_o, // alu source 1
-    output reg     [`CPU_WIDTH-1:0]    alu_src2_ex_mem_o // alu source 2
+    output reg     [`CPU_WIDTH-1:0]    alu_src2_ex_mem_o, // alu source 2
 	output reg [63:0] from_ex_alu_res_ex_mem_o
     
     );
