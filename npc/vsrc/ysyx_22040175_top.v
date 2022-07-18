@@ -25,7 +25,7 @@ if_stage u_if_stage(
     .next_pc(ex_next_pc),
     .ena(ena),   //输出
     .inst(if_inst),
-    .pc(if_pc)
+    .curr_pc(if_pc)
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 

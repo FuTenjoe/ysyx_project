@@ -6,7 +6,7 @@ module if_stage (
     input      [`CPU_WIDTH-1:0] next_pc,
     output ena,
     output [31:0] inst,
-    output [63:0] pc
+    output [63:0] curr_pc
     
    
 );
