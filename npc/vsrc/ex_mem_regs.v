@@ -65,7 +65,7 @@ module ex_mem_regs(
 			alu_src1_ex_mem_o <= 64'd0;
 			alu_src2_ex_mem_o <= 64'd0;
 			from_ex_alu_res_ex_mem_o <= 64'd0;
-			next_pc_ex_mem_o <= 32'h8000_0000
+			next_pc_ex_mem_o <= 32'h8000_0000;
 		end
 		else begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
