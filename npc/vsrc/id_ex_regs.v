@@ -74,7 +74,7 @@ module id_ex_regs(
 always@(posedge clk or negedge rst_n)
 	begin
 		if(!rst_n)begin
-			pc_id_ex_o<=`zeroword;
+			pc_id_ex_o <= 32'h8000_0000;
 			imm_id_ex_o <= 64'd0;
 			reg2_rdata_id_ex_o <= 64'd0;
 		end
