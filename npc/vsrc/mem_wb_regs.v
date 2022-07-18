@@ -37,7 +37,7 @@ module mem_wb_regs(
 		if(!rst_n)begin 
 			reg_wen_mem_wb_o <= 1'd0;
 			reg_waddr_mem_wb_o <= 5'd0;
-			reg_wdata_mem_wb_o <= 64'd0;
+			//reg_wdata_mem_wb_o <= 64'd0;
 			wmask_mem_wb_o <= 8'd0;
 			s_flag_mem_wb_o <= 1'd0;
 			time_set_mem_wb_o <= 1'd0;
@@ -52,7 +52,7 @@ module mem_wb_regs(
 		else begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
 			reg_waddr_mem_wb_o <= reg_waddr_mem_wb_i;
-			reg_wdata_mem_wb_o <= reg_wdata_mem_wb_i;
+			//reg_wdata_mem_wb_o <= reg_wdata_mem_wb_i;
 			wmask_mem_wb_o <= wmask_mem_wb_i;
 			s_flag_mem_wb_o <= s_flag_mem_wb_i;
 			time_set_mem_wb_o <= time_set_mem_wb_i;
