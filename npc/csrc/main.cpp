@@ -148,7 +148,7 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   int i;
-  for (i=0; ; i++) {
+  for (i=0;i<80 ; i++) {
     //while(!contextp -> gotFinish()){
      //for (i=0;i<15 ; i++) {
       
