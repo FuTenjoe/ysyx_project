@@ -148,12 +148,12 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   int i;
-  for (i=0;i<5 ; i++) {
+  for (i=0;i<20 ; i++) {
     //while(!contextp -> gotFinish()){
      //for (i=0;i<15 ; i++) {
       
     //top->rst = (i < 2);
-      top->rst = (i < 2);
+      top->rst = (i < 10);
     // dump variables into VCD file and toggle clock
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
