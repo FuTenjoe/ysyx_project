@@ -65,7 +65,7 @@ wire [2:0] id_rd_buf_flag;   //访存标志
 
 id_stage u_id_stage(
     .clk(clk),
-    .rst_n(rst_n)
+    .rst_n(rst_n),
     .inst(id_inst),       // instruction input
     .reg_f (to_id_reg_f),
     .branch(id_branch),     // branch flag
