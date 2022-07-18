@@ -217,7 +217,6 @@ wire [`ALU_OP_WIDTH-1:0]  mem_alu_op;
 wire [`CPU_WIDTH-1:0]    mem_alu_src1; // alu source 1
 wire     [`CPU_WIDTH-1:0]    mem_alu_src2;// alu source 2
 wire [63:0] mem_from_ex_alu_res;
-wire [`CPU_WIDTH-1:0] mem_next_pc;
 ex_mem_regs u_ex_mem_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -239,7 +238,7 @@ ex_mem_regs u_ex_mem_regs(
 	.alu_op_ex_mem_i(ex_alu_op),
 	.alu_src1_ex_mem_i(ex_alu_src1), // alu source 1
     .alu_src2_ex_mem_i(ex_alu_src2), // alu source 2
-    .next_pc_ex_mem_i(ex_next_pc),
+    
 	//output reg [31:0]pc_ex_mem_o,
 	.reg_wen_ex_mem_o(mem_reg_wen),    // register write enable
     .reg_waddr_ex_mem_o(mem_reg_waddr),  // register write address
@@ -257,8 +256,8 @@ ex_mem_regs u_ex_mem_regs(
 	.alu_op_ex_mem_o(mem_alu_op),
 	.alu_src1_ex_mem_o(mem_alu_src1), // alu source 1
     .alu_src2_ex_mem_o(mem_alu_src2), // alu source 2
-    .from_ex_alu_res_ex_mem_o(mem_from_ex_alu_res),
-    .next_pc_ex_mem_o(mem_next_pc)
+    .from_ex_alu_res_ex_mem_o(mem_from_ex_alu_res)
+    
 );
 wire [63:0] from_mem_alu_res;
 mem_stage u_mem_stage(
