@@ -22,7 +22,8 @@ module ctrl (
     output reg s_flag,
     output reg [31:0]s_imm,
     output reg [3:0] expand_signed,
-    output reg [2:0]rd_flag
+    output reg [2:0]rd_flag,
+    output reg [2:0] rd_buf_flag   //访存标志
    
 );
 
@@ -51,6 +52,7 @@ always @(*) begin
     s_flag = 1'd0;
     expand_signed = 4'd0;
     rd_flag = 1'd0;
+    rd_buf_flag = 3'd0;
     case (opcode)
         7'b0110011: begin                         
             reg_wen     = 1'b1;
@@ -59,6 +61,7 @@ always @(*) begin
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b0;
+            rd_buf_flag = 3'd0;
             case (funct3)
                 3'b000: begin
                     case(funct7)
@@ -140,6 +143,7 @@ always @(*) begin
             endcase
         end
         7'b0010011: begin       //addi
+            rd_buf_flag = 3'd0;
             case (funct3)
                 `INST_ADDI: begin
                     jump        = 1'b0;
@@ -249,6 +253,7 @@ always @(*) begin
             endcase
         end
         7'b0111011:begin           //addw
+            rd_buf_flag = 3'd0;
             case (funct3)
             3'b000:begin     
                 case(funct7)      //addw
@@ -401,7 +406,8 @@ always @(*) begin
             default:unknown_code = inst;
             endcase
         end
-        7'b0011011:begin        //addiw   
+        7'b0011011:begin        //addiw 
+        rd_buf_flag = 3'd0;  
             case (funct3)
             3'b000:begin       //addiw
                     jump        = 1'b0;
@@ -491,7 +497,8 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd1;       //
-                    rd_flag = 3'd1;
+                    rd_flag = 3'd0; //无用
+                    rd_buf_flag = 3'd1;
                 end
                 3'b011:begin //ld
                     jump        = 1'b0;
@@ -507,7 +514,8 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;       //不需扩展符号位
-                    rd_flag = 3'd2;
+                    rd_flag = 3'd0;  //无用
+                    rd_buf_flag = 3'd2;
                 end
                 3'b100:begin   //lbu
                     jump        = 1'b0;
@@ -523,7 +531,8 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;       //不需扩展符号位
-                    rd_flag = 3'd4;
+                    rd_flag = 3'd0; //无用
+                    rd_buf_flag = 3'd4;
                 end
                 3'b001:begin      //lh
                     jump        = 1'b0;
@@ -539,7 +548,8 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd3;       //需扩展符号位
-                    rd_flag = 3'd6;
+                    rd_flag = 3'd0;  //无用
+                    rd_buf_flag = 3'd6;
                 end
                 3'b101:begin      //lhu
                     jump        = 1'b0;
@@ -555,12 +565,14 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;       //不需扩展符号位
-                    rd_flag = 3'd6;
+                    rd_flag = 3'd0;  //无用
+                    rd_buf_flag = 3'd6;
                 end
                 default:unknown_code = inst;
             endcase
         end
         7'b0100011:begin    //sd
+        rd_buf_flag = 3'd0;
            case(funct3)    
             3'b011:begin    //sd
             jump        = 1'b0;
@@ -641,6 +653,7 @@ always @(*) begin
             wmask =  8'b0;
             expand_signed = 4'd0;
             rd_flag = 3'd0;
+            rd_buf_flag = 3'd0;
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
@@ -653,6 +666,7 @@ always @(*) begin
                 wmask =  8'b0;
                 expand_signed = 4'd0;
                 rd_flag = 3'd5;
+                rd_buf_flag = 3'd0;
         end
         `INST_AUIPC:begin //only auipc
                reg_wen     = 1'b1;
@@ -665,8 +679,10 @@ always @(*) begin
                 wmask =  8'b0;
                 expand_signed = 4'd0;
                 rd_flag = 3'd0;
+                rd_buf_flag = 3'd0;
         end
         7'b1100111:begin
+            rd_buf_flag = 3'd0;
             case(funct3)  
                 3'b000:begin         //jalr
                 jump        = 1'b1;
@@ -696,6 +712,7 @@ always @(*) begin
             reg_wen     = 1'b0;
             jump        = 1'b0;
             jalr        = 1'b0;
+            rd_buf_flag = 3'd0;
             case (funct3)
                 `INST_BNE: begin     //bne
                     branch     = 1'b1;
@@ -738,7 +755,6 @@ end
 import "DPI-C" function void ebreak();
 always@(*)begin
     if(inst == 32'h0010_0073)begin
-        ebreak();
         ebreak_flag = 1'b1;
     end
 end

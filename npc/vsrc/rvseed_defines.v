@@ -127,7 +127,8 @@
 `define IMM_GEN_SRAI `IMM_GEN_OP_WIDTH'b101 
 
 
-	
+//流水
+`define zeroword 32'h8000_0000	
 
 
 

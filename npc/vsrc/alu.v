@@ -10,7 +10,7 @@ module alu(
     input [2:0]rd_flag
 );
 
-reg [63:0] rd_buf_lw;
+//reg [63:0] rd_buf_lw;
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 always @(*) begin
@@ -22,18 +22,18 @@ always @(*) begin
             alu_res = (alu_src1 +  alu_src2);
             alu_res = alu_res[31:0];
         end
-        else if(rd_flag == 3'd1)
+   /*     else if(rd_flag == 3'd1)
             alu_res = rd_buf_lw[31:0];
         else if(rd_flag == 3'd2)
-            alu_res = rd_buf_lw[63:0];
+            alu_res = rd_buf_lw[63:0];*/
         else if(rd_flag == 3'd3)
             alu_res = alu_src1 +  alu_src2;
-        else if(rd_flag == 3'd4)
-            alu_res = rd_buf_lw[7:0];
+    /*    else if(rd_flag == 3'd4)
+            alu_res = rd_buf_lw[7:0]; */
         else if(rd_flag == 3'd5)
             alu_res = alu_src2;
-        else if(rd_flag == 3'd6)   //lh
-            alu_res = rd_buf_lw[15:0];
+    /*    else if(rd_flag == 3'd6)   //lh
+            alu_res = rd_buf_lw[15:0];  */
         end
         `ALU_SUB:begin //0100
             alu_res = alu_src1 - alu_src2;
@@ -122,13 +122,11 @@ always @(*) begin
         end
     endcase
 end
-import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
+/*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
     if(rd_flag == 3'd1 | rd_flag == 3'd2 |rd_flag == 3'd4 |rd_flag == 3'd6)
         pmem_read(alu_src1 +  alu_src2, rd_buf_lw);
-   
-    
-end
+end*/
 endmodule
 
 

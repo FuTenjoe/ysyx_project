@@ -133,9 +133,6 @@ const vluint64_t max_sim_time = 2000;
 int main(int argc, char **argv, char **env) {
   contextp -> commandArgs(argc,argv);
   Verilated::traceEverOn(true);
-  
-   
-  
   int clk;
   int a = 0;
 
@@ -180,7 +177,7 @@ int main(int argc, char **argv, char **env) {
     if(i%2==1){
       top->time_set = 1;
     }
-    else if(1%2 == 0){
+    else if(i%2 == 0){
       top->time_set = 0;
     }
 
