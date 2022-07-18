@@ -19,10 +19,11 @@ module ex_stage(
     input      [`CPU_WIDTH-1:0] curr_pc, // current pc addr
     input      [`CPU_WIDTH-1:0]     reg1_rdata,
     input      [`CPU_WIDTH-1:0]     reg2_rdata,
-   input ebreak_flag,
-   input [63:0] reg_f [0:`REG_DATA_DEPTH-1],
-   input  [31:0]s_imm,
-   output reg [`CPU_WIDTH-1:0] next_pc // next pc addr
+    input ebreak_flag,
+    input [63:0] reg_f [0:`REG_DATA_DEPTH-1],
+    input  [31:0]s_imm,
+    input write_ready,
+    output reg [`CPU_WIDTH-1:0] next_pc // next pc addr
 );
 wire zero;
 
@@ -38,7 +39,7 @@ alu u_alu(
 );
 
 muxpc u_muxpc(
-    .ena(ena),
+    .ena(write_ready),
     .branch(branch),  // branch type 
     .zero(zero),    // alu result is zero
     .jump(jump),    // jump type 

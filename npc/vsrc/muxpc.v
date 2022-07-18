@@ -17,9 +17,9 @@ module muxpc (
     );
 
 always @(*) begin
-/*    if (~ena) 
-        next_pc = curr_pc;*/
-    if (branch && ~zero) // bne
+    if (~ena) 
+        next_pc = curr_pc;
+    else if (branch && ~zero) // bne
         next_pc = curr_pc + imm;
     else if (jump &(!jalr))            // jal 
         next_pc = curr_pc + imm;

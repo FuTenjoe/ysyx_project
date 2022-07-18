@@ -180,6 +180,7 @@ wire [63:0] from_ex_alu_res;
 wire [63:0]    ex_alu_src1;
 wire [`CPU_WIDTH-1:0]    ex_alu_src2;
 wire [`CPU_WIDTH-1:0] ex_next_pc;
+wire write_ready;
 ex_stage u_ex_stage(
     .alu_op(ex_alu_op),   // alu opcode
     
@@ -201,6 +202,7 @@ ex_stage u_ex_stage(
     .ebreak_flag(ex_ebreak_flag),
     .reg_f(to_ex_reg_f),
     .s_imm(ex_s_imm),
+    .write_ready(write_ready),
     .next_pc(ex_next_pc) // next pc addr
 );
 wire mem_reg_wen;
@@ -331,7 +333,8 @@ wb_stage u_wb_stage(
     .expand_signed(wb_expand_signed),
     .rd_buf_flag(wb_rd_buf_flag),
     .ebreak_flag(wb_ebreak_flag),
-    .reg_f(from_wb_reg_f)
+    .reg_f(from_wb_reg_f),
+    .write_ready(write_ready)
    
 );
 endmodule

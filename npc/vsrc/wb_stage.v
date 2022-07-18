@@ -16,15 +16,18 @@ module wb_stage (
     input [3:0] expand_signed,
     input [2:0]rd_buf_flag,
     input ebreak_flag,
-    output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]
+    output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
+    output write_ready
    
 );
 reg [63:0] reg_wdata;
 always@(*)begin
     if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6 )
         reg_wdata = from_mem_alu_res;
+        write_ready = 1'b0;
     else
         reg_wdata = from_ex_alu_res;
+        write_ready = write_ready;
 end
 
 always @(posedge clk or negedge rst_n) begin
@@ -45,8 +48,10 @@ initial set_gpr_ptr(reg_f);  // rf为通用寄存器的二维数组变量
 import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
 always @(*) begin
-    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(time_set==1'd1)) 
+    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(time_set==1'd1)) begin
         pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
+        write_ready = 1'b1;
+    end
 end
 
 import "DPI-C" function void ebreak();
