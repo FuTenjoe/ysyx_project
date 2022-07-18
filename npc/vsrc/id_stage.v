@@ -69,7 +69,7 @@ reg_read u_reg_read(
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
     .reg1_rdata(reg1_rdata), // register 1 read data
-    .reg2_rdata(reg2_rdata), // register 2 read data
+    .reg2_rdata(reg2_rdata) // register 2 read data
 
 );
 
