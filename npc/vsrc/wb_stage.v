@@ -28,7 +28,7 @@ always@(*)begin
     end
     else begin
         reg_wdata = from_ex_alu_res;
-        write_ready = write_ready;
+        write_ready = 1'b1;
     end
 end
 
