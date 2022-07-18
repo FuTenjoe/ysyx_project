@@ -22,9 +22,9 @@ module wb_stage (
 reg [63:0] reg_wdata;
 always@(*)begin
     if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6 )
-        reg_wdata <= from_mem_alu_res;
+        reg_wdata = from_mem_alu_res;
     else
-        reg_wdata <= from_ex_alu_res;
+        reg_wdata = from_ex_alu_res;
 end
 
 always @(posedge clk or negedge rst_n) begin
