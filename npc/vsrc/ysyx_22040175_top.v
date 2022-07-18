@@ -22,7 +22,7 @@ assign inst = if_inst;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
-    .next_pc(next_pc),
+    .next_pc(ex_next_pc),
     .ena(ena),   //输出
     .inst(if_inst),
     .pc(if_pc)
