@@ -191,8 +191,8 @@ ex_stage u_ex_stage(
     .jalr(ex_jalr),
     .imm(ex_imm),     // immediate  
     .curr_pc(ex_pc), // current pc addr
-    .reg1_rdata(ex_reg1_rdata)
-    .reg2_rdata(ex_reg2_rdata)
+    .reg1_rdata(ex_reg1_rdata),
+    .reg2_rdata(ex_reg2_rdata),
     .ebreak_flag(ex_ebreak_flag),
     .reg_f(to_ex_reg_f),
     .s_imm(ex_s_imm),
