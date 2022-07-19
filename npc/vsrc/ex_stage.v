@@ -41,7 +41,7 @@ alu u_alu(
 );
 
 muxpc u_muxpc(
-    .no_use(no_use)
+    .no_use(no_use),
     .ena(ena),
     .branch(branch),  // branch type 
     .zero(zero),    // alu result is zero
@@ -58,7 +58,7 @@ muxpc u_muxpc(
     );
 
 mux_alu u_mux_alu( 
-    .no_use(no_use)
+    .no_use(no_use),
     .alu_src_sel(alu_src_sel),// reg or imm to alu
 
     .reg1_rdata(reg1_rdata), // register 1 read data
