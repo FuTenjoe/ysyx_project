@@ -5334,18 +5334,18 @@ void Vysyx_22040175_top___024root___settle__TOP__1(Vysyx_22040175_top___024root*
     if ((1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__ex_no_use)))) {
         vlSelf->ysyx_22040175_top__DOT__ex_alu_src1 
             = vlSelf->ysyx_22040175_top__DOT__ex_reg1_rdata;
-        if ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__alu_src_sel))) {
+        if ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_alu_src_sel))) {
             vlSelf->ysyx_22040175_top__DOT__ex_alu_src1 
-                = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__alu_src_sel)
+                = ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_alu_src_sel))
                     ? vlSelf->ysyx_22040175_top__DOT__ex_imm
                     : 4ULL);
         }
     }
     if ((1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__ex_no_use)))) {
         vlSelf->ysyx_22040175_top__DOT__ex_alu_src2 
-            = ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__alu_src_sel))
+            = ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_alu_src_sel))
                 ? vlSelf->ysyx_22040175_top__DOT__ex_pc
-                : ((IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__alu_src_sel)
+                : ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_alu_src_sel))
                     ? vlSelf->ysyx_22040175_top__DOT__ex_imm
                     : vlSelf->ysyx_22040175_top__DOT__ex_reg2_rdata));
     }
@@ -6471,7 +6471,6 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT____Vcellinp__u_muxpc__reg_f[__Vi0] = VL_RAND_RESET_Q(64);
     }
-    vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__alu_src_sel = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__signed_alu_src1 = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__signed_alu_src2 = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__rd_buf_lw = VL_RAND_RESET_Q(64);
