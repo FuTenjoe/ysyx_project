@@ -55,7 +55,7 @@ module mem_wb_regs(
 			from_mem_alu_res_mem_wb_o <= 64'd0;
 			no_use_mem_wb_o <= 1'b0;
 			ex_pc_ready_mem_wb_o <= 1'b0;
-			pc_mem_wb_o <= 32'h8000_0000
+			pc_mem_wb_o <= 32'h8000_0000;
 		end
 		else begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
