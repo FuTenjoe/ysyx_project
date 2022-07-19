@@ -72,8 +72,8 @@ id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
     .inst(id_inst),       // instruction input
-    .reg_f (to_id_reg_f),
-
+    //.reg_f (to_id_reg_f),
+    .reg_f (from_wb_reg_f),
     .wb_reg_waddr(wb_reg_waddr),
     .write_ready(write_ready),
     .rest_from_id(rest_from_id),
