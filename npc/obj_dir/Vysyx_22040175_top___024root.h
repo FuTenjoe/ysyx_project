@@ -134,7 +134,6 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     };
 
     // LOCAL VARIABLES
-    CData/*4:0*/ ysyx_22040175_top__DOT____Vcellout__u_id_ex_regs__reg_waddr_id_ex_o;
     CData/*0:0*/ __VinpClk__TOP__ysyx_22040175_top__DOT__rst_n;
     CData/*0:0*/ __Vclklast__TOP__clk;
     CData/*0:0*/ __Vclklast__TOP____VinpClk__TOP__ysyx_22040175_top__DOT__rst_n;

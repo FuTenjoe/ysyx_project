@@ -220,7 +220,8 @@ ex_stage u_ex_stage(
     //.write_ready(write_ready),
     .next_pc(ex_next_pc), // next pc addr
     .no_use(ex_no_use),
-    .ex_pc_ready(ex_pc_ready)
+    .ex_pc_ready(ex_pc_ready),
+    .alu_src_sel(ex_alu_src_sel)
 );
 wire mem_reg_wen;
 wire [`REG_ADDR_WIDTH-1:0] mem_reg_waddr;
