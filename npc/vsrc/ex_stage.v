@@ -7,7 +7,7 @@ module ex_stage(
     output      [63:0]    alu_src1, // alu source 1
     output      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
     input [2:0]rd_flag,
-
+    
 
 
     input                       ena,
@@ -25,7 +25,8 @@ module ex_stage(
     //input write_ready,
     output reg [`CPU_WIDTH-1:0] next_pc, // next pc addr
     input  no_use,
-    output ex_pc_ready
+    output ex_pc_ready,
+    input  [`ALU_SRC_WIDTH-1:0]    alu_src_sel
 );
 wire zero;
 
