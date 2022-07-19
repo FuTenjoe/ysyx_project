@@ -148,6 +148,7 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   int i;
+  init_difftest(img_size,port);
   for (i=0;; i++) {
     //while(!contextp -> gotFinish()){
      //for (i=0;i<15 ; i++) {
@@ -212,9 +213,9 @@ int main(int argc, char **argv, char **env) {
        
          difftest_step(top->pc);
         }
-        else{
+      /*  else{
           init_difftest(img_size,port);
-        }
+        }*/
      }
      
       if(npc_state == NPC_ABORT){
