@@ -27,7 +27,7 @@ if_stage u_if_stage(
     .inst(if_inst),
     .curr_pc(if_pc),
     .control_rest(control_rest),
-    .ex_pc_ready(mem_pc_ready)
+    .ex_pc_ready(wb_pc_ready)
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 
@@ -45,7 +45,7 @@ if_id_regs u_if_id_regs(
     .ena_if_id_o(id_ena),
     .time_set_if_id_o(id_time_set),
     .control_rest(control_rest),
-    .ex_pc_ready(mem_pc_ready)
+    .ex_pc_ready(wb_pc_ready)
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
 wire id_branch;
@@ -306,6 +306,7 @@ wire [2:0] wb_rd_buf_flag;
 wire  [63:0] wb_from_ex_alu_res;
 wire [63:0] wb_from_mem_alu_res;
 wire wb_no_use;
+wire wb_pc_ready;
 mem_wb_regs u_mem_wb_regs(
 	.clk(clk),
     .rst_n(rst_n),
@@ -339,7 +340,9 @@ mem_wb_regs u_mem_wb_regs(
 	.from_ex_alu_res_mem_wb_o(wb_from_ex_alu_res),
 	.from_mem_alu_res_mem_wb_o(wb_from_mem_alu_res),
     .no_use_mem_wb_i(mem_no_use),
-    .no_use_mem_wb_o(wb_no_use)
+    .no_use_mem_wb_o(wb_no_use),
+    .ex_pc_ready_mem_wb_i(mem_pc_ready),
+	.ex_pc_ready_mem_wb_o(wb_pc_ready)
     );
 wire [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;
