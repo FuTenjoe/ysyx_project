@@ -136,7 +136,7 @@ int main(int argc, char **argv, char **env) {
   int clk;
   int a = 0;
 
-  top->trace (tfp, 599);
+  top->trace (tfp, 99);
   tfp->open ("Vysyx_22040175.vcd");
   // initialize simulation inputs
   top->clk = 1;
@@ -148,7 +148,7 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   int i;
-  for (i=0;i<80 ; i++) {
+  for (i=0;i<20 ; i++) {
     //while(!contextp -> gotFinish()){
      //for (i=0;i<15 ; i++) {
       
