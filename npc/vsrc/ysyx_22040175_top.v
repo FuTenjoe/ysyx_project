@@ -160,7 +160,7 @@ id_ex_regs u_id_ex_regs(
     .jump_id_ex_o(ex_jump),       // jump flag
 
     .reg_wen_id_ex_o(ex_reg_wen),    // register write enable
-    .reg_waddr_id_ex_o(ex_reg),  // register write address
+    .reg_waddr_id_ex_o(ex_reg_waddr),  // register write address
   
 	.imm_id_ex_o(ex_imm), 
     .alu_op_id_ex_o(ex_alu_op),    // alu opcode
