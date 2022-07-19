@@ -33,7 +33,7 @@ end
 
 always @(posedge clk or negedge rst_n) begin
     if(~rst_n)
-        write_ready <= 1'b1;
+        write_ready <= 1'b0;
     else if(wb_no_use == 1'b0)begin
         if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)
