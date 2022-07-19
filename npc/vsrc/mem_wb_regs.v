@@ -72,7 +72,7 @@ module mem_wb_regs(
 			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_i;
 			no_use_mem_wb_o <= no_use_mem_wb_i;
 			ex_pc_ready_mem_wb_o  <= ex_pc_ready_mem_wb_i;
-			pc_mem_wb_o <= pc_ex_mem_i;
+			pc_mem_wb_o <= pc_mem_wb_i;
 		end
 	end
 	
