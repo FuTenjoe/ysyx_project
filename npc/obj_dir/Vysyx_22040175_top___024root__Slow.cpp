@@ -2340,12 +2340,16 @@ void Vysyx_22040175_top___024root___settle__TOP__1(Vysyx_22040175_top___024root*
         vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
             = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
     }
-    if (((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)) 
-           | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag))) 
-          | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag))) 
-         | (6U == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)))) {
-        vlSelf->ysyx_22040175_top__DOT__write_ready = 0U;
-    }
+    vlSelf->ysyx_22040175_top__DOT__write_ready = (1U 
+                                                   & (~ 
+                                                      ((((1U 
+                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)) 
+                                                         | (2U 
+                                                            == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag))) 
+                                                        | (4U 
+                                                           == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag))) 
+                                                       | (6U 
+                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)))));
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op = 0U;
     if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                        >> 6U)))) {

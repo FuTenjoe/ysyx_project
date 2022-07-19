@@ -2547,12 +2547,16 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
             }
         }
     }
-    if (((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)) 
-           | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag))) 
-          | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag))) 
-         | (6U == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)))) {
-        vlSelf->ysyx_22040175_top__DOT__write_ready = 0U;
-    }
+    vlSelf->ysyx_22040175_top__DOT__write_ready = (1U 
+                                                   & (~ 
+                                                      ((((1U 
+                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)) 
+                                                         | (2U 
+                                                            == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag))) 
+                                                        | (4U 
+                                                           == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag))) 
+                                                       | (6U 
+                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)))));
     vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__reg_wdata 
         = (((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)) 
               | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag))) 

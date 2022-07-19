@@ -27,6 +27,7 @@ module id_stage (
     output reg [2:0]rd_flag,
     output reg [2:0] rd_buf_flag   //访存标志
    
+   
 );
 wire [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op;
 wire [`REG_ADDR_WIDTH-1:0]   reg1_raddr; // register 1 read address
