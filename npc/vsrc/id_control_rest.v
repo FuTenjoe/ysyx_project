@@ -3,7 +3,7 @@
 module id_control_rest (
     input   branch,     // branch flag
     input   jump,       // jump flag
-    output  control_rest
+    output  reg control_rest
     
    
 );
