@@ -98,6 +98,7 @@ always@(posedge clk or negedge rst_n)begin
 			rd_buf_flag_id_ex_o <= 3'd0;
 			ena_id_ex_o <= 1'd0;
 			no_use <= 1'd0;
+			
 		end
 		else if(rest_from_id_id_ex_i == 1'b1)begin
 			pc_id_ex_o <= pc_id_ex_o;
@@ -142,6 +143,7 @@ always@(posedge clk or negedge rst_n)begin
 			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
 			ena_id_ex_o <= ena_id_ex_i;
 			no_use <= 1'b0;
+			reg_f_id_ex_o <= reg_f_id_ex_i;
 		end
 end
 	
