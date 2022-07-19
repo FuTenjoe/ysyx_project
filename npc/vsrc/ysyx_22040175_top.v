@@ -181,7 +181,7 @@ id_ex_regs u_id_ex_regs(
 	
     //input [63:0]reg_wdata_id_ex_i(id_reg_waddr),  // register write data
     .time_set_id_ex_i(id_time_set),
-    .reg_f_id_ex_i (to_id_reg_f),
+    .reg_f_id_ex_i (from_wb_reg_f),
 	//output [63:0] reg_wdata_id_ex_o,
 	.time_set_id_ex_o(ex_time_set),
 	.reg_f_id_ex_o (to_ex_reg_f),
