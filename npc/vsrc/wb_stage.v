@@ -56,6 +56,7 @@ always @(posedge clk or negedge rst_n) begin
             default:begin
                 reg_f[reg_waddr] <=reg_f[reg_waddr];
                 write_ready <= 1'b0;
+            end
             endcase
         end
     end
