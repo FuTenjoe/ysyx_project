@@ -8,10 +8,8 @@ module if_stage (
     output [31:0] inst,
     output [63:0] curr_pc,
     input control_rest,
-    input ex_pc_ready,
+    input ex_pc_ready
     
-    
-   
 );
 //wire [`CPU_WIDTH-1:0] curr_pc;
 pc_reg u_pc_reg(
