@@ -9,7 +9,7 @@ module alu(
     output reg [63:0]    alu_res,   // alu result
     input [2:0]rd_flag,
     input  no_use
-)
+);
 //reg [63:0] rd_buf_lw;
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
