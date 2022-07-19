@@ -22,13 +22,15 @@ module ex_stage(
     input ebreak_flag,
     input [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     input  [31:0]s_imm,
-    input write_ready,
-    output reg [`CPU_WIDTH-1:0] next_pc // next pc addr
+    //input write_ready,
+    output reg [`CPU_WIDTH-1:0] next_pc, // next pc addr
+    input  no_use
 );
 wire zero;
 
 
 alu u_alu(
+    .no_use(no_use)
     .alu_op(alu_op),   // alu opcode
     .alu_src1(alu_src1), // alu source 1
     //input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
@@ -39,7 +41,8 @@ alu u_alu(
 );
 
 muxpc u_muxpc(
-    .ena(write_ready),
+    .no_use(no_use)
+    .ena(ena),
     .branch(branch),  // branch type 
     .zero(zero),    // alu result is zero
     .jump(jump),    // jump type 
@@ -55,6 +58,7 @@ muxpc u_muxpc(
     );
 
 mux_alu u_mux_alu( 
+    .no_use(no_use)
     .alu_src_sel(alu_src_sel),// reg or imm to alu
 
     .reg1_rdata(reg1_rdata), // register 1 read data

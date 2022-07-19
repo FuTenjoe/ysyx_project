@@ -12,12 +12,15 @@ module muxpc (
    // input      [`CPU_WIDTH-1:0]     reg1_rdata
    input ebreak_flag,
    input [63:0] reg_f [0:`REG_DATA_DEPTH-1],
-   input  [31:0]s_imm
-  
+   input  [31:0]s_imm,
+   input no_use
+
     );
 
 always @(*) begin
     if (~ena) 
+        next_pc = curr_pc;
+    if(no_use)
         next_pc = curr_pc;
     else if (branch && ~zero) // bne
         next_pc = curr_pc + imm;

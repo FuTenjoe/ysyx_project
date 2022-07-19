@@ -62,12 +62,17 @@ wire [31:0] id_s_imm;
 wire [3:0] id_expand_signed;
 wire [2:0] id_rd_flag;
 wire [2:0] id_rd_buf_flag;   //访存标志
-
+wire rest_from_id;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
     .inst(id_inst),       // instruction input
     .reg_f (to_id_reg_f),
+
+    .wb_reg_waddr(wb_reg_waddr),
+    .write_ready(write_ready),
+    .rest_from_id(rest_from_id),
+
     .branch(id_branch),     // branch flag
     .jump(id_jump),       // jump flag
 
@@ -115,6 +120,7 @@ wire [63:0] to_ex_reg_f [0:`REG_DATA_DEPTH-1];
 wire ex_ena;
 wire ex_time_set;
 //wire [63:0] ex_reg_wdata;
+wire ex_no_use;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -174,7 +180,9 @@ id_ex_regs u_id_ex_regs(
 	.time_set_id_ex_o(ex_time_set),
 	.reg_f_id_ex_o (to_ex_reg_f),
     .ena_id_ex_i(id_ena),
-    .ena_id_ex_o(ex_ena)
+    .ena_id_ex_o(ex_ena),
+    .rest_from_id_id_ex_i(rest_from_id),
+    .no_use(ex_no_use)
     );
 wire [63:0] from_ex_alu_res;
 wire [63:0]    ex_alu_src1;
@@ -202,8 +210,9 @@ ex_stage u_ex_stage(
     .ebreak_flag(ex_ebreak_flag),
     .reg_f(to_ex_reg_f),
     .s_imm(ex_s_imm),
-    .write_ready(write_ready),
-    .next_pc(ex_next_pc) // next pc addr
+    //.write_ready(write_ready),
+    .next_pc(ex_next_pc), // next pc addr
+    .no_use(ex_no_use)
 );
 wire mem_reg_wen;
 wire [`REG_ADDR_WIDTH-1:0] mem_reg_waddr;
@@ -219,6 +228,7 @@ wire [`ALU_OP_WIDTH-1:0]  mem_alu_op;
 wire [`CPU_WIDTH-1:0]    mem_alu_src1; // alu source 1
 wire     [`CPU_WIDTH-1:0]    mem_alu_src2;// alu source 2
 wire [63:0] mem_from_ex_alu_res;
+wire mem_no_use;
 ex_mem_regs u_ex_mem_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -259,7 +269,8 @@ ex_mem_regs u_ex_mem_regs(
 	.alu_src1_ex_mem_o(mem_alu_src1), // alu source 1
     .alu_src2_ex_mem_o(mem_alu_src2), // alu source 2
     .from_ex_alu_res_ex_mem_o(mem_from_ex_alu_res)
-    
+    .no_use_ex_mem_i(ex_no_use),
+    .no_use_ex_mem_o(mem_no_use)
 );
 wire [63:0] from_mem_alu_res;
 mem_stage u_mem_stage(
@@ -268,7 +279,8 @@ mem_stage u_mem_stage(
     .alu_src1(mem_alu_src1),
     .alu_src2(mem_alu_src2),
     //output reg [63:0] rd_buf_lw,
-    .alu_res(from_mem_alu_res)
+    .alu_res(from_mem_alu_res),
+    .no_use(mem_no_use)
 );
 wire wb_reg_wen;
 wire    [`REG_ADDR_WIDTH-1:0] wb_reg_waddr;  // register write address
@@ -282,6 +294,7 @@ wire wb_ebreak_flag;
 wire [2:0] wb_rd_buf_flag;
 wire  [63:0] wb_from_ex_alu_res;
 wire [63:0] wb_from_mem_alu_res;
+wire wb_no_use;
 mem_wb_regs u_mem_wb_regs(
 	.clk(clk),
     .rst_n(rst_n),
@@ -313,7 +326,9 @@ mem_wb_regs u_mem_wb_regs(
 	.ebreak_flag_mem_wb_o(wb_ebreak_flag),
 	.rd_buf_flag_mem_wb_o(wb_rd_buf_flag),
 	.from_ex_alu_res_mem_wb_o(wb_from_ex_alu_res),
-	.from_mem_alu_res_mem_wb_o(wb_from_mem_alu_res)
+	.from_mem_alu_res_mem_wb_o(wb_from_mem_alu_res),
+    .no_use_mem_wb_i(mem_no_use),
+    .no_use_mem_wb_o(wb_no_use)
     );
 wire [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;
@@ -334,7 +349,8 @@ wb_stage u_wb_stage(
     .rd_buf_flag(wb_rd_buf_flag),
     .ebreak_flag(wb_ebreak_flag),
     .reg_f(from_wb_reg_f),
-    .write_ready(write_ready)
+    .write_ready(write_ready),
+    .wb_no_use(wb_no_use)
    
 );
 endmodule

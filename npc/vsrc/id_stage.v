@@ -5,6 +5,9 @@ module id_stage (
     input rst_n,
     input      [`CPU_WIDTH-1:0]        inst,       // instruction input
     input reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
+    input [`REG_ADDR_WIDTH-1:0] wb_reg_waddr,
+    input write_ready,
+    output reg rest_from_id,
     output reg                         branch,     // branch flag
     output reg                         jump,       // jump flag
 
@@ -75,5 +78,12 @@ reg_read u_reg_read(
     .reg2_rdata(reg2_rdata) // register 2 read data
 
 );
-
+id_rest u_id_rest(
+    .reg1_raddr(reg1_raddr), // register 1 read address
+    .reg2_raddr(reg2_raddr), // register 2 read address
+    .wb_reg_waddr(wb_reg_waddr),
+    .write_ready(write_ready),
+    .rest_from_id(rest_from_id)
+   
+);
 endmodule

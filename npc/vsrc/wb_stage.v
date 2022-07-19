@@ -17,31 +17,53 @@ module wb_stage (
     input [2:0]rd_buf_flag,
     input ebreak_flag,
     output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
-    output write_ready
+    output write_ready,
+    input wb_no_use
    
 );
 reg [63:0] reg_wdata;
 always@(*)begin
     if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6 )begin
         reg_wdata = from_mem_alu_res;
-        write_ready = 1'b0;
     end
     else begin
         reg_wdata = from_ex_alu_res;
-        write_ready = 1'b1;
     end
 end
 
 always @(posedge clk or negedge rst_n) begin
-    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0)) // x0 read only
-        case(expand_signed)
-        4'd0:reg_f[reg_waddr] <= reg_wdata;   //jalr
-        4'd1:begin
-            reg_f[reg_waddr] <= {{32{reg_wdata[31]}},reg_wdata[31:0]};   //lw  addw  divw
+    if(~rst_n)
+        write_ready <= 1'b0;
+    else if(wb_no_use == 1'b0)begin
+        if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
+            case(expand_signed)
+            4'd0:begin
+                reg_f[reg_waddr] <= reg_wdata;   //jalr
+                write_ready <= 1'b1;
+            end
+            4'd1:begin
+                reg_f[reg_waddr] <= {{32{reg_wdata[31]}},reg_wdata[31:0]};   //lw  addw  divw
+                write_ready <= 1'b1;
+            end
+            4'd2:begin
+                reg_f[reg_waddr] <= reg_wdata[31:0];            //addw错误
+                write_ready <= 1'b1;
+            end
+            4'd3:begin
+                reg_f[reg_waddr] <= {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
+                write_ready <= 1'b1;
+            end
+            default:begin
+                reg_f[reg_waddr] <=reg_f[reg_waddr];
+                write_ready <= 1'b0;
+            endcase
         end
-        4'd2: reg_f[reg_waddr] <= reg_wdata[31:0];            //addw错误
-        4'd3: reg_f[reg_waddr] <= {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
-        endcase
+    end
+    else begin
+        reg_f[reg_waddr] <=reg_f[reg_waddr];
+        write_ready <= write_ready;
+    end
+
 end
 
 import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
@@ -52,7 +74,6 @@ import "DPI-C" function void pmem_write(input longint waddr, input longint wdata
 always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(time_set==1'd1)) begin
         pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
-        write_ready = 1'b1;
     end
 end
 

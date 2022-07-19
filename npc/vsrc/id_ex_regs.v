@@ -30,6 +30,7 @@ module id_ex_regs(
     input  [3:0] expand_signed_id_ex_i,
     input  [2:0]rd_flag_id_ex_i,
 	input  [2:0]rd_buf_flag_id_ex_i, 
+	
 
 
 
@@ -68,7 +69,9 @@ module id_ex_regs(
 	output reg [63:0] reg_f_id_ex_o [0:`REG_DATA_DEPTH-1],
 
 	input ena_id_ex_i,
-	output ena_id_ex_o
+	output ena_id_ex_o,
+	input rest_from_id_id_ex_i,
+	output reg no_use
     );
 
 always@(posedge clk or negedge rst_n)
@@ -77,17 +80,8 @@ always@(posedge clk or negedge rst_n)
 			pc_id_ex_o <= 32'h8000_0000;
 			imm_id_ex_o <= 64'd0;
 			reg2_rdata_id_ex_o <= 64'd0;
-		end
-		else begin
-			pc_id_ex_o<=pc_id_ex_i;
-			imm_id_ex_o <= imm_id_ex_i;
-			reg2_rdata_id_ex_o <= reg2_rdata_id_ex_i;
-		end
-	end
-	
-	
-always@(posedge clk or negedge rst_n)begin	
-		if(!rst_n)begin
+
+
 			branch_id_ex_o <= 1'd0;
 			jump_id_ex_o <= 1'd0;
 			reg_wen_id_ex_o <= 1'd0;
@@ -104,6 +98,58 @@ always@(posedge clk or negedge rst_n)begin
 			rd_flag_id_ex_o <= 3'd0;
 			rd_buf_flag_id_ex_o <= 3'd0;
 			ena_id_ex_o <= 1'd0;
+			no_use <= 1'd0;
+		end
+		else if(rest_from_id_id_ex_i == 1'b1)begin
+			pc_id_ex_o <= pc_id_ex_o;
+			imm_id_ex_o <= imm_id_ex_o;
+			reg2_rdata_id_ex_o <= reg2_rdata_id_ex_o;
+			branch_id_ex_o <= branch_id_ex_o ;
+			jump_id_ex_o <= jump_id_ex_o;
+			reg_wen_id_ex_o <= reg_wen_id_ex_o;
+			reg_waddr_id_ex_o <=reg_waddr_id_ex_o;
+			alu_op_id_ex_o <= alu_op_id_ex_o;
+			alu_src_sel_id_ex_o <= alu_src_sel_id_ex_o;
+			unknown_code_id_ex_o <= unknown_code_id_ex_o;
+			jalr_id_ex_o <= jalr_id_ex_o;
+			ebreak_flag_id_ex_o <= ebreak_flag_id_ex_o;
+			wmask_id_ex_o <= wmask_id_ex_o;
+			s_flag_id_ex_o <= s_flag_id_ex_o;
+			s_imm_id_ex_o <= s_imm_id_ex_o;
+			expand_signed_id_ex_o <= expand_signed_id_ex_o;
+			rd_flag_id_ex_o <= rd_flag_id_ex_o;
+			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_o;
+			ena_id_ex_o <= ena_id_ex_o;
+			no_use <= 1'b1;   //输入指令无效信号
+		end
+		else begin
+			pc_id_ex_o<=pc_id_ex_i;
+			imm_id_ex_o <= imm_id_ex_i;
+			reg2_rdata_id_ex_o <= reg2_rdata_id_ex_i;
+			branch_id_ex_o <= branch_id_ex_i;
+			jump_id_ex_o <= jump_id_ex_i;
+			reg_wen_id_ex_o <= reg_wen_id_ex_i;
+			reg_waddr_id_ex_o <= reg_waddr_id_ex_i;
+			alu_op_id_ex_o <= alu_op_id_ex_i;
+			alu_src_sel_id_ex_o <= alu_src_sel_id_ex_i;
+			unknown_code_id_ex_o <= unknown_code_id_ex_i;
+			jalr_id_ex_o <= jalr_id_ex_i;
+			ebreak_flag_id_ex_o <= ebreak_flag_id_ex_i;
+			wmask_id_ex_o <= wmask_id_ex_i;
+			s_flag_id_ex_o <= s_flag_id_ex_i;
+			s_imm_id_ex_o <= s_imm_id_ex_i;
+			expand_signed_id_ex_o <= expand_signed_id_ex_i;
+			rd_flag_id_ex_o <= rd_flag_id_ex_i;
+			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
+			ena_id_ex_o <= ena_id_ex_i;
+			no_use <= 1'b0;
+		end
+	end
+	
+	
+always@(posedge clk or negedge rst_n)begin	
+		if(!rst_n)begin
+			
 		end
 		else begin
 			branch_id_ex_o <= branch_id_ex_i;
@@ -122,6 +168,7 @@ always@(posedge clk or negedge rst_n)begin
 			rd_flag_id_ex_o <= rd_flag_id_ex_i;
 			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
 			ena_id_ex_o <= ena_id_ex_i;
+			rest_from_id_id_ex_o  <= rest_from_id_id_ex_i;
 		end
 end
 	

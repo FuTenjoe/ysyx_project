@@ -7,6 +7,7 @@ module mux_alu (
     input      [63:0]     reg2_rdata, // register 2 read data
     input      [`CPU_WIDTH-1:0]     imm,        // immediate
     input      [`CPU_WIDTH-1:0]     curr_pc,    // current pc addr
+    input no_use,
 
     output reg [63:0]     alu_src1,   // alu source 1
     output reg [63:0]     alu_src2    // alu source 2
@@ -14,6 +15,7 @@ module mux_alu (
 );
 
 always @(*) begin
+    if(no_use == 1'b0)begin
     alu_src1 = reg1_rdata;     // defalut select reg1 data
     alu_src2 = reg2_rdata;     // default select reg2 data
     case (alu_src_sel)
@@ -30,6 +32,11 @@ always @(*) begin
             alu_src2 = curr_pc;
         end
     endcase
+    end
+    else begin
+        alu_src1 = alu_src1;     // defalut select reg1 data
+        alu_src2 = alu_src2;  
+    end
 end
 endmodule
 
