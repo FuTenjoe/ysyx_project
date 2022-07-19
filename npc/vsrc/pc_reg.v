@@ -5,7 +5,9 @@ module pc_reg (
     input                       rst_n,   // active low reset
     output reg                  ena,     // system enable
     input      [`CPU_WIDTH-1:0] next_pc, // next pc addr
-    output reg [`CPU_WIDTH-1:0] curr_pc  // current pc addr
+    output reg [`CPU_WIDTH-1:0] curr_pc,  // current pc addr
+    input control_rest,
+    input ex_pc_ready
 );
 
 always @ (posedge clk or negedge rst_n) begin
@@ -18,6 +20,8 @@ end
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)
         curr_pc <= 32'h8000_0000;
+    else if((control_rest == 1'b1) & (ex_pc_ready == 1'b0))
+        curr_pc <= curr_pc;
     else
         curr_pc <= next_pc;
 end    

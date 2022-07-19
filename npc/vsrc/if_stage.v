@@ -8,7 +8,8 @@ module if_stage (
     output [31:0] inst,
     output [63:0] curr_pc,
     input control_rest,
-    input ex_pc_ready
+    input ex_pc_ready,
+    
     
    
 );
@@ -18,7 +19,9 @@ pc_reg u_pc_reg(
     .rst_n(rst_n),   // active low reset
     .ena(ena),     // system enable
     .next_pc(next_pc), // next pc addr
-    .curr_pc(curr_pc)  // current pc addr
+    .curr_pc(curr_pc),  // current pc addr
+    .control_rest(control_rest),
+    .ex_pc_ready(ex_pc_ready)
 );
 
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);

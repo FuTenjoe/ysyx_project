@@ -47,6 +47,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*2:0*/ ysyx_22040175_top__DOT__id_rd_flag;
         CData/*2:0*/ ysyx_22040175_top__DOT__id_rd_buf_flag;
         CData/*0:0*/ ysyx_22040175_top__DOT__rest_from_id;
+        CData/*0:0*/ ysyx_22040175_top__DOT__control_rest;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_branch;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_jump;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_reg_wen;
@@ -64,6 +65,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_time_set;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_no_use;
         CData/*0:0*/ ysyx_22040175_top__DOT__write_ready;
+        CData/*0:0*/ ysyx_22040175_top__DOT__ex_pc_ready;
         CData/*0:0*/ ysyx_22040175_top__DOT__mem_reg_wen;
         CData/*4:0*/ ysyx_22040175_top__DOT__mem_reg_waddr;
         CData/*0:0*/ ysyx_22040175_top__DOT__mem_ebreak_flag;
@@ -91,10 +93,10 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__alu_src_sel;
         IData/*31:0*/ ysyx_22040175_top__DOT__id_inst;
         IData/*31:0*/ ysyx_22040175_top__DOT__id_s_imm;
-        IData/*31:0*/ ysyx_22040175_top__DOT__ex_s_imm;
-        IData/*31:0*/ ysyx_22040175_top__DOT__mem_s_imm;
     };
     struct {
+        IData/*31:0*/ ysyx_22040175_top__DOT__ex_s_imm;
+        IData/*31:0*/ ysyx_22040175_top__DOT__mem_s_imm;
         IData/*31:0*/ ysyx_22040175_top__DOT__wb_s_imm;
         QData/*63:0*/ ysyx_22040175_top__DOT__next_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__if_pc;
@@ -136,7 +138,8 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     CData/*0:0*/ __Vclklast__TOP____VinpClk__TOP__ysyx_22040175_top__DOT__rst_n;
     CData/*0:0*/ __Vchglast__TOP__ysyx_22040175_top__DOT__rst_n;
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_if_stage__DOT__pmem_read__0__rdata;
-    QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_mem_stage__DOT__pmem_read__2__rdata;
+    QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_if_stage__DOT__pmem_read__1__rdata;
+    QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_mem_stage__DOT__pmem_read__3__rdata;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellinp__u_id_stage__reg_f;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellout__u_id_ex_regs__reg_f_id_ex_o;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellinp__u_id_ex_regs__reg_f_id_ex_i;
