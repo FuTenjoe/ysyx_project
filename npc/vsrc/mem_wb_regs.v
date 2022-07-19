@@ -33,7 +33,9 @@ module mem_wb_regs(
 	input no_use_mem_wb_i,
 	output reg no_use_mem_wb_o,
 	input ex_pc_ready_mem_wb_i,
-	output ex_pc_ready_mem_wb_o
+	output ex_pc_ready_mem_wb_o,
+	input [63:0] pc_mem_wb_i,
+	output [63:0] pc_mem_wb_o
     );
 
 	always@(posedge clk or negedge rst_n)
@@ -53,6 +55,7 @@ module mem_wb_regs(
 			from_mem_alu_res_mem_wb_o <= 64'd0;
 			no_use_mem_wb_o <= 1'b0;
 			ex_pc_ready_mem_wb_o <= 1'b0;
+			pc_mem_wb_o <= 32'h8000_0000
 		end
 		else begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
@@ -69,6 +72,7 @@ module mem_wb_regs(
 			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_i;
 			no_use_mem_wb_o <= no_use_mem_wb_i;
 			ex_pc_ready_mem_wb_o  <= ex_pc_ready_mem_wb_i;
+			pc_mem_wb_o <= pc_ex_mem_i;
 		end
 	end
 	

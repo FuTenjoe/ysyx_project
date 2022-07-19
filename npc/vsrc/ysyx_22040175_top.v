@@ -6,11 +6,11 @@ module  ysyx_22040175_top(
 	output [31:0]                 inst,
 	output[31:0]        pc,
     output [`CPU_WIDTH-1:0]       unknown_code,
-    input time_set
-    
+    input time_set,
+    output[31:0]        diff_pc
    // output[`CPU_WIDTH-1:0]        next_pc
 );
-
+assign diff_pc = wb_pc[31:0];
 wire rst_n;
 assign rst_n = !rst;
 wire [63:0] next_pc;
@@ -239,6 +239,7 @@ wire     [`CPU_WIDTH-1:0]    mem_alu_src2;// alu source 2
 wire [63:0] mem_from_ex_alu_res;
 wire mem_no_use;
 wire mem_pc_ready;
+wire [63:0] mem_pc;
 ex_mem_regs u_ex_mem_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -282,7 +283,9 @@ ex_mem_regs u_ex_mem_regs(
     .no_use_ex_mem_i(ex_no_use),
     .no_use_ex_mem_o(mem_no_use),
     .ex_pc_ready_ex_mem_i(ex_pc_ready),
-    .ex_pc_ready_ex_mem_o (mem_pc_ready)
+    .ex_pc_ready_ex_mem_o (mem_pc_ready),
+    .pc_ex_mem_i(ex_pc),
+	.pc_ex_mem_o(mem_pc)
 );
 wire [63:0] from_mem_alu_res;
 mem_stage u_mem_stage(
@@ -308,6 +311,7 @@ wire  [63:0] wb_from_ex_alu_res;
 wire [63:0] wb_from_mem_alu_res;
 wire wb_no_use;
 wire wb_pc_ready;
+wire [63:0] wb_pc;
 mem_wb_regs u_mem_wb_regs(
 	.clk(clk),
     .rst_n(rst_n),
@@ -343,7 +347,9 @@ mem_wb_regs u_mem_wb_regs(
     .no_use_mem_wb_i(mem_no_use),
     .no_use_mem_wb_o(wb_no_use),
     .ex_pc_ready_mem_wb_i(mem_pc_ready),
-	.ex_pc_ready_mem_wb_o(wb_pc_ready)
+	.ex_pc_ready_mem_wb_o(wb_pc_ready),
+    .pc_mem_wb_i(mem_pc),
+	.pc_mem_wb_o(wb_pc)
     );
 wire [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;

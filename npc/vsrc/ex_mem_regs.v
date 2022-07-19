@@ -44,7 +44,9 @@ module ex_mem_regs(
 	input no_use_ex_mem_i,
 	output reg no_use_ex_mem_o,
 	input ex_pc_ready_ex_mem_i,
-	output ex_pc_ready_ex_mem_o
+	output ex_pc_ready_ex_mem_o,
+	input  [63:0] pc_ex_mem_i,
+	output [63:0] pc_ex_mem_o
 	
     );
 
@@ -69,6 +71,7 @@ module ex_mem_regs(
 			from_ex_alu_res_ex_mem_o <= 64'd0;
 			no_use_ex_mem_o <= 1'b0;
 			ex_pc_ready_ex_mem_o <= 1'b0;
+			pc_ex_mem_o <= 32'h8000_0000;
 		end
 		else begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
@@ -91,6 +94,7 @@ module ex_mem_regs(
 			from_ex_alu_res_ex_mem_o <= from_ex_alu_res_ex_mem_i;
 			no_use_ex_mem_o <=  no_use_ex_mem_i;
 			ex_pc_ready_ex_mem_o <= ex_pc_ready_ex_mem_i;
+			pc_ex_mem_o <= pc_ex_mem_i;
 		end
 	end
 	
