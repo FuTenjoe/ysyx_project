@@ -208,14 +208,14 @@ int main(int argc, char **argv, char **env) {
        printf(" a2= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[18],top->inst);
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
-      /*  if (a>2){
+        if (a>2){
        //printf("a =%d \n",a);
        
          difftest_step(top->pc);
         }
         else{
           init_difftest(img_size,port);
-        }*/
+        }
      }
      
       if(npc_state == NPC_ABORT){
