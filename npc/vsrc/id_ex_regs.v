@@ -74,8 +74,7 @@ module id_ex_regs(
 	output reg no_use
     );
 
-always@(posedge clk or negedge rst_n)
-	begin
+always@(posedge clk or negedge rst_n)begin
 		if(!rst_n)begin
 			pc_id_ex_o <= 32'h8000_0000;
 			imm_id_ex_o <= 64'd0;
@@ -144,33 +143,9 @@ always@(posedge clk or negedge rst_n)
 			ena_id_ex_o <= ena_id_ex_i;
 			no_use <= 1'b0;
 		end
-	end
-	
-	
-always@(posedge clk or negedge rst_n)begin	
-		if(!rst_n)begin
-			
-		end
-		else begin
-			branch_id_ex_o <= branch_id_ex_i;
-			jump_id_ex_o <= jump_id_ex_i;
-			reg_wen_id_ex_o <= reg_wen_id_ex_i;
-			reg_waddr_id_ex_o <= reg_waddr_id_ex_i;
-			alu_op_id_ex_o <= alu_op_id_ex_i;
-			alu_src_sel_id_ex_o <= alu_src_sel_id_ex_i;
-			unknown_code_id_ex_o <= unknown_code_id_ex_i;
-			jalr_id_ex_o <= jalr_id_ex_i;
-			ebreak_flag_id_ex_o <= ebreak_flag_id_ex_i;
-			wmask_id_ex_o <= wmask_id_ex_i;
-			s_flag_id_ex_o <= s_flag_id_ex_i;
-			s_imm_id_ex_o <= s_imm_id_ex_i;
-			expand_signed_id_ex_o <= expand_signed_id_ex_i;
-			rd_flag_id_ex_o <= rd_flag_id_ex_i;
-			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
-			ena_id_ex_o <= ena_id_ex_i;
-			rest_from_id_id_ex_o  <= rest_from_id_id_ex_i;
-		end
 end
+	
+	
 	
 
 endmodule
