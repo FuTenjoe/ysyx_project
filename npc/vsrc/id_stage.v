@@ -8,6 +8,7 @@ module id_stage (
     input [`REG_ADDR_WIDTH-1:0] wb_reg_waddr,
     input write_ready,
     output reg rest_from_id,
+
     output reg                         branch,     // branch flag
     output reg                         jump,       // jump flag
 
@@ -28,7 +29,8 @@ module id_stage (
     output reg [31:0]s_imm,
     output reg [3:0] expand_signed,
     output reg [2:0]rd_flag,
-    output reg [2:0] rd_buf_flag   //访存标志
+    output reg [2:0] rd_buf_flag ,  //访存标志
+    output control_rest
    
    
 );
@@ -78,7 +80,7 @@ reg_read u_reg_read(
     .reg2_rdata(reg2_rdata) // register 2 read data
 
 );
-id_rest u_id_rest(
+id_rest u_id_rest(        //data hazard
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
     .wb_reg_waddr(wb_reg_waddr),
@@ -86,4 +88,12 @@ id_rest u_id_rest(
     .rest_from_id(rest_from_id)
    
 );
+id_control_rest u_id_control_rest(
+    .branch(branch),     // branch flag
+    .jump(jump),       // jump flag
+    .control_rest(control_rest)
+    
+   
+);
+
 endmodule

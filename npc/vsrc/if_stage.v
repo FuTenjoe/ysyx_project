@@ -6,7 +6,9 @@ module if_stage (
     input      [`CPU_WIDTH-1:0] next_pc,
     output ena,
     output [31:0] inst,
-    output [63:0] curr_pc
+    output [63:0] curr_pc,
+    input control_rest,
+    input ex_pc_ready
     
    
 );
@@ -24,7 +26,10 @@ import "DPI-C" function void pmem_read(input longint raddr, output longint rdata
 wire [63:0] rdata;
 always @(*) begin
   //pmem_read(curr_pc, rdata);
-  pmem_read(curr_pc, rdata);
+  if(control_rest == 1'b0)
+    pmem_read(curr_pc, rdata);
+  else if(ex_pc_ready == 1'b1)
+    pmem_read(curr_pc, rdata);
 end
 assign inst = rdata[31:0];
 endmodule

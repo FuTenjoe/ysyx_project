@@ -24,7 +24,8 @@ module ex_stage(
     input  [31:0]s_imm,
     //input write_ready,
     output reg [`CPU_WIDTH-1:0] next_pc, // next pc addr
-    input  no_use
+    input  no_use,
+    output ex_pc_ready
 );
 wire zero;
 
@@ -53,7 +54,8 @@ muxpc u_muxpc(
    // input      [`CPU_WIDTH-1:0]     reg1_rdata
    .ebreak_flag(ebreak_flag),
    .reg_f (reg_f),
-   .s_imm(s_imm)
+   .s_imm(s_imm),
+   .ex_pc_ready(ex_pc_ready)
   
     );
 

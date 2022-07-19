@@ -25,7 +25,9 @@ if_stage u_if_stage(
     .next_pc(ex_next_pc),
     .ena(ena),   //输出
     .inst(if_inst),
-    .curr_pc(if_pc)
+    .curr_pc(if_pc),
+    .control_rest(control_rest),
+    .ex_pc_ready(ex_pc_ready)
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 
@@ -41,7 +43,9 @@ if_id_regs u_if_id_regs(
 	.pc_if_id_o(id_pc),
 	.instr_if_id_o(id_inst),
     .ena_if_id_o(id_ena),
-    .time_set_if_id_o(id_time_set)
+    .time_set_if_id_o(id_time_set),
+    .control_rest(control_rest),
+    .ex_pc_ready(ex_pc_ready)
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
 wire id_branch;
@@ -63,6 +67,7 @@ wire [3:0] id_expand_signed;
 wire [2:0] id_rd_flag;
 wire [2:0] id_rd_buf_flag;   //访存标志
 wire rest_from_id;
+wire control_rest;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -93,7 +98,8 @@ id_stage u_id_stage(
     .s_imm(id_s_imm),
     .expand_signed(id_expand_signed),
     .rd_flag(id_rd_flag),
-    .rd_buf_flag(id_rd_buf_flag)   //访存标志
+    .rd_buf_flag(id_rd_buf_flag),   //访存标志
+    .control_rest(control_rest)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag
@@ -189,6 +195,7 @@ wire [63:0]    ex_alu_src1;
 wire [`CPU_WIDTH-1:0]    ex_alu_src2;
 wire [`CPU_WIDTH-1:0] ex_next_pc;
 wire write_ready;
+wire ex_pc_ready;
 ex_stage u_ex_stage(
     .alu_op(ex_alu_op),   // alu opcode
     
@@ -212,7 +219,8 @@ ex_stage u_ex_stage(
     .s_imm(ex_s_imm),
     //.write_ready(write_ready),
     .next_pc(ex_next_pc), // next pc addr
-    .no_use(ex_no_use)
+    .no_use(ex_no_use),
+    .ex_pc_ready(ex_pc_ready)
 );
 wire mem_reg_wen;
 wire [`REG_ADDR_WIDTH-1:0] mem_reg_waddr;
