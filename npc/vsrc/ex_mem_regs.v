@@ -42,7 +42,9 @@ module ex_mem_regs(
     output reg     [`CPU_WIDTH-1:0]    alu_src2_ex_mem_o, // alu source 2
 	output reg [63:0] from_ex_alu_res_ex_mem_o,
 	input no_use_ex_mem_i,
-	output reg no_use_ex_mem_o
+	output reg no_use_ex_mem_o,
+	input ex_pc_ready_ex_mem_i,
+	output ex_pc_ready_ex_mem_o
 	
     );
 
@@ -66,6 +68,7 @@ module ex_mem_regs(
 			alu_src2_ex_mem_o <= 64'd0;
 			from_ex_alu_res_ex_mem_o <= 64'd0;
 			no_use_ex_mem_o <= 1'b0;
+			ex_pc_ready_ex_mem_o <= 1'b0;
 		end
 		else begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
@@ -86,7 +89,8 @@ module ex_mem_regs(
 			alu_src1_ex_mem_o <= alu_src1_ex_mem_i;
 			alu_src2_ex_mem_o <= alu_src2_ex_mem_i;
 			from_ex_alu_res_ex_mem_o <= from_ex_alu_res_ex_mem_i;
-			 no_use_ex_mem_o <=  no_use_ex_mem_i;
+			no_use_ex_mem_o <=  no_use_ex_mem_i;
+			ex_pc_ready_ex_mem_o <= ex_pc_ready_ex_mem_i;
 		end
 	end
 	

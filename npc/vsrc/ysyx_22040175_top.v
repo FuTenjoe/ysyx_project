@@ -27,7 +27,7 @@ if_stage u_if_stage(
     .inst(if_inst),
     .curr_pc(if_pc),
     .control_rest(control_rest),
-    .ex_pc_ready(ex_pc_ready)
+    .ex_pc_ready(mem_pc_ready)
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 
@@ -45,7 +45,7 @@ if_id_regs u_if_id_regs(
     .ena_if_id_o(id_ena),
     .time_set_if_id_o(id_time_set),
     .control_rest(control_rest),
-    .ex_pc_ready(ex_pc_ready)
+    .ex_pc_ready(mem_pc_ready)
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
 wire id_branch;
@@ -237,6 +237,7 @@ wire [`CPU_WIDTH-1:0]    mem_alu_src1; // alu source 1
 wire     [`CPU_WIDTH-1:0]    mem_alu_src2;// alu source 2
 wire [63:0] mem_from_ex_alu_res;
 wire mem_no_use;
+wire mem_pc_ready;
 ex_mem_regs u_ex_mem_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -278,7 +279,9 @@ ex_mem_regs u_ex_mem_regs(
     .alu_src2_ex_mem_o(mem_alu_src2), // alu source 2
     .from_ex_alu_res_ex_mem_o(mem_from_ex_alu_res),
     .no_use_ex_mem_i(ex_no_use),
-    .no_use_ex_mem_o(mem_no_use)
+    .no_use_ex_mem_o(mem_no_use),
+    .ex_pc_ready_ex_mem_i(ex_pc_ready),
+    .ex_pc_ready_ex_mem_o (mem_pc_ready)
 );
 wire [63:0] from_mem_alu_res;
 mem_stage u_mem_stage(

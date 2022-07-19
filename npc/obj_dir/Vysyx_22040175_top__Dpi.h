@@ -15,7 +15,7 @@ extern "C" {
     // DPI IMPORTS
     // DPI import at vsrc/ctrl.v:755:30
     extern void ebreak();
-    // DPI import at vsrc/if_stage.v:27:30
+    // DPI import at vsrc/if_stage.v:25:30
     extern void pmem_read(long long raddr, long long* rdata);
     // DPI import at vsrc/wb_stage.v:73:30
     extern void pmem_write(long long waddr, long long wdata, char wmask);
