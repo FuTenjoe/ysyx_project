@@ -268,7 +268,7 @@ ex_mem_regs u_ex_mem_regs(
 	.alu_op_ex_mem_o(mem_alu_op),
 	.alu_src1_ex_mem_o(mem_alu_src1), // alu source 1
     .alu_src2_ex_mem_o(mem_alu_src2), // alu source 2
-    .from_ex_alu_res_ex_mem_o(mem_from_ex_alu_res)
+    .from_ex_alu_res_ex_mem_o(mem_from_ex_alu_res),
     .no_use_ex_mem_i(ex_no_use),
     .no_use_ex_mem_o(mem_no_use)
 );
