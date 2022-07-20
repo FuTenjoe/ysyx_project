@@ -19,36 +19,31 @@ module id_rest (
 reg write_1;
 reg write_2;
 reg write_3;
-reg write_4;
-reg write_5;
+reg [63:0] id_rest_pc;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         write_1 <= 1'b0;
         write_2 <= 1'b0;
         write_3 <= 1'b0;
-        write_4 <= 1'b0;
-        write_5 <= 1'b0;
+        id_rest_pc <= 32'h0000_0000;
     end
     else if(id_pc != 32'h0000_0000&id_pc != 32'h8000_0000 & id_pc != 32'h8000_0004)begin
-        if( write_2 == 1'b1 & write_1 == 1'b1&write_3 == 1'b1&write_4 == 1'b1|write_5==1'b1)begin
+        id_rest_pc <= id_pc;
+        if( write_2 == 1'b1 & write_1 == 1'b1&write_3 == 1'b1)begin
             write_1 <= 1'b0;
             write_2 <= 1'b0;
-            write_3 <= 1'b0;
-            write_4 <= 1'b0;
-            write_5 <= 1'b0;
+            write_3 <= 1'b0;   
         end
         else if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
             write_1 <= write_ready;
             write_2 <= write_1;
             write_3 <= write_2;
-            write_4 <= write_3;
-            write_5 <= write_4;
         end
     end
 end
 
 always @(*) begin
-    if(id_pc != 32'h0000_0000&id_pc != 32'h8000_0000 & id_pc != 32'h8000_0004)begin
+    if(id_pc != 32'h0000_0000&id_pc != 32'h8000_0000 & id_pc != 32'h8000_0004 &id_rest_pc != id_pc)begin
         if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
             if(write_3 == 1'b0)
                 rest_from_id = 1'b1;
