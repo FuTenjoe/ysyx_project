@@ -53,7 +53,8 @@ if_id_regs u_if_id_regs(
     //.control_rest_no_use(id_no_use),
     .pc_no_use_if_id_i(pc_no_use),
 	.pc_no_use_if_id_o(id_no_use),
-    .ex_pc_ready(ex_pc_ready)
+    .ex_pc_ready(ex_pc_ready),
+    .rest_from_id(rest_from_id)
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
 wire id_branch;
