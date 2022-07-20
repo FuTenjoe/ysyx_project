@@ -195,7 +195,7 @@ id_ex_regs u_id_ex_regs(
 	//output [63:0] reg_wdata_id_ex_o,
 	.time_set_id_ex_o(ex_time_set),
 	//.reg_f_id_ex_o (to_ex_reg_f),
-    .reg_f_id_ex_o (from_wb_reg_f),
+    .reg_f_id_ex_o (to_ex_reg_f),
     .ena_id_ex_i(id_ena),
     .ena_id_ex_o(ex_ena),
     .rest_from_id_id_ex_i(rest_from_id),
