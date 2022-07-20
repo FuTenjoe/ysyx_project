@@ -52,14 +52,7 @@ always@(posedge clk or negedge rst_n)begin
             write_5 <= write_4;
             write_6 <= write_5;
         end
-        else if (write_1 == 1'b1)begin
-            write_1 <= write_ready;
-            write_2 <= write_1;
-            write_3 <= write_2;
-            write_4 <= write_3;
-            write_5 <= write_4;
-            write_6 <= write_5;
-        end
+        
     end
 end
 
