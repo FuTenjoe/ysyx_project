@@ -71,7 +71,7 @@ wire control_rest;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
-    .id_pc(id_pc),
+    .wb_pc(wb_pc),
     .inst(id_inst),       // instruction input
     //.reg_f (to_id_reg_f),
     .reg_f (from_wb_reg_f),

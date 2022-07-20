@@ -3,7 +3,7 @@
 module id_rest (
     input clk,
     input rst_n,
-    input [64:0] id_pc,
+    input [64:0] wb_pc,
     input      [`REG_ADDR_WIDTH-1:0] reg1_raddr, // register 1 read address
     input      [`REG_ADDR_WIDTH-1:0] reg2_raddr, // register 2 read address
     input [`REG_ADDR_WIDTH-1:0] wb_reg_waddr,
@@ -27,7 +27,7 @@ always@(posedge clk or negedge rst_n)begin
         write_3 <= 1'b0;
         id_rest_pc <= 32'h0000_0000;
     end
-    else if(id_pc != 32'h0000_0000&id_pc != 32'h8000_0000)begin
+    else if(wb_pc != 32'h0000_0000 & wb_pc != 32'h8000_0000)begin
         id_rest_pc <= id_pc;
         if( write_2 == 1'b1 & write_1 == 1'b1&write_3 == 1'b1 & id_rest_pc != id_pc )begin
             write_1 <= 1'b0;
@@ -43,7 +43,7 @@ always@(posedge clk or negedge rst_n)begin
 end
 
 always @(*) begin
-    if(id_pc != 32'h0000_0000&id_pc != 32'h8000_0000 )begin
+    if(wb_pc != 32'h0000_0000 & wb_pc != 32'h8000_0000 )begin
         if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
             if(write_3 == 1'b0 )
                 rest_from_id = 1'b1;
