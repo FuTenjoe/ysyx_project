@@ -12,7 +12,7 @@ module if_stage (
     
 );
 //wire [`CPU_WIDTH-1:0] curr_pc;
-pc_reg u_pc_reg(
+/*pc_reg u_pc_reg(
     .clk(clk),     // system clock
     .rst_n(rst_n),   // active low reset
     .ena(ena),     // system enable
@@ -20,6 +20,17 @@ pc_reg u_pc_reg(
     .curr_pc(curr_pc),  // current pc addr
     .control_rest(control_rest),
     .ex_pc_ready(ex_pc_ready)
+);*/
+wire pc_no_use;
+pc_predict u_pc_predict(
+  .clk(clk),     // system clock
+  .rst_n(rst_n),   // active low reset
+  .control_rest(control_rest),
+  .ex_next_pc(next_pc), // from ex
+  .ena(ena), 
+  .curr_pc(curr_pc),  // current pc addr
+  .ex_pc_ready(ex_pc_ready),
+  .pc_no_use(pc_no_use)
 );
 
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
