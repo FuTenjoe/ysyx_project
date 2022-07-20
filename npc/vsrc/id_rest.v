@@ -42,7 +42,7 @@ always @(*) begin
         if(write_3 == 1'b0)
             rest_from_id = 1'b1;
         else
-            rest_from_id = 1'b1;
+            rest_from_id = 1'b0;
     end
     else 
         rest_from_id = 1'b0;

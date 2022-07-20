@@ -333,7 +333,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                 = (IData)((0U == (0xcU & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_expand_signed))));
         }
     } else {
-        vlSelf->ysyx_22040175_top__DOT__write_ready = 0U;
+        vlSelf->ysyx_22040175_top__DOT__write_ready = 1U;
     }
     vlSelf->ysyx_22040175_top__DOT__ex_reg2_rdata = 
         ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
