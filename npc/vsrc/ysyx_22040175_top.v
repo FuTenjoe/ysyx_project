@@ -29,7 +29,7 @@ if_stage u_if_stage(
     .curr_pc(if_pc),
     .control_rest(id_control_rest),
     .ex_pc_ready(ex_pc_ready),
-    pc_no_use(pc_no_use)
+    .pc_no_use(pc_no_use)
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 
