@@ -36,9 +36,6 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root___settle__TOP__2\n"); );
-    // Variables
-    VlWide<3>/*95:0*/ __Vtemp19;
-    VlWide<3>/*95:0*/ __Vtemp20;
     // Body
     vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag = 0U;
     if (vlSelf->ysyx_22040175_top__DOT__wb_ebreak_flag) {
@@ -5283,14 +5280,9 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                                                        & (IData)(
                                                                                 ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                                                 >> 0x14U)))))))));
-    VL_EXTEND_WQ(65,64, __Vtemp19, vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__id_rest_pc);
-    VL_EXTEND_WQ(65,64, __Vtemp20, vlSelf->ysyx_22040175_top__DOT__id_pc);
-    if (((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
-           & (0x80000000ULL != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
-          & (0x80000004ULL != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
-         & (0U != (((__Vtemp19[0U] ^ __Vtemp20[0U]) 
-                    | (__Vtemp19[1U] ^ __Vtemp20[1U])) 
-                   | (__Vtemp19[2U] ^ __Vtemp20[2U]))))) {
+    if ((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
+          & (0x80000000ULL != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
+         & (0x80000004ULL != vlSelf->ysyx_22040175_top__DOT__id_pc))) {
         if ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
               == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr)) 
              | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
