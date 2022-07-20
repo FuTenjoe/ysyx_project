@@ -237,8 +237,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+379,"ysyx_22040175_top u_id_stage u_id_rest write_1", false,-1);
         tracep->declBit(c+380,"ysyx_22040175_top u_id_stage u_id_rest write_2", false,-1);
         tracep->declBit(c+381,"ysyx_22040175_top u_id_stage u_id_rest write_3", false,-1);
-        tracep->declBit(c+382,"ysyx_22040175_top u_id_stage u_id_rest write_4", false,-1);
-        tracep->declBit(c+383,"ysyx_22040175_top u_id_stage u_id_rest write_5", false,-1);
+        tracep->declQuad(c+382,"ysyx_22040175_top u_id_stage u_id_rest id_rest_pc", false,-1, 63,0);
         tracep->declBit(c+9,"ysyx_22040175_top u_id_stage u_id_control_rest branch", false,-1);
         tracep->declBit(c+10,"ysyx_22040175_top u_id_stage u_id_control_rest jump", false,-1);
         tracep->declBit(c+32,"ysyx_22040175_top u_id_stage u_id_control_rest control_rest", false,-1);
@@ -471,7 +470,7 @@ void Vysyx_22040175_top___024root__traceFullTop0(void* voidSelf, VerilatedVcd* t
 void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VlWide<3>/*95:0*/ __Vtemp19;
+    VlWide<3>/*95:0*/ __Vtemp23;
     vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode);
     if (false && oldp) {}  // Prevent unused
     // Body
@@ -712,13 +711,12 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullQData(oldp+370,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_reg_read__reg_f[29]),64);
         tracep->fullQData(oldp+372,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_reg_read__reg_f[30]),64);
         tracep->fullQData(oldp+374,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_reg_read__reg_f[31]),64);
-        VL_EXTEND_WQ(65,64, __Vtemp19, vlSelf->ysyx_22040175_top__DOT__id_pc);
-        tracep->fullWData(oldp+376,(__Vtemp19),65);
+        VL_EXTEND_WQ(65,64, __Vtemp23, vlSelf->ysyx_22040175_top__DOT__id_pc);
+        tracep->fullWData(oldp+376,(__Vtemp23),65);
         tracep->fullBit(oldp+379,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1));
         tracep->fullBit(oldp+380,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_2));
         tracep->fullBit(oldp+381,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_3));
-        tracep->fullBit(oldp+382,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_4));
-        tracep->fullBit(oldp+383,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_5));
+        tracep->fullQData(oldp+382,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__id_rest_pc),64);
         tracep->fullQData(oldp+384,(vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_id_ex_regs__reg_f_id_ex_i[0]),64);
         tracep->fullQData(oldp+386,(vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_id_ex_regs__reg_f_id_ex_i[1]),64);
         tracep->fullQData(oldp+388,(vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_id_ex_regs__reg_f_id_ex_i[2]),64);
