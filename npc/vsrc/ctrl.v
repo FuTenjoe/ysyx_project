@@ -688,6 +688,7 @@ always @(*) begin
                 jump        = 1'b1;
                 reg_wen     = 1'b1;
                 jalr = 1'b1;
+               
                 reg_waddr   = rd;
                 imm_gen_op  = `IMM_GEN_I;
                 alu_op      = `ALU_ADD;
@@ -697,6 +698,10 @@ always @(*) begin
                 expand_signed = 4'd0;
                 s_imm = rs1;
                 rd_flag = 3'd0;
+
+                //后加
+                reg1_raddr = rs1;
+                reg2_raddr = rs1;
                 end
                 default:unknown_code = inst;
             endcase
