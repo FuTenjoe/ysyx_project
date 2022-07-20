@@ -9,7 +9,7 @@ module id_rest (
     input [`REG_ADDR_WIDTH-1:0] reg_waddr,
     input write_ready,
     output reg rest_from_id
-    
+
 );
 
 
@@ -45,6 +45,14 @@ always@(posedge clk or negedge rst_n)begin
             write_6 <= 1'b0;
         end
         else if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
+            write_1 <= write_ready;
+            write_2 <= write_1;
+            write_3 <= write_2;
+            write_4 <= write_3;
+            write_5 <= write_4;
+            write_6 <= write_5;
+        end
+        else if (write_1 == 1'b1)begin
             write_1 <= write_ready;
             write_2 <= write_1;
             write_3 <= write_2;
