@@ -19,7 +19,7 @@ module id_rest (
 reg write_1;
 reg write_2;
 reg write_3;
-reg [63:0] id_rest_pc;
+reg [63:0] wb_rest_pc;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         write_1 <= 1'b0;
