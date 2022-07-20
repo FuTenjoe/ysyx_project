@@ -169,6 +169,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+4,"ysyx_22040175_top u_if_id_regs pc_no_use_if_id_i", false,-1);
         tracep->declBit(c+10,"ysyx_22040175_top u_if_id_regs pc_no_use_if_id_o", false,-1);
         tracep->declBit(c+132,"ysyx_22040175_top u_if_id_regs ex_pc_ready", false,-1);
+        tracep->declBit(c+33,"ysyx_22040175_top u_if_id_regs rest_from_id", false,-1);
         tracep->declBit(c+718,"ysyx_22040175_top u_id_stage clk", false,-1);
         tracep->declBit(c+726,"ysyx_22040175_top u_id_stage rst_n", false,-1);
         tracep->declQuad(c+6,"ysyx_22040175_top u_id_stage id_pc", false,-1, 63,0);
