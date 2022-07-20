@@ -37,7 +37,7 @@ always@(posedge clk or negedge rst_n)begin
     end
 end
 
-always @(*) begin
+always @(posedge clk or negedge rst_n) begin
     if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
         if(write_3 == 1'b0)
             rest_from_id = 1'b1;
