@@ -18,19 +18,23 @@ module id_rest (
 // register 1 read
 reg write_1;
 reg write_2;
+reg write_3;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         write_1 <= 1'b0;
         write_2 <= 1'b0;
+        write_3 <= 1'b0;
     end
     else if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
         if(write_2 != 1'b1)begin
             write_1 <= write_ready;
             write_2 <= write_1;
+            write_3 <= write_2;
         end
         else begin
             write_1 <= 1'b0;
             write_2 <= 1'b0;
+            write_3 <= 1'b0;
         end
     end
 end
@@ -40,7 +44,7 @@ end
 always @(*) begin
     if(id_pc != 32'h0000_0000 & id_pc != 32'h8000_0000 )begin
         if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
-            if(write_2 == 1'b0)
+            if(write_3 == 1'b0)
                 rest_from_id = 1'b1;
             else 
                 rest_from_id = 1'b0;
