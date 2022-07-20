@@ -3,6 +3,7 @@
 module id_stage (
     input clk,
     input rst_n,
+    input [63:0] id_pc,
     input      [`CPU_WIDTH-1:0]        inst,       // instruction input
     input reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     input [`REG_ADDR_WIDTH-1:0] wb_reg_waddr,

@@ -5982,7 +5982,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
             = vlSelf->ysyx_22040175_top__DOT__ex_pc;
     }
     vlSelf->ysyx_22040175_top__DOT__ex_next_pc = ((IData)(vlSelf->ysyx_22040175_top__DOT__ex_no_use)
-                                                   ? vlSelf->ysyx_22040175_top__DOT__ex_pc
+                                                   ? vlSelf->ysyx_22040175_top__DOT__id_pc
                                                    : 
                                                   (((IData)(vlSelf->ysyx_22040175_top__DOT__ex_branch) 
                                                     & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__zero)))
