@@ -8,8 +8,8 @@ module if_stage (
     output [31:0] inst,
     output [63:0] curr_pc,
     input control_rest,
-    input ex_pc_ready
-    
+    input ex_pc_ready,
+    output pc_no_use
 );
 //wire [`CPU_WIDTH-1:0] curr_pc;
 /*pc_reg u_pc_reg(
@@ -21,7 +21,6 @@ module if_stage (
     .control_rest(control_rest),
     .ex_pc_ready(ex_pc_ready)
 );*/
-wire pc_no_use;
 pc_predict u_pc_predict(
   .clk(clk),     // system clock
   .rst_n(rst_n),   // active low reset

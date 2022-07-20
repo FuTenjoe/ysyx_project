@@ -19,6 +19,7 @@ wire [31:0]if_inst;
 wire [63:0]if_pc;
 assign pc = if_pc;
 assign inst = if_inst;
+wire pc_no_use;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -27,7 +28,8 @@ if_stage u_if_stage(
     .inst(if_inst),
     .curr_pc(if_pc),
     .control_rest(id_control_rest),
-    .ex_pc_ready(ex_pc_ready)
+    .ex_pc_ready(ex_pc_ready),
+    pc_no_use(pc_no_use)
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 
@@ -46,7 +48,9 @@ if_id_regs u_if_id_regs(
     .ena_if_id_o(id_ena),
     .time_set_if_id_o(id_time_set),
     .control_rest_if_id_i(id_control_rest),
-    .control_rest_no_use(id_no_use),
+    //.control_rest_no_use(id_no_use),
+    .pc_no_use_if_id_i(pc_no_use),
+	.pc_no_use_if_id_o(id_no_use),
     .ex_pc_ready(ex_pc_ready)
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
