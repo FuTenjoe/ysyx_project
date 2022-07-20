@@ -25,7 +25,7 @@ always @(*) begin
         ex_pc_ready = 1'b0;
     end
     if(no_use)begin
-        next_pc = curr_pc;
+        next_pc = id_pc;
         ex_pc_ready = 1'b0;
     end
     else if (branch && ~zero)begin // bne
