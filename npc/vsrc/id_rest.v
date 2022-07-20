@@ -38,7 +38,7 @@ always@(posedge clk or negedge rst_n)begin
 end
 
 always @(*) begin
-    if(id_pc != 32'h0000_0000)begin
+    if(id_pc != 32'h0000_0000&id_pc != 32'h8000_0000)begin
         if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
             if(write_3 == 1'b0)
                 rest_from_id = 1'b1;
