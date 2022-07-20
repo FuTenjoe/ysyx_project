@@ -44,7 +44,7 @@ always@(posedge clk or negedge rst_n)begin
             write_5 <= 1'b0;
             write_6 <= 1'b0;
         end
-        else if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
+        else if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
             write_1 <= write_ready;
             write_2 <= write_1;
             write_3 <= write_2;
