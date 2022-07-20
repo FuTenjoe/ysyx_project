@@ -100,6 +100,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_4;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_5;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_6;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_ex_regs__DOT__dp_no_use;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__zero;
         IData/*31:0*/ ysyx_22040175_top__DOT__id_inst;
         IData/*31:0*/ ysyx_22040175_top__DOT__id_s_imm;

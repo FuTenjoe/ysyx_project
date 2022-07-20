@@ -73,7 +73,7 @@ module id_ex_regs(
 	input rest_from_id_id_ex_i,
 	output reg no_use
     );
-reg dp_no_use; //打拍
+//reg dp_no_use; //打拍
 always@(posedge clk or negedge rst_n)begin
 		if(!rst_n)begin
 			pc_id_ex_o <= 32'h8000_0000;
@@ -98,7 +98,7 @@ always@(posedge clk or negedge rst_n)begin
 			rd_buf_flag_id_ex_o <= 3'd0;
 			ena_id_ex_o <= 1'd0;
 			no_use <= 1'd0;
-			dp_no_use <= 1'd0;
+			//dp_no_use <= 1'd0;
 			
 		end
 		else if(rest_from_id_id_ex_i == 1'b1)begin
@@ -121,8 +121,8 @@ always@(posedge clk or negedge rst_n)begin
 			rd_flag_id_ex_o <= rd_flag_id_ex_o;
 			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_o;
 			ena_id_ex_o <= ena_id_ex_o;
-			dp_no_use <= 1'b1;
-			no_use <= dp_no_use;   //输入指令无效信号
+			//dp_no_use <= 1'b1;
+			no_use <= 1'b1;   //输入指令无效信号
 		end
 		else begin
 			pc_id_ex_o<=pc_id_ex_i;
@@ -144,8 +144,8 @@ always@(posedge clk or negedge rst_n)begin
 			rd_flag_id_ex_o <= rd_flag_id_ex_i;
 			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
 			ena_id_ex_o <= ena_id_ex_i;
-			dp_no_use <= 1'b0;
-			no_use <= dp_no_use;    //此处是否需要打拍
+			//dp_no_use <= 1'b0;
+			no_use <=  1'b0;  //此处是否需要打拍
 			reg_f_id_ex_o <= reg_f_id_ex_i;
 		end
 end
