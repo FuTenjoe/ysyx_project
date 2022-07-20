@@ -26,9 +26,10 @@ module ex_stage(
     output reg [`CPU_WIDTH-1:0] next_pc, // next pc addr
     input  no_use,
     output ex_pc_ready,
-    input  [`ALU_SRC_WIDTH-1:0]    alu_src_sel
+    input  [`ALU_SRC_WIDTH-1:0]    alu_src_sel,
 );
 wire zero;
+
 
 
 alu u_alu(
