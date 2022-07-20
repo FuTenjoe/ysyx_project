@@ -185,13 +185,13 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
               : vlSelf->ysyx_22040175_top__DOT__id_s_imm);
         vlSelf->ysyx_22040175_top__DOT__mem_alu_op 
             = vlSelf->ysyx_22040175_top__DOT__ex_alu_op;
+        vlSelf->ysyx_22040175_top__DOT__wb_ebreak_flag 
+            = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_ebreak_flag) 
+               & 1U);
         __Vdly__ysyx_22040175_top__DOT__ex_ebreak_flag 
             = (((IData)(vlSelf->ysyx_22040175_top__DOT__rest_from_id)
                  ? (IData)(vlSelf->ysyx_22040175_top__DOT__ex_ebreak_flag)
                  : (IData)(vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag)) 
-               & 1U);
-        vlSelf->ysyx_22040175_top__DOT__wb_ebreak_flag 
-            = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_ebreak_flag) 
                & 1U);
         vlSelf->ysyx_22040175_top__DOT__wb_time_set 
             = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_time_set) 
@@ -234,8 +234,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
         vlSelf->ysyx_22040175_top__DOT__wb_from_mem_alu_res = 0ULL;
         __Vdly__ysyx_22040175_top__DOT__ex_s_imm = 0U;
         vlSelf->ysyx_22040175_top__DOT__mem_alu_op = 0U;
-        __Vdly__ysyx_22040175_top__DOT__ex_ebreak_flag = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_ebreak_flag = 0U;
+        __Vdly__ysyx_22040175_top__DOT__ex_ebreak_flag = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_time_set = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_wmask = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_s_imm = 0U;
@@ -6593,7 +6593,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
             = vlSelf->ysyx_22040175_top__DOT__ex_pc;
     }
     vlSelf->ysyx_22040175_top__DOT__ex_next_pc = ((IData)(vlSelf->ysyx_22040175_top__DOT__ex_no_use)
-                                                   ? vlSelf->ysyx_22040175_top__DOT__ex_pc
+                                                   ? vlSelf->ysyx_22040175_top__DOT__id_pc
                                                    : 
                                                   (((IData)(vlSelf->ysyx_22040175_top__DOT__ex_branch) 
                                                     & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__zero)))
