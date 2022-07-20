@@ -71,6 +71,7 @@ module id_ex_regs(
 	input ena_id_ex_i,
 	output ena_id_ex_o,
 	input rest_from_id_id_ex_i,
+	input control_rest_no_use,
 	output reg no_use
     );
 //reg dp_no_use; //打拍
@@ -101,7 +102,7 @@ always@(posedge clk or negedge rst_n)begin
 			//dp_no_use <= 1'd0;
 			
 		end
-		else if(rest_from_id_id_ex_i == 1'b1)begin
+		else if(rest_from_id_id_ex_i == 1'b1 | control_rest_no_use == 1'b1)begin
 			pc_id_ex_o <= pc_id_ex_o;
 			imm_id_ex_o <= imm_id_ex_o;
 			reg2_rdata_id_ex_o <= reg2_rdata_id_ex_o;

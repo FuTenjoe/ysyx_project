@@ -26,13 +26,14 @@ if_stage u_if_stage(
     .ena(ena),   //输出
     .inst(if_inst),
     .curr_pc(if_pc),
-    .control_rest(control_rest),
-    .ex_pc_ready(wb_pc_ready)
+    .control_rest(id_control_rest),
+    .ex_pc_ready(ex_pc_ready)
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 
 wire id_ena;
 wire id_time_set;
+wire id_no_use;
 if_id_regs u_if_id_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -44,8 +45,9 @@ if_id_regs u_if_id_regs(
 	.instr_if_id_o(id_inst),
     .ena_if_id_o(id_ena),
     .time_set_if_id_o(id_time_set),
-    .control_rest(control_rest),
-    .ex_pc_ready(wb_pc_ready)
+    .control_rest_if_id_i(id_control_rest),
+    .control_rest_no_use(id_no_use),
+    .ex_pc_ready(ex_pc_ready)
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
 wire id_branch;
@@ -67,7 +69,7 @@ wire [3:0] id_expand_signed;
 wire [2:0] id_rd_flag;
 wire [2:0] id_rd_buf_flag;   //访存标志
 wire rest_from_id;
-wire control_rest;
+wire id_control_rest;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -100,7 +102,7 @@ id_stage u_id_stage(
     .expand_signed(id_expand_signed),
     .rd_flag(id_rd_flag),
     .rd_buf_flag(id_rd_buf_flag),   //访存标志
-    .control_rest(control_rest)
+    .control_rest(id_control_rest)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag
@@ -189,6 +191,7 @@ id_ex_regs u_id_ex_regs(
     .ena_id_ex_i(id_ena),
     .ena_id_ex_o(ex_ena),
     .rest_from_id_id_ex_i(rest_from_id),
+    .control_rest_no_use(id_no_use),
     .no_use(ex_no_use)
     );
 wire [63:0] from_ex_alu_res;
