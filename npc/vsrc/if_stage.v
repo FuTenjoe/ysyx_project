@@ -9,7 +9,7 @@ module if_stage (
     output [63:0] curr_pc,
     input control_rest,
     input ex_pc_ready,
-    output pc_no_use
+    output reg pc_no_use
 );
 //wire [`CPU_WIDTH-1:0] curr_pc;
 /*pc_reg u_pc_reg(
