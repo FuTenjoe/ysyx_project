@@ -74,7 +74,7 @@ module id_ex_regs(
 	input control_rest_no_use,
 	output reg no_use
     );
-//reg dp_no_use; //打拍
+reg dp_no_use; //打拍
 always@(posedge clk or negedge rst_n)begin
 		if(!rst_n)begin
 			pc_id_ex_o <= 32'h8000_0000;
@@ -100,7 +100,7 @@ always@(posedge clk or negedge rst_n)begin
 			ena_id_ex_o <= 1'd0;
 			no_use <= 1'd0;
 			reg1_rdata_id_ex_o <= 64'd0;
-			//dp_no_use <= 1'd0;
+			dp_no_use <= 1'd0;
 			
 		end
 		else if( control_rest_no_use == 1'b1)begin
@@ -148,7 +148,8 @@ always@(posedge clk or negedge rst_n)begin
 			rd_flag_id_ex_o <= rd_flag_id_ex_o;
 			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_o;
 			ena_id_ex_o <= ena_id_ex_o;
-			no_use <= 1'b0;
+			dp_no_use <= 1'b1;
+			no_use <= dp_no_use;
 		end
 		else begin
 			pc_id_ex_o<=pc_id_ex_i;
