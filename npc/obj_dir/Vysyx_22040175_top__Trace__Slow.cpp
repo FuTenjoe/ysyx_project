@@ -143,6 +143,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+132,"ysyx_22040175_top u_if_stage ex_pc_ready", false,-1);
         tracep->declBit(c+4,"ysyx_22040175_top u_if_stage pc_no_use", false,-1);
         tracep->declBit(c+33,"ysyx_22040175_top u_if_stage rest_from_id", false,-1);
+        tracep->declQuad(c+6,"ysyx_22040175_top u_if_stage id_pc", false,-1, 63,0);
         tracep->declQuad(c+237,"ysyx_22040175_top u_if_stage rdata", false,-1, 63,0);
         tracep->declBit(c+718,"ysyx_22040175_top u_if_stage u_pc_predict clk", false,-1);
         tracep->declBit(c+726,"ysyx_22040175_top u_if_stage u_pc_predict rst_n", false,-1);
@@ -153,6 +154,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+132,"ysyx_22040175_top u_if_stage u_pc_predict ex_pc_ready", false,-1);
         tracep->declBit(c+4,"ysyx_22040175_top u_if_stage u_pc_predict pc_no_use", false,-1);
         tracep->declBit(c+33,"ysyx_22040175_top u_if_stage u_pc_predict rest_from_id", false,-1);
+        tracep->declQuad(c+6,"ysyx_22040175_top u_if_stage u_pc_predict id_pc", false,-1, 63,0);
         tracep->declBit(c+718,"ysyx_22040175_top u_if_id_regs clk", false,-1);
         tracep->declBit(c+726,"ysyx_22040175_top u_if_id_regs rst_n", false,-1);
         tracep->declQuad(c+2,"ysyx_22040175_top u_if_id_regs pc_if_id_i", false,-1, 63,0);
