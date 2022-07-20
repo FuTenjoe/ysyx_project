@@ -29,7 +29,7 @@ always@(posedge clk or negedge rst_n)begin
     end
     else if(id_pc != 32'h0000_0000&id_pc != 32'h8000_0000 & id_pc != 32'h8000_0004)begin
         id_rest_pc <= id_pc;
-        if( write_2 == 1'b1 & write_1 == 1'b1&write_3 == 1'b1)begin
+        if( write_2 == 1'b1 & write_1 == 1'b1&write_3 == 1'b1 & id_rest_pc != id_pc )begin
             write_1 <= 1'b0;
             write_2 <= 1'b0;
             write_3 <= 1'b0;   
@@ -45,9 +45,9 @@ end
 always @(*) begin
     if(id_pc != 32'h0000_0000&id_pc != 32'h8000_0000 & id_pc != 32'h8000_0004)begin
         if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
-            if(write_3 == 1'b0)
+            if(write_3 == 1'b0 )
                 rest_from_id = 1'b1;
-            else
+            else 
                 rest_from_id = 1'b0;
         end
     end
