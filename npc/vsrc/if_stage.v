@@ -10,7 +10,8 @@ module if_stage (
     input control_rest,
     input ex_pc_ready,
     output reg pc_no_use,
-    input rest_from_id
+    input rest_from_id,
+    input [63:0] id_pc
 );
 //wire [`CPU_WIDTH-1:0] curr_pc;
 /*pc_reg u_pc_reg(
@@ -31,7 +32,8 @@ pc_predict u_pc_predict(
   .curr_pc(curr_pc),  // current pc addr
   .ex_pc_ready(ex_pc_ready),
   .pc_no_use(pc_no_use),
-  .rest_from_id(rest_from_id)
+  .rest_from_id(rest_from_id),
+  .id_pc(id_pc)
 );
 
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);

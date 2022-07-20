@@ -9,7 +9,8 @@ module pc_predict (
     output reg [`CPU_WIDTH-1:0] curr_pc,  // current pc addr
     input ex_pc_ready,
     output pc_no_use,
-    input rest_from_id
+    input rest_from_id,
+    input [63:0] id_pc
 );
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)
@@ -31,7 +32,7 @@ always @ (posedge clk or negedge rst_n) begin
         pc_no_use <= 1'b0;
     end
     else if(rest_from_id == 1'b1 )begin
-        curr_pc <= curr_pc;
+        curr_pc <= id_pc;
         pc_no_use <= 1'b0;
     end
     else begin
