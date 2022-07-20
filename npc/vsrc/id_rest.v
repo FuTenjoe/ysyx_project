@@ -9,7 +9,7 @@ module id_rest (
     input [`REG_ADDR_WIDTH-1:0] reg_waddr,
     input write_ready,
     output reg rest_from_id
-   
+    
 );
 
 
