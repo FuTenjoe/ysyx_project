@@ -28,7 +28,7 @@ always@(posedge clk or negedge rst_n)begin
         wb_rest_pc <= 32'h0000_0000;
     end
     else if(wb_pc != 32'h0000_0000 & wb_pc != 32'h8000_0000)begin
-        id_rest_pc <= id_pc;
+        wb_rest_pc <= wb_pc;
         //if( write_2 == 1'b1 & write_1 == 1'b1&write_3 == 1'b1 & wb_rest_pc != wb_pc )begin
         if( write_2 == 1'b1 & write_1 == 1'b1&write_3 == 1'b1 )begin
             write_1 <= 1'b0;
