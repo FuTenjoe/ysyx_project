@@ -19,26 +19,38 @@ module id_rest (
 reg write_1;
 reg write_2;
 reg write_3;
+reg write_4;
+reg write_5;
+reg write_6;
 reg [63:0] wb_rest_pc;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         write_1 <= 1'b0;
         write_2 <= 1'b0;
         write_3 <= 1'b0;
+        write_4 <= 1'b0;
+        write_5 <= 1'b0;
+        write_6 <= 1'b0;
         wb_rest_pc <= 32'h0000_0000;
     end
     else if(wb_pc != 32'h0000_0000 & wb_pc != 32'h8000_0000)begin
         wb_rest_pc <= wb_pc;
         //if( write_2 == 1'b1 & write_1 == 1'b1&write_3 == 1'b1 & wb_rest_pc != wb_pc )begin
-        if( write_2 == 1'b1 & write_1 == 1'b1&write_3 == 1'b1 )begin
+        if( write_6 == 1'b1 )begin
             write_1 <= 1'b0;
             write_2 <= 1'b0;
             write_3 <= 1'b0;   
+            write_4 <= 1'b0;
+            write_5 <= 1'b0;
+            write_6 <= 1'b0;
         end
         else if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
             write_1 <= write_ready;
             write_2 <= write_1;
             write_3 <= write_2;
+            write_4 <= write_3;
+            write_5 <= write_4;
+            write_6 <= write_5;
         end
     end
 end
