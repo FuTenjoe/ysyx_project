@@ -149,6 +149,7 @@ always@(posedge clk or negedge rst_n)begin
 			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_o;
 			ena_id_ex_o <= ena_id_ex_o;
 			no_use <= no_use;
+		end
 		else begin
 			pc_id_ex_o<=pc_id_ex_i;
 			imm_id_ex_o <= imm_id_ex_i;
