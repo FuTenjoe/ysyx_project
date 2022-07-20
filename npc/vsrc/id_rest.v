@@ -46,7 +46,7 @@ end
 always @(*) begin
     if(wb_pc != 32'h0000_0000 & wb_pc != 32'h8000_0000 )begin
         if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
-            if(write_3 == 1'b0 )
+            if(write_3 == 1'b0)
                 rest_from_id = 1'b1;
             else 
                 rest_from_id = 1'b0;

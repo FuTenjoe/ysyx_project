@@ -19,7 +19,7 @@ void Vysyx_22040175_top___024root__traceChgTop0(void* voidSelf, VerilatedVcd* tr
 void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VlWide<3>/*95:0*/ __Vtemp22;
+    VlWide<3>/*95:0*/ __Vtemp21;
     vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode + 1);
     if (false && oldp) {}  // Prevent unused
     // Body
@@ -262,12 +262,12 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgQData(oldp+369,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_reg_read__reg_f[29]),64);
             tracep->chgQData(oldp+371,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_reg_read__reg_f[30]),64);
             tracep->chgQData(oldp+373,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_reg_read__reg_f[31]),64);
-            VL_EXTEND_WQ(65,64, __Vtemp22, vlSelf->ysyx_22040175_top__DOT__id_pc);
-            tracep->chgWData(oldp+375,(__Vtemp22),65);
+            VL_EXTEND_WQ(65,64, __Vtemp21, vlSelf->ysyx_22040175_top__DOT__wb_pc);
+            tracep->chgWData(oldp+375,(__Vtemp21),65);
             tracep->chgBit(oldp+378,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1));
             tracep->chgBit(oldp+379,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_2));
             tracep->chgBit(oldp+380,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_3));
-            tracep->chgQData(oldp+381,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__id_rest_pc),64);
+            tracep->chgQData(oldp+381,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__wb_rest_pc),64);
             tracep->chgQData(oldp+383,(vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_id_ex_regs__reg_f_id_ex_i[0]),64);
             tracep->chgQData(oldp+385,(vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_id_ex_regs__reg_f_id_ex_i[1]),64);
             tracep->chgQData(oldp+387,(vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_id_ex_regs__reg_f_id_ex_i[2]),64);
