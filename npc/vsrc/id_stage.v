@@ -87,7 +87,7 @@ id_rest u_id_rest(        //data hazard
     .wb_pc(wb_pc),
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
-    .wb_reg_waddr(wb_reg_waddr),
+    .wb_reg_waddr(reg_waddr),
     .write_ready(write_ready),
     .rest_from_id(rest_from_id)
    
