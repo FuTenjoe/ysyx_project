@@ -6,7 +6,7 @@ module id_rest (
     input [64:0] wb_pc,
     input      [`REG_ADDR_WIDTH-1:0] reg1_raddr, // register 1 read address
     input      [`REG_ADDR_WIDTH-1:0] reg2_raddr, // register 2 read address
-    input [`REG_ADDR_WIDTH-1:0] wb_reg_waddr,
+    input [`REG_ADDR_WIDTH-1:0] reg_waddr,
     input write_ready,
     output reg rest_from_id
    
@@ -57,7 +57,7 @@ end
 
 always @(*) begin
     if(wb_pc != 32'h0000_0000 & wb_pc != 32'h8000_0000 )begin
-        if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
+        if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
             if(write_3 == 1'b0)
                 rest_from_id = 1'b1;
             else 
