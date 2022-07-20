@@ -3,7 +3,7 @@
 module id_stage (
     input clk,
     input rst_n,
-    input [63:0] wb_pc,
+    input [63:0] id_pc,
     input      [`CPU_WIDTH-1:0]        inst,       // instruction input
     input reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     input [`REG_ADDR_WIDTH-1:0] wb_reg_waddr,
@@ -84,7 +84,7 @@ reg_read u_reg_read(
 id_rest u_id_rest(        //data hazard
     .clk(clk),
     .rst_n(rst_n),
-    .wb_pc(wb_pc),
+    .id_pc(id_pc),
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
     .reg_waddr(reg_waddr),

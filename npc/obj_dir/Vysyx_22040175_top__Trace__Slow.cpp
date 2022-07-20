@@ -237,7 +237,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declArray(c+378,"ysyx_22040175_top u_id_stage u_id_rest wb_pc", false,-1, 64,0);
         tracep->declBus(c+306,"ysyx_22040175_top u_id_stage u_id_rest reg1_raddr", false,-1, 4,0);
         tracep->declBus(c+307,"ysyx_22040175_top u_id_stage u_id_rest reg2_raddr", false,-1, 4,0);
-        tracep->declBus(c+14,"ysyx_22040175_top u_id_stage u_id_rest wb_reg_waddr", false,-1, 4,0);
+        tracep->declBus(c+14,"ysyx_22040175_top u_id_stage u_id_rest reg_waddr", false,-1, 4,0);
         tracep->declBit(c+131,"ysyx_22040175_top u_id_stage u_id_rest write_ready", false,-1);
         tracep->declBit(c+33,"ysyx_22040175_top u_id_stage u_id_rest rest_from_id", false,-1);
         tracep->declBit(c+381,"ysyx_22040175_top u_id_stage u_id_rest write_1", false,-1);
