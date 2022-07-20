@@ -198,7 +198,7 @@ wire write_ready;
 wire ex_pc_ready;
 ex_stage u_ex_stage(
     .alu_op(ex_alu_op),   // alu opcode
-    
+    .id_pc(id_pc),
     .alu_res(from_ex_alu_res),   // alu result
     .alu_src1(ex_alu_src1), // alu source 1
     .alu_src2(ex_alu_src2), // alu source 2

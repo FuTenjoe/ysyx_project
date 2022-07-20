@@ -8,6 +8,7 @@ module muxpc (
     input jalr,
     input      [`CPU_WIDTH-1:0] imm,     // immediate  
     input      [`CPU_WIDTH-1:0] curr_pc, // current pc addr
+    input      [`CPU_WIDTH-1:0] id_pc,
     output reg [`CPU_WIDTH-1:0] next_pc, // next pc addr
    // input      [`CPU_WIDTH-1:0]     reg1_rdata
    input ebreak_flag,

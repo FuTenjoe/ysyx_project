@@ -5281,10 +5281,11 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                                                                 ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                                                 >> 0x14U)))))))));
     vlSelf->ysyx_22040175_top__DOT__rest_from_id = 
-        (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-          == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr)) 
-         | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-            == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr)));
+        ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+           == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr)) 
+          | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
+             == (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
+         & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_3)));
     if ((((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
             & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
            & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 

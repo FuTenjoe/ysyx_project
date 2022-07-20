@@ -2,7 +2,7 @@
 
 module ex_stage(
     input      [`ALU_OP_WIDTH-1:0] alu_op,   // alu opcode
-    
+    input [63:0] id_pc,
     output reg [63:0]    alu_res,   // alu result
     output      [63:0]    alu_src1, // alu source 1
     output      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
@@ -52,6 +52,7 @@ muxpc u_muxpc(
     .imm(imm),     // immediate  
     .curr_pc(curr_pc), // current pc addr
     .next_pc(next_pc), // next pc addr
+    .id_pc(id_pc),
    // input      [`CPU_WIDTH-1:0]     reg1_rdata
    .ebreak_flag(ebreak_flag),
    .reg_f (reg_f),
