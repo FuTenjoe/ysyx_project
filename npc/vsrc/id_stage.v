@@ -84,6 +84,7 @@ reg_read u_reg_read(
 id_rest u_id_rest(        //data hazard
     .clk(clk),
     .rst_n(rst_n),
+    .id_pc(id_pc),
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
     .wb_reg_waddr(wb_reg_waddr),
