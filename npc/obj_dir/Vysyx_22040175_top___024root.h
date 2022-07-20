@@ -102,7 +102,6 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         IData/*31:0*/ ysyx_22040175_top__DOT__ex_s_imm;
         IData/*31:0*/ ysyx_22040175_top__DOT__mem_s_imm;
         IData/*31:0*/ ysyx_22040175_top__DOT__wb_s_imm;
-        VlWide<3>/*64:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__id_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__next_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__if_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__id_pc;
