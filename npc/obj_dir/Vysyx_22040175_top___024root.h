@@ -34,6 +34,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__if_ena;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_ena;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_time_set;
+        CData/*0:0*/ ysyx_22040175_top__DOT__id_no_use;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_branch;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_jump;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_reg_wen;
@@ -48,7 +49,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*2:0*/ ysyx_22040175_top__DOT__id_rd_flag;
         CData/*2:0*/ ysyx_22040175_top__DOT__id_rd_buf_flag;
         CData/*0:0*/ ysyx_22040175_top__DOT__rest_from_id;
-        CData/*0:0*/ ysyx_22040175_top__DOT__control_rest;
+        CData/*0:0*/ ysyx_22040175_top__DOT__id_control_rest;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_branch;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_jump;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_reg_wen;
@@ -93,9 +94,9 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*2:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op;
         CData/*4:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr;
         CData/*4:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1;
     };
     struct {
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_2;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_3;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_4;

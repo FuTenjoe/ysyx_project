@@ -25,7 +25,7 @@ always @ (posedge clk or negedge rst_n) begin
         curr_pc <= 32'h8000_0000;
         pc_no_use <= 1'b1;
     end
-    else if((control_rest == 1'b1) & (ex_pc_ready == 1'b0))begin
+    else if((control_rest == 1'b1) & (ex_pc_ready == 1'b1))begin
         curr_pc <= ex_next_pc;
         pc_no_use <= 1'b0;
     end
