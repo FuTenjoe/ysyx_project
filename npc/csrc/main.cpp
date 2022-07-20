@@ -154,7 +154,7 @@ int main(int argc, char **argv, char **env) {
      //for (i=0;i<15 ; i++) {
       
     //top->rst = (i < 2);
-      top->rst = (i < 2);
+      top->rst = (i < 5);
     // dump variables into VCD file and toggle clock
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
