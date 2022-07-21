@@ -7,10 +7,12 @@ module  ysyx_22040175_top(
 	output[31:0]        pc,
     output [`CPU_WIDTH-1:0]       unknown_code,
     input time_set,
-    output[31:0]        diff_pc
+    output[31:0]        diff_pc,
+    output [31:0] diff_mem_pc
    // output[`CPU_WIDTH-1:0]        next_pc
 );
 assign diff_pc = wb_pc[31:0];
+assign diff_mem_pc = mem_pc[31:0];
 wire rst_n;
 assign rst_n = !rst;
 wire [63:0] next_pc;
