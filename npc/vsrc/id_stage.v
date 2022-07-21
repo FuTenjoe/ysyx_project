@@ -90,7 +90,7 @@ id_rest u_id_rest(        //data hazard
     .id_pc(id_pc),
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
-    .reg_waddr(reg_waddr),
+    .reg_waddr(wb_reg_waddr),
     .write_ready(write_ready),
     .rd_buf_flag(rd_buf_flag),
     .rest_from_id(rest_from_id)
@@ -111,7 +111,7 @@ mux_dt_pipe u_mux_dt_pipe (
     .reg2_rdata_fr_read(reg2_rdata_fr_read),
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
-    .reg_waddr(reg_waddr),
+    .reg_waddr(wb_reg_waddr),
     .rd_buf_flag(rd_buf_flag),
     .reg1_rdata(reg1_rdata), // register 1 read address
     .reg2_rdata(reg2_rdata),  // register 2 read address
