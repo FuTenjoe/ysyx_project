@@ -94,6 +94,8 @@ always @(*) begin
                 else 
                     rest_from_id = 1'b0;
             end
+            else
+                rest_from_id = 1'b0;
         end
     end
     else 
