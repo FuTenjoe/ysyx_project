@@ -224,7 +224,10 @@ int main(int argc, char **argv, char **env) {
         printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
         break;
       }
-      
+      cpu.pc = top->diff_pc;
+     
+        
+      }
   
     }
   
