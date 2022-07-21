@@ -47,12 +47,12 @@ always@(posedge clk or negedge rst_n)begin
         test <= 3'd0;
     end
     else if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
-        if(write_1 != 1'b1)begin
-            write_1 <= write_ready;
+        if(write_1 == 1'b1)begin
+            write_1 <= 1'b0;
             test <= 3'd1;
         end
         else begin
-            write_1 <= 1'b0;
+            write_1 <= 1'b1;
             test <= 3'd2;
         end
     end
