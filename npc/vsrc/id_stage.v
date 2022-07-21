@@ -93,6 +93,7 @@ id_rest u_id_rest(        //data hazard
    
 );
 id_control_rest u_id_control_rest(
+    .rest_from_id(rest_from_id),
     .branch(branch),     // branch flag
     .jump(jump),       // jump flag
     .control_rest(control_rest)
