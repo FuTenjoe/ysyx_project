@@ -112,7 +112,7 @@ mux_dt_pipe u_mux_dt_pipe (
     .reg_waddr(reg_waddr),
     .rd_buf_flag(rd_buf_flag),
     .reg1_rdata(reg1_rdata), // register 1 read address
-    .reg2_rdata(reg2_rdata)  // register 2 read address
+    .reg2_rdata(reg2_rdata),  // register 2 read address
     .from_ex_alu_res(from_ex_alu_res),
     .from_mem_alu_res(from_mem_alu_res)
     
