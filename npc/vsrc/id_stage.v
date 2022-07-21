@@ -92,6 +92,7 @@ id_rest u_id_rest(        //data hazard
     .reg2_raddr(reg2_raddr), // register 2 read address
     .reg_waddr(reg_waddr),
     .write_ready(write_ready),
+    .rd_buf_flag(rd_buf_flag),
     .rest_from_id(rest_from_id)
    
 );
