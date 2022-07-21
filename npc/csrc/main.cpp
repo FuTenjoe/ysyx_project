@@ -214,7 +214,7 @@ int main(int argc, char **argv, char **env) {
        //printf("a =%d \n",a);
        if((top->diff_pc != 0) &&(top->diff_pc != cpu.pc))
           difftest_step(top->diff_pc);
-          printf("diff  is right !")
+          printf("diff  is right !");
         }
       else if(a <= 2){
           init_difftest(img_size,port);
