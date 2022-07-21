@@ -116,7 +116,8 @@ mux_dt_pipe u_mux_dt_pipe (
     .reg1_rdata(reg1_rdata), // register 1 read address
     .reg2_rdata(reg2_rdata),  // register 2 read address
     .from_ex_alu_res(from_ex_alu_res),
-    .from_mem_alu_res(from_mem_alu_res)
+    .from_mem_alu_res(from_mem_alu_res),
+    .control_rest(control_rest)
     
 );
 endmodule

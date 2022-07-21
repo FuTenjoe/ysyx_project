@@ -49,8 +49,8 @@ always @ (posedge clk or negedge rst_n) begin
         pc_no_use <= 1'b1;
     end
     else if((control_rest == 1'b1) & (pc_ok1 == 1'b1))begin
-        curr_pc <= ex_next_pc;
-        pc_no_use <= 1'b0;
+            curr_pc <= ex_next_pc;
+            pc_no_use <= 1'b0;
     end
     else if(rest_from_id == 1'b1 )begin
         curr_pc <= curr_pc;
