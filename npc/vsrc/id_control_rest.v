@@ -16,11 +16,14 @@ always@(posedge clk or negedge rst_n)begin
         ct_rest_1 <= 1'b0;
         ct_rest_2 <= 1'b0;
     end
-    else if(ct_rest_2 != 1'b1 & control_rest == 1'b1)
+    else if(ct_rest_2 != 1'b1 & control_rest == 1'b1)begin
         ct_rest_1 <= control_rest;
         ct_rest_2 <=  ct_rest_1;
-    else
+    end
+    else begin
         ct_rest_1 <= 1'b0;
+        ct_rest_2 <= 1'b0;
+    end
 end
 //reg [63:0] buff;
 // register write
