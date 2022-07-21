@@ -349,6 +349,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                 __Vdly__ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_1 
                     = vlSelf->ysyx_22040175_top__DOT__write_ready;
             }
+        } else {
+            __Vdly__ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_1 = 0U;
+            vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_2 = 0U;
         }
     } else {
         __Vdly__ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_1 = 0U;

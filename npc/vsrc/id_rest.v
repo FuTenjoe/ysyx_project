@@ -84,6 +84,10 @@ always@(posedge clk or negedge rst_n)begin
             write_ld_2 <= 1'b0;
         end
     end
+    else if(write_ld_1 == 1'b1 & write_ld_2 == 1'b0)begin
+        write_ld_1 <= 1'b0;
+        write_ld_2 <= write_ld_1;
+    end
     else begin
         write_ld_1 <= 1'b0;
         write_ld_2 <= 1'b0;
