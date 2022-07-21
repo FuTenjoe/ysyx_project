@@ -762,6 +762,8 @@ always@(*)begin
     if(inst == 32'h0010_0073)begin
         ebreak_flag = 1'b1;
         unknown_code = 32'h0;
+        reg1_raddr = reg_waddr + 1'b1;
+        reg2_raddr = reg_waddr + 1'b1;
     end
 end
 
