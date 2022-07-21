@@ -220,14 +220,27 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                  ((IData)(vlSelf->ysyx_22040175_top__DOT__rest_from_id)
                                                    ? vlSelf->ysyx_22040175_top__DOT__id_pc
                                                    : vlSelf->ysyx_22040175_top__DOT__if_pc));
-        vlSelf->ysyx_22040175_top__DOT__wb_from_ex_alu_res 
-            = vlSelf->ysyx_22040175_top__DOT__mem_from_ex_alu_res;
     } else {
         vlSelf->ysyx_22040175_top__DOT__mem_alu_op = 0U;
         __Vdly__ysyx_22040175_top__DOT__if_pc = 0x80000000ULL;
         __Vdly__ysyx_22040175_top__DOT__id_pc = 0x80000000ULL;
-        vlSelf->ysyx_22040175_top__DOT__wb_from_ex_alu_res = 0ULL;
     }
+    if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
+        if ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+              == (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)) 
+             | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
+                == (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)))) {
+            vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1 
+                = ((~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1)) 
+                   & (IData)(vlSelf->ysyx_22040175_top__DOT__write_ready));
+        }
+    } else {
+        vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1 = 0U;
+    }
+    vlSelf->ysyx_22040175_top__DOT__wb_from_ex_alu_res 
+        = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
+            ? vlSelf->ysyx_22040175_top__DOT__mem_from_ex_alu_res
+            : 0ULL);
     if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
         if ((1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__id_no_use)))) {
             if (vlSelf->ysyx_22040175_top__DOT__rest_from_id) {
@@ -273,26 +286,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
               == (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)) 
              | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
                 == (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)))) {
-            vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1 
-                = ((~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1)) 
-                   & (IData)(vlSelf->ysyx_22040175_top__DOT__write_ready));
-        }
-    } else {
-        vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1 = 0U;
-    }
-    vlSelf->ysyx_22040175_top__DOT__ex_unknown_code 
-        = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
-            ? ((IData)(vlSelf->ysyx_22040175_top__DOT__id_no_use)
-                ? vlSelf->ysyx_22040175_top__DOT__ex_unknown_code
-                : ((IData)(vlSelf->ysyx_22040175_top__DOT__rest_from_id)
-                    ? vlSelf->ysyx_22040175_top__DOT__ex_unknown_code
-                    : vlSelf->ysyx_22040175_top__DOT__id_unknown_code))
-            : 0ULL);
-    if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
-        if ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-              == (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)) 
-             | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                == (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)))) {
             if (vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_2) {
                 __Vdly__ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_1 = 0U;
                 vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_2 = 0U;
@@ -308,6 +301,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
         vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_2 = 0U;
     }
     if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
+        vlSelf->ysyx_22040175_top__DOT__ex_unknown_code 
+            = ((IData)(vlSelf->ysyx_22040175_top__DOT__id_no_use)
+                ? vlSelf->ysyx_22040175_top__DOT__ex_unknown_code
+                : ((IData)(vlSelf->ysyx_22040175_top__DOT__rest_from_id)
+                    ? vlSelf->ysyx_22040175_top__DOT__ex_unknown_code
+                    : vlSelf->ysyx_22040175_top__DOT__id_unknown_code));
         __Vdly__ysyx_22040175_top__DOT__ex_rd_buf_flag 
             = ((IData)(vlSelf->ysyx_22040175_top__DOT__id_no_use)
                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)
@@ -421,6 +420,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                     ? vlSelf->ysyx_22040175_top__DOT__ex_imm
                                                     : vlSelf->ysyx_22040175_top__DOT__id_imm));
     } else {
+        vlSelf->ysyx_22040175_top__DOT__ex_unknown_code = 0ULL;
         __Vdly__ysyx_22040175_top__DOT__ex_rd_buf_flag = 0U;
         __Vdly__ysyx_22040175_top__DOT__ex_reg_waddr = 0U;
         __Vdly__ysyx_22040175_top__DOT__ex_s_imm = 0U;
@@ -5986,12 +5986,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                 vlSelf->ysyx_22040175_top__DOT__rest_from_id 
                     = (1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_2)));
             }
-        } else if ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                     == (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)) 
-                    | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                       == (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)))) {
+        } else {
             vlSelf->ysyx_22040175_top__DOT__rest_from_id 
-                = (1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1)));
+                = (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                    == (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)) 
+                   | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
+                      == (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)));
         }
     } else {
         vlSelf->ysyx_22040175_top__DOT__rest_from_id = 0U;
