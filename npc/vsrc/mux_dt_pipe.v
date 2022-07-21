@@ -9,7 +9,7 @@ module mux_dt_pipe (
     input [`REG_ADDR_WIDTH-1:0] reg_waddr,
     input [2:0]rd_buf_flag,
     output   reg   [63:0]  reg1_rdata, // register 1 read address
-    output   reg   [63:0]  reg2_rdata  // register 2 read address
+    output   reg   [63:0]  reg2_rdata,  // register 2 read address
     input [63:0] from_ex_alu_res,
     input [63:0] from_mem_alu_res
 );
