@@ -211,7 +211,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
             = vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag;
         __Vdly__ysyx_22040175_top__DOT__if_pc = (((IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest) 
                                                   & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__ex_pc_ready)))
-                                                  ? vlSelf->ysyx_22040175_top__DOT__if_pc
+                                                  ? 0x80000000ULL
                                                   : 
                                                  (((IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest) 
                                                    & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_pc_ready))
