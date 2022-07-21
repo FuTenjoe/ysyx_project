@@ -207,6 +207,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                   & 1U);
         vlSelf->ysyx_22040175_top__DOT__mem_alu_op 
             = vlSelf->ysyx_22040175_top__DOT__ex_alu_op;
+        vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_control_rest__DOT__ct_rest_1 
+            = ((((~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_control_rest__DOT__ct_rest_1)) 
+                 & (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest)) 
+                & (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest)) 
+               & 1U);
         vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag 
             = vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag;
         __Vdly__ysyx_22040175_top__DOT__if_pc = (((IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest) 
@@ -237,6 +242,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
         vlSelf->ysyx_22040175_top__DOT__id_time_set = 0U;
         __Vdly__ysyx_22040175_top__DOT__id_ena = 0U;
         vlSelf->ysyx_22040175_top__DOT__mem_alu_op = 0U;
+        vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_control_rest__DOT__ct_rest_1 = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag = 0U;
         __Vdly__ysyx_22040175_top__DOT__if_pc = 0x80000000ULL;
         __Vdly__ysyx_22040175_top__DOT__id_pc = 0x80000000ULL;
@@ -6727,8 +6733,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                       (4ULL 
                                                        + vlSelf->ysyx_22040175_top__DOT__ex_pc))))));
     vlSelf->ysyx_22040175_top__DOT__id_control_rest 
-        = ((IData)(vlSelf->ysyx_22040175_top__DOT__id_branch) 
-           | (IData)(vlSelf->ysyx_22040175_top__DOT__id_jump));
+        = (((IData)(vlSelf->ysyx_22040175_top__DOT__id_branch) 
+            | (IData)(vlSelf->ysyx_22040175_top__DOT__id_jump)) 
+           & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_control_rest__DOT__ct_rest_1)));
     if ((1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__ex_ena)))) {
         vlSelf->ysyx_22040175_top__DOT__ex_pc_ready = 0U;
     }
