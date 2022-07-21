@@ -216,7 +216,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
             = vlSelf->ysyx_22040175_top__DOT__ex_alu_op;
         __Vdly__ysyx_22040175_top__DOT__if_pc = (((IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest) 
                                                   & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__ex_pc_ready)))
-                                                  ? 0x80000000ULL
+                                                  ? vlSelf->ysyx_22040175_top__DOT__if_pc
                                                   : 
                                                  (((IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest) 
                                                    & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_pc_ready))
