@@ -2,6 +2,8 @@
 
 module mux_dt_pipe (
     //input rest_from_id,
+    input clk,
+    input rst_n,
     input [63:0]  reg1_rdata_fr_read,
     input [63:0]  reg2_rdata_fr_read,
     input      [`REG_ADDR_WIDTH-1:0] reg1_raddr, // register 1 read address
@@ -14,33 +16,39 @@ module mux_dt_pipe (
     input [63:0] from_mem_alu_res
 );
 
-always@(*)begin
-    if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)begin
-         if(reg1_raddr == reg_waddr)begin
-            reg1_rdata = from_mem_alu_res;
-            reg1_rdata = reg2_rdata_fr_read;
-        end
-        else if(reg2_raddr == reg_waddr)begin
-            reg1_rdata = reg1_rdata_fr_read;
-            reg2_rdata = from_mem_alu_res;
-        end
-        else begin
-            reg1_rdata = reg1_rdata_fr_read;
-            reg2_rdata = reg2_rdata_fr_read;
-        end
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        reg1_rdata = 64'd0;
+        reg2_rdata = 64'd0;
     end
     else begin
-        if(reg1_raddr == reg_waddr)begin
-            reg1_rdata = from_ex_alu_res;
-            reg1_rdata = reg2_rdata_fr_read;
-        end
-        else if(reg2_raddr == reg_waddr)begin
-            reg1_rdata = reg1_rdata_fr_read;
-            reg2_rdata = from_ex_alu_res;
+        if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)begin
+            if(reg1_raddr == reg_waddr)begin
+                reg1_rdata = from_mem_alu_res;
+                reg2_rdata = reg2_rdata_fr_read;
+            end
+            else if(reg2_raddr == reg_waddr)begin
+                reg1_rdata = reg1_rdata_fr_read;
+                reg2_rdata = from_mem_alu_res;
+            end
+            else begin
+                reg1_rdata = reg1_rdata_fr_read;
+                reg2_rdata = reg2_rdata_fr_read;
+            end
         end
         else begin
-            reg1_rdata = reg1_rdata_fr_read;
-            reg2_rdata = reg2_rdata_fr_read;
+            if(reg1_raddr == reg_waddr)begin
+                reg1_rdata = from_ex_alu_res;
+                reg2_rdata = reg2_rdata_fr_read;
+            end
+            else if(reg2_raddr == reg_waddr)begin
+                reg1_rdata = reg1_rdata_fr_read;
+                reg2_rdata = from_ex_alu_res;
+            end
+            else begin
+                reg1_rdata = reg1_rdata_fr_read;
+                reg2_rdata = reg2_rdata_fr_read;
+            end
         end
     end
 end
