@@ -226,8 +226,6 @@ int main(int argc, char **argv, char **env) {
       }
       cpu.pc = top->diff_pc;
      
-        
-      }
   
     }
   
