@@ -9,7 +9,6 @@ module id_rest (
     input [`REG_ADDR_WIDTH-1:0] reg_waddr,
     input write_ready,
     input [2:0]rd_buf_flag,
-    input control_rest,
     output reg rest_from_id
     
 
