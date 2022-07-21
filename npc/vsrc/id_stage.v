@@ -105,6 +105,8 @@ id_control_rest u_id_control_rest(
    
 );
 mux_dt_pipe u_mux_dt_pipe (
+    .clk(clk),
+    .rst_n(rst_n),
     .reg1_rdata_fr_read(reg1_rdata_fr_read),
     .reg2_rdata_fr_read(reg2_rdata_fr_read),
     .reg1_raddr(reg1_raddr), // register 1 read address
