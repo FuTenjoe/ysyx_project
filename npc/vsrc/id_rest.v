@@ -89,10 +89,7 @@ always @(*) begin
         end
         else begin
             if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
-                if(write_1 == 1'b0)
                     rest_from_id = 1'b1;
-                else 
-                    rest_from_id = 1'b0;
             end
             else
                 rest_from_id = 1'b0;
