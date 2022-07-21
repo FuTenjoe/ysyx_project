@@ -39,23 +39,27 @@ reg write_1;
         end
     end
 end*/
-
+reg [2:0]test;
 always@(posedge clk or negedge rst_n)begin
     if(id_pc != 32'h0000_0000 & id_pc != 32'h8000_0000 )begin
     if(!rst_n)begin
         write_1 <= 1'b0;
+        test <= 3'd0;
     end
     else if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
         if(write_1 != 1'b1)begin
             write_1 <= write_ready;
+            test <= 3'd1;
         end
         else begin
             write_1 <= 1'b0;
+            test <= 3'd2;
         end
     end
     end
     else
         write_1 <= 1'b0;
+        test <= 3'd3;
 end
 reg write_ld_1;
 reg write_ld_2;
