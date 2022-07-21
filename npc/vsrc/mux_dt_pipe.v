@@ -41,7 +41,7 @@ always@(posedge clk or negedge rst_n)begin
             if(reg1_raddr == reg_waddr)begin
                 reg1_rdata <= from_ex_alu_res;
                 reg2_rdata <= reg2_rdata_fr_read;
-                tets <= 1'b1;
+                test <= 1'b1;
             end
             else if(reg2_raddr == reg_waddr)begin
                 reg1_rdata <= reg1_rdata_fr_read;
