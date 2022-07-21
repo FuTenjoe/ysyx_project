@@ -448,6 +448,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
         tracep->chgBit(oldp+726,(vlSelf->ysyx_22040175_top__DOT__rst_n));
         tracep->chgQData(oldp+727,(vlSelf->ysyx_22040175_top__DOT__id_reg1_rdata),64);
         tracep->chgQData(oldp+729,(vlSelf->ysyx_22040175_top__DOT__id_reg2_rdata),64);
+        tracep->chgBit(oldp+731,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__test));
     }
 }
 
