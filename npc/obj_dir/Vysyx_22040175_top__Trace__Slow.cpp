@@ -277,6 +277,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declQuad(c+17,"ysyx_22040175_top u_id_stage u_mux_dt_pipe reg2_rdata", false,-1, 63,0);
         tracep->declQuad(c+125,"ysyx_22040175_top u_id_stage u_mux_dt_pipe from_ex_alu_res", false,-1, 63,0);
         tracep->declQuad(c+155,"ysyx_22040175_top u_id_stage u_mux_dt_pipe from_mem_alu_res", false,-1, 63,0);
+        tracep->declBit(c+34,"ysyx_22040175_top u_id_stage u_mux_dt_pipe control_rest", false,-1);
         tracep->declBit(c+394,"ysyx_22040175_top u_id_stage u_mux_dt_pipe test", false,-1);
         tracep->declBit(c+725,"ysyx_22040175_top u_id_ex_regs clk", false,-1);
         tracep->declBit(c+734,"ysyx_22040175_top u_id_ex_regs rst_n", false,-1);
