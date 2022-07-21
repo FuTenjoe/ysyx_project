@@ -33,7 +33,7 @@ always @ (posedge clk or negedge rst_n) begin
         pc_no_use <= 1'b0;
     end
     else if(rest_from_id == 1'b1 )begin
-        curr_pc <= curr_pc;
+        curr_pc <= 32'h8000_0000;
         pc_no_use <= 1'b0;
     end
     else begin
