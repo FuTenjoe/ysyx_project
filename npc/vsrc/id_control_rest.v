@@ -2,7 +2,7 @@
 
 module id_control_rest (
     input clk,
-    input rst_n
+    input rst_n,
     input   branch,     // branch flag
     input   jump,       // jump flag
     output  reg control_rest
