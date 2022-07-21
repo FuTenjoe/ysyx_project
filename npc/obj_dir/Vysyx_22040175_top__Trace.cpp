@@ -444,7 +444,8 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
         tracep->chgQData(oldp+719,(vlSelf->unknown_code),64);
         tracep->chgBit(oldp+721,(vlSelf->time_set));
         tracep->chgIData(oldp+722,(vlSelf->diff_pc),32);
-        tracep->chgBit(oldp+723,(vlSelf->ysyx_22040175_top__DOT__rst_n));
+        tracep->chgIData(oldp+723,(vlSelf->diff_mem_pc),32);
+        tracep->chgBit(oldp+724,(vlSelf->ysyx_22040175_top__DOT__rst_n));
     }
 }
 
