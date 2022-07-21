@@ -212,7 +212,7 @@ int main(int argc, char **argv, char **env) {
       if (a>2){
         //if (a%4==1 & a/4>=1){
        //printf("a =%d \n",a);
-       if((top->diff_pc != 0) )
+       if((top->diff_pc != 0) &&(top->diff_pc != cpu.pc))
           difftest_step(top->diff_pc);
         }
       else if(a <= 2){
