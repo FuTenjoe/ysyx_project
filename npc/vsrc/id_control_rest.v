@@ -1,7 +1,6 @@
 `include "../vsrc/rvseed_defines.v"
 
 module id_control_rest (
-    input rest_from_id,
     input   branch,     // branch flag
     input   jump,       // jump flag
     output  reg control_rest
