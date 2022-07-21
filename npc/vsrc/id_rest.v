@@ -104,6 +104,8 @@ always @(*) begin
                 else 
                     rest_from_id = 1'b0;
             end
+            else 
+                rest_from_id = 1'b0;
         end
         else begin
             if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
