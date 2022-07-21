@@ -111,7 +111,9 @@ id_stage u_id_stage(
     .expand_signed(id_expand_signed),
     .rd_flag(id_rd_flag),
     .rd_buf_flag(id_rd_buf_flag),   //访存标志
-    .control_rest(id_control_rest)
+    .control_rest(id_control_rest),
+    .from_ex_alu_res(from_ex_alu_res),
+    .from_mem_alu_res(from_mem_alu_res)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag

@@ -31,7 +31,9 @@ module id_stage (
     output reg [3:0] expand_signed,
     output reg [2:0]rd_flag,
     output reg [2:0] rd_buf_flag ,  //访存标志
-    output control_rest
+    output control_rest,
+    input [63:0] from_ex_alu_res,
+    input [63:0] from_mem_alu_res
    
    
 );
@@ -70,15 +72,16 @@ imm_gen u_imm_gen(
 
     .imm(imm)         // immediate  
 );
-
+wire [63:0]  reg1_rdata_fr_read;
+wire [63:0]  reg2_rdata_fr_read;
 reg_read u_reg_read(
     .clk(clk),
     .rst_n(rst_n),
     .reg_f(reg_f),
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
-    .reg1_rdata(reg1_rdata), // register 1 read data
-    .reg2_rdata(reg2_rdata) // register 2 read data
+    .reg1_rdata(reg1_rdata_fr_read), // register 1 read data
+    .reg2_rdata(reg2_rdata_fr_read) // register 2 read data
 
 );
 id_rest u_id_rest(        //data hazard
@@ -98,8 +101,19 @@ id_control_rest u_id_control_rest(
     .branch(branch),     // branch flag
     .jump(jump),       // jump flag
     .control_rest(control_rest)
-    
    
 );
-
+mux_dt_pipe u_mux_dt_pipe (
+    .reg1_rdata_fr_read(reg1_rdata_fr_read),
+    .reg2_rdata_fr_read(reg2_rdata_fr_read),
+    .reg1_raddr(reg1_raddr), // register 1 read address
+    .reg2_raddr(reg2_raddr), // register 2 read address
+    .reg_waddr(reg_waddr),
+    .rd_buf_flag(rd_buf_flag),
+    .reg1_rdata(reg1_rdata), // register 1 read address
+    .reg2_rdata(reg2_rdata)  // register 2 read address
+    .from_ex_alu_res(from_ex_alu_res),
+    .from_mem_alu_res(from_mem_alu_res)
+    
+);
 endmodule
