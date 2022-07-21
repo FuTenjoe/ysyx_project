@@ -217,8 +217,8 @@ int main(int argc, char **argv, char **env) {
         }
       else if(a <= 2){
           init_difftest(img_size,port);
-        }
-     }*/
+        }*/
+     }
      
       if(npc_state == NPC_ABORT){
         printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
