@@ -41,6 +41,7 @@ reg write_1;
 end*/
 
 always@(posedge clk or negedge rst_n)begin
+    if(id_pc != 32'h0000_0000 & id_pc != 32'h8000_0000 )begin
     if(!rst_n)begin
         write_1 <= 1'b0;
     end
@@ -52,6 +53,9 @@ always@(posedge clk or negedge rst_n)begin
             write_1 <= 1'b0;
         end
     end
+    end
+    else
+        write_1 <= 1'b0;
 end
 reg write_ld_1;
 reg write_ld_2;
