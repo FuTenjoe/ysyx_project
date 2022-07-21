@@ -128,28 +128,29 @@ always@(posedge clk or negedge rst_n)begin
 			no_use <= 1'b1;   //输入指令无效信号
 		end
 		else if(rest_from_id_id_ex_i == 1'b1)begin
-			pc_id_ex_o <= pc_id_ex_o;
-			imm_id_ex_o <= imm_id_ex_o;
-			reg2_rdata_id_ex_o <= reg2_rdata_id_ex_o;
-			reg1_rdata_id_ex_o <= reg1_rdata_id_ex_o;
-			branch_id_ex_o <= branch_id_ex_o ;
-			jump_id_ex_o <= jump_id_ex_o;
-			reg_wen_id_ex_o <= reg_wen_id_ex_o;
-			reg_waddr_id_ex_o <=reg_waddr_id_ex_o;
-			alu_op_id_ex_o <= alu_op_id_ex_o;
-			alu_src_sel_id_ex_o <= alu_src_sel_id_ex_o;
-			unknown_code_id_ex_o <= unknown_code_id_ex_o;
-			jalr_id_ex_o <= jalr_id_ex_o;
-			ebreak_flag_id_ex_o <= ebreak_flag_id_ex_o;
-			wmask_id_ex_o <= wmask_id_ex_o;
-			s_flag_id_ex_o <= s_flag_id_ex_o;
-			s_imm_id_ex_o <= s_imm_id_ex_o;
-			expand_signed_id_ex_o <= expand_signed_id_ex_o;
-			rd_flag_id_ex_o <= rd_flag_id_ex_o;
-			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_o;
-			ena_id_ex_o <= ena_id_ex_o;
-			dp_no_use <= 1'b1;
-			no_use <= 1'b0;
+			pc_id_ex_o<=pc_id_ex_i;
+			imm_id_ex_o <= imm_id_ex_i;
+			reg1_rdata_id_ex_o <= reg1_rdata_id_ex_i;
+			reg2_rdata_id_ex_o <= reg2_rdata_id_ex_i;
+			branch_id_ex_o <= branch_id_ex_i;
+			jump_id_ex_o <= jump_id_ex_i;
+			reg_wen_id_ex_o <= reg_wen_id_ex_i;
+			reg_waddr_id_ex_o <= reg_waddr_id_ex_i;
+			alu_op_id_ex_o <= alu_op_id_ex_i;
+			alu_src_sel_id_ex_o <= alu_src_sel_id_ex_i;
+			unknown_code_id_ex_o <= unknown_code_id_ex_i;
+			jalr_id_ex_o <= jalr_id_ex_i;
+			ebreak_flag_id_ex_o <= ebreak_flag_id_ex_i;
+			wmask_id_ex_o <= wmask_id_ex_i;
+			s_flag_id_ex_o <= s_flag_id_ex_i;
+			s_imm_id_ex_o <= s_imm_id_ex_i;
+			expand_signed_id_ex_o <= expand_signed_id_ex_i;
+			rd_flag_id_ex_o <= rd_flag_id_ex_i;
+			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
+			ena_id_ex_o <= ena_id_ex_i;
+			//dp_no_use <= 1'b0;
+			no_use <=  1'b0;  //此处是否需要打拍
+			reg_f_id_ex_o <= reg_f_id_ex_i;
 		end
 		else begin
 			pc_id_ex_o<=pc_id_ex_i;
