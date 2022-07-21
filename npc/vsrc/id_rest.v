@@ -57,9 +57,10 @@ always@(posedge clk or negedge rst_n)begin
         end
     end
     end
-    else
+    else begin
         write_1 <= 1'b0;
         test <= 3'd3;
+    end
 end
 reg write_ld_1;
 reg write_ld_2;
