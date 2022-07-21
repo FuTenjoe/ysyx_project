@@ -61,7 +61,6 @@ always@(posedge clk or negedge rst_n)begin
             test <= 3'd3;
          end
     end
-    end
     else begin
         write_1 <= 1'b0;
         test <= 3'd3;
