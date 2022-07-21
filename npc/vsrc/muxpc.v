@@ -32,6 +32,10 @@ always @(*) begin
         next_pc = curr_pc + imm;
         ex_pc_ready = 1'b1;
     end
+    else if (branch && zero)begin // bne
+        next_pc = curr_pc + `CPU_WIDTH'h4;
+        ex_pc_ready = 1'b1;
+    end
     else if (jump &(!jalr))begin            // jal 
         next_pc = curr_pc + imm;
         ex_pc_ready = 1'b1;
