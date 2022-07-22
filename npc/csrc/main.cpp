@@ -148,7 +148,7 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   int i;
-  
+  int end_pc = 1;
   for (i=0;; i++) {
     //while(!contextp -> gotFinish()){
      //for (i=0;i<15 ; i++) {
@@ -225,7 +225,7 @@ int main(int argc, char **argv, char **env) {
         printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
         break;
       }
-      int end_pc;
+      
       end_pc = top->diff_pc;
      
   
