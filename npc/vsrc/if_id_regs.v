@@ -41,7 +41,7 @@ always@(posedge clk or negedge rst_n)begin
 	end*/
 	else if(rest_from_id == 1'b1 | control_rest_if_id_i == 1'b1)begin
 		pc_if_id_o<= pc_if_id_o;
-		instr_if_id_o<= 32'd0010011;
+		instr_if_id_o<= 32'b0010011;
 		ena_if_id_o <= ena_if_id_o;
 		time_set_if_id_o <= time_set_if_id_o;
 		
