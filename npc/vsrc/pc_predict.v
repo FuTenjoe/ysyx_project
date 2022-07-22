@@ -11,8 +11,13 @@ module pc_predict (
     input rest_from_id,
     input [63:0] id_pc
 );
-reg  pc_ok1;
-reg  pc_ok2;
+reg  delay_rest;
+always@(posedge clk or negedge rst_n)begin
+    if(control_rest == 1'b1)
+        delay_rest <= control_rest;
+    else
+        delay_rest <= 1'b0;
+end
 
 
 always @ (posedge clk or negedge rst_n) begin
@@ -32,6 +37,9 @@ always @ (posedge clk or negedge rst_n) begin
        
     end*/
     else if((control_rest == 1'b1) )begin
+            curr_pc <= ex_next_pc;
+    end
+    else if((delay_rest == 1'b1) )begin
             curr_pc <= ex_next_pc;
     end
     else if(rest_from_id == 1'b1 )begin
