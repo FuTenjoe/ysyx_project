@@ -113,7 +113,9 @@ id_stage u_id_stage(
     .rd_buf_flag(id_rd_buf_flag),   //访存标志
     .control_rest(id_control_rest),
     .from_ex_alu_res(from_ex_alu_res),
-    .from_mem_alu_res(from_mem_alu_res)
+    .from_mem_alu_res(from_mem_alu_res),
+    .ex_reg1_data(ex_reg1_rdata),
+    .ex_reg2_data(ex_reg2_rdata)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag

@@ -14,7 +14,9 @@ module mux_dt_pipe (
     output   reg   [63:0]  reg2_rdata,  // register 2 read address
     input [63:0] from_ex_alu_res,
     input [63:0] from_mem_alu_res,
-    input control_rest
+    input control_rest,
+    input [63:0]ex_reg1_data,
+    input  [63:0]ex_reg2_data
 );
 reg test;
 always@(posedge clk or negedge rst_n)begin
@@ -24,14 +26,14 @@ always@(posedge clk or negedge rst_n)begin
         test <= 1'b0;
     end
     else begin
-        if(control_rest != 1'b1)begin
+      //  if(control_rest != 1'b1)begin
             if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)begin
                 if(reg1_raddr == reg_waddr)begin
                     reg1_rdata <= from_mem_alu_res;
-                    reg2_rdata <= reg2_rdata_fr_read;
+                    reg2_rdata <= ex_reg2_data;
                 end
                 else if(reg2_raddr == reg_waddr)begin
-                    reg1_rdata <= reg1_rdata_fr_read;
+                    reg1_rdata <= ex_reg1_data;
                     reg2_rdata <= from_mem_alu_res;
                    
                 end
@@ -43,11 +45,11 @@ always@(posedge clk or negedge rst_n)begin
             else begin
                 if(reg1_raddr == reg_waddr)begin
                     reg1_rdata <= from_ex_alu_res;
-                    reg2_rdata <= reg2_rdata_fr_read;
+                    reg2_rdata <= ex_reg2_data;
                     test <= 1'b1;
                 end
                 else if(reg2_raddr == reg_waddr)begin
-                    reg1_rdata <= reg1_rdata_fr_read;
+                    reg1_rdata <= ex_reg1_data;
                     reg2_rdata <= from_ex_alu_res;
                 end
                 else begin
@@ -55,11 +57,11 @@ always@(posedge clk or negedge rst_n)begin
                     reg2_rdata <= reg2_rdata_fr_read;
                 end
             end
-        end
-        else begin
+       // end
+    /*    else begin
             reg1_rdata <= reg1_rdata_fr_read;
             reg2_rdata <= reg2_rdata_fr_read;
-        end
+        end*/
     end
 end
 

@@ -33,7 +33,9 @@ module id_stage (
     output reg [2:0] rd_buf_flag ,  //访存标志
     output control_rest,
     input [63:0] from_ex_alu_res,
-    input [63:0] from_mem_alu_res
+    input [63:0] from_mem_alu_res,
+    input [63:0]ex_reg1_data,
+    input  [63:0]ex_reg2_data
    
    
 );
@@ -118,7 +120,9 @@ mux_dt_pipe u_mux_dt_pipe (
     .reg2_rdata(reg2_rdata),  // register 2 read address
     .from_ex_alu_res(from_ex_alu_res),
     .from_mem_alu_res(from_mem_alu_res),
-    .control_rest(control_rest)
+    .control_rest(control_rest),
+    .ex_reg1_data(ex_reg1_data),
+    .ex_reg2_data(ex_reg2_data)
     
 );
 endmodule
