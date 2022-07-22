@@ -105,7 +105,7 @@ id_control_rest u_id_control_rest(
     .branch(branch),     // branch flag
     .jump(jump),       // jump flag
     .control_rest(control_rest)
-   
+    .rest_from_id(rest_from_id)
 );
 mux_dt_pipe u_mux_dt_pipe (
     .clk(clk),

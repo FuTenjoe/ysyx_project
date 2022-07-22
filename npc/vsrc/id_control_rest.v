@@ -5,7 +5,8 @@ module id_control_rest (
     input rst_n,
     input   branch,     // branch flag
     input   jump,       // jump flag
-    output  reg control_rest
+    output  reg control_rest,
+    input rest_from_id
     
    
 );
@@ -29,7 +30,7 @@ end
 // register write
 // register 1 read
 always @(*) begin
-    if((branch == 1'b1 | jump == 1'b1) & ct_rest_2 == 1'b0)
+    if((branch == 1'b1 | jump == 1'b1) & ct_rest_2 == 1'b0 &rest_from_id == 1'b0)
         control_rest = 1'b1;
     else 
         control_rest = 1'b0;
