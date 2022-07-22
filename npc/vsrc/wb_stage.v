@@ -34,7 +34,7 @@ end
 always @(posedge clk or negedge rst_n) begin
     if(~rst_n)
         write_ready <= 1'b1;
-    else if(wb_no_use == 1'b0)begin
+    else begin
         if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)
             4'd0:begin
@@ -60,10 +60,11 @@ always @(posedge clk or negedge rst_n) begin
             endcase
         end
     end
-    else begin
+    
+/*    else begin
         reg_f[reg_waddr] <=reg_f[reg_waddr];
         write_ready <= write_ready;
-    end
+    end*/
 
 end
 

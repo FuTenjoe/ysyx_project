@@ -70,18 +70,15 @@ module id_ex_regs(
 
 	input ena_id_ex_i,
 	output ena_id_ex_o,
-	input rest_from_id_id_ex_i,
-	input control_rest_no_use,
-	output reg no_use
+	input rest_from_id_id_ex_i
+	
     );
-reg dp_no_use; //打拍
+
 always@(posedge clk or negedge rst_n)begin
 		if(!rst_n)begin
 			pc_id_ex_o <= 32'h8000_0000;
 			imm_id_ex_o <= 64'd0;
 			reg2_rdata_id_ex_o <= 64'd0;
-
-
 			branch_id_ex_o <= 1'd0;
 			jump_id_ex_o <= 1'd0;
 			reg_wen_id_ex_o <= 1'd0;
@@ -98,34 +95,7 @@ always@(posedge clk or negedge rst_n)begin
 			rd_flag_id_ex_o <= 3'd0;
 			rd_buf_flag_id_ex_o <= 3'd0;
 			ena_id_ex_o <= 1'd0;
-			no_use <= 1'd0;
 			reg1_rdata_id_ex_o <= 64'd0;
-			dp_no_use <= 1'd0;
-			
-		end
-		else if( control_rest_no_use == 1'b1)begin
-			pc_id_ex_o <= pc_id_ex_o;
-			imm_id_ex_o <= imm_id_ex_o;
-			reg2_rdata_id_ex_o <= reg2_rdata_id_ex_o;
-			reg1_rdata_id_ex_o <= reg1_rdata_id_ex_o;
-			branch_id_ex_o <= branch_id_ex_o ;
-			jump_id_ex_o <= jump_id_ex_o;
-			reg_wen_id_ex_o <= reg_wen_id_ex_o;
-			reg_waddr_id_ex_o <=reg_waddr_id_ex_o;
-			alu_op_id_ex_o <= alu_op_id_ex_o;
-			alu_src_sel_id_ex_o <= alu_src_sel_id_ex_o;
-			unknown_code_id_ex_o <= unknown_code_id_ex_o;
-			jalr_id_ex_o <= jalr_id_ex_o;
-			ebreak_flag_id_ex_o <= ebreak_flag_id_ex_o;
-			wmask_id_ex_o <= wmask_id_ex_o;
-			s_flag_id_ex_o <= s_flag_id_ex_o;
-			s_imm_id_ex_o <= s_imm_id_ex_o;
-			expand_signed_id_ex_o <= expand_signed_id_ex_o;
-			rd_flag_id_ex_o <= rd_flag_id_ex_o;
-			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_o;
-			ena_id_ex_o <= ena_id_ex_o;
-			//dp_no_use <= 1'b1;
-			no_use <= 1'b1;   //输入指令无效信号
 		end
 		else if(rest_from_id_id_ex_i == 1'b1)begin
 			pc_id_ex_o<=pc_id_ex_i;
@@ -148,8 +118,6 @@ always@(posedge clk or negedge rst_n)begin
 			rd_flag_id_ex_o <= rd_flag_id_ex_i;
 			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
 			ena_id_ex_o <= ena_id_ex_i;
-			//dp_no_use <= 1'b0;
-			no_use <=  1'b0;  //此处是否需要打拍
 			reg_f_id_ex_o <= reg_f_id_ex_i;
 		end
 		else begin
@@ -173,8 +141,7 @@ always@(posedge clk or negedge rst_n)begin
 			rd_flag_id_ex_o <= rd_flag_id_ex_i;
 			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
 			ena_id_ex_o <= ena_id_ex_i;
-			//dp_no_use <= 1'b0;
-			no_use <=  1'b0;  //此处是否需要打拍
+			
 			reg_f_id_ex_o <= reg_f_id_ex_i;
 		end
 end
