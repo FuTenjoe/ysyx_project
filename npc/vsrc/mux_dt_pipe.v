@@ -18,7 +18,7 @@ module mux_dt_pipe (
     input [63:0]ex_reg1_data,
     input  [63:0]ex_reg2_data
 );
-reg test;
+reg [2:0]test;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         reg1_rdata <= 64'd0;
@@ -46,15 +46,17 @@ always@(posedge clk or negedge rst_n)begin
                 if(reg1_raddr == reg_waddr)begin
                     reg1_rdata <= from_ex_alu_res;
                     reg2_rdata <= reg2_rdata_fr_read;
-                    test <= 1'b1;
+                    test <= 3'b1;
                 end
                 else if(reg2_raddr == reg_waddr)begin
                     reg1_rdata <= reg1_rdata_fr_read;
                     reg2_rdata <= from_ex_alu_res;
+                    test = 3'd2
                 end
                 else begin
                     reg1_rdata <= reg1_rdata_fr_read;
                     reg2_rdata <= reg2_rdata_fr_read;
+                    test = 3'd3;
                 end
             end
        // end
