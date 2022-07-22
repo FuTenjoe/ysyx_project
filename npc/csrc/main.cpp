@@ -226,7 +226,7 @@ int main(int argc, char **argv, char **env) {
         break;
       }
       int end_pc;
-      end.pc = top->diff_pc;
+      end_pc = top->diff_pc;
      
   
     }
