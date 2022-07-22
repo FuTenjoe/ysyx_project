@@ -24,7 +24,7 @@ always@(posedge clk or negedge rst_n)begin
         test <= 1'b0;
     end
     else begin
-        if(control_rest != 1'b0)begin
+        if(control_rest != 1'b1)begin
             if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)begin
                 if(reg1_raddr == reg_waddr)begin
                     reg1_rdata <= from_mem_alu_res;
