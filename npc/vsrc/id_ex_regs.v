@@ -70,7 +70,7 @@ module id_ex_regs(
 
 	input ena_id_ex_i,
 	output ena_id_ex_o,
-	input rest_from_id_id_ex_i
+	input rest_from_id_id_ex_i,
 	output id_rest_no_use
     );
 

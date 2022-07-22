@@ -46,7 +46,7 @@ module ex_mem_regs(
 	output ex_pc_ready_ex_mem_o,
 	input  [63:0] pc_ex_mem_i,
 	output [63:0] pc_ex_mem_o
-	input id_rest_no_use.
+	input id_rest_no_use,
 	output fr_ex_no_use
     );
 

@@ -204,7 +204,7 @@ id_ex_regs u_id_ex_regs(
     .reg_f_id_ex_o (to_ex_reg_f),
     .ena_id_ex_i(id_ena),
     .ena_id_ex_o(ex_ena),
-    .rest_from_id_id_ex_i(rest_from_id)
+    .rest_from_id_id_ex_i(rest_from_id),
     .id_rest_no_use(id_rest_no_use)
     
     );
