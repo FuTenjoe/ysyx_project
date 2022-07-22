@@ -60,10 +60,10 @@ always@(posedge clk or negedge rst_n)begin
                 end
             end
        // end
-    /*    else begin
+        else begin
             reg1_rdata <= reg1_rdata_fr_read;
             reg2_rdata <= reg2_rdata_fr_read;
-        end*/
+        end
     end
 end
 
