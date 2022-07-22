@@ -51,6 +51,8 @@ always@(posedge clk or negedge rst_n)begin
 		instr_if_id_o <= instr_if_id_o;
 		ena_if_id_o <= ena_if_id_o;
 		time_set_if_id_o <= time_set_if_id_o;
+
+	end
 	else begin
 		pc_if_id_o<=pc_if_id_i;
 		instr_if_id_o<=instr_if_id_i;
