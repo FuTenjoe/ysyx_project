@@ -73,7 +73,7 @@ module ex_mem_regs(
 			pc_ex_mem_o <= 32'h8000_0000;
 			fr_ex_no_use <= 1'b0;
 		end
-		else if(id_rest_no_use == 1'b1)
+		else if(id_rest_no_use == 1'b1)begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_o;
 			reg_waddr_ex_mem_o <= reg_waddr_ex_mem_o;
 			//reg_wdata_ex_mem_o <= reg_wdata_ex_mem_i;
@@ -96,6 +96,7 @@ module ex_mem_regs(
 			ex_pc_ready_ex_mem_o <= ex_pc_ready_ex_mem_o;
 			pc_ex_mem_o <= pc_ex_mem_o;
 			fr_ex_no_use <= 1'b1;
+		end
 		else begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
 			reg_waddr_ex_mem_o <= reg_waddr_ex_mem_i;
