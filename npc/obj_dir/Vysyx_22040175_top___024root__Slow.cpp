@@ -6074,6 +6074,8 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                              == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))
                              ? 2U : 3U));
         }
+    } else {
+        vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__test = 0U;
     }
     vlSelf->ysyx_22040175_top__DOT__id_control_rest 
         = ((((IData)(vlSelf->ysyx_22040175_top__DOT__id_branch) 
