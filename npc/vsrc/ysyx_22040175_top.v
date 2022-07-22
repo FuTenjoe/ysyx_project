@@ -21,7 +21,7 @@ wire [31:0]if_inst;
 wire [63:0]if_pc;
 assign pc = if_pc;
 assign inst = if_inst;
-
+wire delay_rest;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -33,7 +33,8 @@ if_stage u_if_stage(
     .ex_pc_ready(ex_pc_ready),
     
     .rest_from_id(rest_from_id),
-    .id_pc(id_pc)
+    .id_pc(id_pc),
+    .delay_rest(delay_rest)
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 
@@ -52,7 +53,7 @@ if_id_regs u_if_id_regs(
     .ena_if_id_o(id_ena),
     .time_set_if_id_o(id_time_set),
     .control_rest_if_id_i(id_control_rest),
-    
+    .delay_rest(delay_rest),
    
     .ex_pc_ready(ex_pc_ready),
     .rest_from_id(rest_from_id)

@@ -6002,8 +6002,9 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                                          | (1U 
                                                             & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_jump)))));
     vlSelf->ysyx_22040175_top__DOT__rest_from_id = 
-        (((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
-          & (0x80000000ULL != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
+        ((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
+           & (0x80000000ULL != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
+          & (0x13U != vlSelf->ysyx_22040175_top__DOT__id_inst)) 
          & (((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag)) 
                | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
               | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 

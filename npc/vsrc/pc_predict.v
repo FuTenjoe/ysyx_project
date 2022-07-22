@@ -9,9 +9,10 @@ module pc_predict (
     output reg [`CPU_WIDTH-1:0] curr_pc,  // current pc addr
     input ex_pc_ready,
     input rest_from_id,
-    input [63:0] id_pc
+    input [63:0] id_pc,
+    output reg  delay_rest
 );
-reg  delay_rest;
+
 always@(posedge clk or negedge rst_n)begin
     if(control_rest == 1'b1)
         delay_rest <= control_rest;
