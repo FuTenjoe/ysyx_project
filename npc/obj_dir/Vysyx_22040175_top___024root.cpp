@@ -165,12 +165,14 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
             = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_pc_ready) 
                & 1U);
         vlSelf->ysyx_22040175_top__DOT__id_time_set 
-            = ((((IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest) 
+            = (((((IData)(vlSelf->ysyx_22040175_top__DOT__rest_from_id) 
+                  | (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest)) 
                  | (IData)(vlSelf->ysyx_22040175_top__DOT__delay_rest))
                  ? (IData)(vlSelf->ysyx_22040175_top__DOT__id_time_set)
                  : (IData)(vlSelf->time_set)) & 1U);
         __Vdly__ysyx_22040175_top__DOT__id_ena = ((
-                                                   ((IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest) 
+                                                   (((IData)(vlSelf->ysyx_22040175_top__DOT__rest_from_id) 
+                                                     | (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest)) 
                                                     | (IData)(vlSelf->ysyx_22040175_top__DOT__delay_rest))
                                                     ? (IData)(vlSelf->ysyx_22040175_top__DOT__id_ena)
                                                     : (IData)(vlSelf->ysyx_22040175_top__DOT__if_ena)) 
@@ -224,7 +226,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                     : 
                                                    (4ULL 
                                                     + vlSelf->ysyx_22040175_top__DOT__if_pc))));
-        __Vdly__ysyx_22040175_top__DOT__id_pc = (((IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest) 
+        __Vdly__ysyx_22040175_top__DOT__id_pc = ((((IData)(vlSelf->ysyx_22040175_top__DOT__rest_from_id) 
+                                                   | (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest)) 
                                                   | (IData)(vlSelf->ysyx_22040175_top__DOT__delay_rest))
                                                   ? vlSelf->ysyx_22040175_top__DOT__id_pc
                                                   : vlSelf->ysyx_22040175_top__DOT__if_pc);
@@ -341,7 +344,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
             = vlSelf->ysyx_22040175_top__DOT__id_alu_src_sel;
         vlSelf->ysyx_22040175_top__DOT__ex_imm = vlSelf->ysyx_22040175_top__DOT__id_imm;
         vlSelf->ysyx_22040175_top__DOT__id_inst = (
-                                                   ((IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest) 
+                                                   (((IData)(vlSelf->ysyx_22040175_top__DOT__rest_from_id) 
+                                                     | (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest)) 
                                                     | (IData)(vlSelf->ysyx_22040175_top__DOT__delay_rest))
                                                     ? 0x13U
                                                     : (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata));
