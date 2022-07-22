@@ -304,7 +304,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
         vlSelf->ysyx_22040175_top__DOT__id_inst = (
                                                    ((IData)(vlSelf->ysyx_22040175_top__DOT__rest_from_id) 
                                                     | (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest))
-                                                    ? 0x271bU
+                                                    ? 0x13U
                                                     : (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata));
     } else {
         vlSelf->ysyx_22040175_top__DOT__wb_pc = 0x80000000ULL;
