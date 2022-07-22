@@ -122,7 +122,8 @@ mux_dt_pipe u_mux_dt_pipe (
     .from_mem_alu_res(from_mem_alu_res),
     .control_rest(control_rest),
     .ex_reg1_data(ex_reg1_data),
-    .ex_reg2_data(ex_reg2_data)
+    .ex_reg2_data(ex_reg2_data),
+    .rest_from_id(rest_from_id)
     
 );
 endmodule
