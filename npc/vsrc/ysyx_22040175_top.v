@@ -142,7 +142,7 @@ wire [63:0] to_ex_reg_f [0:`REG_DATA_DEPTH-1];
 wire ex_ena;
 wire ex_time_set;
 //wire [63:0] ex_reg_wdata;
-
+wire id_rest_no_use;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -205,7 +205,7 @@ id_ex_regs u_id_ex_regs(
     .ena_id_ex_i(id_ena),
     .ena_id_ex_o(ex_ena),
     .rest_from_id_id_ex_i(rest_from_id)
-
+    .id_rest_no_use(id_rest_no_use)
     
     );
 wire [63:0] from_ex_alu_res;
@@ -258,6 +258,7 @@ wire [63:0] mem_from_ex_alu_res;
 
 wire mem_pc_ready;
 wire [63:0] mem_pc;
+wire fr_ex_no_use;
 ex_mem_regs u_ex_mem_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -302,7 +303,9 @@ ex_mem_regs u_ex_mem_regs(
     .ex_pc_ready_ex_mem_i(ex_pc_ready),
     .ex_pc_ready_ex_mem_o (mem_pc_ready),
     .pc_ex_mem_i(ex_pc),
-	.pc_ex_mem_o(mem_pc)
+	.pc_ex_mem_o(mem_pc),
+    .id_rest_no_use(id_rest_no_use),
+	.fr_ex_no_use(fr_ex_no_use)
 );
 wire [63:0] from_mem_alu_res;
 mem_stage u_mem_stage(
@@ -365,7 +368,8 @@ mem_wb_regs u_mem_wb_regs(
     .ex_pc_ready_mem_wb_i(mem_pc_ready),
 	.ex_pc_ready_mem_wb_o(wb_pc_ready),
     .pc_mem_wb_i(mem_pc),
-	.pc_mem_wb_o(wb_pc)
+	.pc_mem_wb_o(wb_pc),
+    .fr_ex_no_use(fr_ex_no_use)
     );
 wire [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;

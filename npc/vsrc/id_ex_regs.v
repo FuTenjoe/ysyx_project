@@ -71,7 +71,7 @@ module id_ex_regs(
 	input ena_id_ex_i,
 	output ena_id_ex_o,
 	input rest_from_id_id_ex_i
-	
+	output id_rest_no_use
     );
 
 always@(posedge clk or negedge rst_n)begin
@@ -96,6 +96,7 @@ always@(posedge clk or negedge rst_n)begin
 			rd_buf_flag_id_ex_o <= 3'd0;
 			ena_id_ex_o <= 1'd0;
 			reg1_rdata_id_ex_o <= 64'd0;
+			id_rest_no_use <= 1'b0;
 		end
 		else if(rest_from_id_id_ex_i == 1'b1)begin
 			pc_id_ex_o<=pc_id_ex_i;
@@ -119,6 +120,7 @@ always@(posedge clk or negedge rst_n)begin
 			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
 			ena_id_ex_o <= ena_id_ex_i;
 			reg_f_id_ex_o <= reg_f_id_ex_i;
+			id_rest_no_use <= 1'b1;
 		end
 		else begin
 			pc_id_ex_o<=pc_id_ex_i;
@@ -143,6 +145,7 @@ always@(posedge clk or negedge rst_n)begin
 			ena_id_ex_o <= ena_id_ex_i;
 			
 			reg_f_id_ex_o <= reg_f_id_ex_i;
+			id_rest_no_use <= 1'b0;
 		end
 end
 	

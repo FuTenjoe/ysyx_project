@@ -34,7 +34,8 @@ module mem_wb_regs(
 	input ex_pc_ready_mem_wb_i,
 	output ex_pc_ready_mem_wb_o,
 	input [63:0] pc_mem_wb_i,
-	output [63:0] pc_mem_wb_o
+	output [63:0] pc_mem_wb_o,
+	input fr_ex_no_use
     );
 
 	always@(posedge clk or negedge rst_n)
@@ -56,6 +57,23 @@ module mem_wb_regs(
 			ex_pc_ready_mem_wb_o <= 1'b0;
 			pc_mem_wb_o <= 32'h8000_0000;
 		end
+		else if(fr_ex_no_use == 1'b1)begin
+			reg_wen_mem_wb_o <= reg_wen_mem_wb_o;
+			reg_waddr_mem_wb_o <= reg_waddr_mem_wb_o;
+			//reg_wdata_mem_wb_o <= reg_wdata_mem_wb_i;
+			wmask_mem_wb_o <= wmask_mem_wb_o;
+			s_flag_mem_wb_o <= s_flag_mem_wb_o;
+			time_set_mem_wb_o <= time_set_mem_wb_o;
+			s_imm_mem_wb_o <= s_imm_mem_wb_o;
+			expand_signed_mem_wb_o <= expand_signed_mem_wb_o;
+			ebreak_flag_mem_wb_o <= ebreak_flag_mem_wb_o;
+			rd_buf_flag_mem_wb_o <= rd_buf_flag_mem_wb_o;
+			from_ex_alu_res_mem_wb_o <= from_ex_alu_res_mem_wb_o;
+			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_o;
+			
+			ex_pc_ready_mem_wb_o  <= ex_pc_ready_mem_wb_o;
+			pc_mem_wb_o <= pc_mem_wb_o;
+		end	
 		else begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
 			reg_waddr_mem_wb_o <= reg_waddr_mem_wb_i;

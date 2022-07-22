@@ -46,7 +46,8 @@ module ex_mem_regs(
 	output ex_pc_ready_ex_mem_o,
 	input  [63:0] pc_ex_mem_i,
 	output [63:0] pc_ex_mem_o
-	
+	input id_rest_no_use.
+	output fr_ex_no_use
     );
 
 	always@(posedge clk or negedge rst_n)
@@ -70,7 +71,31 @@ module ex_mem_regs(
 			from_ex_alu_res_ex_mem_o <= 64'd0;
 			ex_pc_ready_ex_mem_o <= 1'b0;
 			pc_ex_mem_o <= 32'h8000_0000;
+			fr_ex_no_use <= 1'b0;
 		end
+		else if(id_rest_no_use == 1'b1)
+			reg_wen_ex_mem_o <= reg_wen_ex_mem_o;
+			reg_waddr_ex_mem_o <= reg_waddr_ex_mem_o;
+			//reg_wdata_ex_mem_o <= reg_wdata_ex_mem_i;
+			
+			wmask_ex_mem_o <= wmask_ex_mem_o;
+			s_flag_ex_mem_o <= s_flag_ex_mem_o;
+			time_set_ex_mem_o <= time_set_ex_mem_o;
+			s_imm_ex_mem_o <= s_imm_ex_mem_o;
+			expand_signed_ex_mem_o <= expand_signed_ex_mem_o;
+
+			ebreak_flag_ex_mem_o <= ebreak_flag_ex_mem_o;
+
+			rd_buf_flag_ex_mem_o <= rd_buf_flag_ex_mem_o;
+			alu_op_ex_mem_o <= alu_op_ex_mem_o;
+
+			alu_src1_ex_mem_o <= alu_src1_ex_mem_o;
+			alu_src2_ex_mem_o <= alu_src2_ex_mem_o;
+			from_ex_alu_res_ex_mem_o <= from_ex_alu_res_ex_mem_o;
+			
+			ex_pc_ready_ex_mem_o <= ex_pc_ready_ex_mem_o;
+			pc_ex_mem_o <= pc_ex_mem_o;
+			fr_ex_no_use <= 1'b1;
 		else begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
 			reg_waddr_ex_mem_o <= reg_waddr_ex_mem_i;
@@ -93,6 +118,7 @@ module ex_mem_regs(
 			
 			ex_pc_ready_ex_mem_o <= ex_pc_ready_ex_mem_i;
 			pc_ex_mem_o <= pc_ex_mem_i;
+			fr_ex_no_use <= 1'b0;
 		end
 	end
 	
