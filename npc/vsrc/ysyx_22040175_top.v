@@ -86,7 +86,7 @@ id_stage u_id_stage(
     .inst(id_inst),       // instruction input
     //.reg_f (to_id_reg_f),
     .reg_f (from_wb_reg_f),
-    .wb_reg_waddr(wb_reg_waddr),
+    .wb_reg_waddr(ex_reg_waddr), //改为执行阶段的1写回地址，应该是上一条指令
     .write_ready(write_ready),
     .rest_from_id(rest_from_id),
 
