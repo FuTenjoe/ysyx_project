@@ -28,6 +28,7 @@ always@(posedge clk or negedge rst_n)begin
     else begin
       //  if(control_rest != 1'b1)begin
             if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)begin
+                test <= 1'b0;
                 if(reg1_raddr == reg_waddr)begin
                     reg1_rdata <= from_mem_alu_res;
                     reg2_rdata <= reg2_rdata_fr_read;
@@ -51,12 +52,12 @@ always@(posedge clk or negedge rst_n)begin
                 else if(reg2_raddr == reg_waddr)begin
                     reg1_rdata <= reg1_rdata_fr_read;
                     reg2_rdata <= from_ex_alu_res;
-                    test = 3'd2;
+                    test <= 3'd2;
                 end
                 else begin
                     reg1_rdata <= reg1_rdata_fr_read;
                     reg2_rdata <= reg2_rdata_fr_read;
-                    test = 3'd3;
+                    test <= 3'd3;
                 end
             end
        // end
