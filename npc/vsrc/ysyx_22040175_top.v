@@ -115,7 +115,8 @@ id_stage u_id_stage(
     .from_ex_alu_res(from_ex_alu_res),
     .from_mem_alu_res(from_mem_alu_res),
     .ex_reg1_data(ex_reg1_rdata),
-    .ex_reg2_data(ex_reg2_rdata)
+    .ex_reg2_data(ex_reg2_rdata),
+    .ex_rd_buf_flag(ex_rd_buf_flag)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag

@@ -35,7 +35,8 @@ module id_stage (
     input [63:0] from_ex_alu_res,
     input [63:0] from_mem_alu_res,
     input [63:0]ex_reg1_data,
-    input  [63:0]ex_reg2_data
+    input  [63:0]ex_reg2_data,
+    input [2:0]ex_rd_buf_flag
    
    
 );
@@ -95,7 +96,7 @@ id_rest u_id_rest(        //data hazard
     .reg2_raddr(reg2_raddr), // register 2 read address
     .reg_waddr(wb_reg_waddr),
     .write_ready(write_ready),
-    .rd_buf_flag(rd_buf_flag),
+    .rd_buf_flag(ex_rd_buf_flag),
     .rest_from_id(rest_from_id)
    
 );
@@ -115,7 +116,7 @@ mux_dt_pipe u_mux_dt_pipe (
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
     .reg_waddr(wb_reg_waddr),
-    .rd_buf_flag(rd_buf_flag),
+    .rd_buf_flag(ex_rd_buf_flag),
     .reg1_rdata(reg1_rdata), // register 1 read address
     .reg2_rdata(reg2_rdata),  // register 2 read address
     .from_ex_alu_res(from_ex_alu_res),
