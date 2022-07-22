@@ -31,7 +31,6 @@ pc_predict u_pc_predict(
   .ena(ena), 
   .curr_pc(curr_pc),  // current pc addr
   .ex_pc_ready(ex_pc_ready),
-  .pc_no_use(pc_no_use),
   .rest_from_id(rest_from_id),
   .id_pc(id_pc)
 );
