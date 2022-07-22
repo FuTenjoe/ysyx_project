@@ -308,7 +308,7 @@ mem_stage u_mem_stage(
     .alu_src1(mem_alu_src1),
     .alu_src2(mem_alu_src2),
     //output reg [63:0] rd_buf_lw,
-    .alu_res(from_mem_alu_res),
+    .alu_res(from_mem_alu_res)
    
 );
 wire wb_reg_wen;
