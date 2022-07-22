@@ -22,7 +22,7 @@ reg [2:0]test;
 always@(*)begin
       //  if(control_rest != 1'b1)begin
             if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)begin
-                test<= 1'b0;
+                test = 1'b0;
                 if(reg1_raddr == reg_waddr)begin
                     reg1_rdata = from_mem_alu_res;
                     reg2_rdata = reg2_rdata_fr_read;
