@@ -58,6 +58,7 @@ always@(*)begin
         else begin
             reg1_rdata = reg1_rdata_fr_read;
             reg2_rdata = reg2_rdata_fr_read;
+            test = 3'd0;
         end
 end
 
