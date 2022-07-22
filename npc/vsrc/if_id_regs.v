@@ -39,14 +39,18 @@ always@(posedge clk or negedge rst_n)begin
 		time_set_if_id_o <= time_set_if_id_o;
 		pc_no_use_if_id_o <= control_rest_if_id_i;
 	end*/
-	else if(rest_from_id == 1'b1 | control_rest_if_id_i == 1'b1| delay_rest == 1'b1)begin
+	else if((rest_from_id == 1'b0) & (control_rest_if_id_i == 1'b1| delay_rest == 1'b1))begin
 		pc_if_id_o<= pc_if_id_o;
 		instr_if_id_o<= 32'b0010011;
 		ena_if_id_o <= ena_if_id_o;
 		time_set_if_id_o <= time_set_if_id_o;
 		
 	end
-	
+	else if(rest_from_id == 1'b1)begin
+		pc_if_id_o<= pc_if_id_o;
+		instr_if_id_o<= instr_if_id_o;
+		ena_if_id_o <= ena_if_id_o;
+		time_set_if_id_o <= time_set_if_id_o;
 	else begin
 		pc_if_id_o<=pc_if_id_i;
 		instr_if_id_o<=instr_if_id_i;
