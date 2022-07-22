@@ -26,21 +26,19 @@ always @ (posedge clk or negedge rst_n) begin
         curr_pc <= 32'h8000_0000;
         
     end
-    else if((control_rest == 1'b1) & (pc_ok1 == 1'b0))begin
+/*    else if((control_rest == 1'b1) & (pc_ok1 == 1'b0))begin
         curr_pc <= 32'h8000_0000;
         //curr_pc <= curr_pc;
        
-    end
-    else if((control_rest == 1'b1) & (pc_ok1 == 1'b1))begin
+    end*/
+    else if((control_rest == 1'b1) )begin
             curr_pc <= ex_next_pc;
-     
     end
     else if(rest_from_id == 1'b1 )begin
         curr_pc <= curr_pc; 
     end
     else begin
         curr_pc <= curr_pc + 4;
-        pc_no_use <= 1'b0;
     end
 end    
 
