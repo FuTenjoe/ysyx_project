@@ -19,7 +19,7 @@ module mux_dt_pipe (
     input  [63:0]ex_reg2_data
 );
 reg [2:0]test;
-always@(posedge clk or negedge rst_n)begin
+always@(negedge clk or negedge rst_n)begin
     if(!rst_n)begin
         reg1_rdata <= 64'd0;
         reg2_rdata <= 64'd0;
