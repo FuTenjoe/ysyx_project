@@ -63,6 +63,13 @@ always @(*) begin
         end
     end
 
+reg [63:0] end_wb_waddr;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)
+    end_wb_waddr <= 64'd0;
+    else
+    end_wb_waddr <= reg_f[reg_waddr] + s_imm;
+end
 
 always @(posedge clk or negedge rst_n) begin
     if(~rst_n)
@@ -81,10 +88,9 @@ import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
 
 import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
-reg [63:0] end_wb_waddr;
+
 always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(time_set==1'd1)) begin
-        end_wb_waddr = reg_f[reg_waddr] + s_imm;
         pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
     end
 end
