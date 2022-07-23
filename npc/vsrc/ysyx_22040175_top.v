@@ -8,11 +8,11 @@ module  ysyx_22040175_top(
     output [`CPU_WIDTH-1:0]       unknown_code,
     input time_set,
     output[31:0]        diff_pc,
-    output [31:0] diff_mem_pc
+    output [31:0] diff_delay_pc
    // output[`CPU_WIDTH-1:0]        next_pc
 );
 assign diff_pc = wb_pc[31:0];
-assign diff_mem_pc = mem_pc[31:0];
+assign diff_delay_pc = wb_delay_pc[31:0];
 wire rst_n;
 assign rst_n = !rst;
 wire [63:0] id_next_pc;
@@ -349,6 +349,7 @@ mem_wb_regs u_mem_wb_regs(
     );
 wire [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;
+wire [63:0] wb_delay_pc;
 wb_stage u_wb_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -365,7 +366,9 @@ wb_stage u_wb_stage(
     .expand_signed(wb_expand_signed),
     .rd_buf_flag(wb_rd_buf_flag),
     .ebreak_flag(wb_ebreak_flag),
-    .reg_f(from_wb_reg_f)
+    .reg_f(from_wb_reg_f),
+    .wb_pc(wb_pc),
+    .wb_delay_pc(wb_delay_pc)
     
   
    

@@ -212,10 +212,10 @@ int main(int argc, char **argv, char **env) {
       if (a>2){
         //if (a%4==1 & a/4>=1){
        //printf("a =%d \n",a);
-      // if((top->diff_pc != 0) &&(top->diff_pc != end_pc))
-      if((top->diff_pc != end_pc) ){
-        printf("diff  is not right !");
-        //difftest_step(top->diff_pc);
+       if((top->diff_pc != 0) &&(top->diff_pc != top-> diff_delay_pc))
+      //if((top->diff_pc != end_pc) ){
+        
+        difftest_step(top->diff_pc);
         printf("diff  is right !");
       }
       printf("end_pc = %lx",end_pc);
@@ -230,8 +230,6 @@ int main(int argc, char **argv, char **env) {
         printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
         break;
       }
-      
-      end_pc = top->diff_pc;
       printf("end_pc1 = %lx",end_pc);
   
     }

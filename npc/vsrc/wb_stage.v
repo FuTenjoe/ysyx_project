@@ -18,7 +18,9 @@ module wb_stage (
     input ebreak_flag,
     output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     output write_ready,
-    input wb_no_use
+    input wb_no_use,
+    input [63:0] wb_pc,
+    output [63:0] wb_delay_pc
    
 );
 reg [63:0] reg_wdata;
@@ -60,13 +62,16 @@ always @(posedge clk or negedge rst_n) begin
             endcase
         end
     end
-    
-/*    else begin
-        reg_f[reg_waddr] <=reg_f[reg_waddr];
-        write_ready <= write_ready;
-    end*/
-
 end
+
+always @(posedge clk or negedge rst_n) begin
+    if(~rst_n)
+        wb_delay_pc <= 64'd0;
+    else
+        wb_delay_pc <= wb_pc;
+end
+
+
 
 import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
 always@(*)begin
