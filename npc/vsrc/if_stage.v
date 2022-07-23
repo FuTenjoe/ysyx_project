@@ -28,11 +28,7 @@ import "DPI-C" function void pmem_read(input longint raddr, output longint rdata
 //import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 wire [63:0] rdata;
 always @(*) begin
-  //pmem_read(curr_pc, rdata);
-  if(control_rest == 1'b0)
-    pmem_read(curr_pc, rdata);
-  else if(ex_pc_ready == 1'b1)
-    pmem_read(curr_pc, rdata);
+  pmem_read(curr_pc, rdata);
 end
 assign inst = rdata[31:0];
 endmodule
