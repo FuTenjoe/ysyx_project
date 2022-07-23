@@ -25,7 +25,6 @@ reg signed [63:0] signed_alu_src2;
 always @(*) begin
     case (alu_op)
         `ALU_SUBN:begin //1100
-           
             zero = (alu_src1 - alu_src2) ? 1'b0 : 1'b1;
         end
         `ALU_BMT:begin

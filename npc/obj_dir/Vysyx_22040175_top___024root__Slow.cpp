@@ -5864,7 +5864,11 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         }
     } else if ((8U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__alu_op))) {
         if ((4U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__alu_op))) {
-            vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero = 0U;
+            vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero 
+                = (1U & (IData)(((0U == (3U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__alu_op))) 
+                                 & (~ (IData)((0U != 
+                                               (vlSelf->ysyx_22040175_top__DOT__id_alu_src1 
+                                                - vlSelf->ysyx_22040175_top__DOT__id_alu_src2)))))));
         } else if ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__alu_op))) {
             if ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__alu_op))) {
                 vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero 
