@@ -215,7 +215,7 @@ int main(int argc, char **argv, char **env) {
       // if((top->diff_pc != 0) &&(top->diff_pc != end_pc))
       if((top->diff_pc != end_pc) ){
         printf("diff  is not right !");
-        difftest_step(top->diff_pc);
+        //difftest_step(top->diff_pc);
         printf("diff  is right !");
       }
       printf("end_pc = %lx",end_pc);
