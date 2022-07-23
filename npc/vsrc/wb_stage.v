@@ -17,7 +17,7 @@ module wb_stage (
     input [2:0]rd_buf_flag,
     input ebreak_flag,
     output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
-    output write_ready,
+    //output write_ready,
     input wb_no_use
    
 );
