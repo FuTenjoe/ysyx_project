@@ -202,7 +202,7 @@ id_ex_regs u_id_ex_regs(
     .rest_id_mem_id_ex_i(rest_id_mem),
 	.alu_src1_id_ex_o(ex_alu_src1),   // alu source 1
     .alu_src2_id_ex_o(ex_alu_src2),    // alu source 2
-    .rest_id_mem_id_ex_o(ex_rest_id_mem)
+    .rest_id_mem_id_ex_o(ex_rest_id_mem),
     .id_inst(id_inst),
 	.ex_inst(ex_inst)
     
