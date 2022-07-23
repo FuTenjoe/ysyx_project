@@ -6437,9 +6437,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                                                       : 
                                                      ((IData)(vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag)
                                                        ? 0x80000000ULL
-                                                       : 
-                                                      (4ULL 
-                                                       + vlSelf->ysyx_22040175_top__DOT__id_pc))))));
+                                                       : vlSelf->ysyx_22040175_top__DOT__id_pc)))));
 }
 
 void Vysyx_22040175_top___024root___eval(Vysyx_22040175_top___024root* vlSelf) {

@@ -5940,9 +5940,7 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                                                       : 
                                                      ((IData)(vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag)
                                                        ? 0x80000000ULL
-                                                       : 
-                                                      (4ULL 
-                                                       + vlSelf->ysyx_22040175_top__DOT__id_pc))))));
+                                                       : vlSelf->ysyx_22040175_top__DOT__id_pc)))));
 }
 
 void Vysyx_22040175_top___024root___eval_initial(Vysyx_22040175_top___024root* vlSelf) {
