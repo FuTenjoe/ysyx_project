@@ -217,7 +217,7 @@ int main(int argc, char **argv, char **env) {
         
         difftest_step(top->diff_pc);
         printf("diff_pc = %x",top->diff_pc);
-        printf("diff_delay_pc = %x",diff_delay_pc);
+        printf("diff_delay_pc = %x",top->diff_delay_pc);
       }
       
      
