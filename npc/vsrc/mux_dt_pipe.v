@@ -63,7 +63,7 @@ end
 
 always@(*)begin
     if(s_flag)
-        end_write_addr = ref[reg_waddr];
+        end_write_addr = reg_f[reg_waddr];
     else
         end_write_addr = 64'd0;
 end
