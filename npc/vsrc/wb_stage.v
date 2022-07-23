@@ -55,7 +55,7 @@ always @(*) begin
                 write_ready = 1'b1;
             end
             default:begin
-                reg_f[reg_waddr] =reg_f[reg_waddr];
+                //reg_f[reg_waddr] = reg_f[reg_waddr];
                 write_ready = 1'b0;
             end
             endcase

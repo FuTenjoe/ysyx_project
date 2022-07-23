@@ -17,9 +17,9 @@ extern "C" {
     extern void ebreak();
     // DPI import at vsrc/if_stage.v:27:30
     extern void pmem_read(long long raddr, long long* rdata);
-    // DPI import at vsrc/wb_stage.v:77:30
+    // DPI import at vsrc/wb_stage.v:78:30
     extern void pmem_write(long long waddr, long long wdata, char wmask);
-    // DPI import at vsrc/wb_stage.v:74:30
+    // DPI import at vsrc/wb_stage.v:75:30
     extern void set_gpr_ptr(const svOpenArrayHandle a);
     // DPI import at vsrc/ctrl.v:770:30
     extern void unknown_inst();
