@@ -367,7 +367,7 @@ wb_stage u_wb_stage(
     .from_mem_alu_res(wb_from_mem_alu_res),
     .wmask(wb_wmask),
     .s_flag(wb_s_flag),
-    .time_set(wb_time_set),
+    .time_set(time_set),
     .s_imm(wb_s_imm),
     .expand_signed(wb_expand_signed),
     .rd_buf_flag(wb_rd_buf_flag),
