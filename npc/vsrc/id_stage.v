@@ -120,7 +120,7 @@ mux_dt_pipe u_mux_dt_pipe (
     .rest_from_id(rest_from_id),
     .reg_f(reg_f),
     .s_flag(s_flag),
-    output [63:0] end_write_addr
+    .end_write_addr(end_write_addr)
 );
 mux_alu u_mux_alu( 
     .alu_src_sel(alu_src_sel),// reg or imm to alu
