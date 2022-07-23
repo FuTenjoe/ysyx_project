@@ -51,8 +51,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgCData(oldp+30,(vlSelf->ysyx_22040175_top__DOT__id_rd_flag),3);
             tracep->chgCData(oldp+31,(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag),3);
             tracep->chgBit(oldp+32,(vlSelf->ysyx_22040175_top__DOT__rest_from_id));
-            tracep->chgBit(oldp+33,(((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch) 
-                                     | (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__jump))));
+            tracep->chgBit(oldp+33,(vlSelf->ysyx_22040175_top__DOT__id_control_rest));
             tracep->chgQData(oldp+34,(vlSelf->ysyx_22040175_top__DOT__ex_pc),64);
             tracep->chgBit(oldp+36,(vlSelf->ysyx_22040175_top__DOT__ex_reg_wen));
             tracep->chgCData(oldp+37,(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr),5);
