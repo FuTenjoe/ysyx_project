@@ -53,7 +53,7 @@ if_id_regs u_if_id_regs(
 	.instr_if_id_o(id_inst),
     .ena_if_id_o(id_ena),
     .time_set_if_id_o(id_time_set),
-    .control_rest(control_rest),
+    .control_rest(id_control_rest),
     .ex_pc(ex_pc)
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
