@@ -17,10 +17,9 @@ pc_predict u_pc_predict(
   .clk(clk),     // system clock
   .rst_n(rst_n),   // active low reset
   .control_rest(control_rest),
-  .ex_next_pc(next_pc), // from ex
+  .id_next_pc(next_pc), // from ex
   .ena(ena), 
   .curr_pc(curr_pc),  // current pc addr
-  .ex_pc_ready(ex_pc_ready),
   .rest_from_id(rest_from_id),
   .id_pc(id_pc),
   .delay_rest(delay_rest)
