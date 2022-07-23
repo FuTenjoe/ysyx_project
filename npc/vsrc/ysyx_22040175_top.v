@@ -276,7 +276,7 @@ ex_mem_regs u_ex_mem_regs(
    
     .pc_ex_mem_i(ex_pc),
 	.pc_ex_mem_o(mem_pc),
-    .rest_id_mem_id_ex_i(ex_rest_id_mem),
+    .rest_id_mem_ex_mem_i(ex_rest_id_mem),
 	.rest_id_mem_ex_mem_o(mem_rest_id_mem)
    
    
