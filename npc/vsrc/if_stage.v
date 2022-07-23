@@ -3,7 +3,7 @@
 module if_stage (
     input clk,
     input rst_n,
-    input      [`CPU_WIDTH-1:0] next_pc,
+    input      [`CPU_WIDTH-1:0] id_next_pc,
     output ena,
     output [31:0] inst,
     output [63:0] curr_pc,
@@ -17,12 +17,11 @@ pc_predict u_pc_predict(
   .clk(clk),     // system clock
   .rst_n(rst_n),   // active low reset
   .control_rest(control_rest),
-  .id_next_pc(next_pc), // from ex
+  .id_next_pc(id_next_pc), // from ex
   .ena(ena), 
   .curr_pc(curr_pc),  // current pc addr
-  .rest_id_mem (rest_id_mem ),
-  .id_pc(id_pc),
-  .delay_rest(delay_rest)
+  .rest_id_mem (rest_id_mem )
+  
 );
 
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
