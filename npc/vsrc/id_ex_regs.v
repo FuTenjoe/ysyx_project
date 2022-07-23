@@ -68,8 +68,7 @@ always@(posedge clk or negedge rst_n)begin
 			pc_id_ex_o <= 32'h8000_0000;
 			
 			
-			branch_id_ex_o <= 1'd0;
-			jump_id_ex_o <= 1'd0;
+			
 			reg_wen_id_ex_o <= 1'd0;
 			reg_waddr_id_ex_o <= 5'd0;
 			alu_op_id_ex_o <= 5'd0;
@@ -97,7 +96,7 @@ always@(posedge clk or negedge rst_n)begin
 			alu_op_id_ex_o <= alu_op_id_ex_i;
 			alu_src_sel_id_ex_o <= alu_src_sel_id_ex_i;
 			unknown_code_id_ex_o <= unknown_code_id_ex_i;
-			jalr_id_ex_o <= jalr_id_ex_i;
+			
 			ebreak_flag_id_ex_o <= ebreak_flag_id_ex_i;
 			wmask_id_ex_o <= wmask_id_ex_i;
 			s_flag_id_ex_o <= s_flag_id_ex_i;
