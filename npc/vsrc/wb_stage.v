@@ -30,32 +30,29 @@ always@(*)begin
         reg_wdata = from_ex_alu_res;
     end
 end
-
-always @(posedge clk or negedge rst_n) begin
-    if(~rst_n)
-        write_ready <= 1'b0;
-    else begin
+reg [2:0]write_ready;
+always @(*) begin
         if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)
             4'd0:begin
-                reg_f[reg_waddr] <= reg_wdata;   //jalr
-                write_ready <= 1'b1;
+                reg_f[reg_waddr] = reg_wdata;   //jalr
+                write_ready = 3'd1;
             end
             4'd1:begin
-                reg_f[reg_waddr] <= {{32{reg_wdata[31]}},reg_wdata[31:0]};   //lw  addw  divw
-                write_ready <= 1'b1;
+                reg_f[reg_waddr] = {{32{reg_wdata[31]}},reg_wdata[31:0]};   //lw  addw  divw
+                write_ready = 3'd2;
             end
             4'd2:begin
-                reg_f[reg_waddr] <= reg_wdata[31:0];            //addw错误
-                write_ready <= 1'b1;
+                reg_f[reg_waddr] = reg_wdata[31:0];            //addw错误
+                write_ready = 1'b1;
             end
             4'd3:begin
-                reg_f[reg_waddr] <= {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
-                write_ready <= 1'b1;
+                reg_f[reg_waddr] = {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
+                write_ready<= 1'b1;
             end
             default:begin
-                reg_f[reg_waddr] <=reg_f[reg_waddr];
-                write_ready <= 1'b0;
+                reg_f[reg_waddr] =reg_f[reg_waddr];
+                write_ready = 1'b0;
             end
             endcase
         end
@@ -66,7 +63,7 @@ always @(posedge clk or negedge rst_n) begin
         write_ready <= write_ready;
     end*/
 
-end
+
 
 import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
 always@(*)begin
