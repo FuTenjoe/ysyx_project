@@ -33,7 +33,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     struct {
         CData/*0:0*/ ysyx_22040175_top__DOT__rst_n;
         CData/*0:0*/ ysyx_22040175_top__DOT__if_ena;
-        CData/*0:0*/ ysyx_22040175_top__DOT__delay_rest;
+        CData/*0:0*/ ysyx_22040175_top__DOT__rest_id_mem;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_ena;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_time_set;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_branch;
@@ -50,7 +50,6 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*2:0*/ ysyx_22040175_top__DOT__id_rd_flag;
         CData/*2:0*/ ysyx_22040175_top__DOT__id_rd_buf_flag;
         CData/*0:0*/ ysyx_22040175_top__DOT__rest_from_id;
-        CData/*0:0*/ ysyx_22040175_top__DOT__id_control_rest;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_branch;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_jump;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_reg_wen;
@@ -67,6 +66,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_ena;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_time_set;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_rest_no_use;
+        CData/*0:0*/ ysyx_22040175_top__DOT__ex_rest_id_mem;
         CData/*0:0*/ ysyx_22040175_top__DOT__write_ready;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_pc_ready;
         CData/*0:0*/ ysyx_22040175_top__DOT__mem_reg_wen;
@@ -89,21 +89,21 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__wb_ebreak_flag;
         CData/*2:0*/ ysyx_22040175_top__DOT__wb_rd_buf_flag;
         CData/*0:0*/ ysyx_22040175_top__DOT__wb_pc_ready;
-        CData/*0:0*/ ysyx_22040175_top__DOT__ena;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__pc_no_use;
+        CData/*0:0*/ ysyx_22040175_top__DOT__mem_rest_id_mem;
+        CData/*0:0*/ ysyx_22040175_top__DOT__control_rest;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__branch;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__jump;
         CData/*2:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op;
         CData/*4:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr;
-        CData/*4:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_1;
     };
     struct {
-        CData/*2:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__test;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_1;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__write_ld_2;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_control_rest__DOT__ct_rest_1;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_control_rest__DOT__ct_rest_2;
+        CData/*4:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__write_ready;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__no_use;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__ena;
         CData/*2:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__test;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__no_use;
+        CData/*4:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__alu_op;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__zero;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__no_use;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_wb_stage__DOT__wb_no_use;
@@ -112,11 +112,10 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         IData/*31:0*/ ysyx_22040175_top__DOT__ex_s_imm;
         IData/*31:0*/ ysyx_22040175_top__DOT__mem_s_imm;
         IData/*31:0*/ ysyx_22040175_top__DOT__wb_s_imm;
-        QData/*63:0*/ ysyx_22040175_top__DOT__next_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__if_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__id_pc;
-        QData/*63:0*/ ysyx_22040175_top__DOT__id_reg1_rdata;
-        QData/*63:0*/ ysyx_22040175_top__DOT__id_reg2_rdata;
+        QData/*63:0*/ ysyx_22040175_top__DOT__id_alu_src1;
+        QData/*63:0*/ ysyx_22040175_top__DOT__id_alu_src2;
         QData/*63:0*/ ysyx_22040175_top__DOT__id_imm;
         QData/*63:0*/ ysyx_22040175_top__DOT__id_unknown_code;
         QData/*63:0*/ ysyx_22040175_top__DOT__ex_pc;
@@ -137,10 +136,12 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         QData/*63:0*/ ysyx_22040175_top__DOT__wb_from_mem_alu_res;
         QData/*63:0*/ ysyx_22040175_top__DOT__wb_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__rdata;
-        QData/*63:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_rdata_fr_read;
-        QData/*63:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_rdata_fr_read;
+        QData/*63:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_rdata;
+        QData/*63:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_rdata;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__from_ex_alu_res;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__from_mem_alu_res;
+        QData/*63:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__signed_alu_src1;
+        QData/*63:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__signed_alu_src2;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_id_ex_regs__DOT__reg_wdata_id_ex_i;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_id_ex_regs__DOT__reg_wdata_id_ex_o;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__signed_alu_src1;
@@ -159,15 +160,11 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     CData/*0:0*/ __Vclklast__TOP____VinpClk__TOP__ysyx_22040175_top__DOT__rst_n;
     CData/*0:0*/ __Vchglast__TOP__ysyx_22040175_top__DOT__rst_n;
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_if_stage__DOT__pmem_read__0__rdata;
-    QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_if_stage__DOT__pmem_read__1__rdata;
-    QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_mem_stage__DOT__pmem_read__3__rdata;
+    QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_mem_stage__DOT__pmem_read__2__rdata;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellinp__u_id_stage__reg_f;
-    VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellout__u_id_ex_regs__reg_f_id_ex_o;
-    VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellinp__u_id_ex_regs__reg_f_id_ex_i;
-    VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellinp__u_ex_stage__reg_f;
     VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f;
-    VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_reg_read__reg_f;
-    VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__u_ex_stage__DOT____Vcellinp__u_muxpc__reg_f;
+    VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_dt_pipe__reg_f;
+    VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_pc__reg_f;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
