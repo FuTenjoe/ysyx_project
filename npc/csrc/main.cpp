@@ -216,7 +216,8 @@ int main(int argc, char **argv, char **env) {
       //if((top->diff_pc != end_pc) ){
         
         difftest_step(top->diff_pc);
-        printf("diff  is right !");
+        printf("diff_pc = %x",top->diff_pc);
+        printf("diff_delay_pc = %x",diff_delay_pc);
       }
       
      
