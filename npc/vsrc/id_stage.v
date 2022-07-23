@@ -90,7 +90,8 @@ id_rest u_id_rest(        //data hazard
     .write_ready(write_ready),
     .rd_buf_flag(ex_rd_buf_flag),
     .rest_from_id(rest_from_id),
-    .rest_id_mem(rest_id_mem)
+    .rest_id_mem(rest_id_mem),
+    .id_inst(inst)
    
 );
 id_control_rest u_id_control_rest(
