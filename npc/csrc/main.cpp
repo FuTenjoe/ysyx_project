@@ -218,8 +218,8 @@ int main(int argc, char **argv, char **env) {
         difftest_step(top->diff_pc);
         printf("diff  is right !");
       }
-      printf("end_pc = %lx",end_pc);
-      printf("diffpc = %lx",top->diff_pc);
+      
+     
         }
       else if(a <= 2){
           init_difftest(img_size,port);
@@ -230,7 +230,7 @@ int main(int argc, char **argv, char **env) {
         printf("false:ABORT!The false PC is 0x%0x\n",top->pc);
         break;
       }
-      printf("end_pc1 = %lx",end_pc);
+      
   
     }
   
