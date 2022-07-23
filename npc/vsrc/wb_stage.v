@@ -33,7 +33,7 @@ end
 
 always @(posedge clk or negedge rst_n) begin
     if(~rst_n)
-        write_ready <= 1'b1;
+        write_ready <= 1'b0;
     else begin
         if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)
@@ -69,8 +69,10 @@ always @(posedge clk or negedge rst_n) begin
 end
 
 import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
-initial set_gpr_ptr(reg_f);  // rf为通用寄存器的二维数组变量
-
+always@(*)begin
+    if(!rst_n)
+        initial set_gpr_ptr(reg_f);  // rf为通用寄存器的二维数组变量
+end
 import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
 always @(*) begin
