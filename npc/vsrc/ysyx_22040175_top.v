@@ -109,7 +109,7 @@ id_stage u_id_stage(
     .from_ex_alu_res(from_ex_alu_res),
     .from_mem_alu_res(from_mem_alu_res),
     
-    .ex_rd_buf_flag(ex_rd_buf_flag)
+    .ex_rd_buf_flag(ex_rd_buf_flag),
     
     .next_pc(id_next_pc),
 
