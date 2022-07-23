@@ -46,7 +46,9 @@ module ex_mem_regs(
 	input  [63:0] pc_ex_mem_i,
 	output [63:0] pc_ex_mem_o,
 	input rest_id_mem_ex_mem_i,
-	output rest_id_mem_ex_mem_o
+	output rest_id_mem_ex_mem_o,
+	input [63:0] end_write_addr_ex_mem_i,
+	output [63:0] end_write_addr_ex_mem_o
 	
     );
 
@@ -72,6 +74,7 @@ module ex_mem_regs(
 			
 			pc_ex_mem_o <= 32'h8000_0000;
 			rest_id_mem_ex_mem_o <= 1'b0;
+			end_write_addr_ex_mem_o <= 64'd0;
 		end
 		else if(rest_id_mem_ex_mem_i == 1'b1)begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_o;
@@ -93,7 +96,7 @@ module ex_mem_regs(
 			alu_src2_ex_mem_o <= alu_src2_ex_mem_o;
 			from_ex_alu_res_ex_mem_o <= from_ex_alu_res_ex_mem_o;
 			
-			
+			end_write_addr_ex_mem_o <= end_write_addr_ex_mem_o;
 			pc_ex_mem_o <= pc_ex_mem_o;
 			rest_id_mem_ex_mem_o <= 1'b1;
 		end
@@ -120,6 +123,7 @@ module ex_mem_regs(
 			
 			pc_ex_mem_o <= pc_ex_mem_i;
 			rest_id_mem_ex_mem_o <= 1'b0;
+			end_write_addr_ex_mem_o <= end_write_addr_ex_mem_i;
 			
 		end
 	end

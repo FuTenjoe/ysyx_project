@@ -77,7 +77,7 @@ wire [2:0] id_rd_flag;
 wire [2:0] id_rd_buf_flag;   //访存标志
 wire rest_from_id;
 wire id_control_rest;
-
+wire [63:0] id_end_write_addr;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -120,7 +120,8 @@ id_stage u_id_stage(
     .alu_src1(id_alu_src1),   // alu source 1
     .alu_src2(id_alu_src2),    // alu source 2
     .rest_id_mem(rest_id_mem),
-    .ex_inst(ex_inst)
+    .ex_inst(ex_inst),
+    .end_write_addr(id_end_write_addr)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag
@@ -150,6 +151,7 @@ wire ex_time_set;
 wire id_rest_no_use;
 wire ex_rest_id_mem;
 wire [31:0] ex_inst;
+wire [63:0] ex_end_write_addr;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -204,7 +206,9 @@ id_ex_regs u_id_ex_regs(
     .alu_src2_id_ex_o(ex_alu_src2),    // alu source 2
     .rest_id_mem_id_ex_o(ex_rest_id_mem),
     .id_inst(id_inst),
-	.ex_inst(ex_inst)
+	.ex_inst(ex_inst),
+    .end_write_addr_id_ex_i(id_end_write_addr),
+	.end_write_addr_id_ex_o(ex_end_write_addr)
     
     );
 wire [63:0] from_ex_alu_res;
@@ -239,6 +243,7 @@ wire [63:0] mem_from_ex_alu_res;
 wire mem_pc_ready;
 wire [63:0] mem_pc;
 wire fr_ex_no_use;
+wire [63:0] mem_end_write_addr;
 ex_mem_regs u_ex_mem_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -284,7 +289,9 @@ ex_mem_regs u_ex_mem_regs(
     .pc_ex_mem_i(ex_pc),
 	.pc_ex_mem_o(mem_pc),
     .rest_id_mem_ex_mem_i(ex_rest_id_mem),
-	.rest_id_mem_ex_mem_o(mem_rest_id_mem)
+	.rest_id_mem_ex_mem_o(mem_rest_id_mem),
+    .end_write_addr_ex_mem_i(ex_end_write_addr),
+	.end_write_addr_ex_mem_o(mem_end_write_addr)
    
    
     
@@ -316,6 +323,7 @@ wire [63:0] wb_from_mem_alu_res;
 wire wb_pc_ready;
 wire [63:0] wb_pc;
 wire mem_rest_id_mem;
+wire [63:0] wb_end_write_addr;
 mem_wb_regs u_mem_wb_regs(
 	.clk(clk),
     .rst_n(rst_n),
@@ -352,7 +360,9 @@ mem_wb_regs u_mem_wb_regs(
     
     .pc_mem_wb_i(mem_pc),
 	.pc_mem_wb_o(wb_pc),
-    .rest_id_mem_ex_mem_o(mem_rest_id_mem)
+    .rest_id_mem_ex_mem_o(mem_rest_id_mem),
+    .end_write_add_mem_wb_i(mem_end_write_addr),
+	.end_write_add_mem_wb_o(wb_end_write_addr)
     );
 wire [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;
@@ -376,7 +386,7 @@ wb_stage u_wb_stage(
     .reg_f(from_wb_reg_f),
     .wb_pc(wb_pc),
     .wb_delay_pc(wb_delay_pc)
-    
+    .end_write_addr(wb_end_write_addr)
   
    
 );

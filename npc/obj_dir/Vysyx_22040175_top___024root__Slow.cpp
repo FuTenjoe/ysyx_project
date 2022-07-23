@@ -6158,7 +6158,6 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__write_ready = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__wb_no_use = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__reg_wdata = VL_RAND_RESET_Q(64);
-    vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__end_wb_waddr = VL_RAND_RESET_Q(64);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__wb_delay_reg_f[__Vi0] = VL_RAND_RESET_Q(64);
     }

@@ -39,7 +39,8 @@ module id_stage (
     input [2:0]ex_rd_buf_flag,
     output reg [63:0]     alu_src1,   // alu source 1
     output reg [63:0]     alu_src2,    // alu source 2
-    output reg rest_id_mem
+    output reg rest_id_mem,
+    output reg [63:0] end_write_addr
    
    
 );
@@ -117,7 +118,9 @@ mux_dt_pipe u_mux_dt_pipe (
     .control_rest(control_rest),
     
     .rest_from_id(rest_from_id),
-    .reg_f(reg_f)
+    .reg_f(reg_f),
+    .s_flag(s_flag),
+    output [63:0] end_write_addr
 );
 mux_alu u_mux_alu( 
     .alu_src_sel(alu_src_sel),// reg or imm to alu
