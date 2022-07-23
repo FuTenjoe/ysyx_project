@@ -83,7 +83,6 @@ id_stage u_id_stage(
     //.reg_f (to_id_reg_f),
     .reg_f (from_wb_reg_f),
     .ex_reg_waddr(ex_reg_waddr), //改为执行阶段的1写回地址，应该是上一条指令
-    .write_ready(write_ready),
     .rest_from_id(rest_from_id),
 
     
@@ -274,12 +273,15 @@ ex_mem_regs u_ex_mem_regs(
     .alu_src2_ex_mem_o(mem_alu_src2), // alu source 2
     .from_ex_alu_res_ex_mem_o(mem_from_ex_alu_res),
    
-    .ex_pc_ready_ex_mem_i(ex_pc_ready),
-    .ex_pc_ready_ex_mem_o (mem_pc_ready),
+   
     .pc_ex_mem_i(ex_pc),
 	.pc_ex_mem_o(mem_pc),
-    .id_rest_no_use(id_rest_no_use),
-	.fr_ex_no_use(fr_ex_no_use)
+    .rest_id_mem_id_ex_i(ex_rest_id_mem),
+	.rest_id_mem_ex_mem_o(mem_rest_id_mem)
+   
+   
+    
+	
 );
 wire [63:0] from_mem_alu_res;
 mem_stage u_mem_stage(
@@ -306,6 +308,7 @@ wire [63:0] wb_from_mem_alu_res;
 
 wire wb_pc_ready;
 wire [63:0] wb_pc;
+wire mem_rest_id_mem;
 mem_wb_regs u_mem_wb_regs(
 	.clk(clk),
     .rst_n(rst_n),
@@ -343,7 +346,7 @@ mem_wb_regs u_mem_wb_regs(
 	.ex_pc_ready_mem_wb_o(wb_pc_ready),
     .pc_mem_wb_i(mem_pc),
 	.pc_mem_wb_o(wb_pc),
-    .fr_ex_no_use(fr_ex_no_use)
+    .rest_id_mem_ex_mem_o(mem_rest_id_mem)
     );
 wire [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;

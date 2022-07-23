@@ -12,7 +12,6 @@ module ex_stage(
 
 
 alu u_alu(
-    .no_use(no_use),
     .alu_op(alu_op),   // alu opcode
     .alu_src1(alu_src1), // alu source 1
     //input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
