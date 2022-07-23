@@ -371,5 +371,6 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
       DIF_result = false;
     }
   }
+  printf(" dif basic is good!")
   return DIF_result;
 }
