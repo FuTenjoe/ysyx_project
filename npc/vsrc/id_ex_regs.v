@@ -86,7 +86,7 @@ always@(posedge clk or negedge rst_n)begin
 			ena_id_ex_o <= 1'd0;
 			reg1_rdata_id_ex_o <= 64'd0;
 			alu_src1_id_ex_o <= 64'd0;   // alu source 1
-    		alu_src2_id_ex_o <= 64'd0,    // alu source 2
+    		alu_src2_id_ex_o <= 64'd0;    // alu source 2
     		rest_id_mem_id_ex_o <= 1'd0;
 			
 		end
@@ -107,8 +107,8 @@ always@(posedge clk or negedge rst_n)begin
 			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
 			ena_id_ex_o <= ena_id_ex_i;
 			
-			alu_src1_id_ex_o <= alu_src1_id_ex_i,   // alu source 1
-    		alu_src2_id_ex_o <= alu_src2_id_ex_i,    // alu source 2
+			alu_src1_id_ex_o <= alu_src1_id_ex_i;   // alu source 1
+    		alu_src2_id_ex_o <= alu_src2_id_ex_i;    // alu source 2
     		rest_id_mem_id_ex_o <= rest_id_mem_id_ex_i;
 			
 		end
