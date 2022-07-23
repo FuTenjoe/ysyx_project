@@ -90,8 +90,8 @@ import "DPI-C" function void pmem_write(input longint waddr, input longint wdata
 
 always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(time_set==1'd1)) begin
-      //  pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
-      pmem_write(end_write_addr + s_imm, reg_wdata, wmask);
+        pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
+      //pmem_write(end_write_addr + s_imm, reg_wdata, wmask);
     end
 end
 
