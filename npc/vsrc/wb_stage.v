@@ -70,11 +70,14 @@ always @(posedge clk or negedge rst_n) begin
     else
         wb_delay_pc <= wb_pc;
 end
-
+reg [63:0] wb_delay_reg_f [0:`REG_DATA_DEPTH-1],
+always @(posedge clk or negedge rst_n) begin
+        wb_delay_reg_f <= reg_f;
+end
 
 
 import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
-    initial    set_gpr_ptr(reg_f);  // rf为通用寄存器的二维数组变量
+    initial    set_gpr_ptr(delay_reg_f);  // rf为通用寄存器的二维数组变量
 
 import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
