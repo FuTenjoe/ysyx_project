@@ -14,7 +14,6 @@ module id_rest (
     input [63:0] from_ex_alu_res,
     input [63:0] from_mem_alu_res,
     output reg rest_id_mem,
-    input [31:0] inst
     
 
 );
