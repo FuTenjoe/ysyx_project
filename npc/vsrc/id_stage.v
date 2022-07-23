@@ -145,7 +145,8 @@ muxpc u_mux_pc(
    .reg_f (reg_f),
    .s_imm(s_imm),
    .alu_src1(alu_src1),
-   .alu_src2(alu_src2)
+   .alu_src2(alu_src2),
+   .alu_op(alu_op)
    
    
    
