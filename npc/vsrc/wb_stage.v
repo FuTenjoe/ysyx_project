@@ -77,7 +77,7 @@ end
 
 
 import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
-    initial    set_gpr_ptr(delay_reg_f);  // rf为通用寄存器的二维数组变量
+    initial    set_gpr_ptr(wb_delay_reg_f);  // rf为通用寄存器的二维数组变量
 
 import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
