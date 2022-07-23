@@ -51,7 +51,7 @@ always @(*) begin
 end
 
 
-wire [2:0] test;
+reg  [2:0] test;
 always @(*) begin
     if (~ena) begin
         next_pc = curr_pc;
