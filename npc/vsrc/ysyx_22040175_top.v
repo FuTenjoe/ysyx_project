@@ -365,8 +365,8 @@ wb_stage u_wb_stage(
     .expand_signed(wb_expand_signed),
     .rd_buf_flag(wb_rd_buf_flag),
     .ebreak_flag(wb_ebreak_flag),
-    .reg_f(from_wb_reg_f),
-    .write_ready(write_ready),
+    .reg_f(from_wb_reg_f)
+    
   
    
 );
