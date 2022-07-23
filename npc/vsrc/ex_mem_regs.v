@@ -73,7 +73,7 @@ module ex_mem_regs(
 			pc_ex_mem_o <= 32'h8000_0000;
 			rest_id_mem_ex_mem_o <= 1'b0;
 		end
-		else if(rest_id_mem_id_ex_i == 1'b1)begin
+		else if(rest_id_mem_ex_mem_i == 1'b1)begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_o;
 			reg_waddr_ex_mem_o <= reg_waddr_ex_mem_o;
 			//reg_wdata_ex_mem_o <= reg_wdata_ex_mem_i;
