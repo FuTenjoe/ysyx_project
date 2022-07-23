@@ -11,7 +11,8 @@ module if_id_regs(
 	output reg [31:0]instr_if_id_o,
 	output reg ena_if_id_o,
 	output time_set_if_id_o,
-	input control_rest
+	input control_rest,
+	input [63:0] id_pc
 	
     );
 
@@ -24,7 +25,7 @@ always@(posedge clk or negedge rst_n)begin
 		
 	end
 	else if(control_rest)begin
-		pc_if_id_o<=pc_if_id_o;
+		pc_if_id_o <= id_pc;
 		instr_if_id_o<= 32'b0010011;
 		ena_if_id_o <= ena_if_id_o;
 		time_set_if_id_o <= time_set_if_id_o;

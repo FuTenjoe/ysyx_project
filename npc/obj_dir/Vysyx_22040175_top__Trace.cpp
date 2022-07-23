@@ -19,7 +19,7 @@ void Vysyx_22040175_top___024root__traceChgTop0(void* voidSelf, VerilatedVcd* tr
 void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VlWide<3>/*95:0*/ __Vtemp23;
+    VlWide<3>/*95:0*/ __Vtemp25;
     vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode + 1);
     if (false && oldp) {}  // Prevent unused
     // Body
@@ -187,8 +187,8 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgCData(oldp+239,((0x1fU & (IData)(
                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                          >> 0x14U)))),5);
-            VL_EXTEND_WQ(65,64, __Vtemp23, vlSelf->ysyx_22040175_top__DOT__id_pc);
-            tracep->chgWData(oldp+240,(__Vtemp23),65);
+            VL_EXTEND_WQ(65,64, __Vtemp25, vlSelf->ysyx_22040175_top__DOT__id_pc);
+            tracep->chgWData(oldp+240,(__Vtemp25),65);
             tracep->chgQData(oldp+243,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_dt_pipe__reg_f[0]),64);
             tracep->chgQData(oldp+245,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_dt_pipe__reg_f[1]),64);
             tracep->chgQData(oldp+247,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_dt_pipe__reg_f[2]),64);
