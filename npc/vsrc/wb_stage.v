@@ -70,7 +70,7 @@ always @(posedge clk or negedge rst_n) begin
     else
         wb_delay_pc <= wb_pc;
 end
-reg [63:0] wb_delay_reg_f [0:`REG_DATA_DEPTH-1],
+reg [63:0] wb_delay_reg_f [0:`REG_DATA_DEPTH-1];
 always @(posedge clk or negedge rst_n) begin
         wb_delay_reg_f <= reg_f;
 end
