@@ -10,7 +10,7 @@ module id_rest (
     input write_ready,
     input [2:0]rd_buf_flag,
     output reg rest_from_id,
-    input      [`CPU_WIDTH-1:0]        id_inst,
+    input      [31:0]        id_inst,
     input [63:0] from_ex_alu_res,
     input [63:0] from_mem_alu_res,
     output reg rest_id_mem
