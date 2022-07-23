@@ -143,7 +143,7 @@ wire [2:0] ex_rd_flag;
 wire [2:0] ex_rd_buf_flag;
 wire [63:0]   ex_reg1_rdata; // register 1 read data
 wire [63:0]   ex_reg2_rdata; // register 2 read data
-wire [63:0] to_ex_reg_f [0:`REG_DATA_DEPTH-1];
+
 wire ex_ena;
 wire ex_time_set;
 //wire [63:0] ex_reg_wdata;

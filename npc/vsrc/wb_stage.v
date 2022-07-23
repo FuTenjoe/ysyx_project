@@ -34,7 +34,7 @@ always@(*)begin
 end
 
 always @(*) begin
-        if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
+    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)
             4'd0:begin
                 reg_f[reg_waddr] = reg_wdata;   //jalr
@@ -71,10 +71,10 @@ end
 
 
 import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
-always@(*)begin
-    if(!rst_n)
+
+    initial begin
         set_gpr_ptr(reg_f);  // rf为通用寄存器的二维数组变量
-end
+    end
 import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
 always @(*) begin
