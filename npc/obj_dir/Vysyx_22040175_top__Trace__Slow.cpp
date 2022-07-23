@@ -425,7 +425,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declQuad(c+82,"ysyx_22040175_top u_wb_stage from_mem_alu_res", false,-1, 63,0);
         tracep->declBus(c+73,"ysyx_22040175_top u_wb_stage wmask", false,-1, 7,0);
         tracep->declBit(c+74,"ysyx_22040175_top u_wb_stage s_flag", false,-1);
-        tracep->declBit(c+75,"ysyx_22040175_top u_wb_stage time_set", false,-1);
+        tracep->declBit(c+464,"ysyx_22040175_top u_wb_stage time_set", false,-1);
         tracep->declBus(c+76,"ysyx_22040175_top u_wb_stage s_imm", false,-1, 31,0);
         tracep->declBus(c+77,"ysyx_22040175_top u_wb_stage expand_signed", false,-1, 3,0);
         tracep->declBus(c+79,"ysyx_22040175_top u_wb_stage rd_buf_flag", false,-1, 2,0);

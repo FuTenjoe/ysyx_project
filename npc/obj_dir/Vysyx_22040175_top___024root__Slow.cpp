@@ -43,7 +43,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
     vlSelf->diff_pc = (IData)(vlSelf->ysyx_22040175_top__DOT__wb_pc);
     vlSelf->diff_delay_pc = (IData)(vlSelf->ysyx_22040175_top__DOT__wb_delay_pc);
     vlSelf->pc = (IData)(vlSelf->ysyx_22040175_top__DOT__if_pc);
-    if (vlSelf->ysyx_22040175_top__DOT__wb_time_set) {
+    if (vlSelf->time_set) {
         if (((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
                & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
               & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
@@ -5165,7 +5165,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
             }
         }
     }
-    if (vlSelf->ysyx_22040175_top__DOT__wb_time_set) {
+    if (vlSelf->time_set) {
         if (((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
                & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
               & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
@@ -5334,7 +5334,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
             & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
            & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
           & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_flag)) 
-         & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_time_set))) {
+         & (IData)(vlSelf->time_set))) {
         Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_wb_stage__DOT__pmem_write_TOP(
                                                                                 (vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f
                                                                                 [vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr] 

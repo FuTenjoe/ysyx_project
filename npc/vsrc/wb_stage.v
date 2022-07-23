@@ -36,7 +36,7 @@ always@(*)begin
 end
 
 always @(*) begin
-    if(time_set == 1'b1)
+   
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)
             4'd0:begin
