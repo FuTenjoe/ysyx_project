@@ -385,7 +385,7 @@ wb_stage u_wb_stage(
     .ebreak_flag(wb_ebreak_flag),
     .reg_f(from_wb_reg_f),
     .wb_pc(wb_pc),
-    .wb_delay_pc(wb_delay_pc)
+    .wb_delay_pc(wb_delay_pc),
     .end_write_addr(wb_end_write_addr)
   
    
