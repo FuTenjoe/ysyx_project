@@ -53,11 +53,8 @@ end
 
 reg  [2:0] test;
 always @(*) begin
-    if (~ena) begin
-        next_pc = curr_pc;
-        test = 3'd0;
-    end
-    else if (branch && ~zero)begin // bne
+    
+    if (branch && ~zero)begin // bne
         next_pc = curr_pc + imm;
          test = 3'd1;
     end
