@@ -16,12 +16,12 @@ module wb_stage (
     input [3:0] expand_signed,
     input [2:0]rd_buf_flag,
     input ebreak_flag,
-    output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
+    output  [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     //output write_ready,
     input wb_no_use
    
 );
-reg [63:0] reg_wdata;
+wire [63:0] reg_wdata;
 always@(*)begin
     if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6 )begin
         reg_wdata = from_mem_alu_res;
@@ -51,7 +51,7 @@ always @(*) begin
                 write_ready<= 1'b1;
             end
             default:begin
-                reg_f[reg_waddr] =reg_f[reg_waddr];
+                reg_f[reg_waddr] = reg_f[reg_waddr];
                 write_ready = 1'b0;
             end
             endcase
