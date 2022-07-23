@@ -4,10 +4,10 @@ module id_stage (
     input clk,
     input rst_n,
     input [63:0] id_pc,
+    output [63:0] next_pc,
     input      [`CPU_WIDTH-1:0]        inst,       // instruction input
     input reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
-    input [`REG_ADDR_WIDTH-1:0] wb_reg_waddr,
-    input write_ready,
+    input [`REG_ADDR_WIDTH-1:0] ex_reg_waddr,
     output reg rest_from_id,
 
     output reg                         branch,     // branch flag
@@ -34,9 +34,11 @@ module id_stage (
     output control_rest,
     input [63:0] from_ex_alu_res,
     input [63:0] from_mem_alu_res,
-    input [63:0]ex_reg1_data,
-    input  [63:0]ex_reg2_data,
-    input [2:0]ex_rd_buf_flag
+    
+    input [2:0]ex_rd_buf_flag,
+    output reg [63:0]     alu_src1,   // alu source 1
+    output reg [63:0]     alu_src2,    // alu source 2
+    output reg rest_id_mem
    
    
 );
@@ -75,18 +77,8 @@ imm_gen u_imm_gen(
 
     .imm(imm)         // immediate  
 );
-wire [63:0]  reg1_rdata_fr_read;
-wire [63:0]  reg2_rdata_fr_read;
-reg_read u_reg_read(
-    .clk(clk),
-    .rst_n(rst_n),
-    .reg_f(reg_f),
-    .reg1_raddr(reg1_raddr), // register 1 read address
-    .reg2_raddr(reg2_raddr), // register 2 read address
-    .reg1_rdata(reg1_rdata_fr_read), // register 1 read data
-    .reg2_rdata(reg2_rdata_fr_read) // register 2 read data
 
-);
+
 id_rest u_id_rest(        //data hazard
     .clk(clk),
     .rst_n(rst_n),
@@ -94,10 +86,11 @@ id_rest u_id_rest(        //data hazard
     .id_pc(id_pc),
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
-    .reg_waddr(wb_reg_waddr),
+    .reg_waddr(ex_reg_waddr),
     .write_ready(write_ready),
     .rd_buf_flag(ex_rd_buf_flag),
-    .rest_from_id(rest_from_id)
+    .rest_from_id(rest_from_id),
+    .rest_id_mem(rest_id_mem)
    
 );
 id_control_rest u_id_control_rest(
@@ -111,20 +104,46 @@ id_control_rest u_id_control_rest(
 mux_dt_pipe u_mux_dt_pipe (
     .clk(clk),
     .rst_n(rst_n),
-    .reg1_rdata_fr_read(reg1_rdata_fr_read),
-    .reg2_rdata_fr_read(reg2_rdata_fr_read),
+    
     .reg1_raddr(reg1_raddr), // register 1 read address
     .reg2_raddr(reg2_raddr), // register 2 read address
-    .reg_waddr(wb_reg_waddr),
+    .reg_waddr(ex_reg_waddr),
     .rd_buf_flag(ex_rd_buf_flag),
     .reg1_rdata(reg1_rdata), // register 1 read address
     .reg2_rdata(reg2_rdata),  // register 2 read address
     .from_ex_alu_res(from_ex_alu_res),
     .from_mem_alu_res(from_mem_alu_res),
     .control_rest(control_rest),
-    .ex_reg1_data(ex_reg1_data),
-    .ex_reg2_data(ex_reg2_data),
-    .rest_from_id(rest_from_id)
     
+    .rest_from_id(rest_from_id),
+    .reg_f(reg_f)
 );
+mux_alu u_mux_alu( 
+    .alu_src_sel(alu_src_sel),// reg or imm to alu
+
+    .reg1_rdata(reg1_rdata), // register 1 read data
+    .reg2_rdata(reg2_rdata), // register 2 read data
+    .imm(imm),        // immediate
+    .curr_pc(id_pc),    // current pc addr
+    .no_use(no_use),
+
+    .alu_src1(alu_src1),   // alu source 1
+    .alu_src2(alu_src2)    // alu source 2
+);
+muxpc u_mux_pc(
+    .ena(ena),
+    .branch(branch),  // branch type 
+    
+    .jump(jump),    // jump type 
+    .jalr(jalr),
+    .imm(imm),     // immediate  
+    .curr_pc(id_pc), // current pc addr
+    .next_pc(next_pc), // next pc addr
+   // input      [`CPU_WIDTH-1:0]     reg1_rdata
+   .ebreak_flag(ebreak_flag),
+   .reg_f (reg_f),
+   .s_imm(s_imm)
+   
+   
+    );
 endmodule

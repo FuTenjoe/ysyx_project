@@ -42,12 +42,12 @@ module ex_mem_regs(
     output reg     [`CPU_WIDTH-1:0]    alu_src2_ex_mem_o, // alu source 2
 	output reg [63:0] from_ex_alu_res_ex_mem_o,
 	
-	input ex_pc_ready_ex_mem_i,
-	output ex_pc_ready_ex_mem_o,
+
 	input  [63:0] pc_ex_mem_i,
 	output [63:0] pc_ex_mem_o,
-	input id_rest_no_use,
-	output fr_ex_no_use
+	input rest_id_mem_id_ex_o,
+	output rest_id_mem_ex_mem_o
+	
     );
 
 	always@(posedge clk or negedge rst_n)
@@ -69,11 +69,11 @@ module ex_mem_regs(
 			alu_src1_ex_mem_o <= 64'd0;
 			alu_src2_ex_mem_o <= 64'd0;
 			from_ex_alu_res_ex_mem_o <= 64'd0;
-			ex_pc_ready_ex_mem_o <= 1'b0;
+			
 			pc_ex_mem_o <= 32'h8000_0000;
-			fr_ex_no_use <= 1'b0;
+			rest_id_mem_ex_mem_o <= 1'b0;
 		end
-		else if(id_rest_no_use == 1'b1)begin
+		else if(rest_id_mem_id_ex_o == 1'b1)begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_o;
 			reg_waddr_ex_mem_o <= reg_waddr_ex_mem_o;
 			//reg_wdata_ex_mem_o <= reg_wdata_ex_mem_i;
@@ -93,9 +93,9 @@ module ex_mem_regs(
 			alu_src2_ex_mem_o <= alu_src2_ex_mem_o;
 			from_ex_alu_res_ex_mem_o <= from_ex_alu_res_ex_mem_o;
 			
-			ex_pc_ready_ex_mem_o <= ex_pc_ready_ex_mem_o;
+			
 			pc_ex_mem_o <= pc_ex_mem_o;
-			fr_ex_no_use <= 1'b1;
+			rest_id_mem_ex_mem_o <= 1'b1;
 		end
 		else begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
@@ -117,9 +117,10 @@ module ex_mem_regs(
 			alu_src2_ex_mem_o <= alu_src2_ex_mem_i;
 			from_ex_alu_res_ex_mem_o <= from_ex_alu_res_ex_mem_i;
 			
-			ex_pc_ready_ex_mem_o <= ex_pc_ready_ex_mem_i;
+			
 			pc_ex_mem_o <= pc_ex_mem_i;
-			fr_ex_no_use <= 1'b0;
+			rest_id_mem_ex_mem_o <= 1'b0;
+			
 		end
 	end
 	

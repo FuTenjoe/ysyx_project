@@ -7,8 +7,7 @@ module alu(
     input      [63:0]    alu_src2, // alu source 2
     output reg                     zero,     // alu result is zero
     output reg [63:0]    alu_res,   // alu result
-    input [2:0]rd_flag,
-    input  no_use
+    input [2:0]rd_flag
 );
 //reg [63:0] rd_buf_lw;
 reg signed [63:0] signed_alu_src1;

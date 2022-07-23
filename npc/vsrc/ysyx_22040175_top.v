@@ -15,26 +15,26 @@ assign diff_pc = wb_pc[31:0];
 assign diff_mem_pc = mem_pc[31:0];
 wire rst_n;
 assign rst_n = !rst;
-wire [63:0] next_pc;
+wire [63:0] id_next_pc;
 wire if_ena;
 wire [31:0]if_inst;
 wire [63:0]if_pc;
 assign pc = if_pc;
 assign inst = if_inst;
-wire delay_rest;
+
+
+
+wire rest_id_mem;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
-    .next_pc(ex_next_pc),
-    .ena(ena),   //输出
+    
+    .id_next_pc(id_next_pc),
+    .ena(if_ena),
     .inst(if_inst),
     .curr_pc(if_pc),
-    .control_rest(id_control_rest),
-    .ex_pc_ready(ex_pc_ready),
-    
-    .rest_from_id(rest_from_id),
-    .id_pc(id_pc),
-    .delay_rest(delay_rest)
+    .control_rest(control_rest),
+    .rest_id_mem(rest_id_mem)
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 
@@ -51,20 +51,15 @@ if_id_regs u_if_id_regs(
 	.pc_if_id_o(id_pc),
 	.instr_if_id_o(id_inst),
     .ena_if_id_o(id_ena),
-    .time_set_if_id_o(id_time_set),
-    .control_rest_if_id_i(id_control_rest),
-    .delay_rest(delay_rest),
-   
-    .ex_pc_ready(ex_pc_ready),
-    .rest_from_id(rest_from_id)
+    .time_set_if_id_o(id_time_set)
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
 wire id_branch;
 wire id_jump;
 wire id_reg_wen;
 wire [`REG_ADDR_WIDTH-1:0] id_reg_waddr;
-wire [63:0] id_reg1_rdata;
-wire [63:0] id_reg2_rdata;
+wire [63:0] id_alu_src1;
+wire [63:0] id_alu_src2;
 wire [`CPU_WIDTH-1:0] id_imm;
 wire [`ALU_OP_WIDTH-1:0]     id_alu_op;     // alu opcode
 wire [`ALU_SRC_WIDTH-1:0]    id_alu_src_sel ;// alu source select flag
@@ -79,6 +74,7 @@ wire [2:0] id_rd_flag;
 wire [2:0] id_rd_buf_flag;   //访存标志
 wire rest_from_id;
 wire id_control_rest;
+
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -86,18 +82,16 @@ id_stage u_id_stage(
     .inst(id_inst),       // instruction input
     //.reg_f (to_id_reg_f),
     .reg_f (from_wb_reg_f),
-    .wb_reg_waddr(ex_reg_waddr), //改为执行阶段的1写回地址，应该是上一条指令
+    .ex_reg_waddr(ex_reg_waddr), //改为执行阶段的1写回地址，应该是上一条指令
     .write_ready(write_ready),
     .rest_from_id(rest_from_id),
 
-    .branch(id_branch),     // branch flag
-    .jump(id_jump),       // jump flag
+    
 
     .reg_wen(id_reg_wen),    // register write enable
     .reg_waddr(id_reg_waddr),  // register write address
     
-    .reg1_rdata(id_reg1_rdata), // register 1 read data
-    .reg2_rdata(id_reg2_rdata), // register 2 read data
+    
     //output reg [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op, // immediate extend opcode
     .imm(id_imm), 
     .alu_op(id_alu_op),     // alu opcode
@@ -114,9 +108,16 @@ id_stage u_id_stage(
     .control_rest(id_control_rest),
     .from_ex_alu_res(from_ex_alu_res),
     .from_mem_alu_res(from_mem_alu_res),
-    .ex_reg1_data(ex_reg1_rdata),
-    .ex_reg2_data(ex_reg2_rdata),
+    
     .ex_rd_buf_flag(ex_rd_buf_flag)
+    
+    .next_pc(id_next_pc),
+
+    //output reg [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op, // immediate extend opcode
+   
+    .alu_src1(id_alu_src1),   // alu source 1
+    .alu_src2(id_alu_src2),    // alu source 2
+    .rest_id_mem(rest_id_mem)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag
@@ -144,27 +145,20 @@ wire ex_ena;
 wire ex_time_set;
 //wire [63:0] ex_reg_wdata;
 wire id_rest_no_use;
+wire ex_rest_id_mem;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
 	.pc_id_ex_i(id_pc),
 	.pc_id_ex_o(ex_pc),
-	
 
-	.branch_id_ex_i(id_branch),     // branch flag
-    .jump_id_ex_i(id_jump),       // jump flag
 
-    .reg_wen_id_ex_i(id_reg_wen),    // register write enable
-    .reg_waddr_id_ex_i(id_reg_waddr),  // register write address
+    .reg_wen_id_ex_i(ex_reg_wen),    // register write enable
+    .reg_waddr_id_ex_i(ex_reg_waddr),  // register write address
 
-    .reg1_rdata_id_ex_i(id_reg1_rdata), // register 1 read data
-    .reg2_rdata_id_ex_i(id_reg2_rdata), // register 2 read data
-   
-	.imm_id_ex_i(id_imm),
     .alu_op_id_ex_i(id_alu_op),     // alu opcode
-    .alu_src_sel_id_ex_i(id_alu_src_sel) ,// alu source select flag
+  
     .unknown_code_id_ex_i(id_unknown_code),
-    .jalr_id_ex_i(id_jalr),
     .ebreak_flag_id_ex_i(id_ebreak_flag),
     .wmask_id_ex_i(id_wmask),
     .s_flag_id_ex_i(id_s_flag),
@@ -172,41 +166,40 @@ id_ex_regs u_id_ex_regs(
     .expand_signed_id_ex_i(id_expand_signed),
     .rd_flag_id_ex_i(id_rd_flag),
 	.rd_buf_flag_id_ex_i(id_rd_buf_flag), 
-
-	.branch_id_ex_o(ex_branch),     // branch flag
-    .jump_id_ex_o(ex_jump),       // jump flag
+	
 
     .reg_wen_id_ex_o(ex_reg_wen),    // register write enable
     .reg_waddr_id_ex_o(ex_reg_waddr),  // register write address
-  
-	.imm_id_ex_o(ex_imm), 
+ 
+	
     .alu_op_id_ex_o(ex_alu_op),    // alu opcode
-    .alu_src_sel_id_ex_o(ex_alu_src_sel), // alu source select flag
+    
     .unknown_code_id_ex_o(ex_unknown_code),
-    .jalr_id_ex_o(ex_jalr),
+    
     .ebreak_flag_id_ex_o(ex_ebreak_flag),
     .wmask_id_ex_o(ex_wmask),
     .s_flag_id_ex_o(ex_s_flag),
     .s_imm_id_ex_o(ex_s_imm),
     .expand_signed_id_ex_o(ex_expand_signed),
-    .rd_flag_id_ex_o(ex_rd_flag),
+    .rd_flag_id_ex_o(ex_rd_buf_flag),
 	.rd_buf_flag_id_ex_o(ex_rd_buf_flag), 
-	.reg1_rdata_id_ex_o(ex_reg1_rdata), // register 1 read data
-    .reg2_rdata_id_ex_o(ex_reg2_rdata), // register 2 read data
 
-
-	
-    //input [63:0]reg_wdata_id_ex_i(id_reg_waddr),  // register write data
+   
     .time_set_id_ex_i(id_time_set),
-    .reg_f_id_ex_i (from_wb_reg_f),
-	//output [63:0] reg_wdata_id_ex_o,
+    
+	
 	.time_set_id_ex_o(ex_time_set),
-	//.reg_f_id_ex_o (to_ex_reg_f),
-    .reg_f_id_ex_o (to_ex_reg_f),
-    .ena_id_ex_i(id_ena),
-    .ena_id_ex_o(ex_ena),
-    .rest_from_id_id_ex_i(rest_from_id),
-    .id_rest_no_use(id_rest_no_use)
+	
+
+	.ena_id_ex_i(id_ena),
+	.ena_id_ex_o(ex_ena),
+	.alu_src1_id_ex_i(id_alu_src1),   // alu source 1
+    .alu_src2_id_ex_i(id_alu_src2),    // alu source 2
+    .rest_id_mem_id_ex_i(rest_id_mem),
+	.alu_src1_id_ex_o(ex_alu_src1),   // alu source 1
+    .alu_src2_id_ex_o(ex_alu_src2),    // alu source 2
+    .rest_id_mem_id_ex_o(ex_rest_id_mem)
+   
     
     );
 wire [63:0] from_ex_alu_res;
@@ -217,30 +210,10 @@ wire write_ready;
 wire ex_pc_ready;
 ex_stage u_ex_stage(
     .alu_op(ex_alu_op),   // alu opcode
-    .id_pc(id_pc),
-    .alu_res(from_ex_alu_res),   // alu result
     .alu_src1(ex_alu_src1), // alu source 1
     .alu_src2(ex_alu_src2), // alu source 2
-    .rd_flag(ex_rd_flag),
-
-
-    .ena(ex_ena),
-    .branch(ex_branch),  // branch type 
-    
-    .jump(ex_jump),    // jump type 
-    .jalr(ex_jalr),
-    .imm(ex_imm),     // immediate  
-    .curr_pc(ex_pc), // current pc addr
-    .reg1_rdata(ex_reg1_rdata),
-    .reg2_rdata(ex_reg2_rdata),
-    .ebreak_flag(ex_ebreak_flag),
-    .reg_f(from_wb_reg_f),
-    .s_imm(ex_s_imm),
-    //.write_ready(write_ready),
-    .next_pc(ex_next_pc), // next pc addr
-   
-    .ex_pc_ready(ex_pc_ready),
-    .alu_src_sel(ex_alu_src_sel)
+    .alu_res(from_ex_alu_res),   // alu result
+    .rd_flag(ex_rd_flag)
 );
 wire mem_reg_wen;
 wire [`REG_ADDR_WIDTH-1:0] mem_reg_waddr;
