@@ -22,8 +22,6 @@ always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
     end
-    else if(ebreak_flag == 1'b1)
-        curr_pc <= 32'h8000_0000;
     else if(rest_id_mem == 1'b1)begin
         curr_pc <= curr_pc; 
     end
