@@ -85,7 +85,7 @@ always@(posedge clk or negedge rst_n)begin
 			rd_buf_flag_id_ex_o <= 3'd0;
 			ena_id_ex_o <= 1'd0;
 			reg1_rdata_id_ex_o <= 64'd0;
-			alu_src1_id_ex_o <= 64'd0,   // alu source 1
+			alu_src1_id_ex_o <= 64'd0;   // alu source 1
     		alu_src2_id_ex_o <= 64'd0,    // alu source 2
     		rest_id_mem_id_ex_o <= 1'd0;
 			
