@@ -13,9 +13,8 @@ module alu(
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 always @(*) begin
-    if(no_use == 1'b0)begin
-    zero = 1'b0;
-    alu_res = 64'b0;
+    
+   
     case (alu_op)
         `ALU_ADD: begin  //0011
         if(rd_flag == 3'd0)begin
@@ -121,10 +120,6 @@ always @(*) begin
             zero = (alu_res == `CPU_WIDTH'b0) ? 1'b1 : 1'b0;
         end
     endcase
-    end
-    else
-        alu_res = alu_res;
-        zero = zero;
 end
 /*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
