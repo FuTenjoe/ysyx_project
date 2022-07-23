@@ -12,7 +12,7 @@ module id_rest (
     output reg rest_from_id,
     input      [`CPU_WIDTH-1:0]        inst,
     input [63:0] from_ex_alu_res,
-    input [63:0] from_mem_alu_res
+    input [63:0] from_mem_alu_res,
     output reg rest_id_mem
     
 
