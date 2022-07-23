@@ -20,7 +20,7 @@ alu u_alu(
     .zero(zero),     // alu result is zero
     .alu_res_ex_sign(alu_res),   // alu result
     .rd_flag(rd_flag),
-
+    .expand_signed(expand_signed)
 );
 
 
