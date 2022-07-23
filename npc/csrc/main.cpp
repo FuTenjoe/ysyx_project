@@ -212,7 +212,7 @@ int main(int argc, char **argv, char **env) {
       if (a>2){
         //if (a%4==1 & a/4>=1){
        //printf("a =%d \n",a);
-       if((top->diff_pc != 0) &&(top->diff_pc != top-> diff_delay_pc)){
+       if((top->pc != 0) &&(top->diff_pc != top-> diff_delay_pc)){
       //if((top->diff_pc != end_pc) ){
         
         difftest_step(top->diff_pc);
@@ -367,7 +367,7 @@ static void checkregs(CPU_state *ref, vaddr_t dnpc){
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
   int i = 0;
   bool DIF_result = true;
-  printf("ok2");
+  
   if(ref_r -> pc != dnpc){
     printf("False: PC is false! ref_dnpc is 0x%0lx;npc_dnpc is 0x%0lx; Instruction is 0x%x\n",ref_r->pc,dnpc,top->inst);
     DIF_result = false;
@@ -378,6 +378,6 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
       DIF_result = false;
     }
   }
-  printf(" dif basic is good!");
+ 
   return DIF_result;
 }
