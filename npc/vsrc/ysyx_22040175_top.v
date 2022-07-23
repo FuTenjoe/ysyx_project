@@ -153,7 +153,7 @@ id_ex_regs u_id_ex_regs(
 
 
     .reg_wen_id_ex_i(ex_reg_wen),    // register write enable
-    .reg_waddr_id_ex_i(ex_reg_waddr),  // register write address
+    .reg_waddr_id_ex_i(id_reg_waddr),  // register write address
 
     .alu_op_id_ex_i(id_alu_op),     // alu opcode
   
@@ -342,8 +342,7 @@ mem_wb_regs u_mem_wb_regs(
 	.from_ex_alu_res_mem_wb_o(wb_from_ex_alu_res),
 	.from_mem_alu_res_mem_wb_o(wb_from_mem_alu_res),
    
-    .ex_pc_ready_mem_wb_i(mem_pc_ready),
-	.ex_pc_ready_mem_wb_o(wb_pc_ready),
+    
     .pc_mem_wb_i(mem_pc),
 	.pc_mem_wb_o(wb_pc),
     .rest_id_mem_ex_mem_o(mem_rest_id_mem)
