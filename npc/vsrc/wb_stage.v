@@ -64,11 +64,9 @@ always @(*) begin
     end
 
 reg [63:0] end_wb_waddr;
-always@(posedge clk or negedge rst_n)begin
-    if(!rst_n)
-    end_wb_waddr <= 64'd0;
-    else
-    end_wb_waddr <= reg_f[reg_waddr] + s_imm;
+always@(*)begin
+    
+    end_wb_waddr = reg_f[reg_waddr] + s_imm;
 end
 
 always @(posedge clk or negedge rst_n) begin
