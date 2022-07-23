@@ -350,6 +350,7 @@ void difftest_step (vaddr_t dnpc){
   ref_difftest_regcpy(&ref_r, DIFFTEST_TO_DUT);
   checkregs(&ref_r, dnpc);
   ref_difftest_exec(1);
+  pintf("ok1");
 }
 
 
