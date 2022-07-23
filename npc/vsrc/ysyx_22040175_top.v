@@ -152,7 +152,7 @@ id_ex_regs u_id_ex_regs(
 	.pc_id_ex_o(ex_pc),
 
 
-    .reg_wen_id_ex_i(ex_reg_wen),    // register write enable
+    .reg_wen_id_ex_i(id_reg_wen),    // register write enable
     .reg_waddr_id_ex_i(id_reg_waddr),  // register write address
 
     .alu_op_id_ex_i(id_alu_op),     // alu opcode
