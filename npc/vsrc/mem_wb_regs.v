@@ -37,7 +37,7 @@ module mem_wb_regs(
 	output [63:0] pc_mem_wb_o,
 	input rest_id_mem_ex_mem_o,
 	input [63:0] end_write_add_mem_wb_i,
-	output [63:0] end_write_add_mem_wb_o
+	output reg [63:0] end_write_add_mem_wb_o
     );
 
 	always@(posedge clk or negedge rst_n)

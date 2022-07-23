@@ -48,7 +48,7 @@ module ex_mem_regs(
 	input rest_id_mem_ex_mem_i,
 	output rest_id_mem_ex_mem_o,
 	input [63:0] end_write_addr_ex_mem_i,
-	output [63:0] end_write_addr_ex_mem_o
+	output reg [63:0] end_write_addr_ex_mem_o
 	
     );
 
