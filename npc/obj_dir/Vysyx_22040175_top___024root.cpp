@@ -245,7 +245,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
             __Vdly__ysyx_22040175_top__DOT__if_pc = vlSelf->ysyx_22040175_top__DOT__if_pc;
         } else if ((1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__rest_id_mem)))) {
             __Vdly__ysyx_22040175_top__DOT__if_pc = 
-                ((IData)(vlSelf->ysyx_22040175_top__DOT__control_rest)
+                (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch) 
+                  | (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__jump))
                   ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__ena)
                       ? (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch) 
                           & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero)))

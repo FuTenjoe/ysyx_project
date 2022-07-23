@@ -51,19 +51,23 @@ always @(*) begin
 end
 
 
-
+wire [2:0] test;
 always @(*) begin
     if (~ena) begin
         next_pc = curr_pc;
+        test = 3'd0;
     end
     else if (branch && ~zero)begin // bne
         next_pc = curr_pc + imm;
+         test = 3'd1;
     end
     else if (branch && zero)begin // bne
         next_pc = curr_pc + `CPU_WIDTH'h4;
+         test = 3'd2;
     end
     else if (jump &(!jalr))begin            // jal 
         next_pc = curr_pc + imm;
+         test = 3'd3;
     end
     else if (jump &jalr)begin            // jalr
         next_pc = reg_f[s_imm[4:0]]+imm; 
