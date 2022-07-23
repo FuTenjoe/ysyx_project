@@ -209,7 +209,7 @@ int main(int argc, char **argv, char **env) {
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
       //init_difftest(img_size,port);
-      if (a>1){
+      if (a>0){
         //if (a%4==1 & a/4>=1){
        //printf("a =%d \n",a);
        if((top->diff_pc != top-> diff_delay_pc)){
