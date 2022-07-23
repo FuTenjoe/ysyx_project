@@ -73,7 +73,7 @@ always @(*) begin
         next_pc = 32'h8000_0000;   
     end
     else begin
-        next_pc = curr_pc + `CPU_WIDTH'h4;   
+        next_pc = curr_pc ;   
        
     end
 end
