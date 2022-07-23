@@ -33,7 +33,7 @@ if_stage u_if_stage(
     .ena(if_ena),
     .inst(if_inst),
     .curr_pc(if_pc),
-    .control_rest(control_rest),
+    .control_rest(id_control_rest),
     .rest_id_mem(rest_id_mem)
 );
 wire [31:0]id_inst;

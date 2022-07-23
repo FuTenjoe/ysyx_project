@@ -292,7 +292,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+460,"ysyx_22040175_top u_id_ex_regs rst_n", false,-1);
         tracep->declQuad(c+9,"ysyx_22040175_top u_id_ex_regs pc_id_ex_i", false,-1, 63,0);
         tracep->declQuad(c+35,"ysyx_22040175_top u_id_ex_regs pc_id_ex_o", false,-1, 63,0);
-        tracep->declBit(c+37,"ysyx_22040175_top u_id_ex_regs reg_wen_id_ex_i", false,-1);
+        tracep->declBit(c+13,"ysyx_22040175_top u_id_ex_regs reg_wen_id_ex_i", false,-1);
         tracep->declBus(c+14,"ysyx_22040175_top u_id_ex_regs reg_waddr_id_ex_i", false,-1, 4,0);
         tracep->declBus(c+21,"ysyx_22040175_top u_id_ex_regs alu_op_id_ex_i", false,-1, 4,0);
         tracep->declQuad(c+23,"ysyx_22040175_top u_id_ex_regs unknown_code_id_ex_i", false,-1, 63,0);
