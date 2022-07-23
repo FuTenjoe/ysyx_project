@@ -10,7 +10,7 @@ module if_stage (
     input control_rest,
     input ex_pc_ready,
     output reg pc_no_use,
-    input rest_from_id,
+    input rest_id_mem ,
     input [63:0] id_pc
 );
 pc_predict u_pc_predict(
@@ -20,7 +20,7 @@ pc_predict u_pc_predict(
   .id_next_pc(next_pc), // from ex
   .ena(ena), 
   .curr_pc(curr_pc),  // current pc addr
-  .rest_from_id(rest_from_id),
+  .rest_id_mem (rest_id_mem ),
   .id_pc(id_pc),
   .delay_rest(delay_rest)
 );
