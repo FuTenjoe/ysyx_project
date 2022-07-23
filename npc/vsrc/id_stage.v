@@ -142,7 +142,10 @@ muxpc u_mux_pc(
    // input      [`CPU_WIDTH-1:0]     reg1_rdata
    .ebreak_flag(ebreak_flag),
    .reg_f (reg_f),
-   .s_imm(s_imm)
+   .s_imm(s_imm),
+   .alu_src1(alu_src1),
+   .alu_src2(alu_src2)
+   
    
    
     );

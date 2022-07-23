@@ -14,7 +14,9 @@ module muxpc (
    input ebreak_flag,
    input [63:0] reg_f [0:`REG_DATA_DEPTH-1],
    input  [31:0]s_imm,
-   input      [`ALU_OP_WIDTH-1:0] alu_op
+   input      [`ALU_OP_WIDTH-1:0] alu_op,
+   input [63:0]alu_src1,
+   input [63:0]alu_src2
    
     );
 reg zero;
@@ -23,14 +25,6 @@ reg signed [63:0] signed_alu_src2;
 always @(*) begin
     case (alu_op)
         
-        `ALU_SUB:begin //0100
-            
-            zero = (alu_res == 64'b0) ? 1'b1 : 1'b0;
-        end
-        `ALU_SUBN:begin //1100
-            
-            zero = (alu_res == 64'b0) ? 1'b0 : 1'b1;
-        end
         `ALU_BMT:begin
             signed_alu_src1 = alu_src1;
             signed_alu_src2 = alu_src2;
@@ -50,7 +44,7 @@ always @(*) begin
             zero = (alu_src1 >= alu_src2)? 1'b0:1'b1;
         
         default:begin
-            alu_res = alu_src1 -  alu_src2;
+            
             zero =  1'b0;
         end
     endcase
