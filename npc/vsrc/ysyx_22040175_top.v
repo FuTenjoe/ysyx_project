@@ -218,7 +218,8 @@ ex_stage u_ex_stage(
     .alu_src1(ex_alu_src1), // alu source 1
     .alu_src2(ex_alu_src2), // alu source 2
     .alu_res(from_ex_alu_res),   // alu result
-    .rd_flag(ex_rd_flag)
+    .rd_flag(ex_rd_flag),
+    .expand_signed(ex_expand_signed)
 );
 wire mem_reg_wen;
 wire [`REG_ADDR_WIDTH-1:0] mem_reg_waddr;

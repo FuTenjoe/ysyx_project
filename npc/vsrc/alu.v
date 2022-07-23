@@ -6,15 +6,15 @@ module alu(
     //input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
     input      [63:0]    alu_src2, // alu source 2
     output reg                     zero,     // alu result is zero
-    output reg [63:0]    alu_res,   // alu result
-    input [2:0]rd_flag
+    output reg [63:0]    alu_res_ex_sign,   // alu result
+    input [2:0]rd_flag,
+    input [3:0] expand_signed
 );
 //reg [63:0] rd_buf_lw;
+reg [63:0] alu_res;
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 always @(*) begin
-    
-   
     case (alu_op)
         `ALU_ADD: begin  //0011
         if(rd_flag == 3'd0)begin
@@ -121,11 +121,27 @@ always @(*) begin
         end
     endcase
 end
-/*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
-    if(rd_flag == 3'd1 | rd_flag == 3'd2 |rd_flag == 3'd4 |rd_flag == 3'd6)
-        pmem_read(alu_src1 +  alu_src2, rd_buf_lw);
-end*/
+    case(expand_signed)
+        4'd0:begin
+             alu_res_ex_sign = alu_res;   //jalr
+        end
+        4'd1:begin
+            alu_res_ex_sign = {{32{alu_res[31]}},alu_res[31:0]};   //lw  addw  divw
+        end
+        4'd2:begin
+            alu_res_ex_sign = alu_res[31:0];            //addw错误
+        end
+        4'd3:begin
+            alu_res_ex_sign = {{48{ alu_res[15]}}, alu_res[15:0]}; //lh
+                
+        end
+        default:begin
+            alu_res_ex_sign= alu_res;
+        end
+    endcase
+end
+   
 endmodule
 
 

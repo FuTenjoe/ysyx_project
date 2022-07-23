@@ -7,7 +7,8 @@ module ex_stage(
     input      [63:0]    alu_src2, // alu source 2
     output reg                     zero,     // alu result is zero
     output reg [63:0]    alu_res,   // alu result
-    input [2:0]rd_flag
+    input [2:0]rd_flag,
+    input [3:0] expand_signed
 );
 
 
@@ -17,8 +18,9 @@ alu u_alu(
     //input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
     .alu_src2(alu_src2), // alu source 2
     .zero(zero),     // alu result is zero
-    .alu_res(alu_res),   // alu result
-    .rd_flag(rd_flag)
+    .alu_res_ex_sign(alu_res),   // alu result
+    .rd_flag(rd_flag),
+
 );
 
 
