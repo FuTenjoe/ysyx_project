@@ -58,7 +58,9 @@ module id_ex_regs(
     input reg rest_id_mem_id_ex_i,
 	output reg [63:0]     alu_src1_id_ex_o,   // alu source 1
     output reg [63:0]     alu_src2_id_ex_o,    // alu source 2
-    output reg rest_id_mem_id_ex_o
+    output reg rest_id_mem_id_ex_o,
+	input [63:0] id_inst,
+	output reg [63:0] ex_inst
 	
 	
     );
@@ -85,7 +87,7 @@ always@(posedge clk or negedge rst_n)begin
 			alu_src1_id_ex_o <= 64'd0;   // alu source 1
     		alu_src2_id_ex_o <= 64'd0;    // alu source 2
     		rest_id_mem_id_ex_o <= 1'd0;
-			
+			ex_inst <= 32'd0;
 		end
 		else begin
 			pc_id_ex_o<=pc_id_ex_i;
@@ -107,7 +109,7 @@ always@(posedge clk or negedge rst_n)begin
 			alu_src1_id_ex_o <= alu_src1_id_ex_i;   // alu source 1
     		alu_src2_id_ex_o <= alu_src2_id_ex_i;    // alu source 2
     		rest_id_mem_id_ex_o <= rest_id_mem_id_ex_i;
-			
+			ex_inst <= id_inst;
 		end
 end
 	

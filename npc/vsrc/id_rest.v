@@ -10,7 +10,7 @@ module id_rest (
     input write_ready,
     input [2:0]rd_buf_flag,
     output reg rest_from_id,
-    input      [31:0]        id_inst,
+    input      [31:0]   ex_inst,
     input [63:0] from_ex_alu_res,
     input [63:0] from_mem_alu_res,
     output reg rest_id_mem
@@ -19,7 +19,7 @@ module id_rest (
 );
 
 always @(*) begin
-    if(id_pc != 32'h0000_0000 & id_pc != 32'h8000_0000 & id_inst != 32'b0010011 )begin
+    if(id_pc != 32'h0000_0000 & id_pc != 32'h8000_0000 & ex_inst != 32'b0010011 )begin
         if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)begin
             if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
                 rest_from_id = 1'b1;

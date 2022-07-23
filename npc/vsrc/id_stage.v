@@ -6,6 +6,7 @@ module id_stage (
     input [63:0] id_pc,
     output [63:0] next_pc,
     input      [`CPU_WIDTH-1:0]        inst,       // instruction input
+    input [31:0] ex_inst,
     input reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     input [`REG_ADDR_WIDTH-1:0] ex_reg_waddr,
     output reg rest_from_id,
@@ -90,7 +91,7 @@ id_rest u_id_rest(        //data hazard
     .rd_buf_flag(ex_rd_buf_flag),
     .rest_from_id(rest_from_id),
     .rest_id_mem(rest_id_mem),
-    .id_inst(inst)
+    .ex_inst(ex_inst)
    
 );
 id_control_rest u_id_control_rest(

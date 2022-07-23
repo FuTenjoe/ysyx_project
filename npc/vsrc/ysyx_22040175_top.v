@@ -119,7 +119,8 @@ id_stage u_id_stage(
    
     .alu_src1(id_alu_src1),   // alu source 1
     .alu_src2(id_alu_src2),    // alu source 2
-    .rest_id_mem(rest_id_mem)
+    .rest_id_mem(rest_id_mem),
+    .ex_inst(ex_inst)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag
@@ -148,6 +149,7 @@ wire ex_time_set;
 //wire [63:0] ex_reg_wdata;
 wire id_rest_no_use;
 wire ex_rest_id_mem;
+wire [31:0] ex_inst;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -201,7 +203,8 @@ id_ex_regs u_id_ex_regs(
 	.alu_src1_id_ex_o(ex_alu_src1),   // alu source 1
     .alu_src2_id_ex_o(ex_alu_src2),    // alu source 2
     .rest_id_mem_id_ex_o(ex_rest_id_mem)
-   
+    .id_inst(id_inst),
+	.ex_inst(ex_inst)
     
     );
 wire [63:0] from_ex_alu_res;
