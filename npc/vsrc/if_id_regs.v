@@ -12,7 +12,7 @@ module if_id_regs(
 	output reg ena_if_id_o,
 	output time_set_if_id_o,
 	input control_rest,
-	input [63:0] ex_pc
+	input [63:0] id_pc
 	
     );
 
