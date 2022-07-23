@@ -52,7 +52,8 @@ if_id_regs u_if_id_regs(
 	.pc_if_id_o(id_pc),
 	.instr_if_id_o(id_inst),
     .ena_if_id_o(id_ena),
-    .time_set_if_id_o(id_time_set)
+    .time_set_if_id_o(id_time_set),
+    .control_rest(control_rest)
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
 wire id_branch;
