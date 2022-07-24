@@ -43,7 +43,7 @@ end
 
 
 always@(*)begin
-    data_rest_cond = {rest_from_id,rest_id_mem,rest_wb_hazard};
+    data_rest_cond = {rest_from_id,delay_rest_id_mem,rest_wb_hazard};
     case(data_rest_cond)
         3'b000:begin
             reg1_rdata = reg_f[reg1_raddr];
