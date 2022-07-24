@@ -187,7 +187,7 @@ id_ex_regs u_id_ex_regs(
     .s_flag_id_ex_o(ex_s_flag),
     .s_imm_id_ex_o(ex_s_imm),
     .expand_signed_id_ex_o(ex_expand_signed),
-    .rd_flag_id_ex_o(ex_rd_buf_flag),
+    .rd_flag_id_ex_o(ex_rd_flag),
 	.rd_buf_flag_id_ex_o(ex_rd_buf_flag), 
 
    
