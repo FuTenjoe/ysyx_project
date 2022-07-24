@@ -126,7 +126,7 @@ mux_dt_pipe u_mux_dt_pipe (
     .s_flag(s_flag),
     .end_write_addr(end_write_addr),
     .wb_hazard_result(wb_hazard_result),
-    .wb_reg_waddr(mem_reg_waddr),
+    .mem_reg_waddr(mem_reg_waddr),
     .rest_id_mem(rest_id_mem),
     .rest_wb_hazard(rest_wb_hazard)
 );
