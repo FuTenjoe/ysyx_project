@@ -20,7 +20,8 @@ pc_predict u_pc_predict(
   .id_next_pc(id_next_pc), // from ex
   .ena(ena), 
   .curr_pc(curr_pc),  // current pc addr
-  .rest_id_mem (rest_id_mem )
+  .rest_id_mem (rest_id_mem ),
+  .id_curr_pc(id_pc)
   
 );
 
