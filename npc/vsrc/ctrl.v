@@ -718,6 +718,7 @@ always @(*) begin
             jump        = 1'b0;
             jalr        = 1'b0;
             rd_buf_flag = 3'd0;
+            reg_waddr = 5'd0; //流水线后加
             case (funct3)
                 `INST_BNE: begin     //bne
                     branch     = 1'b1;
