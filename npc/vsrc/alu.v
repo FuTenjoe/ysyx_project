@@ -21,7 +21,7 @@ always @(*) begin
         if(rd_flag == 3'd0)begin
             alu_res = (alu_src1 +  alu_src2);
             alu_res = alu_res[31:0];
-            test = 3
+            test = 3;
         end
    /*     else if(rd_flag == 3'd1)
             alu_res = rd_buf_lw[31:0];
