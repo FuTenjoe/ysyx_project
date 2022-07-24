@@ -531,10 +531,11 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullCData(oldp+24,(vlSelf->ysyx_22040175_top__DOT__id_expand_signed),4);
         tracep->fullCData(oldp+25,(vlSelf->ysyx_22040175_top__DOT__id_rd_flag),3);
         tracep->fullCData(oldp+26,(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag),3);
-        tracep->fullBit(oldp+27,(((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
-                                    & (0x80000000ULL 
-                                       != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
-                                   & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
+        tracep->fullBit(oldp+27,((((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
+                                     & (0x80000000ULL 
+                                        != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
+                                    & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
+                                   & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                                   & (((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)) 
                                         | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
                                        | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
@@ -630,10 +631,11 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullCData(oldp+104,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op),3);
         tracep->fullCData(oldp+105,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr),5);
         tracep->fullCData(oldp+106,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr),5);
-        tracep->fullBit(oldp+107,(((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
-                                     & (0x80000000ULL 
-                                        != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
-                                    & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
+        tracep->fullBit(oldp+107,((((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
+                                      & (0x80000000ULL 
+                                         != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
+                                     & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
+                                    & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                                    & (((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)) 
                                          | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
                                         | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
