@@ -123,7 +123,7 @@ id_stage u_id_stage(
     .ex_inst(ex_inst),
     .end_write_addr(id_end_write_addr),
     .wb_hazard_result(wb_hazard_result),
-    .wb_reg_waddr(wb_reg_waddr)
+    .mem_reg_waddr(mem_reg_waddr)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag
