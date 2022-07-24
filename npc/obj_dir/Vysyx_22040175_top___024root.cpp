@@ -5877,14 +5877,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
             = (0x1fU & ((IData)(1U) + (IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_waddr)));
     }
     vlSelf->ysyx_22040175_top__DOT__rest_id_mem = (
-                                                   ((((0ULL 
-                                                       != vlSelf->ysyx_22040175_top__DOT__id_pc) 
-                                                      & (0x80000000ULL 
-                                                         != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
-                                                     & (0U 
-                                                        != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
+                                                   (((0ULL 
+                                                      != vlSelf->ysyx_22040175_top__DOT__id_pc) 
+                                                     & (0x80000000ULL 
+                                                        != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
                                                     & (0U 
-                                                       != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
+                                                       != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
                                                    & (((((1U 
                                                           == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)) 
                                                          | (2U 
@@ -6350,10 +6348,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
         = vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_id_stage__reg_f
         [0x1fU];
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__data_rest_cond 
-        = (((((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
-                & (0x80000000ULL != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
-               & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-              & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
+        = ((((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
+               & (0x80000000ULL != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
+              & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
              & (((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)) 
                    | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
                   | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
@@ -6370,10 +6367,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                          == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
                         | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
                            == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                       | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                           == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                          | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                             == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))
+                       | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                            == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
+                           | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
+                              == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
+                          & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))
                  : (((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
                        == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
                       | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
@@ -6386,16 +6384,16 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                          == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
                         | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
                            == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                       | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                           == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                          | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                             == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))))))) 
+                       | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                            == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
+                           | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
+                              == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
+                          & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))))))) 
             << 2U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__rest_id_mem) 
-                       << 1U) | (((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
-                                    & (0x80000000ULL 
-                                       != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
-                                   & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                  & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
+                       << 1U) | ((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
+                                   & (0x80000000ULL 
+                                      != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
+                                  & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
                                  & (((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)) 
                                        | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
                                       | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
@@ -6412,10 +6410,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
                                                | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)))) 
-                                           & (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                               == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                              | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))
+                                           & ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                                                == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
+                                               | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
+                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
+                                              & (0U 
+                                                 != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))
                                      : (((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
                                            == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
                                           | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
@@ -6428,10 +6428,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
                                                | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)))) 
-                                           & (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                               == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                              | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))))));
+                                           & ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                                                == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
+                                               | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
+                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
+                                              & (0U 
+                                                 != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))))));
     if ((4U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__data_rest_cond))) {
         if ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__data_rest_cond))) {
             if ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__data_rest_cond))) {
