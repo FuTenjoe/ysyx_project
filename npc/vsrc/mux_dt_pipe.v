@@ -24,65 +24,20 @@ module mux_dt_pipe (
 );
 reg [2:0]test;
 reg [2:0] data_rest_cond;
-
-/*always@(*)begin
-     reg1_rdata = reg_f[reg1_raddr];
-     reg2_rdata = reg_f[reg2_raddr];
-    if(rest_from_id == 1'b1)begin
-            if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)begin
-                if(reg1_raddr == reg_waddr)begin
-                    reg1_rdata = from_mem_alu_res;
-                end
-                else if(reg2_raddr == reg_waddr)begin
-                    reg2_rdata = from_mem_alu_res;
-                end
-                else if (reg1_raddr == wb_reg_waddr)begin
-                    reg1_rdata = wb_hazard_result;
-                end
-                else if(reg2_raddr == wb_reg_waddr)begin
-                     reg2_rdata = wb_hazard_result;
-                end
-                else begin
-                    reg1_rdata = reg_f[reg1_raddr];
-                    reg2_rdata = reg_f[reg2_raddr];
-                end
-            end
-            else begin
-                if(reg1_raddr == reg_waddr)begin
-                    reg1_rdata = from_ex_alu_res;
-                    
-                    test = 3'b1;
-                end
-                else if(reg2_raddr == reg_waddr)begin
-                    
-                    reg2_rdata = from_ex_alu_res;
-                    test = 3'd2;
-                end
-                else if (reg1_raddr == wb_reg_waddr)begin
-                    reg1_rdata = wb_hazard_result;
-                end
-                else if(reg2_raddr == wb_reg_waddr)begin
-                     reg2_rdata = wb_hazard_result;
-                end
-                else begin
-                    reg1_rdata = reg_f[reg1_raddr];
-                    reg2_rdata = reg_f[reg2_raddr];
-                    test = 3'd3;
-                end
-            end
-        end
-        else begin
-            reg1_rdata = reg_f[reg1_raddr];
-            reg2_rdata = reg_f[reg2_raddr];
-            test = 3'd0;
-        end
-end*/
+reg delay_rest_id_mem;
+reg [`REG_ADDR_WIDTH-1:0] delay_reg_waddr;
 reg [2:0] delay_data_rest_cond;
 always@(posedge clk or negedge rst_n)begin
-    if(!rst_n)
+    if(!rst_n)begin
         delay_data_rest_cond <= 3'd0;
-    else
+        delay_rest_id_mem <= 1'b0;
+        delay_reg_waddr <= 5'd0;
+    end
+    else begin
         delay_data_rest_cond <= data_rest_cond;
+        delay_rest_id_mem <= rest_id_mem;
+        delay_reg_waddr <= reg_waddr;
+    end
 end
 
 
@@ -105,11 +60,11 @@ always@(*)begin
             end
         end
         3'b110:begin
-            if(reg1_raddr == reg_waddr)begin
+            if(reg1_raddr == delay_reg_waddr)begin
                 reg1_rdata = from_mem_alu_res;
                 reg2_rdata = reg_f[reg2_raddr];
             end
-            else if(reg2_raddr == reg_waddr)begin
+            else if(reg2_raddr == delay_reg_waddr)begin
                 reg1_rdata = reg_f[reg1_raddr];
                 reg2_rdata = from_mem_alu_res;
             end
