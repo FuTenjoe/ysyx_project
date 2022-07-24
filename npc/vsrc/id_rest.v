@@ -16,7 +16,8 @@ module id_rest (
     output reg rest_id_mem,
     
     input  [`REG_ADDR_WIDTH-1:0]  wb_reg_waddr,
-    output rest_wb_hazard
+    output rest_wb_hazard,
+    input[[31:0]] mem_s_imm
   
 
 );
