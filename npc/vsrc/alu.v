@@ -70,11 +70,11 @@ always @(*) begin
         
             if(alu_src1<alu_src2)begin
                 alu_res = 32'd1;
-                test = 3'd9;
+                test = 3'd7;
             end
             else begin
                  alu_res = 32'd0;
-                 test = 3'd9;
+                 test = 3'd7;
             end
         end
         `ALU_SLT:begin//1001
