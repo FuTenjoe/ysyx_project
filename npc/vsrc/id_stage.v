@@ -127,7 +127,8 @@ mux_dt_pipe u_mux_dt_pipe (
     .end_write_addr(end_write_addr),
     .wb_hazard_result(wb_hazard_result),
     .wb_reg_waddr(mem_reg_waddr),
-    .rest_id_mem(rest_id_mem)
+    .rest_id_mem(rest_id_mem),
+    .rest_wb_hazard(rest_wb_hazard)
 );
 mux_alu u_mux_alu( 
     .alu_src_sel(alu_src_sel),// reg or imm to alu
