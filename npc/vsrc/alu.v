@@ -68,12 +68,12 @@ always @(*) begin
             zero = (alu_src1 >= alu_src2)? 1'b0:1'b1;
         `ALU_SLTU:begin//1001
         
-            if(alu_src2 - alu_src1 > 0)begin
-                alu_res = 32'd1;
+            if(alu_src1 - alu_src2 >= 0)begin
+                alu_res = 32'd0;
                 test = 3'd7;
             end
             else begin
-                 alu_res = 32'd0;
+                 alu_res = 32'd1;
                  test = 3'd6;
             end
         end
