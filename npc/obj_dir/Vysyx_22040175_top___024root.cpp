@@ -5890,33 +5890,21 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                         | (4U 
                                                            == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
                                                        | (6U 
-                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)))
-                                                       ? 
-                                                      (((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                                         & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                            == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                                        | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                             == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                                            & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                               == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
-                                                           & (0U 
-                                                              != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))) 
-                                                       | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                           == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                                          | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                             == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))))
-                                                       : 
-                                                      ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                         == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                                        & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                           == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
-                                                       | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
+                                                      & (((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
                                                             == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
                                                            & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
                                                               == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                                          & (0U 
-                                                             != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))))));
+                                                          | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                                                               == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
+                                                              & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
+                                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
+                                                             & (0U 
+                                                                != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))) 
+                                                         | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                                                             == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
+                                                            | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
+                                                               == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))))));
     vlSelf->ysyx_22040175_top__DOT__rest_from_id = 
         ((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
            & (0x80000000ULL != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
