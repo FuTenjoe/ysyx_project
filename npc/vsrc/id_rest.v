@@ -29,7 +29,7 @@ always @(*) begin
                 rest_id_mem = 1'b1;
                 rest_wb_hazard = 1'b0;
             end
-            else if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)
+            else if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
