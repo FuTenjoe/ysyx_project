@@ -15,6 +15,7 @@ module if_id_regs(
 	input [63:0] id_pc,
 	input rest_id_mem
 	
+	
     );
 
 always@(posedge clk or negedge rst_n)begin
@@ -25,7 +26,7 @@ always@(posedge clk or negedge rst_n)begin
 		time_set_if_id_o <= 1'd0;
 		
 	end
-	else if(rest_from_id == 1'b1)begin
+	else if(rest_id_mem == 1'b1)begin
 		pc_if_id_o <= id_pc;
 		instr_if_id_o<= instr_if_id_o;
 		ena_if_id_o <= ena_if_id_o;
