@@ -337,22 +337,20 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgQData(oldp+524,(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f[30]),64);
             tracep->chgQData(oldp+526,(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f[31]),64);
             tracep->chgBit(oldp+528,(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__write_ready));
+            tracep->chgQData(oldp+529,(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__end_wb_waddr),64);
         }
-        tracep->chgBit(oldp+529,(vlSelf->clk));
-        tracep->chgBit(oldp+530,(vlSelf->rst));
-        tracep->chgIData(oldp+531,(vlSelf->inst),32);
-        tracep->chgIData(oldp+532,(vlSelf->pc),32);
-        tracep->chgQData(oldp+533,(vlSelf->unknown_code),64);
-        tracep->chgBit(oldp+535,(vlSelf->time_set));
-        tracep->chgIData(oldp+536,(vlSelf->diff_pc),32);
-        tracep->chgIData(oldp+537,(vlSelf->diff_delay_pc),32);
-        tracep->chgQData(oldp+538,(((IData)(vlSelf->ysyx_22040175_top__DOT__id_s_flag)
+        tracep->chgBit(oldp+531,(vlSelf->clk));
+        tracep->chgBit(oldp+532,(vlSelf->rst));
+        tracep->chgIData(oldp+533,(vlSelf->inst),32);
+        tracep->chgIData(oldp+534,(vlSelf->pc),32);
+        tracep->chgQData(oldp+535,(vlSelf->unknown_code),64);
+        tracep->chgBit(oldp+537,(vlSelf->time_set));
+        tracep->chgIData(oldp+538,(vlSelf->diff_pc),32);
+        tracep->chgIData(oldp+539,(vlSelf->diff_delay_pc),32);
+        tracep->chgQData(oldp+540,(((IData)(vlSelf->ysyx_22040175_top__DOT__id_s_flag)
                                      ? vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_dt_pipe__reg_f
                                     [vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr]
                                      : 0ULL)),64);
-        tracep->chgQData(oldp+540,((vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f
-                                    [vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr] 
-                                    + (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_imm)))),64);
     }
 }
 
