@@ -47,50 +47,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgCData(oldp+23,(vlSelf->ysyx_22040175_top__DOT__id_expand_signed),4);
             tracep->chgCData(oldp+24,(vlSelf->ysyx_22040175_top__DOT__id_rd_flag),3);
             tracep->chgCData(oldp+25,(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag),3);
-            tracep->chgBit(oldp+26,(((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
-                                       & (0x80000000ULL 
-                                          != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
-                                      & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                     & (((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)) 
-                                           | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
-                                          | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
-                                         | (6U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)))
-                                         ? (((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                               == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                              | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                             & (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                                | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))) 
-                                            | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                                | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                               | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                                   | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                      == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
-                                                  & (0U 
-                                                     != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))
-                                         : (((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                               == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                              | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                             & (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                                | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))) 
-                                            | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                                | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                               | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                                   | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                      == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
-                                                  & (0U 
-                                                     != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))))));
+            tracep->chgBit(oldp+26,(vlSelf->ysyx_22040175_top__DOT__rest_from_id));
             tracep->chgBit(oldp+27,(vlSelf->ysyx_22040175_top__DOT__id_control_rest));
             tracep->chgQData(oldp+28,(vlSelf->ysyx_22040175_top__DOT__ex_pc),64);
             tracep->chgBit(oldp+30,(vlSelf->ysyx_22040175_top__DOT__ex_reg_wen));
@@ -150,52 +107,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgCData(oldp+103,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op),3);
             tracep->chgCData(oldp+104,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr),5);
             tracep->chgCData(oldp+105,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr),5);
-            tracep->chgBit(oldp+106,(((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
-                                        & (0x80000000ULL 
-                                           != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
-                                       & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                      & (((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)) 
-                                            | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
-                                           | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag))) 
-                                          | (6U == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)))
-                                          ? (((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                               | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                              & (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                                 | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))) 
-                                             | ((~ 
-                                                 (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                                  | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                     == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)))) 
-                                                & ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                     == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                                    | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                       == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
-                                                   & (0U 
-                                                      != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))
-                                          : (((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                               | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
-                                              & (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                                 | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))) 
-                                             | ((~ 
-                                                 (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                                  | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                     == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)))) 
-                                                & ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                     == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                                                    | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                                                       == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
-                                                   & (0U 
-                                                      != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))))));
+            tracep->chgBit(oldp+106,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__rest_wb_hazard));
             tracep->chgCData(oldp+107,((0x7fU & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))),7);
             tracep->chgCData(oldp+108,((7U & (IData)(
                                                      ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
