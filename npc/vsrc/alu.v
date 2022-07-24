@@ -11,6 +11,7 @@ module alu(
     input [3:0] expand_signed
 );
 //reg [63:0] rd_buf_lw;
+reg [2:0] test;
 reg [63:0] alu_res;
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
@@ -20,19 +21,24 @@ always @(*) begin
         if(rd_flag == 3'd0)begin
             alu_res = (alu_src1 +  alu_src2);
             alu_res = alu_res[31:0];
+            test = 3
         end
    /*     else if(rd_flag == 3'd1)
             alu_res = rd_buf_lw[31:0];
         else if(rd_flag == 3'd2)
             alu_res = rd_buf_lw[63:0];*/
-        else if(rd_flag == 3'd3)
+        else if(rd_flag == 3'd3)begin
             alu_res = alu_src1 +  alu_src2;
+            test = 2;
+        end
     /*    else if(rd_flag == 3'd4)
             alu_res = rd_buf_lw[7:0]; */
-        else if(rd_flag == 3'd5)
+        else if(rd_flag == 3'd5)begin
             alu_res = alu_src2;
     /*    else if(rd_flag == 3'd6)   //lh
             alu_res = rd_buf_lw[15:0];  */
+            test = 1;
+        end
         end
         `ALU_SUB:begin //0100
             alu_res = alu_src1 - alu_src2;
