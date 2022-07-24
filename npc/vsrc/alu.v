@@ -67,11 +67,15 @@ always @(*) begin
         `ALU_BMTU:
             zero = (alu_src1 >= alu_src2)? 1'b0:1'b1;
         `ALU_SLTU:begin//1001
-        test = 3'd9;
-            if(alu_src1<alu_src2)
+        
+            if(alu_src1<alu_src2)begin
                 alu_res = 32'd1;
-            else
+                test = 3'd9;
+            end
+            else begin
                  alu_res = 32'd0;
+                 test = 3'd9;
+            end
         end
         `ALU_SLT:begin//1001
             signed_alu_src1 = $signed (alu_src1);
