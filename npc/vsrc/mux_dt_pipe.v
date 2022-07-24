@@ -119,6 +119,16 @@ always@(*)begin
                 reg2_rdata = wb_hazard_result;
             end
         end
+        3'b010:begin
+            if(reg1_raddr == delay_reg_waddr)begin
+                reg1_rdata = from_mem_alu_res;
+                reg2_rdata = reg_f[reg2_raddr];
+            end
+            else if(reg2_raddr == delay_reg_waddr)begin
+                reg1_rdata = reg_f[reg1_raddr];
+                reg2_rdata = from_mem_alu_res;
+            end
+        end
         default:begin
              reg1_rdata = reg_f[reg1_raddr];
             reg2_rdata = reg_f[reg2_raddr];
