@@ -40,7 +40,9 @@ module id_stage (
     output reg [63:0]     alu_src1,   // alu source 1
     output reg [63:0]     alu_src2,    // alu source 2
     output reg rest_id_mem,
-    output reg [63:0] end_write_addr
+    output reg [63:0] end_write_addr,
+    input [63:0] wb_hazard_result,
+    input  [`REG_ADDR_WIDTH-1:0]  wb_reg_waddr
    
    
 );
@@ -92,7 +94,9 @@ id_rest u_id_rest(        //data hazard
     .rd_buf_flag(ex_rd_buf_flag),
     .rest_from_id(rest_from_id),
     .rest_id_mem(rest_id_mem),
-    .ex_inst(ex_inst)
+    .ex_inst(ex_inst),
+    .wb_reg_waddr(wb_reg_waddr),
+    .rest_wb_hazard(rest_wb_hazard)
    
 );
 id_control_rest u_id_control_rest(
@@ -120,7 +124,9 @@ mux_dt_pipe u_mux_dt_pipe (
     .rest_from_id(rest_from_id),
     .reg_f(reg_f),
     .s_flag(s_flag),
-    .end_write_addr(end_write_addr)
+    .end_write_addr(end_write_addr),
+    .wb_hazard_result(wb_hazard_result),
+    .wb_reg_waddr(wb_reg_waddr)
 );
 mux_alu u_mux_alu( 
     .alu_src_sel(alu_src_sel),// reg or imm to alu

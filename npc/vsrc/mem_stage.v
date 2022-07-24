@@ -7,7 +7,9 @@ module mem_stage(
     input [`CPU_WIDTH-1:0] alu_src2,
     input no_use,
     //output reg [63:0] rd_buf_lw,
-    output reg [63:0] alu_res
+    output reg [63:0] alu_res,
+    input [63:0] mem_from_ex_alu_res,
+    output [63:0] wb_hazard_result
     
 );
 
@@ -32,7 +34,12 @@ always@(*)begin
         alu_res = alu_res;
 end
 
-
+always@(*)begin
+    if(rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)
+        wb_hazard_result = alu_res;
+    else
+        wb_hazard_result = mem_from_ex_alu_res;
+end
 
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin

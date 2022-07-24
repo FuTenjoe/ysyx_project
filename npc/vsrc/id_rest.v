@@ -13,7 +13,10 @@ module id_rest (
     input      [31:0]   ex_inst,
     input [63:0] from_ex_alu_res,
     input [63:0] from_mem_alu_res,
-    output reg rest_id_mem
+    output reg rest_id_mem,
+    
+    input  [`REG_ADDR_WIDTH-1:0]  wb_reg_waddr,
+    output rest_wb_hazard
   
 
 );
@@ -24,20 +27,34 @@ always @(*) begin
             if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b1;
+                rest_wb_hazard = 1'b0;
+            end
+            else if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)
+                rest_from_id = 1'b1;
+                rest_id_mem = 1'b0;
+                rest_wb_hazard = 1'b1;
             end
             else begin
                 rest_id_mem = 1'b0;
                 rest_from_id = 1'b0;
+                rest_wb_hazard = 1'b0;
             end
         end
         else begin
             if(reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
+                rest_wb_hazard = 1'b0;
+            end
+            else if(reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr)begin
+                rest_from_id = 1'b1;
+                rest_id_mem = 1'b0;
+                rest_wb_hazard = 1'b1;
             end
             else begin
                 rest_from_id = 1'b0;
                 rest_id_mem = 1'b0;
+                rest_wb_hazard = 1'b0;
             end
         end
     end

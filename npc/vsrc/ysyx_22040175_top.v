@@ -121,7 +121,9 @@ id_stage u_id_stage(
     .alu_src2(id_alu_src2),    // alu source 2
     .rest_id_mem(rest_id_mem),
     .ex_inst(ex_inst),
-    .end_write_addr(id_end_write_addr)
+    .end_write_addr(id_end_write_addr),
+    .wb_hazard_result(wb_hazard_result),
+    .wb_reg_waddr(wb_reg_waddr)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag
@@ -298,13 +300,16 @@ ex_mem_regs u_ex_mem_regs(
 	
 );
 wire [63:0] from_mem_alu_res;
+wire [63:0] wb_hazard_result;
 mem_stage u_mem_stage(
     .rd_buf_flag(mem_rd_buf_flag),
     .alu_op(mem_alu_op),
     .alu_src1(mem_alu_src1),
     .alu_src2(mem_alu_src2),
     //output reg [63:0] rd_buf_lw,
-    .alu_res(from_mem_alu_res)
+    .alu_res(from_mem_alu_res),
+    .mem_from_ex_alu_res(mem_from_ex_alu_res),
+    .wb_hazard_result(wb_hazard_result)
    
 );
 wire wb_reg_wen;

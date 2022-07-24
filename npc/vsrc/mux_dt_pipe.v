@@ -16,20 +16,27 @@ module mux_dt_pipe (
     input rest_from_id,
     input reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     input s_flag,
-    output reg [63:0] end_write_addr
+    output reg [63:0] end_write_addr,
+    input [63:0] wb_hazard_result,
+    input  [`REG_ADDR_WIDTH-1:0]  wb_reg_waddr
 );
 reg [2:0]test;
 always@(*)begin
+     reg1_rdata = reg_f[reg1_raddr];
+     reg2_rdata = reg_f[reg2_raddr];
     if(rest_from_id == 1'b1)begin
             if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)begin
                 if(reg1_raddr == reg_waddr)begin
                     reg1_rdata = from_mem_alu_res;
-                    reg2_rdata = reg_f[reg2_raddr];
                 end
                 else if(reg2_raddr == reg_waddr)begin
-                    reg1_rdata = reg_f[reg1_raddr];
                     reg2_rdata = from_mem_alu_res;
-                   
+                end
+                else if (reg1_raddr == wb_reg_waddr)begin
+                    reg1_rdata = wb_hazard_result;
+                end
+                else if(reg2_raddr == wb_reg_waddr)begin
+                     reg2_rdata = wb_hazard_result;
                 end
                 else begin
                     reg1_rdata = reg_f[reg1_raddr];
@@ -39,13 +46,19 @@ always@(*)begin
             else begin
                 if(reg1_raddr == reg_waddr)begin
                     reg1_rdata = from_ex_alu_res;
-                    reg2_rdata = reg_f[reg2_raddr];
+                    
                     test = 3'b1;
                 end
                 else if(reg2_raddr == reg_waddr)begin
-                    reg1_rdata = reg_f[reg1_raddr];
+                    
                     reg2_rdata = from_ex_alu_res;
                     test = 3'd2;
+                end
+                else if (reg1_raddr == wb_reg_waddr)begin
+                    reg1_rdata = wb_hazard_result;
+                end
+                else if(reg2_raddr == wb_reg_waddr)begin
+                     reg2_rdata = wb_hazard_result;
                 end
                 else begin
                     reg1_rdata = reg_f[reg1_raddr];
