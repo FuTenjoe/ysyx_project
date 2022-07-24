@@ -77,6 +77,14 @@ reg [2:0] data_rest_cond;
             test = 3'd0;
         end
 end*/
+reg [2:0] delay_data_rest_cond;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)
+        delay_data_rest_cond <= 3'd0;
+    else
+        delay_data_rest_cond <= data_rest_cond;
+end
+
 
 
 always@(*)begin
@@ -107,13 +115,19 @@ always@(*)begin
             end
         end
         3'b101:begin
-            if(reg1_raddr == mem_reg_waddr)begin
-                reg1_rdata = wb_hazard_result;
+            if(delay_data_rest_cond == 3'b110 | delay_data_rest_cond == 3'b100)begin
+                reg1_rdata = reg_f[reg1_raddr];
                 reg2_rdata = reg_f[reg2_raddr];
             end
-            else if(reg2_raddr == reg_waddr)begin
-                reg1_rdata = reg_f[reg1_raddr];
-                reg2_rdata = wb_hazard_result;
+            else begin
+                if(reg1_raddr == mem_reg_waddr)begin
+                    reg1_rdata = wb_hazard_result;
+                    reg2_rdata = reg_f[reg2_raddr];
+                end
+                else if(reg2_raddr == reg_waddr)begin
+                    reg1_rdata = reg_f[reg1_raddr];
+                    reg2_rdata = wb_hazard_result;
+                end
             end
         end
         3'b111:begin
