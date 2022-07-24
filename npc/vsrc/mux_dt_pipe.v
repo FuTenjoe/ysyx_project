@@ -20,7 +20,7 @@ module mux_dt_pipe (
     input [63:0] wb_hazard_result,
     input  [`REG_ADDR_WIDTH-1:0]  mem_reg_waddr,
     input rest_id_mem,
-    intput rest_wb_hazard
+    input rest_wb_hazard
 );
 reg [2:0]test;
 reg [2:0] data_rest_cond;
