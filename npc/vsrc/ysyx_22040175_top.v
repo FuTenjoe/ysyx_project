@@ -314,9 +314,10 @@ mem_stage u_mem_stage(
     .alu_src1(mem_alu_src1),
     .alu_src2(mem_alu_src2),
     //output reg [63:0] rd_buf_lw,
-    .alu_res(from_mem_alu_res),
+    .sign_alu_res(from_mem_alu_res),
     .mem_from_ex_alu_res(mem_from_ex_alu_res),
-    .wb_hazard_result(wb_hazard_result)
+    .wb_hazard_result(wb_hazard_result),
+    .mem_expand_signed(mem_expand_signed)
    
 );
 wire wb_reg_wen;
