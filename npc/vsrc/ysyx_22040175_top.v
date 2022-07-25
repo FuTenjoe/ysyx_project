@@ -228,7 +228,7 @@ id_ex_regs u_id_ex_regs(
 	.ex_inst(ex_inst),
     .end_write_addr_id_ex_i(id_end_write_addr),
 	.end_write_addr_id_ex_o(ex_end_write_addr),
-    .cunqu_hazard_id_ex_i(id_cunqu_hazard)
+    .cunqu_hazard_id_ex_i(id_cunqu_hazard),
     .cunqu_hazard_id_ex_o(ex_cunqu_hazard)
     
     );
