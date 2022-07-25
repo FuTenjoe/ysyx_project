@@ -332,7 +332,8 @@ mem_stage u_mem_stage(
     .sign_alu_res(from_mem_alu_res),
     .mem_from_ex_alu_res(mem_from_ex_alu_res),
     .wb_hazard_result(wb_hazard_result),
-    .mem_expand_signed(mem_expand_signed)
+    .mem_expand_signed(mem_expand_signed),
+    .mem_cunqu_hazard(mem_cunqu_hazard)
    
 );
 wire wb_reg_wen;

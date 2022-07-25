@@ -10,7 +10,8 @@ module mem_stage(
     output reg [63:0] sign_alu_res,
     input [63:0] mem_from_ex_alu_res,
     input [3:0] mem_expand_signed,
-    output [63:0] wb_hazard_result
+    output [63:0] wb_hazard_result,
+    input mem_cunqu_hazard
     
 );
 
@@ -58,7 +59,7 @@ end
 
 
 always@(*)begin
-    if(rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)
+    if((rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6) & (mem_cunqu_hazard == 1'b0))
         wb_hazard_result = sign_alu_res;
     else
         wb_hazard_result = mem_from_ex_alu_res;
