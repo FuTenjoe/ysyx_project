@@ -3095,12 +3095,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                      == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                                  & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                                 & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__mem_s_flag)))) 
-                            & (((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                  + vlSelf->ysyx_22040175_top__DOT__id_s_imm) 
-                                 == ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                     + vlSelf->ysyx_22040175_top__DOT__ex_s_imm)) 
-                                & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_flag)) 
-                               & (0U == vlSelf->ysyx_22040175_top__DOT__ex_s_imm))))))) 
+                            & ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                                 + vlSelf->ysyx_22040175_top__DOT__id_s_imm) 
+                                == ((IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr) 
+                                    + vlSelf->ysyx_22040175_top__DOT__ex_s_imm)) 
+                               & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_flag))))))) 
                & 1U);
         vlSelf->ysyx_22040175_top__DOT__ex_reg_wen 
             = ((IData)(vlSelf->ysyx_22040175_top__DOT__id_reg_wen) 
@@ -6070,12 +6069,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                             == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                         & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                        & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__mem_s_flag))) 
-                      | (((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                            + vlSelf->ysyx_22040175_top__DOT__id_s_imm) 
-                           == ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                               + vlSelf->ysyx_22040175_top__DOT__ex_s_imm)) 
-                          & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_flag)) 
-                         & (0U == vlSelf->ysyx_22040175_top__DOT__ex_s_imm)))))));
+                      | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                           + vlSelf->ysyx_22040175_top__DOT__id_s_imm) 
+                          == ((IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr) 
+                              + vlSelf->ysyx_22040175_top__DOT__ex_s_imm)) 
+                         & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_flag)))))));
 }
 
 VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_top___024root* vlSelf) {

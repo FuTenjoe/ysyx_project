@@ -417,7 +417,8 @@ wb_stage u_wb_stage(
     .reg_f(from_wb_reg_f),
     .wb_pc(wb_pc),
     .wb_delay_pc(wb_delay_pc),
-    .end_write_addr(wb_end_write_addr)
+    .end_write_addr(wb_end_write_addr),
+    .cunqu_hazard(wb_cunqu_hazard)
   
    
 );
