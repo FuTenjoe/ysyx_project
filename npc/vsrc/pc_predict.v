@@ -12,7 +12,7 @@ module pc_predict (
     input sig_jalr
 );
 
-
+reg delay_sig_jalr;
 
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
