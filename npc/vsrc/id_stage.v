@@ -45,14 +45,15 @@ module id_stage (
     input  [`REG_ADDR_WIDTH-1:0]  mem_reg_waddr,
     input ex_s_flag,
     input mem_s_flag,
-    output rest_wb_hazard
+    output rest_wb_hazard,
+    output sig_jalr
    
    
 );
 wire [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op;
 wire [`REG_ADDR_WIDTH-1:0]   reg1_raddr; // register 1 read address
 wire [`REG_ADDR_WIDTH-1:0]   reg2_raddr; // register 2 read address
-wire [3:0] data_rest_cond;
+wire [2:0] data_rest_cond;
 ctrl u_ctrl(
    .inst(inst),       // instruction input
 
@@ -135,7 +136,8 @@ mux_dt_pipe u_mux_dt_pipe (
     .wb_hazard_result(wb_hazard_result),
     .mem_reg_waddr(mem_reg_waddr),
     .rest_id_mem(rest_id_mem),
-    .rest_wb_hazard(rest_wb_hazard)
+    .rest_wb_hazard(rest_wb_hazard),
+    .data_rest_cond(data_rest_cond)
 );
 mux_alu u_mux_alu( 
     .alu_src_sel(alu_src_sel),// reg or imm to alu
@@ -167,7 +169,8 @@ muxpc u_mux_pc(
    .alu_src2(alu_src2),
    .alu_op(alu_op),
    .data_rest_cond(data_rest_cond),
-   .reg1_rdata(reg1_rdata)
+   .reg1_rdata(reg1_rdata),
+   .sig_jalr(sig_jalr)
    
    
    

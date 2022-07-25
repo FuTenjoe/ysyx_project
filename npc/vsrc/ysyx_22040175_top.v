@@ -35,7 +35,8 @@ if_stage u_if_stage(
     .curr_pc(if_pc),
     .control_rest(id_control_rest),
     .rest_id_mem(rest_id_mem),
-    .id_pc(id_pc)
+    .id_pc(id_pc),
+    .sig_jalr(sig_jalr)
     
 );
 wire [31:0]id_inst;
@@ -82,6 +83,7 @@ wire rest_from_id;
 wire id_control_rest;
 wire [63:0] id_end_write_addr;
 wire rest_wb_hazard;
+wire sig_jalr;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -130,7 +132,8 @@ id_stage u_id_stage(
     .mem_reg_waddr(mem_reg_waddr),
     .ex_s_flag(ex_s_flag),
     .mem_s_flag(mem_s_flag),
-    .rest_wb_hazard(rest_wb_hazard)
+    .rest_wb_hazard(rest_wb_hazard),
+    .sig_jalr(sig_jalr)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag

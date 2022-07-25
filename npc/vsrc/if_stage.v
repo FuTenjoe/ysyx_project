@@ -11,8 +11,11 @@ module if_stage (
     input ex_pc_ready,
     output reg pc_no_use,
     input rest_id_mem ,
-    input [63:0] id_pc
+    input [63:0] id_pc,
+    input sig_jalr
 );
+
+wire sig_jalr;
 pc_predict u_pc_predict(
   .clk(clk),     // system clock
   .rst_n(rst_n),   // active low reset
@@ -21,7 +24,8 @@ pc_predict u_pc_predict(
   .ena(ena), 
   .curr_pc(curr_pc),  // current pc addr
   .rest_id_mem (rest_id_mem ),
-  .id_curr_pc(id_pc)
+  .id_curr_pc(id_pc),
+  .sig_jalr(sig_jalr)
   
 );
 

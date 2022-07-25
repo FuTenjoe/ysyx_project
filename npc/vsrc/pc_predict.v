@@ -8,7 +8,8 @@ module pc_predict (
     output reg                  ena, 
     output reg [`CPU_WIDTH-1:0] curr_pc,  // current pc addr
     input rest_id_mem,
-    input [`CPU_WIDTH-1:0] id_curr_pc
+    input [`CPU_WIDTH-1:0] id_curr_pc,
+    input sig_jalr
 );
 
 
@@ -25,6 +26,9 @@ always @ (posedge clk or negedge rst_n) begin
     end
     else if(rest_id_mem == 1'b1)begin
         curr_pc <= curr_pc; 
+    end
+    else if(sig_jalr == 1'b1)begin
+        curr_pc <= curr_pc;
     end
     else if (rest_id_mem == 1'b0)begin
         if(control_rest == 1'b1)
