@@ -59,7 +59,7 @@ always @(*) begin
         end
     endcase
 end
-reg delay_sig_jalr
+reg delay_sig_jalr;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         delay_sig_jalr <= 1'b0;

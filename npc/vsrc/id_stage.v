@@ -156,6 +156,8 @@ mux_alu u_mux_alu(
 );
 
 muxpc u_mux_pc(
+    .clk(clk),
+    .rst_n(rst_n),
     .ena(ena),
     .branch(branch),  // branch type 
     
