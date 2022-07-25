@@ -6736,13 +6736,15 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                    [(0x1fU & vlSelf->ysyx_22040175_top__DOT__id_s_imm)] 
                    + vlSelf->ysyx_22040175_top__DOT__id_imm);
         }
+    } else if (vlSelf->ysyx_22040175_top__DOT__sig_jalr) {
+        vlSelf->ysyx_22040175_top__DOT__id_next_pc 
+            = (vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_rdata 
+               + vlSelf->ysyx_22040175_top__DOT__id_imm);
+        vlSelf->ysyx_22040175_top__DOT__sig_jalr = 0U;
     } else {
         vlSelf->ysyx_22040175_top__DOT__id_next_pc 
-            = ((IData)(vlSelf->ysyx_22040175_top__DOT__sig_jalr)
-                ? (vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_rdata 
-                   + vlSelf->ysyx_22040175_top__DOT__id_imm)
-                : ((IData)(vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag)
-                    ? 0x80000000ULL : vlSelf->ysyx_22040175_top__DOT__id_pc));
+            = ((IData)(vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag)
+                ? 0x80000000ULL : vlSelf->ysyx_22040175_top__DOT__id_pc);
     }
 }
 

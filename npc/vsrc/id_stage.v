@@ -115,6 +115,8 @@ id_control_rest u_id_control_rest(
     .control_rest(control_rest),
     .rest_from_id(rest_from_id)
 );
+reg [63:0] delay_reg1_rdata;
+
 mux_dt_pipe u_mux_dt_pipe (
     .clk(clk),
     .rst_n(rst_n),
@@ -137,7 +139,8 @@ mux_dt_pipe u_mux_dt_pipe (
     .mem_reg_waddr(mem_reg_waddr),
     .rest_id_mem(rest_id_mem),
     .rest_wb_hazard(rest_wb_hazard),
-    .data_rest_cond(data_rest_cond)
+    .data_rest_cond(data_rest_cond),
+    .delay_reg1_rdata(delay_reg1_rdata)
 );
 mux_alu u_mux_alu( 
     .alu_src_sel(alu_src_sel),// reg or imm to alu
@@ -169,7 +172,7 @@ muxpc u_mux_pc(
    .alu_src2(alu_src2),
    .alu_op(alu_op),
    .data_rest_cond(data_rest_cond),
-   .reg1_rdata(reg1_rdata),
+   .reg1_rdata(delay_reg1_rdata),
    .sig_jalr(sig_jalr)
    
    
