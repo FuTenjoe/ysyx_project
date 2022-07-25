@@ -13,7 +13,8 @@ module if_id_regs(
 	output time_set_if_id_o,
 	input control_rest,
 	input [63:0] id_pc,
-	input rest_id_mem
+	input rest_id_mem,
+	input rest_wb_hazard
 	
 	
     );
@@ -27,6 +28,12 @@ always@(posedge clk or negedge rst_n)begin
 		
 	end
 	else if(rest_id_mem == 1'b1)begin
+		pc_if_id_o <= id_pc;
+		instr_if_id_o<= instr_if_id_o;
+		ena_if_id_o <= ena_if_id_o;
+		time_set_if_id_o <= time_set_if_id_o;
+	end
+	else if(rest_wb_hazard == 1'b1)begin
 		pc_if_id_o <= id_pc;
 		instr_if_id_o<= instr_if_id_o;
 		ena_if_id_o <= ena_if_id_o;

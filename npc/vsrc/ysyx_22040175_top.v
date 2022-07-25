@@ -56,7 +56,8 @@ if_id_regs u_if_id_regs(
     .time_set_if_id_o(id_time_set),
     .control_rest(id_control_rest),
     .id_pc(id_pc),
-    .rest_id_mem(rest_id_mem)
+    .rest_id_mem(rest_id_mem),
+    .rest_wb_hazard(rest_wb_hazard)
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
 wire id_branch;
@@ -80,6 +81,7 @@ wire [2:0] id_rd_buf_flag;   //访存标志
 wire rest_from_id;
 wire id_control_rest;
 wire [63:0] id_end_write_addr;
+wire rest_wb_hazard;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -127,7 +129,8 @@ id_stage u_id_stage(
     .wb_hazard_result(wb_hazard_result),
     .mem_reg_waddr(mem_reg_waddr),
     .ex_s_flag(ex_s_flag),
-    .mem_s_flag(mem_s_flag)
+    .mem_s_flag(mem_s_flag),
+    ,rest_wb_hazard(rest_wb_hazard)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag
