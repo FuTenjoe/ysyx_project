@@ -146,7 +146,8 @@ mux_dt_pipe u_mux_dt_pipe (
     .rest_id_mem(rest_id_mem),
     .rest_wb_hazard(rest_wb_hazard),
     .data_rest_cond(data_rest_cond),
-    .delay_reg1_rdata(delay_reg1_rdata)
+    .delay_reg1_rdata(delay_reg1_rdata),
+    .cunqu_hazard(cunqu_hazard)
 );
 mux_alu u_mux_alu( 
     .alu_src_sel(alu_src_sel),// reg or imm to alu
