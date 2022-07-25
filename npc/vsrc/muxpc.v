@@ -86,6 +86,7 @@ always @(*) begin
     end
     else if(sig_jalr)begin
         next_pc = reg1_rdata +imm;
+        sig_jalr = 1'b0;
     end
     else if (ebreak_flag)begin    
         next_pc = 32'h8000_0000;   
