@@ -1,6 +1,8 @@
 `include "../vsrc/rvseed_defines.v"
 
 module muxpc (
+    input clk,
+    input rst_n,
     input                       ena,
     input                       branch,  // branch type 
     
@@ -57,7 +59,15 @@ always @(*) begin
         end
     endcase
 end
-
+reg delay_sig_jalr
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        delay_sig_jalr <= 1'b0;
+    end
+    else
+        delay_sig_jalr <= sig_jalr;
+end
+    
 
 reg  [2:0] test;
 always @(*) begin
@@ -84,7 +94,7 @@ always @(*) begin
             next_pc = reg_f[s_imm[4:0]]+imm; 
         end
     end
-    else if(sig_jalr)begin
+    else if(delay_sig_jalr)begin
         next_pc = reg1_rdata +imm;
         sig_jalr = 1'b0;
     end
