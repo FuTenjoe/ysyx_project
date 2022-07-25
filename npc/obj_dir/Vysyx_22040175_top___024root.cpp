@@ -2709,7 +2709,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr 
                                         = (0x1fU & (IData)(
                                                            ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                            >> 0xfU)));
+                                                            >> 0x14U)));
                                 }
                             }
                         }
