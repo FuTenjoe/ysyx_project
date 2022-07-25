@@ -109,7 +109,8 @@ id_rest u_id_rest(        //data hazard
     .ex_s_flag(ex_s_flag),
     .mem_s_flag(mem_s_flag),
     .ex_s_imm(ex_s_imm),
-    .cunqu_hazard(cunqu_hazard)
+    .cunqu_hazard(cunqu_hazard),
+    .imm(imm)
    
 );
 id_control_rest u_id_control_rest(
