@@ -45,8 +45,9 @@ module id_stage (
     input  [`REG_ADDR_WIDTH-1:0]  mem_reg_waddr,
     input ex_s_flag,
     input mem_s_flag,
-    output rest_wb_hazard,
-    output sig_jalr
+    output reg rest_wb_hazard,
+    output reg sig_jalr,
+    output reg delay_sig_jalr
    
    
 );
@@ -175,7 +176,8 @@ muxpc u_mux_pc(
    .alu_op(alu_op),
    .data_rest_cond(data_rest_cond),
    .reg1_rdata(delay_reg1_rdata),
-   .sig_jalr(sig_jalr)
+   .sig_jalr(sig_jalr),
+   .delay_sig_jalr(delay_sig_jalr)
    
    
    

@@ -13,7 +13,8 @@ module if_id_regs(
 	output time_set_if_id_o,
 	input control_rest,
 	input [63:0] id_pc,
-	input rest_id_mem
+	input rest_id_mem,
+	input delay_sig_jalr
 	
 	
     );
@@ -33,7 +34,7 @@ always@(posedge clk or negedge rst_n)begin
 		time_set_if_id_o <= time_set_if_id_o;
 	end
 	
-	else if(control_rest == 1'b1)begin
+	else if(control_rest == 1'b1 | delay_sig_jalr == 1'b1)begin
 		pc_if_id_o <= id_pc;
 		instr_if_id_o<= 32'b0010011;
 		ena_if_id_o <= ena_if_id_o;

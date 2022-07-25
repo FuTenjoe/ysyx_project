@@ -43,7 +43,7 @@ wire [31:0]id_inst;
 wire [63:0]id_pc; 
 wire id_ena;
 wire id_time_set;
-
+wire delay_sig_jalr;
 if_id_regs u_if_id_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -57,7 +57,8 @@ if_id_regs u_if_id_regs(
     .time_set_if_id_o(id_time_set),
     .control_rest(id_control_rest),
     .id_pc(id_pc),
-    .rest_id_mem(rest_id_mem)
+    .rest_id_mem(rest_id_mem),
+    .delay_sig_jalr(delay_sig_jalr)
     
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];

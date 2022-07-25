@@ -21,7 +21,8 @@ module muxpc (
    input [63:0]alu_src2,
    input [2:0] data_rest_cond,
    input [63:0] reg1_rdata,
-   output reg sig_jalr
+   output reg sig_jalr,
+   output reg delay_sig_jalr
    
     );
 reg zero;
@@ -59,7 +60,7 @@ always @(*) begin
         end
     endcase
 end
-reg delay_sig_jalr;
+
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         delay_sig_jalr <= 1'b0;
