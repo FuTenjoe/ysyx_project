@@ -203,7 +203,7 @@ int main(int argc, char **argv, char **env) {
          printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       
-      printf(" x0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[0],top->inst);
+      printf(" a4= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[14],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",23,cpu_gpr[23],top->inst);
        printf(" a2= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[18],top->inst);
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
