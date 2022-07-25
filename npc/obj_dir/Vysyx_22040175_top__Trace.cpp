@@ -366,7 +366,8 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
         tracep->chgBit(oldp+560,(vlSelf->time_set));
         tracep->chgIData(oldp+561,(vlSelf->diff_pc),32);
         tracep->chgIData(oldp+562,(vlSelf->diff_delay_pc),32);
-        tracep->chgQData(oldp+563,(((IData)(vlSelf->ysyx_22040175_top__DOT__id_s_flag)
+        tracep->chgBit(oldp+563,(vlSelf->out_mem_rd_buf_flag));
+        tracep->chgQData(oldp+564,(((IData)(vlSelf->ysyx_22040175_top__DOT__id_s_flag)
                                      ? vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_dt_pipe__reg_f
                                     [vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr]
                                      : 0ULL)),64);
