@@ -106,35 +106,35 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgQData(oldp+101,((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))),64);
             tracep->chgBit(oldp+103,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch));
             tracep->chgBit(oldp+104,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__jump));
-            tracep->chgCData(oldp+105,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op),3);
-            tracep->chgCData(oldp+106,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr),5);
-            tracep->chgCData(oldp+107,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr),5);
-            tracep->chgQData(oldp+108,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__delay_reg1_rdata),64);
-            tracep->chgCData(oldp+110,((0x7fU & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))),7);
-            tracep->chgCData(oldp+111,((7U & (IData)(
+            tracep->chgBit(oldp+105,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__delay_sig_jalr));
+            tracep->chgCData(oldp+106,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op),3);
+            tracep->chgCData(oldp+107,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr),5);
+            tracep->chgCData(oldp+108,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr),5);
+            tracep->chgQData(oldp+109,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__delay_reg1_rdata),64);
+            tracep->chgCData(oldp+111,((0x7fU & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))),7);
+            tracep->chgCData(oldp+112,((7U & (IData)(
                                                      ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                       >> 0xcU)))),3);
-            tracep->chgCData(oldp+112,((0x7fU & (IData)(
+            tracep->chgCData(oldp+113,((0x7fU & (IData)(
                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                          >> 0x19U)))),7);
-            tracep->chgCData(oldp+113,((0x1fU & (IData)(
-                                                        ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                         >> 7U)))),5);
             tracep->chgCData(oldp+114,((0x1fU & (IData)(
                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                         >> 0xfU)))),5);
+                                                         >> 7U)))),5);
             tracep->chgCData(oldp+115,((0x1fU & (IData)(
+                                                        ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                         >> 0xfU)))),5);
+            tracep->chgCData(oldp+116,((0x1fU & (IData)(
                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                          >> 0x14U)))),5);
             VL_EXTEND_WQ(65,64, __Vtemp22, vlSelf->ysyx_22040175_top__DOT__id_pc);
-            tracep->chgWData(oldp+116,(__Vtemp22),65);
-            tracep->chgBit(oldp+119,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__delay_rest_id_mem));
-            tracep->chgBit(oldp+120,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_rest_id_mem));
-            tracep->chgBit(oldp+121,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_control_rest));
-            tracep->chgCData(oldp+122,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg_waddr),5);
-            tracep->chgCData(oldp+123,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_data_rest_cond),3);
-            tracep->chgQData(oldp+124,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg2_rdata),64);
-            tracep->chgBit(oldp+126,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__delay_sig_jalr));
+            tracep->chgWData(oldp+117,(__Vtemp22),65);
+            tracep->chgBit(oldp+120,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_id_rest__DOT__delay_rest_id_mem));
+            tracep->chgBit(oldp+121,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_rest_id_mem));
+            tracep->chgBit(oldp+122,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_control_rest));
+            tracep->chgCData(oldp+123,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg_waddr),5);
+            tracep->chgCData(oldp+124,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_data_rest_cond),3);
+            tracep->chgQData(oldp+125,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg2_rdata),64);
             tracep->chgQData(oldp+127,(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_id_ex_regs__ex_inst),64);
             tracep->chgBit(oldp+129,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__zero));
             tracep->chgCData(oldp+130,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__test),3);
