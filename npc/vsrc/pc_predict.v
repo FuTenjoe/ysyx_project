@@ -15,10 +15,14 @@ module pc_predict (
 
 
 always @ (posedge clk or negedge rst_n) begin
-    if(~rst_n)
+    if(~rst_n)begin
         ena <= 1'b0;
-    else
+        delay_sig_jalr <= 1'b0
+    end
+    else begin
         ena <= 1'b1;      
+        delay_sig_jalr <= sig_jalr;
+    end
 end
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
@@ -29,6 +33,9 @@ always @ (posedge clk or negedge rst_n) begin
     end
     else if(sig_jalr == 1'b1)begin
         curr_pc <= curr_pc;
+    end
+    else if(delay_sig_jalr == 1'b1)begin
+        curr_pc <= id_next_pc;
     end
     else if (rest_id_mem == 1'b0)begin
         if(control_rest == 1'b1)

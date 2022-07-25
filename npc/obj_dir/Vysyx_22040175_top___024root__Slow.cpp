@@ -6199,6 +6199,22 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                 & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__id_jalr)))) {
         vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__test = 3U;
     }
+    if ((1U & (~ ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch) 
+                  & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero)))))) {
+        if ((1U & (~ ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch) 
+                      & (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero))))) {
+            if ((1U & (~ ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__jump) 
+                          & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__id_jalr)))))) {
+                if (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__jump) 
+                     & (IData)(vlSelf->ysyx_22040175_top__DOT__id_jalr))) {
+                    vlSelf->ysyx_22040175_top__DOT__sig_jalr 
+                        = (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond));
+                } else if (vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__delay_sig_jalr) {
+                    vlSelf->ysyx_22040175_top__DOT__sig_jalr = 0U;
+                }
+            }
+        }
+    }
 }
 
 void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_wb_stage__DOT__set_gpr_ptr__Vdpioc2_TOP(const VlUnpacked<QData/*63:0*/, 32> &a);
@@ -6232,24 +6248,19 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                + vlSelf->ysyx_22040175_top__DOT__id_imm);
     } else if (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__jump) 
                 & (IData)(vlSelf->ysyx_22040175_top__DOT__id_jalr))) {
-        if ((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond))) {
-            vlSelf->ysyx_22040175_top__DOT__sig_jalr = 1U;
-        } else {
-            vlSelf->ysyx_22040175_top__DOT__sig_jalr = 0U;
+        if ((4U != (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond))) {
             vlSelf->ysyx_22040175_top__DOT__id_next_pc 
                 = (vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_pc__reg_f
                    [(0x1fU & vlSelf->ysyx_22040175_top__DOT__id_s_imm)] 
                    + vlSelf->ysyx_22040175_top__DOT__id_imm);
         }
-    } else if (vlSelf->ysyx_22040175_top__DOT__sig_jalr) {
-        vlSelf->ysyx_22040175_top__DOT__id_next_pc 
-            = (vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__delay_reg1_rdata 
-               + vlSelf->ysyx_22040175_top__DOT__id_imm);
-        vlSelf->ysyx_22040175_top__DOT__sig_jalr = 0U;
     } else {
         vlSelf->ysyx_22040175_top__DOT__id_next_pc 
-            = ((IData)(vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag)
-                ? 0x80000000ULL : vlSelf->ysyx_22040175_top__DOT__id_pc);
+            = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__delay_sig_jalr)
+                ? (vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__delay_reg1_rdata 
+                   + vlSelf->ysyx_22040175_top__DOT__id_imm)
+                : ((IData)(vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag)
+                    ? 0x80000000ULL : vlSelf->ysyx_22040175_top__DOT__id_pc));
     }
 }
 
@@ -6437,6 +6448,7 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__signed_alu_src1 = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__signed_alu_src2 = VL_RAND_RESET_Q(64);
+    vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__delay_sig_jalr = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__test = VL_RAND_RESET_I(3);
     vlSelf->ysyx_22040175_top__DOT__u_id_ex_regs__DOT__reg_wdata_id_ex_i = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_id_ex_regs__DOT__reg_wdata_id_ex_o = VL_RAND_RESET_Q(64);
