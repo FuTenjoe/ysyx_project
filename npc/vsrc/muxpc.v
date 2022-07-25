@@ -86,7 +86,7 @@ always @(*) begin
          test = 3'd3;
     end
     else if (jump &jalr)begin            // jalr
-        if(data_rest_cond == 3'd4 | data_rest_cond == 3'd5  | data_rest_cond == 3'd2 |data_rest_cond == 3'd6)begin
+        if(data_rest_cond == 3'd4 | data_rest_cond == 3'd5  | data_rest_cond == 3'd2)begin
             sig_jalr = 1'b1;
             next_pc = next_pc;
         end
