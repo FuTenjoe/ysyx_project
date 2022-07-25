@@ -3015,6 +3015,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                     >> 0x14U)));
                         }
+                    } else {
+                        vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr = 0U;
                     }
                 }
             }
