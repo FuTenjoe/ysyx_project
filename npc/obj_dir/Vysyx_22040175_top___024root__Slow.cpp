@@ -6385,8 +6385,11 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__test = VL_RAND_RESET_I(3);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__data_rest_cond = VL_RAND_RESET_I(3);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_rest_id_mem = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_control_rest = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg_waddr = VL_RAND_RESET_I(5);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_data_rest_cond = VL_RAND_RESET_I(3);
+    vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg1_rdata = VL_RAND_RESET_Q(64);
+    vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg2_rdata = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__signed_alu_src1 = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__signed_alu_src2 = VL_RAND_RESET_Q(64);
