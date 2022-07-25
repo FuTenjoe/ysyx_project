@@ -16,7 +16,9 @@ module muxpc (
    input  [31:0]s_imm,
    input      [`ALU_OP_WIDTH-1:0] alu_op,
    input [63:0]alu_src1,
-   input [63:0]alu_src2
+   input [63:0]alu_src2,
+   input [2:0] data_rest_cond,
+   input [63:0] reg1_rdata
    
     );
 reg zero;
@@ -72,7 +74,10 @@ always @(*) begin
          test = 3'd3;
     end
     else if (jump &jalr)begin            // jalr
-        next_pc = reg_f[s_imm[4:0]]+imm; 
+        if(data_rest_cond != 3'd0)
+            next_pc = reg1_rdata +imm;
+        else
+            next_pc = reg_f[s_imm[4:0]]+imm; 
     end
     else if (ebreak_flag)begin    
         next_pc = 32'h8000_0000;   
