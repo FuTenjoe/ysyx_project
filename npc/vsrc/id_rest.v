@@ -44,7 +44,8 @@ always @(*) begin
                 rest_id_mem = 1'b1;
                 rest_wb_hazard = 1'b0;
             end
-            else if((reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr) & (wb_reg_waddr!= 1'b0)&(s_imm == 32'd0)&(mem_s_flag != 1'b1))begin
+            //else if((reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr) & (wb_reg_waddr!= 1'b0)&(s_imm == 32'd0)&(mem_s_flag != 1'b1))begin
+            else if((reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr) & (wb_reg_waddr!= 1'b0)&(mem_s_flag != 1'b1))begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
