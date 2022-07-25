@@ -54,10 +54,6 @@ end
 always@(*)begin
     data_rest_cond = {rest_from_id,delay_rest_id_mem,rest_wb_hazard};
     case(data_rest_cond)
-        3'b000:begin
-            reg1_rdata = reg_f[reg1_raddr];
-            reg2_rdata = reg_f[reg2_raddr];
-        end
         3'b100:begin
             if(reg1_raddr == reg_waddr)begin
                 reg1_rdata = from_ex_alu_res;
