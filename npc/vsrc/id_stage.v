@@ -159,7 +159,8 @@ mux_alu u_mux_alu(
     .no_use(no_use),
 
     .alu_src1(alu_src1),   // alu source 1
-    .alu_src2(alu_src2)    // alu source 2
+    .alu_src2(alu_src2),    // alu source 2
+    .cunqu_hazard(cunqu_hazard)
 );
 
 muxpc u_mux_pc(
