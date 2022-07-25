@@ -29,7 +29,7 @@ always @ (posedge clk or negedge rst_n) begin
         curr_pc <= 32'h8000_0000; 
     end
     else if(rest_id_mem == 1'b1)begin
-        curr_pc <= id_curr_pc;  //?
+        curr_pc <= curr_pc;  //?
     end
     else if(sig_jalr == 1'b1)begin
         curr_pc <= curr_pc;
