@@ -20,7 +20,8 @@ module id_rest (
     input [31:0] s_imm,
     input ex_s_flag,
     input mem_s_flag,
-    input [31:0] ex_s_imm
+    input [31:0] ex_s_imm,
+    output reg cunqu_hazard
   
 
 );
@@ -39,23 +40,27 @@ always @(*) begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b1;
                 rest_wb_hazard = 1'b1;
+                cunqu_hazard = 1'b0;
             end
            // else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1))begin
             else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1 ))begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b1;
                 rest_wb_hazard = 1'b0;
+                cunqu_hazard = 1'b0;
             end
             //else if((reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr) & (wb_reg_waddr!= 1'b0)&(s_imm == 32'd0)&(mem_s_flag != 1'b1))begin
             else if((reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr) & (wb_reg_waddr!= 1'b0)&(mem_s_flag != 1'b1))begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
+                cunqu_hazard = 1'b0;
             end
             else begin
                 rest_id_mem = 1'b0;
                 rest_from_id = 1'b0;
                 rest_wb_hazard = 1'b0;
+                cunqu_hazard = 1'b0;
             end
         end
         else begin
@@ -63,26 +68,31 @@ always @(*) begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
+                cunqu_hazard = 1'b0;
             end
             else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1 ))begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b0;
+                cunqu_hazard = 1'b0;
             end
             else if((reg1_raddr == wb_reg_waddr | reg2_raddr == wb_reg_waddr) & (wb_reg_waddr!= 5'b0)&(mem_s_flag != 1'b1))begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
+                cunqu_hazard = 1'b0;
             end
             else if((reg1_raddr+s_imm == reg1_raddr+ex_s_imm)&(ex_s_flag == 1'b1 ))begin   //因为sb与后一条lbu冲突添加
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b0;
+                cunqu_hazard = 1'b1;
             end
             else begin
                 rest_from_id = 1'b0;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b0;
+                cunqu_hazard = 1'b0;
             end
         end
     end
@@ -90,6 +100,7 @@ always @(*) begin
         rest_from_id = 1'b0;
         rest_id_mem = 1'b0;
         rest_wb_hazard = 1'b0;
+        cunqu_hazard = 1'b0;
     end
 end
 

@@ -23,12 +23,13 @@ module wb_stage (
     input wb_no_use,
     input [63:0] wb_pc,
     output [63:0] wb_delay_pc,
-    input [63:0] end_write_addr
+    input [63:0] end_write_addr,
+    input cunqu_hazard
    
 );
 reg [63:0] reg_wdata;
 always@(*)begin
-    if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6 )begin
+    if((rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)&(cunqu_hazard == 1'b0) )begin
         reg_wdata = from_mem_alu_res;
     end
     else begin
