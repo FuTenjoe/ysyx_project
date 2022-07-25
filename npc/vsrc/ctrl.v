@@ -149,6 +149,7 @@ always @(*) begin
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     reg1_raddr  = rs1;
+                    reg2_raddr  = 5'b0;
                     reg_waddr   = rd;
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
