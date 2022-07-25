@@ -138,7 +138,7 @@ always@(*)begin
                 reg2_rdata = from_mem_alu_res;
             end
         end
-        3'b000:begin
+ /*       3'b000:begin
             if(delay_control_rest == 1'b1 & delay_data_rest_cond == 3'b101)begin
                 reg1_rdata <= delay_reg1_rdata;
                 reg2_rdata <= delay_reg2_rdata;
@@ -147,7 +147,7 @@ always@(*)begin
                 reg1_rdata = reg_f[reg1_raddr];
                 reg2_rdata = reg_f[reg2_raddr];
             end
-        end
+        end*/
         default:begin
             reg1_rdata = reg_f[reg1_raddr];
             reg2_rdata = reg_f[reg2_raddr];
