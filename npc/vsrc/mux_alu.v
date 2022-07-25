@@ -10,28 +10,35 @@ module mux_alu (
     input no_use,
 
     output reg [63:0]     alu_src1,   // alu source 1
-    output reg [63:0]     alu_src2    // alu source 2
+    output reg [63:0]     alu_src2,    // alu source 2
+    input cunqu_hazard
    
 );
 
 always @(*) begin
     if(no_use == 1'b0)begin
-    alu_src1 = reg1_rdata;     // defalut select reg1 data
-    alu_src2 = reg2_rdata;     // default select reg2 data
-    case (alu_src_sel)
-        `ALU_SRC_REG: 
-            alu_src2 = reg2_rdata; // select reg2 data
-        `ALU_SRC_IMM: 
-            alu_src2 = imm;        // select immediate 
-        `ALU_SRC_FOUR_PC: begin
-            alu_src1 = `CPU_WIDTH'h4; // pc + 4 
-            alu_src2 = curr_pc;       //
+        alu_src1 = reg1_rdata;     // defalut select reg1 data
+        alu_src2 = reg2_rdata;     // default select reg2 data
+        if(cunqu_hazard)begin
+            alu_src1 = reg1_rdata;     // defalut select reg1 data
+            alu_src2 = 64'd0;  
         end
-        `ALU_SRC_IMM_PC: begin //select imm and pc
-            alu_src1 = imm;
-            alu_src2 = curr_pc;
+        else begin
+        case (alu_src_sel)
+            `ALU_SRC_REG: 
+                alu_src2 = reg2_rdata; // select reg2 data
+            `ALU_SRC_IMM: 
+                alu_src2 = imm;        // select immediate 
+            `ALU_SRC_FOUR_PC: begin
+                alu_src1 = `CPU_WIDTH'h4; // pc + 4 
+                alu_src2 = curr_pc;       //
+            end
+            `ALU_SRC_IMM_PC: begin //select imm and pc
+                alu_src1 = imm;
+                alu_src2 = curr_pc;
+            end
+        endcase
         end
-    endcase
     end
     else begin
         alu_src1 = alu_src1;     // defalut select reg1 data
