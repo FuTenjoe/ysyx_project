@@ -42,7 +42,8 @@ module id_stage (
     output reg rest_id_mem,
     output reg [63:0] end_write_addr,
     input [63:0] wb_hazard_result,
-    input  [`REG_ADDR_WIDTH-1:0]  mem_reg_waddr
+    input  [`REG_ADDR_WIDTH-1:0]  mem_reg_waddr,
+    input mem_s_flag
    
    
 );
@@ -97,7 +98,8 @@ id_rest u_id_rest(        //data hazard
     .ex_inst(ex_inst),
     .wb_reg_waddr(mem_reg_waddr),
     .rest_wb_hazard(rest_wb_hazard),
-    .s_imm(s_imm)
+    .s_imm(s_imm),
+    .mem_s_flag(mem_s_flag)
    
 );
 id_control_rest u_id_control_rest(
