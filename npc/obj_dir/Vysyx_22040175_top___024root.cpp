@@ -6826,9 +6826,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                 if (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__jump) 
                      & (IData)(vlSelf->ysyx_22040175_top__DOT__id_jalr))) {
                     vlSelf->ysyx_22040175_top__DOT__sig_jalr 
-                        = (((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond)) 
-                            | (5U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond))) 
-                           | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond)));
+                        = ((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond)) 
+                           | (5U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond)));
                 } else if (vlSelf->ysyx_22040175_top__DOT__delay_sig_jalr) {
                     vlSelf->ysyx_22040175_top__DOT__sig_jalr = 0U;
                 }
@@ -6851,9 +6850,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                + vlSelf->ysyx_22040175_top__DOT__id_imm);
     } else if (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__jump) 
                 & (IData)(vlSelf->ysyx_22040175_top__DOT__id_jalr))) {
-        if ((1U & (~ (((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond)) 
-                       | (5U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond))) 
-                      | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond)))))) {
+        if ((1U & (~ ((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond)) 
+                      | (5U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond)))))) {
             vlSelf->ysyx_22040175_top__DOT__id_next_pc 
                 = (vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_pc__reg_f
                    [(0x1fU & vlSelf->ysyx_22040175_top__DOT__id_s_imm)] 
