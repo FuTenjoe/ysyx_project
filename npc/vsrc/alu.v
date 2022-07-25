@@ -67,8 +67,7 @@ always @(*) begin
         `ALU_BMTU:
             zero = (alu_src1 >= alu_src2)? 1'b0:1'b1;
         `ALU_SLTU:begin//1001
-        
-            if(alu_src2 - alu_src1 > 0)begin
+            if(alu_src1 < alu_src2)begin
                 alu_res = 32'd1;
                 test = 3'd7;
             end
