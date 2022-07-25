@@ -30,7 +30,7 @@ reg delay_rest_id_mem;
 reg delay_control_rest;
 reg [`REG_ADDR_WIDTH-1:0] delay_reg_waddr;
 reg [2:0] delay_data_rest_cond;
-reg [63:0] delay_reg1_rdata;
+//reg [63:0] delay_reg1_rdata;
 reg [63:0] delay_reg2_rdata;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
