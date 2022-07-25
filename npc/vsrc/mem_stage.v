@@ -59,7 +59,7 @@ end
 
 
 always@(*)begin
-    if((rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6) & (mem_cunqu_hazard == 1'b0))
+    if((rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6) )
         wb_hazard_result = sign_alu_res;
     else
         wb_hazard_result = mem_from_ex_alu_res;
