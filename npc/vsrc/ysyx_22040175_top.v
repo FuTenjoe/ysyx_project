@@ -126,7 +126,7 @@ id_stage u_id_stage(
     .end_write_addr(id_end_write_addr),
     .wb_hazard_result(wb_hazard_result),
     .mem_reg_waddr(mem_reg_waddr),
-    .mem_s_flag(mem_s_flag)
+    .ex_s_flag(ex_s_flag)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag

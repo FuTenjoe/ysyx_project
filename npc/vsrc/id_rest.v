@@ -60,7 +60,7 @@ always @(*) begin
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
             end
-            else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr))begin
+            else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(mem_s_flag != 1'b1))begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b0;
