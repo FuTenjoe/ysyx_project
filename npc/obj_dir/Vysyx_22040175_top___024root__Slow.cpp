@@ -5651,10 +5651,10 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                             == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                         & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                        & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__mem_s_flag))) 
-                      | ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                           + vlSelf->ysyx_22040175_top__DOT__id_s_imm) 
-                          == ((IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr) 
-                              + vlSelf->ysyx_22040175_top__DOT__ex_s_imm)) 
+                      | ((((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr)) 
+                           + vlSelf->ysyx_22040175_top__DOT__id_imm) 
+                          == ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
+                              + (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_imm)))) 
                          & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_flag)))))));
     vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_id_stage__reg_f[0U] 
         = vlSelf->ysyx_22040175_top__DOT__from_wb_reg_f

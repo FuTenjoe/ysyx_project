@@ -284,6 +284,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+62,"ysyx_22040175_top u_id_stage u_id_rest mem_s_flag", false,-1);
         tracep->declBus(c+42,"ysyx_22040175_top u_id_stage u_id_rest ex_s_imm", false,-1, 31,0);
         tracep->declBit(c+31,"ysyx_22040175_top u_id_stage u_id_rest cunqu_hazard", false,-1);
+        tracep->declQuad(c+14,"ysyx_22040175_top u_id_stage u_id_rest imm", false,-1, 63,0);
         tracep->declBit(c+125,"ysyx_22040175_top u_id_stage u_id_rest delay_rest_id_mem", false,-1);
         tracep->declBit(c+555,"ysyx_22040175_top u_id_stage u_id_control_rest clk", false,-1);
         tracep->declBit(c+213,"ysyx_22040175_top u_id_stage u_id_control_rest rst_n", false,-1);
@@ -615,11 +616,11 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
                                                    & (0U 
                                                       != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                                                   & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__mem_s_flag)))) 
-                                              & ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                   + vlSelf->ysyx_22040175_top__DOT__id_s_imm) 
+                                              & ((((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr)) 
+                                                   + vlSelf->ysyx_22040175_top__DOT__id_imm) 
                                                   == 
-                                                  ((IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr) 
-                                                   + vlSelf->ysyx_22040175_top__DOT__ex_s_imm)) 
+                                                  ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
+                                                   + (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_imm)))) 
                                                  & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_flag)))))))));
         tracep->fullQData(oldp+32,(vlSelf->ysyx_22040175_top__DOT__ex_pc),64);
         tracep->fullBit(oldp+34,(vlSelf->ysyx_22040175_top__DOT__ex_reg_wen));

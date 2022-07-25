@@ -86,11 +86,11 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                                     & (0U 
                                                        != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                                                    & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__mem_s_flag)))) 
-                                                 & ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                                                      + vlSelf->ysyx_22040175_top__DOT__id_s_imm) 
+                                                 & ((((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr)) 
+                                                      + vlSelf->ysyx_22040175_top__DOT__id_imm) 
                                                      == 
-                                                     ((IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr) 
-                                                      + vlSelf->ysyx_22040175_top__DOT__ex_s_imm)) 
+                                                     ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
+                                                      + (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_imm)))) 
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_flag)))))))));
             tracep->chgQData(oldp+31,(vlSelf->ysyx_22040175_top__DOT__ex_pc),64);
             tracep->chgBit(oldp+33,(vlSelf->ysyx_22040175_top__DOT__ex_reg_wen));
