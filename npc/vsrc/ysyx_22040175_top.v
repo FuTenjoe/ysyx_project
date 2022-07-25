@@ -12,7 +12,7 @@ module  ysyx_22040175_top(
     output out_mem_rd_buf_flag
    // output[`CPU_WIDTH-1:0]        next_pc
 );
-assign out_mem_rd_buf_flag = mem_rd_buf_flag;
+assign out_mem_rd_buf_flag = wb_s_flag;
 assign diff_pc = wb_pc[31:0];
 assign diff_delay_pc = wb_delay_pc[31:0];
 wire rst_n;
