@@ -79,7 +79,7 @@ module mem_wb_regs(
 			ex_pc_ready_mem_wb_o  <= ex_pc_ready_mem_wb_o;
 			pc_mem_wb_o <= pc_mem_wb_o;
 			end_write_add_mem_wb_o <= end_write_add_mem_wb_i;
-			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_i;
+			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
 		end	
 		else begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
