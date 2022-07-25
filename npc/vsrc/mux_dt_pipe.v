@@ -23,7 +23,8 @@ module mux_dt_pipe (
     input rest_wb_hazard,
     output reg [2:0] data_rest_cond,
     output reg [63:0] delay_reg1_rdata,
-    input ex_s_flag
+    input ex_s_flag,
+    input cunqu_hazard
 );
 reg [2:0]test;
 
@@ -58,6 +59,13 @@ always@(*)begin
     data_rest_cond = {rest_from_id,delay_rest_id_mem,rest_wb_hazard};
     case(data_rest_cond)
         3'b100:begin
+            if(cunqu_hazard == 1'b1)begin
+                if(reg1_raddr == reg_waddr)begin
+                reg1_rdata = from_ex_alu_res;
+                reg2_rdata = 0;
+                end
+            end
+            else begin
             if(reg1_raddr == reg_waddr)begin
                 reg1_rdata = from_ex_alu_res;
                 reg2_rdata = reg_f[reg2_raddr];
@@ -65,6 +73,7 @@ always@(*)begin
             else if(reg2_raddr == reg_waddr)begin
                 reg1_rdata = reg_f[reg1_raddr];
                 reg2_rdata = from_ex_alu_res;
+            end
             end
         end
         3'b110:begin
