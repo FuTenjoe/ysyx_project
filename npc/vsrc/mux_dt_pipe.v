@@ -151,10 +151,10 @@ always@(*)begin
             end
         end
         3'b010:begin
-            if(mem_cunqu_hazard == 1'b1)begin
+        /*    if(mem_cunqu_hazard == 1'b1)begin
                 reg1_rdata = mem_from_ex_alu_res;
                     reg2_rdata = 64'd0;
-            end
+            end*/
             else begin
             if(reg1_raddr == delay_reg_waddr)begin
                 reg1_rdata = from_mem_alu_res;
