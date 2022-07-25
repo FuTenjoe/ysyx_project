@@ -459,6 +459,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declQuad(c+72,"ysyx_22040175_top u_mem_stage mem_from_ex_alu_res", false,-1, 63,0);
         tracep->declBus(c+65,"ysyx_22040175_top u_mem_stage mem_expand_signed", false,-1, 3,0);
         tracep->declQuad(c+81,"ysyx_22040175_top u_mem_stage wb_hazard_result", false,-1, 63,0);
+        tracep->declBit(c+78,"ysyx_22040175_top u_mem_stage mem_cunqu_hazard", false,-1);
         tracep->declQuad(c+142,"ysyx_22040175_top u_mem_stage rd_buf_lw", false,-1, 63,0);
         tracep->declQuad(c+144,"ysyx_22040175_top u_mem_stage alu_res", false,-1, 63,0);
         tracep->declBit(c+555,"ysyx_22040175_top u_mem_wb_regs clk", false,-1);
