@@ -15,7 +15,6 @@ module if_stage (
     input sig_jalr
 );
 
-wire sig_jalr;
 pc_predict u_pc_predict(
   .clk(clk),     // system clock
   .rst_n(rst_n),   // active low reset
