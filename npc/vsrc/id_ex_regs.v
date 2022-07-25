@@ -62,7 +62,9 @@ module id_ex_regs(
 	input [63:0] id_inst,
 	output reg [63:0] ex_inst,
 	input [63:0]end_write_addr_id_ex_i,
-	output reg [63:0]end_write_addr_id_ex_o
+	output reg [63:0]end_write_addr_id_ex_o,
+	input cunqu_hazard_id_ex_i,
+	output reg cunqu_hazard_id_ex_o
 	
 	
     );
@@ -91,6 +93,7 @@ always@(posedge clk or negedge rst_n)begin
     		rest_id_mem_id_ex_o <= 1'd0;
 			ex_inst <= 32'd0;
 			end_write_addr_id_ex_o <= 64'd0;
+			cunqu_hazard_id_ex_o <= 1'd0;
 		end
 		else begin
 			pc_id_ex_o<=pc_id_ex_i;
@@ -114,6 +117,7 @@ always@(posedge clk or negedge rst_n)begin
     		rest_id_mem_id_ex_o <= rest_id_mem_id_ex_i;
 			ex_inst <= id_inst;
 			end_write_addr_id_ex_o <= end_write_addr_id_ex_i;
+			cunqu_hazard_id_ex_o <= cunqu_hazard_id_ex_i;
 		end
 end
 	

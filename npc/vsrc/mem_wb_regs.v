@@ -37,7 +37,9 @@ module mem_wb_regs(
 	output [63:0] pc_mem_wb_o,
 	input rest_id_mem_ex_mem_o,
 	input [63:0] end_write_add_mem_wb_i,
-	output reg [63:0] end_write_add_mem_wb_o
+	output reg [63:0] end_write_add_mem_wb_o,
+	input cunqu_hazard_mem_wb_i,
+	output reg cunqu_hazard_mem_wb_o
     );
 
 	always@(posedge clk or negedge rst_n)
@@ -59,6 +61,7 @@ module mem_wb_regs(
 			ex_pc_ready_mem_wb_o <= 1'b0;
 			pc_mem_wb_o <= 32'h8000_0000;
 			end_write_add_mem_wb_o <= 64'd0;
+			cunqu_hazard_mem_wb_o <= 1'b0;
 		end
 		else if(rest_id_mem_ex_mem_o == 1'b1)begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_o;
@@ -76,6 +79,7 @@ module mem_wb_regs(
 			ex_pc_ready_mem_wb_o  <= ex_pc_ready_mem_wb_o;
 			pc_mem_wb_o <= pc_mem_wb_o;
 			end_write_add_mem_wb_o <= end_write_add_mem_wb_i;
+			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_i;
 		end	
 		else begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
@@ -93,6 +97,7 @@ module mem_wb_regs(
 			
 			ex_pc_ready_mem_wb_o  <= ex_pc_ready_mem_wb_i;
 			pc_mem_wb_o <= pc_mem_wb_i;
+			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_i;
 		end
 	end
 	
