@@ -584,12 +584,12 @@ always @(*) begin
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
-            alu_op      = `ALU_ADD;
+            alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b11111111;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd3;
+            rd_flag = 3'd1;  //保留64位
             end
             3'b001:begin    //sh
             jump        = 1'b0;
@@ -600,12 +600,12 @@ always @(*) begin
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
-            alu_op      = `ALU_ADD;
+            alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'h3;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd5;
+            rd_flag = 3'd2;   //保留16位
             end
             3'b000:begin   //sb
             jump        = 1'b0;
@@ -616,12 +616,13 @@ always @(*) begin
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
-            alu_op      = `ALU_ADD;
+            alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'h1;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd5;   //选rs2
+            //rd_flag = 3'd5;   //选rs2
+            rd_flag = 3'd3;   //保留8位
             end
             3'b010:begin     //sw
             jump        = 1'b0;
@@ -632,12 +633,13 @@ always @(*) begin
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
-            alu_op      = `ALU_ADD;
+            alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'hf;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd5;   //选rs2
+            //rd_flag = 3'd5;   //选rs2
+            rd_flag = 3'd4;   //保留32位
             end
             default:unknown_code = inst;
             endcase

@@ -126,6 +126,16 @@ always @(*) begin
                 signed_alu_src2 = $signed (alu_src2[31:0]);
                 alu_res = signed_alu_src1[31:0] % signed_alu_src2[31:0] ;    //不确定
         end
+        `ALU_MEM:begin
+            if(rd_flag == 3'd1)
+                alu_res = alu_src2[63:0];
+            else if(rd_flag == 3'd2)
+                alu_res = alu_src2[15:0];
+            else if(rd_flag = 3'd3)
+                 alu_res = alu_src2[7:0];
+            else if(rd_flag = 3'd4)
+                alu_res = alu_src2[31:0];
+        end
         default:begin
             alu_res = alu_src1 -  alu_src2;
             zero = (alu_res == `CPU_WIDTH'b0) ? 1'b1 : 1'b0;
