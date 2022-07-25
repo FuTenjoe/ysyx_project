@@ -25,18 +25,27 @@ module mux_dt_pipe (
 reg [2:0]test;
 reg [2:0] data_rest_cond;
 reg delay_rest_id_mem;
+reg delay_control_rest;
 reg [`REG_ADDR_WIDTH-1:0] delay_reg_waddr;
 reg [2:0] delay_data_rest_cond;
+reg [63:0] delay_reg1_rdata;
+reg [63:0] delay_reg2_rdata;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         delay_data_rest_cond <= 3'd0;
         delay_rest_id_mem <= 1'b0;
         delay_reg_waddr <= 5'd0;
+        delay_control_rest <= 1'b0;
+        delay_reg1_rdata <= 64'd0;
+        delay_reg2_rdata <= 64'd0;
     end
     else begin
         delay_data_rest_cond <= data_rest_cond;
         delay_rest_id_mem <= rest_id_mem;
         delay_reg_waddr <= reg_waddr;
+        delay_control_rest <= control_rest;
+        delay_reg1_rdata <= reg1_rdata;
+        delay_reg2_rdata <= reg2_rdata;
     end
 end
 
@@ -129,14 +138,24 @@ always@(*)begin
                 reg2_rdata = from_mem_alu_res;
             end
         end
+        3'b000:begin
+            if(delay_control_rest == 1'b1 & delay_data_rest_cond == 3'b101)begin
+                reg1_rdata <= delay_reg1_rdata;
+                reg2_rdata <= delay_reg2_rdata;
+            end
+            else begin
+                reg1_rdata = reg_f[reg1_raddr];
+                reg2_rdata = reg_f[reg2_raddr];
+            end
+        end
         default:begin
-             reg1_rdata = reg_f[reg1_raddr];
+            reg1_rdata = reg_f[reg1_raddr];
             reg2_rdata = reg_f[reg2_raddr];
         end
     endcase
 end
 
-always@(*)begin
+always@(*)begin  //unuse
     if(s_flag)
         end_write_addr = reg_f[reg_waddr];
     else
