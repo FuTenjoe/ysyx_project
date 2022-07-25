@@ -135,14 +135,8 @@ always@(*)begin
             end
         end
         3'b000:begin
-            if(delay_control_rest == 1'b1 & delay_data_rest_cond == 3'b101)begin
-                reg1_rdata <= delay_reg1_rdata;
-                reg2_rdata <= delay_reg2_rdata;
-            end
-            else begin
-                reg1_rdata = reg_f[reg1_raddr];
-                reg2_rdata = reg_f[reg2_raddr];
-            end
+            reg1_rdata = reg_f[reg1_raddr];
+            reg2_rdata = reg_f[reg2_raddr];
         end
         default:begin
             reg1_rdata = reg_f[reg1_raddr];
