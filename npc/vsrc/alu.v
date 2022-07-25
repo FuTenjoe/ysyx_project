@@ -131,9 +131,9 @@ always @(*) begin
                 alu_res = alu_src2[63:0];
             else if(rd_flag == 3'd2)
                 alu_res = alu_src2[15:0];
-            else if(rd_flag = 3'd3)
+            else if(rd_flag == 3'd3)
                  alu_res = alu_src2[7:0];
-            else if(rd_flag = 3'd4)
+            else if(rd_flag == 3'd4)
                 alu_res = alu_src2[31:0];
         end
         default:begin
