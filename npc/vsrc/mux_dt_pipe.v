@@ -26,7 +26,7 @@ module mux_dt_pipe (
     input ex_s_flag,
     input cunqu_hazard,
     input mem_cunqu_hazard,
-    input [63:0]mem_from_ex_alu_res
+    input [63:0] mem_from_ex_alu_res
 );
 reg [2:0]test;
 
