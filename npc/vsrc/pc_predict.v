@@ -17,7 +17,7 @@ reg delay_sig_jalr;
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         ena <= 1'b0;
-        delay_sig_jalr <= 1'b0
+        delay_sig_jalr <= 1'b0;
     end
     else begin
         ena <= 1'b1;      
