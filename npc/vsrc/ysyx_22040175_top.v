@@ -130,7 +130,7 @@ id_stage u_id_stage(
     .mem_reg_waddr(mem_reg_waddr),
     .ex_s_flag(ex_s_flag),
     .mem_s_flag(mem_s_flag),
-    ,rest_wb_hazard(rest_wb_hazard)
+    .rest_wb_hazard(rest_wb_hazard)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag
