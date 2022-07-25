@@ -701,7 +701,7 @@ always @(*) begin
 
                 //后加
                 reg1_raddr = rs1;
-                reg2_raddr = rs2;
+                reg2_raddr = rs1;
                 end
                 default:unknown_code = inst;
             endcase
