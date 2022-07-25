@@ -75,11 +75,14 @@ always @(*) begin
          test = 3'd3;
     end
     else if (jump &jalr)begin            // jalr
-        if(data_rest_cond == 3'd4)
+        if(data_rest_cond == 3'd4)begin
             sig_jalr = 1'b1;
             next_pc = next_pc;
-        else 
+        end
+        else begin
+            sig_jalr = 1'b0;
             next_pc = reg_f[s_imm[4:0]]+imm; 
+        end
     end
     else if(sig_jalr)begin
         next_pc = reg1_rdata +imm;
