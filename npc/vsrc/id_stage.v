@@ -49,7 +49,8 @@ module id_stage (
     output reg sig_jalr,
     output reg delay_sig_jalr,
     input [31:0] ex_s_imm,
-    output reg cunqu_hazard
+    output reg cunqu_hazard,
+    input mem_cunqu_hazard
    
    
 );
@@ -148,7 +149,8 @@ mux_dt_pipe u_mux_dt_pipe (
     .rest_wb_hazard(rest_wb_hazard),
     .data_rest_cond(data_rest_cond),
     .delay_reg1_rdata(delay_reg1_rdata),
-    .cunqu_hazard(cunqu_hazard)
+    .cunqu_hazard(cunqu_hazard),
+    .mem_cunqu_hazard(mem_cunqu_hazard)
 );
 mux_alu u_mux_alu( 
     .alu_src_sel(alu_src_sel),// reg or imm to alu
