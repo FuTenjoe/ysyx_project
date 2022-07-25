@@ -41,7 +41,7 @@ always @(*) begin
                 rest_wb_hazard = 1'b1;
             end
            // else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1))begin
-            else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1 |(ex_s_flag==1'b1 & ex_s_imm == 1'b0)))begin
+            else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1 ))begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b1;
                 rest_wb_hazard = 1'b0;
@@ -64,7 +64,7 @@ always @(*) begin
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
             end
-            else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1 |(ex_s_flag==1'b1 & ex_s_imm == 1'b0)))begin
+            else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1 ))begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b0;
@@ -73,6 +73,11 @@ always @(*) begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
+            end
+            else if((reg1_raddr+s_imm == reg1_raddr+ex_s_imm)&(ex_s_flag == 1'b1 ))begin   //因为sb与后一条lbu冲突添加
+                rest_from_id = 1'b1;
+                rest_id_mem = 1'b0;
+                rest_wb_hazard = 1'b0;
             end
             else begin
                 rest_from_id = 1'b0;

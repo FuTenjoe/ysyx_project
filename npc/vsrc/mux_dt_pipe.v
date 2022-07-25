@@ -22,7 +22,8 @@ module mux_dt_pipe (
     input rest_id_mem,
     input rest_wb_hazard,
     output reg [2:0] data_rest_cond,
-    output reg [63:0] delay_reg1_rdata
+    output reg [63:0] delay_reg1_rdata,
+    input ex_s_flag
 );
 reg [2:0]test;
 
