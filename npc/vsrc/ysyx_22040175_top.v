@@ -138,7 +138,7 @@ id_stage u_id_stage(
     .delay_sig_jalr(delay_sig_jalr),
     .ex_s_imm(ex_s_imm),
     .cunqu_hazard(id_cunqu_hazard),
-    .mem_cunqu_hazard(mem_cunqu_hazard)
+    .mem_cunqu_hazard(mem_cunqu_hazard),
     .mem_from_ex_alu_res(mem_from_ex_alu_res)
 );
 
