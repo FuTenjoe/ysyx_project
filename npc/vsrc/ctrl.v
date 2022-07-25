@@ -239,7 +239,7 @@ always @(*) begin
                     reg2_raddr  = rs2;
                     reg_waddr   = rd;
                     s_imm =0;
-                    imm_gen_op  = `IMM_GEN_SRAI;   //R型指令不需要立即数，任取一个
+                    imm_gen_op  = `IMM_GEN_I;   //R型指令不需要立即数，任取一个
                     alu_op      = `ALU_SLLI;
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
