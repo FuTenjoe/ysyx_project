@@ -50,7 +50,8 @@ module id_stage (
     output reg delay_sig_jalr,
     input [31:0] ex_s_imm,
     output reg cunqu_hazard,
-    input mem_cunqu_hazard
+    input mem_cunqu_hazard,
+    input [63:0] mem_from_ex_alu_res
    
    
 );

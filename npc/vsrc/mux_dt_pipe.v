@@ -25,7 +25,8 @@ module mux_dt_pipe (
     output reg [63:0] delay_reg1_rdata,
     input ex_s_flag,
     input cunqu_hazard,
-    input mem_cunqu_hazard
+    input mem_cunqu_hazard,
+    input [63:0]mem_from_ex_alu_res
 );
 reg [2:0]test;
 
@@ -118,7 +119,7 @@ always@(*)begin
             end
             else begin
                 if(mem_cunqu_hazard == 1'b1)begin   //因为存取冲突后加
-                    reg1_rdata = from_ex_alu_res;
+                    reg1_rdata = mem_from_ex_alu_res;
                     reg2_rdata = 64'd0;
                 end
                 else if((reg1_raddr == mem_reg_waddr) &(reg2_raddr == reg_waddr))begin
