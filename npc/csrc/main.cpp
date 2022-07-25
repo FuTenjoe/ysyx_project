@@ -9,7 +9,7 @@
 #include <dlfcn.h>  //动态链接库相关函数
 //加run和target
 #define CONFIG_MBASE 0x80000000
-#define CONFIG_MSIZE 0X28000000
+#define CONFIG_MSIZE 0X2800000
 
 typedef uint64_t word_t;
 typedef  uint32_t paddr_t;
