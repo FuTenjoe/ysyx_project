@@ -18,7 +18,7 @@ module id_rest (
     input  [`REG_ADDR_WIDTH-1:0]  wb_reg_waddr,
     output rest_wb_hazard,
     input [31:0] s_imm,
-    input ex_s_flag,
+    input ex_s_flag
     //inpuy mem_s_flag
   
 
