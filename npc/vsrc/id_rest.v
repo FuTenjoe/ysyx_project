@@ -19,7 +19,8 @@ module id_rest (
     output rest_wb_hazard,
     input [31:0] s_imm,
     input ex_s_flag,
-    input mem_s_flag
+    input mem_s_flag,
+    input [31:0] ex_s_imm
   
 
 );
@@ -39,7 +40,8 @@ always @(*) begin
                 rest_id_mem = 1'b1;
                 rest_wb_hazard = 1'b1;
             end
-            else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1))begin
+           // else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1))begin
+            else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1 |(ex_s_flag==1'b1 & ex_s_imm == 1'b0)))begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b1;
                 rest_wb_hazard = 1'b0;
@@ -62,7 +64,7 @@ always @(*) begin
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
             end
-            else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1))begin
+            else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1 |(ex_s_flag==1'b1 & ex_s_imm == 1'b0)))begin
                 rest_from_id = 1'b1;
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b0;

@@ -135,7 +135,8 @@ id_stage u_id_stage(
     .mem_s_flag(mem_s_flag),
     .rest_wb_hazard(rest_wb_hazard),
     .sig_jalr(sig_jalr),
-    .delay_sig_jalr(delay_sig_jalr)
+    .delay_sig_jalr(delay_sig_jalr),
+    .ex_s_imm(ex_s_imm)
 );
 wire [63:0] ex_pc;
 wire        ex_branch;     // branch flag

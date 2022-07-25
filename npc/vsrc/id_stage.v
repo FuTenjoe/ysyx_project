@@ -47,7 +47,8 @@ module id_stage (
     input mem_s_flag,
     output reg rest_wb_hazard,
     output reg sig_jalr,
-    output reg delay_sig_jalr
+    output reg delay_sig_jalr,
+    input [31:0] ex_s_imm
    
    
 );
@@ -105,7 +106,8 @@ id_rest u_id_rest(        //data hazard
     .rest_wb_hazard(rest_wb_hazard),
     .s_imm(s_imm),
     .ex_s_flag(ex_s_flag),
-    .mem_s_flag(mem_s_flag)
+    .mem_s_flag(mem_s_flag),
+    .ex_s_imm(ex_s_imm)
    
 );
 id_control_rest u_id_control_rest(
