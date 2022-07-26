@@ -323,6 +323,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+31,"ysyx_22040175_top u_id_stage u_mux_dt_pipe cunqu_hazard", false,-1);
         tracep->declBit(c+78,"ysyx_22040175_top u_id_stage u_mux_dt_pipe mem_cunqu_hazard", false,-1);
         tracep->declQuad(c+72,"ysyx_22040175_top u_id_stage u_mux_dt_pipe mem_from_ex_alu_res", false,-1, 63,0);
+        tracep->declBus(c+25,"ysyx_22040175_top u_id_stage u_mux_dt_pipe expand_signed", false,-1, 3,0);
         tracep->declBus(c+662,"ysyx_22040175_top u_id_stage u_mux_dt_pipe test", false,-1, 2,0);
         tracep->declBit(c+126,"ysyx_22040175_top u_id_stage u_mux_dt_pipe delay_rest_id_mem", false,-1);
         tracep->declBit(c+127,"ysyx_22040175_top u_id_stage u_mux_dt_pipe delay_control_rest", false,-1);
