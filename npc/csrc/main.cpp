@@ -206,7 +206,7 @@ int main(int argc, char **argv, char **env) {
       
       printf(" a4= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[14],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",23,cpu_gpr[23],top->inst);
-       printf(" a2= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[18],top->inst);
+       printf(" ra= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[1],top->inst);
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
       printf("mem_rd_buf_flag is 0x%08lx",top->out_mem_rd_buf_flag);
