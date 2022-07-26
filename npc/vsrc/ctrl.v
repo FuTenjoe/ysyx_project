@@ -62,6 +62,8 @@ always @(*) begin
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b0;
             rd_buf_flag = 3'd0;
+            jump        = 1'b0;   //流水线后加
+            jalr = 1'b0;
             case (funct3)
                 3'b000: begin
                     case(funct7)
