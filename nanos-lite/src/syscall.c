@@ -30,11 +30,11 @@ void do_syscall(Context *c) {
   a[2] = c->GPR3;  //a1
   a[3] = c->GPR4;  //a2
   //a[4] = c->GPRx;
-  printf("gpr return a0 = %lx\n",a[0]);
+  printf("gpr return a1 = %lx\n",a[1]);
   switch (a[0]) {
     case 0:{
       halt(c->GPR1); 
-      printf("gpr a[1] = %lx\n",a[1]);
+      printf("gpr a0 = %lx\n",a[0]);
       break; //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
     case 1:{
