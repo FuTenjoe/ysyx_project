@@ -134,10 +134,10 @@ always@(*)begin
                     reg1_rdata = wb_hazard_result;
                     reg2_rdata = reg_f[reg2_raddr];
                 end
-            /*    else if((reg2_raddr == mem_reg_waddr)&(reg1_raddr == reg_waddr) )begin
+                 else if((reg2_raddr == mem_reg_waddr)&(reg1_raddr == reg_waddr) )begin
                     reg1_rdata = from_ex_alu_res;
-                    reg2_rdata = wb_hazard_result;
-                end*/
+                   // reg2_rdata = wb_hazard_result;
+                end
                 else if((reg2_raddr == mem_reg_waddr)&(reg1_raddr != reg_waddr))begin
                     reg1_rdata = reg_f[reg1_raddr];
                     reg2_rdata = wb_hazard_result;
