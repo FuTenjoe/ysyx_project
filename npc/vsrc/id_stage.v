@@ -166,7 +166,7 @@ mux_alu u_mux_alu(
     .reg2_rdata(reg2_rdata), // register 2 read data
     .imm(imm),        // immediate
     .curr_pc(id_pc),    // current pc addr
-    .no_use(no_use),
+    //.no_use(no_use),
 
     .alu_src1(alu_src1),   // alu source 1
     .alu_src2(alu_src2),    // alu source 2
@@ -176,7 +176,7 @@ mux_alu u_mux_alu(
 muxpc u_mux_pc(
     .clk(clk),
     .rst_n(rst_n),
-    .ena(ena),
+    //.ena(ena),
     .branch(branch),  // branch type 
     
     .jump(jump),    // jump type 
