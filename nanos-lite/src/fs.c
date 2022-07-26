@@ -87,7 +87,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
           file_table[open_i].open_offset = file_table[open_i].open_offset + count;
            return i;
         }
-    else return -1;
+    else return 0;
   }
  /* else{
     if((fd == 1) | (fd == 2)){
