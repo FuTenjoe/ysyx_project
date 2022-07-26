@@ -122,7 +122,7 @@ always@(*)begin
                     reg1_rdata = mem_from_ex_alu_res;
                     reg2_rdata = 64'd0;
                 end
-           /*     else if(reg1_raddr == mem_reg_waddr & reg2_raddr == mem_reg_waddr)begin
+                else if(reg1_raddr == mem_reg_waddr & reg2_raddr == mem_reg_waddr)begin
                     reg1_rdata = wb_hazard_result;
                     reg2_rdata = wb_hazard_result;
                 end
@@ -141,7 +141,7 @@ always@(*)begin
                 else if((reg2_raddr == mem_reg_waddr)&(reg1_raddr != reg_waddr))begin
                     reg1_rdata = reg_f[reg1_raddr];
                     reg2_rdata = wb_hazard_result;
-                end*/
+                end
             end
         end
         3'b111:begin
