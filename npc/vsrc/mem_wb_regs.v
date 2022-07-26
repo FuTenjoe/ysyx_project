@@ -20,7 +20,7 @@ module mem_wb_regs(
 	input [2:0]rd_buf_flag_mem_wb_i,
     output  reg                          reg_wen_mem_wb_o,    // register write enable
     output  reg    [`REG_ADDR_WIDTH-1:0] reg_waddr_mem_wb_o,  // register write address
-    output  reg    [63:0]      reg_wdata_mem_wb_o,  // register write data
+    //output  reg    [63:0]      reg_wdata_mem_wb_o,  // register write data
     output reg [7:0] wmask_mem_wb_o,
     output reg s_flag_mem_wb_o,
     output reg time_set_mem_wb_o,
@@ -31,8 +31,7 @@ module mem_wb_regs(
 	output  reg [63:0] from_ex_alu_res_mem_wb_o,
 	output reg [63:0] from_mem_alu_res_mem_wb_o,
 	
-	input ex_pc_ready_mem_wb_i,
-	output ex_pc_ready_mem_wb_o,
+	
 	input [63:0] pc_mem_wb_i,
 	output [63:0] pc_mem_wb_o,
 	input rest_id_mem_ex_mem_o,
@@ -58,7 +57,7 @@ module mem_wb_regs(
 			from_ex_alu_res_mem_wb_o <= 64'd0;
 			from_mem_alu_res_mem_wb_o <= 64'd0;
 			
-			ex_pc_ready_mem_wb_o <= 1'b0;
+			
 			pc_mem_wb_o <= 32'h8000_0000;
 			end_write_add_mem_wb_o <= 64'd0;
 			cunqu_hazard_mem_wb_o <= 1'b0;
@@ -76,7 +75,7 @@ module mem_wb_regs(
 			rd_buf_flag_mem_wb_o <= rd_buf_flag_mem_wb_o;
 			from_ex_alu_res_mem_wb_o <= from_ex_alu_res_mem_wb_o;
 			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_o;
-			ex_pc_ready_mem_wb_o  <= ex_pc_ready_mem_wb_o;
+			
 			pc_mem_wb_o <= pc_mem_wb_o;
 			end_write_add_mem_wb_o <= end_write_add_mem_wb_i;
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
@@ -95,7 +94,7 @@ module mem_wb_regs(
 			from_ex_alu_res_mem_wb_o <= from_ex_alu_res_mem_wb_i;
 			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_i;
 			
-			ex_pc_ready_mem_wb_o  <= ex_pc_ready_mem_wb_i;
+			
 			pc_mem_wb_o <= pc_mem_wb_i;
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_i;
 		end

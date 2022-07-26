@@ -8,8 +8,6 @@ module if_stage (
     output [31:0] inst,
     output [63:0] curr_pc,
     input control_rest,
-    input ex_pc_ready,
-    output reg pc_no_use,
     input rest_id_mem ,
     input [63:0] id_pc,
     input sig_jalr

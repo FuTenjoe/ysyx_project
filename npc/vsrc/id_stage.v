@@ -11,14 +11,14 @@ module id_stage (
     input [`REG_ADDR_WIDTH-1:0] ex_reg_waddr,
     output reg rest_from_id,
 
-    output reg                         branch,     // branch flag
-    output reg                         jump,       // jump flag
+    //output reg                         branch,     // branch flag
+    //output reg                         jump,       // jump flag
 
     output reg                         reg_wen,    // register write enable
     output reg [`REG_ADDR_WIDTH-1:0]   reg_waddr,  // register write address
     
-    output reg [63:0]   reg1_rdata, // register 1 read data
-    output reg [63:0]   reg2_rdata, // register 2 read data
+    //output reg [63:0]   reg1_rdata, // register 1 read data
+    //output reg [63:0]   reg2_rdata, // register 2 read data
     //output reg [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op, // immediate extend opcode
     output reg [`CPU_WIDTH-1:0]        imm, 
     output reg [`ALU_OP_WIDTH-1:0]     alu_op,     // alu opcode
@@ -55,6 +55,10 @@ module id_stage (
    
    
 );
+wire branch;
+wire jump;
+wire [63:0] reg1_rdata;
+wire [63:0] reg2_rdata;
 wire [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op;
 wire [`REG_ADDR_WIDTH-1:0]   reg1_raddr; // register 1 read address
 wire [`REG_ADDR_WIDTH-1:0]   reg2_raddr; // register 2 read address

@@ -5,13 +5,14 @@ module alu(
     input      [63:0]    alu_src1, // alu source 1
     //input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
     input      [63:0]    alu_src2, // alu source 2
-    output reg                     zero,     // alu result is zero
+    //output reg                     zero,     // alu result is zero
     output reg [63:0]    alu_res_ex_sign,   // alu result
     input [2:0]rd_flag,
     input [3:0] expand_signed
 );
 //reg [63:0] rd_buf_lw;
 reg [2:0] test;
+wire zero;
 reg [63:0] alu_res;
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;

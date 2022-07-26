@@ -12,7 +12,6 @@ module id_rest (
     output reg rest_from_id,
     input      [31:0]   ex_inst,
     input [63:0] from_ex_alu_res,
-    input [63:0] from_mem_alu_res,
     output reg rest_id_mem,
     
     input  [`REG_ADDR_WIDTH-1:0]  wb_reg_waddr,

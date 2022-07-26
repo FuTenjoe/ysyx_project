@@ -20,7 +20,6 @@ module wb_stage (
     output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     /* verilator lint_off UNOPT */
     output write_ready,
-    input wb_no_use,
     input [63:0] wb_pc,
     output [63:0] wb_delay_pc,
     input [63:0] end_write_addr,

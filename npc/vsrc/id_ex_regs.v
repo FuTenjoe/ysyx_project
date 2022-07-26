@@ -44,10 +44,10 @@ module id_ex_regs(
     output reg [2:0]rd_flag_id_ex_o,
 	output reg [2:0]rd_buf_flag_id_ex_o, 
 
-    input      [63:0]      reg_wdata_id_ex_i,  // register write data
+    //input      [63:0]      reg_wdata_id_ex_i,  // register write data
     input time_set_id_ex_i,
     
-	output [63:0] reg_wdata_id_ex_o,
+	
 	output reg time_set_id_ex_o,
 	
 
