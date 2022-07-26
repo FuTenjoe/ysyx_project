@@ -35,8 +35,7 @@ module mem_wb_regs(
 	input [63:0] pc_mem_wb_i,
 	output [63:0] pc_mem_wb_o,
 	input rest_id_mem_ex_mem_o,
-	input [63:0] end_write_add_mem_wb_i,
-	output reg [63:0] end_write_add_mem_wb_o,
+	
 	input cunqu_hazard_mem_wb_i,
 	output reg cunqu_hazard_mem_wb_o
     );
@@ -77,7 +76,7 @@ module mem_wb_regs(
 			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_o;
 			
 			pc_mem_wb_o <= pc_mem_wb_o;
-			end_write_add_mem_wb_o <= end_write_add_mem_wb_i;
+			
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
 		end	
 		else begin
