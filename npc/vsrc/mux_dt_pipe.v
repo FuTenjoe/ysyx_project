@@ -26,7 +26,8 @@ module mux_dt_pipe (
     input ex_s_flag,
     input cunqu_hazard,
     input mem_cunqu_hazard,
-    input [63:0] mem_from_ex_alu_res
+    input [63:0] mem_from_ex_alu_res,
+    input[3:0] expand_signed
 );
 reg [2:0]test;
 
@@ -61,9 +62,29 @@ always@(*)begin
     data_rest_cond = {rest_from_id,delay_rest_id_mem,rest_wb_hazard};
     case(data_rest_cond)
         3'b100:begin
-            if(cunqu_hazard)begin
-                reg1_rdata = from_ex_alu_res;
-                reg2_rdata = 64'd0;
+            if(cunqu_hazard)begin   //符号位扩展
+            case(expand_signed)
+                4'd0:begin
+                    reg1_rdata = from_ex_alu_res;
+                    reg2_rdata = 64'd0;
+                end
+                4'd1:begin
+                    reg1_rdata = {{32{from_ex_alu_res[31]}},from_ex_alu_res[31:0]};   //lw  addw  divw
+                    reg2_rdata = 64'd0;
+                end
+                4'd2:begin
+                    reg1_rdata = from_ex_alu_res[31:0];            //addw错误
+                    reg2_rdata = 64'd0;
+                end
+                4'd3:begin
+                    reg1_rdata = {{48{from_ex_alu_res[15]}},from_ex_alu_res[15:0]}; //lh
+                    reg2_rdata = 64'd0;
+                end
+                default:begin   
+                    reg1_rdata = from_ex_alu_res;
+                    reg2_rdata = 64'd0;
+                end
+            endcase
             end
             else begin
             if(reg1_raddr == reg_waddr)begin
@@ -136,7 +157,7 @@ always@(*)begin
                 end
                  else if((reg2_raddr == mem_reg_waddr)&(reg1_raddr == reg_waddr) )begin
                     reg1_rdata = from_ex_alu_res;
-                   // reg2_rdata = wb_hazard_result;
+                    reg2_rdata = wb_hazard_result;   //注意
                 end
                 else if((reg2_raddr == mem_reg_waddr)&(reg1_raddr != reg_waddr))begin
                     reg1_rdata = reg_f[reg1_raddr];
