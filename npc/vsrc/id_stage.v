@@ -40,7 +40,7 @@ module id_stage (
     output reg [63:0]     alu_src1,   // alu source 1
     output reg [63:0]     alu_src2,    // alu source 2
     output reg rest_id_mem,
-    output reg [63:0] end_write_addr,
+    //output reg [63:0] end_write_addr,
     input [63:0] wb_hazard_result,
     input  [`REG_ADDR_WIDTH-1:0]  mem_reg_waddr,
     input ex_s_flag,
@@ -147,7 +147,7 @@ mux_dt_pipe u_mux_dt_pipe (
     .rest_from_id(rest_from_id),
     .reg_f(reg_f),
     .s_flag(s_flag),
-    .end_write_addr(end_write_addr),
+    //.end_write_addr(end_write_addr),
     .wb_hazard_result(wb_hazard_result),
     .mem_reg_waddr(mem_reg_waddr),
     .rest_id_mem(rest_id_mem),

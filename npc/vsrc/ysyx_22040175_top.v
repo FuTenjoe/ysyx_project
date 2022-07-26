@@ -230,8 +230,8 @@ id_ex_regs u_id_ex_regs(
     .rest_id_mem_id_ex_o(ex_rest_id_mem),
     .id_inst(id_inst),
 	.ex_inst(ex_inst),
-    .end_write_addr_id_ex_i(id_end_write_addr),
-	.end_write_addr_id_ex_o(ex_end_write_addr),
+    //.end_write_addr_id_ex_i(id_end_write_addr),
+	//.end_write_addr_id_ex_o(ex_end_write_addr),
     .cunqu_hazard_id_ex_i(id_cunqu_hazard),
     .cunqu_hazard_id_ex_o(ex_cunqu_hazard)
     
@@ -316,8 +316,8 @@ ex_mem_regs u_ex_mem_regs(
 	.pc_ex_mem_o(mem_pc),
     .rest_id_mem_ex_mem_i(ex_rest_id_mem),
 	.rest_id_mem_ex_mem_o(mem_rest_id_mem),
-    .end_write_addr_ex_mem_i(ex_end_write_addr),
-	.end_write_addr_ex_mem_o(mem_end_write_addr),
+    //.end_write_addr_ex_mem_i(ex_end_write_addr),
+	//.end_write_addr_ex_mem_o(mem_end_write_addr),
     .cunqu_hazard_ex_mem_i(ex_cunqu_hazard),
     .cunqu_hazard_ex_mem_o(mem_cunqu_hazard)
    
@@ -395,8 +395,8 @@ mem_wb_regs u_mem_wb_regs(
     .pc_mem_wb_i(mem_pc),
 	.pc_mem_wb_o(wb_pc),
     .rest_id_mem_ex_mem_o(mem_rest_id_mem),
-    .end_write_add_mem_wb_i(mem_end_write_addr),
-	.end_write_add_mem_wb_o(wb_end_write_addr),
+    //.end_write_add_mem_wb_i(mem_end_write_addr),
+	//.end_write_add_mem_wb_o(wb_end_write_addr),
     .cunqu_hazard_mem_wb_i(mem_cunqu_hazard),
     .cunqu_hazard_mem_wb_o (wb_cunqu_hazard)
     );
@@ -422,7 +422,7 @@ wb_stage u_wb_stage(
     .reg_f(from_wb_reg_f),
     .wb_pc(wb_pc),
     .wb_delay_pc(wb_delay_pc),
-    .end_write_addr(wb_end_write_addr),
+    //.end_write_addr(wb_end_write_addr),
     .cunqu_hazard(wb_cunqu_hazard)
   
    

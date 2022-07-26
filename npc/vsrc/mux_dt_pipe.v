@@ -16,7 +16,7 @@ module mux_dt_pipe (
     input rest_from_id,
     input reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     input s_flag,
-    output reg [63:0] end_write_addr,
+    //output reg [63:0] end_write_addr,
     input [63:0] wb_hazard_result,
     input  [`REG_ADDR_WIDTH-1:0]  mem_reg_waddr,
     input rest_id_mem,
@@ -201,12 +201,6 @@ always@(*)begin
     endcase
 end
 
-always@(*)begin  //unuse
-    if(s_flag)
-        end_write_addr = reg_f[reg_waddr];
-    else
-        end_write_addr = 64'd0;
-end
 
 
 

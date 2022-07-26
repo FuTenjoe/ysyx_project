@@ -21,7 +21,7 @@ module wb_stage (
     /* verilator lint_off UNOPT */
     input [63:0] wb_pc,
     output [63:0] wb_delay_pc,
-    input [63:0] end_write_addr,
+   // input [63:0] end_write_addr,
     input cunqu_hazard
    
 );
