@@ -130,7 +130,7 @@ id_stage u_id_stage(
     .alu_src2(id_alu_src2),    // alu source 2
     .rest_id_mem(rest_id_mem),
     .ex_inst(ex_inst),
-    .end_write_addr(id_end_write_addr),
+    
     .wb_hazard_result(wb_hazard_result),
     .mem_reg_waddr(mem_reg_waddr),
     .ex_s_flag(ex_s_flag),

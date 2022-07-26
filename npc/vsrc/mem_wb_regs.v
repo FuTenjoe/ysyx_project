@@ -58,7 +58,7 @@ module mem_wb_regs(
 			
 			
 			pc_mem_wb_o <= 32'h8000_0000;
-			end_write_add_mem_wb_o <= 64'd0;
+			
 			cunqu_hazard_mem_wb_o <= 1'b0;
 		end
 		else if(rest_id_mem_ex_mem_o == 1'b1)begin
