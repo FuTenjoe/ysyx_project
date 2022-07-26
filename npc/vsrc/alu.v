@@ -12,7 +12,7 @@ module alu(
 );
 //reg [63:0] rd_buf_lw;
 reg [2:0] test;
-wire zero;
+reg zero;
 reg [63:0] alu_res;
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
