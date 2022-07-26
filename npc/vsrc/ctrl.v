@@ -15,9 +15,9 @@ module ctrl (
 
     output reg [`ALU_OP_WIDTH-1:0]     alu_op,     // alu opcode
     output reg [`ALU_SRC_WIDTH-1:0]    alu_src_sel ,// alu source select flag
-    output [`CPU_WIDTH-1:0]            unknown_code,
-    output    jalr,
-    output ebreak_flag,
+    output reg [`CPU_WIDTH-1:0]            unknown_code,
+    output  reg  jalr,
+    output reg ebreak_flag,
     output reg [7:0]wmask,
     output reg s_flag,
     output reg [31:0]s_imm,
