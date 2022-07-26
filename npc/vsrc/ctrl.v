@@ -116,6 +116,7 @@ always @(*) begin
                     alu_op =(funct7==7'b0) ? `ALU_OR : `ALU_DIVYU;
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
+                    s_imm =0;
                     rd_flag = 3'd0;
                 end
                 3'b101:begin   //divu
