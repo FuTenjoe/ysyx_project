@@ -13,7 +13,7 @@ extern "C" {
 
 
     // DPI IMPORTS
-    // DPI import at vsrc/ctrl.v:765:30
+    // DPI import at vsrc/ctrl.v:767:30
     extern void ebreak();
     // DPI import at vsrc/if_stage.v:31:30
     extern void pmem_read(long long raddr, long long* rdata);
@@ -21,7 +21,7 @@ extern "C" {
     extern void pmem_write(long long waddr, long long wdata, char wmask);
     // DPI import at vsrc/wb_stage.v:86:30
     extern void set_gpr_ptr(const svOpenArrayHandle a);
-    // DPI import at vsrc/ctrl.v:775:30
+    // DPI import at vsrc/ctrl.v:777:30
     extern void unknown_inst();
 
 #ifdef __cplusplus
