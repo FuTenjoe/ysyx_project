@@ -19,7 +19,6 @@ module wb_stage (
     /* verilator lint_off UNOPT */
     output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     /* verilator lint_off UNOPT */
-    output write_ready,
     input [63:0] wb_pc,
     output [63:0] wb_delay_pc,
     input [63:0] end_write_addr,
@@ -42,24 +41,21 @@ always @(*) begin
             case(expand_signed)
             4'd0:begin
                 reg_f[reg_waddr] = reg_wdata;   //jalr
-                write_ready = 1'b1;
+                
             end
             4'd1:begin
                 reg_f[reg_waddr] = {{32{reg_wdata[31]}},reg_wdata[31:0]};   //lw  addw  divw
-                write_ready = 1'b1;
+                
             end
             4'd2:begin
                 reg_f[reg_waddr] = reg_wdata[31:0];            //addw错误
-                write_ready = 1'b1;
+                
             end
             4'd3:begin
                 reg_f[reg_waddr] = {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
-                write_ready = 1'b1;
+                
             end
-            default:begin
-                //reg_f[reg_waddr] = reg_f[reg_waddr];
-                write_ready = 1'b0;
-            end
+            
             endcase
         end
     end

@@ -17,7 +17,7 @@ alu u_alu(
     .alu_src1(alu_src1), // alu source 1
     //input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
     .alu_src2(alu_src2), // alu source 2
-    .zero(zero),     // alu result is zero
+    //.zero(zero),     // alu result is zero
     .alu_res_ex_sign(alu_res),   // alu result
     .rd_flag(rd_flag),
     .expand_signed(expand_signed)

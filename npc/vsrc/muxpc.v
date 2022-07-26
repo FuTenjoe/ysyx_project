@@ -3,7 +3,7 @@
 module muxpc (
     input clk,
     input rst_n,
-    input                       ena,
+    //input                       ena,
     input                       branch,  // branch type 
     
     input                       jump,    // jump type 

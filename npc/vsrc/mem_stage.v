@@ -65,9 +65,7 @@ end
 
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
-    if(no_use == 1'b0)begin
-        if(rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)
-            pmem_read(alu_src1 +  alu_src2, rd_buf_lw);
-    end
+    if(rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)
+        pmem_read(alu_src1 +  alu_src2, rd_buf_lw);
 end
 endmodule
