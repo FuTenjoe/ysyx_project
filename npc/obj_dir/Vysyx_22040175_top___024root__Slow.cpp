@@ -6107,14 +6107,6 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
             } else if ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
                          == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
                         & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                           == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))) {
-                vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_rdata 
-                    = vlSelf->ysyx_22040175_top__DOT__wb_hazard_result;
-                vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_rdata 
-                    = vlSelf->ysyx_22040175_top__DOT__wb_hazard_result;
-            } else if ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                         == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                        & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
                            == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)))) {
                 vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_rdata 
                     = vlSelf->ysyx_22040175_top__DOT__wb_hazard_result;
