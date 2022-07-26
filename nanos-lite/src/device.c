@@ -15,11 +15,32 @@ static const char *keyname[256] __attribute__((used)) = {
 };
 
 size_t serial_write(const void *buf, size_t offset, size_t len) {
-  return 0;
+ // return 0;
+ //自己加
+ for (int i = 0; i < len; i++){
+        putch(((char*)(buf))[i]);
+      }
 }
 
 size_t events_read(void *buf, size_t offset, size_t len) {
-  return 0;
+  //return 0;
+  //自己加
+  int key = read_key();
+  int flag = 0;
+  if(key & 0x8000){
+    key ^= 0x8000;
+    flag = 1;
+  }
+  if(key != AM_KEY_NONE){
+    if(flag)
+      len = sprintf(buf,"kd %s\n",keyname[key]);
+    else
+      len = sprintf(buf,"ku %s\n",keyname[key]);
+  }
+  else{
+    len = sprintf(buf,"t %u\n",uptime());
+  }
+  return len;
 }
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {

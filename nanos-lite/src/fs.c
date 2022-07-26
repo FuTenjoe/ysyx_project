@@ -91,32 +91,6 @@ size_t fs_read(int fd, void *buf, size_t count){
 }
 size_t fs_write( int  fd, const void * buf,size_t count){
   Log("fs_write:open_i=%d,fd=%d,open_offset=%d,count=%d\n",open_i,fd,file_table[open_i].open_offset,count);
-  //assert(open_offset <= file_table[open_i].size);
- /* if(file_table[open_i].open_offset + count <= file_table[open_i].size){
-    if((fd == 1) | (fd == 2)){
-          int i;
-          for(i=0; i < count; i++){
-            putch(((char*)(buf))[i]);
-          }
-          //ramdisk_write(buf,file_table[open_i].open_offset,count);
-          //file_table[open_i].open_offset = file_table[open_i].open_offset + count;
-           return count;
-        }
-    else return -1;
-  }
-  else{
-    if((fd == 1) | (fd == 2)){
-          int i;
-          for(i=0; i < file_table[open_i].size-file_table[open_i].open_offset; i++){
-            putch(((char*)(buf))[i]);
-            //ramdisk_write(buf,open_offset,file_table[open_i].size-open_offset);
-          }
-          //ramdisk_write(buf,file_table[open_i].open_offset,count);
-          //file_table[open_i].open_offset = file_table[open_i].open_offset + count;
-          return 0;
-        }
-    else return -1;
-  }*/
   //参考代码
   Finfo *f = file_table + fd;
   int remain_bytes = f->size - f->open_offset;
@@ -131,11 +105,23 @@ size_t fs_write( int  fd, const void * buf,size_t count){
       ramdisk_write(buf, f->disk_offset + f ->open_offset ,bytes_to_write);
       break;
   }
-  
   f ->open_offset = f ->open_offset + bytes_to_write;
   return bytes_to_write;
+}
 
-};
+ int gettimeofday(struct timeval *tv, struct timezone *tz){
+  if(tv != NULL){
+    for(i=0;i<100000 ;i++){
+      tv.tv_sec = i;
+      tv.tv_usec = i/1000;
+      assert(tv != NULL);
+    }
+  }
+    
+  return 0; 
+ }
+
+
 void init_fs() {
   // TODO: initialize the size of /dev/fb
 }
