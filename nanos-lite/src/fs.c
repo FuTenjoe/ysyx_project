@@ -85,7 +85,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
           }
           //ramdisk_write(buf,file_table[open_i].open_offset,count);
           //file_table[open_i].open_offset = file_table[open_i].open_offset + count;
-           return i;
+           return 0;
         }
     else return -1;
   }
@@ -98,7 +98,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
           }
           //ramdisk_write(buf,file_table[open_i].open_offset,count);
           //file_table[open_i].open_offset = file_table[open_i].open_offset + count;
-          return file_table[open_i].size-file_table[open_i].open_offset;
+          return 0;
         }
     else return -1;
   }
