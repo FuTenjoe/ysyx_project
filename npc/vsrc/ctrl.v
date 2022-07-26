@@ -415,7 +415,7 @@ always @(*) begin
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
                     reg1_raddr  = rs1;
-                    reg2_raddr  = rs2;
+                    reg2_raddr  = 0;
                     reg_waddr   = rd;
                     s_imm =0;
                     imm_gen_op  = `IMM_GEN_I;   //不需要使用R型指令
