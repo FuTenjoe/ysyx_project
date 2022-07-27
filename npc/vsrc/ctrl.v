@@ -794,6 +794,8 @@ import "DPI-C" function void unknown_inst();
 always@(*)begin
     if(unknown_code != 32'd0)
         unknown_inst();
+    else 
+        unknown_code = unknown_code;
 end
 
 endmodule

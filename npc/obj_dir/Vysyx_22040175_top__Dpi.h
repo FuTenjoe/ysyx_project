@@ -21,7 +21,7 @@ extern "C" {
     extern void pmem_write(long long waddr, long long wdata, char wmask);
     // DPI import at vsrc/wb_stage.v:81:30
     extern void set_gpr_ptr(const svOpenArrayHandle a);
-    // DPI import at vsrc/ctrl.v:788:30
+    // DPI import at vsrc/ctrl.v:793:30
     extern void unknown_inst();
 
 #ifdef __cplusplus
