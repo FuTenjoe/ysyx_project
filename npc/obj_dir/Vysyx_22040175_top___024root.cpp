@@ -6723,6 +6723,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__5(Vysyx_22040175_t
                 : (IData)(((4U == (7U & (IData)(vlSelf->ysyx_22040175_top__DOT__id_alu_op))) 
                            & (0ULL == (vlSelf->ysyx_22040175_top__DOT__id_alu_src1 
                                        - vlSelf->ysyx_22040175_top__DOT__id_alu_src2))))));
+    vlSelf->ysyx_22040175_top__DOT__id_next_pc = vlSelf->ysyx_22040175_top__DOT__id_pc;
     if (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch) 
          & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero)))) {
         vlSelf->ysyx_22040175_top__DOT__id_next_pc 
