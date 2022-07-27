@@ -11,7 +11,7 @@ module alu(
     input [3:0] expand_signed
 );
 //reg [63:0] rd_buf_lw;
-reg [2:0] test;
+//reg [2:0] test;
 reg zero;
 reg [63:0] alu_res;
 reg signed [63:0] signed_alu_src1;
@@ -24,7 +24,7 @@ always @(*) begin
         if(rd_flag == 3'd0)begin
             alu_res = (alu_src1 +  alu_src2);
             alu_res = alu_res[31:0];
-            test = 3'd3;
+            //test = 3'd3;
         end
    /*     else if(rd_flag == 3'd1)
             alu_res = rd_buf_lw[31:0];
@@ -32,7 +32,7 @@ always @(*) begin
             alu_res = rd_buf_lw[63:0];*/
         else if(rd_flag == 3'd3)begin
             alu_res = alu_src1 +  alu_src2;
-            test = 3'd2;
+            //test = 3'd2;
         end
     /*    else if(rd_flag == 3'd4)
             alu_res = rd_buf_lw[7:0]; */
@@ -40,7 +40,7 @@ always @(*) begin
             alu_res = alu_src2;
     /*    else if(rd_flag == 3'd6)   //lh
             alu_res = rd_buf_lw[15:0];  */
-            test = 3'd1;
+            //test = 3'd1;
         end
         else 
             alu_res = alu_res;
@@ -48,7 +48,7 @@ always @(*) begin
         `ALU_SUB:begin //0100
             alu_res = alu_src1 - alu_src2;
             zero = (alu_res == 64'b0) ? 1'b1 : 1'b0;
-             test = 3'd4;
+             //test = 3'd4;
         end
         `ALU_SUBN:begin //1100
             alu_res = alu_src1 - alu_src2;
@@ -57,7 +57,7 @@ always @(*) begin
         `ALU_BMT:begin
             signed_alu_src1 = alu_src1;
             signed_alu_src2 = alu_src2;
-            
+            alu_res = alu_res;
              if(signed_alu_src1 >= signed_alu_src2 )
                 zero = 1'd0;
             else
@@ -67,7 +67,7 @@ always @(*) begin
             signed_alu_src1 = $signed (alu_src1);
             signed_alu_src2 = $signed (alu_src2);
             zero = (signed_alu_src1 < signed_alu_src2)? 1'b0:1'b1;
-            
+            alu_res = alu_res;
         end
         `ALU_BLTU:
             zero = (alu_src1 < alu_src2)? 1'b0:1'b1;
@@ -76,11 +76,11 @@ always @(*) begin
         `ALU_SLTU:begin//1001
             if(alu_src1 < alu_src2)begin
                 alu_res = 32'd1;
-                test = 3'd7;
+               // test = 3'd7;
             end
             else begin
                  alu_res = 32'd0;
-                 test = 3'd6;
+                 //test = 3'd6;
             end
         end
         `ALU_SLT:begin//1001
@@ -91,20 +91,26 @@ always @(*) begin
             else
                  alu_res = 32'd0;
         end
-        `ALU_SRA:    //算术右移
+        `ALU_SRA: begin   //算术右移
             if(rd_flag == 3'd0)
                 alu_res = ($signed(alu_src1))>>>alu_src2;
             else if(rd_flag == 3'd1)  //sraiw
                 alu_res = ($signed(alu_src1[31:0]))>>>alu_src2;
             else if(rd_flag == 3'd3)  //sraw
                 alu_res = ($signed(alu_src1[31:0]))>>>alu_src2[4:0];
-        `ALU_SRL:
+            else
+                 alu_res = alu_res;
+        end
+        `ALU_SRL:begin
             if(rd_flag == 3'd0)
                 alu_res = alu_src1 >> alu_src2;
             else if(rd_flag == 3'd1)  //sraiw
                 alu_res = alu_src1[31:0] >> alu_src2;
             else if(rd_flag == 3'd2)  //srlw
                 alu_res = alu_src1[31:0] >> alu_src2[4:0];
+            else
+                alu_res = alu_res;
+        end
         `ALU_AND:begin
                 alu_res = alu_src1 & alu_src2;
         end
