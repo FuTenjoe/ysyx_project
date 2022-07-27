@@ -142,6 +142,8 @@ always @(*) begin
                  alu_res = alu_src2[7:0];
             else if(rd_flag == 3'd4)
                 alu_res = alu_src2[31:0];
+            else 
+                alu_res = alu_res;
         end
         default:begin
             alu_res = alu_src1 -  alu_src2;
