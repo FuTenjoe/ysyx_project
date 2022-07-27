@@ -18,9 +18,9 @@ reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 always @(*) begin
     zero = 1'b0;
-    alu_res = alu_res;
-    signed_alu_src1 = signed_alu_src1;
-    signed_alu_src2 = signed_alu_src2;
+    alu_res = alu_src1 -  alu_src2;
+    signed_alu_src1 = alu_src1;
+    signed_alu_src2 = alu_src2;
     case (alu_op)
         `ALU_ADD: begin  //0011
         if(rd_flag == 3'd0)begin

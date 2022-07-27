@@ -2681,6 +2681,8 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                                                                 + vlSelf->ysyx_22040175_top__DOT__mem_alu_src2), vlSelf->__Vtask_ysyx_22040175_top__DOT__u_mem_stage__DOT__pmem_read__2__rdata);
         vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__rd_buf_lw 
             = vlSelf->__Vtask_ysyx_22040175_top__DOT__u_mem_stage__DOT__pmem_read__2__rdata;
+    } else {
+        vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__rd_buf_lw = 0ULL;
     }
     vlSelf->ysyx_22040175_top__DOT__rst_n = (1U & (~ (IData)(vlSelf->rst)));
     vlSelf->ysyx_22040175_top__DOT__id_s_flag = 0U;

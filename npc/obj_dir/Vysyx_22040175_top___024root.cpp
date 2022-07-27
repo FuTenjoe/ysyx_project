@@ -3599,6 +3599,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
                                                                                 + vlSelf->ysyx_22040175_top__DOT__mem_alu_src2), vlSelf->__Vtask_ysyx_22040175_top__DOT__u_mem_stage__DOT__pmem_read__2__rdata);
         vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__rd_buf_lw 
             = vlSelf->__Vtask_ysyx_22040175_top__DOT__u_mem_stage__DOT__pmem_read__2__rdata;
+    } else {
+        vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__rd_buf_lw = 0ULL;
     }
     vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag = 0U;
     if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
