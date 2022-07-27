@@ -57,11 +57,15 @@ always @(*) begin
         `ALU_BMT:begin
             signed_alu_src1 = alu_src1;
             signed_alu_src2 = alu_src2;
-            alu_res = alu_res;
-             if(signed_alu_src1 >= signed_alu_src2 )
+            //alu_res = alu_res;
+             if(signed_alu_src1 >= signed_alu_src2 )begin
                 zero = 1'd0;
-            else
+                 alu_res = alu_res;
+             end
+            else begin
                  zero = 1'd1;
+                  alu_res = alu_res;
+            end
         end
         `ALU_BLT:begin
             signed_alu_src1 = $signed (alu_src1);
@@ -69,10 +73,14 @@ always @(*) begin
             zero = (signed_alu_src1 < signed_alu_src2)? 1'b0:1'b1;
             alu_res = alu_res;
         end
-        `ALU_BLTU:
+        `ALU_BLTU:begin
             zero = (alu_src1 < alu_src2)? 1'b0:1'b1;
-        `ALU_BMTU:
+            alu_res = alu_res;
+        end
+        `ALU_BMTU:begin
             zero = (alu_src1 >= alu_src2)? 1'b0:1'b1;
+             alu_res = alu_res;
+        end
         `ALU_SLTU:begin//1001
             if(alu_src1 < alu_src2)begin
                 alu_res = 32'd1;
