@@ -19,11 +19,9 @@ module wb_stage (
     /* verilator lint_off UNOPT */
     output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     /* verilator lint_off UNOPT */
-   // output write_ready,
-    input wb_no_use,
     input [63:0] wb_pc,
     output [63:0] wb_delay_pc,
-    input [63:0] end_write_addr,
+   // input [63:0] end_write_addr,
     input cunqu_hazard
    
 );
@@ -57,19 +55,16 @@ always @(*) begin
                 reg_f[reg_waddr] = {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
                 
             end
-            default:begin
-                reg_f[reg_waddr] =  reg_wdata[31:0]; 
-                
-            end
+            default:reg_f[reg_waddr] =reg_f[reg_waddr];
             endcase
         end
     end
 
-//reg [63:0] end_wb_waddr;
-/*always@(*)begin
+reg [63:0] end_wb_waddr;
+always@(*)begin
     
     end_wb_waddr = reg_f[reg_waddr] + s_imm;
-end*/
+end
 
 always @(posedge clk or negedge rst_n) begin
     if(~rst_n)
@@ -91,7 +86,7 @@ import "DPI-C" function void pmem_write(input longint waddr, input longint wdata
 
 always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(time_set==1'd1)) begin
-         ///end_wb_waddr = reg_f[reg_waddr] + s_imm;
+        // end_wb_waddr = reg_f[reg_waddr] + s_imm;
         pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
       //pmem_write(end_write_addr + s_imm, reg_wdata, wmask);
     end

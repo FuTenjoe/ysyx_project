@@ -3,16 +3,15 @@
 module id_rest (
     input clk,
     input rst_n,
-    input [64:0] id_pc,
+    input [63:0] id_pc,
     input      [`REG_ADDR_WIDTH-1:0] reg1_raddr, // register 1 read address
     input      [`REG_ADDR_WIDTH-1:0] reg2_raddr, // register 2 read address
     input [`REG_ADDR_WIDTH-1:0] reg_waddr,
-    input write_ready,
+    //input write_ready,
     input [2:0]rd_buf_flag,
     output reg rest_from_id,
     input      [31:0]   ex_inst,
-    input [63:0] from_ex_alu_res,
-    input [63:0] from_mem_alu_res,
+    //input [63:0] from_ex_alu_res,
     output reg rest_id_mem,
     
     input  [`REG_ADDR_WIDTH-1:0]  wb_reg_waddr,

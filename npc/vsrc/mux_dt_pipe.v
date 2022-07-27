@@ -16,14 +16,13 @@ module mux_dt_pipe (
     input rest_from_id,
     input reg [63:0] reg_f [0:`REG_DATA_DEPTH-1],
     input s_flag,
-    output reg [63:0] end_write_addr,
+    //output reg [63:0] end_write_addr,
     input [63:0] wb_hazard_result,
     input  [`REG_ADDR_WIDTH-1:0]  mem_reg_waddr,
     input rest_id_mem,
     input rest_wb_hazard,
     output reg [2:0] data_rest_cond,
     output reg [63:0] delay_reg1_rdata,
-    input ex_s_flag,
     input cunqu_hazard,
     input mem_cunqu_hazard,
     input [63:0] mem_from_ex_alu_res,
@@ -87,14 +86,18 @@ always@(*)begin
             endcase
             end
             else begin
-            if(reg1_raddr == reg_waddr)begin
-                reg1_rdata = from_ex_alu_res;
-                reg2_rdata = reg_f[reg2_raddr];
-            end
-            else if(reg2_raddr == reg_waddr)begin
-                reg1_rdata = reg_f[reg1_raddr];
-                reg2_rdata = from_ex_alu_res;
-            end
+                if(reg1_raddr == reg_waddr)begin
+                    reg1_rdata = from_ex_alu_res;
+                    reg2_rdata = reg_f[reg2_raddr];
+                end
+                else if(reg2_raddr == reg_waddr)begin
+                    reg1_rdata = reg_f[reg1_raddr];
+                    reg2_rdata = from_ex_alu_res;
+                end
+                else begin  //解决latch后加
+                    reg1_rdata =  reg_f[reg1_raddr];
+                    reg2_rdata = reg_f[reg2_raddr];
+                end
             end
         end
         3'b110:begin
@@ -106,10 +109,14 @@ always@(*)begin
                 reg1_rdata = reg_f[reg1_raddr];
                 reg2_rdata = from_mem_alu_res;
             end
+            else begin  //解决latch后加
+                    reg1_rdata =  reg_f[reg1_raddr];
+                    reg2_rdata = reg_f[reg2_raddr];
+            end
         end
         3'b101:begin
             if(delay_data_rest_cond == 3'b100)begin
-                    if(reg1_raddr == reg_waddr)begin
+                if(reg1_raddr == reg_waddr)begin
                     reg1_rdata = from_ex_alu_res;
                     reg2_rdata = reg_f[reg2_raddr];
                 end
@@ -126,16 +133,24 @@ always@(*)begin
                         reg1_rdata =  reg_f[reg1_raddr];
                         reg2_rdata = wb_hazard_result;
                     end
+                    else begin  //解决latch后加
+                        reg1_rdata =  reg_f[reg1_raddr];
+                        reg2_rdata = reg_f[reg2_raddr];
+                    end
                 end
             end
             else if(delay_data_rest_cond == 3'b110)begin
-                    if(reg1_raddr == reg_waddr)begin
+                if(reg1_raddr == reg_waddr)begin
                     reg1_rdata = from_mem_alu_res;
                     reg2_rdata = reg_f[reg2_raddr];
                 end
                 else if(reg2_raddr == reg_waddr)begin
                     reg1_rdata = reg_f[reg1_raddr];
                     reg2_rdata = from_mem_alu_res;
+                end
+                else begin  //解决latch后加
+                    reg1_rdata =  reg_f[reg1_raddr];
+                    reg2_rdata = reg_f[reg2_raddr];
                 end
             end
             else begin
@@ -163,6 +178,10 @@ always@(*)begin
                     reg1_rdata = reg_f[reg1_raddr];
                     reg2_rdata = wb_hazard_result;
                 end
+                else begin  //解决latch后加
+                    reg1_rdata =  reg_f[reg1_raddr];
+                    reg2_rdata = reg_f[reg2_raddr];
+                end
             end
         end
         3'b111:begin
@@ -173,6 +192,10 @@ always@(*)begin
             else if((reg1_raddr == reg_waddr) & (reg2_raddr == mem_reg_waddr))begin
                 reg1_rdata = from_mem_alu_res;
                 reg2_rdata = wb_hazard_result;
+            end
+            else begin  //解决latch后加
+                    reg1_rdata =  reg_f[reg1_raddr];
+                    reg2_rdata = reg_f[reg2_raddr];
             end
         end
         3'b010:begin
@@ -189,6 +212,10 @@ always@(*)begin
                 reg1_rdata = reg_f[reg1_raddr];
                 reg2_rdata = from_mem_alu_res;
             end
+            else begin  //解决latch后加
+                    reg1_rdata =  reg_f[reg1_raddr];
+                    reg2_rdata = reg_f[reg2_raddr];
+                end
             end
         end
         3'b000:begin
@@ -202,12 +229,6 @@ always@(*)begin
     endcase
 end
 
-always@(*)begin  //unuse
-    if(s_flag)
-        end_write_addr = reg_f[reg_waddr];
-    else
-        end_write_addr = 64'd0;
-end
 
 
 
