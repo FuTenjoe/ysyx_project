@@ -815,13 +815,26 @@ always @(*) begin
                  default:unknown_code = inst;
             endcase
         end
-            
+        7'b1110011:begin
+            if(inst == 32'h0010_0073)  begin
+                ebreak_flag = 1'b1;
+                unknown_code = 32'h0;
+                reg1_raddr = reg_waddr + 1'b1;
+                reg2_raddr = reg_waddr + 1'b1;
+             end
+            else begin
+                ebreak_flag = 1'd0;
+                unknown_code = inst;
+                reg1_raddr = reg_waddr ;
+                reg2_raddr = reg_waddr ;
+            end    
+        end
         default:unknown_code = inst ;
     endcase 
 end
 
 import "DPI-C" function void ebreak();
-always@(*)begin
+/*always@(*)begin
     if(inst == 32'h0010_0073)begin
         ebreak_flag = 1'b1;
         unknown_code = 32'h0;
@@ -834,7 +847,7 @@ always@(*)begin
         reg1_raddr = reg_waddr ;
         reg2_raddr = reg_waddr ;
     end
-end
+end*/
 
 import "DPI-C" function void unknown_inst();
 always@(*)begin
