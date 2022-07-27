@@ -68,6 +68,6 @@ always @(*) begin
     if(rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)
         pmem_read(alu_src1 +  alu_src2, rd_buf_lw);
     else
-        rd_buf_lw = rd_buf_lw;
+        rd_buf_lw = 64'd0;
 end
 endmodule
