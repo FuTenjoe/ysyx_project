@@ -1233,43 +1233,40 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
                     = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
             } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                       >> 3U)))) {
-                if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                   >> 2U)))) {
-                    if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                       >> 1U)))) {
-                        if ((1U & (~ (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))))) {
-                            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                        }
-                    } else {
-                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                    }
-                } else {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                }
+                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
+                    = ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                      >> 2U))) ? ((1U 
+                                                   & (IData)(
+                                                             ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                              >> 1U)))
+                                                   ? 
+                                                  ((1U 
+                                                    & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                    ? 0ULL
+                                                    : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                   : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                        : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)));
             } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                       >> 2U)))) {
-                if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                   >> 1U)))) {
-                    if ((1U & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))) {
-                        if ((0U != (7U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                  >> 0xcU))))) {
-                            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                        }
-                    } else {
-                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                    }
-                } else {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                }
+                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
+                    = ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                      >> 1U))) ? ((1U 
+                                                   & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                   ? 
+                                                  ((0U 
+                                                    == 
+                                                    (7U 
+                                                     & (IData)(
+                                                               ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                >> 0xcU))))
+                                                    ? 0ULL
+                                                    : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                   : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                        : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)));
             } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                       >> 1U)))) {
                 if ((1U & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))) {
+                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code = 0ULL;
                     if ((1U & (~ (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                           >> 0xeU))))) {
                         if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
@@ -1290,349 +1287,453 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
             vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
                 = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
         }
-    } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                              >> 5U)))) {
-        if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                           >> 4U)))) {
-            if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                               >> 3U)))) {
-                if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                   >> 2U)))) {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                          >> 1U)))) {
-                    if ((1U & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))) {
-                        if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                           >> 0xeU)))) {
-                            if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                               >> 0xdU)))) {
-                                if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                   >> 0xcU)))) {
-                                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                } else if ((1U != (0x7fU 
-                                                   & (IData)(
-                                                             ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                              >> 0x19U))))) {
-                                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                }
-                            } else if ((1U & (IData)(
-                                                     ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                      >> 0xcU)))) {
-                                if ((0x20U != (0x7fU 
-                                               & (IData)(
-                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                          >> 0x19U))))) {
-                                    if ((0U != (0x7fU 
-                                                & (IData)(
-                                                          ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                           >> 0x19U))))) {
-                                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                    }
-                                }
-                            } else if ((1U != (0x7fU 
-                                               & (IData)(
-                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                          >> 0x19U))))) {
-                                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                            }
-                        } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                  >> 0xdU)))) {
-                            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                        } else if ((1U & (~ (IData)(
-                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                     >> 0xcU))))) {
-                            if ((0U != (0x7fU & (IData)(
-                                                        ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                         >> 0x19U))))) {
-                                if ((1U != (0x7fU & (IData)(
-                                                            ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                             >> 0x19U))))) {
-                                    if ((0x20U != (0x7fU 
-                                                   & (IData)(
-                                                             ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                              >> 0x19U))))) {
-                                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                    }
-                } else {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                }
-            } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                      >> 2U)))) {
-                if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                   >> 1U)))) {
-                    if ((1U & (~ (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))))) {
-                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                    }
-                } else {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                }
-            } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                      >> 1U)))) {
-                if ((1U & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))) {
-                    if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                       >> 0xeU)))) {
-                        if ((1U & (~ (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                              >> 0xdU))))) {
-                            if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                               >> 0xcU)))) {
-                                if ((1U != (0x7fU & (IData)(
-                                                            ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                             >> 0x19U))))) {
-                                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                }
-                            } else {
-                                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                            }
-                        }
-                    } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                              >> 0xdU)))) {
-                        if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                           >> 0xcU)))) {
-                            if ((0U != (0x7fU & (IData)(
-                                                        ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                         >> 0x19U))))) {
-                                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                            }
-                        } else if ((0U != (0x7fU & (IData)(
-                                                           ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                            >> 0x19U))))) {
-                            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                        }
-                    } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                              >> 0xcU)))) {
-                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                    } else if ((0U != (0x7fU & (IData)(
-                                                       ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                        >> 0x19U))))) {
-                        if ((0x20U != (0x7fU & (IData)(
-                                                       ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                        >> 0x19U))))) {
-                            if ((1U != (0x7fU & (IData)(
-                                                        ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                         >> 0x19U))))) {
-                                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                            }
-                        }
-                    }
-                } else {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                }
-            } else {
-                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-            }
-        } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                  >> 3U)))) {
-            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-        } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                  >> 2U)))) {
-            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-        } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                  >> 1U)))) {
-            if ((1U & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))) {
-                if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                   >> 0xeU)))) {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                }
-            } else {
-                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-            }
-        } else {
-            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-        }
-    } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                              >> 4U)))) {
-        if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                           >> 3U)))) {
-            if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                               >> 2U)))) {
-                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-            } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                      >> 1U)))) {
-                if ((1U & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))) {
-                    if ((0U != (7U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                              >> 0xcU))))) {
-                        if ((1U != (7U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                  >> 0xcU))))) {
-                            if ((5U == (7U & (IData)(
-                                                     ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                      >> 0xcU))))) {
-                                if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                   >> 0x1fU)))) {
-                                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                } else if ((1U & (IData)(
-                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                          >> 0x1eU)))) {
-                                    if ((1U & (IData)(
-                                                      ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                       >> 0x1dU)))) {
-                                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                    } else if ((1U 
-                                                & (IData)(
-                                                          ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                           >> 0x1cU)))) {
-                                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                    } else if ((1U 
-                                                & (IData)(
-                                                          ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                           >> 0x1bU)))) {
-                                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                    } else if ((1U 
-                                                & (IData)(
-                                                          ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                           >> 0x1aU)))) {
-                                        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                    }
-                                } else if ((1U & (IData)(
-                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                          >> 0x1dU)))) {
-                                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                } else if ((1U & (IData)(
-                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                          >> 0x1cU)))) {
-                                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                } else if ((1U & (IData)(
-                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                          >> 0x1bU)))) {
-                                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                } else if ((1U & (IData)(
-                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                          >> 0x1aU)))) {
-                                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                                }
-                            } else {
-                                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                            }
-                        }
-                    }
-                } else {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                }
-            } else {
-                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-            }
-        } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                  >> 2U)))) {
-            if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                               >> 1U)))) {
-                if ((1U & (~ (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))))) {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                }
-            } else {
-                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-            }
-        } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                  >> 1U)))) {
-            if ((1U & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))) {
-                if ((1U & (~ (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                      >> 0xeU))))) {
-                    if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                       >> 0xdU)))) {
-                        if ((1U & (~ (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                              >> 0xcU))))) {
-                            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                        }
-                    } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                              >> 0xcU)))) {
-                        if ((1U & (~ ((0U == (0x7fU 
-                                              & (IData)(
-                                                        ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                         >> 0x19U)))) 
-                                      | (1U == (0x7fU 
-                                                & (IData)(
-                                                          ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                                           >> 0x19U)))))))) {
-                            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                        }
-                    }
-                }
-            } else {
-                vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                    = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-            }
-        } else {
-            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-        }
-    } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                              >> 3U)))) {
-        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-    } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                              >> 2U)))) {
-        vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-    } else if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                              >> 1U)))) {
-        if ((1U & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))) {
-            if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                               >> 0xeU)))) {
-                if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                   >> 0xdU)))) {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                }
-            } else if ((1U & (~ (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                         >> 0xdU))))) {
-                if ((1U & (~ (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
-                                      >> 0xcU))))) {
-                    vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                        = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-                }
-            }
-        } else {
-            vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-                = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
-        }
     } else {
         vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
-            = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
+            = ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                              >> 5U))) ? ((1U & (IData)(
+                                                        ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                         >> 4U)))
+                                           ? ((1U & (IData)(
+                                                            ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                             >> 3U)))
+                                               ? ((1U 
+                                                   & (IData)(
+                                                             ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                              >> 2U)))
+                                                   ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                   : 
+                                                  ((1U 
+                                                    & (IData)(
+                                                              ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                               >> 1U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                     ? 
+                                                    ((1U 
+                                                      & (IData)(
+                                                                ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                 >> 0xeU)))
+                                                      ? 
+                                                     ((1U 
+                                                       & (IData)(
+                                                                 ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                  >> 0xdU)))
+                                                       ? 
+                                                      ((1U 
+                                                        & (IData)(
+                                                                  ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                   >> 0xcU)))
+                                                        ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                        : 
+                                                       ((1U 
+                                                         == 
+                                                         (0x7fU 
+                                                          & (IData)(
+                                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                     >> 0x19U))))
+                                                         ? 0ULL
+                                                         : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                       : 
+                                                      ((1U 
+                                                        & (IData)(
+                                                                  ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                   >> 0xcU)))
+                                                        ? 
+                                                       ((0x20U 
+                                                         == 
+                                                         (0x7fU 
+                                                          & (IData)(
+                                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                     >> 0x19U))))
+                                                         ? 0ULL
+                                                         : 
+                                                        ((0U 
+                                                          == 
+                                                          (0x7fU 
+                                                           & (IData)(
+                                                                     ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                      >> 0x19U))))
+                                                          ? 0ULL
+                                                          : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                        : 
+                                                       ((1U 
+                                                         == 
+                                                         (0x7fU 
+                                                          & (IData)(
+                                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                     >> 0x19U))))
+                                                         ? 0ULL
+                                                         : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))))
+                                                      : 
+                                                     ((1U 
+                                                       & (IData)(
+                                                                 ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                  >> 0xdU)))
+                                                       ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                       : 
+                                                      ((1U 
+                                                        & (IData)(
+                                                                  ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                   >> 0xcU)))
+                                                        ? 0ULL
+                                                        : 
+                                                       ((0U 
+                                                         == 
+                                                         (0x7fU 
+                                                          & (IData)(
+                                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                     >> 0x19U))))
+                                                         ? 0ULL
+                                                         : 
+                                                        ((1U 
+                                                          == 
+                                                          (0x7fU 
+                                                           & (IData)(
+                                                                     ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                      >> 0x19U))))
+                                                          ? 0ULL
+                                                          : 
+                                                         ((0x20U 
+                                                           == 
+                                                           (0x7fU 
+                                                            & (IData)(
+                                                                      ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                       >> 0x19U))))
+                                                           ? 0ULL
+                                                           : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))))))
+                                                     : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                    : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                               : ((1U 
+                                                   & (IData)(
+                                                             ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                              >> 2U)))
+                                                   ? 
+                                                  ((1U 
+                                                    & (IData)(
+                                                              ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                               >> 1U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                     ? 0ULL
+                                                     : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                    : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                   : 
+                                                  ((1U 
+                                                    & (IData)(
+                                                              ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                               >> 1U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                     ? 
+                                                    ((1U 
+                                                      & (IData)(
+                                                                ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                 >> 0xeU)))
+                                                      ? 
+                                                     ((1U 
+                                                       & (IData)(
+                                                                 ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                  >> 0xdU)))
+                                                       ? 0ULL
+                                                       : 
+                                                      ((1U 
+                                                        & (IData)(
+                                                                  ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                   >> 0xcU)))
+                                                        ? 
+                                                       ((1U 
+                                                         == 
+                                                         (0x7fU 
+                                                          & (IData)(
+                                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                     >> 0x19U))))
+                                                         ? 0ULL
+                                                         : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                        : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                      : 
+                                                     ((1U 
+                                                       & (IData)(
+                                                                 ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                  >> 0xdU)))
+                                                       ? 
+                                                      ((1U 
+                                                        & (IData)(
+                                                                  ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                   >> 0xcU)))
+                                                        ? 
+                                                       ((0U 
+                                                         == 
+                                                         (0x7fU 
+                                                          & (IData)(
+                                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                     >> 0x19U))))
+                                                         ? 0ULL
+                                                         : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                        : 
+                                                       ((0U 
+                                                         == 
+                                                         (0x7fU 
+                                                          & (IData)(
+                                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                     >> 0x19U))))
+                                                         ? 0ULL
+                                                         : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                       : 
+                                                      ((1U 
+                                                        & (IData)(
+                                                                  ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                   >> 0xcU)))
+                                                        ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                        : 
+                                                       ((0U 
+                                                         == 
+                                                         (0x7fU 
+                                                          & (IData)(
+                                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                     >> 0x19U))))
+                                                         ? 0ULL
+                                                         : 
+                                                        ((0x20U 
+                                                          == 
+                                                          (0x7fU 
+                                                           & (IData)(
+                                                                     ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                      >> 0x19U))))
+                                                          ? 0ULL
+                                                          : 
+                                                         ((1U 
+                                                           == 
+                                                           (0x7fU 
+                                                            & (IData)(
+                                                                      ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                       >> 0x19U))))
+                                                           ? 0ULL
+                                                           : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))))))
+                                                     : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                    : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))))
+                                           : ((1U & (IData)(
+                                                            ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                             >> 3U)))
+                                               ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                               : ((1U 
+                                                   & (IData)(
+                                                             ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                              >> 2U)))
+                                                   ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                   : 
+                                                  ((1U 
+                                                    & (IData)(
+                                                              ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                               >> 1U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                     ? 
+                                                    ((1U 
+                                                      & (IData)(
+                                                                ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                 >> 0xeU)))
+                                                      ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                      : 0ULL)
+                                                     : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                    : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))))
+                : ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                  >> 4U))) ? ((1U & (IData)(
+                                                            ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                             >> 3U)))
+                                               ? ((1U 
+                                                   & (IData)(
+                                                             ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                              >> 2U)))
+                                                   ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                   : 
+                                                  ((1U 
+                                                    & (IData)(
+                                                              ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                               >> 1U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                     ? 
+                                                    ((0U 
+                                                      == 
+                                                      (7U 
+                                                       & (IData)(
+                                                                 ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                  >> 0xcU))))
+                                                      ? 0ULL
+                                                      : 
+                                                     ((1U 
+                                                       == 
+                                                       (7U 
+                                                        & (IData)(
+                                                                  ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                   >> 0xcU))))
+                                                       ? 0ULL
+                                                       : 
+                                                      ((5U 
+                                                        == 
+                                                        (7U 
+                                                         & (IData)(
+                                                                   ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                    >> 0xcU))))
+                                                        ? 
+                                                       ((1U 
+                                                         & (IData)(
+                                                                   ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                    >> 0x1fU)))
+                                                         ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                         : 
+                                                        ((1U 
+                                                          & (IData)(
+                                                                    ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                     >> 0x1eU)))
+                                                          ? 
+                                                         ((1U 
+                                                           & (IData)(
+                                                                     ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                      >> 0x1dU)))
+                                                           ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                           : 
+                                                          ((1U 
+                                                            & (IData)(
+                                                                      ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                       >> 0x1cU)))
+                                                            ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                            : 
+                                                           ((1U 
+                                                             & (IData)(
+                                                                       ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                        >> 0x1bU)))
+                                                             ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                             : 
+                                                            ((1U 
+                                                              & (IData)(
+                                                                        ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                         >> 0x1aU)))
+                                                              ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                              : 0ULL))))
+                                                          : 
+                                                         ((1U 
+                                                           & (IData)(
+                                                                     ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                      >> 0x1dU)))
+                                                           ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                           : 
+                                                          ((1U 
+                                                            & (IData)(
+                                                                      ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                       >> 0x1cU)))
+                                                            ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                            : 
+                                                           ((1U 
+                                                             & (IData)(
+                                                                       ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                        >> 0x1bU)))
+                                                             ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                             : 
+                                                            ((1U 
+                                                              & (IData)(
+                                                                        ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                         >> 0x1aU)))
+                                                              ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                                              : 0ULL))))))
+                                                        : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))))
+                                                     : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                    : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                               : ((1U 
+                                                   & (IData)(
+                                                             ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                              >> 2U)))
+                                                   ? 
+                                                  ((1U 
+                                                    & (IData)(
+                                                              ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                               >> 1U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                     ? 0ULL
+                                                     : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                    : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                   : 
+                                                  ((1U 
+                                                    & (IData)(
+                                                              ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                               >> 1U)))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                                     ? 
+                                                    ((1U 
+                                                      & (IData)(
+                                                                ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                 >> 0xeU)))
+                                                      ? 0ULL
+                                                      : 
+                                                     ((1U 
+                                                       & (IData)(
+                                                                 ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                  >> 0xdU)))
+                                                       ? 
+                                                      ((1U 
+                                                        & (IData)(
+                                                                  ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                   >> 0xcU)))
+                                                        ? 0ULL
+                                                        : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                       : 
+                                                      ((1U 
+                                                        & (IData)(
+                                                                  ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                   >> 0xcU)))
+                                                        ? 
+                                                       (((0U 
+                                                          == 
+                                                          (0x7fU 
+                                                           & (IData)(
+                                                                     ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                      >> 0x19U)))) 
+                                                         | (1U 
+                                                            == 
+                                                            (0x7fU 
+                                                             & (IData)(
+                                                                       ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                                        >> 0x19U)))))
+                                                         ? 0ULL
+                                                         : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                        : 0ULL)))
+                                                     : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                                    : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))))
+                    : ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                      >> 3U))) ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                        : ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                          >> 2U))) ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                            : ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                              >> 1U)))
+                                ? ((1U & (IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))))
+                                    ? ((1U & (IData)(
+                                                     ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                      >> 0xeU)))
+                                        ? ((1U & (IData)(
+                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                          >> 0xdU)))
+                                            ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst))
+                                            : 0ULL)
+                                        : ((1U & (IData)(
+                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                          >> 0xdU)))
+                                            ? 0ULL : 
+                                           ((1U & (IData)(
+                                                          ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                           >> 0xcU)))
+                                             ? 0ULL
+                                             : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))))
+                                    : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))
+                                : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)))))));
     }
     if ((0x100073U == vlSelf->ysyx_22040175_top__DOT__id_inst)) {
         vlSelf->ysyx_22040175_top__DOT__id_unknown_code = 0ULL;

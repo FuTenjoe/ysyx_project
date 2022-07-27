@@ -775,37 +775,42 @@ always @(*) begin
             rd_buf_flag = 3'd0;
             reg_waddr = 5'd0; //流水线后加
             ebreak_flag = 1'd0;
-            unknown_code = 32'd0;
             case (funct3)
                 `INST_BNE: begin     //bne
                     branch     = 1'b1;
                     alu_op     = `ALU_SUB;
                     s_flag = 1'd0;
+                    unknown_code = 32'd0;
                 end
                 3'b000:begin   //beq
                     branch     = 1'b1;
                     alu_op     = `ALU_SUBN;
                     s_flag = 1'd0;
+                    unknown_code = 32'd0;
                 end
                 3'b101:begin   //bge
                     branch = 1'b1;
                     alu_op = `ALU_BMT;
                     s_flag = 1'd0;
+                    unknown_code = 32'd0;
                 end
                 3'b110:begin   //bltu
                     branch = 1'b1;
                     alu_op = `ALU_BLTU;
                     s_flag = 1'd0;
+                    unknown_code = 32'd0;
                 end
                 3'b111:begin    //bgeu
                     branch = 1'b1;
                     alu_op = `ALU_BMTU;
                     s_flag = 1'd0;
+                    unknown_code = 32'd0;
                 end
                 3'b100:begin
                     branch = 1'b1;
                     alu_op = `ALU_BLT;
                     s_flag = 1'd0;
+                    unknown_code = 32'd0;
                 end
                  default:unknown_code = inst;
             endcase
@@ -835,8 +840,6 @@ import "DPI-C" function void unknown_inst();
 always@(*)begin
     if(unknown_code != 32'd0)
         unknown_inst();
-    else 
-        unknown_code = unknown_code;
 end
 
 endmodule
