@@ -240,7 +240,6 @@ wire [63:0] from_ex_alu_res;
 wire [63:0]    ex_alu_src1;
 wire [`CPU_WIDTH-1:0]    ex_alu_src2;
 wire [`CPU_WIDTH-1:0] ex_next_pc;
-wire write_ready;
 wire ex_pc_ready;
 ex_stage u_ex_stage(
     .alu_op(ex_alu_op),   // alu opcode
