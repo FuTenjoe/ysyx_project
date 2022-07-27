@@ -58,7 +58,7 @@ always @(*) begin
                 
             end
             default:begin
-                reg_f[reg_waddr] = reg_f[reg_waddr];
+                reg_f[reg_waddr] =  reg_wdata[31:0]; 
                 
             end
             endcase
