@@ -14,8 +14,8 @@ module alu(
 //reg [2:0] test;
 reg zero;
 reg [63:0] alu_res;
-reg signed [63:0] signed_alu_src1;
-reg signed [63:0] signed_alu_src2;
+//reg signed [63:0] signed_alu_src1;
+//reg signed [63:0] signed_alu_src2;
 always @(*) begin
     zero = 1'b0;
     //alu_res = alu_res;
@@ -55,10 +55,10 @@ always @(*) begin
             zero = (alu_res == 64'b0) ? 1'b0 : 1'b1;
         end
         `ALU_BMT:begin
-            signed_alu_src1 = alu_src1;
-            signed_alu_src2 = alu_src2;
+            //signed_alu_src1 = alu_src1;
+            //signed_alu_src2 = alu_src2;
             //alu_res = alu_res;
-             if(signed_alu_src1 >= signed_alu_src2 )begin
+             if(alu_src1 >= alu_src2 )begin
                 zero = 1'd0;
                  alu_res = alu_res;
              end
@@ -68,9 +68,9 @@ always @(*) begin
             end
         end
         `ALU_BLT:begin
-            signed_alu_src1 = $signed (alu_src1);
-            signed_alu_src2 = $signed (alu_src2);
-            zero = (signed_alu_src1 < signed_alu_src2)? 1'b0:1'b1;
+            alu_src1 = $signed (alu_src1);
+            alu_src2 = $signed (alu_src2);
+            zero = (alu_src1 < alu_src2)? 1'b0:1'b1;
             alu_res = alu_res;
         end
         `ALU_BLTU:begin
