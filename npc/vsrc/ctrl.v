@@ -46,7 +46,7 @@ always @(*) begin
     imm_gen_op  = `IMM_GEN_I;
     alu_op      = `ALU_AND;
     alu_src_sel = `ALU_SRC_REG;
-    unknown_code = 32'd0;
+    unknown_code = 32'h0;
     ebreak_flag = 1'd0;
     wmask = 8'd0;
     s_flag = 1'd0;
@@ -64,7 +64,6 @@ always @(*) begin
             rd_buf_flag = 3'd0;
             jump        = 1'b0;   //流水线后加
             jalr = 1'b0;
-            ebreak_flag = 1'd0;
             case (funct3)
                 3'b000: begin
                     case(funct7)
@@ -73,21 +72,18 @@ always @(*) begin
                         s_flag = 1'd0;
                         expand_signed = 4'd0;
                         rd_flag = 3'd3;
-                        unknown_code = 32'd0;
                     end
                     7'b0100000:begin
                         alu_op =  `ALU_SUB; // sub 
                         s_flag = 1'd0;
                         expand_signed = 4'd0;
                         rd_flag = 3'd3;
-                        unknown_code = 32'd0;
                     end
                     7'b0000001:begin     //mul
                         alu_op =  `ALU_MUL; 
                         s_flag = 1'd0;
                         expand_signed = 4'd0;
                         rd_flag = 3'd0;
-                        unknown_code = 32'd0;
                     end
                     default:unknown_code = inst;
                     endcase
@@ -97,7 +93,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b011:begin
                     alu_op = `ALU_SLTU;   //sltu
@@ -105,7 +100,6 @@ always @(*) begin
                         s_flag = 1'd0;
                         expand_signed = 4'd0;
                         rd_flag = 3'd0;
-                        unknown_code = 32'd0;
                     end
                     else
                         unknown_code = inst;
@@ -116,7 +110,6 @@ always @(*) begin
                         s_flag = 1'd0;
                         expand_signed = 4'd0;
                         rd_flag = 3'd0;
-                        unknown_code = 32'd0;
                     end
                     else
                         unknown_code = inst;
@@ -127,7 +120,6 @@ always @(*) begin
                     expand_signed = 4'd0;
                     s_imm =0;
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b101:begin   //divu
                     case(funct7)
@@ -146,7 +138,6 @@ always @(*) begin
                         s_flag = 1'd0;
                         expand_signed =4'd0;    
                         rd_flag = 3'd0;
-                        unknown_code = 32'd0;
                     end
                     default:unknown_code = inst;
                     endcase
@@ -156,7 +147,6 @@ always @(*) begin
         end
         7'b0010011: begin       //addi
             rd_buf_flag = 3'd0;
-            ebreak_flag = 1'd0;
             case (funct3)
                 `INST_ADDI: begin
                     jump        = 1'b0;
@@ -171,7 +161,6 @@ always @(*) begin
                     expand_signed = 4'd0;
                     s_imm = 32'd0;
                     rd_flag = 3'd3;
-                    unknown_code = 32'd0;
                 end
                 3'b011:begin   //sltiu
                     jump        = 1'b0;
@@ -188,7 +177,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd0;    //截断为32位  
                     rd_flag = 3'd3;
-                    unknown_code = 32'd0;
                 end   
                 3'b101:begin      //srai
                     jump        = 1'b0;
@@ -205,7 +193,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd0;    
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b111:begin         //andi
                     jump        = 1'b0;
@@ -219,7 +206,6 @@ always @(*) begin
                     expand_signed = 4'd0;
                     s_imm = 32'd0;
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b100:begin   //xori
                     jump        = 1'b0;
@@ -233,7 +219,6 @@ always @(*) begin
                     expand_signed = 4'd0;
                     s_imm = 32'd0;
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b110:begin  //ori
                     jump        = 1'b0;
@@ -247,7 +232,6 @@ always @(*) begin
                     expand_signed = 4'd0;
                     s_imm = 32'd0;
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b001:begin   //slli
                     if(funct7 == 7'd0 | funct7 == 7'd1)begin
@@ -265,7 +249,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd0;    //有符号扩展 
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                     end
                     else
                         unknown_code = inst;
@@ -275,7 +258,6 @@ always @(*) begin
         end
         7'b0111011:begin           //addw
             rd_buf_flag = 3'd0;
-            ebreak_flag = 1'd0;
             case (funct3)
             3'b000:begin     
                 case(funct7)      //addw
@@ -294,7 +276,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end    
                 7'b0000001:begin   //mulw
                     jump        = 1'b0;
@@ -311,7 +292,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end    
                 7'b0100000:begin   //subw
                     jump        = 1'b0;
@@ -328,7 +308,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end  
                 default:unknown_code = inst;
                 endcase
@@ -348,7 +327,6 @@ always @(*) begin
                 s_flag = 1'd0;
                 expand_signed =4'd1;    //有符号扩展 
                 rd_flag = 3'd0;
-                unknown_code = 32'd0;
             end
             3'b100:begin
                 case(funct7)
@@ -367,7 +345,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end
                 default:unknown_code = inst;
                 endcase
@@ -389,7 +366,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd3;
-                    unknown_code = 32'd0;
                 end
                 7'b0000000:begin   //srlw
                     jump        = 1'b0;
@@ -406,7 +382,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd2;
-                    unknown_code = 32'd0;
                 end
                 default:unknown_code = inst;
                 endcase
@@ -428,7 +403,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd0;    
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                     end
                 default:unknown_code = inst;
                 endcase
@@ -437,8 +411,7 @@ always @(*) begin
             endcase
         end
         7'b0011011:begin        //addiw 
-        rd_buf_flag = 3'd0; 
-        ebreak_flag = 1'd0; 
+        rd_buf_flag = 3'd0;  
             case (funct3)
             3'b000:begin       //addiw
                     jump        = 1'b0;
@@ -455,7 +428,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end  
             3'b001:begin   //slliw 未区分funct7
                     jump        = 1'b0;
@@ -472,7 +444,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
-                    unknown_code = 32'd0;
                 end  
             3'b101:begin
                 case(funct7)       //sraiw
@@ -491,7 +462,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd1;
-                    unknown_code = 32'd0;
                 end  
                 7'b0000000,7'b0000001:begin    //srliw
                     jump        = 1'b0;
@@ -508,7 +478,6 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd1;
-                    unknown_code = 32'd0;
                 end  
                 default:unknown_code = inst;
                 endcase
@@ -517,7 +486,6 @@ always @(*) begin
         endcase
             end
         7'b0000011:begin     //lw
-        ebreak_flag = 1'd0;
             case (funct3)
                 3'b010: begin
                     jump        = 1'b0;
@@ -535,7 +503,6 @@ always @(*) begin
                     expand_signed =4'd1;       //
                     rd_flag = 3'd0; //无用
                     rd_buf_flag = 3'd1;
-                    unknown_code = 32'd0;
                 end
                 3'b011:begin //ld
                     jump        = 1'b0;
@@ -553,7 +520,6 @@ always @(*) begin
                     expand_signed =4'd0;       //不需扩展符号位
                     rd_flag = 3'd0;  //无用
                     rd_buf_flag = 3'd2;
-                    unknown_code = 32'd0;
                 end
                 3'b100:begin   //lbu
                     jump        = 1'b0;
@@ -571,7 +537,6 @@ always @(*) begin
                     expand_signed =4'd0;       //不需扩展符号位
                     rd_flag = 3'd0; //无用
                     rd_buf_flag = 3'd4;
-                    unknown_code = 32'd0;
                 end
                 3'b001:begin      //lh
                     jump        = 1'b0;
@@ -589,7 +554,6 @@ always @(*) begin
                     expand_signed =4'd3;       //需扩展符号位
                     rd_flag = 3'd0;  //无用
                     rd_buf_flag = 3'd6;
-                    unknown_code = 32'd0;
                 end
                 3'b101:begin      //lhu
                     jump        = 1'b0;
@@ -607,14 +571,12 @@ always @(*) begin
                     expand_signed =4'd0;       //不需扩展符号位
                     rd_flag = 3'd0;  //无用
                     rd_buf_flag = 3'd6;
-                    unknown_code = 32'd0;
                 end
                 default:unknown_code = inst;
             endcase
         end
         7'b0100011:begin    //sd
         rd_buf_flag = 3'd0;
-        ebreak_flag = 1'd0;
            case(funct3)    
             3'b011:begin    //sd
             jump        = 1'b0;
@@ -631,7 +593,6 @@ always @(*) begin
             s_flag = 1'd1;
             expand_signed = 4'd0;
             rd_flag = 3'd1;  //保留64位
-            unknown_code = 32'd0;
             end
             3'b001:begin    //sh
             jump        = 1'b0;
@@ -648,7 +609,6 @@ always @(*) begin
             s_flag = 1'd1;
             expand_signed = 4'd0;
             rd_flag = 3'd2;   //保留16位
-            unknown_code = 32'd0;
             end
             3'b000:begin   //sb
             jump        = 1'b0;
@@ -666,7 +626,6 @@ always @(*) begin
             expand_signed = 4'd0;
             //rd_flag = 3'd5;   //选rs2
             rd_flag = 3'd3;   //保留8位
-            unknown_code = 32'd0;
             end
             3'b010:begin     //sw
             jump        = 1'b0;
@@ -684,7 +643,6 @@ always @(*) begin
             expand_signed = 4'd0;
             //rd_flag = 3'd5;   //选rs2
             rd_flag = 3'd4;   //保留32位
-            unknown_code = 32'd0;
             end
             default:unknown_code = inst;
             endcase
@@ -702,8 +660,6 @@ always @(*) begin
             expand_signed = 4'd0;
             rd_flag = 3'd0;
             rd_buf_flag = 3'd0;
-            ebreak_flag = 1'd0;
-            unknown_code = 32'd0;
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
@@ -717,8 +673,6 @@ always @(*) begin
                 expand_signed = 4'd0;
                 rd_flag = 3'd5;
                 rd_buf_flag = 3'd0;
-                ebreak_flag = 1'd0;
-                unknown_code = 32'd0;
         end
         `INST_AUIPC:begin //only auipc
                reg_wen     = 1'b1;
@@ -732,8 +686,6 @@ always @(*) begin
                 expand_signed = 4'd0;
                 rd_flag = 3'd0;
                 rd_buf_flag = 3'd0;
-                ebreak_flag = 1'd0;
-                unknown_code = 32'd0;
         end
         7'b1100111:begin
             rd_buf_flag = 3'd0;
@@ -752,11 +704,10 @@ always @(*) begin
                 expand_signed = 4'd0;
                 s_imm = rs1;
                 rd_flag = 3'd0;
-                ebreak_flag = 1'd0;
+
                 //后加
                 reg1_raddr = rs1;
                 reg2_raddr = 5'b0;
-                unknown_code = 32'd0;
                 end
                 default:unknown_code = inst;
             endcase
@@ -774,80 +725,54 @@ always @(*) begin
             jalr        = 1'b0;
             rd_buf_flag = 3'd0;
             reg_waddr = 5'd0; //流水线后加
-            ebreak_flag = 1'd0;
             case (funct3)
                 `INST_BNE: begin     //bne
                     branch     = 1'b1;
                     alu_op     = `ALU_SUB;
                     s_flag = 1'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b000:begin   //beq
                     branch     = 1'b1;
                     alu_op     = `ALU_SUBN;
                     s_flag = 1'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b101:begin   //bge
                     branch = 1'b1;
                     alu_op = `ALU_BMT;
                     s_flag = 1'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b110:begin   //bltu
                     branch = 1'b1;
                     alu_op = `ALU_BLTU;
                     s_flag = 1'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b111:begin    //bgeu
                     branch = 1'b1;
                     alu_op = `ALU_BMTU;
                     s_flag = 1'd0;
-                    unknown_code = 32'd0;
                 end
                 3'b100:begin
                     branch = 1'b1;
                     alu_op = `ALU_BLT;
                     s_flag = 1'd0;
-                    unknown_code = 32'd0;
                 end
                  default:unknown_code = inst;
             endcase
         end
-        7'b1110011:begin
-            if(inst == 32'h0010_0073)  begin
-                ebreak_flag = 1'b1;
-                unknown_code = 32'h0;
-                reg1_raddr = reg_waddr + 1'b1;
-                reg2_raddr = reg_waddr + 1'b1;
-             end
-            else begin
-                ebreak_flag = 1'd0;
-                unknown_code = inst;
-                reg1_raddr = reg_waddr ;
-                reg2_raddr = reg_waddr ;
-            end    
-        end
+            
         default:unknown_code = inst ;
     endcase 
 end
 
 import "DPI-C" function void ebreak();
-/*always@(*)begin
+always@(*)begin
     if(inst == 32'h0010_0073)begin
         ebreak_flag = 1'b1;
         unknown_code = 32'h0;
         reg1_raddr = reg_waddr + 1'b1;
         reg2_raddr = reg_waddr + 1'b1;
     end
-    else begin
-        ebreak_flag = 1'd0;
-        unknown_code = unknown_code;
-        reg1_raddr = reg_waddr ;
-        reg2_raddr = reg_waddr ;
-    end
-end*/
+end
 
 import "DPI-C" function void unknown_inst();
 always@(*)begin
