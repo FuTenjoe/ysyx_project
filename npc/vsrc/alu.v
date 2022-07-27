@@ -14,11 +14,13 @@ module alu(
 //reg [2:0] test;
 reg zero;
 reg [63:0] alu_res;
-//reg signed [63:0] signed_alu_src1;
-//reg signed [63:0] signed_alu_src2;
+reg signed [63:0] signed_alu_src1;
+reg signed [63:0] signed_alu_src2;
 always @(*) begin
     zero = 1'b0;
-    //alu_res = alu_res;
+    alu_res = alu_res;
+    signed_alu_src1 = signed_alu_src1;
+    signed_alu_src2 = signed_alu_src2;
     case (alu_op)
         `ALU_ADD: begin  //0011
         if(rd_flag == 3'd0)begin
@@ -55,22 +57,22 @@ always @(*) begin
             zero = (alu_res == 64'b0) ? 1'b0 : 1'b1;
         end
         `ALU_BMT:begin
-            //signed_alu_src1 = alu_src1;
-            //signed_alu_src2 = alu_src2;
+            signed_alu_src1 = alu_src1;
+            signed_alu_src2 = alu_src2;
             //alu_res = alu_res;
-             if(alu_src1 >= alu_src2 )begin
+             if(signed_alu_src1 >= signed_alu_src2 )begin
                 zero = 1'd0;
                  alu_res = alu_res;
              end
             else begin
                  zero = 1'd1;
-                  alu_res = alu_res;
+                 alu_res = alu_res;
             end
         end
         `ALU_BLT:begin
-            alu_src1 = $signed (alu_src1);
-            alu_src2 = $signed (alu_src2);
-            zero = (alu_src1 < alu_src2)? 1'b0:1'b1;
+            signed_alu_src1 = $signed (alu_src1);
+            signed_alu_src2 = $signed (alu_src2);
+            zero = (signed_alu_src1 < signed_alu_src2)? 1'b0:1'b1;
             alu_res = alu_res;
         end
         `ALU_BLTU:begin
