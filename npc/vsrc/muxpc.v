@@ -73,7 +73,8 @@ end
 
 //reg  [2:0] test;
 always @(*) begin
-    
+    sig_jalr = 1'b0;
+    next_pc = curr_pc;
     if (branch && ~zero)begin // bne
         next_pc = curr_pc + imm;
         sig_jalr = 1'b0;
