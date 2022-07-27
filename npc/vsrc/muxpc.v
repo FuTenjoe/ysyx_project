@@ -29,6 +29,8 @@ reg zero;
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 always @(*) begin
+    signed_alu_src1 = alu_src1;
+    signed_alu_src2 = alu_src2;
     case (alu_op)
         `ALU_SUBN:begin //1100  beq
             zero = (alu_src1 - alu_src2 == 0) ? 1'b0: 1'b1;
@@ -37,16 +39,16 @@ always @(*) begin
             zero = (alu_src1 - alu_src2 == 0) ? 1'b1 : 1'b0;
         end
         `ALU_BMT:begin
-            signed_alu_src1 = alu_src1;
-            signed_alu_src2 = alu_src2;
+            //signed_alu_src1 = alu_src1;
+            //signed_alu_src2 = alu_src2;
              if(signed_alu_src1 >= signed_alu_src2 )
                 zero = 1'd0;
             else
                  zero = 1'd1;
         end
         `ALU_BLT:begin
-            signed_alu_src1 = $signed (alu_src1);
-            signed_alu_src2 = $signed (alu_src2);
+            //signed_alu_src1 = $signed (alu_src1);
+            //signed_alu_src2 = $signed (alu_src2);
             zero = (signed_alu_src1 < signed_alu_src2)? 1'b0:1'b1;
         end
         `ALU_BLTU:
@@ -55,7 +57,6 @@ always @(*) begin
             zero = (alu_src1 >= alu_src2)? 1'b0:1'b1;
         
         default:begin
-            
             zero =  1'b0;
         end
     endcase
