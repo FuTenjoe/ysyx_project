@@ -6209,16 +6209,6 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
                                        - vlSelf->ysyx_22040175_top__DOT__id_alu_src2))))));
     if (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch) 
          & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero)))) {
-        vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__test = 1U;
-    } else if (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch) 
-                & (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero))) {
-        vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__test = 2U;
-    } else if (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__jump) 
-                & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__id_jalr)))) {
-        vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__test = 3U;
-    }
-    if (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch) 
-         & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero)))) {
         vlSelf->ysyx_22040175_top__DOT__id_next_pc 
             = (vlSelf->ysyx_22040175_top__DOT__id_pc 
                + vlSelf->ysyx_22040175_top__DOT__id_imm);
@@ -6468,7 +6458,6 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__signed_alu_src1 = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__signed_alu_src2 = VL_RAND_RESET_Q(64);
-    vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__test = VL_RAND_RESET_I(3);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__test = VL_RAND_RESET_I(3);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__zero = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res = VL_RAND_RESET_Q(64);

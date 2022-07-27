@@ -76,14 +76,17 @@ always @(*) begin
     
     if (branch && ~zero)begin // bne
         next_pc = curr_pc + imm;
+        sig_jalr = 1'b0;
          //test = 3'd1;
     end
     else if (branch && zero)begin // bne
         next_pc = curr_pc + `CPU_WIDTH'h4;
+        sig_jalr = 1'b0;
          //test = 3'd2;
     end
     else if (jump &(!jalr))begin            // jal 
         next_pc = curr_pc + imm;
+        sig_jalr = 1'b0;
          //test = 3'd3;
     end
     else if (jump &jalr)begin            // jalr
@@ -102,9 +105,11 @@ always @(*) begin
     end
     else if (ebreak_flag)begin    
         next_pc = 32'h8000_0000;   
+        sig_jalr = 1'b0;
     end
     else begin
-        next_pc = curr_pc ;  
+        next_pc = curr_pc;
+        sig_jalr = 1'b0;  
     end
 end
 endmodule
