@@ -40,7 +40,7 @@ always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)
             4'd0:begin
-            assign    reg_f[reg_waddr] = reg_wdata;   //jalr
+                reg_f[reg_waddr] = reg_wdata;   //jalr
                 
             end
             4'd1:begin
@@ -60,11 +60,11 @@ always @(*) begin
         end
     end
 
-//reg [63:0] end_wb_waddr;
-/*always@(*)begin
+reg [63:0] end_wb_waddr;
+always@(*)begin
     
     end_wb_waddr = reg_f[reg_waddr] + s_imm;
-end*/
+end
 
 always @(posedge clk or negedge rst_n) begin
     if(~rst_n)
