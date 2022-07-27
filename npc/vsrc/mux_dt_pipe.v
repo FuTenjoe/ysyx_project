@@ -86,14 +86,14 @@ always@(*)begin
             endcase
             end
             else begin
-            if(reg1_raddr == reg_waddr)begin
-                reg1_rdata = from_ex_alu_res;
-                reg2_rdata = reg_f[reg2_raddr];
-            end
-            else if(reg2_raddr == reg_waddr)begin
-                reg1_rdata = reg_f[reg1_raddr];
-                reg2_rdata = from_ex_alu_res;
-            end
+                if(reg1_raddr == reg_waddr)begin
+                    reg1_rdata = from_ex_alu_res;
+                    reg2_rdata = reg_f[reg2_raddr];
+                end
+                else if(reg2_raddr == reg_waddr)begin
+                    reg1_rdata = reg_f[reg1_raddr];
+                    reg2_rdata = from_ex_alu_res;
+                end
             end
         end
         3'b110:begin
@@ -125,16 +125,24 @@ always@(*)begin
                         reg1_rdata =  reg_f[reg1_raddr];
                         reg2_rdata = wb_hazard_result;
                     end
+                    else begin  //解决latch后加
+                        reg1_rdata =  reg_f[reg1_raddr];
+                        reg2_rdata = reg_f[reg2_raddr];
+                    end
                 end
             end
             else if(delay_data_rest_cond == 3'b110)begin
-                    if(reg1_raddr == reg_waddr)begin
+                if(reg1_raddr == reg_waddr)begin
                     reg1_rdata = from_mem_alu_res;
                     reg2_rdata = reg_f[reg2_raddr];
                 end
                 else if(reg2_raddr == reg_waddr)begin
                     reg1_rdata = reg_f[reg1_raddr];
                     reg2_rdata = from_mem_alu_res;
+                end
+                else begin  //解决latch后加
+                    reg1_rdata =  reg_f[reg1_raddr];
+                    reg2_rdata = reg_f[reg2_raddr];
                 end
             end
             else begin
@@ -162,6 +170,10 @@ always@(*)begin
                     reg1_rdata = reg_f[reg1_raddr];
                     reg2_rdata = wb_hazard_result;
                 end
+                else begin  //解决latch后加
+                    reg1_rdata =  reg_f[reg1_raddr];
+                    reg2_rdata = reg_f[reg2_raddr];
+                end
             end
         end
         3'b111:begin
@@ -172,6 +184,10 @@ always@(*)begin
             else if((reg1_raddr == reg_waddr) & (reg2_raddr == mem_reg_waddr))begin
                 reg1_rdata = from_mem_alu_res;
                 reg2_rdata = wb_hazard_result;
+            end
+            else begin  //解决latch后加
+                    reg1_rdata =  reg_f[reg1_raddr];
+                    reg2_rdata = reg_f[reg2_raddr];
             end
         end
         3'b010:begin
@@ -188,6 +204,10 @@ always@(*)begin
                 reg1_rdata = reg_f[reg1_raddr];
                 reg2_rdata = from_mem_alu_res;
             end
+            else begin  //解决latch后加
+                    reg1_rdata =  reg_f[reg1_raddr];
+                    reg2_rdata = reg_f[reg2_raddr];
+                end
             end
         end
         3'b000:begin
