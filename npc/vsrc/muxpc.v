@@ -71,20 +71,20 @@ always@(posedge clk or negedge rst_n)begin
 end
     
 
-reg  [2:0] test;
+//reg  [2:0] test;
 always @(*) begin
     
     if (branch && ~zero)begin // bne
         next_pc = curr_pc + imm;
-         test = 3'd1;
+         //test = 3'd1;
     end
     else if (branch && zero)begin // bne
         next_pc = curr_pc + `CPU_WIDTH'h4;
-         test = 3'd2;
+         //test = 3'd2;
     end
     else if (jump &(!jalr))begin            // jal 
         next_pc = curr_pc + imm;
-         test = 3'd3;
+         //test = 3'd3;
     end
     else if (jump &jalr)begin            // jalr
         if(data_rest_cond == 3'd4 | data_rest_cond == 3'd5  | data_rest_cond == 3'd2 |data_rest_cond == 3'd6|data_rest_cond == 3'd7)begin   //后加
@@ -104,8 +104,7 @@ always @(*) begin
         next_pc = 32'h8000_0000;   
     end
     else begin
-        next_pc = curr_pc ;   
-       
+        next_pc = curr_pc ;  
     end
 end
 endmodule
