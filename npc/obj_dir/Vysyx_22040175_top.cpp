@@ -4,6 +4,7 @@
 #include "Vysyx_22040175_top.h"
 #include "Vysyx_22040175_top__Syms.h"
 #include "verilated_vcd_c.h"
+#include "verilated_dpi.h"
 
 //============================================================
 // Constructors
@@ -13,8 +14,12 @@ Vysyx_22040175_top::Vysyx_22040175_top(VerilatedContext* _vcontextp__, const cha
     , clk{vlSymsp->TOP.clk}
     , rst{vlSymsp->TOP.rst}
     , inst{vlSymsp->TOP.inst}
-    , curr_pc{vlSymsp->TOP.curr_pc}
-    , next_pc{vlSymsp->TOP.next_pc}
+    , pc{vlSymsp->TOP.pc}
+    , unknown_code{vlSymsp->TOP.unknown_code}
+    , time_set{vlSymsp->TOP.time_set}
+    , diff_pc{vlSymsp->TOP.diff_pc}
+    , diff_delay_pc{vlSymsp->TOP.diff_delay_pc}
+    , out_mem_rd_buf_flag{vlSymsp->TOP.out_mem_rd_buf_flag}
     , rootp{&(vlSymsp->TOP)}
 {
 }
@@ -61,7 +66,7 @@ static void _eval_initial_loop(Vysyx_22040175_top__Syms* __restrict vlSymsp) {
             Verilated::debug(1);
             __Vchange = Vysyx_22040175_top___024root___change_request(&(vlSymsp->TOP));
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("vsrc/top.v", 3, "",
+            VL_FATAL_MT("vsrc/ysyx_22040175_top.v", 3, "",
                 "Verilated model didn't DC converge\n"
                 "- See https://verilator.org/warn/DIDNOTCONVERGE");
         } else {
@@ -92,7 +97,7 @@ void Vysyx_22040175_top::eval_step() {
             Verilated::debug(1);
             __Vchange = Vysyx_22040175_top___024root___change_request(&(vlSymsp->TOP));
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("vsrc/top.v", 3, "",
+            VL_FATAL_MT("vsrc/ysyx_22040175_top.v", 3, "",
                 "Verilated model didn't converge\n"
                 "- See https://verilator.org/warn/DIDNOTCONVERGE");
         } else {
