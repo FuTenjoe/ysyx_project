@@ -64,6 +64,7 @@ always @(*) begin
             rd_buf_flag = 3'd0;
             jump        = 1'b0;   //流水线后加
             jalr = 1'b0;
+            ebreak_flag = 1'd0;
             case (funct3)
                 3'b000: begin
                     case(funct7)
@@ -147,6 +148,7 @@ always @(*) begin
         end
         7'b0010011: begin       //addi
             rd_buf_flag = 3'd0;
+            ebreak_flag = 1'd0;
             case (funct3)
                 `INST_ADDI: begin
                     jump        = 1'b0;
@@ -258,6 +260,7 @@ always @(*) begin
         end
         7'b0111011:begin           //addw
             rd_buf_flag = 3'd0;
+            ebreak_flag = 1'd0;
             case (funct3)
             3'b000:begin     
                 case(funct7)      //addw
@@ -411,7 +414,8 @@ always @(*) begin
             endcase
         end
         7'b0011011:begin        //addiw 
-        rd_buf_flag = 3'd0;  
+        rd_buf_flag = 3'd0; 
+        ebreak_flag = 1'd0; 
             case (funct3)
             3'b000:begin       //addiw
                     jump        = 1'b0;
@@ -486,6 +490,7 @@ always @(*) begin
         endcase
             end
         7'b0000011:begin     //lw
+        ebreak_flag = 1'd0;
             case (funct3)
                 3'b010: begin
                     jump        = 1'b0;
@@ -577,6 +582,7 @@ always @(*) begin
         end
         7'b0100011:begin    //sd
         rd_buf_flag = 3'd0;
+        ebreak_flag = 1'd0;
            case(funct3)    
             3'b011:begin    //sd
             jump        = 1'b0;
@@ -660,6 +666,7 @@ always @(*) begin
             expand_signed = 4'd0;
             rd_flag = 3'd0;
             rd_buf_flag = 3'd0;
+            ebreak_flag = 1'd0;
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
@@ -673,6 +680,7 @@ always @(*) begin
                 expand_signed = 4'd0;
                 rd_flag = 3'd5;
                 rd_buf_flag = 3'd0;
+                ebreak_flag = 1'd0;
         end
         `INST_AUIPC:begin //only auipc
                reg_wen     = 1'b1;
@@ -686,6 +694,7 @@ always @(*) begin
                 expand_signed = 4'd0;
                 rd_flag = 3'd0;
                 rd_buf_flag = 3'd0;
+                ebreak_flag = 1'd0;
         end
         7'b1100111:begin
             rd_buf_flag = 3'd0;
@@ -704,7 +713,7 @@ always @(*) begin
                 expand_signed = 4'd0;
                 s_imm = rs1;
                 rd_flag = 3'd0;
-
+                ebreak_flag = 1'd0;
                 //后加
                 reg1_raddr = rs1;
                 reg2_raddr = 5'b0;
@@ -725,6 +734,7 @@ always @(*) begin
             jalr        = 1'b0;
             rd_buf_flag = 3'd0;
             reg_waddr = 5'd0; //流水线后加
+            ebreak_flag = 1'd0;
             case (funct3)
                 `INST_BNE: begin     //bne
                     branch     = 1'b1;
