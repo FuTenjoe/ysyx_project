@@ -18,6 +18,7 @@ reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 always @(*) begin
     zero = 1'b0;
+    alu_res = alu_res;
     case (alu_op)
         `ALU_ADD: begin  //0011
         if(rd_flag == 3'd0)begin
@@ -41,6 +42,8 @@ always @(*) begin
             alu_res = rd_buf_lw[15:0];  */
             test = 3'd1;
         end
+        else 
+            alu_res = alu_res;
         end
         `ALU_SUB:begin //0100
             alu_res = alu_src1 - alu_src2;
@@ -54,6 +57,7 @@ always @(*) begin
         `ALU_BMT:begin
             signed_alu_src1 = alu_src1;
             signed_alu_src2 = alu_src2;
+            
              if(signed_alu_src1 >= signed_alu_src2 )
                 zero = 1'd0;
             else
@@ -63,6 +67,7 @@ always @(*) begin
             signed_alu_src1 = $signed (alu_src1);
             signed_alu_src2 = $signed (alu_src2);
             zero = (signed_alu_src1 < signed_alu_src2)? 1'b0:1'b1;
+            
         end
         `ALU_BLTU:
             zero = (alu_src1 < alu_src2)? 1'b0:1'b1;
