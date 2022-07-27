@@ -55,7 +55,7 @@ always @(*) begin
                 reg_f[reg_waddr] = {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
                 
             end
-            
+            default:reg_f[reg_waddr] =reg_f[reg_waddr];
             endcase
         end
     end
