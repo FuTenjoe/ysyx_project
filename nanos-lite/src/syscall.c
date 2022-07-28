@@ -8,7 +8,7 @@ extern int fs_open(char* pathname, int flags, size_t mode);
 extern int fs_close(int fd);
 extern int fs_lseek(int fd, int offset, int whence);
 extern size_t fs_write( int  fd, const void * buf,size_t count);
-extern int gettimeofday(struct timeval *tv, struct timezone *tz)
+//extern int gettimeofday(struct timeval *tv, struct timezone *tz)
 //extern void* f_open(const char *pathname, const char *mode);
 /*size_t sys_write( int  fd, const void * buf,size_t count){
   Log("sys_write:fd=%d,count=%d\n",fd,count);
@@ -74,7 +74,7 @@ void do_syscall(Context *c) {
     }
     case 9:printf("堆区管理");c->GPRx = 0;break;
     case SYS_gettimeofday:{
-       c->GPRx = gettimeofday()
+       panic("should not reach here");
     }
     default: panic("Unhandled syscall ID = %d", a[0]);
   }

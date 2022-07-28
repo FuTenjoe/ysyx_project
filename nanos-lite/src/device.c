@@ -20,27 +20,29 @@ size_t serial_write(const void *buf, size_t offset, size_t len) {
  for (int i = 0; i < len; i++){
         putch(((char*)(buf))[i]);
       }
+  return 0;
 }
 
 size_t events_read(void *buf, size_t offset, size_t len) {
-  //return 0;
+  return 0;
   //自己加
-  int key = read_key();
+
+/*  int key = io_read();
   int flag = 0;
   if(key & 0x8000){
     key ^= 0x8000;
     flag = 1;
   }
-  if(key != AM_KEY_NONE){
+  if(key != "NONE"){
     if(flag)
-      len = sprintf(buf,"kd %s\n",keyname[key]);
+      len = sprintf(buf,"kd %s\n",keyname[key]);  //按下按键
     else
-      len = sprintf(buf,"ku %s\n",keyname[key]);
+      len = sprintf(buf,"ku %s\n",keyname[key]);  //松开按键
   }
   else{
     len = sprintf(buf,"t %u\n",uptime());
   }
-  return len;
+  return len;*/
 }
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {

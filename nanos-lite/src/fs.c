@@ -12,7 +12,7 @@ typedef struct {
   size_t open_offset;
 } Finfo;
 
-enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB};
+enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS};
 
 size_t invalid_read(void *buf, size_t offset, size_t len) {
   panic("should not reach here");
@@ -29,6 +29,8 @@ static Finfo file_table[] __attribute__((used)) = {
   [FD_STDIN]  = {"stdin", 0, 0, invalid_read, invalid_write},
   [FD_STDOUT] = {"stdout", 0, 0, invalid_read, invalid_write},
   [FD_STDERR] = {"stderr", 0, 0, invalid_read, invalid_write},
+  [FD_FB] = {"dev/fb", 0, 0},
+  [FD_EVENTS] = {"dev/events", 0, 0},
 #include "files.h"
 };
 //自己加
@@ -109,7 +111,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
   return bytes_to_write;
 }
 
- int gettimeofday(struct timeval *tv, struct timezone *tz){
+ /*int gettimeofday(struct timeval *tv, struct timezone *tz){
   if(tv != NULL){
     for(i=0;i<100000 ;i++){
       tv.tv_sec = i;
@@ -119,7 +121,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
   }
     
   return 0; 
- }
+ }*/
 
 
 void init_fs() {
