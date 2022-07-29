@@ -17,7 +17,11 @@ static const char *keyname[256] __attribute__((used)) = {
 size_t serial_write(const void *buf, size_t offset, size_t len) {
  // return 0;
  //自己加
+ char uart_data = io_read(AM_UART_RX).data;
+        buf = (char*)buf ;
+        buf = &uart_data;
  for (int i = 0; i < len; i++){
+        
         putch(((char*)(buf))[i]);
       }
   return 0;
