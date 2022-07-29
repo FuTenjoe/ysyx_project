@@ -17,11 +17,11 @@ uint32_t NDL_GetTicks() {
   //printf("sec %d ms%d\n",now.tv_sec,now.tv_usec/1000);
   return now.tv_sec*1000+now.tv_usec/1000;
 }
-
+//自己加
+ fs_open("bin/event-test",0,0);
 int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
-  fs_open("bin/event-test",0,0);
   fseek(fb_event,0,SEEK_SET);
   assert(fb_event != NULL);
   memset(buf,0,len);
