@@ -82,7 +82,7 @@ int fs_lseek(int fd, int offset, int whence){
   return new_offset;
 }
 size_t fs_read(int fd, void *buf, size_t count){
-   //Log("fs_read:fd=%d,open_offset=%d ,count=%d\n",fd,file_table[fd].open_offset,count);
+   Log("fs_read:fd=%d,open_offset=%d ,count=%d\n",fd,file_table[fd].open_offset,count);
    //if(lseek_offset <= file_table[fd].size)
     //参考代码
     Finfo *f = file_table + fd;
