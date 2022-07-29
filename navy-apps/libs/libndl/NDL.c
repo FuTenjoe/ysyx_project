@@ -9,13 +9,15 @@ static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
 
 //自己加
-static struct timeval now;
-
+//static struct timeval now;
+size_t fs_read(int fd, void *buf, size_t count);
+int fs_open(char* pathname, int flags, size_t mode);
 
 uint32_t NDL_GetTicks() {
-  gettimeofday(&now,NULL);
+ /* sys_gettimeofday(&now,NULL);
   //printf("sec %d ms%d\n",now.tv_sec,now.tv_usec/1000);
-  return now.tv_sec*1000+now.tv_usec/1000;
+  return now.tv_sec*1000+now.tv_usec/1000;*/
+  return 0;
 }
 //自己加
 int NDL_PollEvent(char *buf, int len) {
