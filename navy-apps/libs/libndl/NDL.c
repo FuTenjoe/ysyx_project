@@ -10,7 +10,7 @@ static int screen_w = 0, screen_h = 0;
 
 //自己加
 static struct timeval now;
-static FILE* fb = NULL, *fb_event = NULL,*fb_sync = NULL,*fb_dispinfo = NULL;
+
 
 uint32_t NDL_GetTicks() {
   gettimeofday(&now,NULL);
@@ -18,13 +18,10 @@ uint32_t NDL_GetTicks() {
   return now.tv_sec*1000+now.tv_usec/1000;
 }
 //自己加
- fs_open("bin/event-test",0,0);
 int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
-  fseek(fb_event,0,SEEK_SET);
-  assert(fb_event != NULL);
-  memset(buf,0,len);
+  fs_open("bin/event-test",0,0);
   /* int ret = fread(buf ,1,3,fp);
   fscanf(fp,"%s",buf+3); */
   //printf("%d\n",len);
