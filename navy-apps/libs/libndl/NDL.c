@@ -32,7 +32,7 @@ int NDL_PollEvent(char *buf, int len) {
   //printf("%d\n",len);
   int ret = fread(buf,1,len,fb);
   if(ret == 0) return 0;
-  printf("读取键盘")；
+  printf("读取键盘");
   for(int i = 0; i < len&&ret != 0;i++)
   {
     if(buf[i] == '\n') 
