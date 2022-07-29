@@ -41,8 +41,8 @@ extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t ramdisk_write(const void *buf, size_t offset, size_t len);
 int open_i = 0;
 int fs_open(char* pathname, int flags, size_t mode){
-  for(int i=0;;i++){
-      //assert(file_table[i].name!=NULL);
+  for(int i=0;i<28;i++){
+      assert(file_table[i].name!=NULL);
     if(strcmp(pathname,file_table[i].name)==0){
       file_table[i].open_offset = 0;
       open_i = i;
