@@ -61,7 +61,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
       len = sprintf((char*)buf,"kd%s\n",keyname[ev.keycode]);
     }
     else sprintf((char*)buf,"ku%s\n",keyname[ev.keycode]);
-    if(ev.keycode <= AM_KEY_PAGEDOWN && ev.keycode >= AM_KEY_ESCAPE && ev.keydown){
+    if(ev.keycode <= AM_KEY_PAGEDOWN && ev.keycode >= AM_KEY_ESCAPE && !ev.keydown){
         len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
     }
     return len;
