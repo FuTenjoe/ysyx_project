@@ -84,25 +84,9 @@ void do_syscall(Context *c) {
     case SYS_gettimeofday:{
        c->GPRx = sys_gettimeofday((struct timeval *)a[1],(struct timezone *)a[2]);break;
     }
-    case SYS_execve: /* naive_uload(NULL,(char*)a[1]); */c->GPRx = sys_execve((char*)a[1],(char**)a[2],(char**)a[3]); break;
+    
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 }
 
-int sys_execve(char* filename,char * const argv[],char* const envp[])
-{
-  //int ret = fopen(filename,0);
-  int ret = fs_open(filename,0,0);
-  //printf("try open:%s\n",filename);
-  if(ret == -1) return -2;
-  else {
-    
-    //printf("%s %s %s\n",filename,argv[0],envp[0]);
-    switch_boot_pcb();
-    naive_uload(current,filename);
-    //printf("has loaded\n");
-    yield();
-    //naive_uload(NULL,filename);
-    return 0;
-  }
-}
+

@@ -21,6 +21,7 @@ uint32_t NDL_GetTicks() {
 int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
+  fs_open("bin/event-test",0,0);
   fseek(fb_event,0,SEEK_SET);
   assert(fb_event != NULL);
   memset(buf,0,len);
