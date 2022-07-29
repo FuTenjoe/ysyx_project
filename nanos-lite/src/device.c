@@ -28,6 +28,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   //自己加
 
   int key = io_read(AM_INPUT_KEYBRD).keycode;
+  //int key_down = io_read(AM_INPUT_KEYBRD).keydown;
   int flag = 0;
   if(key & 0x8000){
     key ^= 0x8000;
@@ -40,8 +41,8 @@ size_t events_read(void *buf, size_t offset, size_t len) {
       len = sprintf(buf,"ku %s\n",keyname[key]);  //松开按键
   }
   else{
-    //len = sprintf(buf,"t %u\n",uptime());
-    len = 0;
+    len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
+    //len = 0;
   }
   return len;
 }
