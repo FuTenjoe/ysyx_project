@@ -25,13 +25,14 @@ int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
   static FILE* fb = NULL;
-  fb = fopen("/dev/events","r");
+  fb = fopen("/dev/events",0);
 
   /* int ret = fread(buf ,1,3,fp);
   fscanf(fp,"%s",buf+3); */
   //printf("%d\n",len);
   int ret = fread(buf,1,len,fb);
   if(ret == 0) return 0;
+  printf("读取键盘")
   for(int i = 0; i < len&&ret != 0;i++)
   {
     if(buf[i] == '\n') 
