@@ -98,7 +98,7 @@ int sys_execve(char* filename,char * const argv[],char* const envp[])
     //printf("%s %s %s\n",filename,argv[0],envp[0]);
     switch_boot_pcb();
     naive_uload(current,filename);
-    //printf("has loaded\n");
+    printf("has loaded\n");
     yield();
     //naive_uload(NULL,filename);
     return 0;
