@@ -10,8 +10,9 @@ static int screen_w = 0, screen_h = 0;
 
 //自己加
 //static struct timeval now;
-size_t fs_read(int fd, void *buf, size_t count);
-int fs_open(char* pathname, int flags, size_t mode);
+//#include "nanos-lite/include/fs.h"
+//extern size_t fs_read(int fd, void *buf, size_t count);
+//extern int fs_open(char* pathname, int flags, size_t mode);
 
 uint32_t NDL_GetTicks() {
  /* sys_gettimeofday(&now,NULL);
@@ -23,11 +24,13 @@ uint32_t NDL_GetTicks() {
 int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
-  int fd = fs_open("/dev/events",0,0);
+  static FILE* fb = NULL;
+  fb = fopen("/dev/events","r");
+
   /* int ret = fread(buf ,1,3,fp);
   fscanf(fp,"%s",buf+3); */
   //printf("%d\n",len);
-  int ret = fs_read(fd,buf,len);
+  int ret = fread(buf,1,len,fb);
   if(ret == 0) return 0;
   for(int i = 0; i < len&&ret != 0;i++)
   {
