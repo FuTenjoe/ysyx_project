@@ -24,25 +24,26 @@ size_t serial_write(const void *buf, size_t offset, size_t len) {
 }
 
 size_t events_read(void *buf, size_t offset, size_t len) {
-  return 0;
+  //return 0;
   //自己加
 
-/*  int key = io_read();
+  int key = io_read(AM_INPUT_KEYBRD).keycode;
   int flag = 0;
   if(key & 0x8000){
     key ^= 0x8000;
     flag = 1;
   }
-  if(key != "NONE"){
+  if(key != AM_KEY_NONE){
     if(flag)
       len = sprintf(buf,"kd %s\n",keyname[key]);  //按下按键
     else
       len = sprintf(buf,"ku %s\n",keyname[key]);  //松开按键
   }
   else{
-    len = sprintf(buf,"t %u\n",uptime());
+    //len = sprintf(buf,"t %u\n",uptime());
+    len = 0;
   }
-  return len;*/
+  return len;
 }
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
