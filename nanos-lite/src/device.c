@@ -56,7 +56,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
     return 0;
   }
   else {
-    memset(buf,0,len);  //向buf中填充len个0
+    //memset(buf,0,len);  //向buf中填充len个0
     if(ev.keydown){
       len = sprintf((char*)buf,"kd%s\n",keyname[ev.keycode]);
     }
