@@ -25,7 +25,7 @@ int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
   static FILE* fb = NULL;
-  fb = fopen("dev/events","r");
+  fb = fopen("/dev/events",0);
 
   /* int ret = fread(buf ,1,3,fp);
   fscanf(fp,"%s",buf+3); */
