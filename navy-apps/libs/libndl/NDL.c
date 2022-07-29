@@ -21,18 +21,18 @@ uint32_t NDL_GetTicks() {
 int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
-  fs_open("bin/event-test",0,0);
+  int fd = fs_open("bin/event-test",0,0);
   /* int ret = fread(buf ,1,3,fp);
   fscanf(fp,"%s",buf+3); */
   //printf("%d\n",len);
-  int ret = fread(buf,1,len,fb_event);
+  int ret = fs_read(fd,buf,len);
   if(ret == 0) return 0;
   for(int i = 0; i < len&&ret != 0;i++)
   {
     if(buf[i] == '\n') 
     {
       buf[i] = '\0';
-      return ret;
+      return 1;
     }
   }
 }
