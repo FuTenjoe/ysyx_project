@@ -21,7 +21,6 @@ size_t serial_write(const void *buf, size_t offset, size_t len) {
         buf = (char*)buf ;
         buf = &uart_data;
  for (int i = 0; i < len; i++){
-        
         putch(((char*)(buf))[i]);
       }
   return 0;
