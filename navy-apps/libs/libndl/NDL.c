@@ -15,7 +15,22 @@ uint32_t NDL_GetTicks() {
 int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
-  if(buf[1] == 'd')
+  if(buf[0] == 'k'){
+    char keyname[32];
+    for(int i = 0; i < 32; i++){
+      if(strcmp(keys[i],keyname) == 0){
+          len = i;
+          break;
+      }
+    }
+    return 0;
+  }
+  if(buf[0] == 't'){
+    int tsc;
+    sscanf(buf+2,"%d",&tsc);
+    len = tsc;
+    return 0;
+  }
 }
 
 void NDL_OpenCanvas(int *w, int *h) {
