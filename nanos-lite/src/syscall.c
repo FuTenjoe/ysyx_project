@@ -1,6 +1,7 @@
 #include <common.h>
 #include "syscall.h"
 //自己加
+#include <sys/time.h>
 //extern void yield();
 //extern void halt(); 
 extern size_t fs_read(int fd, void *buf, size_t count);
@@ -8,6 +9,7 @@ extern int fs_open(char* pathname, int flags, size_t mode);
 extern int fs_close(int fd);
 extern int fs_lseek(int fd, int offset, int whence);
 extern size_t fs_write( int  fd, const void * buf,size_t count);
+int sys_gettimeofday(struct timeval *tz,struct timezone *tv);
 //extern int gettimeofday(struct timeval *tv, struct timezone *tz)
 //extern void* f_open(const char *pathname, const char *mode);
 /*size_t sys_write( int  fd, const void * buf,size_t count){
@@ -74,7 +76,7 @@ void do_syscall(Context *c) {
     }
     case 9:printf("堆区管理");c->GPRx = 0;break;
     case SYS_gettimeofday:{
-       panic("should not reach here");
+       c->GPRx = sys_gettimeofday((struct timeval *)a[1],(struct timezone *)a[2]);break;
     }
     default: panic("Unhandled syscall ID = %d", a[0]);
   }

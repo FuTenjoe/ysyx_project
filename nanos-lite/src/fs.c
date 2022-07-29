@@ -13,6 +13,9 @@ typedef struct {
 } Finfo;
 
 enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS};
+//自己加
+size_t fb_write(const void *buf, size_t offset, size_t len);
+size_t events_read(void *buf, size_t offset, size_t len);
 
 size_t invalid_read(void *buf, size_t offset, size_t len) {
   panic("should not reach here");
@@ -29,8 +32,8 @@ static Finfo file_table[] __attribute__((used)) = {
   [FD_STDIN]  = {"stdin", 0, 0, invalid_read, invalid_write},
   [FD_STDOUT] = {"stdout", 0, 0, invalid_read, invalid_write},
   [FD_STDERR] = {"stderr", 0, 0, invalid_read, invalid_write},
-  [FD_FB] = {"dev/fb", 0, 0},
-  [FD_EVENTS] = {"dev/events", 0, 0},
+  [FD_FB] = {"dev/fb", 0, 0, invalid_read,fb_write},
+  [FD_EVENTS] = {"dev/events", 0, 0,events_read,invalid_write},
 #include "files.h"
 };
 //自己加
@@ -112,17 +115,6 @@ size_t fs_write( int  fd, const void * buf,size_t count){
   return bytes_to_write;
 }
 
- /*int gettimeofday(struct timeval *tv, struct timezone *tz){
-  if(tv != NULL){
-    for(i=0;i<100000 ;i++){
-      tv.tv_sec = i;
-      tv.tv_usec = i/1000;
-      assert(tv != NULL);
-    }
-  }
-    
-  return 0; 
- }*/
 
 
 void init_fs() {

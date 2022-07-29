@@ -8,28 +8,34 @@ static int evtdev = -1;
 static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
 
+//自己加
+static struct timeval now;
+static FILE* fb = NULL, *fb_event = NULL,*fb_sync = NULL,*fb_dispinfo = NULL;
+
 uint32_t NDL_GetTicks() {
-  return 0;
+  gettimeofday(&now,NULL);
+  //printf("sec %d ms%d\n",now.tv_sec,now.tv_usec/1000);
+  return now.tv_sec*1000+now.tv_usec/1000;
 }
 
 int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
-  if(buf[0] == 'k'){
-    char keyname[32];
-    for(int i = 0; i < 32; i++){
-      if(strcmp(keys[i],keyname) == 0){
-          len = i;
-          break;
-      }
+  fseek(fb_event,0,SEEK_SET);
+  assert(fb_event != NULL);
+  memset(buf,0,len);
+  /* int ret = fread(buf ,1,3,fp);
+  fscanf(fp,"%s",buf+3); */
+  //printf("%d\n",len);
+  int ret = fread(buf,1,len,fb_event);
+  if(ret == 0) return 0;
+  for(int i = 0; i < len&&ret != 0;i++)
+  {
+    if(buf[i] == '\n') 
+    {
+      buf[i] = '\0';
+      return ret;
     }
-    return 0;
-  }
-  if(buf[0] == 't'){
-    int tsc;
-    sscanf(buf+2,"%d",&tsc);
-    len = tsc;
-    return 0;
   }
 }
 
