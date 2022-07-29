@@ -25,6 +25,7 @@ int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
   printf("读取键盘");
+  return -1;
   static FILE* fb = NULL;
   fb = fopen("/dev/events",0);
   printf("len = %d\n",len);
