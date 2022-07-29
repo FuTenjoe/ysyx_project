@@ -3,6 +3,7 @@
 //自己加
 #include <sys/time.h>
 #include <proc.h>
+//#include <stdio.h>
 //extern void yield();
 //extern void halt(); 
 extern size_t fs_read(int fd, void *buf, size_t count);
@@ -90,6 +91,7 @@ void do_syscall(Context *c) {
 
 int sys_execve(char* filename,char * const argv[],char* const envp[])
 {
+  //int ret = fopen(filename,0);
   int ret = fs_open(filename,0,0);
   //printf("try open:%s\n",filename);
   if(ret == -1) return -2;
@@ -98,7 +100,7 @@ int sys_execve(char* filename,char * const argv[],char* const envp[])
     //printf("%s %s %s\n",filename,argv[0],envp[0]);
     switch_boot_pcb();
     naive_uload(current,filename);
-    printf("has loaded\n");
+    //printf("has loaded\n");
     yield();
     //naive_uload(NULL,filename);
     return 0;
