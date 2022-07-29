@@ -43,42 +43,42 @@ void do_syscall(Context *c) {
   switch (a[0]) {
     case 0:{
       halt(c->GPR1); 
-      printf("gpr a0 = %lx\n",a[0]);
+      //printf("gpr a0 = %lx\n",a[0]);
       break; //是否指向这个宏存疑，以及每个宏代表的寄存器
     }
     case 1:{
       yield();
       c->GPRx = 0;
-      printf("gpr a0 = %lx\n",a[0]);
+      //printf("gpr a0 = %lx\n",a[0]);
       break;
       }
     case SYS_open:{
-      printf("在进程中打开");
+      //printf("在进程中打开");
       c->GPRx= fs_open((char *)a[1], (int)a[2], (size_t)a[3]);
       //printf("pathname is %d",(char *)a[1]);
       break;
     }
     case SYS_read:{
-      printf("读");
+      //printf("读");
       c->GPRx=fs_read((int)a[1],(void *)a[2],(size_t)a[3]);
-      printf("gpr x = %lx\n",c->GPRx);
+      //printf("gpr x = %lx\n",c->GPRx);
       //c->GPRx= 0;
       break;
     }
     case SYS_write:{
-      printf("写");
-      printf("gpr a0 = %lx\n",a[0]);
+      //printf("写");
+      //printf("gpr a0 = %lx\n",a[0]);
       c->GPRx = fs_write((int)a[1],(void*)a[2],(size_t)a[3]);
-      printf("gpr x = %ld\n",c->GPRx);
+      //printf("gpr x = %ld\n",c->GPRx);
       break;
     }
     case SYS_lseek:{ 
       c->GPRx = fs_lseek((int)a[1],(int)a[2],(int)a[3]);
-      printf("返回偏移量 = %ld\n",c->GPRx);
+      //printf("返回偏移量 = %ld\n",c->GPRx);
       break;
     }
     case SYS_close:{
-      printf("关闭");
+      //printf("关闭");
       c->GPRx = fs_close((int)a[1]);break;
     }
     case 9:printf("堆区管理");c->GPRx = 0;break;
