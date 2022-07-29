@@ -81,7 +81,7 @@ void do_syscall(Context *c) {
       //printf("关闭");
       c->GPRx = fs_close((int)a[1]);break;
     }
-    case 9:printf("堆区管理");c->GPRx = 0;break;
+    case 9:c->GPRx = 0;break;     //堆区管理
     case SYS_gettimeofday:{
        c->GPRx = sys_gettimeofday((struct timeval *)a[1],(struct timezone *)a[2]);break;
     }
