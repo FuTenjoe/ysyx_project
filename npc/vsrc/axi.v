@@ -50,7 +50,7 @@ reg [2:0] current_state,next_state;
 
 reg [`AXI_ADRESS_WIDTH -1 :0] maxi_araddr;
 reg maxi_arvalid;
-reg maxi_rready
+reg maxi_rready;
 reg [31:0] axi_inst;
 assign maxi_araddr_o = maxi_araddr;
 assign maxi_arvalid_o = maxi_arvalid;
@@ -155,8 +155,9 @@ assign maxi_awaddr_o = maxi_awaddr;
 assign maxi_awvalid_o = maxi_awvalid;
 assign maxi_wdata_o = maxi_wdata;
 assign maxi_bready_o = maxi_bready;
+assign maxi_wvalid_o = maxi_wvalid;
 
-always@(posede clk or negedge rst_n)begin
+always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         w_current_state <= 3'd0;
     end
@@ -166,7 +167,7 @@ always@(posede clk or negedge rst_n)begin
 end
 
 always@(*)begin
-    case(current_state)
+    case(w_current_state)
     WRITE_IDLE:begin
         if(wb_valid)begin
             w_next_state = WRITE_REQ;
@@ -238,7 +239,7 @@ always@(posedge clk or negedge rst_n)begin
             maxi_awaddr <= maxi_awaddr;
             maxi_awvalid <= 1'b0;
             maxi_wvalid <= 1'b0;
-            maxi_wdata <= maxi_wdata
+            maxi_wdata <= maxi_wdata;
             maxi_bready <= 1'b1;
         end
         default:begin
