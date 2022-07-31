@@ -32,8 +32,9 @@ int NDL_PollEvent(char *buf, int len) {
   /* int ret = fread(buf ,1,3,fp);
   fscanf(fp,"%s",buf+3); */
   //printf("%d\n",len);
-  int ret = fread(buf,1,len,fb);
-  if(ret == 0) return 0;
+  //int ret = fread(buf,1,len,fb);
+  int ret = read(fb,buf,len);
+ /* if(ret == 0) return 0;
   printf("读取键盘");
   for(int i = 0; i < len&&ret != 0;i++)
   {
@@ -42,7 +43,8 @@ int NDL_PollEvent(char *buf, int len) {
       buf[i] = '\0';
       return 1;
     }
-  }
+  }*/
+  return ret;
 }
 
 void NDL_OpenCanvas(int *w, int *h) {
