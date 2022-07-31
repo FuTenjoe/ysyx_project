@@ -32,7 +32,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   //return 0;
   //自己加
   printf("读键盘");
-  int key = io_read(AM_INPUT_KEYBRD).keycode;
+/*  int key = io_read(AM_INPUT_KEYBRD).keycode;
   bool key_down = io_read(AM_INPUT_KEYBRD).keydown;
   int flag = 0;
   if(key_down == true){
@@ -48,9 +48,9 @@ size_t events_read(void *buf, size_t offset, size_t len) {
     //len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
     len = 0;
   }
-  return len;
+  return len;*/
   //参考代码
- /* AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
+  AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
   if(ev.keycode == AM_KEY_NONE){
     return 0;
   }
@@ -64,7 +64,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
         len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
     }
     return len;
-  }*/
+  }
 }
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
