@@ -8,6 +8,8 @@ static int evtdev = -1;
 static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
 
+
+static int evt_fd = -1;
 //自己加
 //static struct timeval now;
 //#include "nanos-lite/include/fs.h"
@@ -25,15 +27,14 @@ int NDL_PollEvent(char *buf, int len) {
   //return 0;
   //自己加
   printf("读取键盘");
-  return -1;
-  static FILE* fb = NULL;
-  fb = fopen("/dev/events",0);
+  
+ // fb = open("/dev/events",O_RDONLY);
   printf("len = %d\n",len);
   /* int ret = fread(buf ,1,3,fp);
   fscanf(fp,"%s",buf+3); */
   //printf("%d\n",len);
   //int ret = fread(buf,1,len,fb);
-  int ret = read(fb,buf,len);
+  read(evt_fd,buf,len);
  /* if(ret == 0) return 0;
   printf("读取键盘");
   for(int i = 0; i < len&&ret != 0;i++)
@@ -88,6 +89,7 @@ int NDL_Init(uint32_t flags) {
   if (getenv("NWM_APP")) {
     evtdev = 3;
   }
+  evt_fd = open("/dev/events", flags);
   return 0;
 }
 
