@@ -34,6 +34,9 @@ class Vysyx_22040175_top VL_NOT_FINAL {
     VL_OUT(&pc,31,0);
     VL_OUT64(&unknown_code,63,0);
     VL_IN8(&time_set,0,0);
+    VL_OUT(&diff_pc,31,0);
+    VL_OUT(&diff_delay_pc,31,0);
+    VL_OUT8(&out_mem_rd_buf_flag,0,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.

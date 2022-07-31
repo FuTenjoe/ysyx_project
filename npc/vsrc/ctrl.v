@@ -15,14 +15,15 @@ module ctrl (
 
     output reg [`ALU_OP_WIDTH-1:0]     alu_op,     // alu opcode
     output reg [`ALU_SRC_WIDTH-1:0]    alu_src_sel ,// alu source select flag
-    output [`CPU_WIDTH-1:0]            unknown_code,
-    output    jalr,
-    output ebreak_flag,
+    output reg [`CPU_WIDTH-1:0]            unknown_code,
+    output  reg  jalr,
+    output reg ebreak_flag,
     output reg [7:0]wmask,
     output reg s_flag,
     output reg [31:0]s_imm,
     output reg [3:0] expand_signed,
-    output reg [2:0]rd_flag
+    output reg [2:0]rd_flag,
+    output reg [2:0] rd_buf_flag   //访存标志
    
 );
 
@@ -45,12 +46,13 @@ always @(*) begin
     imm_gen_op  = `IMM_GEN_I;
     alu_op      = `ALU_AND;
     alu_src_sel = `ALU_SRC_REG;
-    unknown_code = 32'd0;
+    unknown_code = 32'h0;
     ebreak_flag = 1'd0;
     wmask = 8'd0;
     s_flag = 1'd0;
     expand_signed = 4'd0;
     rd_flag = 1'd0;
+    rd_buf_flag = 3'd0;
     case (opcode)
         7'b0110011: begin                         
             reg_wen     = 1'b1;
@@ -59,6 +61,9 @@ always @(*) begin
             reg_waddr   = rd;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b0;
+            rd_buf_flag = 3'd0;
+            jump        = 1'b0;   //流水线后加
+            jalr = 1'b0;
             case (funct3)
                 3'b000: begin
                     case(funct7)
@@ -113,6 +118,7 @@ always @(*) begin
                     alu_op =(funct7==7'b0) ? `ALU_OR : `ALU_DIVYU;
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
+                    s_imm =0;
                     rd_flag = 3'd0;
                 end
                 3'b101:begin   //divu
@@ -140,11 +146,13 @@ always @(*) begin
             endcase
         end
         7'b0010011: begin       //addi
+            rd_buf_flag = 3'd0;
             case (funct3)
                 `INST_ADDI: begin
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     reg1_raddr  = rs1;
+                    reg2_raddr  = 5'b0;
                     reg_waddr   = rd;
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
@@ -179,7 +187,7 @@ always @(*) begin
                     reg_waddr   = rd;
                     s_imm =0;
                     imm_gen_op  = `IMM_GEN_SRAI;   //I型指令
-                    alu_op      = `ALU_SRA;
+                    alu_op      = `ALU_SRL;       //流水线后改原算术右移为逻辑右移
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
                     s_flag = 1'd0;
@@ -234,7 +242,7 @@ always @(*) begin
                     reg2_raddr  = rs2;
                     reg_waddr   = rd;
                     s_imm =0;
-                    imm_gen_op  = `IMM_GEN_SRAI;   //R型指令不需要立即数，任取一个
+                    imm_gen_op  = `IMM_GEN_SRAI;   
                     alu_op      = `ALU_SLLI;
                     alu_src_sel = `ALU_SRC_IMM;
                     wmask =  8'b0;
@@ -249,6 +257,7 @@ always @(*) begin
             endcase
         end
         7'b0111011:begin           //addw
+            rd_buf_flag = 3'd0;
             case (funct3)
             3'b000:begin     
                 case(funct7)      //addw
@@ -401,14 +410,15 @@ always @(*) begin
             default:unknown_code = inst;
             endcase
         end
-        7'b0011011:begin        //addiw   
+        7'b0011011:begin        //addiw 
+        rd_buf_flag = 3'd0;  
             case (funct3)
             3'b000:begin       //addiw
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
                     reg1_raddr  = rs1;
-                    reg2_raddr  = rs2;
+                    reg2_raddr  = 5'b0;
                     reg_waddr   = rd;
                     s_imm =0;
                     imm_gen_op  = `IMM_GEN_I;   //不需要使用R型指令
@@ -491,7 +501,8 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd1;       //
-                    rd_flag = 3'd1;
+                    rd_flag = 3'd0; //无用
+                    rd_buf_flag = 3'd1;
                 end
                 3'b011:begin //ld
                     jump        = 1'b0;
@@ -507,7 +518,8 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;       //不需扩展符号位
-                    rd_flag = 3'd2;
+                    rd_flag = 3'd0;  //无用
+                    rd_buf_flag = 3'd2;
                 end
                 3'b100:begin   //lbu
                     jump        = 1'b0;
@@ -523,7 +535,8 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;       //不需扩展符号位
-                    rd_flag = 3'd4;
+                    rd_flag = 3'd0; //无用
+                    rd_buf_flag = 3'd4;
                 end
                 3'b001:begin      //lh
                     jump        = 1'b0;
@@ -539,7 +552,8 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd3;       //需扩展符号位
-                    rd_flag = 3'd6;
+                    rd_flag = 3'd0;  //无用
+                    rd_buf_flag = 3'd6;
                 end
                 3'b101:begin      //lhu
                     jump        = 1'b0;
@@ -555,12 +569,14 @@ always @(*) begin
                     wmask =  8'b0;
                     s_flag = 1'd0;
                     expand_signed =4'd0;       //不需扩展符号位
-                    rd_flag = 3'd6;
+                    rd_flag = 3'd0;  //无用
+                    rd_buf_flag = 3'd6;
                 end
                 default:unknown_code = inst;
             endcase
         end
         7'b0100011:begin    //sd
+        rd_buf_flag = 3'd0;
            case(funct3)    
             3'b011:begin    //sd
             jump        = 1'b0;
@@ -571,12 +587,12 @@ always @(*) begin
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
-            alu_op      = `ALU_ADD;
+            alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b11111111;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd3;
+            rd_flag = 3'd1;  //保留64位
             end
             3'b001:begin    //sh
             jump        = 1'b0;
@@ -587,12 +603,12 @@ always @(*) begin
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
-            alu_op      = `ALU_ADD;
+            alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'h3;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd5;
+            rd_flag = 3'd2;   //保留16位
             end
             3'b000:begin   //sb
             jump        = 1'b0;
@@ -603,12 +619,13 @@ always @(*) begin
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
-            alu_op      = `ALU_ADD;
+            alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'h1;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd5;   //选rs2
+            //rd_flag = 3'd5;   //选rs2
+            rd_flag = 3'd3;   //保留8位
             end
             3'b010:begin     //sw
             jump        = 1'b0;
@@ -619,12 +636,13 @@ always @(*) begin
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
             imm_gen_op  = `INST_TYPE_S;
-            alu_op      = `ALU_ADD;
+            alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'hf;
             s_flag = 1'd1;
             expand_signed = 4'd0;
-            rd_flag = 3'd5;   //选rs2
+            //rd_flag = 3'd5;   //选rs2
+            rd_flag = 3'd4;   //保留32位
             end
             default:unknown_code = inst;
             endcase
@@ -641,6 +659,7 @@ always @(*) begin
             wmask =  8'b0;
             expand_signed = 4'd0;
             rd_flag = 3'd0;
+            rd_buf_flag = 3'd0;
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
@@ -653,6 +672,7 @@ always @(*) begin
                 wmask =  8'b0;
                 expand_signed = 4'd0;
                 rd_flag = 3'd5;
+                rd_buf_flag = 3'd0;
         end
         `INST_AUIPC:begin //only auipc
                reg_wen     = 1'b1;
@@ -665,13 +685,16 @@ always @(*) begin
                 wmask =  8'b0;
                 expand_signed = 4'd0;
                 rd_flag = 3'd0;
+                rd_buf_flag = 3'd0;
         end
         7'b1100111:begin
+            rd_buf_flag = 3'd0;
             case(funct3)  
                 3'b000:begin         //jalr
                 jump        = 1'b1;
                 reg_wen     = 1'b1;
                 jalr = 1'b1;
+               
                 reg_waddr   = rd;
                 imm_gen_op  = `IMM_GEN_I;
                 alu_op      = `ALU_ADD;
@@ -681,6 +704,10 @@ always @(*) begin
                 expand_signed = 4'd0;
                 s_imm = rs1;
                 rd_flag = 3'd0;
+
+                //后加
+                reg1_raddr = rs1;
+                reg2_raddr = 5'b0;
                 end
                 default:unknown_code = inst;
             endcase
@@ -696,6 +723,8 @@ always @(*) begin
             reg_wen     = 1'b0;
             jump        = 1'b0;
             jalr        = 1'b0;
+            rd_buf_flag = 3'd0;
+            reg_waddr = 5'd0; //流水线后加
             case (funct3)
                 `INST_BNE: begin     //bne
                     branch     = 1'b1;
@@ -738,8 +767,10 @@ end
 import "DPI-C" function void ebreak();
 always@(*)begin
     if(inst == 32'h0010_0073)begin
-        ebreak();
         ebreak_flag = 1'b1;
+        unknown_code = 32'h0;
+        reg1_raddr = reg_waddr + 1'b1;
+        reg2_raddr = reg_waddr + 1'b1;
     end
 end
 

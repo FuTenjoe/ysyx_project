@@ -132,8 +132,10 @@
 `define zeroword 32'h8000_0000	
 
 
+
+
 //AXI总线
-`define AXI_ADRESS_WIDTH 64
+
 // Burst types
 `define AXI_BURST_TYPE_FIXED                                2'b00               //突发类型  FIFO
 `define AXI_BURST_TYPE_INCR                                 2'b01               //ram  

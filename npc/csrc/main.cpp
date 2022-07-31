@@ -133,9 +133,6 @@ const vluint64_t max_sim_time = 2000;
 int main(int argc, char **argv, char **env) {
   contextp -> commandArgs(argc,argv);
   Verilated::traceEverOn(true);
-  
-   
-  
   int clk;
   int a = 0;
 
@@ -151,12 +148,13 @@ int main(int argc, char **argv, char **env) {
   
   long img_size = load_img(img_file);
   int i;
-  for (i=0; ; i++) {
+  int end_pc = 1;
+  for (i=0;; i++) {
     //while(!contextp -> gotFinish()){
      //for (i=0;i<15 ; i++) {
       
-    top->rst = (i < 2);
-      
+    //top->rst = (i < 2);
+      top->rst = (i < 2);
     // dump variables into VCD file and toggle clock
     if(ebreak_flag){
       printf("ebreak: program is finished !\n");
@@ -180,7 +178,7 @@ int main(int argc, char **argv, char **env) {
     if(i%2==1){
       top->time_set = 1;
     }
-    else if(1%2 == 0){
+    else if(i%2 == 0){
       top->time_set = 0;
     }
 
@@ -190,12 +188,14 @@ int main(int argc, char **argv, char **env) {
       top->eval ();
       printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
+      //printf("ena=:0x%0x, top->ena);
       printf(" a0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[10],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",23,cpu_gpr[23],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",2,cpu_gpr[2],top->inst);
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
       printf(" a2= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[18],top->inst);
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
+      printf("mem_rd_buf_flag is 0x%08lx",top->out_mem_rd_buf_flag);
      }
      if(top->clk==0){
         
@@ -204,17 +204,27 @@ int main(int argc, char **argv, char **env) {
          printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       
-      printf(" a0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[10],top->inst);
+      printf(" a4= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[14],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",23,cpu_gpr[23],top->inst);
-       printf(" a2= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[18],top->inst);
+       printf(" ra= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[1],top->inst);
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
-        if (a>2){
+      printf("mem_rd_buf_flag is 0x%08lx",top->out_mem_rd_buf_flag);
+      //init_difftest(img_size,port);
+      if (a>1){
+        //if (a%4==1 & a/4>=1){
        //printf("a =%d \n",a);
-       
-         difftest_step(top->pc);
+       if((top->diff_pc != top-> diff_delay_pc)){
+      //if((top->diff_pc != end_pc) ){
+        
+        difftest_step(top-> diff_pc);
+        printf("diff_pc = %x",top->diff_pc);
+        printf("diff_delay_pc = %x",top->diff_delay_pc);
+      }
+      
+     
         }
-        else{
+      else if(a <= 2){
           init_difftest(img_size,port);
         }
      }
@@ -342,8 +352,10 @@ void init_difftest(long img_size,int port){
 }
 //Difftest在CPU中比较功能的实现
 void difftest_step (vaddr_t dnpc){
+  printf("ok1");
   CPU_state ref_r;
   ref_difftest_regcpy(&ref_r, DIFFTEST_TO_DUT);
+  
   checkregs(&ref_r, dnpc);
   ref_difftest_exec(1);
 }
@@ -357,6 +369,7 @@ static void checkregs(CPU_state *ref, vaddr_t dnpc){
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
   int i = 0;
   bool DIF_result = true;
+  
   if(ref_r -> pc != dnpc){
     printf("False: PC is false! ref_dnpc is 0x%0lx;npc_dnpc is 0x%0lx; Instruction is 0x%x\n",ref_r->pc,dnpc,top->inst);
     DIF_result = false;
@@ -367,5 +380,6 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
       DIF_result = false;
     }
   }
+ 
   return DIF_result;
 }
