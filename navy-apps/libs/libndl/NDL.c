@@ -24,16 +24,13 @@ uint32_t NDL_GetTicks() {
 }
 //自己加
 int NDL_PollEvent(char *buf, int len) {
-  //return 0;
-  //自己加
   printf("读取键盘");
-  
- // fb = open("/dev/events",O_RDONLY);
   printf("len = %d\n",len);
   /* int ret = fread(buf ,1,3,fp);
   fscanf(fp,"%s",buf+3); */
   //printf("%d\n",len);
   //int ret = fread(buf,1,len,fb);
+  evt_fd = fopen("/dev/events", 0);
   int ret = read(evt_fd,buf,len);
   if(ret == 0) return 0;
   printf("读取键盘");
@@ -89,7 +86,6 @@ int NDL_Init(uint32_t flags) {
   if (getenv("NWM_APP")) {
     evtdev = 3;
   }
-  evt_fd = open("/dev/events", flags);
   return 0;
 }
 
