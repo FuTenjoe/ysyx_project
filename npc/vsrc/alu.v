@@ -149,6 +149,7 @@ always @(*) begin
                  alu_res = alu_src1 | alu_src2;
         `ALU_MUL:begin
                 mul_valid = 1'b1; 
+                alu_res = alu_src1 * alu_src2;
                 
         end
         `ALU_DIVW:
