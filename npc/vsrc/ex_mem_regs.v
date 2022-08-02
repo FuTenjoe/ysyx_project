@@ -50,7 +50,7 @@ module ex_mem_regs(
 	//input [63:0] end_write_addr_ex_mem_i,
 	//output reg [63:0] end_write_addr_ex_mem_o,
 	input cunqu_hazard_ex_mem_i,
-	output reg cunqu_hazard_ex_mem_o,
+	output reg cunqu_hazard_ex_mem_o
 	
 	
     );
