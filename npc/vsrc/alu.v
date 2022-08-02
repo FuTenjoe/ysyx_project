@@ -20,7 +20,7 @@ reg [63:0] alu_res;
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 reg mul_valid;
-reg [129:0] mul_res;
+wire [129:0] mul_res;
 wire sh_fnsh_flag;
 always @(*) begin
     zero = 1'b0;
@@ -150,7 +150,7 @@ always @(*) begin
         `ALU_MUL:begin
                 mul_valid = 1'b1; 
                 alu_res = alu_src1 * alu_src2;
-                
+                mul_expand_signed = expand_signed;    
         end
         `ALU_DIVW:
                 alu_res = alu_src1[31:0] / alu_src2[31:0];
@@ -181,6 +181,7 @@ wire [63:0] alu_res2;
 assign alu_res2 = (sh_fnsh_flag) ? mul_res[63:0] : alu_res;
 
 always @(*) begin
+    if(alu_res2 == alu_res)begin
     case(expand_signed)
         4'd0:begin
              alu_res_ex_sign = alu_res2;   //jalr
@@ -199,6 +200,27 @@ always @(*) begin
             alu_res_ex_sign= alu_res2;
         end
     endcase
+    end
+    else if(alu_res2 == mul_res[63:0])begin
+        case(mul_expand_signed)
+        4'd0:begin
+             alu_res_ex_sign = alu_res2;   //jalr
+        end
+        4'd1:begin
+            alu_res_ex_sign = {{32{alu_res2[31]}},alu_res2[31:0]};   //lw  addw  divw
+        end
+        4'd2:begin
+            alu_res_ex_sign = alu_res2[31:0];            //addw错误
+        end
+        4'd3:begin
+            alu_res_ex_sign = {{48{ alu_res2[15]}}, alu_res2[15:0]}; //lh
+                
+        end
+        default:begin
+            alu_res_ex_sign= alu_res2;
+        end
+    endcase
+    end
 end
 
 wire [1:0] mul_signed;
