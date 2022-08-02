@@ -164,7 +164,6 @@ always@(posedge clk or negedge rst_n)begin
 	end
 end
 
-assign mul_res = (sh_fnsh_flag == 1'd1)? p :130'd0;
 //assign mul_res = p ;
 always@(*)begin
 	if(mul_valid)begin
@@ -181,26 +180,31 @@ always@(*)begin
 		end
 	end
 end
+reg [129:0]ex_p;
 always @(*) begin
+	if(sh_fnsh_flag)begin
     case(mul_expand_signed)
         4'd0:begin
-             mul_res = mul_res;   //jalr
+             ex_p =p;   //jalr
         end
         4'd1:begin
-            mul_res = {{32{mul_res[31]}},mul_res[31:0]};   //lw  addw  divw
+            ex_p = {{32{p[31]}},p[31:0]};   //lw  addw  divw
         end
         4'd2:begin
-            mul_res = mul_res[31:0];            //addw错误
+            ex_p = p[31:0];            //addw错误
         end
         4'd3:begin
-            mul_res = {{48{ mul_res[15]}},mul_res[15:0]}; //lh
+            ex_p = {{48{ p[15]}},p[15:0]}; //lh
                 
         end
         default:begin
-            mul_res = mul_res;
+            ex_p = ex_p;
         end
     endcase
+	end
+	else 
+		ex_p = 130'd0;
 end
-
+assign mul_res = (sh_fnsh_flag == 1'd1)? ex_p :130'd0;
 endmodule
 
