@@ -16,30 +16,25 @@ module mul(
 reg [129:0] alu_x;
 reg [65:0] alu_y;
 
-always@(posedge clk or negedge rst_n)begin
-	if(!rst_n)begin
-		alu_x <= 130'd0;
-		alu_y <= 66'd0;
+always@(*)begin
+	if(mul_signed == 2'b00)begin
+		alu_x <= {{66{alu_src1[63]}},alu_src1[63:0]};
+		alu_y <= {{2{alu_src2[63]}},alu_src2[63:0]};
+	end
+	else if(mul_signed == 2'b01)begin
+		alu_x <= {{66{alu_src1[63]}},alu_src1[63:0]};
+		alu_y <= {{2{1'b0}},alu_src2[63:0]};
+	end
+	else if(mul_signed == 2'b10)begin
+		alu_x <= {{66{1'b0}},alu_src1[63:0]};
+		alu_y <= {{2{alu_src2[63]}},alu_src2[63:0]};
 	end
 	else begin
-		if(mul_signed == 2'b00)begin
-			alu_x <= {{66{alu_src1[63]}},alu_src1[63:0]};
-			alu_y <= {{2{alu_src2[63]}},alu_src2[63:0]};
-		end
-		else if(mul_signed == 2'b01)begin
-			alu_x <= {{66{alu_src1[63]}},alu_src1[63:0]};
-			alu_y <= {{2{1'b0}},alu_src2[63:0]};
-		end
-		else if(mul_signed == 2'b10)begin
-			alu_x <= {{66{1'b0}},alu_src1[63:0]};
-			alu_y <= {{2{alu_src2[63]}},alu_src2[63:0]};
-		end
-		else begin
-			alu_x <= {{66{1'b0}},alu_src1[63:0]};
-			alu_y <= {{2{1'b0}},alu_src2[63:0]};
-		end
+		alu_x <= {{66{1'b0}},alu_src1[63:0]};
+		alu_y <= {{2{1'b0}},alu_src2[63:0]};
 	end
 end
+
 
 
 parameter IDLE = 3'd0,NEXT=3'd1,SHIFT=3'd2,LAST=3'd3;
