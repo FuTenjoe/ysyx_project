@@ -182,20 +182,20 @@ assign alu_res2 = (sh_fnsh_flag) ? mul_res[63:0] : alu_res;
 always @(*) begin
     case(expand_signed)
         4'd0:begin
-             alu_res_ex_sign = alu_res;   //jalr
+             alu_res_ex_sign = alu_res2;   //jalr
         end
         4'd1:begin
-            alu_res_ex_sign = {{32{alu_res[31]}},alu_res[31:0]};   //lw  addw  divw
+            alu_res_ex_sign = {{32{alu_res2[31]}},alu_res2[31:0]};   //lw  addw  divw
         end
         4'd2:begin
-            alu_res_ex_sign = alu_res[31:0];            //addw错误
+            alu_res_ex_sign = alu_res2[31:0];            //addw错误
         end
         4'd3:begin
-            alu_res_ex_sign = {{48{ alu_res[15]}}, alu_res[15:0]}; //lh
+            alu_res_ex_sign = {{48{ alu_res2[15]}}, alu_res2[15:0]}; //lh
                 
         end
         default:begin
-            alu_res_ex_sign= alu_res;
+            alu_res_ex_sign= alu_res2;
         end
     endcase
 end
