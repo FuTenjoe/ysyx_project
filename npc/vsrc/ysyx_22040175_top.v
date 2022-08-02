@@ -27,6 +27,7 @@ assign inst = if_inst;
 
 
 wire rest_id_mem;
+wire mul_stop;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
