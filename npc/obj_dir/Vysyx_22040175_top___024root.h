@@ -35,6 +35,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__rst_n;
         CData/*0:0*/ ysyx_22040175_top__DOT__if_ena;
         CData/*0:0*/ ysyx_22040175_top__DOT__rest_id_mem;
+        CData/*0:0*/ ysyx_22040175_top__DOT__mul_stop;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_ena;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_time_set;
         CData/*0:0*/ ysyx_22040175_top__DOT__delay_sig_jalr;
@@ -95,13 +96,12 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__wb_time_set;
         CData/*3:0*/ ysyx_22040175_top__DOT__wb_expand_signed;
         CData/*0:0*/ ysyx_22040175_top__DOT__wb_ebreak_flag;
-        CData/*2:0*/ ysyx_22040175_top__DOT__wb_rd_buf_flag;
     };
     struct {
+        CData/*2:0*/ ysyx_22040175_top__DOT__wb_rd_buf_flag;
         CData/*0:0*/ ysyx_22040175_top__DOT__wb_pc_ready;
         CData/*0:0*/ ysyx_22040175_top__DOT__mem_rest_id_mem;
         CData/*0:0*/ ysyx_22040175_top__DOT__wb_cunqu_hazard;
-        CData/*0:0*/ ysyx_22040175_top__DOT__mul_stop;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__delay_sig_jalr;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__branch;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__jump;
