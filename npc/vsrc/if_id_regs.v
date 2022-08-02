@@ -28,14 +28,14 @@ always@(posedge clk or negedge rst_n)begin
 		time_set_if_id_o <= 1'd0;
 		
 	end
-	else if(rest_id_mem == 1'b1)begin
+	else if(rest_id_mem == 1'b1| mul_stop == 1'b1)begin
 		pc_if_id_o <= id_pc;
 		instr_if_id_o<= instr_if_id_o;
 		ena_if_id_o <= ena_if_id_o;
 		time_set_if_id_o <= time_set_if_id_o;
 	end
 	
-	else if(control_rest == 1'b1 | delay_sig_jalr == 1'b1 | mul_stop == 1'b1)begin
+	else if(control_rest == 1'b1 | delay_sig_jalr == 1'b1 )begin
 		pc_if_id_o <= id_pc;
 		instr_if_id_o<= 32'b0010011;
 		ena_if_id_o <= ena_if_id_o;
