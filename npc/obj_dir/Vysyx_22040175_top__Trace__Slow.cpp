@@ -418,6 +418,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declQuad(c+131,"ysyx_22040175_top u_ex_stage u_alu signed_alu_src2", false,-1, 63,0);
         tracep->declBit(c+133,"ysyx_22040175_top u_ex_stage u_alu mul_valid", false,-1);
         tracep->declArray(c+134,"ysyx_22040175_top u_ex_stage u_alu mul_res", false,-1, 129,0);
+        tracep->declBit(c+139,"ysyx_22040175_top u_ex_stage u_alu sh_fnsh_flag", false,-1);
         tracep->declBus(c+690,"ysyx_22040175_top u_ex_stage u_alu mul_signed", false,-1, 1,0);
         tracep->declBit(c+584,"ysyx_22040175_top u_ex_stage u_alu u_mul clk", false,-1);
         tracep->declBit(c+246,"ysyx_22040175_top u_ex_stage u_alu u_mul rst_n", false,-1);
@@ -570,7 +571,7 @@ void Vysyx_22040175_top___024root__traceFullTop0(void* voidSelf, VerilatedVcd* t
 void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VlWide<5>/*159:0*/ __Vtemp207;
+    VlWide<5>/*159:0*/ __Vtemp209;
     vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode);
     if (false && oldp) {}  // Prevent unused
     // Body
@@ -690,21 +691,21 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullQData(oldp+129,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__signed_alu_src1),64);
         tracep->fullQData(oldp+131,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__signed_alu_src2),64);
         tracep->fullBit(oldp+133,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_valid));
-        if (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__sh_fnsh_flag) {
-            __Vtemp207[0U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[0U];
-            __Vtemp207[1U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[1U];
-            __Vtemp207[2U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[2U];
-            __Vtemp207[3U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[3U];
-            __Vtemp207[4U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[4U];
+        if (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__sh_fnsh_flag) {
+            __Vtemp209[0U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[0U];
+            __Vtemp209[1U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[1U];
+            __Vtemp209[2U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[2U];
+            __Vtemp209[3U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[3U];
+            __Vtemp209[4U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[4U];
         } else {
-            __Vtemp207[0U] = 0U;
-            __Vtemp207[1U] = 0U;
-            __Vtemp207[2U] = 0U;
-            __Vtemp207[3U] = 0U;
-            __Vtemp207[4U] = 0U;
+            __Vtemp209[0U] = 0U;
+            __Vtemp209[1U] = 0U;
+            __Vtemp209[2U] = 0U;
+            __Vtemp209[3U] = 0U;
+            __Vtemp209[4U] = 0U;
         }
-        tracep->fullWData(oldp+134,(__Vtemp207),130);
-        tracep->fullBit(oldp+139,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__sh_fnsh_flag));
+        tracep->fullWData(oldp+134,(__Vtemp209),130);
+        tracep->fullBit(oldp+139,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__sh_fnsh_flag));
         tracep->fullWData(oldp+140,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__alu_x),130);
         tracep->fullWData(oldp+145,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__alu_y),66);
         tracep->fullCData(oldp+148,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__present_state),3);
