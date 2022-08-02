@@ -20,7 +20,7 @@ reg [63:0] alu_res;
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 reg mul_valid;
-wire [129:0] muk_res;
+wire [129:0] mul_res;
 
 always @(*) begin
     zero = 1'b0;
