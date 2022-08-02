@@ -212,7 +212,7 @@ mul u_mul(
 	.mul_valid(mul_valid),
 	.mul_signed(mul_signed),   //目前先实现有符号数
 	//output reg [7:0] shift_cnt,
-    .mul_expand_signed(mul_expand_signed)
+    .mul_expand_signed(mul_expand_signed),
 	.mul_res(mul_res),
 	.sh_fnsh_flag(sh_fnsh_flag),  
 	.stop(mul_stop)
