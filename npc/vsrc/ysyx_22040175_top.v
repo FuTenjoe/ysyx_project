@@ -38,7 +38,8 @@ if_stage u_if_stage(
     .control_rest(id_control_rest),
     .rest_id_mem(rest_id_mem),
     .id_pc(id_pc),
-    .sig_jalr(sig_jalr)
+    .sig_jalr(sig_jalr),
+    .mul_stop(mul_stop)
     
 );
 wire [31:0]id_inst;
@@ -60,7 +61,8 @@ if_id_regs u_if_id_regs(
     .control_rest(id_control_rest),
     .id_pc(id_pc),
     .rest_id_mem(rest_id_mem),
-    .delay_sig_jalr(delay_sig_jalr)
+    .delay_sig_jalr(delay_sig_jalr),
+    .mul_stop(mul_stop)
     
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
@@ -243,12 +245,15 @@ wire [`CPU_WIDTH-1:0] ex_next_pc;
 wire write_ready;
 wire ex_pc_ready;
 ex_stage u_ex_stage(
+    .clk(clk),
+    .rst_n(rst_n),
     .alu_op(ex_alu_op),   // alu opcode
     .alu_src1(ex_alu_src1), // alu source 1
     .alu_src2(ex_alu_src2), // alu source 2
     .alu_res(from_ex_alu_res),   // alu result
     .rd_flag(ex_rd_flag),
-    .expand_signed(ex_expand_signed)
+    .expand_signed(ex_expand_signed),
+    .mul_stop(mul_stop)
 );
 wire mem_reg_wen;
 wire [`REG_ADDR_WIDTH-1:0] mem_reg_waddr;

@@ -1,6 +1,8 @@
 `include "../vsrc/rvseed_defines.v"
 
 module alu(
+    input clk,
+    input rst_n,
     input      [`ALU_OP_WIDTH-1:0] alu_op,   // alu opcode
     input      [63:0]    alu_src1, // alu source 1
     //input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
@@ -8,7 +10,8 @@ module alu(
     //output reg                     zero,     // alu result is zero
     output reg [63:0]    alu_res_ex_sign,   // alu result
     input [2:0]rd_flag,
-    input [3:0] expand_signed
+    input [3:0] expand_signed,
+    output mul_stop
 );
 //reg [63:0] rd_buf_lw;
 //reg [2:0] test;
@@ -16,11 +19,15 @@ reg zero;
 reg [63:0] alu_res;
 reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
+reg mul_valid;
+wire [129:0] muk_res;
+
 always @(*) begin
     zero = 1'b0;
     alu_res = alu_src1 -  alu_src2;
     signed_alu_src1 = alu_src1;
     signed_alu_src2 = alu_src2;
+    mul_valid = 1'b0;
     case (alu_op)
         `ALU_ADD: begin  //0011
         if(rd_flag == 3'd0)begin
@@ -140,8 +147,10 @@ always @(*) begin
                 alu_res = alu_src1 ^ alu_src2;
         `ALU_OR:
                  alu_res = alu_src1 | alu_src2;
-        `ALU_MUL:
-                alu_res = alu_src1 * alu_src2;
+        `ALU_MUL:begin
+                mul_valid = 1'b1; 
+                alu_res = mul_res[63:0];
+        end
         `ALU_DIVW:
                 alu_res = alu_src1[31:0] / alu_src2[31:0];
         `ALU_DIVYW:begin
@@ -187,6 +196,22 @@ always @(*) begin
         end
     endcase
 end
+
+wire [1:0] mul_signed;
+assign mul_signed = 2'b11;
+mul u_mul(
+	.clk(clk),
+	.rst_n(rst_n),
+	.alu_src1(alu_src1),
+	.alu_src2(alu_src2),   //乘数
+	.mul_valid(mul_valid),
+	.mul_signed(2'b11),   //目前先实现有符号数
+	//output reg [7:0] shift_cnt,
+	.mul_res(mul_res),
+	//output reg sh_fnsh_flag,  
+	.stop(mul_stop)
+
+    );
    
 endmodule
 

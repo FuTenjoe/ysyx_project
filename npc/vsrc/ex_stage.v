@@ -1,6 +1,8 @@
 `include "../vsrc/rvseed_defines.v"
 
 module ex_stage(
+    input clk,
+    input rst_n,
     input      [`ALU_OP_WIDTH-1:0] alu_op,   // alu opcode
     input      [63:0]    alu_src1, // alu source 1
     //input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
@@ -8,11 +10,14 @@ module ex_stage(
    // output reg                     zero,     // alu result is zero
     output reg [63:0]    alu_res,   // alu result
     input [2:0]rd_flag,
-    input [3:0] expand_signed
+    input [3:0] expand_signed,
+    output mul_stop
 );
 
 
 alu u_alu(
+    .clk(clk),
+    .rst_n(rst_n),
     .alu_op(alu_op),   // alu opcode
     .alu_src1(alu_src1), // alu source 1
     //input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
@@ -20,7 +25,8 @@ alu u_alu(
     //.zero(zero),     // alu result is zero
     .alu_res_ex_sign(alu_res),   // alu result
     .rd_flag(rd_flag),
-    .expand_signed(expand_signed)
+    .expand_signed(expand_signed),
+    .mul_stop(mul_stop)
 );
 
 
