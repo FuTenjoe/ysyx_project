@@ -18,20 +18,20 @@ reg [65:0] alu_y;
 
 always@(*)begin
 	if(mul_signed == 2'b00)begin
-		alu_x <= {{66{alu_src1[63]}},alu_src1[63:0]};
-		alu_y <= {{2{alu_src2[63]}},alu_src2[63:0]};
+		alu_x = {{66{alu_src1[63]}},alu_src1[63:0]};
+		alu_y = {{2{alu_src2[63]}},alu_src2[63:0]};
 	end
 	else if(mul_signed == 2'b01)begin
-		alu_x <= {{66{alu_src1[63]}},alu_src1[63:0]};
-		alu_y <= {{2{1'b0}},alu_src2[63:0]};
+		alu_x = {{66{alu_src1[63]}},alu_src1[63:0]};
+		alu_y = {{2{1'b0}},alu_src2[63:0]};
 	end
 	else if(mul_signed == 2'b10)begin
-		alu_x <= {{66{1'b0}},alu_src1[63:0]};
-		alu_y <= {{2{alu_src2[63]}},alu_src2[63:0]};
+		alu_x = {{66{1'b0}},alu_src1[63:0]};
+		alu_y = {{2{alu_src2[63]}},alu_src2[63:0]};
 	end
 	else begin
-		alu_x <= {{66{1'b0}},alu_src1[63:0]};
-		alu_y <= {{2{1'b0}},alu_src2[63:0]};
+		alu_x = {{66{1'b0}},alu_src1[63:0]};
+		alu_y = {{2{1'b0}},alu_src2[63:0]};
 	end
 end
 
