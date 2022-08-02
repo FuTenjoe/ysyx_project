@@ -20,8 +20,6 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VlWide<5>/*159:0*/ __Vtemp212;
-    VlWide<5>/*159:0*/ __Vtemp213;
-    VlWide<3>/*95:0*/ __Vtemp214;
     vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode + 1);
     if (false && oldp) {}  // Prevent unused
     // Body
@@ -158,10 +156,8 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             }
             tracep->chgWData(oldp+133,(__Vtemp212),130);
             tracep->chgBit(oldp+138,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__sh_fnsh_flag));
-            VL_EXTEND_WQ(130,64, __Vtemp213, vlSelf->ysyx_22040175_top__DOT__ex_alu_src1);
-            tracep->chgWData(oldp+139,(__Vtemp213),130);
-            VL_EXTEND_WQ(66,64, __Vtemp214, vlSelf->ysyx_22040175_top__DOT__ex_alu_src2);
-            tracep->chgWData(oldp+144,(__Vtemp214),66);
+            tracep->chgWData(oldp+139,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__alu_x),130);
+            tracep->chgWData(oldp+144,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__alu_y),66);
             tracep->chgCData(oldp+147,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__present_state),3);
             tracep->chgCData(oldp+148,(((4U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__present_state))
                                          ? 0U : ((2U 

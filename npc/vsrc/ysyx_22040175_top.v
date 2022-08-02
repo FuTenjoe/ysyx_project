@@ -236,7 +236,8 @@ id_ex_regs u_id_ex_regs(
     //.end_write_addr_id_ex_i(id_end_write_addr),
 	//.end_write_addr_id_ex_o(ex_end_write_addr),
     .cunqu_hazard_id_ex_i(id_cunqu_hazard),
-    .cunqu_hazard_id_ex_o(ex_cunqu_hazard)
+    .cunqu_hazard_id_ex_o(ex_cunqu_hazard),
+    .mul_stop(mul_stop)
     
     );
 wire [63:0] from_ex_alu_res;
