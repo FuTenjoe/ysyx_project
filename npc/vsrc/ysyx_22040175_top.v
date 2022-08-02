@@ -326,7 +326,8 @@ ex_mem_regs u_ex_mem_regs(
     //.end_write_addr_ex_mem_i(ex_end_write_addr),
 	//.end_write_addr_ex_mem_o(mem_end_write_addr),
     .cunqu_hazard_ex_mem_i(ex_cunqu_hazard),
-    .cunqu_hazard_ex_mem_o(mem_cunqu_hazard)
+    .cunqu_hazard_ex_mem_o(mem_cunqu_hazard),
+    .mul_stop(mul_stop)
    
    
     

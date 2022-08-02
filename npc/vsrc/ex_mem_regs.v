@@ -105,6 +105,7 @@ module ex_mem_regs(
 			pc_ex_mem_o <= pc_ex_mem_o;
 			rest_id_mem_ex_mem_o <= 1'b0;
 			cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_o;
+		end
 		else if(rest_id_mem_ex_mem_i == 1'b1)begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
 			reg_waddr_ex_mem_o <= reg_waddr_ex_mem_i;
