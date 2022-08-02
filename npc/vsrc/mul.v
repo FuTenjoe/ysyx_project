@@ -177,9 +177,6 @@ always@(*)begin
 		if(sh_fnsh_flag == 1'b1)begin
 			stop = 1'b0;
 		end
-		else begin
-			stop = stop;
-		end
 	end
 end
 
