@@ -7,6 +7,7 @@ module mul(
 	input [63:0] alu_src2,   //乘数
 	input mul_valid,
 	input [1:0] mul_signed,   //目前先实现有符号数
+	input [3:0] mul_expand_signed,
 	//output reg [7:0] shift_cnt,
 	output [129:0] mul_res,
 	output reg sh_fnsh_flag,
@@ -163,8 +164,8 @@ always@(posedge clk or negedge rst_n)begin
 	end
 end
 
-//assign mul_res = (sh_fnsh_flag == 1'd1)? p :130'd0;
-assign mul_res = p ;
+assign mul_res = (sh_fnsh_flag == 1'd1)? p :130'd0;
+//assign mul_res = p ;
 always@(*)begin
 	if(mul_valid)begin
 		if(sh_fnsh_flag != 1'b1)begin
@@ -180,7 +181,26 @@ always@(*)begin
 		end
 	end
 end
-
+always @(*) begin
+    case(mul_expand_signed)
+        4'd0:begin
+             alu_res_ex_sign = mul_res;   //jalr
+        end
+        4'd1:begin
+            alu_res_ex_sign = {{32{mul_res[31]}},mul_res[31:0]};   //lw  addw  divw
+        end
+        4'd2:begin
+            alu_res_ex_sign = mul_res[31:0];            //addw错误
+        end
+        4'd3:begin
+            alu_res_ex_sign = {{48{ mul_res[15]}},mul_res[15:0]}; //lh
+                
+        end
+        default:begin
+            alu_res_ex_sign= mul_res;
+        end
+    endcase
+end
 
 endmodule
 
