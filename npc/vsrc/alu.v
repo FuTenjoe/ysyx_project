@@ -21,7 +21,7 @@ reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 reg mul_valid;
 wire [129:0] mul_res;
-
+wire sh_fnsh_flag;
 always @(*) begin
     zero = 1'b0;
     alu_res = alu_src1 -  alu_src2;
@@ -149,7 +149,7 @@ always @(*) begin
                  alu_res = alu_src1 | alu_src2;
         `ALU_MUL:begin
                 mul_valid = 1'b1; 
-                alu_res = mul_res[63:0];
+                alu_res =(sh_fnsh_flag == 1'b1) ? mul_res[63:0] : alu_res;
         end
         `ALU_DIVW:
                 alu_res = alu_src1[31:0] / alu_src2[31:0];
@@ -205,10 +205,10 @@ mul u_mul(
 	.alu_src1(alu_src1),
 	.alu_src2(alu_src2),   //乘数
 	.mul_valid(mul_valid),
-	.mul_signed(2'b11),   //目前先实现有符号数
+	.mul_signed(mul_signed),   //目前先实现有符号数
 	//output reg [7:0] shift_cnt,
 	.mul_res(mul_res),
-	//output reg sh_fnsh_flag,  
+	.sh_fnsh_flag(sh_fnsh_flag),  
 	.stop(mul_stop)
 
     );
