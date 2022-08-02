@@ -149,7 +149,7 @@ always @(*) begin
                  alu_res = alu_src1 | alu_src2;
         `ALU_MUL:begin
                 mul_valid = 1'b1; 
-                alu_res = mul_res[63:0];
+                alu_res = alu_res2;
         end
         `ALU_DIVW:
                 alu_res = alu_src1[31:0] / alu_src2[31:0];
@@ -207,10 +207,9 @@ mul u_mul(
 	.mul_valid(mul_valid),
 	.mul_signed(mul_signed),   //目前先实现有符号数
 	//output reg [7:0] shift_cnt,
-	.mul_res(mul_res),
+	.mul_res(alu_res2),
 	.sh_fnsh_flag(sh_fnsh_flag),  
 	.stop(mul_stop)
-
     );
    
 endmodule
