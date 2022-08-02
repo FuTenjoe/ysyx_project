@@ -163,8 +163,8 @@ always@(posedge clk or negedge rst_n)begin
 	end
 end
 
-assign mul_res = (sh_fnsh_flag == 1'd1)? p :130'd0;
-
+//assign mul_res = (sh_fnsh_flag == 1'd1)? p :130'd0;
+assign mul_res = p ;
 always@(*)begin
 	if(mul_valid)begin
 		if(sh_fnsh_flag != 1'b1)begin
