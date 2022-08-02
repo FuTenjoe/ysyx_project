@@ -174,11 +174,11 @@ always@(*)begin
 		end
 	end
 	else begin
-		if(sh_fnsh_flag != 1'b1)begin
-			stop = 1'b1;
+		if(sh_fnsh_flag == 1'b1)begin
+			stop = 1'b0;
 		end
 		else begin
-			stop = 1'b0;
+			stop = stop;
 		end
 	end
 end
