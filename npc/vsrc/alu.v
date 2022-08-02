@@ -177,7 +177,7 @@ always @(*) begin
     endcase
 end
 
-assign alu_res = (sh_fnsh_flag) ? mul_res[63:0] : alu_res;
+assign alu_res2 = (sh_fnsh_flag) ? mul_res[63:0] : alu_res;
 
 always @(*) begin
     case(expand_signed)
