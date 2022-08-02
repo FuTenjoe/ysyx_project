@@ -149,7 +149,7 @@ always @(*) begin
                  alu_res = alu_src1 | alu_src2;
         `ALU_MUL:begin
                 mul_valid = 1'b1; 
-                alu_res =(sh_fnsh_flag == 1'b1) ? mul_res[63:0] : alu_res;
+                alu_res = mul_res[63:0];
         end
         `ALU_DIVW:
                 alu_res = alu_src1[31:0] / alu_src2[31:0];
