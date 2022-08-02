@@ -184,20 +184,20 @@ end
 always @(*) begin
     case(mul_expand_signed)
         4'd0:begin
-             alu_res_ex_sign = mul_res;   //jalr
+             mul_res = mul_res;   //jalr
         end
         4'd1:begin
-            alu_res_ex_sign = {{32{mul_res[31]}},mul_res[31:0]};   //lw  addw  divw
+            mul_res = {{32{mul_res[31]}},mul_res[31:0]};   //lw  addw  divw
         end
         4'd2:begin
-            alu_res_ex_sign = mul_res[31:0];            //addw错误
+            mul_res = mul_res[31:0];            //addw错误
         end
         4'd3:begin
-            alu_res_ex_sign = {{48{ mul_res[15]}},mul_res[15:0]}; //lh
+            mul_res = {{48{ mul_res[15]}},mul_res[15:0]}; //lh
                 
         end
         default:begin
-            alu_res_ex_sign= mul_res;
+            mul_res = mul_res;
         end
     endcase
 end
