@@ -167,14 +167,14 @@ assign mul_res = (sh_fnsh_flag == 1'd1)? p :130'd0;
 always@(*)begin
 	if(mul_valid)begin
 		if(sh_fnsh_flag != 1'b1)begin
-			stop <= 1'b1;
+			stop = 1'b1;
 		end
 		else begin
-			stop <= 1'b0;
+			stop = 1'b0;
 		end
 	end
 	else begin
-		stop <= 1'b0;
+		stop = 1'b0;
 	end
 end
 
