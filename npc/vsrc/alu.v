@@ -182,7 +182,7 @@ wire [63:0] alu_res2;
 assign alu_res2 = (sh_fnsh_flag) ? mul_res[63:0] : alu_res;
 
 always @(*) begin
-    if(alu_res2 == alu_res)begin
+    if(sh_fnsh_flag == 1'b0)begin
     case(expand_signed)
         4'd0:begin
              alu_res_ex_sign = alu_res2;   //jalr
@@ -202,7 +202,7 @@ always @(*) begin
         end
     endcase
     end
-    else if(alu_res2 == mul_res[63:0])begin
+    else if(sh_fnsh_flag)begin
         case(mul_expand_signed)
         4'd0:begin
              alu_res_ex_sign = alu_res2;   //jalr
