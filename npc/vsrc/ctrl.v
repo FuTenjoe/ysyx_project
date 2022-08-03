@@ -778,7 +778,7 @@ always@(*)begin
     end
     else begin
         ebreak_flag = 1'b0;
-        unknown_code = unknown_code;
+        unknown_code = 32'h0;
     end
 end
 
