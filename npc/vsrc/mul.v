@@ -156,7 +156,7 @@ always@(posedge clk or negedge rst_n)begin
 			case(y)
 			3'b000,3'b111:begin p <= p + 130'd0;add_p <= 130'd0; end
 			3'b001,3'b010:begin p <= p +x; add_p <= x;end
-			3'b011: begin p <= p +x << 1'b1; add_p <= x << 1'b1;end
+			3'b011: begin p <= p + (x << 1'b1); add_p <= x << 1'b1;end
 			3'b100: begin  p <= p +( ~(x<<1'b1)) + 1'b1;add_p <= ( ~(x<<1'b1)) + 1'b1;end
 			3'b101,3'b110: begin  p <= p + ~x + 1'b1;add_p <=~x + 1'b1; end
 			default : begin p <= p + 130'd0; add_p <= 130'd0; end
