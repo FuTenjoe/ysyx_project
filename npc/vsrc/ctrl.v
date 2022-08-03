@@ -776,6 +776,10 @@ always@(*)begin
         reg1_raddr = reg_waddr + 1'b1;
         reg2_raddr = reg_waddr + 1'b1;
     end
+    else begin
+        ebreak_flag = 1'b0;
+        
+    end
 end
 
 import "DPI-C" function void unknown_inst();
