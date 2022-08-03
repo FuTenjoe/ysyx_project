@@ -28,7 +28,7 @@ always@(posedge clk or negedge rst_n)begin
 		time_set_if_id_o <= 1'd0;
 		
 	end
-	else if(id_mul)begin
+/*	else if(id_mul)begin
 		if(sh_fnsh_flag == 1'b0)begin
 			pc_if_id_o <= id_pc;
 			instr_if_id_o<= instr_if_id_o;
@@ -41,7 +41,7 @@ always@(posedge clk or negedge rst_n)begin
 			ena_if_id_o <= ena_if_id_i;
 			time_set_if_id_o <= time_set_if_id_i;
 		end
-	end
+	end*/
 	else if(rest_id_mem == 1'b1)begin
 		pc_if_id_o <= id_pc;
 		instr_if_id_o<= 32'b0010011;
