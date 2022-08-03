@@ -178,8 +178,19 @@ always @(*) begin
 end
 
 wire [63:0] alu_res2;
-assign alu_res2 = (mul_valid) ? mul_res[63:0] : alu_res;
-
+assign alu_res = (mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res;
+reg [129:0] delay_mul_res;
+reg delay_sh_fg;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        delay_sh_fg <= 1'd0; 
+        delay_mul_res <= 130'd0;
+    end
+    else begin
+        delay_sh_fg <= sh_fnsh_flag;
+        delay_mul_res <= mul_res;
+    end
+end
 
 always @(*) begin
     case(expand_signed)
