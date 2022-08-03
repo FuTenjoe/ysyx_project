@@ -168,8 +168,6 @@ always@(*)begin
 		stop = 1'b1;
 	else if(sh_fnsh_flag)
 		stop = 1'b0;
-	else
-		stop = stop;
 end
 reg [129:0]ex_p;
 always @(*) begin
