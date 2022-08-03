@@ -40,7 +40,8 @@ if_stage u_if_stage(
     .rest_id_mem(rest_id_mem),
     .id_pc(id_pc),
     .sig_jalr(sig_jalr),
-    .sh_fnsh_flag(sh_fnsh_flag)
+    .sh_fnsh_flag(sh_fnsh_flag),
+    .id_mul(id_mul)
     
     
 );

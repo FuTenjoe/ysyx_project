@@ -580,7 +580,7 @@ void Vysyx_22040175_top___024root__traceFullTop0(void* voidSelf, VerilatedVcd* t
 void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VlWide<5>/*159:0*/ __Vtemp219;
+    VlWide<5>/*159:0*/ __Vtemp220;
     vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode);
     if (false && oldp) {}  // Prevent unused
     // Body
@@ -702,19 +702,19 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullQData(oldp+132,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__signed_alu_src2),64);
         tracep->fullBit(oldp+134,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_valid));
         if (vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag) {
-            __Vtemp219[0U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__ex_p[0U];
-            __Vtemp219[1U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__ex_p[1U];
-            __Vtemp219[2U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__ex_p[2U];
-            __Vtemp219[3U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__ex_p[3U];
-            __Vtemp219[4U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__ex_p[4U];
+            __Vtemp220[0U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__ex_p[0U];
+            __Vtemp220[1U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__ex_p[1U];
+            __Vtemp220[2U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__ex_p[2U];
+            __Vtemp220[3U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__ex_p[3U];
+            __Vtemp220[4U] = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__ex_p[4U];
         } else {
-            __Vtemp219[0U] = 0U;
-            __Vtemp219[1U] = 0U;
-            __Vtemp219[2U] = 0U;
-            __Vtemp219[3U] = 0U;
-            __Vtemp219[4U] = 0U;
+            __Vtemp220[0U] = 0U;
+            __Vtemp220[1U] = 0U;
+            __Vtemp220[2U] = 0U;
+            __Vtemp220[3U] = 0U;
+            __Vtemp220[4U] = 0U;
         }
-        tracep->fullWData(oldp+135,(__Vtemp219),130);
+        tracep->fullWData(oldp+135,(__Vtemp220),130);
         tracep->fullBit(oldp+140,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_expand_signed));
         tracep->fullQData(oldp+141,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res2),64);
         tracep->fullCData(oldp+143,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_expand_signed),4);
