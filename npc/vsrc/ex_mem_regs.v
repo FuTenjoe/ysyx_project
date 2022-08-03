@@ -51,8 +51,8 @@ module ex_mem_regs(
 	//output reg [63:0] end_write_addr_ex_mem_o,
 	input cunqu_hazard_ex_mem_i,
 	output reg cunqu_hazard_ex_mem_o,
-	input mul_stop
-	
+	input id_mul_ex_mem_i,
+	input sh_fnsh_flag_ex_mem_i
 	
     );
 
@@ -106,6 +106,53 @@ module ex_mem_regs(
 			cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_i;
 			
 			rest_id_mem_ex_mem_o <= 1'b1;
+		end
+		else if(id_mul_ex_mem_i == 1'b1)begin
+			if(sh_fnsh_flag_ex_mem_i != 1'b1)begin
+				reg_wen_ex_mem_o <= reg_wen_ex_mem_o;
+				reg_waddr_ex_mem_o <= reg_waddr_ex_mem_o;
+				//reg_wdata_ex_mem_o <= reg_wdata_ex_mem_i;
+				
+				wmask_ex_mem_o <= wmask_ex_mem_o;
+				s_flag_ex_mem_o <= s_flag_ex_mem_o;
+				time_set_ex_mem_o <= time_set_ex_mem_o;
+				s_imm_ex_mem_o <= s_imm_ex_mem_o;
+				expand_signed_ex_mem_o <= expand_signed_ex_mem_o;
+
+				ebreak_flag_ex_mem_o <= ebreak_flag_ex_mem_o;
+
+				rd_buf_flag_ex_mem_o <= rd_buf_flag_ex_mem_o;
+				alu_op_ex_mem_o <= alu_op_ex_mem_o;
+
+				alu_src1_ex_mem_o <= alu_src1_ex_mem_o;
+				alu_src2_ex_mem_o <= alu_src2_ex_mem_o;
+				from_ex_alu_res_ex_mem_o <= from_ex_alu_res_ex_mem_o;
+				pc_ex_mem_o <= pc_ex_mem_o;
+				rest_id_mem_ex_mem_o <= 1'b0;
+				cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_o;
+			end
+			else begin
+				reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
+			reg_waddr_ex_mem_o <= reg_waddr_ex_mem_i;
+			//reg_wdata_ex_mem_o <= reg_wdata_ex_mem_i;
+			
+			wmask_ex_mem_o <= wmask_ex_mem_i;
+			s_flag_ex_mem_o <= s_flag_ex_mem_i;
+			time_set_ex_mem_o <= time_set_ex_mem_i;
+			s_imm_ex_mem_o <= s_imm_ex_mem_i;
+			expand_signed_ex_mem_o <= expand_signed_ex_mem_i;
+
+			ebreak_flag_ex_mem_o <= ebreak_flag_ex_mem_i;
+
+			rd_buf_flag_ex_mem_o <= rd_buf_flag_ex_mem_i;
+			alu_op_ex_mem_o <= alu_op_ex_mem_i;
+			alu_src1_ex_mem_o <= alu_src1_ex_mem_i;
+			alu_src2_ex_mem_o <= alu_src2_ex_mem_i;
+			from_ex_alu_res_ex_mem_o <= from_ex_alu_res_ex_mem_i;
+			pc_ex_mem_o <= pc_ex_mem_i;
+			rest_id_mem_ex_mem_o <= 1'b0;
+			cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_i;
+			end
 		end
 		else begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;

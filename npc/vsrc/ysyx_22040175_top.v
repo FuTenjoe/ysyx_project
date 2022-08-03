@@ -184,6 +184,7 @@ wire ex_rest_id_mem;
 wire [31:0] ex_inst;
 wire [63:0] ex_end_write_addr;
 wire ex_cunqu_hazard;
+wire ex_id_mul;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -242,7 +243,9 @@ id_ex_regs u_id_ex_regs(
     //.end_write_addr_id_ex_i(id_end_write_addr),
 	//.end_write_addr_id_ex_o(ex_end_write_addr),
     .cunqu_hazard_id_ex_i(id_cunqu_hazard),
-    .cunqu_hazard_id_ex_o(ex_cunqu_hazard)
+    .cunqu_hazard_id_ex_o(ex_cunqu_hazard),
+    .id_mul_id_ex_i(id_mul),
+	id_mul_id_ex_o(ex_id_mul)
    
     
     );
@@ -334,10 +337,9 @@ ex_mem_regs u_ex_mem_regs(
     //.end_write_addr_ex_mem_i(ex_end_write_addr),
 	//.end_write_addr_ex_mem_o(mem_end_write_addr),
     .cunqu_hazard_ex_mem_i(ex_cunqu_hazard),
-    .cunqu_hazard_ex_mem_o(mem_cunqu_hazard)
-   
-   
-    
+    .cunqu_hazard_ex_mem_o(mem_cunqu_hazard),
+    .id_mul_ex_mem_i(ex_id_mul),
+	.sh_fnsh_flag_ex_mem_i(sh_fnsh_flag)
 	
 );
 wire [63:0] from_mem_alu_res;
