@@ -2416,9 +2416,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
         vlSelf->ysyx_22040175_top__DOT__id_unknown_code 
             = (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst));
     }
-    if ((0x100073U == vlSelf->ysyx_22040175_top__DOT__id_inst)) {
-        vlSelf->ysyx_22040175_top__DOT__id_unknown_code = 0ULL;
-    }
     vlSelf->ysyx_22040175_top__DOT__id_jalr = 0U;
     if ((1U & (IData)(((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                        >> 6U)))) {
