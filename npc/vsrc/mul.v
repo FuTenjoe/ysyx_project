@@ -54,8 +54,7 @@ always@(posedge clk or negedge rst_n)begin
 		delay1_sh_fg <= sh_fnsh_flag;
 		delay2_sh_fg <= delay1_sh_fg;
 	end
-		
-
+end		
 
 parameter IDLE = 3'd0,NEXT=3'd1,SHIFT=3'd2,LAST=3'd3;
 reg [2:0] present_state,next_state;
