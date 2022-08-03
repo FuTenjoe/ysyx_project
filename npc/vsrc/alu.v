@@ -178,7 +178,7 @@ always @(*) begin
 end
 
 wire [63:0] alu_res2;
-assign alu_res2 = (sh_fnsh_flag |(delay_sh_fg)) ? ((mul_res[63:0] && sh_fnsh_flag ) | ( delay_mul_res[63:0] && (delay_sh_fg) )  ) : alu_res;
+assign alu_res2 = (sh_fnsh_flag |(delay_sh_fg)) ? ((mul_res[63:0] && sh_fnsh_flag ) | ( delay_mul_res[63:0] && (delay_sh_fg))) : alu_res;
 reg [129:0] delay_mul_res;
 reg delay_sh_fg;
 always@(posedge clk or negedge rst_n)begin
