@@ -105,6 +105,7 @@ always@(posedge clk or negedge rst_n)begin
 			p <= 130'd0;
 			reg_alu_y <= alu_y;
 			delay_alu_y <= alu_y;
+			stop = 1'b0;
 		end
 		NEXT:begin
 			x <= alu_x;
@@ -112,6 +113,7 @@ always@(posedge clk or negedge rst_n)begin
 			reg_alu_y <= alu_y >>>3'd2;
 			delay_alu_y <= reg_alu_y >>> 3'd1;
 			sh_fnsh_flag <= 1'd0;
+			stop = 1'b0; <= 1'b1;
 			case(y)
 			3'b000,3'b111:begin p <= p + 130'd0;add_p <= 130'd0; end
 			3'b001,3'b010:begin p <= p +x;add_p <= x; end
@@ -128,6 +130,7 @@ always@(posedge clk or negedge rst_n)begin
 			delay_alu_y <= reg_alu_y >>> 3'd1;
 			y <= delay_alu_y[2:0];
 			sh_fnsh_flag <= 1'd0;
+			stop <= 1'b1;
 			case(y)
 			3'b000,3'b111:begin p <= p + 130'd0;add_p <= 130'd0; end
 			3'b001,3'b010:begin p <= p +x; add_p <= x;end
@@ -151,6 +154,7 @@ always@(posedge clk or negedge rst_n)begin
 			//add_p <= add_p + p;
 			endcase
 			sh_fnsh_flag <= 1'd1;
+			stop <= 1'b1;
 			reg_alu_y <= reg_alu_y;
 		end
 		default: begin
@@ -159,27 +163,12 @@ always@(posedge clk or negedge rst_n)begin
 			sh_fnsh_flag <= 1'd1;
 			add_p <= 130'd0;
 			reg_alu_y <= 130'd0;
+			stop <= 1'b0;
 		end
 		endcase
 	end
 end
 
-//assign mul_res = p ;
-always@(*)begin
-	if(mul_valid)begin
-		if(sh_fnsh_flag != 1'b1)begin
-			stop = 1'b1;
-		end
-		else begin
-			stop = 1'b0;
-		end
-	end
-	else begin
-		if(sh_fnsh_flag == 1'b1)begin
-			stop = 1'b0;
-		end
-	end
-end
 reg [129:0]ex_p;
 always @(*) begin
 	if(sh_fnsh_flag)begin
