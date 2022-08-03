@@ -608,7 +608,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullCData(oldp+17,(vlSelf->ysyx_22040175_top__DOT__id_alu_src_sel),2);
         tracep->fullQData(oldp+18,(vlSelf->ysyx_22040175_top__DOT__id_unknown_code),64);
         tracep->fullBit(oldp+20,(vlSelf->ysyx_22040175_top__DOT__id_jalr));
-        tracep->fullBit(oldp+21,(vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag));
+        tracep->fullBit(oldp+21,((0x100073U == vlSelf->ysyx_22040175_top__DOT__id_inst)));
         tracep->fullCData(oldp+22,(vlSelf->ysyx_22040175_top__DOT__id_wmask),8);
         tracep->fullBit(oldp+23,(vlSelf->ysyx_22040175_top__DOT__id_s_flag));
         tracep->fullIData(oldp+24,(vlSelf->ysyx_22040175_top__DOT__id_s_imm),32);
