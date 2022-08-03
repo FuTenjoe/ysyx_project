@@ -178,7 +178,7 @@ always @(*) begin
 end
 
 wire [63:0] alu_res2;
-assign alu_res2 = (sh_fnsh_flag) ? mul_res[63:0] : alu_res;
+assign alu_res2 = (mul_valid) ? mul_res[63:0] : alu_res;
 
 
 always @(*) begin
