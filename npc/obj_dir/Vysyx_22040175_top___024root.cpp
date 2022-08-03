@@ -1443,7 +1443,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                     ? 
                                                    ((IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)
                                                      ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata)
-                                                     : 0x13U)
+                                                     : (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata))
                                                     : 
                                                    ((IData)(vlSelf->ysyx_22040175_top__DOT__rest_id_mem)
                                                      ? 0x13U
