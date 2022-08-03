@@ -149,7 +149,8 @@ always @(*) begin
                  alu_res = alu_src1 | alu_src2;
         `ALU_MUL:begin
                 mul_valid = 1'b1; 
-                mul_expand_signed = expand_signed;    
+                mul_expand_signed = expand_signed; 
+                alu_res = alu_src1 * alu_src2;    
         end
         `ALU_DIVW:
                 alu_res = alu_src1[31:0] / alu_src2[31:0];
@@ -179,7 +180,7 @@ end
 
 wire [63:0] alu_res2;
 //assign alu_res2 = (mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res;
-assign alu_res2 = (mul_valid) ? mul_res : alu_res;
+assign alu_res2 = alu_res;
 reg [129:0] delay_mul_res;
 reg delay_sh_fg;
 always@(posedge clk or negedge rst_n)begin
