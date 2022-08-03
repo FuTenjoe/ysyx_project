@@ -98,26 +98,26 @@ always@(posedge clk or negedge rst_n)begin
 		end
 		else if(mul_stop)begin
 			pc_id_ex_o<=pc_id_ex_o;
-			reg_wen_id_ex_o <= reg_wen_id_ex_i;
-			reg_waddr_id_ex_o <= reg_waddr_id_ex_i;
-			alu_op_id_ex_o <= alu_op_id_ex_i;
+			reg_wen_id_ex_o <= reg_wen_id_ex_o;
+			reg_waddr_id_ex_o <= reg_waddr_id_ex_o;
+			alu_op_id_ex_o <= alu_op_id_ex_o;
 			
-			unknown_code_id_ex_o <= unknown_code_id_ex_i;
+			unknown_code_id_ex_o <= unknown_code_id_ex_o;
 			
-			ebreak_flag_id_ex_o <= ebreak_flag_id_ex_i;
-			wmask_id_ex_o <= wmask_id_ex_i;
-			s_flag_id_ex_o <= s_flag_id_ex_i;
-			s_imm_id_ex_o <= s_imm_id_ex_i;
-			expand_signed_id_ex_o <= expand_signed_id_ex_i;
-			rd_flag_id_ex_o <= rd_flag_id_ex_i;
-			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_i;
-			ena_id_ex_o <= ena_id_ex_i;
+			ebreak_flag_id_ex_o <= ebreak_flag_id_ex_o;
+			wmask_id_ex_o <= wmask_id_ex_o;
+			s_flag_id_ex_o <= s_flag_id_ex_o;
+			s_imm_id_ex_o <= s_imm_id_ex_o;
+			expand_signed_id_ex_o <= expand_signed_id_ex_o;
+			rd_flag_id_ex_o <= rd_flag_id_ex_o;
+			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_o;
+			ena_id_ex_o <= ena_id_ex_o;
 			
-			alu_src1_id_ex_o <= alu_src1_id_ex_i;   // alu source 1
-    		alu_src2_id_ex_o <= alu_src2_id_ex_i;    // alu source 2
-    		rest_id_mem_id_ex_o <= rest_id_mem_id_ex_i;
-			ex_inst <= id_inst;
-			cunqu_hazard_id_ex_o <= cunqu_hazard_id_ex_i;
+			alu_src1_id_ex_o <= alu_src1_id_ex_o;   // alu source 1
+    		alu_src2_id_ex_o <= alu_src2_id_ex_o;    // alu source 2
+    		rest_id_mem_id_ex_o <= rest_id_mem_id_ex_o;
+			ex_inst <= ex_inst ;
+			cunqu_hazard_id_ex_o <= cunqu_hazard_id_ex_o;
 		end
 		else begin
 			pc_id_ex_o<=pc_id_ex_i;
