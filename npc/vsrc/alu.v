@@ -21,7 +21,7 @@ reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 reg mul_valid;
 wire [129:0] mul_res;
-reg [3:0]mul_expand_signed;
+reg mul_expand_signed;
 always @(*) begin
     zero = 1'b0;
     alu_res = alu_src1 -  alu_src2;
