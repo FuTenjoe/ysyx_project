@@ -245,7 +245,7 @@ id_ex_regs u_id_ex_regs(
     .cunqu_hazard_id_ex_i(id_cunqu_hazard),
     .cunqu_hazard_id_ex_o(ex_cunqu_hazard),
     .id_mul_id_ex_i(id_mul),
-	id_mul_id_ex_o(ex_id_mul)
+	.id_mul_id_ex_o(ex_id_mul)
    
     
     );
