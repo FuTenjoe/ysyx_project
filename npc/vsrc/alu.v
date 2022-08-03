@@ -11,7 +11,6 @@ module alu(
     output reg [63:0]    alu_res_ex_sign,   // alu result
     input [2:0]rd_flag,
     input [3:0] expand_signed,
-    output mul_stop,
     output sh_fnsh_flag
 );
 //reg [63:0] rd_buf_lw;
@@ -150,7 +149,6 @@ always @(*) begin
                  alu_res = alu_src1 | alu_src2;
         `ALU_MUL:begin
                 mul_valid = 1'b1; 
-                alu_res = alu_src1 * alu_src2;
                 mul_expand_signed = expand_signed;    
         end
         `ALU_DIVW:
@@ -178,6 +176,7 @@ always @(*) begin
         end
     endcase
 end
+
 wire [63:0] alu_res2;
 assign alu_res2 = (sh_fnsh_flag) ? mul_res[63:0] : alu_res;
 
