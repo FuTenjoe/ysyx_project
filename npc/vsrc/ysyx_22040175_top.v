@@ -27,7 +27,7 @@ assign inst = if_inst;
 
 
 wire rest_id_mem;
-wire mul_stop;
+
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -40,7 +40,8 @@ if_stage u_if_stage(
     .rest_id_mem(rest_id_mem),
     .id_pc(id_pc),
     .sig_jalr(sig_jalr),
-    .mul_stop(mul_stop)
+    .sh_fnsh_flag(sh_fnsh_flag)
+    
     
 );
 wire [31:0]id_inst;
@@ -63,7 +64,9 @@ if_id_regs u_if_id_regs(
     .id_pc(id_pc),
     .rest_id_mem(rest_id_mem),
     .delay_sig_jalr(delay_sig_jalr),
-    .mul_stop(mul_stop)
+    .id_mul(id_mul),
+	.sh_fnsh_flag(sh_fnsh_flag)
+    
     
 );
 wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
@@ -90,6 +93,7 @@ wire id_control_rest;
 wire [63:0] id_end_write_addr;
 wire rest_wb_hazard;
 wire sig_jalr;
+wire id_mul;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -144,7 +148,8 @@ id_stage u_id_stage(
     .ex_s_imm(ex_s_imm),
     .cunqu_hazard(id_cunqu_hazard),
     .mem_cunqu_hazard(mem_cunqu_hazard),
-    .mem_from_ex_alu_res(mem_from_ex_alu_res)
+    .mem_from_ex_alu_res(mem_from_ex_alu_res),
+    .id_mul(id_mul)
 );
 
 wire id_cunqu_hazard;
@@ -236,8 +241,8 @@ id_ex_regs u_id_ex_regs(
     //.end_write_addr_id_ex_i(id_end_write_addr),
 	//.end_write_addr_id_ex_o(ex_end_write_addr),
     .cunqu_hazard_id_ex_i(id_cunqu_hazard),
-    .cunqu_hazard_id_ex_o(ex_cunqu_hazard),
-    .mul_stop(mul_stop)
+    .cunqu_hazard_id_ex_o(ex_cunqu_hazard)
+   
     
     );
 wire [63:0] from_ex_alu_res;
@@ -246,6 +251,7 @@ wire [`CPU_WIDTH-1:0]    ex_alu_src2;
 wire [`CPU_WIDTH-1:0] ex_next_pc;
 wire write_ready;
 wire ex_pc_ready;
+wire sh_fnsh_flag;
 ex_stage u_ex_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -255,7 +261,8 @@ ex_stage u_ex_stage(
     .alu_res(from_ex_alu_res),   // alu result
     .rd_flag(ex_rd_flag),
     .expand_signed(ex_expand_signed),
-    .mul_stop(mul_stop)
+    .sh_fnsh_flag(sh_fnsh_flag)
+  
 );
 wire mem_reg_wen;
 wire [`REG_ADDR_WIDTH-1:0] mem_reg_waddr;
@@ -326,8 +333,7 @@ ex_mem_regs u_ex_mem_regs(
     //.end_write_addr_ex_mem_i(ex_end_write_addr),
 	//.end_write_addr_ex_mem_o(mem_end_write_addr),
     .cunqu_hazard_ex_mem_i(ex_cunqu_hazard),
-    .cunqu_hazard_ex_mem_o(mem_cunqu_hazard),
-    .mul_stop(mul_stop)
+    .cunqu_hazard_ex_mem_o(mem_cunqu_hazard)
    
    
     

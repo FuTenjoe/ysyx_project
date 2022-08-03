@@ -4,14 +4,15 @@ module alu(
     input clk,
     input rst_n,
     input      [`ALU_OP_WIDTH-1:0] alu_op,   // alu opcode
-    input      [63:0]    alu_src1, // alu source 1
+    input      [63:0]    alu_src1, // alu source 1sh_fnsh_flag
     //input      [`CPU_WIDTH-1:0]    alu_src2, // alu source 2
     input      [63:0]    alu_src2, // alu source 2
     //output reg                     zero,     // alu result is zero
     output reg [63:0]    alu_res_ex_sign,   // alu result
     input [2:0]rd_flag,
     input [3:0] expand_signed,
-    output mul_stop
+    output mul_stop,
+    output sh_fnsh_flag
 );
 //reg [63:0] rd_buf_lw;
 //reg [2:0] test;
@@ -21,7 +22,6 @@ reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 reg mul_valid;
 wire [129:0] mul_res;
-wire sh_fnsh_flag;
 reg mul_expand_signed;
 always @(*) begin
     zero = 1'b0;
@@ -214,8 +214,7 @@ mul u_mul(
 	//output reg [7:0] shift_cnt,
     .mul_expand_signed(mul_expand_signed),
 	.mul_res(mul_res),
-	.sh_fnsh_flag(sh_fnsh_flag),
-    .stop(mul_stop)
+	.sh_fnsh_flag(sh_fnsh_flag)
     );
 
 endmodule

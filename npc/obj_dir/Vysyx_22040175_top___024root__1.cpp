@@ -14,9 +14,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root___combo__TOP__4\n"); );
     // Body
-    vlSelf->ysyx_22040175_top__DOT__mul_stop = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_valid) 
-                                                | ((~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__sh_fnsh_flag)) 
-                                                   & (IData)(vlSelf->ysyx_22040175_top__DOT__mul_stop)));
     if (((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
            & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
           & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
@@ -869,15 +866,11 @@ VL_INLINE_OPT QData Vysyx_22040175_top___024root___change_request_1(Vysyx_220401
     // Body
     // Change detection
     QData __req = false;  // Logically a bool
-    __req |= ((vlSelf->ysyx_22040175_top__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__rst_n)
-         | (vlSelf->ysyx_22040175_top__DOT__mul_stop ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__mul_stop));
+    __req |= ((vlSelf->ysyx_22040175_top__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__rst_n));
     VL_DEBUG_IF( if(__req && ((vlSelf->ysyx_22040175_top__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__rst_n))) VL_DBG_MSGF("        CHANGE: vsrc/ysyx_22040175_top.v:18: ysyx_22040175_top.rst_n\n"); );
-    VL_DEBUG_IF( if(__req && ((vlSelf->ysyx_22040175_top__DOT__mul_stop ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__mul_stop))) VL_DBG_MSGF("        CHANGE: vsrc/ysyx_22040175_top.v:30: ysyx_22040175_top.mul_stop\n"); );
     // Final
     vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__rst_n 
         = vlSelf->ysyx_22040175_top__DOT__rst_n;
-    vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__mul_stop 
-        = vlSelf->ysyx_22040175_top__DOT__mul_stop;
     return __req;
 }
 

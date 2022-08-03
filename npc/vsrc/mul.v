@@ -10,8 +10,7 @@ module mul(
 	input [3:0] mul_expand_signed,
 	//output reg [7:0] shift_cnt,
 	output [129:0] mul_res,
-	output reg sh_fnsh_flag,
-	output reg stop
+	output reg sh_fnsh_flag
 
     );
 reg [129:0] alu_x;
@@ -163,12 +162,7 @@ always@(posedge clk or negedge rst_n)begin
 		endcase
 	end
 end
-always@(*)begin
-	if(mul_valid)
-		stop = 1'b1;
-	else if(sh_fnsh_flag)
-		stop = 1'b0;
-end
+
 reg [129:0]ex_p;
 always @(*) begin
 	if(sh_fnsh_flag)begin

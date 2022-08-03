@@ -11,7 +11,8 @@ module if_stage (
     input rest_id_mem ,
     input [63:0] id_pc,
     input sig_jalr,
-    input mul_stop
+    input id_mul,
+    input sh_fnsh_flag
 );
 
 pc_predict u_pc_predict(
@@ -24,7 +25,9 @@ pc_predict u_pc_predict(
   .rest_id_mem (rest_id_mem ),
   .id_curr_pc(id_pc),
   .sig_jalr(sig_jalr),
-  .mul_stop(mul_stop)
+  .id_mul(id_mul),
+  .sh_fnsh_flag(sh_fnsh_flag)
+
   
 );
 

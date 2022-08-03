@@ -51,7 +51,8 @@ module id_stage (
     input [31:0] ex_s_imm,
     output reg cunqu_hazard,
     input mem_cunqu_hazard,
-    input [63:0] mem_from_ex_alu_res
+    input [63:0] mem_from_ex_alu_res,
+    output id_mul
    
    
 );
@@ -86,7 +87,8 @@ ctrl u_ctrl(
     .s_imm(s_imm),
     .expand_signed(expand_signed),
     .rd_flag(rd_flag),
-    .rd_buf_flag(rd_buf_flag)   //访存标志
+    .rd_buf_flag(rd_buf_flag),   //访存标志
+    .id_mul(id_mul)
    
 );
 imm_gen u_imm_gen(
