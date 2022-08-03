@@ -178,7 +178,7 @@ always @(*) begin
 end
 
 wire [63:0] alu_res2;
-//assign alu_res2 = (mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res;
+assign alu_res2 = (mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res;
 
 reg [129:0] delay_mul_res;
 reg delay_sh_fg;
@@ -216,7 +216,6 @@ end
 
 wire [1:0] mul_signed;
 assign mul_signed = 2'b11;
-assign mul_expand_signed = (alu_op == `ALU_MUL) ? expand_signed : 4'b0; 
 mul u_mul(
 	.clk(clk),
 	.rst_n(rst_n),

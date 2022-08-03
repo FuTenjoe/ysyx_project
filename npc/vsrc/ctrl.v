@@ -17,7 +17,7 @@ module ctrl (
     output reg [`ALU_SRC_WIDTH-1:0]    alu_src_sel ,// alu source select flag
     output reg [`CPU_WIDTH-1:0]            unknown_code,
     output  reg  jalr,
-    output  ebreak_flag,
+    output reg ebreak_flag,
     output reg [7:0]wmask,
     output reg s_flag,
     output reg [31:0]s_imm,
@@ -48,6 +48,7 @@ always @(*) begin
     alu_op      = `ALU_AND;
     alu_src_sel = `ALU_SRC_REG;
     unknown_code = 32'h0;
+    ebreak_flag = 1'd0;
     wmask = 8'd0;
     s_flag = 1'd0;
     expand_signed = 4'd0;
@@ -768,20 +769,14 @@ always @(*) begin
 end
 
 import "DPI-C" function void ebreak();
-
-assign ebreak_flag = (inst == 32'h0010_0073) ? 1'b1:1'b0;
-/*always@(*)begin
+always@(*)begin
     if(inst == 32'h0010_0073)begin
         ebreak_flag = 1'b1;
         unknown_code = 32'h0;
         reg1_raddr = reg_waddr + 1'b1;
         reg2_raddr = reg_waddr + 1'b1;
     end
-    else begin
-        ebreak_flag = 1'b0;
-        unknown_code = 32'h0;
-    end
-end*/
+end
 
 import "DPI-C" function void unknown_inst();
 always@(*)begin
