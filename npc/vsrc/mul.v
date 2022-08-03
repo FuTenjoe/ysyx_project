@@ -114,7 +114,7 @@ always@(posedge clk or negedge rst_n)begin
 			y <= 3'd0;
 			sh_fnsh_flag <= 1'd0;
 			add_p <= 130'd0;
-			p <= 130'd0;
+			p <= p;
 			reg_alu_y <= alu_y;
 			delay_alu_y <= alu_y;
 		end
@@ -168,6 +168,7 @@ always@(posedge clk or negedge rst_n)begin
 		default: begin
 			x <= 130'd0;
 			y <= 66'd0;
+			p <= 130'd0;
 			sh_fnsh_flag <= 1'd1;
 			add_p <= 130'd0;
 			reg_alu_y <= 130'd0;
