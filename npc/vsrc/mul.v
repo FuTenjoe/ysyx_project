@@ -40,7 +40,21 @@ always@(*)begin
 		alu_y =alu_y;
 	end
 end
-
+reg delay_mul_valid;
+reg delay1_sh_fg;
+reg delay2_sh_fg;
+always@(posedge clk or negedge rst_n)begin
+	if(!rst_n)begin
+		delay_mul_valid <= 1'b0;
+		delay1_sh_fg <= 1'b0;
+		delay2_sh_fg <= 1'b0;
+	end
+	else begin
+		delay_mul_valid <= mul_valid;
+		delay1_sh_fg <= sh_fnsh_flag;
+		delay2_sh_fg <= delay1_sh_fg;
+	end
+		
 
 
 parameter IDLE = 3'd0,NEXT=3'd1,SHIFT=3'd2,LAST=3'd3;
@@ -56,7 +70,7 @@ end
 always@(*)begin
 	case(present_state)
 	IDLE:begin
-		if(mul_valid)
+		if(mul_valid & ((!delay_mul_valid) | (delay2_sh_fg)))
 			next_state = NEXT;
 		else
 			next_state = IDLE;

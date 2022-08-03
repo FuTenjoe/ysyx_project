@@ -419,7 +419,6 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declQuad(c+52,"ysyx_22040175_top u_ex_stage u_alu alu_res_ex_sign", false,-1, 63,0);
         tracep->declBus(c+45,"ysyx_22040175_top u_ex_stage u_alu rd_flag", false,-1, 2,0);
         tracep->declBus(c+44,"ysyx_22040175_top u_ex_stage u_alu expand_signed", false,-1, 3,0);
-        tracep->declBit(c+700,"ysyx_22040175_top u_ex_stage u_alu mul_stop", false,-1);
         tracep->declBit(c+58,"ysyx_22040175_top u_ex_stage u_alu sh_fnsh_flag", false,-1);
         tracep->declBit(c+128,"ysyx_22040175_top u_ex_stage u_alu zero", false,-1);
         tracep->declQuad(c+129,"ysyx_22040175_top u_ex_stage u_alu alu_res", false,-1, 63,0);
@@ -429,22 +428,22 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declArray(c+136,"ysyx_22040175_top u_ex_stage u_alu mul_res", false,-1, 129,0);
         tracep->declBit(c+141,"ysyx_22040175_top u_ex_stage u_alu mul_expand_signed", false,-1);
         tracep->declQuad(c+142,"ysyx_22040175_top u_ex_stage u_alu alu_res2", false,-1, 63,0);
-        tracep->declBus(c+701,"ysyx_22040175_top u_ex_stage u_alu mul_signed", false,-1, 1,0);
+        tracep->declBus(c+700,"ysyx_22040175_top u_ex_stage u_alu mul_signed", false,-1, 1,0);
         tracep->declBit(c+594,"ysyx_22040175_top u_ex_stage u_alu u_mul clk", false,-1);
         tracep->declBit(c+256,"ysyx_22040175_top u_ex_stage u_alu u_mul rst_n", false,-1);
         tracep->declQuad(c+54,"ysyx_22040175_top u_ex_stage u_alu u_mul alu_src1", false,-1, 63,0);
         tracep->declQuad(c+56,"ysyx_22040175_top u_ex_stage u_alu u_mul alu_src2", false,-1, 63,0);
         tracep->declBit(c+135,"ysyx_22040175_top u_ex_stage u_alu u_mul mul_valid", false,-1);
-        tracep->declBus(c+701,"ysyx_22040175_top u_ex_stage u_alu u_mul mul_signed", false,-1, 1,0);
+        tracep->declBus(c+700,"ysyx_22040175_top u_ex_stage u_alu u_mul mul_signed", false,-1, 1,0);
         tracep->declBus(c+144,"ysyx_22040175_top u_ex_stage u_alu u_mul mul_expand_signed", false,-1, 3,0);
         tracep->declArray(c+136,"ysyx_22040175_top u_ex_stage u_alu u_mul mul_res", false,-1, 129,0);
         tracep->declBit(c+58,"ysyx_22040175_top u_ex_stage u_alu u_mul sh_fnsh_flag", false,-1);
         tracep->declArray(c+145,"ysyx_22040175_top u_ex_stage u_alu u_mul alu_x", false,-1, 129,0);
         tracep->declArray(c+150,"ysyx_22040175_top u_ex_stage u_alu u_mul alu_y", false,-1, 65,0);
-        tracep->declBus(c+702,"ysyx_22040175_top u_ex_stage u_alu u_mul IDLE", false,-1, 2,0);
-        tracep->declBus(c+703,"ysyx_22040175_top u_ex_stage u_alu u_mul NEXT", false,-1, 2,0);
-        tracep->declBus(c+704,"ysyx_22040175_top u_ex_stage u_alu u_mul SHIFT", false,-1, 2,0);
-        tracep->declBus(c+705,"ysyx_22040175_top u_ex_stage u_alu u_mul LAST", false,-1, 2,0);
+        tracep->declBus(c+701,"ysyx_22040175_top u_ex_stage u_alu u_mul IDLE", false,-1, 2,0);
+        tracep->declBus(c+702,"ysyx_22040175_top u_ex_stage u_alu u_mul NEXT", false,-1, 2,0);
+        tracep->declBus(c+703,"ysyx_22040175_top u_ex_stage u_alu u_mul SHIFT", false,-1, 2,0);
+        tracep->declBus(c+704,"ysyx_22040175_top u_ex_stage u_alu u_mul LAST", false,-1, 2,0);
         tracep->declBus(c+153,"ysyx_22040175_top u_ex_stage u_alu u_mul present_state", false,-1, 2,0);
         tracep->declBus(c+154,"ysyx_22040175_top u_ex_stage u_alu u_mul next_state", false,-1, 2,0);
         tracep->declArray(c+155,"ysyx_22040175_top u_ex_stage u_alu u_mul x", false,-1, 129,0);
@@ -1054,11 +1053,10 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullBit(oldp+696,(vlSelf->ysyx_22040175_top__DOT__wb_pc_ready));
         tracep->fullQData(oldp+697,(vlSelf->ysyx_22040175_top__DOT__wb_end_write_addr),64);
         tracep->fullCData(oldp+699,(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__test),3);
-        tracep->fullBit(oldp+700,(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_stop));
-        tracep->fullCData(oldp+701,(3U),2);
-        tracep->fullCData(oldp+702,(0U),3);
-        tracep->fullCData(oldp+703,(1U),3);
-        tracep->fullCData(oldp+704,(2U),3);
-        tracep->fullCData(oldp+705,(3U),3);
+        tracep->fullCData(oldp+700,(3U),2);
+        tracep->fullCData(oldp+701,(0U),3);
+        tracep->fullCData(oldp+702,(1U),3);
+        tracep->fullCData(oldp+703,(2U),3);
+        tracep->fullCData(oldp+704,(3U),3);
     }
 }
