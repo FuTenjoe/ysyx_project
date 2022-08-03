@@ -21,7 +21,7 @@ reg signed [63:0] signed_alu_src1;
 reg signed [63:0] signed_alu_src2;
 reg mul_valid;
 wire [129:0] mul_res;
-reg mul_expand_signed;
+wire [3:0]mul_expand_signed;
 always @(*) begin
     zero = 1'b0;
     alu_res = alu_src1 -  alu_src2;
@@ -216,6 +216,7 @@ end
 
 wire [1:0] mul_signed;
 assign mul_signed = 2'b11;
+assign mul_expand_signed = (alu_op == `ALU_MUL) ? expand_signed : 4'b0; 
 mul u_mul(
 	.clk(clk),
 	.rst_n(rst_n),
