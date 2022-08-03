@@ -23,7 +23,7 @@ module ctrl (
     output reg [31:0]s_imm,
     output reg [3:0] expand_signed,
     output reg [2:0]rd_flag,
-    output reg [2:0] rd_buf_flag   //访存标志
+    output reg [2:0] rd_buf_flag,   //访存标志
     output reg id_mul
    
 );
