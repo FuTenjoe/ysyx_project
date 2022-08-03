@@ -75,13 +75,13 @@ always@(*)begin
 			next_state = IDLE;
 	end
 	NEXT:begin
-		if(delay_alu_y == 66'b111 || delay_alu_y == 66'b0)
+		if((delay_alu_y == 66'b111 && (mul_signed[0] == 1'b0)) | (delay_alu_y == 66'b0 && (mul_signed[0]==1'b1 )))
 			next_state = LAST;
 		else
 			next_state = SHIFT;
 	end
 	SHIFT:begin
-		if(delay_alu_y == 66'b111 || delay_alu_y == 66'b0)
+		if((delay_alu_y == 66'b111 && (mul_signed[0] == 1'b0)) | (delay_alu_y == 66'b0 && (mul_signed[0]==1'b1 )))
 			next_state = LAST;
 		else
 			next_state = SHIFT;
