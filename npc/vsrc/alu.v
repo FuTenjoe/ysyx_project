@@ -214,7 +214,7 @@ mul u_mul(
 	//output reg [7:0] shift_cnt,
     .mul_expand_signed(mul_expand_signed),
 	.mul_res(mul_res),
-	.sh_fnsh_flag(sh_fnsh_flag)
+	.sh_fnsh_flag(sh_fnsh_flag),
     .stop(mul_stop)
     );
 
