@@ -10,9 +10,7 @@ module if_stage (
     input control_rest,
     input rest_id_mem ,
     input [63:0] id_pc,
-    input sig_jalr,
-    input id_mul,
-    input sh_fnsh_flag
+    input sig_jalr
 );
 
 pc_predict u_pc_predict(
@@ -24,10 +22,7 @@ pc_predict u_pc_predict(
   .curr_pc(curr_pc),  // current pc addr
   .rest_id_mem (rest_id_mem ),
   .id_curr_pc(id_pc),
-  .sig_jalr(sig_jalr),
-  .id_mul(id_mul),
-  .sh_fnsh_flag(sh_fnsh_flag)
-
+  .sig_jalr(sig_jalr)
   
 );
 
