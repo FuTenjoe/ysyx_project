@@ -105,7 +105,7 @@ always@(posedge clk or negedge rst_n)begin
 			p <= 130'd0;
 			reg_alu_y <= alu_y;
 			delay_alu_y <= alu_y;
-			stop = 1'b0;
+			stop <= 1'b0;
 		end
 		NEXT:begin
 			x <= alu_x;
@@ -113,7 +113,7 @@ always@(posedge clk or negedge rst_n)begin
 			reg_alu_y <= alu_y >>>3'd2;
 			delay_alu_y <= reg_alu_y >>> 3'd1;
 			sh_fnsh_flag <= 1'd0;
-			stop = 1'b1;
+			stop <= 1'b1;
 			case(y)
 			3'b000,3'b111:begin p <= p + 130'd0;add_p <= 130'd0; end
 			3'b001,3'b010:begin p <= p +x;add_p <= x; end
