@@ -35,7 +35,7 @@ always @ (posedge clk or negedge rst_n) begin
             curr_pc <= curr_pc;
         end
         else begin
-            curr_pc <= curr_pc + 4;
+            curr_pc <= curr_pc;
         end
     end
     else if(rest_id_mem == 1'b1)begin
