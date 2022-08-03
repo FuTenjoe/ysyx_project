@@ -13,8 +13,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root___combo__TOP__4\n"); );
-    // Variables
-    VlWide<5>/*159:0*/ __Vtemp231;
     // Body
     if (((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
            & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
@@ -46,18 +44,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__4(Vysyx_22040175_t
                             : vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__reg_wdata))));
     }
     vlSelf->ysyx_22040175_top__DOT__rst_n = (1U & (~ (IData)(vlSelf->rst)));
-    VL_EXTEND_WQ(130,64, __Vtemp231, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res);
-    vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res 
-        = (((QData)((IData)(((IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_valid)
-                              ? ((IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)
-                                  ? vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_res[1U]
-                                  : vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__delay_mul_res[1U])
-                              : __Vtemp231[1U]))) << 0x20U) 
-           | (QData)((IData)(((IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_valid)
-                               ? ((IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)
-                                   ? vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_res[0U]
-                                   : vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__delay_mul_res[0U])
-                               : __Vtemp231[0U]))));
     if ((((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
             & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
            & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
@@ -880,15 +866,11 @@ VL_INLINE_OPT QData Vysyx_22040175_top___024root___change_request_1(Vysyx_220401
     // Body
     // Change detection
     QData __req = false;  // Logically a bool
-    __req |= ((vlSelf->ysyx_22040175_top__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__rst_n)
-         | (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res));
+    __req |= ((vlSelf->ysyx_22040175_top__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__rst_n));
     VL_DEBUG_IF( if(__req && ((vlSelf->ysyx_22040175_top__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__rst_n))) VL_DBG_MSGF("        CHANGE: vsrc/ysyx_22040175_top.v:18: ysyx_22040175_top.rst_n\n"); );
-    VL_DEBUG_IF( if(__req && ((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res))) VL_DBG_MSGF("        CHANGE: vsrc/alu.v:19: ysyx_22040175_top.u_ex_stage.u_alu.alu_res\n"); );
     // Final
     vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__rst_n 
         = vlSelf->ysyx_22040175_top__DOT__rst_n;
-    vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res 
-        = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res;
     return __req;
 }
 
