@@ -33,7 +33,7 @@ int NDL_PollEvent(char *buf, int len) {
   //printf("%d\n",len);
   //int ret = fread(buf,1,len,fb);
   evt_fd = open("/dev/events", O_RDONLY);
-  
+  printf("evt_fd = %d\n",evt_fd);
   // /dev/events
   int ret = read(evt_fd,buf,len);
   if(ret == 0) {
