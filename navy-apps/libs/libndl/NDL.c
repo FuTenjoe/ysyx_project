@@ -35,7 +35,7 @@ int NDL_PollEvent(char *buf, int len) {
   evt_fd = open("/dev/events", O_RDONLY);
   printf("evt_fd = %d\n",evt_fd);
   // /dev/events
-  int ret = read(evt_fd,buf,len);
+  ssize_t ret = read(evt_fd,buf,len);
   if(ret == 0) {
     printf("ret = 0\n");
     return 0;}
