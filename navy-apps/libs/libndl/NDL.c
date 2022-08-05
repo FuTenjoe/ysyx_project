@@ -32,10 +32,11 @@ int NDL_PollEvent(char *buf, int len) {
   fscanf(fp,"%s",buf+3); */
   //printf("%d\n",len);
   //int ret = fread(buf,1,len,fb);
-    printf("读取buf");
   evt_fd = open("/dev/events", O_RDONLY);
   int ret = read(evt_fd,buf,len);
-  if(ret == 0) return 0;
+  if(ret == 0) {
+    printf("ret = 0\n");
+    return 0;}
   printf("读取buf");
   for(int i = 0; i < len&&ret != 0;i++)
   {
