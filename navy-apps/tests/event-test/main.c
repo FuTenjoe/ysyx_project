@@ -3,7 +3,7 @@
 
 int main() {
   printf("keyboard0\n");
-  //NDL_Init(0);
+  NDL_Init(0);
   printf("keyboard\n");
 /*  while (1) {
     char buf[64];
