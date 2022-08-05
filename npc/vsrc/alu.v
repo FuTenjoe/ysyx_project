@@ -28,7 +28,7 @@ always @(*) begin
     signed_alu_src1 = alu_src1;
     signed_alu_src2 = alu_src2;
     mul_valid = 1'b0;
-    mul_expand_signed <= 4'd0;
+    mul_expand_signed = 4'd0;
     case (alu_op)
         `ALU_ADD: begin  //0011
         if(rd_flag == 3'd0)begin
