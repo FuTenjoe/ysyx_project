@@ -15,8 +15,19 @@ module mul(
     );
 reg [129:0] alu_x;
 reg [65:0] alu_y;
-
-always@(posedge clk )begin
+reg [129:0] no_latch_x;
+reg [65:0] no_latch_y
+always@(posedge clk or negedge rst_n)begin
+	if(!rst_n)begin
+		no_latch_x <= 130'd0;
+		no_latch_y <= 66'd0;
+	end
+	else begin
+		no_latch_x <= alu_x;
+		no_latch_y <= alu_y;
+	end
+end
+always@(*)begin
 	if(mul_valid & ((!delay_mul_valid) | (delay2_sh_fg)))begin
 		if(mul_signed == 2'b00)begin
 			alu_x = {{66{alu_src1[63]}},alu_src1[63:0]};
@@ -36,8 +47,8 @@ always@(posedge clk )begin
 		end
 		end
 	else begin
-		alu_x = alu_x + 1'b0;
-		alu_y =alu_y + 1'b0;
+		alu_x = no_latch_x;
+		alu_y = no_latch_y;
 	end
 end
 reg delay_mul_valid;
