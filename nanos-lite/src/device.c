@@ -66,7 +66,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
     }
     return len;
   }*/
-  return 0;
+  //return 0;
 }
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
