@@ -31,18 +31,18 @@ size_t serial_write(const void *buf, size_t offset, size_t len) {
 size_t events_read(void *buf, size_t offset, size_t len) {
   //return 0;
   //自己加
-  int key = io_read(AM_INPUT_KEYBRD).keycode;
-  bool key_down = io_read(AM_INPUT_KEYBRD).keydown;
-  if(key == AM_KEY_NONE){
+  AM_INPUT_KEYBRD_T key = io_read(AM_INPUT_KEYBRD);
+  //bool key_down = io_read(AM_INPUT_KEYBRD).keydown;
+  if(key.keycode == AM_KEY_NONE){
     return 0;
   }
   else {
-    if(key_down){
-      len = sprintf((char*)buf,"kd %s\n",keyname[key]);  //按下按键
+    if(key.keydown){
+      len = sprintf((char*)buf,"kd %s\n",keyname[key.keycode]);  //按下按键
     }
       //len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
     else
-      {len = sprintf((char*)buf,"ku %s\n",keyname[key]); } //松开按键
+      {len = sprintf((char*)buf,"ku %s\n",keyname[key.keycode]); } //松开按键
       //len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
   }
   return len;
