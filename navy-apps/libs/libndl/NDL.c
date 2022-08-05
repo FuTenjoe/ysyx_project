@@ -5,6 +5,7 @@
 #include <unistd.h>
 //自己加
 #include <fcntl.h>
+
 static int evtdev = -1;
 static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
@@ -31,7 +32,7 @@ int NDL_PollEvent(char *buf, int len) {
   fscanf(fp,"%s",buf+3); */
   //printf("%d\n",len);
   //int ret = fread(buf,1,len,fb);
-  evt_fd = fopen("/dev/events", O_RDONLY);
+  evt_fd = open("/dev/events", O_RDONLY);
   int ret = read(evt_fd,buf,len);
   if(ret == 0) return 0;
   printf("读取buf");
