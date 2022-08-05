@@ -195,7 +195,7 @@ always @(*) begin
                 
         end
         default:begin
-            ex_p = ex_p;
+            ex_p = 130'd0;
         end
     endcase
 	end
