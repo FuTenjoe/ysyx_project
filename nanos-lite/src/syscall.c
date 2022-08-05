@@ -39,7 +39,7 @@ void do_syscall(Context *c) {
   a[2] = c->GPR3;  //a1
   a[3] = c->GPR4;  //a2
   //a[4] = c->GPRx;
-  printf("gpr return a1 = %lx\n",a[0]);
+  //printf("gpr return a1 = %lx\n",a[0]);
   switch (a[0]) {
     case 0:{
       halt(c->GPR1); 
@@ -53,13 +53,13 @@ void do_syscall(Context *c) {
       break;
       }
     case SYS_open:{
-      //printf("在进程中打开");
+      printf("在进程中打开");
       c->GPRx= fs_open((char *)a[1], (int)a[2], (size_t)a[3]);
       //printf("pathname is %d",(char *)a[1]);
       break;
     }
     case SYS_read:{
-      //printf("读");
+      printf("读");
       c->GPRx=fs_read((int)a[1],(void *)a[2],(size_t)a[3]);
       //printf("gpr x = %lx\n",c->GPRx);
       //c->GPRx= 0;
