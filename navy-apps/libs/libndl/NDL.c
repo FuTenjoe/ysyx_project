@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-
+//自己加
+#include <fcntl.h>
 static int evtdev = -1;
 static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
@@ -24,7 +25,7 @@ uint32_t NDL_GetTicks() {
 }
 //自己加
 int NDL_PollEvent(char *buf, int len) {
-  printf("读取键盘");
+  //printf("读取键盘");
   printf("len = %d\n",len);
   /* int ret = fread(buf ,1,3,fp);
   fscanf(fp,"%s",buf+3); */
