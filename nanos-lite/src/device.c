@@ -31,7 +31,7 @@ size_t serial_write(const void *buf, size_t offset, size_t len) {
 size_t events_read(void *buf, size_t offset, size_t len) {
   //return 0;
   //自己加
- /* int key = io_read(AM_INPUT_KEYBRD).keycode;
+  int key = io_read(AM_INPUT_KEYBRD).keycode;
   bool key_down = io_read(AM_INPUT_KEYBRD).keydown;
   if(key != AM_KEY_NONE){
     if(key_down)
@@ -43,18 +43,18 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   }
   else 
    len = 0;
-  return len;*/
+  return len;
   //参考代码
-  AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
+/*  AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
   if(ev.keycode == AM_KEY_NONE){
     return 0;
   }
   else {
     //memset(buf,0,len);  //向buf中填充len个0
-  /*  if(ev.keydown){
+    if(ev.keydown){
       len = sprintf((char*)buf,"kd%s\n",keyname[ev.keycode]);
     }
-    else len = sprintf((char*)buf,"ku%s\n",keyname[ev.keycode]);*/
+    else len = sprintf((char*)buf,"ku%s\n",keyname[ev.keycode]);
     //if(ev.keycode <= AM_KEY_PAGEDOWN && ev.keycode >= AM_KEY_ESCAPE && ev.keydown){
     if(ev.keydown){
         //len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
@@ -62,7 +62,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
     }
     else len = sprintf((char*)buf,"ku%s\n",keyname[ev.keycode]);
     return len;
-  }
+  }*/
   //return 0;
 }
 
