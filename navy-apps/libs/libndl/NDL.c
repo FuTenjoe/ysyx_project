@@ -33,7 +33,7 @@ int NDL_PollEvent(char *buf, int len) {
   evt_fd = fopen("/dev/events", O_RDONLY);
   int ret = read(evt_fd,buf,len);
   if(ret == 0) return 0;
-  printf("读取键盘");
+  printf("读取buf");
   for(int i = 0; i < len&&ret != 0;i++)
   {
     if(buf[i] == '\n') 
