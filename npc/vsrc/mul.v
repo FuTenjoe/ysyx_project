@@ -16,7 +16,7 @@ module mul(
 reg [129:0] alu_x;
 reg [65:0] alu_y;
 reg [129:0] no_latch_x;
-reg [65:0] no_latch_y
+reg [65:0] no_latch_y;
 always@(posedge clk or negedge rst_n)begin
 	if(!rst_n)begin
 		no_latch_x <= 130'd0;
