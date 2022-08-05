@@ -16,7 +16,7 @@ module mul(
 reg [129:0] alu_x;
 reg [65:0] alu_y;
 
-always@(*)begin
+always@(posedge clk )begin
 	if(mul_valid & ((!delay_mul_valid) | (delay2_sh_fg)))begin
 		if(mul_signed == 2'b00)begin
 			alu_x = {{66{alu_src1[63]}},alu_src1[63:0]};
