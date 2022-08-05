@@ -42,7 +42,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
     flag = 1;
   }*/
   if(key != AM_KEY_NONE){
-    if(key_down)
+    if(key_down == false)
       len = sprintf((char*)buf,"kd %s\n",keyname[key]);  //按下按键
     else
       len = sprintf((char*)buf,"ku %s\n",keyname[key]);  //松开按键
