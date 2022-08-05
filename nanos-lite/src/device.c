@@ -44,7 +44,8 @@ size_t events_read(void *buf, size_t offset, size_t len) {
       len = sprintf((char*)buf,"kd %s\n",keyname[key]);  //按下按键
       //len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
     else
-      len = sprintf((char*)buf,"ku %s\n",keyname[key]);  //松开按键
+      //len = sprintf((char*)buf,"ku %s\n",keyname[key]);  //松开按键
+      len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
   }
   else 
    len = 0;
