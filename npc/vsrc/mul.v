@@ -36,8 +36,8 @@ always@(*)begin
 		end
 		end
 	else begin
-		alu_x = alu_x;
-		alu_y =alu_y;
+		alu_x = alu_x + 1'b0;
+		alu_y =alu_y + 1'b0;
 	end
 end
 reg delay_mul_valid;
