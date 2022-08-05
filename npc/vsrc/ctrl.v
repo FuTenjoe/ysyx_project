@@ -775,6 +775,7 @@ always @(*) begin
                 ebreak_flag = 1'b0;
                 unknown_code = inst ;
             end
+        end
     endcase 
 end
 
