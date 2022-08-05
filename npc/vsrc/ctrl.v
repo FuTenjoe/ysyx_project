@@ -773,9 +773,10 @@ always@(*)begin
     if(inst == 32'h0010_0073)begin
         ebreak_flag = 1'b1;
         unknown_code = 32'h0;
-        reg1_raddr = reg_waddr + 1'b1;
-        reg2_raddr = reg_waddr + 1'b1;
+        reg1_raddr = `REG_ADDR_WIDTH'b0;
+        reg2_raddr = `REG_ADDR_WIDTH'b0;
     end
+
 end
 
 import "DPI-C" function void unknown_inst();
