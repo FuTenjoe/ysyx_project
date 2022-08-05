@@ -92,7 +92,8 @@ size_t fs_read(int fd, void *buf, size_t count){
     
    size_t ret;
       if(fd == 4){
-      ret = events_read(buf, f->disk_offset + f->open_offset, bytes_to_read);
+      ret = f->read(buf, f->disk_offset + f->open_offset, bytes_to_read);
+      //events_read(buf, f->disk_offset + f->open_offset, bytes_to_read);
       f->open_offset = f->open_offset + bytes_to_read;
       }
       else{
