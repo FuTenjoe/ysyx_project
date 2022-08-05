@@ -48,7 +48,8 @@ size_t events_read(void *buf, size_t offset, size_t len) {
     //len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
     len = 0;
   }
-  return len;
+  //return len;
+  return 1;
   //参考代码
  /* AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
   if(ev.keycode == AM_KEY_NONE){
