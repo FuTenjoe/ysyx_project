@@ -33,13 +33,13 @@ int NDL_PollEvent(char *buf, int len) {
   //printf("%d\n",len);
   //int ret = fread(buf,1,len,fb);
   evt_fd = open("/dev/events", O_RDONLY);
-  printf("evt_fd = %d\n",evt_fd);
+  //printf("evt_fd = %d\n",evt_fd);
   // /dev/events
   ssize_t ret = read(evt_fd,buf,len);
   if(ret == 0) {
-    printf("ret = 0\n");
+    //printf("ret = 0\n");
     return 0;}
-  printf("读取buf");
+  //printf("读取buf");
   for(int i = 0; i < len&&ret != 0;i++)
   {
     if(buf[i] == '\n') 
