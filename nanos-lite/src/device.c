@@ -33,7 +33,9 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   //自己加
   //printf("fffhhh");
   int key = io_read(AM_INPUT_KEYBRD).keycode;
-  bool key_down = io_read(AM_INPUT_KEYBRD).keydown;
+  AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
+  //bool key_down = io_read(AM_INPUT_KEYBRD).keydown;
+  bool key_down = ev.keydown;
   int flag = 0;
   if(key_down == false){
     //printf("key down");
