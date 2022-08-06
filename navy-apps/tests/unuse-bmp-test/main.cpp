@@ -9,9 +9,9 @@ int main() {
   NDL_Init(0);
   int w, h;
   //printf("1\n");
-  void *bmp = BMP_Load("/share/pictures/projectn.bmp", &w, &h);
+  //void *bmp = BMP_Load("/share/pictures/projectn.bmp", &w, &h);
   //printf("w = %d h = %d",w,h);
-  assert(bmp);
+  //assert(bmp);
   //printf("2\n");
   NDL_OpenCanvas(&w, &h);
   //printf("1\n");
@@ -21,8 +21,8 @@ int main() {
     printf("p = %d %x\n",i,((uint32_t*)bmp)[i]);
   } */
   //printf("Finish first\n");
-  NDL_DrawRect((uint32_t*)bmp, 0, 0, w, h);
-  free(bmp);
+  //NDL_DrawRect((uint32_t*)bmp, 0, 0, w, h);
+  //free(bmp);
   NDL_Quit();
   printf("Test ends! Spinning...\n");
   while (1);
