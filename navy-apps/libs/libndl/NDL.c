@@ -76,14 +76,15 @@ void NDL_OpenCanvas(int *w, int *h) {
   /* if(canvas) {
     assert(0);
     free(canvas);
-  }   */
+  }   
   assert(canvas == NULL);
   canvas = (uint32_t*)malloc(sizeof(uint32_t)*(*w)*(*h));
   memset(canvas,0,sizeof(canvas));
   place_x = (screen_w - canvas_w)/2;
   place_y = (screen_h - canvas_h)/2;
   //printf("Open canvas h = %d w = %d   ",*w,*h);
-  //printf("screen h = %d w = %d\n",screen_w,screen_h);*/
+  //printf("screen h = %d w = %d\n",screen_w,screen_h);
+  */
 
 
   //原有代码
