@@ -12,12 +12,12 @@ typedef struct {
   size_t open_offset;
 } Finfo;
 
-enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS};
+enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS,FD_DISPINFO};
 //自己加
 size_t fb_write(const void *buf, size_t offset, size_t len);
 size_t events_read(void *buf, size_t offset, size_t len);
 size_t fb_write(const void *buf, size_t offset, size_t len);
-
+size_t dispinfo_read(void *buf, size_t offset, size_t len);
 
 size_t invalid_read(void *buf, size_t offset, size_t len) {
   panic("should not reach here");
@@ -36,11 +36,14 @@ static Finfo file_table[] __attribute__((used)) = {
   [FD_STDERR] = {"stderr", 0, 0, invalid_read, invalid_write},
   [FD_FB] = {"/dev/fb", 0, 0, invalid_read,fb_write},
   [FD_EVENTS] = {"/dev/events", 0, 0,events_read,invalid_write},
+  [FD_DISPINFO] = {"/proc/dispinfo",64,0,dispinfo_read,invalid_write},      //参考加的
 #include "files.h"
 };
 //自己加
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 extern size_t ramdisk_write(const void *buf, size_t offset, size_t len);
+extern size_t dispinfo_read(void *buf, size_t offset, size_t len);
+
 int open_i = 0;
 int fs_open(char* pathname, int flags, size_t mode){
   for(int i=0;i<28;i++){
@@ -93,10 +96,13 @@ size_t fs_read(int fd, void *buf, size_t count){
 
     
    size_t ret;
-      if(fd == 4){
+      if(fd == FD_EVENTS){
       ret = f->read(buf, f->disk_offset + f->open_offset, bytes_to_read);
       //events_read(buf, f->disk_offset + f->open_offset, bytes_to_read);
       f->open_offset = f->open_offset + bytes_to_read;
+      }
+      else if(fd== FD_DISPINFO){
+        ret = dispinfo_read(buf, f->disk_offset + f->open_offset, bytes_to_read);
       }
       else{
       ret = ramdisk_read(buf, f->disk_offset + f->open_offset, bytes_to_read);
