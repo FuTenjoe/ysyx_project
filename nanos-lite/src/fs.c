@@ -140,6 +140,6 @@ void init_fs() {
   int w = io_read(AM_GPU_CONFIG).width;
   int h = io_read(AM_GPU_CONFIG).height;
   file_table[FD_FB].size = w*h*4;    //参考，为什么是4？
-  printf("size = %d",sizeof(uint32_t));
+  //printf("size = %d",sizeof(uint32_t));
   //assert(file_table[FD_SYNC].write != NULL);
 }
