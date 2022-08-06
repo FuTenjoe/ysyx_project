@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <NDL.h>
 #include <BMP.h>
-//extern void* BMP_Load(const char *filename, int *width, int *height);
+extern void* BMP_Load(const char *filename, int *width, int *height);
 int main() {
   NDL_Init(0);
   int w, h;
