@@ -6,8 +6,8 @@
 #include <BMP.h>
 
 int main() {
-  NDL_Init(0);
-  int w, h;
+  //NDL_Init(0);
+  //int w, h;
   //printf("1\n");
   //void *bmp = BMP_Load("/share/pictures/projectn.bmp", &w, &h);
   //printf("w = %d h = %d",w,h);
@@ -24,6 +24,21 @@ int main() {
   //NDL_DrawRect((uint32_t*)bmp, 0, 0, w, h);
   //free(bmp);
   //NDL_Quit();
+  //printf("Test ends! Spinning...\n");
+  //while (1);
+  //return 0;
+
+
+
+
+  NDL_Init(0);
+  int w, h;
+  void *bmp = BMP_Load("/share/pictures/projectn.bmp", &w, &h);
+  assert(bmp);
+  NDL_OpenCanvas(&w, &h);
+  NDL_DrawRect((uint32_t *)bmp, 0, 0, w, h);
+  free(bmp);
+  NDL_Quit();
   printf("Test ends! Spinning...\n");
   while (1);
   return 0;
