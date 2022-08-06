@@ -13,7 +13,7 @@ int main() {
   //printf("w = %d h = %d",w,h);
   //assert(bmp);
   //printf("2\n");
-  NDL_OpenCanvas(&w, &h);
+  //NDL_OpenCanvas(&w, &h);
   //printf("1\n");
   /* for(int i = 0;i < w*h;i++)
   {
@@ -23,7 +23,7 @@ int main() {
   //printf("Finish first\n");
   //NDL_DrawRect((uint32_t*)bmp, 0, 0, w, h);
   //free(bmp);
-  NDL_Quit();
+  //NDL_Quit();
   printf("Test ends! Spinning...\n");
   while (1);
   return 0;
