@@ -14,7 +14,6 @@ typedef struct {
 
 enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS,FD_DISPINFO};
 //自己加
-size_t fb_write(const void *buf, size_t offset, size_t len);
 size_t events_read(void *buf, size_t offset, size_t len);
 size_t fb_write(const void *buf, size_t offset, size_t len);
 size_t dispinfo_read(void *buf, size_t offset, size_t len);
@@ -138,4 +137,8 @@ size_t fs_write( int  fd, const void * buf,size_t count){
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
+  int w = io_read(AM_GPU_CONFIG).width;
+  int h = io_read(AM_GPU_CONFIG).height;
+  file_table[FD_FB].size = w*h*4;    //参考，为什么是4？
+  //assert(file_table[FD_SYNC].write != NULL);
 }
