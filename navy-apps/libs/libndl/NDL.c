@@ -58,35 +58,6 @@ int NDL_PollEvent(char *buf, int len) {
 
 void NDL_OpenCanvas(int *w, int *h) {
   //自己加
-/*  get_screen();
-  if(*w == 0&&*h == 0) {
-    canvas_w = screen_w;
-    canvas_h = screen_h;
-    *w = screen_w;
-    *h = screen_h;
-  }
-  else {
-    if(*h <= screen_h)
-      canvas_h = *h;
-    else canvas_h = screen_h;
-    if(*w <= screen_w)
-      canvas_w = *w;
-    else canvas_w = screen_w;
-  }
-  /* if(canvas) {
-    assert(0);
-    free(canvas);
-  }   
-  assert(canvas == NULL);
-  canvas = (uint32_t*)malloc(sizeof(uint32_t)*(*w)*(*h));
-  memset(canvas,0,sizeof(canvas));
-  place_x = (screen_w - canvas_w)/2;
-  place_y = (screen_h - canvas_h)/2;
-  //printf("Open canvas h = %d w = %d   ",*w,*h);
-  //printf("screen h = %d w = %d\n",screen_w,screen_h);
-  */
-
-
   //原有代码
   if (getenv("NWM_APP")) {
     int fbctl = 4;
@@ -106,61 +77,6 @@ void NDL_OpenCanvas(int *w, int *h) {
     close(fbctl);
   }
 }
-//参考代码加的函数get_screen()
-void get_screen() {
-  int w = 0,h = 0;
-  assert(fb_dispinfo != NULL);
-  char width[20]={0},height[20]={0},after[20]={0};
-  //printf("1 %p\n",fp);
-  fscanf(fb_dispinfo,"%s",width);
-  if(width[strlen(width)-1] == ':')
-  {
-    //printf("1\n");
-    fscanf(fb_dispinfo,"%d",&w);//WIDTH:  W
-  }
-  else if(width[strlen(width)-1] == 'H')
-  {
-    //printf("2\n");
-    fscanf(fb_dispinfo,"%s",after);
-    //printf("%s%s\n",width,after);
-    strcat(width,after);
-    fscanf(fb_dispinfo,"%d",&w);
-  }//WIDTH   :   W
-  else {
-    w = 0;
-    //printf("%d\n",strlen(width));
-    for(int i = 0;i < strlen(width);i++)
-    {
-      if(width[i] > '9'||width[i] < '0') continue;
-      w = w * 10+ width[i] - '0';
-    }
-  }//WIDTH:W
-
-  fscanf(fb_dispinfo,"%s",height);
-  if(height[strlen(height)-1] == ':')
-    fscanf(fb_dispinfo,"%d",&h);//HEIGHT:   H
-  else if(height[strlen(height)-1] == 'T')
-  {
-    fscanf(fb_dispinfo,"%s",after);
-    strcat(height,after);
-    fscanf(fb_dispinfo,"%d",&h);
-  }//HEIGHT   :   H
-  else {
-    h = 0;
-    for(int i = 0;i < strlen(height);i++)
-    {
-      if(height[i] > '9'||height[i] < '0') continue;
-      h = h * 10+ height[i] - '0';
-    }
-  }//WIDTH:W
-  screen_h = h;
-  screen_w = w;
-  return;
-}
-
-
-
-
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  //参考代码
   assert(fb != NULL);
