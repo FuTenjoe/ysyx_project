@@ -58,7 +58,7 @@ int NDL_PollEvent(char *buf, int len) {
 
 void NDL_OpenCanvas(int *w, int *h) {
   //自己加
-  get_screen();
+/*  get_screen();
   if(*w == 0&&*h == 0) {
     canvas_w = screen_w;
     canvas_h = screen_h;
@@ -83,7 +83,7 @@ void NDL_OpenCanvas(int *w, int *h) {
   place_x = (screen_w - canvas_w)/2;
   place_y = (screen_h - canvas_h)/2;
   //printf("Open canvas h = %d w = %d   ",*w,*h);
-  //printf("screen h = %d w = %d\n",screen_w,screen_h);
+  //printf("screen h = %d w = %d\n",screen_w,screen_h);*/
 
 
   //原有代码
