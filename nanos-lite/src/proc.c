@@ -23,7 +23,7 @@ void init_proc() {
   switch_boot_pcb();
   Log("Initializing processes...");
  // naive_uload(NULL, "/bin/event-test");
- naive_uload(NULL, "/bin/timer-test");
+ naive_uload(NULL, "/bin/bmp-test");
 }
 
 Context* schedule(Context *prev) {
