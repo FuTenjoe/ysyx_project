@@ -1,6 +1,6 @@
 #include <assert.h>
 #include <stdlib.h>
-#include <ndl.h>
+#include <NDL.h>
 
 int main() {
   NDL_Bitmap *bmp = (NDL_Bitmap*)malloc(sizeof(NDL_Bitmap));
