@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <BMP.h>
 #include <NDL.h>
 #include <BMP.h>
 
