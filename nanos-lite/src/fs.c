@@ -16,6 +16,8 @@ enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS};
 //自己加
 size_t fb_write(const void *buf, size_t offset, size_t len);
 size_t events_read(void *buf, size_t offset, size_t len);
+size_t fb_write(const void *buf, size_t offset, size_t len);
+
 
 size_t invalid_read(void *buf, size_t offset, size_t len) {
   panic("should not reach here");
@@ -110,11 +112,14 @@ size_t fs_write( int  fd, const void * buf,size_t count){
   int remain_bytes = f->size - f->open_offset;
   int bytes_to_write = (remain_bytes > count ? count : remain_bytes);
   switch(fd){
-    case 1:
-    case 2:
+    case FD_STDOUT:
+    case FD_STDERR:
       for (int i = 0; i < count; i++){
         putch(((char*)(buf))[i]);
       }
+    case FD_FB:{
+      fb_write(buf,f->open_offset,bytes_to_write);
+    }
     default:
       ramdisk_write(buf, f->disk_offset + f ->open_offset ,bytes_to_write);
       break;

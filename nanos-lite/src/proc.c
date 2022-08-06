@@ -22,7 +22,8 @@ extern void naive_uload(PCB *pcb, const char *filename);
 void init_proc() {
   switch_boot_pcb();
   Log("Initializing processes...");
-  naive_uload(NULL, "/bin/event-test");
+ // naive_uload(NULL, "/bin/event-test");
+ naive_uload(NULL, "/bin/event-test");
 }
 
 Context* schedule(Context *prev) {

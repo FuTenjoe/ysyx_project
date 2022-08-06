@@ -33,6 +33,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   //自己加
   AM_INPUT_KEYBRD_T key = io_read(AM_INPUT_KEYBRD);
   //bool key_down = io_read(AM_INPUT_KEYBRD).keydown;
+  //int key - io_read(AM_INPUT_KEYBRD).keycode;
   if(key.keycode == AM_KEY_NONE){
     return 0;
   }
@@ -67,12 +68,18 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   }*/
   //return 0;
 }
-
+//自己加的变量
+static char dispinfo[128] __attribute__((used));
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
-  return 0;
+  //return 0;
+  //自己加
+  memcpy(buf,dispinfo+offset,len);
+  return len;
 }
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {
+  //return 0;
+  //自己加
   return 0;
 }
 int sys_gettimeofday(struct timeval *tz,struct timezone *tv)
