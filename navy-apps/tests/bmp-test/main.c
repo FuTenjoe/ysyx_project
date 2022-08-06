@@ -8,8 +8,8 @@
 int main() {
   NDL_Init(0);
   int w, h;
-  //void *bmp = BMP_Load("/share/pictures/projectn.bmp", &w, &h);
-  void *bmp = BMP_Load("/bin/bmp-test.bmp", &w, &h);
+  void *bmp = BMP_Load("/share/pictures/projectn.bmp", &w, &h);
+  //void *bmp = BMP_Load("/bin/bmp-test.bmp", &w, &h);
   assert(bmp);
   NDL_OpenCanvas(&w, &h);
   NDL_DrawRect((uint32_t *)bmp, 0, 0, w, h);
