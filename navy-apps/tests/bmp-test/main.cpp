@@ -3,14 +3,15 @@
 #include <stdlib.h>
 #include <NDL.h>
 #include <BMP.h>
-extern void* BMP_Load(const char *filename, int *width, int *height);
+
+//extern void* BMP_Load(const char *filename, int *width, int *height);
 int main() {
   NDL_Init(0);
   int w, h;
   void *bmp = BMP_Load("/share/pictures/projectn.bmp", &w, &h);
   assert(bmp);
   NDL_OpenCanvas(&w, &h);
-  //NDL_DrawRect(bmp, 0, 0, w, h);
+  NDL_DrawRect((uint32_t *)bmp, 0, 0, w, h);
   free(bmp);
   NDL_Quit();
   printf("Test ends! Spinning...\n");
