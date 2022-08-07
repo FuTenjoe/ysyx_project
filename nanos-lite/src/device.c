@@ -47,34 +47,17 @@ size_t events_read(void *buf, size_t offset, size_t len) {
       //len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
   }
   return len;
-  //参考代码
- /* AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
-  if(ev.keycode == AM_KEY_NONE){
-    return 0;
-  }
-  else {
-    //memset(buf,0,len);  //向buf中填充len个0
-    if(ev.keydown){
-      len = sprintf((char*)buf,"kd%s\n",keyname[ev.keycode]);
-    }
-    else len = sprintf((char*)buf,"ku%s\n",keyname[ev.keycode]);
-    //if(ev.keycode <= AM_KEY_PAGEDOWN && ev.keycode >= AM_KEY_ESCAPE && ev.keydown){
-    if(ev.keydown){
-        //len = sprintf(buf,"t %u\n",io_read(AM_TIMER_UPTIME).us);
-        len = sprintf((char*)buf,"kd%s\n",keyname[ev.keycode]);
-    }
-    //else len = sprintf((char*)buf,"ku%s\n",keyname[ev.keycode]);
-    return len;
-  }*/
-  //return 0;
+ 
 }
 //自己加的变量
 static char dispinfo[128] __attribute__((used));
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   //return 0;
   //自己加
-  memcpy(buf,dispinfo+offset,len);
-  return len;
+  //memcpy(buf, &ramdisk_start + offset, len);
+  int w = io_read(AM_GPU_CONFIG).width;
+  int h = io_read(AM_GPU_CONFIG).height;
+  return sprintf((char*)buf,"WIDTH:%d\nHEIGHT:%d\n",w,h);
 }
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {
@@ -86,7 +69,6 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
   int x = (offset/4)%w;
   int y = (offset/4)/w;
   if(offset+len > w*h*4) len = w*h*4 - offset;
-  printf("fb_write1");
   io_write(AM_GPU_FBDRAW,x,y,(uint32_t*)buf,len/4,1,true);
   //io_write(AM_GPU_FBDRAW, 0, 0, NULL, 0, 0, true);
   assert(offset <= w*h*4);
