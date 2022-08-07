@@ -16,7 +16,7 @@ static FILE* fb = NULL, *fb_event = NULL,*fb_sync = NULL,*fb_dispinfo = NULL;
 static int canvas_w = 0, canvas_h = 0;//记录打开的画布的大小
 static uint32_t* canvas =NULL;
 static int place_x = 0,place_y = 0;
-
+int has_num = 0;
 uint32_t NDL_GetTicks() {
 
   return 0;
@@ -51,6 +51,9 @@ void NDL_OpenCanvas(int *w, int *h) {
   assert(canvas);
   canvas = (uint32_t*)malloc(sizeof(uint32_t)*(*w)*(*h));
   memset(canvas,0,sizeof(canvas));
+  if (getenv("NWM_APP")){
+    has_num = 0;}
+  else has_num = 1;
   //原有代码
   if (getenv("NWM_APP")) {
     int fbctl = 4;
@@ -72,7 +75,8 @@ void NDL_OpenCanvas(int *w, int *h) {
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  //参考代码
- for (int i = 0; i < h; i ++) {
+ if (has_num) {
+    for (int i = 0; i < h; i ++) {
       printf("\033[X%d;%d", x, y + i);
       for (int j = 0; j < w; j ++) {
         putchar(';');
@@ -80,6 +84,13 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
       }
       printf("d\n");
     }
+  } else {
+    for (int i = 0; i < h; i ++) {
+      for (int j = 0; j < w; j ++) {
+        canvas[(i + y) * canvas_w + (j + x)] = pixels[i * w + j];
+      }
+    }
+  }
 }
 
 void NDL_OpenAudio(int freq, int channels, int samples) {
