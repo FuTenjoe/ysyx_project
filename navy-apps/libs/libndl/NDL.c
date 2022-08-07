@@ -47,7 +47,7 @@ void NDL_OpenCanvas(int *w, int *h) {
   //自己加
   canvas_w = *w;
   canvas_h = *h;
-  canvas = malloc(sizeof(uint32_t) * w * h);
+  canvas = malloc(sizeof(uint32_t) * (*w) * (*h));
   assert(canvas);
   canvas = (uint32_t*)malloc(sizeof(uint32_t)*(*w)*(*h));
   memset(canvas,0,sizeof(canvas));
