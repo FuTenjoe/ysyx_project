@@ -58,6 +58,7 @@ int NDL_PollEvent(char *buf, int len) {
 
 void NDL_OpenCanvas(int *w, int *h) {
   //自己加
+
   //原有代码
   if (getenv("NWM_APP")) {
     int fbctl = 4;
@@ -79,7 +80,15 @@ void NDL_OpenCanvas(int *w, int *h) {
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  //参考代码
- 
+  for (int i = 0; i < h; i ++) {
+      printf("\033[X%d;%d", x, y + i);
+      for (int j = 0; j < w; j ++) {
+        putchar(';');
+        fwrite(&pixels[i * w + j], 1, 4, stdout);
+      }
+      printf("d\n");
+    }
+
 
 }
 
