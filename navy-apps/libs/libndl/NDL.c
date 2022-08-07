@@ -59,6 +59,7 @@ int NDL_PollEvent(char *buf, int len) {
 void NDL_OpenCanvas(int *w, int *h) {
   //自己加
   //原有代码
+  printf("opencanvas ok");
   if (getenv("NWM_APP")) {
     int fbctl = 4;
     fbdev = 5;
@@ -79,22 +80,7 @@ void NDL_OpenCanvas(int *w, int *h) {
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  //参考代码
-  assert(fb != NULL);
-  if(h == 0||h > canvas_h)
-    h = canvas_h;
-  if(w == 0||w > canvas_w)
-    w = canvas_w;
-  for(int i = 0;i < h;i ++)
-    for(int j = 0;j < w;j ++)
-    {
-      canvas[(y+i)*canvas_w+x+j] = pixels[i*w+j];
-    }
-  for(int i = 0;i < canvas_h;i ++)
-  {
-    //printf("seek %d color = %x\n",4*((i+place_y)*screen_w+place_x),*(canvas+i*canvas_w+canvas_w/2));
-    fseek(fb,4*((i+place_y)*screen_w+place_x),SEEK_SET);
-    fwrite((void*)(canvas+i*canvas_w),1,4*canvas_w,fb);
-  }
+
 }
 
 void NDL_OpenAudio(int freq, int channels, int samples) {
