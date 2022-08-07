@@ -61,6 +61,7 @@ void NDL_OpenCanvas(int *w, int *h) {
     screen_w = *w; screen_h = *h;
     char buf[64];
     int len = sprintf(buf, "%d %d", screen_w, screen_h);
+    printf("ok");
     // let NWM resize the window and create the frame buffer
     write(fbctl, buf, len);
     while (1) {
@@ -75,12 +76,13 @@ void NDL_OpenCanvas(int *w, int *h) {
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  //参考代码
- if (has_num) {
+ /*if (has_num) {
     for (int i = 0; i < h; i ++) {
       printf("\033[X%d;%d", x, y + i);
       for (int j = 0; j < w; j ++) {
         putchar(';');
        canvas[(i + y) * canvas_w + (j + x)] = pixels[i * w + j];
+       fwrite()
       }
       printf("d\n");
     }
@@ -90,7 +92,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
         canvas[(i + y) * canvas_w + (j + x)] = pixels[i * w + j];
       }
     }
-  }
+  }*/
 }
 
 void NDL_OpenAudio(int freq, int channels, int samples) {
