@@ -58,7 +58,6 @@ int NDL_PollEvent(char *buf, int len) {
 
 void NDL_OpenCanvas(int *w, int *h) {
   //自己加
-  printf("w = %d , h=%d\n",w,h);
   //原有代码
   if (getenv("NWM_APP")) {
     int fbctl = 4;
@@ -78,6 +77,7 @@ void NDL_OpenCanvas(int *w, int *h) {
     }
     close(fbctl);
   }
+  else printf("screen_w = %d , screen_h=%d\n",*w,*h);
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  //参考代码
