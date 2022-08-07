@@ -58,7 +58,8 @@ int NDL_PollEvent(char *buf, int len) {
 
 void NDL_OpenCanvas(int *w, int *h) {
   //自己加
-
+  canvas = (uint32_t*)malloc(sizeof(uint32_t)*(*w)*(*h));
+  memset(canvas,0,sizeof(canvas));
   //原有代码
   if (getenv("NWM_APP")) {
     int fbctl = 4;
