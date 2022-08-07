@@ -81,7 +81,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
       for (int j = 0; j < w; j ++) {
         putchar(';');
        FILE* DOUT;
-        fwrite(&pixels[i * w + j], 1, 4,DOUT );
+        //fwrite(&pixels[i * w + j], 1, 4,DOUT );
       }
       printf("d\n");
     }
