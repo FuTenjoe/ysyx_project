@@ -59,7 +59,7 @@ int NDL_PollEvent(char *buf, int len) {
 void NDL_OpenCanvas(int *w, int *h) {
   //自己加
   //原有代码
-  printf("opencanvas ok");
+  printf("w = %d , h=%d\n",w,h);
   if (getenv("NWM_APP")) {
     int fbctl = 4;
     fbdev = 5;
