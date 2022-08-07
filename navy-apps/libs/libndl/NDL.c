@@ -80,8 +80,8 @@ void NDL_OpenCanvas(int *w, int *h) {
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  //参考代码
- int cp_bytes = (w < (400 - x)) ? w : 400-x;
-  for(int j=0; j<300&&j<h;j++){
+ int cp_bytes = (w < (128 - x)) ? w : 128-x;
+  for(int j=0; j<128&&j<h;j++){
     for(int i=0;i<cp_bytes;i++){
       fwrite(&pixels[i * w + j], 1, 4, fb);
     }
