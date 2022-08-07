@@ -63,7 +63,6 @@ void NDL_OpenCanvas(int *w, int *h) {
     int fbctl = 4;
     fbdev = 5;
     screen_w = *w; screen_h = *h;
-    printf("screen_w = %d , screen_h=%d\n",*w,*h);
     char buf[64];
     int len = sprintf(buf, "%d %d", screen_w, screen_h);
     // let NWM resize the window and create the frame buffer
@@ -77,10 +76,10 @@ void NDL_OpenCanvas(int *w, int *h) {
     }
     close(fbctl);
   }
-  else printf("screen_w = %d , screen_h=%d\n",*w,*h);
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  //参考代码
+ 
 
 }
 
