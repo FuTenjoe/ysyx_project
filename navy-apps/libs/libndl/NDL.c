@@ -83,9 +83,12 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  int cp_bytes = (w < (128 - x)) ? w : 128-x;
   for(int j=0; j<128&&j<h;j++){
     for(int i=0;i<cp_bytes;i++){
-      fwrite(&pixels[i * w + j], 1, 4, fb);
+      canvas[(y+j)*128+x+i] = *(pixels + i);;
     }
     pixels = pixels + cp_bytes;
+  }
+  for (int j=0; j<128; j++){
+    fwrite((void*)(canvas + j*h),1,4*128,fb);
   }
 
 
