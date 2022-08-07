@@ -81,7 +81,7 @@ void NDL_OpenCanvas(int *w, int *h) {
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  //参考代码
- int cp_bytes = (w < (128 - x)) ? w : 128-x;
+ /*int cp_bytes = (w < (128 - x)) ? w : 128-x;
   for(int j=0; j<32&&j<h;j++){
     for(int i=0;i<cp_bytes;i++){
       canvas[(y+j)*32+x+i] = *(pixels + i);;
@@ -90,7 +90,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
   }
   for (int j=0; j<32; j++){
     fwrite((void*)(canvas+ j *w ),1,4*w,fb);
-  }
+  }*/
 
 
 }
