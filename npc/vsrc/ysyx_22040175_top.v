@@ -68,7 +68,9 @@ if_id_regs u_if_id_regs(
     .rest_id_mem(rest_id_mem),
     .delay_sig_jalr(delay_sig_jalr),
     .id_mul(id_mul),
-	.sh_fnsh_flag(sh_fnsh_flag)
+	.sh_fnsh_flag(sh_fnsh_flag),
+    .id_div(id_div),
+    .div_finish(div_finish)
     
     
 );

@@ -56,6 +56,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__rest_wb_hazard;
         CData/*0:0*/ ysyx_22040175_top__DOT__sig_jalr;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_mul;
+        CData/*0:0*/ ysyx_22040175_top__DOT__id_div;
         CData/*0:0*/ ysyx_22040175_top__DOT__id_cunqu_hazard;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_branch;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_jump;
@@ -76,6 +77,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_rest_id_mem;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_cunqu_hazard;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_id_mul;
+        CData/*0:0*/ ysyx_22040175_top__DOT__ex_id_div;
         CData/*0:0*/ ysyx_22040175_top__DOT__write_ready;
         CData/*0:0*/ ysyx_22040175_top__DOT__ex_pc_ready;
         CData/*0:0*/ ysyx_22040175_top__DOT__sh_fnsh_flag;
@@ -94,10 +96,10 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__wb_reg_wen;
         CData/*4:0*/ ysyx_22040175_top__DOT__wb_reg_waddr;
         CData/*7:0*/ ysyx_22040175_top__DOT__wb_wmask;
-        CData/*0:0*/ ysyx_22040175_top__DOT__wb_s_flag;
-        CData/*0:0*/ ysyx_22040175_top__DOT__wb_time_set;
     };
     struct {
+        CData/*0:0*/ ysyx_22040175_top__DOT__wb_s_flag;
+        CData/*0:0*/ ysyx_22040175_top__DOT__wb_time_set;
         CData/*3:0*/ ysyx_22040175_top__DOT__wb_expand_signed;
         CData/*0:0*/ ysyx_22040175_top__DOT__wb_ebreak_flag;
         CData/*2:0*/ ysyx_22040175_top__DOT__wb_rd_buf_flag;
@@ -160,10 +162,10 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         QData/*63:0*/ ysyx_22040175_top__DOT__id_unknown_code;
         QData/*63:0*/ ysyx_22040175_top__DOT__id_end_write_addr;
         QData/*63:0*/ ysyx_22040175_top__DOT__ex_pc;
-        QData/*63:0*/ ysyx_22040175_top__DOT__ex_imm;
-        QData/*63:0*/ ysyx_22040175_top__DOT__ex_unknown_code;
     };
     struct {
+        QData/*63:0*/ ysyx_22040175_top__DOT__ex_imm;
+        QData/*63:0*/ ysyx_22040175_top__DOT__ex_unknown_code;
         QData/*63:0*/ ysyx_22040175_top__DOT__ex_reg1_rdata;
         QData/*63:0*/ ysyx_22040175_top__DOT__ex_reg2_rdata;
         QData/*63:0*/ ysyx_22040175_top__DOT__ex_end_write_addr;
