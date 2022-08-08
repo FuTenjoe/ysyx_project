@@ -40,6 +40,7 @@ always @(*) begin
     mul_expand_signed = 4'd0;
     div32_valid = 1'b0;
     div64_valid = 1'b0;
+    alu_sec = 1'b0;
     case (alu_op)
         `ALU_ADD: begin  //0011
         if(rd_flag == 3'd0)begin
