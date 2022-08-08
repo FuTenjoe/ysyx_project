@@ -24,7 +24,8 @@ module ctrl (
     output reg [3:0] expand_signed,
     output reg [2:0]rd_flag,
     output reg [2:0] rd_buf_flag,   //访存标志
-    output reg id_mul
+    output reg id_mul,
+    output reg id_div
    
 );
 
@@ -55,6 +56,7 @@ always @(*) begin
     rd_flag = 1'd0;
     rd_buf_flag = 3'd0;
     id_mul = 1'd0;
+    id_div = 1'b0;
     case (opcode)
         7'b0110011: begin                         
             reg_wen     = 1'b1;
@@ -349,6 +351,7 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd1;    
                     rd_flag = 3'd0;
+                    id_div = 1'b1;
                 end
                 default:unknown_code = inst;
                 endcase

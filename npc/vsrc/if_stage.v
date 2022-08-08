@@ -12,7 +12,9 @@ module if_stage (
     input [63:0] id_pc,
     input sig_jalr,
     input id_mul,
-    input sh_fnsh_flag
+    input sh_fnsh_flag,
+    input id_div,
+    input div_finish
 );
 
 pc_predict u_pc_predict(
@@ -26,9 +28,10 @@ pc_predict u_pc_predict(
   .id_curr_pc(id_pc),
   .sig_jalr(sig_jalr),
   .id_mul(id_mul),
-  .sh_fnsh_flag(sh_fnsh_flag)
+  .sh_fnsh_flag(sh_fnsh_flag),
+  .id_div(id_div),
+  .div_finish(div_finish)
 
-  
 );
 
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);

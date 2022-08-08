@@ -27,7 +27,7 @@ assign inst = if_inst;
 
 
 wire rest_id_mem;
-
+wire div_finish;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -41,7 +41,9 @@ if_stage u_if_stage(
     .id_pc(id_pc),
     .sig_jalr(sig_jalr),
     .sh_fnsh_flag(sh_fnsh_flag),
-    .id_mul(id_mul)
+    .id_mul(id_mul),
+    .id_div(id_div),
+    .div_finish(div_finish)
     
     
 );
@@ -95,6 +97,7 @@ wire [63:0] id_end_write_addr;
 wire rest_wb_hazard;
 wire sig_jalr;
 wire id_mul;
+wire id_div;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -150,7 +153,8 @@ id_stage u_id_stage(
     .cunqu_hazard(id_cunqu_hazard),
     .mem_cunqu_hazard(mem_cunqu_hazard),
     .mem_from_ex_alu_res(mem_from_ex_alu_res),
-    .id_mul(id_mul)
+    .id_mul(id_mul),
+    .id_div(id_div)
 );
 
 wire id_cunqu_hazard;
@@ -185,6 +189,7 @@ wire [31:0] ex_inst;
 wire [63:0] ex_end_write_addr;
 wire ex_cunqu_hazard;
 wire ex_id_mul;
+wire ex_id_div;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -245,7 +250,9 @@ id_ex_regs u_id_ex_regs(
     .cunqu_hazard_id_ex_i(id_cunqu_hazard),
     .cunqu_hazard_id_ex_o(ex_cunqu_hazard),
     .id_mul_id_ex_i(id_mul),
-	.id_mul_id_ex_o(ex_id_mul)
+	.id_mul_id_ex_o(ex_id_mul),
+    .id_div_id_ex_i(id_div),
+    .id_div_id_ex_o(ex_id_div)
    
     
     );
@@ -265,7 +272,8 @@ ex_stage u_ex_stage(
     .alu_res(from_ex_alu_res),   // alu result
     .rd_flag(ex_rd_flag),
     .expand_signed(ex_expand_signed),
-    .sh_fnsh_flag(sh_fnsh_flag)
+    .sh_fnsh_flag(sh_fnsh_flag),
+    .div_finish(div_finish)
   
 );
 wire mem_reg_wen;
@@ -339,7 +347,9 @@ ex_mem_regs u_ex_mem_regs(
     .cunqu_hazard_ex_mem_i(ex_cunqu_hazard),
     .cunqu_hazard_ex_mem_o(mem_cunqu_hazard),
     .id_mul_ex_mem_i(ex_id_mul),
-	.sh_fnsh_flag_ex_mem_i(sh_fnsh_flag)
+	.sh_fnsh_flag_ex_mem_i(sh_fnsh_flag),
+    .id_div_ex_mem_i(ex_id_div),
+	.div_finish_ex_mem_i(div_finish)
 	
 );
 wire [63:0] from_mem_alu_res;

@@ -52,9 +52,8 @@ module id_stage (
     output reg cunqu_hazard,
     input mem_cunqu_hazard,
     input [63:0] mem_from_ex_alu_res,
-    output id_mul
-   
-   
+    output id_mul,
+    output id_div
 );
 wire branch;
 wire jump;
@@ -88,7 +87,8 @@ ctrl u_ctrl(
     .expand_signed(expand_signed),
     .rd_flag(rd_flag),
     .rd_buf_flag(rd_buf_flag),   //访存标志
-    .id_mul(id_mul)
+    .id_mul(id_mul),
+    .id_div(id_div)
    
 );
 imm_gen u_imm_gen(

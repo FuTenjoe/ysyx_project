@@ -11,7 +11,8 @@ module alu(
     output reg [63:0]    alu_res_ex_sign,   // alu result
     input [2:0]rd_flag,
     input [3:0] expand_signed,
-    output sh_fnsh_flag
+    output sh_fnsh_flag,
+    output div_finish
 );
 //reg [63:0] rd_buf_lw;
 //reg [2:0] test;
@@ -25,7 +26,7 @@ reg [3:0] mul_expand_signed;
 
 reg div32_valid;
 reg div_signed;
-wire div_finish;
+
 reg alu_sec;
 wire [63:0] div_res; 
 always @(*) begin

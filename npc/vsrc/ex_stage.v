@@ -11,7 +11,8 @@ module ex_stage(
     output reg [63:0]    alu_res,   // alu result
     input [2:0]rd_flag,
     input [3:0] expand_signed,
-    output sh_fnsh_flag
+    output sh_fnsh_flag,
+    output div_finish
     
 );
 
@@ -27,7 +28,8 @@ alu u_alu(
     .alu_res_ex_sign(alu_res),   // alu result
     .rd_flag(rd_flag),
     .expand_signed(expand_signed),
-    .sh_fnsh_flag(sh_fnsh_flag)
+    .sh_fnsh_flag(sh_fnsh_flag),
+    .div_finish(div_finish)
 );
 
 
