@@ -43,7 +43,7 @@ always@(posedge clk or negedge rstn)begin
         delay2_div_finish <= 1'b0;
         delay_div_valid <= 1'b0;
     end
-    else begin
+    else if(div_valid)begin
         delay1_div_finish <= redy1;
         delay2_div_finish <= delay1_div_finish;
         delay1_div_finish <= 1'b1;
