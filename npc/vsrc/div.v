@@ -11,19 +11,28 @@ module div
       input                     data_rdy ,  //数据使能
       input [N-1:0]             dividend,   //被除数
       input [M-1:0]             divisor,    //除数
-	  input alu_sec, //0选商
+	  input div_sign,     //0为无符号数
+      input alu_sec,   //0为商
 
       output                    res_rdy ,
       output [N_ACT-M:0]        merchant ,  //商位宽：N
-      output [M-1:0]            remainder,
-	  output [N-1:0] div_res
-	   ); //最终余数
+      output [M-1:0]            remainder   //最终余数
+      output [N-1:0] div_res
+	  ); 
 
     wire [N_ACT-M-1:0]   dividend_t [N_ACT-M:0] ;
     wire [M-1:0]         divisor_t [N_ACT-M:0] ;
     wire [M-1:0]         remainder_t [N_ACT-M:0];
     wire [N_ACT-M:0]     rdy_t ;
     wire [N_ACT-M:0]     merchant_t [N_ACT-M:0] ;
+	
+	wire [N-1:0] sign_dividend;
+	wire [M-1:0] sign_divisor;
+	wire [1:0] res_sign;
+	assign sign_dividend = (div_sign) ? (dividend[N-1]==1'b1 ? (~dividend+ 1'b1) : dividend) : dividend;
+	assign sign_divisor = (div_sign) ? (divisor[M-1] == 1'b1 ? ~divisor + 1'b1 : divisor) : divisor;
+	assign res_sign = (div_sign)? (dividend[N-1]==1'b1 ?(divisor[M-1] == 1'b1 ? 2'b01: 2'b11):(divisor[M-1] == 1'b1 ? 2'b10: 2'b00)) : 2'b00;
+
 
     //初始化首个运算单元
     divider_cell      #(.N(N_ACT), .M(M))
@@ -32,10 +41,10 @@ module div
       .rstn             (rstn),
       .en               (data_rdy),
       //用被除数最高位 1bit 数据做第一次单步运算的被除数，高位补0
-      .dividend         ({{(M){1'b0}}, dividend[N-1]}),
-      .divisor          (divisor),                  
+      .dividend         ({{(M){1'b0}}, sign_dividend[N-1]}),
+      .divisor          (sign_divisor),                  
       .merchant_ci      ({(N_ACT-M+1){1'b0}}),   //商初始为0
-      .dividend_ci      (dividend[N_ACT-M-1:0]), //原始被除数
+      .dividend_ci      (sign_dividend[N_ACT-M-1:0]), //原始被除数
       //output
       .dividend_kp      (dividend_t[N_ACT-M]),   //原始被除数信息传递
       .divisor_kp       (divisor_t[N_ACT-M]),    //原始除数信息传递
@@ -74,6 +83,11 @@ always@(posedge clk or negedge rstn)begin
         redy2 <= 1'b0;
         redy3 <= 1'b0;
     end
+	else if(res_rdy == 1'b1)begin
+		redy1 <= 1'b0;
+        redy2 <= 1'b0;
+        redy3 <= 1'b0;
+	end
     else begin
         redy1 <= rdy_t[0];
         redy2 <= redy1;
@@ -82,7 +96,7 @@ always@(posedge clk or negedge rstn)begin
 end
     //assign res_rdy       = rdy_t[0];
     assign res_rdy       = redy3;
-    assign merchant      = merchant_t[0];  //最后一次商结果作为最终的商
-    assign remainder     = remainder_t[0]; //最后一次余数作为最终的余数
-	assign div_res = (alu_sec) ? remainder : merchant;
+    assign merchant      = res_sign[1] ? ~merchant_t[0]+1'b1 : merchant_t[0];  //最后一次商结果作为最终的商
+    assign remainder     = res_sign[0] ? ~remainder_t[0]+1'b1 : remainder_t[0]; //最后一次余数作为最终的余数
+    assign div_res  = alu_sec ? remainder : merchant;
 endmodule
