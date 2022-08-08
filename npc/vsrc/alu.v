@@ -202,7 +202,7 @@ always @(*) begin
 end
 
 wire [63:0] alu_res2;
-assign alu_res2 = (div32_valid) ? (div_finish ? div_res: alu_res ):((mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res) ;
+assign alu_res2 = (div32_valid) ? (div_finish ? div_res32: alu_res ):((mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res) ;
 
 reg [129:0] delay_mul_res;
 reg delay_sh_fg;
@@ -269,7 +269,7 @@ div #(.N(32),
       .res_rdy(div_finish32) ,
       //.merchant(div32_merchant) ,  //商位宽：N
       //.remainder(div32_remainder),
-      .div_res(div_res)
+      .div_res(div_res32)
       ); //最终余数
 
 div #(.N(64),
@@ -288,7 +288,7 @@ div #(.N(64),
       .res_rdy(div_finish64) ,
       //.merchant(div64_merchant) ,  //商位宽：N
       //.remainder(div64_remainder),
-      .div_res(div_res)
+      .div_res(div_res64)
       ); //最终余数
 
 assign div_finish = div_finish32 | div_finish64;
