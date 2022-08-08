@@ -167,9 +167,12 @@ always @(*) begin
                 //alu_res = alu_src1[31:0] / alu_src2[31:0];
         end
         `ALU_DIVYW:begin
-                signed_alu_src1 = $signed (alu_src1[31:0]);
+               /* signed_alu_src1 = $signed (alu_src1[31:0]);
                 signed_alu_src2 = $signed (alu_src2[31:0]);
-                alu_res = signed_alu_src1[31:0] % signed_alu_src2[31:0] ;    //不确定
+                alu_res = signed_alu_src1[31:0] % signed_alu_src2[31:0] ;    //不确定 */
+                div32_valid = 1'b1;
+                div_signed = 1'b1;
+                alu_sec = 1'b1;
         end
         `ALU_MEM:begin
             if(rd_flag == 3'd1)
