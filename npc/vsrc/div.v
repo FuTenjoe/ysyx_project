@@ -50,7 +50,7 @@ always@(posedge clk or negedge rstn)begin
     end
 end
 wire en2;
-assign en2  = (div_valid &(!delay_div_valid)) || (div_valid & delay_div_valid & delay1_div_finish);
+assign en2  = (div_valid &(!delay_div_valid)) || (div_valid & delay_div_valid & delay2_div_finish);
     //初始化首个运算单元
     divider_cell      #(.N(N_ACT), .M(M))
        u_divider_step0
