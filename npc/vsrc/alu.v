@@ -29,6 +29,8 @@ reg div_signed;
 
 reg alu_sec;
 wire [63:0] div_res; 
+wire div64_valid;
+
 always @(*) begin
     zero = 1'b0;
     alu_res = alu_src1 -  alu_src2;
@@ -146,8 +148,12 @@ always @(*) begin
         end
         `ALU_SLLI:
                 alu_res = alu_src1 <<  alu_src2;
-        `ALU_DIVU:
-                alu_res = alu_src1 / alu_src2;
+        `ALU_DIVU:begin
+                div64_valid = 1'b1;
+                div_signed = 1'b0;
+                alu_sec = 1'b0;
+                //alu_res = alu_src1 / alu_src2;
+        end
         `ALU_DIVYU:
             alu_res = alu_src1 % alu_src2;
     /*    `ALU_SLTU:
@@ -259,8 +265,27 @@ div #(.N(32),
       .alu_sec(alu_sec),
 
       .res_rdy(div_finish) ,
-      .merchant(div32_merchant) ,  //商位宽：N
-      .remainder(div32_remainder),
+      //.merchant(div32_merchant) ,  //商位宽：N
+      //.remainder(div32_remainder),
+      .div_res(div_res)
+      ); //最终余数
+
+div #(.N(64),
+      .M(64),
+      .N_ACT(127))
+    u_div32
+    (
+      .clk(clk),
+      .rstn(rst_n),
+
+      .div_valid(div64_valid) ,  //数据使能
+      .dividend(alu_src1[63:0]),   //被除数
+      .divisor(alu_src2[63:0]),    //除数
+      .alu_sec(alu_sec),
+
+      .res_rdy(div_finish) ,
+      //.merchant(div64_merchant) ,  //商位宽：N
+      //.remainder(div64_remainder),
       .div_res(div_res)
       ); //最终余数
 
