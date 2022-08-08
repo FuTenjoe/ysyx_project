@@ -74,7 +74,7 @@ module div
               );
         end // block: sqrt_stepx
     endgenerate
- reg redy1;
+/* reg redy1;
  reg redy2;
  reg redy3;
 always@(posedge clk or negedge rstn)begin
@@ -93,9 +93,9 @@ always@(posedge clk or negedge rstn)begin
         redy2 <= redy1;
         redy3 <= redy2;
     end
-end
-    //assign res_rdy       = rdy_t[0];
-    assign res_rdy       = redy3;
+end*/
+    assign res_rdy       = rdy_t[0];
+    //assign res_rdy       = redy3;
     assign merchant      = res_sign[1] ? ~merchant_t[0]+1'b1 : merchant_t[0];  //最后一次商结果作为最终的商
     assign remainder     = res_sign[0] ? ~remainder_t[0]+1'b1 : remainder_t[0]; //最后一次余数作为最终的余数
     assign div_res  = alu_sec ? remainder : merchant;
