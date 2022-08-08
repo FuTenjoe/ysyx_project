@@ -16,7 +16,7 @@ module div
 
       output                    res_rdy ,
       output [N_ACT-M:0]        merchant ,  //商位宽：N
-      output [M-1:0]            remainder   //最终余数
+      output [M-1:0]            remainder,   //最终余数
       output [N-1:0] div_res
 	  ); 
 
