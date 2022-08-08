@@ -17,7 +17,7 @@ module if_id_regs(
 	input delay_sig_jalr,
 	input id_mul,
 	input sh_fnsh_flag,
-	input id_idv,
+	input id_div,
 	input div_finish
 	
 	
