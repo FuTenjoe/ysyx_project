@@ -161,7 +161,10 @@ always @(*) begin
                 //alu_res = alu_src1 / alu_src2;
         end
         `ALU_DIVYU:
-            alu_res = alu_src1 % alu_src2;
+                div64_valid = 1'b1;
+                div_signed = 1'b0;
+                alu_sec = 1'b1;
+            //alu_res = alu_src1 % alu_src2;
     /*    `ALU_SLTU:
             alu_res = (alu_src1 < alu_src2) ? 64'd1 : 64'd0;*/
         `ALU_XOR:
