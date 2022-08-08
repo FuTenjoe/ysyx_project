@@ -240,10 +240,10 @@ mul u_mul(
 	.sh_fnsh_flag(sh_fnsh_flag)
     );
 
-div u_div32
-	#(.N(32),
+div #(.N(32),
       .M(32),
       .N_ACT(63))
+    u_div32
     (
       .clk(clk),
       .rstn(rst_n),
