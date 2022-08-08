@@ -89,14 +89,20 @@ always@(posedge clk or negedge rstn)begin
         redy3 <= 1'b0;
     end
     else if(div_valid)begin
-        redy1 <= rdy_t[0];
+        redy1 <= rdy_t[1];
         redy2 <= redy1;
         redy3 <= redy2;
+    end
+    else begin
+        redy1 <= 1'b0;
+        redy2 <= 1'b0;
+        redy3 <= 1'b0;
+    end
     end
 end
 
     //assign res_rdy       = rdy_t[0];
-    assign res_rdy       = redy1 ? 1'b0: rdy_t[0] ; 
+    assign res_rdy       = redy2 ? 1'b1: 1'b0 ; 
     assign merchant      = res_sign[1] ? ~merchant_t[0]+1'b1 : merchant_t[0];  //最后一次商结果作为最终的商
     assign remainder     = res_sign[0] ? ~remainder_t[0]+1'b1 : remainder_t[0]; //最后一次余数作为最终的余数
     assign div_res  = alu_sec ? remainder : merchant;
