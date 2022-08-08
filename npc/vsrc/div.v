@@ -44,13 +44,13 @@ always@(posedge clk or negedge rstn)begin
         delay_div_valid <= 1'b0;
     end
     else begin
-        delay1_div_finish <= rdy_t[0];
+        delay1_div_finish <= redy1;
         delay2_div_finish <= delay1_div_finish;
         delay1_div_finish <= 1'b1;
     end
 end
 wire en2;
-assign en2  = (div_valid &(!delay_div_valid)) || (div_valid & delay_div_valid & delay2_div_finish);
+assign en2  = (div_valid &(!delay_div_valid)) || (div_valid & delay_div_valid & delay1_div_finish);
     //初始化首个运算单元
     divider_cell      #(.N(N_ACT), .M(M))
        u_divider_step0
