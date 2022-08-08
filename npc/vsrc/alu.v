@@ -29,7 +29,7 @@ reg div_signed;
 
 reg alu_sec;
 wire [63:0] div_res; 
-wire div64_valid;
+reg div64_valid;
 
 always @(*) begin
     zero = 1'b0;
@@ -39,6 +39,7 @@ always @(*) begin
     mul_valid = 1'b0;
     mul_expand_signed = 4'd0;
     div32_valid = 1'b0;
+    div64_valid = 1'b0;
     case (alu_op)
         `ALU_ADD: begin  //0011
         if(rd_flag == 3'd0)begin
