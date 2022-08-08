@@ -45,7 +45,7 @@ int NDL_PollEvent(char *buf, int len) {
 
 void NDL_OpenCanvas(int *w, int *h) {
   //自己加
-  canvas_w = *w;
+ /* canvas_w = *w;
   canvas_h = *h;
   canvas = malloc(sizeof(uint32_t) * (*w) * (*h));
   assert(canvas);
@@ -53,7 +53,7 @@ void NDL_OpenCanvas(int *w, int *h) {
   memset(canvas,0,sizeof(canvas));
   if (getenv("NWM_APP")){
     has_num = 0;}
-  else has_num = 1;
+  else has_num = 1;   */
   //原有代码
   if (getenv("NWM_APP")) {
     int fbctl = 4;
@@ -71,9 +71,6 @@ void NDL_OpenCanvas(int *w, int *h) {
       if (strcmp(buf, "mmap ok") == 0) break;
     }
     close(fbctl);
-  }
-  else {
-    printf("else cond\n");
   }
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
