@@ -202,7 +202,7 @@ always @(*) begin
 end
 
 wire [63:0] alu_res2;
-assign alu_res2 = (div32_valid) ? (div_finish ? div_res32: alu_res ):((mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res) ;
+assign alu_res2 = (div32_valid) ? (div_finish32 ? div_res32: alu_res ):((mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res) ;
 
 reg [129:0] delay_mul_res;
 reg delay_sh_fg;
