@@ -155,10 +155,10 @@ always @(*) begin
         `ALU_SLLI:
                 alu_res = alu_src1 <<  alu_src2;
         `ALU_DIVU:begin
-                //div64_valid = 1'b1;
-                //div_signed = 1'b0;
-                //alu_sec = 1'b0;
-                alu_res = alu_src1 / alu_src2;
+                div64_valid = 1'b1;
+                div_signed = 1'b0;
+                alu_sec = 1'b0;
+                //alu_res = alu_src1 / alu_src2;
         end
         `ALU_DIVYU:
             alu_res = alu_src1 % alu_src2;
