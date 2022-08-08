@@ -273,7 +273,7 @@ div #(.N(32),
 div #(.N(64),
       .M(64),
       .N_ACT(127))
-    u_div32
+    u_div64
     (
       .clk(clk),
       .rstn(rst_n),
