@@ -98,7 +98,6 @@ always@(posedge clk or negedge rstn)begin
         redy2 <= 1'b0;
         redy3 <= 1'b0;
     end
-    end
 end
 
     //assign res_rdy       = rdy_t[0];
