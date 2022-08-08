@@ -22,6 +22,12 @@ reg signed [63:0] signed_alu_src2;
 reg mul_valid;
 wire [129:0] mul_res;
 reg [3:0] mul_expand_signed;
+
+reg div32_valid;
+reg div_signed;
+wire div_finish;
+reg alu_sec;
+wire [63:0] div_res; 
 always @(*) begin
     zero = 1'b0;
     alu_res = alu_src1 -  alu_src2;
@@ -153,7 +159,10 @@ always @(*) begin
                 mul_expand_signed = expand_signed; 
         end
         `ALU_DIVW:
-                alu_res = alu_src1[31:0] / alu_src2[31:0];
+                div32_valid = 1'b1;
+                div_signed = 1'b0;
+                alu_sec = 1'b0;
+                //alu_res = alu_src1[31:0] / alu_src2[31:0];
         `ALU_DIVYW:begin
                 signed_alu_src1 = $signed (alu_src1[31:0]);
                 signed_alu_src2 = $signed (alu_src2[31:0]);
@@ -179,7 +188,7 @@ always @(*) begin
 end
 
 wire [63:0] alu_res2;
-assign alu_res2 = (mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res;
+assign alu_res2 = (div32_valid) ? (div32_finish ? div_res: alu_res ):((mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res) ;
 
 reg [129:0] delay_mul_res;
 reg delay_sh_fg;
@@ -230,6 +239,24 @@ mul u_mul(
 	.sh_fnsh_flag(sh_fnsh_flag)
     );
 
+div u_div
+	#(parameter N=32,
+      parameter M=32,
+      parameter N_ACT = M+N-1)
+    (
+      .clk(clk),
+      .rstn(rst_n),
+
+      .data_rdy(div32_valid) ,  //数据使能
+      .dividend(alu_src1[31:0]),   //被除数
+      .divisor(alu_src2[31:0]),    //除数
+      .alu_sec(alu_sec),
+
+      .res_rdy(div_finish) ,
+      .merchant(div32_merchant) ,  //商位宽：N
+      .remainder(div32_remainder),
+      .div_res(div_res)
+      ); //最终余数
 
     
 
