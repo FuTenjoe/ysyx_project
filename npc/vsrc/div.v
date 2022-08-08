@@ -83,20 +83,15 @@ always@(posedge clk or negedge rstn)begin
         redy2 <= 1'b0;
         redy3 <= 1'b0;
     end
-    else if(redy1 == 1'b1 & redy2 == 1'b1)begin
+    else if(redy1 == 1'b1 )begin
         redy1 <= 1'b0;
         redy2 <= 1'b0;
         redy3 <= 1'b0;
     end
-    else if(div_valid)begin
+    else begin
         redy1 <= rdy_t[0];
         redy2 <= redy1;
         redy3 <= redy2;
-    end
-    else begin
-        redy1 <= 1'b0;
-        redy2 <= 1'b0;
-        redy3 <= 1'b0;
     end
 end
 
