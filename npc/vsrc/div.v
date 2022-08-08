@@ -33,13 +33,31 @@ module div
 	assign sign_divisor = (div_sign) ? (divisor[M-1] == 1'b1 ? ~divisor + 1'b1 : divisor) : divisor;
 	assign res_sign = (div_sign)? (dividend[N-1]==1'b1 ?(divisor[M-1] == 1'b1 ? 2'b01: 2'b11):(divisor[M-1] == 1'b1 ? 2'b10: 2'b00)) : 2'b00;
 
+reg delay1_div_finish;
+reg delay2_div_finish;
+reg delay_div_valid;
 
+always@(posedge clk or negedge rstn)begin
+    if(!rstn)begin
+        delay1_div_finish <= 1'b0;
+        delay2_div_finish <= 1'b0;
+        delay_div_valid <= 1'b0;
+    end
+    else begin
+        delay1_div_finish <= div_finish;
+        delay2_div_finish <= delay1_div_finish;
+        delay1_div_finish <= 1'b1;
+    end
+end
+wire en2;
+assign en2  = (div_valid &(!delay_div_valid)) || (div_valid & delay_div_valid & delay2_div_finish);
     //初始化首个运算单元
     divider_cell      #(.N(N_ACT), .M(M))
        u_divider_step0
     ( .clk              (clk),
       .rstn             (rstn),
-      .en               (div_valid),
+      //.en               (div_valid),
+      .en               (en2),
       //用被除数最高位 1bit 数据做第一次单步运算的被除数，高位补0
       .dividend         ({{(M){1'b0}}, sign_dividend[N-1]}),
       .divisor          (sign_divisor),                  
