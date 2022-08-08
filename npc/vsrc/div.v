@@ -46,7 +46,7 @@ always@(posedge clk or negedge rstn)begin
     else if(div_valid)begin
         delay1_div_finish <= redy1;
         delay2_div_finish <= delay1_div_finish;
-        delay1_div_finish <= 1'b1;
+        delay_div_valid <= div_valid;
     end
 end
 wire en2;
