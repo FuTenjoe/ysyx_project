@@ -12,7 +12,7 @@ module divider_cell
       input [M-1:0]             divisor,
       input [N-M:0]             merchant_ci , //上一级输出的商
       input [N-M-1:0]           dividend_ci , //原始除数
-
+      
       output reg [N-M-1:0]      dividend_kp,  //原始被除数信息
       output reg [M-1:0]        divisor_kp,   //原始除数信息
       output reg                rdy ,
