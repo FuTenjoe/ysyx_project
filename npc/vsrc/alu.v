@@ -266,7 +266,7 @@ div #(.N(32),
       .divisor(alu_src2[31:0]),    //除数
       .alu_sec(alu_sec),
 
-      .res_rdy(div_finish) ,
+      .res_rdy(div_finish32) ,
       //.merchant(div32_merchant) ,  //商位宽：N
       //.remainder(div32_remainder),
       .div_res(div_res)
@@ -285,13 +285,13 @@ div #(.N(64),
       .divisor(alu_src2[63:0]),    //除数
       .alu_sec(alu_sec),
 
-      .res_rdy(div_finish) ,
+      .res_rdy(div_finish64) ,
       //.merchant(div64_merchant) ,  //商位宽：N
       //.remainder(div64_remainder),
       .div_res(div_res)
       ); //最终余数
 
-    
+assign div_finish = div_finish32 | div_finish64;
 
 endmodule
 
