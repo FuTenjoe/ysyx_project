@@ -8,7 +8,7 @@ module div
       input                     clk,
       input                     rstn,
 
-      input                     data_rdy ,  //数据使能
+      input                     div_valid ,  //数据使能
       input [N-1:0]             dividend,   //被除数
       input [M-1:0]             divisor,    //除数
 	  input div_sign,     //0为无符号数
@@ -39,7 +39,7 @@ module div
        u_divider_step0
     ( .clk              (clk),
       .rstn             (rstn),
-      .en               (data_rdy),
+      .en               (div_valid),
       //用被除数最高位 1bit 数据做第一次单步运算的被除数，高位补0
       .dividend         ({{(M){1'b0}}, sign_dividend[N-1]}),
       .divisor          (sign_divisor),                  
@@ -74,7 +74,7 @@ module div
               );
         end // block: sqrt_stepx
     endgenerate
-/* reg redy1;
+ reg redy1;
  reg redy2;
  reg redy3;
 always@(posedge clk or negedge rstn)begin
@@ -93,9 +93,10 @@ always@(posedge clk or negedge rstn)begin
         redy2 <= redy1;
         redy3 <= redy2;
     end
-end*/
-    assign res_rdy       = rdy_t[0];
-    //assign res_rdy       = redy3;
+end
+
+    //assign res_rdy       = rdy_t[0];
+    assign res_rdy       = redy1;
     assign merchant      = res_sign[1] ? ~merchant_t[0]+1'b1 : merchant_t[0];  //最后一次商结果作为最终的商
     assign remainder     = res_sign[0] ? ~remainder_t[0]+1'b1 : remainder_t[0]; //最后一次余数作为最终的余数
     assign div_res  = alu_sec ? remainder : merchant;

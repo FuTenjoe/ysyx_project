@@ -160,7 +160,7 @@ always @(*) begin
                 mul_expand_signed = expand_signed; 
         end
         `ALU_DIVW:begin
-                div32_valid = 1'b1;
+                div32_valid = (div_finish) ? 1'b0:1'b1;
                 div_signed = 1'b0;
                 alu_sec = 1'b0;
                 //alu_res = alu_src1[31:0] / alu_src2[31:0];
@@ -249,7 +249,7 @@ div #(.N(32),
       .clk(clk),
       .rstn(rst_n),
 
-      .data_rdy(div32_valid) ,  //数据使能
+      .div_valid(div32_valid) ,  //数据使能
       .dividend(alu_src1[31:0]),   //被除数
       .divisor(alu_src2[31:0]),    //除数
       .alu_sec(alu_sec),
