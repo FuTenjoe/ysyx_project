@@ -89,7 +89,7 @@ always@(posedge clk or negedge rstn)begin
         redy3 <= 1'b0;
     end
     else if(div_valid)begin
-        redy1 <= rdy_t[1];
+        redy1 <= rdy_t[2];
         redy2 <= redy1;
         redy3 <= redy2;
     end
