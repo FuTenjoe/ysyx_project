@@ -30,7 +30,8 @@ reg div_signed;
 reg alu_sec;
 wire [63:0] div_res; 
 reg div64_valid;
-
+wire [63:0] div_res32;
+wire [63:0] div_res64;
 always @(*) begin
     zero = 1'b0;
     alu_res = alu_src1 -  alu_src2;
