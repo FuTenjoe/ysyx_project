@@ -2775,6 +2775,15 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
                                                 & (IData)(
                                                           ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                            >> 0x19U)))));
+                                } else if ((1U & (IData)(
+                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                          >> 0xcU)))) {
+                                    if ((1U == (0x7fU 
+                                                & (IData)(
+                                                          ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
+                                                           >> 0x19U))))) {
+                                        vlSelf->ysyx_22040175_top__DOT__id_div = 1U;
+                                    }
                                 }
                             }
                         }
