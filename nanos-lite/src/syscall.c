@@ -53,20 +53,20 @@ void do_syscall(Context *c) {
       break;
       }
     case SYS_open:{
-      //printf("在进程中打开\n");
+      printf("在进程中打开\n");
       c->GPRx= fs_open((char *)a[1], (int)a[2], (size_t)a[3]);
       //printf("pathname is %d",(char *)a[1]);
       break;
     }
     case SYS_read:{
-      //printf("读\n");
+      printf("读\n");
       c->GPRx=fs_read((int)a[1],(void *)a[2],(size_t)a[3]);
       //printf("gpr x = %lx\n",c->GPRx);
       //c->GPRx= 0;
       break;
     }
     case SYS_write:{
-      printf("写");
+       printf("写\n");
       //printf("gpr a0 = %lx\n",a[0]);
       c->GPRx = fs_write((int)a[1],(void*)a[2],(size_t)a[3]);
       //printf("gpr x = %ld\n",c->GPRx);
