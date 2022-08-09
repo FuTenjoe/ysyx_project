@@ -15,7 +15,7 @@ int main() {
   NDL_DrawRect((uint32_t *)bmp, 0, 0, w, h);
   free(bmp);
   NDL_Quit();
-  printf("Test ends! Spinning...\n");
+  //printf("Test ends! Spinning...\n");
   while (1);
   return 0;
 }
