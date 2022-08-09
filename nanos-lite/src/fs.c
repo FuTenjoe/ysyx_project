@@ -123,7 +123,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
         putch(((char*)(buf))[i]);
       }
     case FD_FB:{
-          f ->size = fb_write((uint32_t*)buf,f->open_offset,bytes_to_write);
+          //f ->size = fb_write((uint32_t*)buf,f->open_offset,bytes_to_write);
       printf("f->open_offset = %d\n",f->open_offset);
       printf("f->size = %d\n",f->size);
     }
