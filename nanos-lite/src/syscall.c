@@ -59,9 +59,9 @@ void do_syscall(Context *c) {
       break;
     }
     case SYS_read:{
-      printf("读\n");
+      //printf("读\n");
       c->GPRx=fs_read((int)a[1],(void *)a[2],(size_t)a[3]);
-      printf("gpr x = %lx\n",c->GPRx);
+      //printf("gpr x = %lx\n",c->GPRx);
       //c->GPRx= 0;
       break;
     }

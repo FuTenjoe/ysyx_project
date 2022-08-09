@@ -119,6 +119,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
   switch(fd){
     case FD_STDOUT:
     case FD_STDERR:
+     Log("fs_write:open_i=%d,fd=%d,open_offset=%d,count=%d\n",open_i,fd,file_table[open_i].open_offset,count);
       for (int i = 0; i < count; i++){
         putch(((char*)(buf))[i]);
       }
