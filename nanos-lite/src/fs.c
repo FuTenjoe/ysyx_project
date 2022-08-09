@@ -123,7 +123,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
         putch(((char*)(buf))[i]);
       }
     case FD_FB:{
-      f ->size = fb_write(buf,f->open_offset,bytes_to_write) *2;
+      f ->size = fb_write(buf,f->open_offset,bytes_to_write);
     }
     default:
       ramdisk_write(buf, f->disk_offset + f ->open_offset ,bytes_to_write);
