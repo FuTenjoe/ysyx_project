@@ -68,11 +68,12 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
   int w = io_read(AM_GPU_CONFIG).width;
   int h = io_read(AM_GPU_CONFIG).height;
   //printf("offset = %d",offset);
-  int x = (offset/4)%w + len < 400 ? (offset/4)%w : (offset/4)%w -400;
+ // int x = (offset/4)%w + len < 400 ? (offset/4)%w : (offset/4)%w -400;
+  int x = (offset/4)%w;
   int y = (offset/4)/w;
   printf("x=%d\n",x);
   printf("y=%d\n",y);
-  io_write(AM_GPU_FBDRAW,x,y,(uint32_t*)buf,128,300,true);
+  io_write(AM_GPU_FBDRAW,x,y,(uint32_t*)buf,128,128,true);
   //io_write(AM_GPU_FBDRAW, 0, 0, NULL, 0, 0, true);
   assert(offset <= w*h);
   printf("len = %d",len);
