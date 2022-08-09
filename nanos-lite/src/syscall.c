@@ -66,7 +66,7 @@ void do_syscall(Context *c) {
       break;
     }
     case SYS_write:{
-       printf("写\n");
+       //printf("写\n");
       //printf("gpr a0 = %lx\n",a[0]);
       c->GPRx = fs_write((int)a[1],(void*)a[2],(size_t)a[3]);
       //printf("gpr x = %ld\n",c->GPRx);
