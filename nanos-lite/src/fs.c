@@ -128,9 +128,6 @@ size_t fs_write( int  fd, const void * buf,size_t count){
       for (int i=0; ; i++){
           f ->size = fb_write(buf,f->open_offset,bytes_to_write);
           f->open_offset = 128 + f->open_offset;
-          if(f->open_offset > 300*400) {
-            break;
-          }
       }
       printf("f->open_offset = %d",f->open_offset);
       printf("f->size = %d",f->size);
@@ -148,10 +145,10 @@ size_t fs_write( int  fd, const void * buf,size_t count){
 void init_fs() {
   // TODO: initialize the size of /dev/fb
   int w = io_read(AM_GPU_CONFIG).width;
-  int h = io_read(AM_GPU_CONFIG).height;
+  //int h = io_read(AM_GPU_CONFIG).height;
   //int w = 120;
   //int h = 120;
-  file_table[FD_FB].size = w*h*4;    //参考，为什么是4？
+  file_table[FD_FB].size = 400*300*4;    //参考，为什么是4？
   printf("sizew = %d",w);
   //assert(file_table[FD_SYNC].write != NULL);
 }
