@@ -127,7 +127,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
       
       for (int i=0; 128*i < 400*300/128 ; i++){
           f ->size = fb_write(buf,f->open_offset,bytes_to_write);
-          
+          f->open_offset = f->open_offset + 128;
       }
       printf("f->open_offset = %d",f->open_offset);
       printf("f->size = %d",f->size);
