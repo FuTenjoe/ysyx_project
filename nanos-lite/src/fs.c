@@ -45,7 +45,7 @@ extern size_t dispinfo_read(void *buf, size_t offset, size_t len);
 
 int open_i = 0;
 int fs_open(char* pathname, int flags, size_t mode){
-  for(int i=0;i<35;i++){
+  for(int i=0;i<100;i++){
       assert(file_table[i].name!=NULL);
     if(strcmp(pathname,file_table[i].name)==0){
       file_table[i].open_offset = 0;
