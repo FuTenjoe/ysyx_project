@@ -71,7 +71,7 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
   int x = (offset)%w;
   int y = (offset)/w;
   if(offset+len > w*h) len = w*h - offset;
-  io_write(AM_GPU_FBDRAW,x*2,y,(uint32_t*)buf,128,128,true);
+  io_write(AM_GPU_FBDRAW,x*3,y*3,(uint32_t*)buf,128,128,true);
   //io_write(AM_GPU_FBDRAW, 0, 0, NULL, 0, 0, true);
   assert(offset <= w*h);
   return len;
