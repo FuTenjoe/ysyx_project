@@ -12,7 +12,7 @@ int main() {
   void *bmp = BMP_Load("/share/slides/slides-0.bmp", &w, &h);
   assert(bmp);
   NDL_OpenCanvas(&w, &h);
-  NDL_DrawRect((uint32_t *)bmp, 0, 0, w, h);
+  NDL_DrawRect((uint32_t *)bmp, 30, 30, w, h);
   free(bmp);
   NDL_Quit();
   printf("Test ends! Spinning...\n");
