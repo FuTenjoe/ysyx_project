@@ -119,14 +119,13 @@ size_t fs_write( int  fd, const void * buf,size_t count){
   switch(fd){
     case FD_STDOUT:
     case FD_STDERR:
-     Log("fs_write:open_i=%d,fd=%d,open_offset=%d,count=%d\n",open_i,fd,file_table[open_i].open_offset,count);
       for (int i = 0; i < count; i++){
         putch(((char*)(buf))[i]);
       }
     case FD_FB:{
           //f ->size = fb_write((uint32_t*)buf,f->open_offset,bytes_to_write);
       printf("f->open_offset = %d\n",f->open_offset);
-      printf("f->size = %d\n",f->size);
+      printf("f->size2 = %d\n",f->size);
     }
     default:
       ramdisk_write(buf, f->disk_offset + f ->open_offset ,bytes_to_write);
