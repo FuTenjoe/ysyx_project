@@ -63,7 +63,7 @@ void vga_update_screen() {
     //printf("vgactl_port_base[1] = %d\n",vgactl_port_base[1]);
     update_screen();
     *(vgactl_port_base) = 0;
-
+  printf("nemu update vga\n");
   }
 }
 
@@ -80,5 +80,5 @@ void init_vga() {
   add_mmio_map("vmem", CONFIG_FB_ADDR, vmem, screen_size(), NULL);
   IFDEF(CONFIG_VGA_SHOW_SCREEN, init_screen());
   IFDEF(CONFIG_VGA_SHOW_SCREEN, memset(vmem, 0, screen_size()));
-  printf("nemu init vga");
+  
 }
