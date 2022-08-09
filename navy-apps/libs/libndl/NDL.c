@@ -55,7 +55,7 @@ void NDL_OpenCanvas(int *w, int *h) {
     has_num = 0;}
   else has_num = 1;   */
   //原有代码
-  if (getenv("NWM_APP")) {
+ /* if (getenv("NWM_APP")) {
     int fbctl = 4;
     fbdev = 5;
     screen_w = *w; screen_h = *h;
@@ -71,7 +71,7 @@ void NDL_OpenCanvas(int *w, int *h) {
       if (strcmp(buf, "mmap ok") == 0) break;
     }
     close(fbctl);
-  }
+  }*/
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
  //参考代码
