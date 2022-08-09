@@ -95,7 +95,7 @@ always @(*) begin
                 end
                 3'b111:begin
                     alu_op = (funct7 == 7'b0) ? `ALU_AND: `ALU_DIVYU;      //A:and  B:remu
-                    id_idv = (funct7 == 7'b0) ? 1'b0 :1'b1;
+                    id_div = (funct7 == 7'b0) ? 1'b0 :1'b1;
                     s_flag = 1'd0;
                     expand_signed = 4'd0;
                     rd_flag = 3'd0;
