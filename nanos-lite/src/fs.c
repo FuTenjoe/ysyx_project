@@ -140,10 +140,10 @@ size_t fs_write( int  fd, const void * buf,size_t count){
 void init_fs() {
   // TODO: initialize the size of /dev/fb
   int w = io_read(AM_GPU_CONFIG).width;
-  int h = io_read(AM_GPU_CONFIG).height;
+  //int h = io_read(AM_GPU_CONFIG).height;
   //int w = 120;
   //int h = 120;
-  file_table[FD_FB].size = w*h*4;    //参考，为什么是4？
+  //file_table[FD_FB].size = w*h*4;    //参考，为什么是4？
   printf("sizew = %d",w);
   //assert(file_table[FD_SYNC].write != NULL);
 }
