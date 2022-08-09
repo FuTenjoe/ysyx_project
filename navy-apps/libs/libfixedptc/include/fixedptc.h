@@ -1,5 +1,6 @@
 #ifndef _FIXEDPTC_H_
 #define _FIXEDPTC_H_
+#include <math.h>
 
 /*
  * fixedptc.h is a 32-bit or 64-bit fixed point numeric library.
@@ -127,35 +128,70 @@ typedef	__uint128_t fixedptud;
 
 /* Multiplies a fixedpt number with an integer, returns the result. */
 static inline fixedpt fixedpt_muli(fixedpt A, int B) {
-	return 0;
+	//return 0;
+	//自己加
+	return A*B;
 }
 
 /* Divides a fixedpt number with an integer, returns the result. */
 static inline fixedpt fixedpt_divi(fixedpt A, int B) {
-	return 0;
+	//return 0;
+	//自己加
+	return A/B;
 }
 
 /* Multiplies two fixedpt numbers, returns the result. */
 static inline fixedpt fixedpt_mul(fixedpt A, fixedpt B) {
-	return 0;
+	//return 0;
+	//自己加
+	return A*B /2^8;
 }
 
 
 /* Divides two fixedpt numbers, returns the result. */
 static inline fixedpt fixedpt_div(fixedpt A, fixedpt B) {
-	return 0;
+	//return 0;
+	//自己加
+	return A/B*2^8;
 }
 
 static inline fixedpt fixedpt_abs(fixedpt A) {
-	return 0;
+	//return 0;
+	//自己加
+	if(A>>32 > 0)
+	return ~A+1;
+	else 
+	return A;
 }
 
 static inline fixedpt fixedpt_floor(fixedpt A) {
-	return 0;
+	//自己加不确定
+	if(A>>32 >0)
+	{
+		if((~(A-1)) % (2^8) == 0)
+			return A;
+		else 
+			return ~((~(A-1)) - 2^8) + 1;
+
+	}
+	else 
+	return (A /(2^8)) << 8;
+	
+	//return 0;
 }
 
 static inline fixedpt fixedpt_ceil(fixedpt A) {
-	return 0;
+	//自己加不确定
+	if(A>>32 >0)
+	{
+		if((~(A-1)) % (2^8) == 0)
+			return ~((~(A-1)) + 2^8) + 1;
+		else 
+			return A;
+
+	}
+	else 
+	return ((A >> 8) + 1) <<8 ;
 }
 
 /*
