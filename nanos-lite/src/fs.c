@@ -125,6 +125,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
     case FD_FB:{
 
       f ->size = fb_write(buf,f->open_offset,bytes_to_write);
+      f->open_offset = f->open_offset + 128;
       printf("f->open_offset = %d",f->open_offset);
     }
     default:
