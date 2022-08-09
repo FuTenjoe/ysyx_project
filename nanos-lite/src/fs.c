@@ -12,7 +12,7 @@ typedef struct {
   size_t open_offset;
 } Finfo;
 
-enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS,FD_DISPINFO};
+enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FREE,FD_FB,FD_EVENTS,FD_DISPINFO};
 //自己加
 size_t events_read(void *buf, size_t offset, size_t len);
 size_t fb_write(const void *buf, size_t offset, size_t len);
