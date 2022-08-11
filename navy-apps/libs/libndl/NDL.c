@@ -100,6 +100,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
       write(fd,pixels+i*w,len);
       cnt_r++;
     }
+    else printf("error");
   }
   //close(fd);
 }
