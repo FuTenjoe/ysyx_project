@@ -83,12 +83,7 @@ void NDL_OpenCanvas(int *w, int *h) {
     }
     close(fbctl);
   }
-  else{
-    if(*w == 0 || *h ==0){
-      *w = canvas_w;
-      *h = canvas_h;
-    }
-  }
+  
   //close(fd);
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
