@@ -103,6 +103,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
     }
     else printf("error");
   }
+  printf("Finish DRAWRECT!\n");
   //close(fd);
 }
 
