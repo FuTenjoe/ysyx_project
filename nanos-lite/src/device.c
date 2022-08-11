@@ -68,14 +68,14 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
   //自己加
   //参考代码
   int w = io_read(AM_GPU_CONFIG).width;
-  //int h = io_read(AM_GPU_CONFIG).height;
-  int x=0,y=0;
-  for (int i=0;i<len;i++){
-    x = (offset + i)%w;
-    y = (offset + i)/w;
-  }
+  int h = io_read(AM_GPU_CONFIG).height;
+  
+  
+  int  x = (offset )%w;
+  int  y = (offset )/w;
+  
   printf("fb_write x=%d,y=%d\n",x,y);
-  io_write(AM_GPU_FBDRAW,x,y,(uint32_t*)buf,400,300,true);
+  io_write(AM_GPU_FBDRAW,x,y,(uint32_t*)buf,w,h,true);
   return len;
 
 }
