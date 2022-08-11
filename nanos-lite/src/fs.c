@@ -119,11 +119,13 @@ size_t fs_write( int  fd, const void * buf,size_t count){
   int bytes_to_write = (remain_bytes > count ? count : remain_bytes);
   switch(fd){
     case FD_STDOUT:
-    case FD_STDERR:
+    case FD_STDERR:{
       for (int i = 0; i < count; i++){
         putch(((char*)(buf))[i]);
         break;
       }
+    }
+      
     case FD_FB:{
       f ->size = fb_write((uint32_t*)buf,f->open_offset,bytes_to_write);
       printf("f->open_offset = %d\n",f->open_offset);
