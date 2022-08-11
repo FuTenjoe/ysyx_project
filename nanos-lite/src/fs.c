@@ -50,6 +50,7 @@ int fs_open(char* pathname, int flags, size_t mode){
     if(strcmp(pathname,file_table[i].name)==0){
       file_table[i].open_offset = 0;
       open_i = i;
+      printf("fs_open");
       assert(file_table[i].name!=NULL);
       return i;
     }
