@@ -49,7 +49,7 @@ void NDL_OpenCanvas(int *w, int *h) {
   read(fd,&buf,sizeof(buf));
   screen_w = *w; screen_h = *h;
   sscanf(buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n",&canvas_w,&canvas_h); 
-  //printf("NDL_OpenCanvas w is %d h is %d\n",canvas_w,canvas_h);
+  printf("NDL_OpenCanvas w is %d h is %d\n",canvas_w,canvas_h);
   *w = canvas_w;
   *h = canvas_h;
 
