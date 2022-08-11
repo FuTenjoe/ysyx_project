@@ -520,7 +520,21 @@ int sprintf(char * str, const char *fmt, ...)
 */
 
 int snprintf(char *out, size_t n, const char *fmt, ...) {
-  panic("Not implemented");
+  //panic("Not implemented");
+  //pa3.3需要
+    int count;
+ 
+    va_list ap;
+ 
+    va_start(ap, fmt);
+ 
+    count = vsnprintf(out, n, fmt, ap);
+ 
+    va_end(ap);
+ 
+    return count;
+ 
+
 }
 
 int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
