@@ -53,7 +53,6 @@ int fs_open(char* pathname, int flags, size_t mode){
       printf("i = %d" ,i);
       assert(file_table[i].name!=NULL);
       return i;
-      break;
     }
   }
   panic("No such file: %s",pathname);
