@@ -108,7 +108,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
       //printf("writing\n");
       cnt_r++;
     }
-    else printf("error");break;
+    else printf("error");
   }
   printf("Finish DRAWRECT!\n");
   //close(fd);
