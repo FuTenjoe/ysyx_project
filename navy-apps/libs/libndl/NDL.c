@@ -98,7 +98,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
     //printf("drawing2\n");
     if(y+i>=0 && y+i < canvas_h){
       lseek(fd,offset + cnt_r*canvas_w,SEEK_SET);
-      write(fd,pixels+i*w*4,len);
+      write(fd,pixels+i*w,len);
       //printf("writing\n");
       cnt_r++;
     }
