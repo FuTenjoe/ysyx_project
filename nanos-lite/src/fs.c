@@ -113,7 +113,7 @@ size_t fs_read(int fd, void *buf, size_t count){
       return ret ;
 }
 size_t fs_write( int  fd, const void * buf,size_t count){
-  Log("fs_write:open_i=%d,fd=%d,open_offset=%d,count=%d\n",open_i,fd,file_table[open_i].open_offset,count);
+  //Log("fs_write:open_i=%d,fd=%d,open_offset=%d,count=%d\n",open_i,fd,file_table[open_i].open_offset,count);
   //参考代码
   Finfo *f = file_table + fd;
   int remain_bytes = f->size - f->open_offset;
