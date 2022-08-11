@@ -16,8 +16,11 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
 void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
   //add
   if(s->format->BitsPerPixel == 32){
+    int s_w = s->w,s_h = s->h;
+    if(w==0 | w > s_w) w = s_w;
+    if(h==0 | h > s_h) h = s_h;
     NDL_DrawRect((uint32_t*)s->pixels, x, y, w, h);
-    printf("equal to before\n");
+    printf("s->w = %d s->h = %d",s->w,s->h);
   }
   else{
     int s_w = s->w,s_h = s->h;
