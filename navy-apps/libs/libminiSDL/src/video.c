@@ -3,6 +3,7 @@
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_Rect *dstrect) {
   assert(dst && src);
@@ -13,6 +14,29 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
 }
 
 void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
+  //add
+  if(s->format->BitsPerPixel == 32){
+    NDL_DrawRect((uint32_t*)s->pixels, x, y, w, h);
+    printf("equal to before\n");
+  }
+  else{
+    int s_w = s->w,s_h = s->h;
+    if(w==0 | w > s_w) w = s_w;
+    if(h==0 | h > s_h) h = s_h;
+    uint32_t *palette = malloc(sizeof(uint32_t)*w*h);
+    memset(palette,0,sizeof(palette));
+    for(int i=0; i<h; i++){
+      for(int j=0; j<w; j++){
+        uint8_t r = s->format->palette->colors[(i+y)*s_w +j+h].r;
+        uint8_t g = s->format->palette->colors[(i+y)*s_w +j+h].g;
+        uint8_t b = s->format->palette->colors[(i+y)*s_w +j+h].b;
+        palette[i*w+j] = r<<16 |g<<8|b; //将rgb拼接成一个二进制数
+      }
+      NDL_DrawRect(palette,x,y,w,h);
+      free(palette);
+    }
+
+  }
   
   
 }
