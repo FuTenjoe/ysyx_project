@@ -507,7 +507,7 @@ int sprintf(char * str, const char *fmt, ...)
 {
    va_list args;
     int n;
-
+    
     va_start( args, fmt );
     n = vsprintf( str, fmt, args );
     va_end( args );
@@ -518,8 +518,24 @@ int sprintf(char * str, const char *fmt, ...)
 *功能：整型(int) 转化成 字符型(char)
 *注意：不用 % / 符号的话，只能正确打印:0...9的数字对应的字符'0'...'9'
 */
-
 int snprintf(char *out, size_t n, const char *fmt, ...) {
+
+  va_list ap;
+  va_start(ap,fmt);
+  char printf_buf[1024];
+  vsprintf(printf_buf, fmt, ap);
+  va_end(ap);
+  size_t i;
+  for (i=0;printf_buf[i]!='\0'&& i< n ;i++)
+  { out[i] = printf_buf[i];
+  }
+  return i;
+}
+
+int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
+  panic("Not implemented");
+}
+/*int snprintf(char *out, size_t n, const char *fmt, ...) {
   //panic("Not implemented");
   //pa3.3需要
     int count;
@@ -539,7 +555,8 @@ int snprintf(char *out, size_t n, const char *fmt, ...) {
 
 int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
   panic("Not implemented");
-}
+
+}*/
 #endif
 
 
