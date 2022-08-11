@@ -124,6 +124,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
         putch(((char*)(buf))[i]);
         break;
       }
+      printf("fs_write count = %d\n",count);
     }
       
     case FD_FB:{
