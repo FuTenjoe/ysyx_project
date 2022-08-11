@@ -97,6 +97,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
   else {
     len = (x + w < canvas_w) ? x+w : canvas_w;
   }
+  printf("len= %d",len);
   int  cnt_r = 0;
   for(int i=0; i<h; i++){
     //printf("drawing2\n");
