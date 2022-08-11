@@ -68,11 +68,11 @@ extern char _end;
 intptr_t end = (intptr_t) &_end;
 void *_sbrk(intptr_t increment) {
   //return (void *)-1;
-  intptr_t old = end;
+/*  intptr_t old = end;
   if(_syscall_(SYS_brk, old + increment, 0,0)==0){
       end = end + increment;
       return (void *)old;
-  }
+  }*/
   return (void *)-1;
 }
 
