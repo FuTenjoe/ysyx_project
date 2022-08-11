@@ -48,7 +48,7 @@ void NDL_OpenCanvas(int *w, int *h) {
   char buf[128] = {0};
   read(fd,&buf,sizeof(buf));
   
-  sscanf(buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n",&canvas_w,&canvas_h); 
+  sscanf((char *)buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n",&canvas_w,&canvas_h);
   //sprintf(buf, "%d %d", canvas_w, screen_h);
   printf("NDL_OpenCanvas w is %d h is %d\n",canvas_w,canvas_h);
  //printf("NDL\n");
