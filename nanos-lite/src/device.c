@@ -68,7 +68,6 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
   //自己加
   //参考代码
   int w = io_read(AM_GPU_CONFIG).width;
-  printf("w = %d\n",w);
   //int h = io_read(AM_GPU_CONFIG).height;
   int x = (offset)%w;
   int y = (offset)/w;
