@@ -12,7 +12,7 @@ static int screen_w = 0, screen_h = 0;
 //自己加
 static int evt_fd = -1;
 //static FILE* fb = NULL, *fb_event = NULL,*fb_sync = NULL,*fb_dispinfo = NULL;
-int canvas_w = 0, canvas_h = 0;//记录打开的画布的大小
+int canvas_w = -1, canvas_h = -1;//记录打开的画布的大小
 static uint32_t* canvas =NULL;
 static int place_x = 0,place_y = 0;
 
@@ -48,14 +48,14 @@ void NDL_OpenCanvas(int *w, int *h) {
   char buf[128] = {0};
   read(fd,&buf,sizeof(buf));
   
-  //sscanf(buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n",&canvas_w,&canvas_h); 
-  sprintf(buf, "%d %d", canvas_w, screen_h);
+  sscanf(buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n",&canvas_w,&canvas_h); 
+  //sprintf(buf, "%d %d", canvas_w, screen_h);
   printf("NDL_OpenCanvas w is %d h is %d\n",canvas_w,canvas_h);
  //printf("NDL\n");
   *w = canvas_w;
   *h = canvas_h;
   screen_w = *w; screen_h = *h;
-  
+
   //原有代码
   if (getenv("NWM_APP")) {
     int fbctl = 4;
