@@ -50,7 +50,7 @@ void NDL_OpenCanvas(int *w, int *h) {
   screen_w = *w; screen_h = *h;
   sscanf(buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n",&canvas_w,&canvas_h); 
  // printf("NDL_OpenCanvas w is %d h is %d\n",canvas_w,canvas_h);
- printf("NDL\n");
+ //printf("NDL\n");
   *w = canvas_w;
   *h = canvas_h;
 
@@ -81,6 +81,7 @@ void NDL_OpenCanvas(int *w, int *h) {
   close(fd);
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
+  printf("ndl_drawrect");
   int fd =open("/proc/dispinfo",O_RDONLY);
   int offset = (y >=0 ? y:0)*canvas_w + (x>=0 ? x: 0);
   int len;
