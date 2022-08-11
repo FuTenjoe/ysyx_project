@@ -10,12 +10,12 @@ static int evtdev = -1;
 static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
 //自己加
-static int evt_fd = -1;
+/*static int evt_fd = -1;
 static FILE* fb = NULL, *fb_event = NULL,*fb_sync = NULL,*fb_dispinfo = NULL;
 static int canvas_w = 0, canvas_h = 0;//记录打开的画布的大小
 static uint32_t* canvas =NULL;
 static int place_x = 0,place_y = 0;
-int has_num = 0;
+int has_num = 0;*/
 uint32_t NDL_GetTicks() {
 
   return 0;
@@ -43,16 +43,6 @@ int NDL_PollEvent(char *buf, int len) {
 }
 
 void NDL_OpenCanvas(int *w, int *h) {
-  //自己加
- /* canvas_w = *w;
-  canvas_h = *h;
-  canvas = malloc(sizeof(uint32_t) * (*w) * (*h));
-  assert(canvas);
-  canvas = (uint32_t*)malloc(sizeof(uint32_t)*(*w)*(*h));
-  memset(canvas,0,sizeof(canvas));
-  if (getenv("NWM_APP")){
-    has_num = 0;}
-  else has_num = 1;   */
   //原有代码
   if (getenv("NWM_APP")) {
     int fbctl = 4;
@@ -74,24 +64,16 @@ void NDL_OpenCanvas(int *w, int *h) {
   //else printf("lpencanvas\n");
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
- //参考代码
- /*if (has_num) {
-    for (int i = 0; i < h; i ++) {
-      printf("\033[X%d;%d", x, y + i);
-      for (int j = 0; j < w; j ++) {
-        putchar(';');
-       canvas[(i + y) * canvas_w + (j + x)] = pixels[i * w + j];
-       fwrite()
-      }
-      printf("d\n");
+  if(w==0 || h==0)return;
+  
+ // w = w < 400 - x ? w : 400-x;
+  for (int j=0; j<300&&j<h; j++){
+    for(int i=0; i<400&&i<w; i++){
+      fwrite(&pixels[j*w + i], 1, 4, stdout);
     }
-  } else {
-    for (int i = 0; i < h; i ++) {
-      for (int j = 0; j < w; j ++) {
-        canvas[(i + y) * canvas_w + (j + x)] = pixels[i * w + j];
-      }
-    }
-  }*/
+    
+  }
+
 }
 
 void NDL_OpenAudio(int freq, int channels, int samples) {
