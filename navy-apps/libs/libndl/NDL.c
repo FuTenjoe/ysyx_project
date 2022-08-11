@@ -85,7 +85,6 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
   int fd =open("/proc/dispinfo",O_RDONLY);
   int offset = (y >=0 ? y:0)*canvas_w + (x>=0 ? x: 0);
   int len;
-  printf("ndl_drawrect");
   if(x>=0){
     len = (x + w < canvas_w ) ? w: canvas_w -x;
   }
@@ -96,11 +95,12 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
   for(int i=0; i<h; i++){
     if(y+i>=0 && y+i < canvas_h){
       lseek(fd,offset + cnt_r*canvas_w,SEEK_SET);
+      printf("drwing\n");
       write(fd,pixels+i*w,len);
       cnt_r++;
     }
   }
-  close(fd);
+  //close(fd);
 }
 
 void NDL_OpenAudio(int freq, int channels, int samples) {
