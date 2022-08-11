@@ -115,7 +115,7 @@ size_t fs_read(int fd, void *buf, size_t count){
 size_t fs_write( int  fd, const void * buf,size_t count){
   //Log("fs_write:open_i=%d,fd=%d,open_offset=%d,count=%d\n",open_i,fd,file_table[open_i].open_offset,count);
   //参考代码
-  printf("fd = %d\n", fd);
+  printf("fs_write fd = %d\n", fd);
   Finfo *f = file_table + fd;
   int remain_bytes = f->size - f->open_offset;
   int bytes_to_write = (remain_bytes > count ? count : remain_bytes);
