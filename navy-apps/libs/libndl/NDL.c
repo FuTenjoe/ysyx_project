@@ -22,6 +22,7 @@ uint32_t NDL_GetTicks() {
 
   //return 0;
   struct timeval now = {2,6};
+  printf("now.tv_sec = %d\n",now.tv_sec);
   gettimeofday(&now,NULL);
   uint32_t ticks = now.tv_sec*1000 + now.tv_usec/1000;
   printf("now.tv_sec = %d\n",now.tv_sec);
