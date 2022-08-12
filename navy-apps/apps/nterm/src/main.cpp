@@ -49,6 +49,7 @@ void refresh_terminal() {
   static int flip = 0;
   printf("Before SDL_GetTicks\n");
   uint32_t now = SDL_GetTicks();
+  printf("now = %d",now);
   printf("After SDL_GetTicks\n");
   if (now - last > 500 || needsync) {
     int x = term->cursor.x, y = term->cursor.y;
