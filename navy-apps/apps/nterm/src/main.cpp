@@ -42,7 +42,6 @@ void refresh_terminal() {
         printf("i=%d, j = %d\n",i,j);
         draw_ch(i * font->w, j * font->h, term->getch(i, j), term->foreground(i, j), term->background(i, j));
         needsync = 1;
-         printf("refresh_terminal\n");
       }
   term->clear();
 
@@ -54,6 +53,7 @@ void refresh_terminal() {
     uint32_t color = (flip ? term->foreground(x, y) : term->background(x, y));
     draw_ch(x * font->w, y * font->h, ' ', 0, color);
     SDL_UpdateRect(screen, 0, 0, 0, 0);
+    printf("refresh_terminal\n");
     if (now - last > 500) {
       flip = !flip;
       last = now;
