@@ -90,7 +90,7 @@ void NDL_OpenCanvas(int *w, int *h) {
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
   int fd =open("/dev/fb",O_RDWR);
   printf("NDL_DrawRect w is %d h is %d\n",canvas_w,canvas_h);
-  int offset = (y >=0 ? y:0)*canvas_w + (x>=0 ? x: 0);
+  int offset = (y >=0 ? y:0)*screen_w + (x>=0 ? x: 0);
   int len;
   if(x>=0){
     len = (x + w < canvas_w ) ? w: canvas_w -x;
@@ -105,7 +105,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
     if(y+i>=0 && y+i < canvas_h){
       lseek(fd,offset*4 + cnt_r*screen_w*4,SEEK_SET);
       //printf("offset = %d",offset + cnt_r*canvas_w*4);
-      write(fd,pixels+i*canvas_w,len);
+      write(fd,pixels+i*canvas_w,len*4);
       //printf("writing\n");
       cnt_r++;
     }
