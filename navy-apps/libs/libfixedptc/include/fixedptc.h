@@ -144,7 +144,7 @@ static inline fixedpt fixedpt_divi(fixedpt A, int B) {
 static inline fixedpt fixedpt_mul(fixedpt A, fixedpt B) {
 	//return 0;
 	//自己加
-	return A*B /2^8;
+	return A*B >>8;
 }
 
 
@@ -152,43 +152,32 @@ static inline fixedpt fixedpt_mul(fixedpt A, fixedpt B) {
 static inline fixedpt fixedpt_div(fixedpt A, fixedpt B) {
 	//return 0;
 	//自己加
-	return A/B*2^8;
+	return (A/B)<<8;
 }
 
 static inline fixedpt fixedpt_abs(fixedpt A) {
 	//return 0;
 	//自己加
-	if(A>>32 > 0)
-	return ~A+1;
-	else 
+	if(A >= 0)
 	return A;
+	else 
+	return -A;
 }
 
 static inline fixedpt fixedpt_floor(fixedpt A) {
 	//自己加不确定
-	if(A>>32 >0)
-	{
-		if((~(A-1)) % (2^8) == 0)
-			return A;
-		else 
-			return ~((~(A-1)) - 2^8) + 1;
-
+	if (A == 0 || ((A << 24) == 0)){
+		return A;    //向下取整
 	}
-	else 
-	return (A /(2^8)) << 8;
+	return (A >> 8) << 8;	
 	
 	//return 0;
 }
 
 static inline fixedpt fixedpt_ceil(fixedpt A) {
 	//自己加不确定
-	if(A>>32 >0)
-	{
-		if((~(A-1)) % (2^8) == 0)
-			return ~((~(A-1)) + 2^8) + 1;
-		else 
-			return A;
-
+	if (A == 0 || ((A << 24) == 0)){
+		return A;       //大于等于参数的最小整数
 	}
 	else 
 	return ((A >> 8) + 1) <<8 ;

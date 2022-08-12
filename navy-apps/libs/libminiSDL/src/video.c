@@ -8,11 +8,88 @@
 void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_Rect *dstrect) {
   assert(dst && src);
   assert(dst->format->BitsPerPixel == src->format->BitsPerPixel);
+  SDL_Rect s_rect;
+  SDL_Rect d_rect;
+  if(dstrect == NULL){
+    d_rect.x = 0;
+    d_rect.y = 0;
+    d_rect.w = dst->w;
+    d_rect.h = dst->h;
+    dstrect = &d_rect;
+  }
+  if(srcrect == NULL){
+    s_rect.x = 0;
+    s_rect.y = 0;
+    s_rect.w = src ->w;
+    s_rect.h = src ->h;
+    srcrect = &s_rect;
+  }
+  if(src ->format ->BitsPerPixel == 32){
+    uint32_t* pp_d = (uint32_t*)dst->pixels;
+    uint32_t* pp_s = (uint32_t*)src->pixels;
+    for(int i=0; i<srcrect->h; i++){
+      for(int j=0; j<srcrect->w; j++){
+        int id_dst = ((i + dstrect->y) >= (dst->h-1) ? (dst->h-1):(i+dstrect->y)) * dst->w +((j+dstrect->x) >=dst->w ?(dst->w-1):(j + dstrect->x));
+        int id_src = ((i + srcrect->y) >= (src->h-1) ? (src->h-1):(i+srcrect->y)) * src->w +((j+srcrect->x) >=src->w ?(src->w-1):(j+srcrect->x));
+        pp_d[id_dst] = pp_s[id_src];
+      }
+    }
+  }
+  else{
+    uint8_t* pp_d = (uint8_t*)dst->pixels;
+    uint8_t* pp_s = (uint8_t*)src->pixels;
+    for (int i = 0; i < srcrect->h; i++) {
+	    for (int j = 0; j < srcrect->w; j++) {
+        int id_dst = ((i + dstrect->y) >= dst->h ? (dst->h-1) : (i + dstrect->y)) * dst->w +((j + dstrect->x) >= dst->w ? (dst->w-1) : (j + dstrect->x));
+	      int id_src = ((i + srcrect->y) >= src->h ? (src->h-1) : (i + srcrect->y)) * src->w +((j + srcrect->x) >= src->w ? (src->w-1) : (j + srcrect->x)); 
+        pp_d[id_dst] = pp_s[id_src];
+      }
+    }
+  }
 }
 
 void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
-}
+  //参考代码
+  SDL_Rect t;
+  if(dstrect == NULL){
+    t.x = 0;
+    t.y = 0;
+    t.h = dst->h;
+    t.w = dst->w;
+    dstrect = &t;
+  }
+  else if(dstrect->h ==0 || dstrect->w == 0){
+    dstrect ->h = dst->h;
+    dstrect ->w = dst->w;
+  }
+  uint32_t* pp = (uint32_t*)dst->pixels;
+  if(!dst->format->palette ){
+    for (int i =0;(dstrect->y+i)<dstrect->h && (dstrect->y+i<dst->h);i++){
+      for(int j =0; (dstrect->x+j)<dstrect->w && (j+dstrect->x )<dst->w;j++){
+        pp[j+dstrect->x+(i+dstrect->y)*dst->w] = color;
+      }
+    }
+  }
+  else{
+    //printf("color is %x\n",color);
+    uint8_t* tem = (uint8_t*)dst->pixels;
+    int n = 0;
+    for(;n< dst->format->palette->ncolors;n++){
+      if(color == dst->format->palette->colors[n].val)
+          break;
+    }
+    //assert(dst->format->palette->colors[n].val == color);
+     for (int i =0;(dstrect->y+i)<dstrect->h && (dstrect->y+i<dst->h);i++){
+        for(int j =0; (dstrect->x+j)<dstrect->w && (j+dstrect->x )<dst->w;j++){
+          tem[j+dstrect->x+(i+dstrect->y)*dst->w] = n;
+        } 
+    }
 
+    //assert(0);
+  }
+
+}
+static void ConvertPixelsARGB_ABGR(void *dst, void *src, int len);
 void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
   //add
   if(s->format->BitsPerPixel == 32){
@@ -24,30 +101,64 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
     printf("x= %d,y=%d\n",x,y);
   }
   else{
-    uint32_t s_w = s->w,s_h = s->h;
+    int s_w = s->w,s_h = s->h;
     if(w==0 || w > s_w) w = s_w;
     if(h==0 || h > s_h) h = s_h;
 
-    uint32_t* palette = malloc(4*w*h);
-    memset(palette,0,4*w*h);
+    uint32_t* selfpalette = malloc(w*h*4);
+    memset(selfpalette,0,w*h*sizeof(uint32_t));
     printf("w = %dh = %d\n",s->w,s->h);
     int n=0;
     uint8_t* tmp = (uint8_t*)(s->pixels);
     for(int j=0; j<h &&(j+y)< s->h; j++){
       for(int i=0; i<w &&(i+x)< s->w; i++){
+        //uint64_t r = s->format->palette[s->pixels[(j + y) * s->w + (i + x)]].colors;
         printf("w = h = 循环1\n");
-        //uint8_t r = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].r;
-        //uint8_t g = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].g;
-        //uint8_t b = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].b;
-        //palette[n++]  = ((r<<16) |(g<<8)|b); //将rgb拼接成一个二进制数
-        palette[n++]  = s->format->palette->colors[tmp[(j+y)*s_w +i+x]].r;
+        //uint32_t r = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].r;
+        //printf("r size =%d \n",sizeof(r));
+        //printf("r value = %ld \n",r/10);
+        printf("palatte size =%d \n",sizeof(selfpalette[0]));
+        printf("i= %d,j=%d\n",i,j);
+        uint8_t r = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].r;
+        uint8_t g = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].g;
+        uint8_t b = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].b;
+        
+        selfpalette[n++] = ((r<<16) |(g<<8)|b);
       }
     }
    
-    NDL_DrawRect((uint32_t*)palette,x,y,w,h);
-    //free(palette);
+    //NDL_DrawRect((uint32_t*)palette,x,y,w,h);
+    free(selfpalette);
 
   }
+
+ /*  if(w==0 || h==0){
+    w = s->w;
+    h = s->h;
+
+  }
+  if(!s->format->palette ){
+    printf("SDL_UP x[%d],y[%d],w[%d],h[%d] \n",x,y,w,h);
+      NDL_DrawRect((uint32_t*)s->pixels,x,y,w,h); 
+  }
+  else{
+    uint32_t* new_pixels = malloc(s->w*s->h*4);
+    memset(new_pixels,0,s->w*s->h*sizeof(uint32_t));
+
+    uint8_t* tmp = (uint8_t*)(s->pixels);
+  
+  int n = 0;
+	for(int j = 0; j < h && (j + y) < s->h; j++) {
+	for (int i = 0; i < w && (i + x < s->w); i++) {
+	new_pixels[n++] = s->format->palette->colors[tmp[(j + y) * s->w + (i + x)]].val;
+	}
+  }
+
+    ConvertPixelsARGB_ABGR(new_pixels,new_pixels,s->w*s->h);
+    NDL_DrawRect(new_pixels,x,y,w,h); 
+    
+    free(new_pixels);
+  }*/
   
   
 }
