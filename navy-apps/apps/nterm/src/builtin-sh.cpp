@@ -27,11 +27,12 @@ static void sh_handle_cmd(const char *cmd) {
 
 void builtin_sh_run() {
   sh_banner();
-  printf("sdl_pollevent1\n");
+  //printf("sdl_pollevent1\n");
   sh_prompt();
-  printf("sdl_pollevent2\n");
+  //printf("sdl_pollevent2\n");
   while (1) {
     SDL_Event ev;
+    printf("sdl_pollevent3\n");
     if (SDL_PollEvent(&ev)) {
       printf("sdl_pollevent\n");
       if (ev.type == SDL_KEYUP || ev.type == SDL_KEYDOWN) {
