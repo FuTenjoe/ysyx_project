@@ -57,7 +57,7 @@ int SDL_PollEvent(SDL_Event *ev) {
 int SDL_WaitEvent(SDL_Event *event) {
   //return 1;
   //自己加
-  while(!SDL_PollEvent(event));
+  while(SDL_PollEvent(event));
   return 1;
 
   
