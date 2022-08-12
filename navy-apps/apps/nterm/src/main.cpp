@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   int win_w = font->w * W;
   int win_h = font->h * H;
   screen = SDL_SetVideoMode(win_w, win_h, 32, SDL_HWSURFACE);
-
+  printf("sdl_init sdl_vidieomode ok\n");
   term = new Terminal(W, H);
 
   if (argc < 2) { builtin_sh_run(); }
