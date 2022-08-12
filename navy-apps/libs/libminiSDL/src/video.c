@@ -19,26 +19,33 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
     int s_w = s->w,s_h = s->h;
     if(w==0 | w > s_w) w = s_w;
     if(h==0 | h > s_h) h = s_h;
-    NDL_DrawRect((uint32_t*)s->pixels, x, y, w, h);
+    NDL_DrawRect((uint32_t*)(s->pixels), x, y, w, h);
     printf("s->w = %d s->h = %d",s->w,s->h);
     printf("x= %d,y=%d\n",x,y);
   }
   else{
-    int s_w = s->w,s_h = s->h;
-    if(w==0 | w > s_w) w = s_w;
-    if(h==0 | h > s_h) h = s_h;
-    uint32_t *palette = malloc(sizeof(uint32_t)*w*h);
-    memset(palette,0,sizeof(palette));
-    for(int i=0; i<h; i++){
-      for(int j=0; j<w; j++){
-        uint8_t r = s->format->palette->colors[(i+y)*s_w +j+h].r;
-        uint8_t g = s->format->palette->colors[(i+y)*s_w +j+h].g;
-        uint8_t b = s->format->palette->colors[(i+y)*s_w +j+h].b;
-        palette[i*w+j] = r<<16 |g<<8|b; //将rgb拼接成一个二进制数
+    uint32_t s_w = s->w,s_h = s->h;
+    if(w==0 || w > s_w) w = s_w;
+    if(h==0 || h > s_h) h = s_h;
+
+    uint32_t* palette = malloc(4*w*h);
+    memset(palette,0,4*w*h);
+    printf("w = %dh = %d\n",s->w,s->h);
+    int n=0;
+    uint8_t* tmp = (uint8_t*)(s->pixels);
+    for(int j=0; j<h &&(j+y)< s->h; j++){
+      for(int i=0; i<w &&(i+x)< s->w; i++){
+        printf("w = h = 循环1\n");
+        //uint8_t r = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].r;
+        //uint8_t g = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].g;
+        //uint8_t b = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].b;
+        //palette[n++]  = ((r<<16) |(g<<8)|b); //将rgb拼接成一个二进制数
+        palette[n++]  = s->format->palette->colors[tmp[(j+y)*s_w +i+x]].r;
       }
-      NDL_DrawRect(palette,x,y,w,h);
-      free(palette);
     }
+   
+    NDL_DrawRect((uint32_t*)palette,x,y,w,h);
+    //free(palette);
 
   }
   
