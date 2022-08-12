@@ -53,7 +53,7 @@ void do_syscall(Context *c) {
       break;
       }
     case SYS_open:{
-      printf("在进程中打开\n");
+      //printf("在进程中打开\n");
       c->GPRx= fs_open((char *)a[1], (int)a[2], (size_t)a[3]);
       //printf("pathname is %d",(char *)a[1]);
       break;
