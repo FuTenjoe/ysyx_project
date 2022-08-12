@@ -26,8 +26,8 @@ static void sh_handle_cmd(const char *cmd) {
 }
 
 void builtin_sh_run() {
-  printf("sdl_pollevent1\n");
   sh_banner();
+  printf("sdl_pollevent1\n");
   sh_prompt();
   printf("sdl_pollevent1\n");
   while (1) {
