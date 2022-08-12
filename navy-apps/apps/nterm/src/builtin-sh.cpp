@@ -29,7 +29,7 @@ void builtin_sh_run() {
   sh_banner();
   printf("sdl_pollevent1\n");
   sh_prompt();
-  printf("sdl_pollevent1\n");
+  printf("sdl_pollevent2\n");
   while (1) {
     SDL_Event ev;
     if (SDL_PollEvent(&ev)) {
