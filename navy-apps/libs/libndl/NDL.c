@@ -63,7 +63,8 @@ void NDL_OpenCanvas(int *w, int *h) {
       printf("NDL_OpenCanvas w is %d h is %d\n",canvas_w,canvas_h);
 
     }
-  screen_w = *w; screen_h = *h;
+    sscanf(buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n",&screen_w,&screen_h);
+  //screen_w = *w; screen_h = *h;
 
   //原有代码
   if (getenv("NWM_APP")) {
@@ -102,7 +103,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
   for(int i=0; i<h; i++){
     //printf("drawing2\n");
     if(y+i>=0 && y+i < canvas_h){
-      lseek(fd,offset*4 + cnt_r*canvas_w*4,SEEK_SET);
+      lseek(fd,offset*4 + cnt_r*screen_w*4,SEEK_SET);
       //printf("offset = %d",offset + cnt_r*canvas_w*4);
       write(fd,pixels+i*canvas_w,len);
       //printf("writing\n");
