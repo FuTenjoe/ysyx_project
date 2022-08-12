@@ -21,9 +21,6 @@ int SDL_PollEvent(SDL_Event *ev) {
   key[0] = '\0';
   int ret = NDL_PollEvent(key,sizeof(key));
   int keycode = 0;
-  if(ret ==0) 
-      {return 0;}
-  else{
   if(key[0]=='\0'){
     ev->key.keysym.sym = SDLK_NONE;
     ev->type = SDL_USEREVENT;
@@ -50,8 +47,7 @@ int SDL_PollEvent(SDL_Event *ev) {
     else {assert(0);}
     return 1;
   }
-  }
-  
+  return 1;
 }
 
 int SDL_WaitEvent(SDL_Event *event) {
