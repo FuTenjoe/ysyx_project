@@ -10,7 +10,6 @@ static void sh_printf(const char *format, ...) {
   va_list ap;
   va_start(ap, format);
   int len = vsnprintf(buf, 256, format, ap);
-  printf("len = %d\n",len);
   va_end(ap);
   term->write(buf, len);
 }
@@ -28,12 +27,13 @@ static void sh_handle_cmd(const char *cmd) {
 
 void builtin_sh_run() {
   sh_banner();
-  //printf("sdl_pollevent1\n");
+  printf("sdl_pollevent1\n");
   sh_prompt();
   //printf("sdl_pollevent2\n");
   while (1) {
     SDL_Event ev;
     if (SDL_PollEvent(&ev)) {
+      printf("builtin_sh_run\n");
       if (ev.type == SDL_KEYUP || ev.type == SDL_KEYDOWN) {
         const char *res = term->keypress(handle_key(&ev));
         if (res) {
@@ -41,6 +41,7 @@ void builtin_sh_run() {
           sh_prompt();
         }
       }
+      printf("builtin_sh_run2\n");
     }
     refresh_terminal();
   }
