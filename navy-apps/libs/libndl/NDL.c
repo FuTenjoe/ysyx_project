@@ -16,14 +16,14 @@ static int evt_fd = -1;
 int canvas_w = -1, canvas_h = -1;//记录打开的画布的大小
 static uint32_t* canvas =NULL;
 static int place_x = 0,place_y = 0;
-static struct timeval boottime;
+//static struct timeval boottime;
 
 uint32_t NDL_GetTicks() {
 
   //return 0;
-  struct timeval now;
+  struct timeval now = {2,6};
   gettimeofday(&now,NULL);
-  uint32_t ticks = (now.tv_sec-boottime.tv_sec)*1000 + (now.tv_usec -boottime.tv_usec)/1000;
+  uint32_t ticks = (now.tv_sec)*1000 + (now.tv_usec)/1000;
   return ticks;
 }
 //自己加
