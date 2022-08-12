@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
   screen = SDL_SetVideoMode(win_w, win_h, 32, SDL_HWSURFACE);
   printf("screen_w = %d\n",screen->w);
   term = new Terminal(W, H);
-
+  printf("ok cond3\n")
   if (argc < 2) { builtin_sh_run();  printf("ok cond1\n");}
   else { extern_app_run(argv[1]);printf("ok cond2\n"); }
   // should not reach here
