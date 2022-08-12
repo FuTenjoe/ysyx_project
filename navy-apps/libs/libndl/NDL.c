@@ -88,7 +88,7 @@ void NDL_OpenCanvas(int *w, int *h) {
 
     }
     sscanf(buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n",&screen_w,&screen_h);
-   // printf("Finish OPENCANVAS!\n");
+    printf("Finish OPENCANVAS!\n");
   //close(fd);
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
