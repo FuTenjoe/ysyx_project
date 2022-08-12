@@ -42,6 +42,7 @@ void refresh_terminal() {
         printf("i=%d, j = %d\n",i,j);
         draw_ch(i * font->w, j * font->h, term->getch(i, j), term->foreground(i, j), term->background(i, j));
         needsync = 1;
+         printf("refresh_terminal\n");
       }
   term->clear();
 
