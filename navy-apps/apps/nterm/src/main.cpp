@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
   printf("screen_w = %d\n",screen->w);
   term = new Terminal(W, H);
   printf("ok cond3\n");
-  if (argc < 2) {  printf("ok cond1\n");builtin_sh_run(); }
+  if (argc < 2) {  printf("ok cond1\n");builtin_sh_run();printf("ok condxxx\n"); }
   else { printf("ok cond2\n");extern_app_run(argv[1]); }
   // should not reach here
   assert(0);
