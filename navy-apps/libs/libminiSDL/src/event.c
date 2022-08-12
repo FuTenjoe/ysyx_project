@@ -47,7 +47,7 @@ int SDL_PollEvent(SDL_Event *ev) {
       ev->type = SDL_KEYDOWN;
       keystate[keycode] = 1;
     }
-    //else {assert(0);}
+    else {assert(0);}
     return 1;
   }
   }
