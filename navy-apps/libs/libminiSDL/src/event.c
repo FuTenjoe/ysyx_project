@@ -22,7 +22,7 @@ int SDL_PollEvent(SDL_Event *ev) {
   int ret = NDL_PollEvent(key,sizeof(key));
   int keycode = 0;
   if(ret ==0) 
-      {return 1;}
+      {return 0;}
   else{
   if(key[0]=='\0'){
     ev->key.keysym.sym = SDLK_NONE;
