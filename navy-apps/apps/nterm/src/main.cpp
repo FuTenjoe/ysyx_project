@@ -19,10 +19,10 @@ int main(int argc, char *argv[]) {
   int win_h = font->h * H;
   screen = SDL_SetVideoMode(win_w, win_h, 32, SDL_HWSURFACE);
   term = new Terminal(W, H);
-  printf("sdl_init sdl_vidieomode ok\n");
+
   if (argc < 2) { builtin_sh_run(); }
   else { extern_app_run(argv[1]); }
-
+  printf("sdl_init sdl_vidieomode ok\n");
   // should not reach here
   assert(0);
 }
