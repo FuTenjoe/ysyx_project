@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_Rect *dstrect) {
-/*  assert(dst && src);
+  assert(dst && src);
   assert(dst->format->BitsPerPixel == src->format->BitsPerPixel);
   SDL_Rect s_rect;
   SDL_Rect d_rect;
@@ -45,26 +45,6 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
         pp_d[id_dst] = pp_s[id_src];
       }
     }
-  }*/
-
-  assert(dst && src);
-  assert(dst->format->BitsPerPixel == src->format->BitsPerPixel);
-  int src_x, src_y, src_w, src_h, dst_x, dst_y;
-  if (srcrect != NULL) 
-	  src_x = srcrect->x, src_y = srcrect->y, 
-	  src_w = srcrect->w, src_h = srcrect->h;
-  else src_x = 0, src_y = 0, src_h = src -> h, src_w = src->w;
-  if (dstrect != NULL) 
-	  dst_x = dstrect->x, dst_y = dstrect->y;
-  else dst_x = 0, dst_y = 0;
-  uint32_t loc = dst_y * dst->w + dst_x;
-  for (int i = src_y; i < src_y + src_h; i++) {
-	  	uint32_t fr = i * src->w + src_x;
-	    if(dst -> format -> palette == NULL) 
-			memcpy(dst -> pixels + (loc << 2), src -> pixels + (fr << 2),
-	              src_w << 2); 
-		else memcpy(dst -> pixels + loc, src -> pixels + fr, src_w);
-		loc += dst -> w;
   }
 }
 
