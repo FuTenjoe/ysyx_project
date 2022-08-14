@@ -21,7 +21,7 @@ static int place_x = 0,place_y = 0;
 uint32_t NDL_GetTicks() {
 
   //return 0;
-  struct timeval now = {2,6};
+  struct timeval now = {0,0};
   printf("now.tv_sec = %d\n",now.tv_sec);
   gettimeofday(&now,NULL);
   uint32_t ticks = now.tv_sec*1000 + now.tv_usec/1000;
