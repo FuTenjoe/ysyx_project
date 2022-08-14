@@ -125,6 +125,7 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
         selfpalette[n++] = ((r<<16) |(g<<8)|b);
         if(n == (h-1)*(w-1)){
           printf("更新\n");
+          printf("n= %d\n",n);
         }
       }
     }
