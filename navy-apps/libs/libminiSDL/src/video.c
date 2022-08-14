@@ -122,8 +122,8 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
         uint8_t r = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].r;
         uint8_t g = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].g;
         uint8_t b = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].b;
-        selfpalette[n++] = ((r<<16) |(g<<8)|b);
-        if(n == (h-1)*(w-1)){
+        selfpalette[j*w+i] = ((r<<16) |(g<<8)|b);
+        if(i==w-1 && j==h-1){
           printf("更新\n");
           printf("n= %d\n",n);
           NDL_DrawRect((uint32_t*)selfpalette,x,y,w,h);
