@@ -131,13 +131,15 @@ size_t fs_write( int  fd, const void * buf,size_t count){
     }
       
     case FD_FB:{
-      fb_write((uint32_t*)buf,f->open_offset, bytes_to_write);
+      fb_write((uint32_t*)buf,f->disk_offset + f ->open_offset, bytes_to_write);
+      f->open_offset = f->open_offset + bytes_to_write;
       //printf("f->open_offset = %d\n",f->open_offset);
       //printf("f->size2 = %d\n",f->size);
       break;
     }
     default:
       ramdisk_write(buf, f->disk_offset + f ->open_offset ,bytes_to_write);
+      f->open_offset = f->open_offset + bytes_to_write;
       break;
   }
   f ->open_offset = f ->open_offset + bytes_to_write;
