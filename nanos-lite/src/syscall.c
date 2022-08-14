@@ -42,6 +42,7 @@ void do_syscall(Context *c) {
   //printf("gpr return a1 = %lx\n",a[0]);
   switch (a[0]) {
     case 0:{
+      printf("halt");
       halt(c->GPR1); 
       //printf("gpr a0 = %lx\n",a[0]);
       break; //是否指向这个宏存疑，以及每个宏代表的寄存器
