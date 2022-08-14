@@ -28,7 +28,7 @@ int SDL_PollEvent(SDL_Event *ev) {
   }
   else{
     char* str = key + 3;
-    printf("SDL_PollEvent %s %d\n",key,strlen(key));
+    //printf("SDL_PollEvent %s %d\n",key,strlen(key));
     for(int i=0,cnt=0; i<sizeof(keyname);i+=strlen(keyname[cnt]),cnt++){
       if(!strncmp(keyname[cnt],str,strlen(str))&&!strncmp(keyname[cnt],str,strlen(keyname[cnt]))){  //比较设定大小的字符串相同返回0
           keycode = cnt;
