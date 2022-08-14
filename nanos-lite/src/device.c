@@ -70,11 +70,11 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
   int w = io_read(AM_GPU_CONFIG).width;
   //int h = io_read(AM_GPU_CONFIG).height;
   //printf("fb_write w=%d,h=%d\n",w,h);
-  int x = ((offset )/4 )%w;
+  int x = ((offset )/4 )%287;
   int y = ((offset )/4)/w;
   //io_write(AM_GPU_FBDRAW,x,y,(uint32_t*)buf,len/4,1,true);
   io_write(AM_GPU_FBDRAW,x,y,(uint32_t*)buf,len/4,1,true);
-  printf("len = %d\n",len);
+  //printf("len = %d\n",len);
   return len;
   
 }
