@@ -126,10 +126,10 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
         if(n == (h-1)*(w-1)){
           printf("更新\n");
           printf("n= %d\n",n);
+          NDL_DrawRect((uint32_t*)selfpalette,x,y,w,h);
         }
       }
     }
-      NDL_DrawRect((uint32_t*)selfpalette,x,y,w,h);
     free(selfpalette);
 
   }
