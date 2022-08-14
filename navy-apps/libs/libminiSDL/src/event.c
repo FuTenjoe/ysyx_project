@@ -54,6 +54,7 @@ int SDL_WaitEvent(SDL_Event *event) {
   //return 1;
   //自己加
   while(!SDL_PollEvent(event));
+  printf("wait event!\n");
   return 1;
 
   
