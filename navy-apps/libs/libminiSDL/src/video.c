@@ -107,7 +107,7 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
 
     uint32_t* selfpalette = malloc(w*h*4);
     memset(selfpalette,0,w*h*sizeof(uint32_t));
-    printf("w = %dh = %d\n",s->w,s->h);
+    //printf("w = %dh = %d\n",s->w,s->h);
     int n=0;
     uint8_t* tmp = (uint8_t*)(s->pixels);
     for(int j=0; j<h &&(j+y)< s->h; j++){
