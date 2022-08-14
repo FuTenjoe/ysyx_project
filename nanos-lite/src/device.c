@@ -57,7 +57,7 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   //memcpy(buf, &ramdisk_start + offset, len);
   int w = io_read(AM_GPU_CONFIG).width;
   int h = io_read(AM_GPU_CONFIG).height;
-  //printf(" dispinforead w=%d, h=%d\n",w,h);
+  printf(" dispinforead w=%d, h=%d\n",w,h);
   int ret = snprintf(buf,len,"WIDTH : %d HEIGHT : %d\n",w,h);
   return ret;
  
