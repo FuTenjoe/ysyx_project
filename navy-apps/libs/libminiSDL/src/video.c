@@ -130,6 +130,7 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
         }*/
       }
     }
+    ConvertPixelsARGB_ABGR(selfpalette,selfpalette,s->w*s->h);
     NDL_DrawRect((uint32_t*)selfpalette,x,y,w,h);
     free(selfpalette);
 
