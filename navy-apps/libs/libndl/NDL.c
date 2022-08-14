@@ -17,7 +17,6 @@ int canvas_w = -1, canvas_h = -1;//记录打开的画布的大小
 static uint32_t* canvas =NULL;
 static int place_x = 0,place_y = 0;
 //static struct timeval boottime;
-static uint32_t lst_sec = 0 ,lst_usec = 0;
 uint32_t NDL_GetTicks() {
 
   //return 0;
@@ -132,29 +131,12 @@ int NDL_PlayAudio(void *buf, int len) {
 int NDL_QueryAudio() {
   return 0;
 }
-//自己加的函数
-void NDL_updatefb(){
-  int fd = open("/proc/dispinfo",0,0);
-  char buf[128]={0};
- // printf("read dispinfo \n");
-  read(fd,buf,sizeof(buf));
- // printf("buf: %s\n",buf);
-  sscanf(buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n", &canvas_w,&canvas_h);
-  //printf("w is %d h is %d\n",FB_W,FB_H);
-  assert(canvas_w);
-  close(fd);
-}
+
 
 int NDL_Init(uint32_t flags) {
   if (getenv("NWM_APP")) {
     evtdev = 3;
   }
-  NDL_updatefb();
-   struct timeval tv;
-  gettimeofday(&tv, NULL);
-  lst_sec = tv.tv_sec;
-  lst_usec = tv.tv_usec;
-
   return 0;
 }
 
