@@ -53,7 +53,7 @@ void NDL_OpenCanvas(int *w, int *h) {
   int fd = open("/proc/dispinfo",O_RDONLY);
   char buf[128] = {0};
   read(fd,&buf,sizeof(buf));
-  printf("buf[100] = %s\n",buf);
+  //printf("buf[100] = %s\n",buf);
  //printf("NDL\n");
   //screen_w = *w; screen_h = *h;
   //原有代码
@@ -76,24 +76,24 @@ void NDL_OpenCanvas(int *w, int *h) {
   }
   if(*w == 0 || *h ==0){
       sscanf(buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n",&canvas_w,&canvas_h);
-      printf("NDL_OpenCanvas w is %d h is %d\n",canvas_w,canvas_h);
+      //printf("NDL_OpenCanvas w is %d h is %d\n",canvas_w,canvas_h);
       *w = canvas_w;
       *h = canvas_h;
     }
     else{
       canvas_w = *w;
       canvas_h = *h;
-      printf("NDL_OpenCanvas w is %d h is %d\n",canvas_w,canvas_h);
+      //printf("NDL_OpenCanvas w is %d h is %d\n",canvas_w,canvas_h);
 
     }
     sscanf(buf,"%*[^:]:%*[ ]%d\n%*[^:]:%*[ ]%d\n",&screen_w,&screen_h);
-    printf("Finish OPENCANVAS!\n");
+    //printf("Finish OPENCANVAS!\n");
   //close(fd);
 }
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
-  printf("NDL_Drawrect\n");
+ // printf("NDL_Drawrect\n");
   int fd =open("/dev/fb",O_RDWR);
-  printf("NDL_DrawRect w is %d h is %d\n",canvas_w,canvas_h);
+  //printf("NDL_DrawRect w is %d h is %d\n",canvas_w,canvas_h);
   int offset = (y >=0 ? y:0)*screen_w + (x>=0 ? x: 0);
   int len;
   if(x>=0){
@@ -115,7 +115,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
     }
     else printf("error");
   }
-  printf("Finish DRAWRECT!\n");
+  //printf("Finish DRAWRECT!\n");
   //close(fd);
 }
 

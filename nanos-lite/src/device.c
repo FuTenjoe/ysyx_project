@@ -57,7 +57,7 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   //memcpy(buf, &ramdisk_start + offset, len);
   int w = io_read(AM_GPU_CONFIG).width;
   int h = io_read(AM_GPU_CONFIG).height;
-  printf(" dispinforead w=%d, h=%d\n",w,h);
+  //printf(" dispinforead w=%d, h=%d\n",w,h);
   int ret = snprintf(buf,len,"WIDTH : %d HEIGHT : %d\n",w,h);
   return ret;
  
@@ -68,12 +68,12 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
   //自己加
   //参考代码
   int w = io_read(AM_GPU_CONFIG).width;
-  int h = io_read(AM_GPU_CONFIG).height;
-  printf("fb_write w=%d,h=%d\n",w,h);
+  //int h = io_read(AM_GPU_CONFIG).height;
+  //printf("fb_write w=%d,h=%d\n",w,h);
   int x = ((offset )/4 )%w;
   int y = ((offset )/4)/w;
   io_write(AM_GPU_FBDRAW,x,y,(uint32_t*)buf,len/4,1,true);
-  printf("len = %d\n",len);
+  //printf("len = %d\n",len);
   return len;
   
 }
