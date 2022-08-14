@@ -40,11 +40,10 @@ int NDL_PollEvent(char *buf, int len) {
     if(buf[i] == '\n') 
     {
       buf[i] = '\0';
-      return 1;
+      return ret;
     }
   }
   //return ret;
-  return 0;
 }
 
 void NDL_OpenCanvas(int *w, int *h) {
