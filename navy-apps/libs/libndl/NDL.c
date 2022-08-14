@@ -102,7 +102,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
     len = (x + w < canvas_w) ? x+w : canvas_w;
   }
   //printf("len= %d\n",len);
-  int  cnt_r = 0;
+/*  int  cnt_r = 0;
   for(int i=0; i<h; i++){
     //printf("drawing2\n");
     if(y+i>=0 && y+i < canvas_h){
@@ -113,8 +113,15 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
       cnt_r++;
     }
     else printf("error");
-  }
+  }*/
   //printf("Finish DRAWRECT!\n");
+for(int i=0; i<h; i++){
+    //printf("drawing2\n");
+    for(int j=0; i<w; j++){
+      lseek(fd,offset*4 +4,SEEK_SET);
+      write(fd,pixels+i*canvas_w+j,4);
+    }
+  }
   close(fd);
 }
 
