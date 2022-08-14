@@ -113,12 +113,12 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
     for(int j=0; j<h &&(j+y)< s->h; j++){
       for(int i=0; i<w &&(i+x)< s->w; i++){
         //uint64_t r = s->format->palette[s->pixels[(j + y) * s->w + (i + x)]].colors;
-        printf("w = h = 循环1\n");
+        //printf("w = h = 循环1\n");
         //uint32_t r = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].r;
         //printf("r size =%d \n",sizeof(r));
         //printf("r value = %ld \n",r/10);
-        printf("palatte size =%d \n",sizeof(selfpalette[0]));
-        printf("i= %d,j=%d\n",i,j);
+        //printf("palatte size =%d \n",sizeof(selfpalette[0]));
+        //printf("i= %d,j=%d\n",i,j);
         uint8_t r = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].r;
         uint8_t g = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].g;
         uint8_t b = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].b;
