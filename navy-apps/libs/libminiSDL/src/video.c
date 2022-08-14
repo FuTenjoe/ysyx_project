@@ -97,7 +97,7 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
     if(w==0 || w > s_w) w = s_w;
     if(h==0 || h > s_h) h = s_h;
     NDL_DrawRect((uint32_t*)(s->pixels), x, y, w, h);
-    printf("s->w = %d s->h = %d",s->w,s->h);
+    printf("s->w = %d s->h = %d\n",s->w,s->h);
     printf("x= %d,y=%d\n",x,y);
   }
   else{
