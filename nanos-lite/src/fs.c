@@ -134,7 +134,7 @@ size_t fs_write( int  fd, const void * buf,size_t count){
       fb_write((uint32_t*)buf,f->disk_offset + f ->open_offset, bytes_to_write);
       //f->open_offset = f->open_offset + bytes_to_write;
       //printf("f->open_offset = %d\n",f->open_offset);
-      //printf("f->size2 = %d\n",f->size);
+      printf("f->size2 = %d\n",f->size);
       break;
     }
     default:
@@ -154,7 +154,7 @@ void init_fs() {
   int h = io_read(AM_GPU_CONFIG).height;
   //int w = 120;
   //int h = 120;
-  file_table[FD_FB].size = w*h*4;    //参考，为什么是4？
+  file_table[FD_FB].size = w*h*4;   
   printf("sizew = %d",w);
   //assert(file_table[FD_SYNC].write != NULL);
 }
