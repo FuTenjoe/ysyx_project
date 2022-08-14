@@ -24,7 +24,7 @@ int SDL_PollEvent(SDL_Event *ev) {
   if(key[0]=='\0'){
     ev->key.keysym.sym = SDLK_NONE;
     ev->type = SDL_USEREVENT;
-    return 1;
+    return 0;
   }
   else{
     char* str = key + 3;
