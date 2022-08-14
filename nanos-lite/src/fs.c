@@ -103,7 +103,7 @@ size_t fs_read(int fd, void *buf, size_t count){
       }
       else if(fd== FD_DISPINFO){
         ret = f->read(buf, f->disk_offset + f->open_offset, bytes_to_read);
-        //f->open_offset = f->open_offset + bytes_to_read;
+        f->open_offset = f->open_offset + bytes_to_read;
         //ret = 0;
       }
       else{
