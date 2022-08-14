@@ -85,6 +85,7 @@ void do_syscall(Context *c) {
     case SYS_gettimeofday:{
       printf("时间\n");
        c->GPRx = sys_gettimeofday((struct timeval *)a[1],(struct timezone *)a[2]);break;
+       printf("时间调用完成\n");
     }
     
     default: panic("Unhandled syscall ID = %d", a[0]);
