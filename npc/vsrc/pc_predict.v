@@ -71,9 +71,10 @@ always @ (posedge clk or negedge rst_n) begin
         curr_pc <= id_next_pc;
     end
     else if (rest_id_mem == 1'b0)begin
-        if(control_rest == 1'b1)
+        if(control_rest == 1'b1)begin
             curr_pc <= id_next_pc;
             test <= 1'b1;
+        end
         else 
             curr_pc <= curr_pc + 4;
     end
