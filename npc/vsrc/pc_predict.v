@@ -20,6 +20,7 @@ module pc_predict (
 reg delay_sig_jalr;
 reg [`CPU_WIDTH-1:0] curr_pc;
 reg [`CPU_WIDTH-1:0] reg_axi_curr_pc;
+reg dd_r_done;
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         ena <= 1'b0;
@@ -33,9 +34,11 @@ end
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         reg_axi_curr_pc <= 32'h8000_0000; 
+        dd_r_done <= 1'b0;
     end
     else begin
         reg_axi_curr_pc <= axi_curr_pc;
+        dd_r_done <= r_done;
     end
 end
 reg test;
@@ -45,7 +48,7 @@ always @ (posedge clk or negedge rst_n) begin
         curr_pc <= 32'h8000_0000; 
         test <= 1'b0;
     end
-    else if(r_done)begin
+    else if(dd_r_done)begin
     if(id_mul)begin
         if(sh_fnsh_flag == 1'b0)begin
             curr_pc <= curr_pc;
@@ -71,14 +74,13 @@ always @ (posedge clk or negedge rst_n) begin
     else if(delay_sig_jalr == 1'b1)begin
         curr_pc <= id_next_pc;
     end
-    else if (rest_id_mem == 1'b0)begin
-        if(control_rest == 1'b1)begin
-            curr_pc <= id_next_pc;
-            test <= 1'b1;
-        end
-        else 
-            curr_pc <= curr_pc + 4;
+    else if (rest_id_mem == 1'b0 && control_rest == 1'b1)begin
+        curr_pc <= id_next_pc;
+        test <= 1'b1;
     end
+    end
+    else if(r_done && rest_id_mem == 1'b0)begin
+        curr_pc <= curr_pc + 4;
     end
 end
 
