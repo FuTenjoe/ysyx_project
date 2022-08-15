@@ -1,6 +1,6 @@
 `include "../vsrc/rvseed_defines.v"
 
-module axi_rw # (
+module axi # (
     parameter RW_DATA_WIDTH     = 64,
     parameter RW_ADDR_WIDTH     = 32,
     parameter AXI_DATA_WIDTH    = 64,
@@ -10,19 +10,19 @@ module axi_rw # (
     parameter AXI_USER_WIDTH    = 1
 )(
     input                               clock,
-    input                               reset,
+    input                               reset_n,
 
 	input                               rw_valid_i,         //IF&MEM输入信号
 	output                              rw_ready_o,         //IF&MEM输入信号
     output reg [RW_DATA_WIDTH-1:0]      data_read_o,        //IF&MEM输入信号
     input  [RW_DATA_WIDTH-1:0]          rw_w_data_i,        //IF&MEM输入信号
     input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号
-    input  [7:0]                        rw_size_i,          //IF&MEM输入信号
+    input  [1:0]                        rw_size_i,          //IF&MEM输入信号
 
 
 
     // Advanced eXtensible Interface
-    input                               axi_aw_ready_i,    //从机读地址准备             
+    input                               axi_aw_ready_i,    //从设备已准备好接收地址和相关的控制信号          
     output                              axi_aw_valid_o,  
     output [AXI_ADDR_WIDTH-1:0]         axi_aw_addr_o,
     output [2:0]                        axi_aw_prot_o,
@@ -52,24 +52,24 @@ module axi_rw # (
     input                               axi_ar_ready_i,                
     output                              axi_ar_valid_o,
     output [AXI_ADDR_WIDTH-1:0]         axi_ar_addr_o,
-    output [2:0]                        axi_ar_prot_o,
-    output [AXI_ID_WIDTH-1:0]           axi_ar_id_o,
-    output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
-    output [7:0]                        axi_ar_len_o,
-    output [2:0]                        axi_ar_size_o,
-    output [1:0]                        axi_ar_burst_o,
-    output                              axi_ar_lock_o,
-    output [3:0]                        axi_ar_cache_o,
-    output [3:0]                        axi_ar_qos_o,
-    output [3:0]                        axi_ar_region_o,
+//    output [2:0]                        axi_ar_prot_o,
+//    output [AXI_ID_WIDTH-1:0]           axi_ar_id_o,
+ //   output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
+ //   output [7:0]                        axi_ar_len_o,
+ //   output [2:0]                        axi_ar_size_o,
+ //   output [1:0]                        axi_ar_burst_o,
+ //   output                              axi_ar_lock_o,
+ //   output [3:0]                        axi_ar_cache_o,
+ //   output [3:0]                        axi_ar_qos_o,
+ //   output [3:0]                        axi_ar_region_o,
     
     output                              axi_r_ready_o,                 
     input                               axi_r_valid_i,                
     input  [1:0]                        axi_r_resp_i,
     input  [AXI_DATA_WIDTH-1:0]         axi_r_data_i,
     input                               axi_r_last_i,
-    input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
-    input  [AXI_USER_WIDTH-1:0]         axi_r_user_i
+ //   input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
+ //   input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
     wire w_trans    = rw_req_i == `REQ_WRITE;
     wire r_trans    = rw_req_i == `REQ_READ;
@@ -97,7 +97,7 @@ module axi_rw # (
     wire r_state_idle = r_state == R_STATE_IDLE, r_state_addr = r_state == R_STATE_ADDR, r_state_read  = r_state == R_STATE_READ;
     // 写通道状态切换
     always @(posedge clock) begin
-        if (reset) begin
+        if (!reset_n) begin
             w_state <= W_STATE_IDLE;
         end
         else begin
@@ -114,7 +114,7 @@ module axi_rw # (
 
     // 读通道状态切换
     always @(posedge clock) begin
-        if (reset) begin
+        if (!reset_n) begin
             r_state <= R_STATE_IDLE;
         end
         else begin
@@ -131,7 +131,7 @@ module axi_rw # (
 
 // ------------------Number of transmission------------------
     reg [7:0] len;
-    wire len_reset      = reset | (w_trans & w_state_idle) | (r_trans & r_state_idle);
+    wire len_reset      = ~reset_n | (w_trans & w_state_idle) | (r_trans & r_state_idle);
     wire len_incr_en    = (len != axi_len) & (w_hs | r_hs);
     always @(posedge clock) begin
         if (len_reset) begin
@@ -144,7 +144,7 @@ module axi_rw # (
 
 
     // ------------------Process Data------------------
-    parameter ALIGNED_WIDTH = $clog2(AXI_DATA_WIDTH / 8);
+/*    parameter ALIGNED_WIDTH = $clog2(AXI_DATA_WIDTH / 8);  //以2为底取对数结果向上取整
     parameter OFFSET_WIDTH  = $clog2(AXI_DATA_WIDTH);
     parameter AXI_SIZE      = $clog2(AXI_DATA_WIDTH / 8);
     parameter MASK_WIDTH    = AXI_DATA_WIDTH * 2;
@@ -186,7 +186,7 @@ module axi_rw # (
     wire rw_ready_nxt = trans_done;
     wire rw_ready_en      = trans_done | rw_ready;
     always @(posedge clock) begin
-        if (reset) begin
+        if (!reset_n) begin
             rw_ready <= 0;
         end
         else if (rw_ready_en) begin
@@ -199,14 +199,14 @@ module axi_rw # (
     wire rw_resp_nxt = w_trans ? axi_b_resp_i : axi_r_resp_i;
     wire resp_en = trans_done;
     always @(posedge clock) begin
-        if (reset) begin
+        if (!reset_n) begin
             rw_resp <= 0;
         end
         else if (resp_en) begin
             rw_resp <= rw_resp_nxt;
         end
     end
-    assign rw_resp_o      = rw_resp;
+    assign rw_resp_o      = rw_resp;*/
   // ------------------Write Transaction------------------
    
 
@@ -215,15 +215,15 @@ module axi_rw # (
     // Read address channel signals
     assign axi_ar_valid_o   = r_state_addr;
     assign axi_ar_addr_o    = rw_addr_i;
-    assign axi_ar_prot_o    = `AXI_PROT_UNPRIVILEGED_ACCESS | `AXI_PROT_SECURE_ACCESS | `AXI_PROT_DATA_ACCESS;  //初始化信号即可
-    assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
-    assign axi_ar_user_o    = axi_user;                                                                         //初始化信号即可
-    assign axi_ar_len_o     = axi_len;                                                                          
-    assign axi_ar_size_o    = axi_size;
-    assign axi_ar_burst_o   = `AXI_BURST_TYPE_INCR;
-    assign axi_ar_lock_o    = 1'b0;                                                                             //初始化信号即可
-    assign axi_ar_cache_o   = `AXI_ARCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE;                                 //初始化信号即可
-    assign axi_ar_qos_o     = 4'h0;                                                                             //初始化信号即可
+ //   assign axi_ar_prot_o    = `AXI_PROT_UNPRIVILEGED_ACCESS | `AXI_PROT_SECURE_ACCESS | `AXI_PROT_DATA_ACCESS;  //初始化信号即可
+ //   assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
+ //   assign axi_ar_user_o    = axi_user;                                                                         //初始化信号即可
+   // assign axi_ar_len_o     = axi_len;                                                                          
+   // assign axi_ar_size_o    = axi_size;
+    //assign axi_ar_burst_o   = `AXI_BURST_TYPE_INCR;
+   // assign axi_ar_lock_o    = 1'b0;                                                                             //初始化信号即可
+   // assign axi_ar_cache_o   = `AXI_ARCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE;                                 //初始化信号即可
+ //   assign axi_ar_qos_o     = 4'h0;                                                                             //初始化信号即可
 
     // Read data channel signals
      assign axi_r_ready_o    = r_state_read;
@@ -234,11 +234,11 @@ module axi_rw # (
     generate
         for (genvar i = 0; i < TRANS_LEN; i += 1) begin
             always @(posedge clock) begin
-                if (reset) begin
+                if (!reset_n) begin
                     data_read_o[i*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= 0;
                 end
                 else if (axi_r_ready_o & axi_r_valid_i) begin
-                    if (~aligned & overstep) begin
+                 /*   if (~aligned & overstep) begin
                         if (len[0]) begin
                             data_read_o[AXI_DATA_WIDTH-1:0] <= data_read_o[AXI_DATA_WIDTH-1:0] | axi_r_data_h;
                         end
@@ -246,12 +246,12 @@ module axi_rw # (
                             data_read_o[AXI_DATA_WIDTH-1:0] <= axi_r_data_l;
                         end
                     end
-                    else if (len == i) begin
+                    else if (len == i) begin*/
                         data_read_o[i*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= axi_r_data_l;
                     end
                 end
-            end
         end
+        
     endgenerate
 
 
