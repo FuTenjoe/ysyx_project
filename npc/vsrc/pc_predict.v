@@ -13,7 +13,8 @@ module pc_predict (
     input id_mul,
     input sh_fnsh_flag,
     input id_div,
-    input div_finish
+    input div_finish,
+    input axi_r_valid_i
 );
 
 reg delay_sig_jalr;
@@ -32,36 +33,41 @@ always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
     end
-    else if(id_mul)begin
-        if(sh_fnsh_flag == 1'b0)begin
+    else if(axi_r_valid_i)begin
+        else if(id_mul)begin
+            if(sh_fnsh_flag == 1'b0)begin
+                curr_pc <= curr_pc;
+            end
+            else begin
+                curr_pc <= curr_pc + 4;
+            end
+        end
+        else if(id_div)begin
+            if(div_finish == 1'b0)begin
+                curr_pc <= curr_pc;
+            end
+            else begin
+                curr_pc <= curr_pc + 4;
+            end
+        end
+        else if(rest_id_mem == 1'b1)begin
+            curr_pc <= curr_pc;  //?
+        end
+        else if(sig_jalr == 1'b1)begin
             curr_pc <= curr_pc;
         end
-        else begin
-            curr_pc <= curr_pc + 4;
+        else if(delay_sig_jalr == 1'b1)begin
+            curr_pc <= id_next_pc;
+        end
+        else if (rest_id_mem == 1'b0)begin
+            if(control_rest == 1'b1)
+                curr_pc <= id_next_pc;
+            else 
+                curr_pc <= curr_pc + 4;
         end
     end
-    else if(id_div)begin
-        if(div_finish == 1'b0)begin
-            curr_pc <= curr_pc;
-        end
-        else begin
-            curr_pc <= curr_pc + 4;
-        end
-    end
-    else if(rest_id_mem == 1'b1)begin
-        curr_pc <= curr_pc;  //?
-    end
-    else if(sig_jalr == 1'b1)begin
+    else begin
         curr_pc <= curr_pc;
-    end
-    else if(delay_sig_jalr == 1'b1)begin
-        curr_pc <= id_next_pc;
-    end
-    else if (rest_id_mem == 1'b0)begin
-        if(control_rest == 1'b1)
-             curr_pc <= id_next_pc;
-        else 
-            curr_pc <= curr_pc + 4;
     end
 end    
 
