@@ -92,7 +92,7 @@ always@(posedge clock)begin
     end
     else begin
         axi_r_data_o <= axi_r_data_o;
-        axi_r_last_o <= axi_r_last_o;
+        axi_r_last_o <= 1'b0;
         axi_r_resp_o <= axi_r_resp_o;
     end
 end
