@@ -83,8 +83,8 @@ module ex_mem_regs(
 			
 			cunqu_hazard_ex_mem_o <= 1'd0;
 		end
-		else if(delay_r_done_ex_mem_i)begin
-			if(rest_id_mem_ex_mem_i == 1'b1)begin
+	//	else if(delay_r_done_ex_mem_i)begin
+		else if(rest_id_mem_ex_mem_i == 1'b1)begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
 			reg_waddr_ex_mem_o <= reg_waddr_ex_mem_i;
 			//reg_wdata_ex_mem_o <= reg_wdata_ex_mem_i;
@@ -231,7 +231,7 @@ module ex_mem_regs(
 			
 		end
 		end
-		else begin
+	/*	else begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_o;
 				reg_waddr_ex_mem_o <= reg_waddr_ex_mem_o;
 				//reg_wdata_ex_mem_o <= reg_wdata_ex_mem_i;
@@ -253,8 +253,8 @@ module ex_mem_regs(
 				pc_ex_mem_o <= pc_ex_mem_o;
 				rest_id_mem_ex_mem_o <= 1'b0;
 				cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_o;
-			end
-		end
+			end*/
+		//end
 	//end
 	
 endmodule
