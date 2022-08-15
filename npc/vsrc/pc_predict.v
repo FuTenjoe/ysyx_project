@@ -39,7 +39,7 @@ always @ (posedge clk or negedge rst_n) begin
     end
     else begin
         if(id_mul | id_div | rest_id_mem|sig_jalr|delay_sig_jalr|control_rest)begin
-            dd_r_done <= r_done
+            dd_r_done <= r_done;
         end
         else 
             dd_r_done <= 1'b0;
