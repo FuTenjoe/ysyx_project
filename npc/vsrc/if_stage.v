@@ -14,7 +14,8 @@ module if_stage (
     input id_mul,
     input sh_fnsh_flag,
     input id_div,
-    input div_finish
+    input div_finish,
+    output reg delay_r_done
 );
 
 pc_predict u_pc_predict(
@@ -41,7 +42,7 @@ wire [63:0] rdata;
 always @(*) begin
   pmem_read(curr_pc, rdata);
 end*/
-reg delay_r_done;
+//reg delay_r_done;
 always@(posedge clk or negedge rst_n)begin
   if(!rst_n)
     delay_r_done <= 1'b0;

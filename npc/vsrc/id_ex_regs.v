@@ -68,7 +68,9 @@ module id_ex_regs(
 	input id_mul_id_ex_i,
 	output reg id_mul_id_ex_o,
 	input id_div_id_ex_i,
-	output reg id_div_id_ex_o
+	output reg id_div_id_ex_o,
+	input delay_r_done_id_ex_i,
+    output delay_r_done_id_ex_o
 	
 	
     );
@@ -100,6 +102,7 @@ always@(posedge clk or negedge rst_n)begin
 			cunqu_hazard_id_ex_o <= 1'd0;
 			id_mul_id_ex_o <= 1'd0;
 			id_div_id_ex_o <= 1'd0;
+			delay_r_done_id_ex_o <= 1'd0;
 		end
 		else begin
 			pc_id_ex_o<=pc_id_ex_i;
@@ -125,6 +128,7 @@ always@(posedge clk or negedge rst_n)begin
 			cunqu_hazard_id_ex_o <= cunqu_hazard_id_ex_i;
 			id_mul_id_ex_o <= id_mul_id_ex_i;
 			id_div_id_ex_o <= id_div_id_ex_i;
+			delay_r_done_id_ex_o <= delay_r_done_id_ex_i;
 		end
 end
 	
