@@ -45,8 +45,7 @@ reg test;
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
-        test <= 1'b0;
-        
+        test <= 1'b0; 
     end
     else if(r_done)begin
     if(id_mul)begin
