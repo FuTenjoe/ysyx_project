@@ -38,11 +38,12 @@ always @ (posedge clk or negedge rst_n) begin
         reg_axi_curr_pc <= axi_curr_pc;
     end
 end
-
+reg test;
 
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
+        test <= 1'b0;
     end
     else if(id_mul)begin
         if(sh_fnsh_flag == 1'b0)begin
@@ -72,6 +73,7 @@ always @ (posedge clk or negedge rst_n) begin
     else if (rest_id_mem == 1'b0)begin
         if(control_rest == 1'b1)
             curr_pc <= id_next_pc;
+            test <= 1'b1;
         else 
             curr_pc <= curr_pc + 4;
     end
