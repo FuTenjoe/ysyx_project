@@ -105,6 +105,7 @@ always@(posedge clk or negedge rst_n)begin
 			delay_r_done_id_ex_o <= 1'd0;
 		end
 		else begin
+			if(delay_r_done_id_ex_i)begin
 			pc_id_ex_o<=pc_id_ex_i;
 			reg_wen_id_ex_o <= reg_wen_id_ex_i;
 			reg_waddr_id_ex_o <= reg_waddr_id_ex_i;
@@ -129,6 +130,33 @@ always@(posedge clk or negedge rst_n)begin
 			id_mul_id_ex_o <= id_mul_id_ex_i;
 			id_div_id_ex_o <= id_div_id_ex_i;
 			delay_r_done_id_ex_o <= delay_r_done_id_ex_i;
+			end
+			else begin
+			pc_id_ex_o<=pc_id_ex_o;
+			reg_wen_id_ex_o <= reg_wen_id_ex_o;
+			reg_waddr_id_ex_o <= reg_waddr_id_ex_o;
+			alu_op_id_ex_o <= alu_op_id_ex_o;
+			
+			unknown_code_id_ex_o <= unknown_code_id_ex_o;
+			
+			ebreak_flag_id_ex_o <= ebreak_flag_id_ex_o;
+			wmask_id_ex_o <= wmask_id_ex_o;
+			s_flag_id_ex_o <= s_flag_id_ex_o;
+			s_imm_id_ex_o <= s_imm_id_ex_o;
+			expand_signed_id_ex_o <= expand_signed_id_ex_o;
+			rd_flag_id_ex_o <= rd_flag_id_ex_o;
+			rd_buf_flag_id_ex_o <= rd_buf_flag_id_ex_o;
+			ena_id_ex_o <= ena_id_ex_o;
+			
+			alu_src1_id_ex_o <= alu_src1_id_ex_o;   // alu source 1
+    		alu_src2_id_ex_o <= alu_src2_id_ex_o;    // alu source 2
+    		rest_id_mem_id_ex_o <= rest_id_mem_id_ex_o;
+			ex_inst <= ex_inst;
+			cunqu_hazard_id_ex_o <= cunqu_hazard_id_ex_o;
+			id_mul_id_ex_o <= id_mul_id_ex_o;
+			id_div_id_ex_o <= id_div_id_ex_o;
+			delay_r_done_id_ex_o <= delay_r_done_id_ex_i;  //此处需要传递不然无法向mem里存值
+			end
 		end
 end
 	
