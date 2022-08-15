@@ -53,8 +53,9 @@ wire axi_r_valid_i;
 wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
-module axi # (
-)(
+axi # (
+)
+u_axi(
     .clock(clk),
     .reset_n(rst_n),
 
@@ -120,7 +121,8 @@ module axi # (
 
 
 axi_slave # (
-)(
+)
+u_axi_slave(
     .clock(clk),
     .reset_n(rst_n),
     .axi_ar_ready_o(axi_ar_ready_i),    //从设备已准备好接收地址和相关的控制信号            
