@@ -34,7 +34,7 @@ always @ (posedge clk or negedge rst_n) begin
 end
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
-        reg_axi_curr_pc <= 32'h8000_0000; 
+        reg_axi_curr_pc <= 32'h8000_0004; 
     end
     else begin
         reg_axi_curr_pc <= axi_curr_pc;
