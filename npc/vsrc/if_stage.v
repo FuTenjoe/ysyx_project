@@ -63,7 +63,7 @@ u_axi(
 	  .rw_valid_i(ena),         //IF&MEM输入信号
 	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
-    .rw_w_data_i(),        //IF&MEM输入信号
+    //.rw_w_data_i(),        //IF&MEM输入信号
     .rw_addr_i(curr_pc),          //IF&MEM输入信号
 //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
 
