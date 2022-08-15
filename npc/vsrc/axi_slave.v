@@ -40,7 +40,7 @@ module axi_slave # (
     
 //handshake
 wire ar_hs = axi_ar_ready_o & axi_ar_valid_i;
-wire wire r_hs = axi_r_ready_i & axi_r_valid_o;  //读数据 
+wire r_hs = axi_r_ready_i & axi_r_valid_o;  //读数据 
 
 
 
