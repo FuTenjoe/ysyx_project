@@ -34,7 +34,7 @@ always @ (posedge clk or negedge rst_n) begin
         curr_pc <= 32'h8000_0000; 
     end
     else if(axi_r_valid_i)begin
-        else if(id_mul)begin
+        if(id_mul)begin
             if(sh_fnsh_flag == 1'b0)begin
                 curr_pc <= curr_pc;
             end
