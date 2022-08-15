@@ -6,7 +6,7 @@ module pc_predict (
     input  control_rest,
     input      [`CPU_WIDTH-1:0] id_next_pc, // from ex
     output reg                  ena, 
-    output reg [`CPU_WIDTH-1:0] curr_pc,  // current pc addr
+    output reg [`CPU_WIDTH-1:0] axi_curr_pc,  // current pc addr
     input rest_id_mem,
     input [`CPU_WIDTH-1:0] id_curr_pc,
     input sig_jalr,
@@ -18,7 +18,8 @@ module pc_predict (
 );
 
 reg delay_sig_jalr;
-
+reg [`CPU_WIDTH-1:0] curr_pc;
+reg [`CPU_WIDTH-1:0] reg_axi_curr_pc;
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         ena <= 1'b0;
@@ -31,44 +32,51 @@ always @ (posedge clk or negedge rst_n) begin
 end
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
-        curr_pc <= 32'h8000_0000; 
-    end
-    else if(r_done)begin
-        if(id_mul)begin
-            if(sh_fnsh_flag == 1'b0)begin
-                curr_pc <= curr_pc;
-            end
-            else begin
-                curr_pc <= curr_pc + 4;
-            end
-        end
-        else if(id_div)begin
-            if(div_finish == 1'b0)begin
-                curr_pc <= curr_pc;
-            end
-            else begin
-                curr_pc <= curr_pc + 4;
-            end
-        end
-        else if(rest_id_mem == 1'b1)begin
-            curr_pc <= curr_pc;  //?
-        end
-        else if(sig_jalr == 1'b1)begin
-            curr_pc <= curr_pc;
-        end
-        else if(delay_sig_jalr == 1'b1)begin
-            curr_pc <= id_next_pc;
-        end
-        else if (rest_id_mem == 1'b0)begin
-            if(control_rest == 1'b1)
-                curr_pc <= id_next_pc;
-            else 
-                curr_pc <= curr_pc + 4;
-        end
+        reg_axi_curr_pc <= 32'h8000_0000; 
     end
     else begin
+        reg_axi_curr_pc <= axi_curr_pc;
+    end
+end
+
+
+always @ (posedge clk or negedge rst_n) begin
+    if(~rst_n)begin
+        curr_pc <= 32'h8000_0000; 
+    end
+    else if(id_mul)begin
+        if(sh_fnsh_flag == 1'b0)begin
+            curr_pc <= curr_pc;
+        end
+        else begin
+            curr_pc <= curr_pc + 4;
+        end
+    end
+    else if(id_div)begin
+       if(div_finish == 1'b0)begin
+            curr_pc <= curr_pc;
+        end
+        else begin
+            curr_pc <= curr_pc + 4;
+        end
+    end        
+    else if(rest_id_mem == 1'b1)begin
+        curr_pc <= curr_pc;  //?
+    end
+    else if(sig_jalr == 1'b1)begin
         curr_pc <= curr_pc;
     end
-end    
+    else if(delay_sig_jalr == 1'b1)begin
+        curr_pc <= id_next_pc;
+    end
+    else if (rest_id_mem == 1'b0)begin
+        if(control_rest == 1'b1)
+            curr_pc <= id_next_pc;
+        else 
+            curr_pc <= curr_pc + 4;
+    end
+end
+
+assign axi_curr_pc = r_done ? curr_pc : reg_axi_curr_pc;
 
 endmodule
