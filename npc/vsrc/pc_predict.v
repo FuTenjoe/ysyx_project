@@ -14,7 +14,8 @@ module pc_predict (
     input sh_fnsh_flag,
     input id_div,
     input div_finish,
-    input r_done
+    input r_done,
+    output dd_r_done
     //output r_valid
 );
 

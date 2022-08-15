@@ -18,6 +18,7 @@ module if_stage (
     output reg delay_r_done
 );
 wire r_valid;
+wire dd_r_done;
 pc_predict u_pc_predict(
   .clk(clk),     // system clock
   .rst_n(rst_n),   // active low reset
@@ -32,7 +33,8 @@ pc_predict u_pc_predict(
   .sh_fnsh_flag(sh_fnsh_flag),
   .id_div(id_div),
   .div_finish(div_finish),
-  .r_done(delay_r_done)
+  .r_done(delay_r_done),
+  .dd_r_done(dd_r_done)
   //.r_valid(r_valid)
 
 );
@@ -69,7 +71,7 @@ u_axi(
     .clock(clk),
     .reset_n(rst_n),
 
-	  .rw_valid_i(ena),         //IF&MEM输入信号
+	  .rw_valid_i(ena&~dd_r_done),         //IF&MEM输入信号
 	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     //.rw_w_data_i(),        //IF&MEM输入信号
