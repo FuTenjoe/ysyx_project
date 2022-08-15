@@ -32,10 +32,10 @@ module axi_slave # (
     output                              axi_r_valid_o,  //从设备给出的数据和响应信息有效              
     output  reg [1:0]                       axi_r_resp_o, //读响应，这信号表示读传输的状态
     output  reg [AXI_DATA_WIDTH-1:0]        axi_r_data_o,
-    output                              axi_r_last_o   //该信号用于标识当前传输是否为突发传输中的最后一次传输
+    output                              axi_r_last_o,   //该信号用于标识当前传输是否为突发传输中的最后一次传输
  //   output  [AXI_ID_WIDTH-1:0]          axi_r_id_o,  //读数据ID，该信号用于标识读数据传输
    // output  [AXI_USER_WIDTH-1:0]        axi_r_user_o   //用户定义信号，可选
-	
+	input r_valid
 );
     
 //handshake
@@ -59,12 +59,14 @@ always@(posedge clock)begin
         r_state <= R_STATE_IDLE;
     end
     else begin
+        if(r_valid)begin
         case (r_state)
             R_STATE_IDLE:               r_state <= R_STATE_ADDR;
             R_STATE_ADDR: if (ar_hs)    r_state <= R_STATE_READ;
             R_STATE_READ: if (r_done)   r_state <= R_STATE_IDLE;
             default:;
         endcase
+        end
     end
 end
 
