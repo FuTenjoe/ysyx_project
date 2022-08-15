@@ -34,7 +34,7 @@ always @ (posedge clk or negedge rst_n) begin
         delay_sig_jalr <= sig_jalr;
     end
 end
-wire dd_r_done;
+//wire dd_r_done;
 /*always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
        dd_r_done <= 1'b0;
