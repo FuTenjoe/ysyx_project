@@ -110,8 +110,8 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
     //printf("w = %dh = %d\n",s->w,s->h);
     int n=0;
     uint8_t* tmp = (uint8_t*)(s->pixels);
-    for(int j=0; j<h &&(j+y)< s->h; j++){
-      for(int i=0; i<w &&(i+x)< s->w; i++){
+    for(int j=0; j<h &&(j+0)< s->h; j++){
+      for(int i=0; i<w &&(i+0)< s->w; i++){
         //uint64_t r = s->format->palette[s->pixels[(j + y) * s->w + (i + x)]].colors;
         //printf("w = h = 循环1\n");
         //uint32_t r = s->format->palette->colors[s->pixels[(j+y)*s_w +i+x]].r;
@@ -126,6 +126,7 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
       }
       
     }
+    printf("x= %d,y=%d\n",x,y);
     NDL_DrawRect((uint32_t*)selfpalette,0,0,w,h);
     free(selfpalette);
 
