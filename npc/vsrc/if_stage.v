@@ -31,7 +31,7 @@ pc_predict u_pc_predict(
   .sh_fnsh_flag(sh_fnsh_flag),
   .id_div(id_div),
   .div_finish(div_finish),
-  .r_done(r_done)
+  .r_done(dedlay_r_done)
 
 );
 
@@ -49,7 +49,7 @@ always@(posedge clk or negedge rst_n)begin
     dedlay_r_done <= r_done;
 end
 wire [63:0] rdata;
-assign inst = r_done ? rdata[31:0] : 32'b0010011;
+assign inst = dedlay_r_done ?rdata[31:0] : 32'b0010011;
 
 wire rw_ready_o;
 wire [63:0] rw_w_data_i;
