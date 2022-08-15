@@ -67,7 +67,8 @@ module axi # (
     input                               axi_r_valid_i,                
     input  [1:0]                        axi_r_resp_i,
     input  [AXI_DATA_WIDTH-1:0]         axi_r_data_i,
-    input                               axi_r_last_i
+    input                               axi_r_last_i,
+    output r_done
  //   input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
  //   input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
@@ -84,7 +85,7 @@ module axi # (
     wire r_hs = axi_r_ready_o & axi_r_valid_i;  //读数据 
 
     wire w_done = w_hs & axi_w_last_o;  //写数据完标志
-    wire r_done = r_hs & axi_r_last_i;  
+    assign r_done = r_hs & axi_r_last_i;  
 //  wire trans_done = w_trans ? b_hs : r_done;  
 
 

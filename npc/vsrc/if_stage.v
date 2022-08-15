@@ -31,7 +31,7 @@ pc_predict u_pc_predict(
   .sh_fnsh_flag(sh_fnsh_flag),
   .id_div(id_div),
   .div_finish(div_finish),
-  .axi_r_valid_i(axi_r_valid_i)
+  .r_done(r_done)
 
 );
 
@@ -50,7 +50,7 @@ wire axi_ar_ready_i;
 wire axi_ar_valid_o;
 wire [63:0] axi_ar_addr_o;
 wire axi_r_ready_o;
-//wire axi_r_valid_i;
+wire axi_r_valid_i;
 wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
@@ -116,6 +116,7 @@ u_axi(
     .axi_r_resp_i(axi_r_resp_i),
     .axi_r_data_i(axi_r_data_i),
     .axi_r_last_i(axi_r_last_i),
+    .r_done(r_done)
 //    input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
 //    input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
