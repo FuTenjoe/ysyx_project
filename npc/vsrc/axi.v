@@ -71,7 +71,7 @@ module axi # (
  //   input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
  //   input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
-    wire w_trans    = rw_req_i == `REQ_WRITE;
+ //   wire w_trans    = rw_req_i == `REQ_WRITE;
     wire r_trans    = rw_req_i == `REQ_READ;
     wire w_valid    = rw_valid_i & w_trans;
     wire r_valid    = rw_valid_i & r_trans;
@@ -132,7 +132,7 @@ module axi # (
 // ------------------Number of transmission------------------
     reg [7:0] len;
     wire len_reset      = ~reset_n | (w_trans & w_state_idle) | (r_trans & r_state_idle);
-    wire len_incr_en    = (len != axi_len) & (w_hs | r_hs);
+    //wire len_incr_en    = (len != axi_len) & (w_hs | r_hs);
     always @(posedge clock) begin
         if (len_reset) begin
             len <= 0;
@@ -228,8 +228,9 @@ module axi # (
     // Read data channel signals
      assign axi_r_ready_o    = r_state_read;
 
-    wire [AXI_DATA_WIDTH-1:0] axi_r_data_l  = (axi_r_data_i & mask_l) >> aligned_offset_l;
-    wire [AXI_DATA_WIDTH-1:0] axi_r_data_h  = (axi_r_data_i & mask_h) << aligned_offset_h;
+//    wire [AXI_DATA_WIDTH-1:0] axi_r_data_l  = (axi_r_data_i & mask_l) >> aligned_offset_l;
+    wire [AXI_DATA_WIDTH-1:0] axi_r_data_l  = axi_r_data_i ;
+ //   wire [AXI_DATA_WIDTH-1:0] axi_r_data_h  = (axi_r_data_i & mask_h) << aligned_offset_h;
 
     generate
         for (genvar i = 0; i < TRANS_LEN; i += 1) begin
