@@ -72,10 +72,10 @@ module axi # (
  //   input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
  //   wire w_trans    = rw_req_i == `REQ_WRITE;
-    wire r_trans    = rw_req_i == `REQ_READ;
-    wire w_valid    = rw_valid_i & w_trans;
-    wire r_valid    = rw_valid_i & r_trans;
-
+ //   wire r_trans    = rw_req_i == `REQ_READ;
+ //   wire w_valid    = rw_valid_i & w_trans;
+ //   wire r_valid    = rw_valid_i & r_trans;
+    wire r_valid    = rw_valid_i;
     //handshake
     wire aw_hs = axi_aw_ready_i & axi_aw_valid_o;  //写地址
     wire w_hs = axi_w_ready_i & axi_w_valid_o;  //写数据
@@ -130,7 +130,7 @@ module axi # (
     end
 
 // ------------------Number of transmission------------------
-    reg [7:0] len;
+/*    reg [7:0] len;
     wire len_reset      = ~reset_n | (w_trans & w_state_idle) | (r_trans & r_state_idle);
     //wire len_incr_en    = (len != axi_len) & (w_hs | r_hs);
     always @(posedge clock) begin
@@ -140,7 +140,7 @@ module axi # (
         else if (len_incr_en) begin
             len <= len + 1;
         end
-    end
+    end*/
 
 
     // ------------------Process Data------------------
