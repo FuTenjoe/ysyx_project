@@ -127,7 +127,7 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
       
     }
     //printf("x= %d,y=%d\n",x,y);
-    NDL_DrawRect((uint32_t*)selfpalette,0,0,w,h);
+    NDL_DrawRect((uint32_t*)selfpalette,x,y,w,h);
     free(selfpalette);
 
   }
