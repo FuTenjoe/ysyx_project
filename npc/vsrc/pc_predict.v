@@ -41,7 +41,7 @@ always @ (posedge clk or negedge rst_n) begin
     end
 end
 reg test;
-r_valid = (reg_axi_curr_pc !=axi_curr_pc)? 1'b1:1'b0;
+assign r_valid = (reg_axi_curr_pc !=axi_curr_pc)? 1'b1:1'b0;
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
