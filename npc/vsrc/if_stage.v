@@ -41,8 +41,15 @@ wire [63:0] rdata;
 always @(*) begin
   pmem_read(curr_pc, rdata);
 end*/
+reg dedlay_r_done;
+always@(posedge clk or negedge rst_n)begin
+  if(!rst_n)
+    dedlay_r_done <= 1'b0;
+  else
+    dedlay_r_done <= r_done;
+end
 wire [63:0] rdata;
-assign inst = rdata[31:0];
+assign inst = dedlay_r_done ?rdata[31:0] : 32'b0010011;
 
 wire rw_ready_o;
 wire [63:0] rw_w_data_i;

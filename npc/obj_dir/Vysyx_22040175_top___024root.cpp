@@ -2429,7 +2429,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                           ? (IData)(vlSelf->ysyx_22040175_top__DOT__id_time_set)
                                                           : (IData)(vlSelf->time_set))))));
     if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
-        if ((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__r_state))) {
+        if (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done) {
             if (vlSelf->ysyx_22040175_top__DOT__id_mul) {
                 vlSelf->__Vdly__ysyx_22040175_top__DOT__if_pc 
                     = ((IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)
