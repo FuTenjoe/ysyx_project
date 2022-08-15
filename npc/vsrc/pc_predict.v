@@ -14,7 +14,8 @@ module pc_predict (
     input sh_fnsh_flag,
     input id_div,
     input div_finish,
-    input r_done
+    input r_done,
+    output r_valid
 );
 
 reg delay_sig_jalr;
@@ -45,8 +46,10 @@ always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
         test <= 1'b0;
+        r_valid <= 1'b1;
     end
     else if(r_done)begin
+         r_valid <= 1'b1;
     if(id_mul)begin
         if(sh_fnsh_flag == 1'b0)begin
             curr_pc <= curr_pc;
@@ -80,6 +83,9 @@ always @ (posedge clk or negedge rst_n) begin
         else 
             curr_pc <= curr_pc + 4;
     end
+    end
+    else begin
+     r_valid <= 1'b0;
     end
 end
 
