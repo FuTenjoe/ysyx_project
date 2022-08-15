@@ -20,7 +20,7 @@ module pc_predict (
 
 reg delay_sig_jalr;
 reg [`CPU_WIDTH-1:0] curr_pc;
-reg dd_r_done;
+
 //reg [`CPU_WIDTH-1:0] reg_axi_curr_pc;
 
 always @ (posedge clk or negedge rst_n) begin
@@ -33,7 +33,8 @@ always @ (posedge clk or negedge rst_n) begin
         delay_sig_jalr <= sig_jalr;
     end
 end
-always @ (posedge clk or negedge rst_n) begin
+wire dd_r_done;
+/*always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
        dd_r_done <= 1'b0;
     end
@@ -44,7 +45,8 @@ always @ (posedge clk or negedge rst_n) begin
         else 
             dd_r_done <= 1'b0;
     end
-end
+end*/
+assign dd_r_done = (id_mul | id_div | rest_id_mem|sig_jalr|delay_sig_jalr|control_rest);
 reg test;
 
 always @ (posedge clk or negedge rst_n) begin
