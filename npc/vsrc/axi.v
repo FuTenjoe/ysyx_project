@@ -85,7 +85,7 @@ module axi # (
 
     wire w_done = w_hs & axi_w_last_o;  //写数据完标志
     wire r_done = r_hs & axi_r_last_i;  
-    wire trans_done = w_trans ? b_hs : r_done;  
+//  wire trans_done = w_trans ? b_hs : r_done;  
 
 
     // ------------------State Machine------------------TODO
@@ -96,7 +96,7 @@ module axi # (
     wire w_state_idle = w_state == W_STATE_IDLE, w_state_addr = w_state == W_STATE_ADDR, w_state_write = w_state == W_STATE_WRITE, w_state_resp = w_state == W_STATE_RESP;
     wire r_state_idle = r_state == R_STATE_IDLE, r_state_addr = r_state == R_STATE_ADDR, r_state_read  = r_state == R_STATE_READ;
     // 写通道状态切换
-    always @(posedge clock) begin
+/*    always @(posedge clock) begin
         if (!reset_n) begin
             w_state <= W_STATE_IDLE;
         end
@@ -110,7 +110,7 @@ module axi # (
                 endcase
             end
         end
-    end
+    end*/
 
     // 读通道状态切换
     always @(posedge clock) begin
