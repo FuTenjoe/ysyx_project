@@ -45,7 +45,8 @@ always @ (posedge clk or negedge rst_n) begin
         curr_pc <= 32'h8000_0000; 
         test <= 1'b0;
     end
-    else if(id_mul)begin
+    else if(r_done)begin
+    if(id_mul)begin
         if(sh_fnsh_flag == 1'b0)begin
             curr_pc <= curr_pc;
         end
@@ -78,8 +79,9 @@ always @ (posedge clk or negedge rst_n) begin
         else 
             curr_pc <= curr_pc + 4;
     end
+    end
 end
 
-assign axi_curr_pc = r_done ? curr_pc : reg_axi_curr_pc;
+assign axi_curr_pc = curr_pc;
 
 endmodule
