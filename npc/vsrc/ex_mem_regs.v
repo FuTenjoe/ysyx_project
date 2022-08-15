@@ -255,6 +255,6 @@ module ex_mem_regs(
 				cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_o;
 			end
 		end
-	end
+	//end
 	
 endmodule
