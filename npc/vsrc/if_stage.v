@@ -65,13 +65,16 @@ wire axi_r_valid_i;
 wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
+wire axi_ena = ena&(~dd_r_done | div_finish);
+
+
 axi # (
 )
 u_axi(
     .clock(clk),
     .reset_n(rst_n),
 
-	  .rw_valid_i(ena&(~dd_r_done | div_finish)),         //IF&MEM输入信号
+	  .rw_valid_i(axi_ena)),         //IF&MEM输入信号
 	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     //.rw_w_data_i(),        //IF&MEM输入信号
