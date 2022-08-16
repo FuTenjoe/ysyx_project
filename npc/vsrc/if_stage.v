@@ -48,12 +48,14 @@ end*/
 //reg delay_r_done;
 reg delay_sh_fnsh_flag;
 always@(posedge clk or negedge rst_n)begin
-  if(!rst_n)
+  if(!rst_n)begin
     delay_r_done <= 1'b0;
     delay_sh_fnsh_flag <= 1'b0;
-  else
+  end
+  else begin
     delay_r_done <= r_done;
     delay_sh_fnsh_flag <= sh_fnsh_flag;
+  end
 end
 wire [63:0] rdata;
 assign inst = (delay_r_done|delay_sh_fnsh_flag) ? rdata[31:0] :32'b0010011;
