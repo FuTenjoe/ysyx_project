@@ -148,9 +148,13 @@ always @ (posedge clk or negedge rst_n) begin
     else if (rest_id_mem == 1'b0)begin
         if(control_rest == 1'b1)begin
             curr_pc <= id_next_pc;
-            test <= (id_next_pc==curr_pc+4)? !test:1'b0;
+            test <= (id_next_pc==curr_pc+4)? 1'b1:1'b0;
         end
         //else if((r_done & ~reg_dd_r_done &~test )||pc_flag)
+        else if((r_done &test )||pc_flag)begin
+            curr_pc <= curr_pc;
+            test <= 1'b0;
+        end
         else if((r_done &~test )||pc_flag)
             curr_pc <= curr_pc + 4;
     end
