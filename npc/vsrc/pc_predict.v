@@ -66,9 +66,9 @@ always @ (posedge clk or negedge rst_n) begin
         if(sh_fnsh_flag == 1'b0)begin
             curr_pc <= curr_pc;
         end
-        else begin
+    /*    else begin
             curr_pc <= curr_pc + 4;
-        end
+        end*/
     end
     else if(id_div)begin
        if(div_finish == 1'b0)begin
