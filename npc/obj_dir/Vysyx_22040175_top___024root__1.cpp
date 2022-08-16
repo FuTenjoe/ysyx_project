@@ -5176,13 +5176,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
     vlSelf->ysyx_22040175_top__DOT__id_control_rest 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__branch) 
            | (IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__jump));
-    vlSelf->ysyx_22040175_top__DOT__if_inst = ((((((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
-                                                   & (1U 
-                                                      != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done))) 
-                                                  & (2U 
-                                                     != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done))) 
-                                                 | (IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)) 
-                                                | (IData)(vlSelf->ysyx_22040175_top__DOT__div_finish))
+    vlSelf->ysyx_22040175_top__DOT__if_inst = (((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
+                                                & (1U 
+                                                   != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done)))
                                                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata)
                                                 : 0x13U);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc 
