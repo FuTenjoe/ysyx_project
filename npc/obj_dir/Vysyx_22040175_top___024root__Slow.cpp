@@ -8438,8 +8438,8 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_ena 
         = (((IData)(vlSelf->ysyx_22040175_top__DOT__if_ena) 
             & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest))) 
-           & ((IData)(vlSelf->ysyx_22040175_top__DOT__id_mul) 
-              & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag))));
+           & ((~ (IData)(vlSelf->ysyx_22040175_top__DOT__id_mul)) 
+              | (IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)));
     vlSelf->ysyx_22040175_top__DOT__rest_from_id = 
         (((((0ULL != vlSelf->ysyx_22040175_top__DOT__id_pc) 
             & (0x80000000ULL != vlSelf->ysyx_22040175_top__DOT__id_pc)) 
