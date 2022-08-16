@@ -47,7 +47,7 @@ end
             dd_r_done <= 1'b0;
     end
 end*/
-assign dd_r_done = (id_mul | id_div | rest_id_mem|sig_jalr|delay_sig_jalr|control_rest);
+assign dd_r_done = (dd_r_done==1'b0)? (id_mul | id_div | rest_id_mem|sig_jalr|delay_sig_jalr|control_rest) : 1'b0;
 reg test;
 
 always @ (posedge clk or negedge rst_n) begin
