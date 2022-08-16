@@ -25,7 +25,8 @@ assign pc = if_pc;
 assign inst = if_inst;
 wire if_delay_r_done;
 
-
+wire axi_ena;
+assign axi_ena = (diff_pc !=diff_delay_pc) : 1'b1:1'b0;
 wire rest_id_mem;
 wire div_finish;
 if_stage u_if_stage(
@@ -45,7 +46,7 @@ if_stage u_if_stage(
     .id_div(id_div),
     .div_finish(div_finish),
     .delay_r_done(if_delay_r_done)
-    
+    .axi_ena(axi_ena)
     
 );
 wire [31:0]id_inst;
