@@ -8,7 +8,7 @@
 #include "verilated_dpi.h"
 
 void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_id_stage__DOT__u_ctrl__DOT__unknown_inst_TOP();
-extern const VlUnpacked<CData/*1:0*/, 128> Vysyx_22040175_top__ConstPool__TABLE_7f791d6a_0;
+extern const VlUnpacked<CData/*1:0*/, 128> Vysyx_22040175_top__ConstPool__TABLE_bb138b75_0;
 
 VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175_top___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -4058,17 +4058,17 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__next_state)
             : 0U);
-    __Vtableidx1 = (((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
-                     << 6U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag) 
-                                << 5U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__div_finish) 
+    __Vtableidx1 = (((IData)(vlSelf->ysyx_22040175_top__DOT__id_mul) 
+                     << 6U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__id_div) 
+                                << 5U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag) 
                                            << 4U) | 
-                                          (((IData)(vlSelf->ysyx_22040175_top__DOT__id_mul) 
+                                          (((IData)(vlSelf->ysyx_22040175_top__DOT__div_finish) 
                                             << 3U) 
-                                           | (((IData)(vlSelf->ysyx_22040175_top__DOT__id_div) 
+                                           | (((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
                                                << 2U) 
                                               | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))))));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state 
-        = Vysyx_22040175_top__ConstPool__TABLE_7f791d6a_0
+        = Vysyx_22040175_top__ConstPool__TABLE_bb138b75_0
         [__Vtableidx1];
     VL_EXTEND_WQ(130,64, __Vtemp402, (((- (QData)((IData)(
                                                           (1U 
