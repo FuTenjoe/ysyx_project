@@ -68,6 +68,7 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__if_ena = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__if_inst = VL_RAND_RESET_I(32);
     vlSelf->ysyx_22040175_top__DOT__if_delay_r_done = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_22040175_top__DOT__axi_ena = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__rest_id_mem = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__div_finish = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__id_inst = VL_RAND_RESET_I(32);
