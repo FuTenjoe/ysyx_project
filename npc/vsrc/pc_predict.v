@@ -75,9 +75,9 @@ always @ (posedge clk or negedge rst_n) begin
        if(div_finish == 1'b0)begin
             curr_pc <= curr_pc;
         end
-        else begin
+    /*    else begin
             curr_pc <= curr_pc + 4;
-        end
+        end*/
     end        
     else if(rest_id_mem == 1'b1)begin
         curr_pc <= curr_pc;  //?
