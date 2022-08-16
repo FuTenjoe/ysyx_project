@@ -62,11 +62,11 @@ always@(*)begin
         ARTH:begin
             if((div_finish|sh_fnsh_flag)&(~r_done))begin
                 next_state = AF;
-                pc_flag = 1'b1;
+                pc_flag = 1'b0;
             end
             else if((div_finish|sh_fnsh_flag)&(r_done))begin
                 next_state =TEND;
-                 pc_flag = 1'b0;
+                 pc_flag = 1'b1;
             end
             else begin
                 next_state = ARTH;
