@@ -45,8 +45,8 @@ if_stage u_if_stage(
     .id_mul(id_mul),
     .id_div(id_div),
     .div_finish(div_finish),
-    .delay_r_done(if_delay_r_done),
-    .axi_ena(axi_ena)
+    .delay_r_done(if_delay_r_done)
+    //.axi_ena(axi_ena)
     
 );
 wire [31:0]id_inst;
