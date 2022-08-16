@@ -46,14 +46,17 @@ always @(*) begin
   pmem_read(curr_pc, rdata);
 end*/
 //reg delay_r_done;
+reg delay_sh_fnsh_flag;
 always@(posedge clk or negedge rst_n)begin
   if(!rst_n)
     delay_r_done <= 1'b0;
+    delay_sh_fnsh_flag <= 1'b0;
   else
     delay_r_done <= r_done;
+    delay_sh_fnsh_flag <= sh_fnsh_flag;
 end
 wire [63:0] rdata;
-assign inst = (delay_r_done|sh_fnsh_flag) ? rdata[31:0] :32'b0010011;
+assign inst = (delay_r_done|delay_sh_fnsh_flag) ? rdata[31:0] :32'b0010011;
 
 wire rw_ready_o;
 wire [63:0] rw_w_data_i;

@@ -55,7 +55,7 @@ always @ (posedge clk or negedge rst_n) begin
         curr_pc <= 32'h8000_0000; 
         test <= 1'b1; 
     end
-    else if(r_done|dd_r_done|sh_fnsh_flag)begin
+    else if(r_done|dd_r_done)begin
     if(id_mul)begin
         if(sh_fnsh_flag == 1'b0)begin
             curr_pc <= curr_pc;
