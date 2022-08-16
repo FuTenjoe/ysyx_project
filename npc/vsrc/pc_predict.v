@@ -84,8 +84,8 @@ always@(posedge clk or negedge rst_n)begin
         case(present_state)
         IDLE:md_r_done <= 2'd0;
         ARTH:md_r_done <= 2'd1;
-        AF:md_r_done <= 2'd1;
-        TEND:md_r_done <= 2'd2;
+        AF:md_r_done <= 2'd2;
+        TEND:md_r_done <= 2'd3;
         default:md_r_done <= 2'd0;
         endcase
     end
@@ -134,7 +134,7 @@ always @ (posedge clk or negedge rst_n) begin
             curr_pc <= id_next_pc;
             test <= 1'b1;
         end
-        else if(r_done||md_r_done==2'd2)
+        else if(r_done||md_r_done==2'd3)
             curr_pc <= curr_pc + 4;
     end
     //end
