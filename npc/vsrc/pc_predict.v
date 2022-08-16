@@ -113,7 +113,7 @@ always @ (posedge clk or negedge rst_n) begin
         test <= 1'b1; 
     end
     //else if(r_done|dd_r_done)begin
-    else if(id_mul &&md_r_done!=2'd2)begin
+    else if(id_mul &&md_r_done!=2'd2 &&(~pc_flag))begin
         if(sh_fnsh_flag == 1'b0)begin
             curr_pc <= curr_pc;
         end
