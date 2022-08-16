@@ -40,14 +40,14 @@ end
 reg [1:0]md_r_done;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
-        md_r_done <= 2'b0;
+        md_r_done <= 2'd0;
     end
     else begin
         if(sh_fnsh_flag|div_finish)begin
-            md_r_done <= 2'b1;
+            md_r_done <= 2'd1;
         end
         else if(r_done)begin
-            md_r_done <= 1'b2;
+            md_r_done <= 2'd2;
         end
         else begin
             md_r_done <= md_r_done;
