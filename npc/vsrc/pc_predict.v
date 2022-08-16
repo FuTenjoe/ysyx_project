@@ -53,7 +53,7 @@ end
 always@(*)begin
     case(present_state)
         IDLE:begin
-            if(id_div|id_mul)
+            if((id_div|id_mul)&(!div_finish)&(!sh_fnsh_flag))
                 next_state =ARTH;
             else 
                 next_state =IDLE;
