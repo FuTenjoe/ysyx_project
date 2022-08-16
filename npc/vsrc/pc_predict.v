@@ -116,8 +116,7 @@ reg test;
 
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
-        curr_pc <= 32'h8000_0000; 
-        test <= 1'b1; 
+        curr_pc <= 32'h8000_0000;  
     end
     //else if(r_done|dd_r_done)begin
     else if(id_mul &&md_r_done!=2'd2 &&(~pc_flag))begin
@@ -148,9 +147,10 @@ always @ (posedge clk or negedge rst_n) begin
     else if (rest_id_mem == 1'b0)begin
         if(control_rest == 1'b1)begin
             curr_pc <= id_next_pc;
-            test <= 1'b1;
+            test <= (id_next_pc==curr_pc+4)? 1'b1:1'b0;
         end
-        else if((r_done & ~reg_dd_r_done )||pc_flag)
+        //else if((r_done & ~reg_dd_r_done &~test )||pc_flag)
+        else if((r_done &~test )||pc_flag)
             curr_pc <= curr_pc + 4;
     end
     //end
