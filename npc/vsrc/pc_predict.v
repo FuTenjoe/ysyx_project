@@ -36,7 +36,7 @@ always @ (posedge clk or negedge rst_n) begin
     end
 end
 //wire dd_r_done;
-//reg reg_dd_r_done;
+reg reg_dd_r_done;
 //assign dd_r_done = ( rest_id_mem|sig_jalr|delay_sig_jalr|control_rest|id_mul) ? 1'b1:1'b0;
 //reg [1:0]md_r_done;
 parameter IDLE = 2'd0,ARTH = 2'd1, AF=2'd2, TEND = 2'd3;
@@ -100,7 +100,14 @@ always@(posedge clk or negedge rst_n)begin
     end
 end
 
-
+always @ (posedge clk or negedge rst_n) begin
+    if(~rst_n)begin
+        reg_dd_r_done <= 1'b0;
+    end
+    else begin    
+        reg_dd_r_done <= r_done;
+    end
+end
 
 
 
