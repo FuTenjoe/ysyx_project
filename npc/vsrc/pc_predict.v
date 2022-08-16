@@ -39,22 +39,60 @@ end
 //reg reg_dd_r_done;
 //assign dd_r_done = ( rest_id_mem|sig_jalr|delay_sig_jalr|control_rest|id_mul) ? 1'b1:1'b0;
 //reg [1:0]md_r_done;
+parameter IDLE = 2'd0,ARTH = 2'd1, AF=2'd2, TEND = 2'd3;
+reg [1:0] present_state,next_state;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        present_state <= IDLE;
+    end
+    else begin
+        present_state <= next_state;
+    end
+end
+
+always@(*)begin
+    case(present_state)
+        IDLE:begin
+            if(id_div|id_mul)
+                next_state =ARTH;
+            else 
+                next_state =IDLE;
+        end
+        ARTH:begin
+            if(div_finish|sh_fnsh_flag)
+                next_state = AF;
+            else
+                next_state = ARTH;
+        end
+        AF:begin
+            if(r_done)
+                next_state =TEND;
+            else
+                next_state = IDLE;
+        end
+    default: next_state = IDLE;
+    endcase
+end
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         md_r_done <= 2'd0;
     end
     else begin
-        if((id_mul)|(id_div))begin
-            md_r_done <= 2'd1;
-        end
-        else if(r_done)begin
-            md_r_done <= 2'd2;
-        end
-        else begin
-            md_r_done <= md_r_done;
-        end
+        case(present_state)
+        IDLE:md_r_done <= 2'd0;
+        ARTH:md_r_done <= 2'd1;
+        AF:md_r_done <= 2'd1;
+        TEND:md_r_done <= 2'd2;
+        default:md_r_done <= 2'd0;
+        endcase
     end
-end 
+end
+
+
+
+
+
+
 reg test;
 
 always @ (posedge clk or negedge rst_n) begin
