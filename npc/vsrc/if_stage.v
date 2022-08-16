@@ -167,7 +167,7 @@ u_axi_slave(
     .axi_r_last_o(axi_r_last_i),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
  //   output  [AXI_ID_WIDTH-1:0]          axi_r_id_o,  //读数据ID，该信号用于标识读数据传输
    // output  [AXI_USER_WIDTH-1:0]        axi_r_user_o   //用户定义信号，可选
-    .r_valid(ena&~dd_r_done)
+    .r_valid(ena)
 );
 
 
