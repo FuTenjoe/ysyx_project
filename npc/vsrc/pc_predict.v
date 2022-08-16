@@ -51,8 +51,8 @@ always@(posedge clk or negedge rst_n)begin
 end
 reg pc_flag;
 always@(*)begin
-    case(present_state)
     pc_flag = 1'b0;
+    case(present_state)
         IDLE:begin
             if((id_div|id_mul))
                 next_state =ARTH;
