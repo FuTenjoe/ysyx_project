@@ -186,6 +186,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBus(c+2015,"ysyx_22040175_top u_if_stage axi_r_resp_i", false,-1, 1,0);
         tracep->declQuad(c+2016,"ysyx_22040175_top u_if_stage axi_r_data_i", false,-1, 63,0);
         tracep->declBit(c+2018,"ysyx_22040175_top u_if_stage axi_r_last_i", false,-1);
+        tracep->declBit(c+2389,"ysyx_22040175_top u_if_stage axi_ena", false,-1);
         tracep->declBit(c+2019,"ysyx_22040175_top u_if_stage r_done", false,-1);
         tracep->declBit(c+2378,"ysyx_22040175_top u_if_stage u_pc_predict clk", false,-1);
         tracep->declBit(c+2031,"ysyx_22040175_top u_if_stage u_pc_predict rst_n", false,-1);

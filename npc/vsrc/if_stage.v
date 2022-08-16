@@ -65,7 +65,7 @@ wire axi_r_valid_i;
 wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
-wire axi_ena = ena&(~dd_r_done | div_finish);
+wire axi_ena = ena&((~dd_r_done) | div_finish);
 
 
 axi # (
