@@ -44,7 +44,7 @@ always@(posedge clk or negedge rst_n)begin
         md_r_done <= 2'd0;
     end
     else begin
-        if(id_mul|id_div)begin
+        if((id_mul&~sh_fnsh_flag)|(id_div&~div_finish))begin
             md_r_done <= 2'd1;
         end
         else if(sh_fnsh_flag | div_finish)begin
