@@ -15,8 +15,7 @@ module if_stage (
     input sh_fnsh_flag,
     input id_div,
     input div_finish,
-    output reg delay_r_done,
-    input axi_ena
+    output reg delay_r_done
 );
 wire r_valid;
 wire dd_r_done;
@@ -72,7 +71,7 @@ u_axi(
     .clock(clk),
     .reset_n(rst_n),
 
-	  .rw_valid_i(ena&~dd_r_done),         //IF&MEM输入信号
+	  .rw_valid_i(ena&~dd_r_done&~sh_fnsh_flag),         //IF&MEM输入信号
 	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     //.rw_w_data_i(),        //IF&MEM输入信号
