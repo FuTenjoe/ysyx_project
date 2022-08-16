@@ -72,8 +72,8 @@ wire axi_r_valid_i;
 wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
-wire axi_ena = ena&((~dd_r_done) | div_finish|sh_fnsh_flag);
-
+//wire axi_ena = ena&~control_rest;
+wire axi_ena = ena&~control_rest&(id_mul&~sh_fnsh_flag);
 
 axi # (
 )
@@ -81,7 +81,7 @@ u_axi(
     .clock(clk),
     .reset_n(rst_n),
 
-	  .rw_valid_i(ena&~control_rest),         //IF&MEM输入信号
+	  .rw_valid_i(axi_ena),         //IF&MEM输入信号
 	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     //.rw_w_data_i(),        //IF&MEM输入信号
@@ -169,7 +169,7 @@ u_axi_slave(
     .axi_r_last_o(axi_r_last_i),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
  //   output  [AXI_ID_WIDTH-1:0]          axi_r_id_o,  //读数据ID，该信号用于标识读数据传输
    // output  [AXI_USER_WIDTH-1:0]        axi_r_user_o   //用户定义信号，可选
-    .r_valid(ena&~control_rest)
+    .r_valid(axi_ena)
 );
 
 
