@@ -8234,8 +8234,10 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state 
         = Vysyx_22040175_top__ConstPool__TABLE_bb138b75_0
         [__Vtableidx1];
-    vlSelf->ysyx_22040175_top__DOT__if_inst = (((((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
-                                                  & (1U 
+    vlSelf->ysyx_22040175_top__DOT__if_inst = ((((((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
+                                                   & (1U 
+                                                      != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done))) 
+                                                  & (2U 
                                                      != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done))) 
                                                  | (IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)) 
                                                 | (IData)(vlSelf->ysyx_22040175_top__DOT__div_finish))
