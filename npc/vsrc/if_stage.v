@@ -72,7 +72,8 @@ wire axi_r_valid_i;
 wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
-wire axi_ena = ena&~control_rest;
+wire axi_ena = ena;
+//wire axi_ena = ena&~control_rest;
 //wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
 
 axi # (
