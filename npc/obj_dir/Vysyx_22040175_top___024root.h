@@ -118,6 +118,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__r_done;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__delay_sig_jalr;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__reg_dd_r_done;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__delay_sh_fnsh_flag;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__test;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__rw_size_i;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__axi_aw_ready_i;
@@ -161,9 +162,9 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*4:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg_waddr;
         CData/*2:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_data_rest_cond;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_pc__DOT__zero;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__zero;
     };
     struct {
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__zero;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_valid;
         CData/*3:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__mul_expand_signed;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__div32_valid;
@@ -227,9 +228,9 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         QData/*63:0*/ ysyx_22040175_top__DOT__ex_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__ex_imm;
         QData/*63:0*/ ysyx_22040175_top__DOT__ex_unknown_code;
-        QData/*63:0*/ ysyx_22040175_top__DOT__ex_reg1_rdata;
     };
     struct {
+        QData/*63:0*/ ysyx_22040175_top__DOT__ex_reg1_rdata;
         QData/*63:0*/ ysyx_22040175_top__DOT__ex_reg2_rdata;
         QData/*63:0*/ ysyx_22040175_top__DOT__ex_end_write_addr;
         QData/*63:0*/ ysyx_22040175_top__DOT__from_ex_alu_res;
