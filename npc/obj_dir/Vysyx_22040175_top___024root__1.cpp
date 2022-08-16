@@ -4264,8 +4264,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
                      << 5U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__ar_hs) 
                                 << 4U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__r_state) 
                                            << 2U) | 
-                                          (((vlSelf->diff_pc 
-                                             != vlSelf->diff_delay_pc) 
+                                          ((((vlSelf->diff_pc 
+                                              != vlSelf->diff_delay_pc) 
+                                             & (0U 
+                                                != vlSelf->diff_pc)) 
                                             << 1U) 
                                            | (IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)))));
     if (Vysyx_22040175_top__ConstPool__TABLE_c1a1efce_0

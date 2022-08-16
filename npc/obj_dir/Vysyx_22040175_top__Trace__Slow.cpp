@@ -4223,8 +4223,9 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullIData(oldp+2385,(vlSelf->diff_pc),32);
         tracep->fullIData(oldp+2386,(vlSelf->diff_delay_pc),32);
         tracep->fullBit(oldp+2387,(vlSelf->out_mem_rd_buf_flag));
-        tracep->fullBit(oldp+2388,((vlSelf->diff_pc 
-                                    != vlSelf->diff_delay_pc)));
+        tracep->fullBit(oldp+2388,(((vlSelf->diff_pc 
+                                     != vlSelf->diff_delay_pc) 
+                                    & (0U != vlSelf->diff_pc))));
         tracep->fullQData(oldp+2389,((vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f
                                       [vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr] 
                                       + (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_imm)))),64);
