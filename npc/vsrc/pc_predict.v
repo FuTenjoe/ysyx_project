@@ -52,7 +52,7 @@ always@(posedge clk or negedge rst_n)begin
         end
         else if(r_done)begin
             if(md_r_done == 2'd2)begin
-                md_r_done <= 2'd3
+                md_r_done <= 2'd3;
             end
             else begin
                 md_r_done <= md_r_done;
