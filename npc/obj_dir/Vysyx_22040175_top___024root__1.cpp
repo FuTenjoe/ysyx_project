@@ -5162,7 +5162,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root___sequent__TOP__8\n"); );
     // Body
-    vlSelf->ysyx_22040175_top__DOT__if_inst = ((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done)
+    vlSelf->ysyx_22040175_top__DOT__if_inst = (((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
+                                                | (IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag))
                                                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata)
                                                 : 0x13U);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc 
