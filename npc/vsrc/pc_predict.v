@@ -68,7 +68,10 @@ always@(*)begin
             if(r_done)
                 next_state =TEND;
             else
-                next_state = IDLE;
+                next_state = AF;
+        end
+        TEND:begin
+            next_state =IDLE;
         end
     default: next_state = IDLE;
     endcase
