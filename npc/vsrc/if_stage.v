@@ -79,7 +79,7 @@ u_axi(
     .clock(clk),
     .reset_n(rst_n),
 
-	  .rw_valid_i(ena),         //IF&MEM输入信号
+	  .rw_valid_i(ena&~control_rest),         //IF&MEM输入信号
 	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     //.rw_w_data_i(),        //IF&MEM输入信号
@@ -167,7 +167,7 @@ u_axi_slave(
     .axi_r_last_o(axi_r_last_i),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
  //   output  [AXI_ID_WIDTH-1:0]          axi_r_id_o,  //读数据ID，该信号用于标识读数据传输
    // output  [AXI_USER_WIDTH-1:0]        axi_r_user_o   //用户定义信号，可选
-    .r_valid(ena)
+    .r_valid(ena&~control_rest)
 );
 
 
