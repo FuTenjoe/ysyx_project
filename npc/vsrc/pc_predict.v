@@ -143,7 +143,7 @@ always @ (posedge clk or negedge rst_n) begin
             curr_pc <= id_next_pc;
             test <= 1'b1;
         end
-        else if(r_done||pc_flag||md_r_done==2'd3)
+        else if(r_done||pc_flag)
             curr_pc <= curr_pc + 4;
     end
     //end
