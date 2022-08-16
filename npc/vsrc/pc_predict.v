@@ -59,8 +59,10 @@ always@(*)begin
                 next_state =IDLE;
         end
         ARTH:begin
-            if(div_finish|sh_fnsh_flag)
+            if((div_finish|sh_fnsh_flag)&(~r_done))
                 next_state = AF;
+            else if((div_finish|sh_fnsh_flag)&(r_done))
+                next_state =TEND;
             else
                 next_state = ARTH;
         end
