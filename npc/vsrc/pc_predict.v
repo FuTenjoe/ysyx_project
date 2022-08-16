@@ -49,9 +49,10 @@ always@(posedge clk or negedge rst_n)begin
         present_state <= next_state;
     end
 end
-
+reg pc_flag;
 always@(*)begin
     case(present_state)
+    pc_flag = 1'b0;
         IDLE:begin
             if((id_div|id_mul))
                 next_state =ARTH;
@@ -59,12 +60,18 @@ always@(*)begin
                 next_state =IDLE;
         end
         ARTH:begin
-            if((div_finish|sh_fnsh_flag)&(~r_done))
+            if((div_finish|sh_fnsh_flag)&(~r_done))begin
                 next_state = AF;
-            else if((div_finish|sh_fnsh_flag)&(r_done))
+                pc_flag = 1'b1;
+            end
+            else if((div_finish|sh_fnsh_flag)&(r_done))begin
                 next_state =TEND;
-            else
+                 pc_flag = 1'b0;
+            end
+            else begin
                 next_state = ARTH;
+                 pc_flag = 1'b0;
+            end
         end
         AF:begin
             if(r_done)
