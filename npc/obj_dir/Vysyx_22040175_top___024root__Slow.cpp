@@ -6771,7 +6771,9 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
             }
         }
     }
-    vlSelf->ysyx_22040175_top__DOT__if_inst = (((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
+    vlSelf->ysyx_22040175_top__DOT__if_inst = ((((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
+                                                 & (1U 
+                                                    != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done))) 
                                                 | (IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag))
                                                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata)
                                                 : 0x13U);
