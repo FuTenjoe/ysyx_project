@@ -150,7 +150,7 @@ always @ (posedge clk or negedge rst_n) begin
             curr_pc <= id_next_pc;
             test <= 1'b1;
         end
-        else if(r_done||pc_flag)
+        else if((r_done & ~reg_dd_r_done )||pc_flag)
             curr_pc <= curr_pc + 4;
     end
     //end
