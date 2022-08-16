@@ -19,6 +19,7 @@ module if_stage (
 );
 wire r_valid;
 wire dd_r_done;
+wire [1:0] md_r_done;
 pc_predict u_pc_predict(
   .clk(clk),     // system clock
   .rst_n(rst_n),   // active low reset
@@ -34,7 +35,8 @@ pc_predict u_pc_predict(
   .id_div(id_div),
   .div_finish(div_finish),
   .r_done(delay_r_done),
-  .dd_r_done(dd_r_done)
+  .dd_r_done(dd_r_done),
+  .md_r_done(md_r_done)
   //.r_valid(r_valid)
 
 );
@@ -58,7 +60,7 @@ always@(posedge clk or negedge rst_n)begin
   end
 end
 wire [63:0] rdata;
-assign inst = (delay_r_done|sh_fnsh_flag) ? rdata[31:0] :32'b0010011;
+assign inst = ((delay_r_done &&(md_r_done!=2'd1))|sh_fnsh_flag) ? rdata[31:0] :32'b0010011;
 
 wire rw_ready_o;
 wire [63:0] rw_w_data_i;

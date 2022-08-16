@@ -2502,10 +2502,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                            : (IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done))))));
     if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
         if (vlSelf->ysyx_22040175_top__DOT__id_mul) {
-            vlSelf->__Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc 
-                = ((IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)
-                    ? (4ULL + vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc)
-                    : vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc);
+            if ((1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)))) {
+                vlSelf->__Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc 
+                    = vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc;
+            }
         } else if (vlSelf->ysyx_22040175_top__DOT__id_div) {
             vlSelf->__Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc 
                 = ((IData)(vlSelf->ysyx_22040175_top__DOT__div_finish)
