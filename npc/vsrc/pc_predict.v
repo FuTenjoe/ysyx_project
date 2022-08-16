@@ -47,7 +47,7 @@ always @ (posedge clk or negedge rst_n) begin
         delay_sh_fnsh_flag <= sh_fnsh_flag;
     end
 end
-assign dd_r_done = ( rest_id_mem|sig_jalr|delay_sig_jalr|control_rest) ? 1'b1:1'b0;
+assign dd_r_done = ( rest_id_mem|sig_jalr|delay_sig_jalr|control_rest|id_mul) ? 1'b1:1'b0;
 reg test;
 
 always @ (posedge clk or negedge rst_n) begin
