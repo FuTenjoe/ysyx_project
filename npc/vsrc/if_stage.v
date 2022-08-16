@@ -60,7 +60,7 @@ always@(posedge clk or negedge rst_n)begin
   end
 end
 wire [63:0] rdata;
-assign inst = ((delay_r_done &&(md_r_done!=2'd1))|sh_fnsh_flag|div_finish) ? rdata[31:0] :32'b0010011;
+assign inst = ((delay_r_done &&(md_r_done!=2'd1))||md_r_done==2'd2) ? rdata[31:0] :32'b0010011;
 //assign inst = ((delay_r_done &&(md_r_done!=2'd1))) ? rdata[31:0] :32'b0010011;
 wire rw_ready_o;
 wire [63:0] rw_w_data_i;
