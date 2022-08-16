@@ -5178,8 +5178,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_ena 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__if_ena) 
            & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest)));
-    vlSelf->ysyx_22040175_top__DOT__if_inst = (((((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
-                                                  & (1U 
+    vlSelf->ysyx_22040175_top__DOT__if_inst = ((((((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
+                                                   & (1U 
+                                                      != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done))) 
+                                                  & (2U 
                                                      != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done))) 
                                                  | (IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)) 
                                                 | (IData)(vlSelf->ysyx_22040175_top__DOT__div_finish))
