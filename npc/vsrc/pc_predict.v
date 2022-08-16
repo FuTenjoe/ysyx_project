@@ -44,8 +44,8 @@ always @ (posedge clk or negedge rst_n) begin
         reg_dd_r_done <= r_done;
     end
 end
-//assign dd_r_done = ((id_mul==1'b0) &( id_div | rest_id_mem|sig_jalr|delay_sig_jalr|control_rest)) ? reg_dd_r_done:(id_mul)? sh_fnsh_flag: 1'b0;
-assign dd_r_done = (id_mul |  id_div | rest_id_mem|sig_jalr|delay_sig_jalr|control_rest) ? reg_dd_r_done:1'b0;
+assign dd_r_done = ((id_mul==1'b0) &( id_div | rest_id_mem|sig_jalr|delay_sig_jalr|control_rest)) ? reg_dd_r_done:(id_mul)? sh_fnsh_flag: 1'b0;
+//assign dd_r_done = (id_mul |  id_div | rest_id_mem|sig_jalr|delay_sig_jalr|control_rest) ? reg_dd_r_done:1'b0;
 reg test;
 
 always @ (posedge clk or negedge rst_n) begin
