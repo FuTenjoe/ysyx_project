@@ -26,7 +26,7 @@ assign inst = if_inst;
 wire if_delay_r_done;
 
 wire axi_ena;
-assign axi_ena = (diff_pc !=diff_delay_pc && diff_pc!=0 ) ? 1'b1:1'b0;
+//assign axi_ena = (diff_pc !=diff_delay_pc && diff_pc!=0 ) ? 1'b1:1'b0;
 wire rest_id_mem;
 wire div_finish;
 if_stage u_if_stage(
