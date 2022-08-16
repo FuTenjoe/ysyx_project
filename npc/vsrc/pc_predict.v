@@ -35,19 +35,25 @@ always @ (posedge clk or negedge rst_n) begin
     end
 end
 //wire dd_r_done;
-reg reg_dd_r_done;
-reg delay_sh_fnsh_flag;
-always @ (posedge clk or negedge rst_n) begin
-    if(~rst_n)begin
-       reg_dd_r_done <= 1'b0;
-       delay_sh_fnsh_flag<=1'b0;
+//reg reg_dd_r_done;
+//assign dd_r_done = ( rest_id_mem|sig_jalr|delay_sig_jalr|control_rest|id_mul) ? 1'b1:1'b0;
+reg md_r_done;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        md_r_done <= 1'b1;
     end
     else begin
-        reg_dd_r_done <= r_done;
-        delay_sh_fnsh_flag <= sh_fnsh_flag;
+        if(sh_fnsh_flag|div_finish)begin
+            md_r_done <= 1'b0;
+        end
+        else if(r_done)begin
+            md_r_done <= 1'b1;
+        end
+        else begin
+            md_r_done <= md_r_done;
+        end
     end
-end
-assign dd_r_done = ( rest_id_mem|sig_jalr|delay_sig_jalr|control_rest|id_mul) ? 1'b1:1'b0;
+end 
 reg test;
 
 always @ (posedge clk or negedge rst_n) begin
