@@ -104,7 +104,7 @@ always @ (posedge clk or negedge rst_n) begin
         test <= 1'b1; 
     end
     //else if(r_done|dd_r_done)begin
-    else if(id_mul)begin
+    else if(id_mul &&md_r_done!=2'd2)begin
         if(sh_fnsh_flag == 1'b0)begin
             curr_pc <= curr_pc;
         end
@@ -112,7 +112,7 @@ always @ (posedge clk or negedge rst_n) begin
             curr_pc <= curr_pc + 4;
         end*/
     end
-    else if(id_div)begin
+    else if(id_div&&md_r_done!=2'd2)begin
        if(div_finish == 1'b0)begin
             curr_pc <= curr_pc;
         end
