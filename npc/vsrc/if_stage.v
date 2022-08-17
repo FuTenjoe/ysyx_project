@@ -51,7 +51,7 @@ wire axi_r_last_i;
 //wire axi_ena = ena;
 //wire axi_ena = ena&~control_rest;
 wire r_done;
-lways@(posedge clk or negedge rst_n)begin
+always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         delay_r_done <= 1'b0;
     end
