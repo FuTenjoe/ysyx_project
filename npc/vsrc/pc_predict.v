@@ -167,11 +167,12 @@ always @ (posedge clk or negedge rst_n) begin
         curr_pc <= id_next_pc;
     end
     else if (rest_id_mem == 1'b0)begin
-        if(control_rest == 1'b1)
+        if(control_rest == 1'b1)begin
             if(id_next_pc != curr_pc +4)
              curr_pc <= id_next_pc;
              else 
              curr_pc <= curr_pc;
+        end
         else if((r_done && md_add_pc!=2'd1 && md_add_pc!=2'd2)|(md_add_pc==2'd3))
             curr_pc <= curr_pc + 4;
     end
