@@ -79,7 +79,58 @@ end
 
 
 
-//reg add_pc;
+reg [1:0]md_add_pc;
+parameter [1:0] MD_IDLE=2'd0,ARTH=2'd1,AF=2'd2,TEND=2'd3;
+reg [1:0] md_present_state,md_next_state;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        md_present_state <= MD_IDLE;
+    end
+    else begin
+        md_present_state <= md_present_state;
+    end
+end
+always@(*)begin
+    case(md_present_state)
+    MD_IDLE:begin
+        if(id_mul | id_div)begin
+            md_next_state = ARTH;
+        end
+        else begin
+            md_next_state = MD_IDLE;
+        end
+    end
+    ARTH:begin
+        if(sh_fnsh_flag | div_finish)begin
+            md_next_state = AF;
+        end
+        else begin
+            md_next_state =ARTH;
+        end
+    end
+    AF:begin
+        if(r_done)
+            md_next_state = TEND;
+        else
+            md_next_state = AF;
+    end
+    TEND: md_next_state = MD_IDLE;
+    default: md_next_state = MD_IDLE;
+    endcase
+end
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        md_add_pc <= 2'd0;
+    end
+    case(md_present_state)
+        MD_IDLE:md_add_pc <= 2'd0;
+        ARTH:md_add_pc <= 2'd1;
+        AF: md_add_pc <= 2'd2;
+        TEND:md_add_pc <=2'd3;
+        default:md_add_pc <= 2'd0;
+    endcase
+end
+
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
@@ -115,7 +166,7 @@ always @ (posedge clk or negedge rst_n) begin
     else if (rest_id_mem == 1'b0)begin
         if(control_rest == 1'b1)
              curr_pc <= id_next_pc;
-        else if(r_done)
+        else if((r_done && md_add_pc!=2'd1 && md_add_pc!=2'd2)|(md_add_pc==2'd3))
             curr_pc <= curr_pc + 4;
     end
 end    
