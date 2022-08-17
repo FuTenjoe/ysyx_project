@@ -82,7 +82,7 @@ module axi # (
     wire aw_hs = axi_aw_ready_i & axi_aw_valid_o;  //写地址
     wire w_hs = axi_w_ready_i & axi_w_valid_o;  //写数据
     wire b_hs = axi_b_ready_o & axi_b_valid_i;  //写请求
-    wire ar_hs = axi_ar_ready_i & axi_ar_valid_o;  //读地址
+    assign ar_hs = axi_ar_ready_i & axi_ar_valid_o;  //读地址
     wire r_hs = axi_r_ready_o & axi_r_valid_i;  //读数据 
 
     wire w_done = w_hs & axi_w_last_o;  //写数据完标志
