@@ -37,7 +37,7 @@ pc_predict u_pc_predict(
   .div_finish(div_finish),
   .r_done(delay_r_done),
   .dd_r_done(dd_r_done),
-  .md_r_done(md_r_done).
+  .md_r_done(md_r_done),
   .inst_valid(inst_valid)
   //.r_valid(r_valid)
 
