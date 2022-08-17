@@ -112,7 +112,7 @@ module axi # (
             end
         end
     end*/
-
+reg [31:0]inst_pc;
     // 读通道状态切换
     always @(posedge clock) begin
         if (!reset_n) begin
@@ -122,7 +122,10 @@ module axi # (
             if (r_valid) begin
                 case (r_state)
                     R_STATE_IDLE:               r_state <= R_STATE_ADDR;
-                    R_STATE_ADDR: if (ar_hs)    r_state <= R_STATE_READ;
+                    R_STATE_ADDR:begin
+                         if (ar_hs)    r_state <= R_STATE_READ;
+                         inst_pc <=rw_addr_i;
+                    end
                     R_STATE_READ: if (r_done)   r_state <= R_STATE_IDLE;
                     default:;
                 endcase
