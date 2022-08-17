@@ -62,7 +62,7 @@ always@(*)begin
     else
         wb_hazard_result = mem_from_ex_alu_res;
 end
-
+wire mem_valid = rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6;
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
     if(rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)

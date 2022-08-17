@@ -61,7 +61,7 @@ always@(*)begin
     default:next_state = IDLE;
     endcase
 end
-wire if_if_valid = present_state==IDLE?1'b1:1'b0;
+
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         if_valid <= 1'b0;
