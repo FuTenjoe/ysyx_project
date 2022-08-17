@@ -177,8 +177,20 @@ always@(posedge clk or negedge rst_n)begin
             inst_valid <= inst_valid;
     end
 end
-
-
+reg pc_valid;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        pc_valid <= 1'b0;
+    end
+    else begin
+        if(delay_pc != curr_pc)
+            pc_valid <= 1'b0;
+        else if((delay_r_done &&(md_r_done!=2'd1)&&(md_r_done!=2'd2))|(sh_fnsh_flag&inst_valid)|(div_finish))
+            pc_valid <= 1'b1;
+        else
+            pc_valid <= pc_valid;
+    end
+end
 
 
 
