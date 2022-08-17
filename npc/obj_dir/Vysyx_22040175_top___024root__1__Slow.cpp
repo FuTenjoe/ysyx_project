@@ -190,6 +190,7 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__dd_r_done = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done = VL_RAND_RESET_I(2);
+    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__inst_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_sh_fnsh_flag = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_pc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata = VL_RAND_RESET_Q(64);
@@ -208,7 +209,6 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state = VL_RAND_RESET_I(2);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__pc_flag = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__test = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__inst_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__rw_w_data_i = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__rw_size_i = VL_RAND_RESET_I(2);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__axi_aw_ready_i = VL_RAND_RESET_I(1);

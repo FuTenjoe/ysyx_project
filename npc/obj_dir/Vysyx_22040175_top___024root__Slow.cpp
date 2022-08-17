@@ -8228,7 +8228,8 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                                                       != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done))) 
                                                   & (2U 
                                                      != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done))) 
-                                                 | (IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag)) 
+                                                 | ((IData)(vlSelf->ysyx_22040175_top__DOT__sh_fnsh_flag) 
+                                                    & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__inst_valid))) 
                                                 | (IData)(vlSelf->ysyx_22040175_top__DOT__div_finish))
                                                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata)
                                                 : 0x13U);
