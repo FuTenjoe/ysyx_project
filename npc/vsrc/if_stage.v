@@ -50,7 +50,7 @@ wire axi_r_last_i;
 //wire axi_ena = ena;
 //wire axi_ena = ena&~control_rest;
 wire r_done;
-inst = r_done?rdata[31:0] : 32'b0010011;
+assign inst = r_done?rdata[31:0] : 32'b0010011;
 //wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
 axi # (
 )

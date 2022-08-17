@@ -56,7 +56,7 @@ always@(*)begin
     endcase
 end
 
-always@(posedge clk or negegde rst_n)begin
+always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         if_valid <= 1'b0;
     end
@@ -66,7 +66,7 @@ always@(posedge clk or negegde rst_n)begin
             if_valid <= 1'b1;
         end
         EN: if_valid <= 1'b0;
-        FN:if_valid <= 1'b0;
+        FN: if_valid <= 1'b0;
         endcase
     end
 end
