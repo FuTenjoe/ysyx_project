@@ -104,7 +104,7 @@ always@(*)begin
         if((sh_fnsh_flag | div_finish)&r_done)begin
             md_next_state = TEND;
         end
-        else if((sh_fnsh_flag | div_finish)& !r_done)begin
+        else if((sh_fnsh_flag | div_finish)&r_done)begin
             md_next_state = AF;
         end
         else begin
