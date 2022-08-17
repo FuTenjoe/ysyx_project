@@ -14,20 +14,16 @@ module if_stage (
     input id_mul,
     input sh_fnsh_flag,
     input id_div,
-    input div_finish,
-    output reg delay_r_done
+    input div_finish
 );
-wire r_valid;
-wire dd_r_done;
-wire [1:0] md_r_done;
-wire inst_valid;
+
 pc_predict u_pc_predict(
   .clk(clk),     // system clock
   .rst_n(rst_n),   // active low reset
   .control_rest(control_rest),
   .id_next_pc(id_next_pc), // from ex
   .ena(ena), 
-  .axi_curr_pc(curr_pc),  // current pc addr
+  .curr_pc(curr_pc),  // current pc addr
   .rest_id_mem (rest_id_mem ),
   .id_curr_pc(id_pc),
   .sig_jalr(sig_jalr),
@@ -35,47 +31,12 @@ pc_predict u_pc_predict(
   .sh_fnsh_flag(sh_fnsh_flag),
   .id_div(id_div),
   .div_finish(div_finish),
-  .r_done(delay_r_done),
-  .dd_r_done(dd_r_done),
-  .md_r_done(md_r_done),
-  .inst_valid(inst_valid)
-  //.r_valid(r_valid)
+  .r_done(r_done),
+  .if_valid(axi_ena)
 
 );
 
-/*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
-//import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 wire [63:0] rdata;
-always @(*) begin
-  pmem_read(curr_pc, rdata);
-end*/
-//reg delay_r_done;
-reg delay_sh_fnsh_flag;
-reg [31:0]delay_pc;
-always@(posedge clk or negedge rst_n)begin
-  if(!rst_n)begin
-    delay_r_done <= 1'b0;
-    delay_sh_fnsh_flag <= 1'b0;
-    delay_pc <= 32'b0;
-  end
-  else begin
-    delay_r_done <= r_done;
-    delay_sh_fnsh_flag <= sh_fnsh_flag;
-    delay_pc <= curr_pc;
-  end
-end
-
-
-
-wire [63:0] rdata;
-assign inst = ((delay_r_done &&(md_r_done!=2'd1)&&(md_r_done!=2'd2))|(sh_fnsh_flag&inst_valid)|(div_finish)) ? rdata[31:0] :32'b0010011;
-//assign inst = ((delay_r_done &&(md_r_done!=2'd1)&&(md_r_done!=2'd2))|sh_fnsh_flag|div_finish) ? rdata[31:0] :32'b0010011;
-//assign inst = ((delay_r_done &&(md_r_done!=2'd1))) ? rdata[31:0] :32'b0010011;
-
-
-
-
-
 wire rw_ready_o;
 wire [63:0] rw_w_data_i;
 wire axi_ar_ready_i;
@@ -87,7 +48,9 @@ wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
 //wire axi_ena = ena;
-wire axi_ena = ena&~control_rest;
+//wire axi_ena = ena&~control_rest;
+wire r_done;
+inst = r_done?rdata[31:0] : 32'b0010011;
 //wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
 axi # (
 )
@@ -192,4 +155,16 @@ u_axi_slave(
 
 
 
+
+
+
+
+
+/*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
+//import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
+wire [63:0] rdata;
+always @(*) begin
+  pmem_read(curr_pc, rdata);
+end
+assign inst = rdata[31:0];*/
 endmodule

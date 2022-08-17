@@ -6,7 +6,7 @@ module pc_predict (
     input  control_rest,
     input      [`CPU_WIDTH-1:0] id_next_pc, // from ex
     output reg                  ena, 
-    output reg [`CPU_WIDTH-1:0] axi_curr_pc,  // current pc addr
+    output reg [`CPU_WIDTH-1:0] curr_pc,  // current pc addr
     input rest_id_mem,
     input [`CPU_WIDTH-1:0] id_curr_pc,
     input sig_jalr,
@@ -15,130 +15,88 @@ module pc_predict (
     input id_div,
     input div_finish,
     input r_done,
-    output dd_r_done,
-    output reg [1:0]md_r_done,
-    output reg inst_valid
-    //output r_valid
+    output reg if_valid
 );
 
 reg delay_sig_jalr;
-reg [`CPU_WIDTH-1:0] curr_pc;
 
-//reg [`CPU_WIDTH-1:0] reg_axi_curr_pc;
-reg [`CPU_WIDTH-1:0] delay_pc;
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         ena <= 1'b0;
         delay_sig_jalr <= 1'b0;
-        delay_pc <= 32'b0;
     end
     else begin
         ena <= 1'b1;      
         delay_sig_jalr <= sig_jalr;
-        delay_pc <= curr_pc;
     end
 end
-//wire dd_r_done;
-reg reg_dd_r_done;
-//assign dd_r_done = ( rest_id_mem|sig_jalr|delay_sig_jalr|control_rest|id_mul) ? 1'b1:1'b0;
-//reg [1:0]md_r_done;
-parameter IDLE = 2'd0,ARTH = 2'd1, AF=2'd2, TEND = 2'd3;
+
+
+parameter IDLE=2'd0, EN=2'd1,FN=2'd2;
 reg [1:0] present_state,next_state;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
-        present_state <= IDLE;
+        present_state<= IDLE;
     end
     else begin
-        present_state <= next_state;
+        present_state<= next_state;
     end
 end
-reg pc_flag;
 always@(*)begin
-    pc_flag = 1'b0;
     case(present_state)
-        IDLE:begin
-            if((id_div|id_mul))
-                next_state =ARTH;
-            else 
-                next_state =IDLE;
-        end
-        ARTH:begin
-            if((div_finish|sh_fnsh_flag)&(~r_done))begin
-                next_state = AF;
-                pc_flag = 1'b0;
-            end
-            else if((div_finish|sh_fnsh_flag)&(r_done))begin
-                next_state =TEND;
-                 pc_flag = 1'b1;
-            end
-            else begin
-                next_state = ARTH;
-                 pc_flag = 1'b0;
-            end
-        end
-        AF:begin
+        IDLE: next_state = EN;
+        EN:begin
             if(r_done)
-                next_state =TEND;
+                next_state =FN;
             else
-                next_state = AF;
+                next_state =EN;
         end
-        TEND:begin
-            next_state =IDLE;
-        end
-    default: next_state = IDLE;
+        FN:next_state =IDLE;
+    default:next_state = IDLE;
     endcase
 end
-always@(posedge clk or negedge rst_n)begin
+
+always@(posedge clk or negegde rst_n)begin
     if(!rst_n)begin
-        md_r_done <= 2'd0;
+        if_valid <= 1'b0;
     end
     else begin
         case(present_state)
-        IDLE:md_r_done <= 2'd0;
-        ARTH:md_r_done <= 2'd1;
-        AF:md_r_done <= 2'd2;
-        TEND:md_r_done <= 2'd3;
-        default:md_r_done <= 2'd0;
+        IDLE:begin
+            if_valid <= 1'b1;
+        end
+        EN: if_valid <= 1'b0;
+        FN:if_valid <= 1'b0;
         endcase
     end
 end
 
-always @ (posedge clk or negedge rst_n) begin
-    if(~rst_n)begin
-        reg_dd_r_done <= 1'b0;
-    end
-    else begin    
-        reg_dd_r_done <= r_done;
-    end
-end
 
 
-
-
-reg test;
-
+//reg add_pc;
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
-        test <= 1'b0; 
+        add_pc <= 1'b0;
     end
-    //else if(r_done|dd_r_done)begin
-    else if(id_mul &&md_r_done!=2'd2 &&(~pc_flag))begin
+    else if(id_mul)begin
         if(sh_fnsh_flag == 1'b0)begin
             curr_pc <= curr_pc;
         end
-    /*    else begin
+        else begin
             curr_pc <= curr_pc + 4;
-        end*/
+           //add_pc <= 1'b1;
+        end
     end
-    else if(id_div&&md_r_done!=2'd2)begin
-       if(div_finish == 1'b0)begin
+    else if(id_div)begin
+        if(div_finish == 1'b0)begin
             curr_pc <= curr_pc;
         end
-    /*    else begin
+        else begin
             curr_pc <= curr_pc + 4;
-        end*/
-    end        
+            //add_pc <= 1'b1;
+        end
+    end
     else if(rest_id_mem == 1'b1)begin
         curr_pc <= curr_pc;  //?
     end
@@ -149,49 +107,11 @@ always @ (posedge clk or negedge rst_n) begin
         curr_pc <= id_next_pc;
     end
     else if (rest_id_mem == 1'b0)begin
-        if(control_rest == 1'b1)begin
-            curr_pc <= id_next_pc;
-            //test <= (id_next_pc==curr_pc+4)? 1'b1:1'b0;
-        end
-        //else if((r_done & ~reg_dd_r_done &~test )||pc_flag)
-        else if((r_done&pc_valid )||pc_flag)
+        if(control_rest == 1'b1)
+             curr_pc <= id_next_pc;
+        else if(r_done)
             curr_pc <= curr_pc + 4;
     end
-    //end
-end
-
-assign axi_curr_pc = curr_pc;
-
-
-always@(posedge clk or negedge rst_n)begin
-    if(!rst_n)begin
-        inst_valid <= 1'b0;
-    end
-    else begin
-        if(delay_pc != curr_pc)
-            inst_valid <= 1'b0;
-        else if(r_done)begin
-            inst_valid <= 1'b1;
-        end
-        else
-            inst_valid <= inst_valid;
-    end
-end
-reg pc_valid;
-always@(posedge clk or negedge rst_n)begin
-    if(!rst_n)begin
-        pc_valid <= 1'b0;
-    end
-    else begin
-        if(delay_pc != curr_pc)
-            pc_valid <= 1'b0;
-        else if((r_done &&(md_r_done!=2'd1)&&(md_r_done!=2'd2))|(sh_fnsh_flag&inst_valid)|(div_finish))
-            pc_valid <= 1'b1;
-        else
-            pc_valid <= pc_valid;
-    end
-end
-
-
+end    
 
 endmodule

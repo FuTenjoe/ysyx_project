@@ -23,10 +23,9 @@ wire [31:0]if_inst;
 wire [63:0]if_pc;
 assign pc = if_pc;
 assign inst = if_inst;
-wire if_delay_r_done;
 
-wire axi_ena;
-assign axi_ena = (diff_pc !=diff_delay_pc && diff_pc!=0 ) ? 1'b1:1'b0;
+
+
 wire rest_id_mem;
 wire div_finish;
 if_stage u_if_stage(
@@ -44,9 +43,8 @@ if_stage u_if_stage(
     .sh_fnsh_flag(sh_fnsh_flag),
     .id_mul(id_mul),
     .id_div(id_div),
-    .div_finish(div_finish),
-    .delay_r_done(if_delay_r_done)
-    //.axi_ena(axi_ena)
+    .div_finish(div_finish)
+    
     
 );
 wire [31:0]id_inst;
@@ -54,7 +52,6 @@ wire [63:0]id_pc;
 wire id_ena;
 wire id_time_set;
 wire delay_sig_jalr;
-wire id_delay_r_done;
 if_id_regs u_if_id_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -73,9 +70,7 @@ if_id_regs u_if_id_regs(
     .id_mul(id_mul),
 	.sh_fnsh_flag(sh_fnsh_flag),
     .id_div(id_div),
-    .div_finish(div_finish),
-    .delay_r_done_if_id_i(if_delay_r_done),
-    .delay_r_done_if_id_o(id_delay_r_done)
+    .div_finish(div_finish)
     
     
 );
@@ -197,7 +192,6 @@ wire [63:0] ex_end_write_addr;
 wire ex_cunqu_hazard;
 wire ex_id_mul;
 wire ex_id_div;
-wire ex_delay_r_done;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -260,9 +254,7 @@ id_ex_regs u_id_ex_regs(
     .id_mul_id_ex_i(id_mul),
 	.id_mul_id_ex_o(ex_id_mul),
     .id_div_id_ex_i(id_div),
-    .id_div_id_ex_o(ex_id_div),
-    .delay_r_done_id_ex_i(id_delay_r_done),
-    .delay_r_done_id_ex_o(ex_delay_r_done)
+    .id_div_id_ex_o(ex_id_div)
    
     
     );
@@ -359,8 +351,7 @@ ex_mem_regs u_ex_mem_regs(
     .id_mul_ex_mem_i(ex_id_mul),
 	.sh_fnsh_flag_ex_mem_i(sh_fnsh_flag),
     .id_div_ex_mem_i(ex_id_div),
-	.div_finish_ex_mem_i(div_finish),
-    .delay_r_done_ex_mem_i(ex_delay_r_done)
+	.div_finish_ex_mem_i(div_finish)
 	
 );
 wire [63:0] from_mem_alu_res;
