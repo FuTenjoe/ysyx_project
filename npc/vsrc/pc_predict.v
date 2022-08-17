@@ -129,7 +129,12 @@ always@(posedge clk or negedge rst_n)begin
         MD_IDLE:md_add_pc <= 2'd0;
         ARTH:md_add_pc <= 2'd1;
         AF: md_add_pc <= 2'd2;
-        TEND:md_add_pc <=2'd3;
+        TEND:begin
+            if(!control_rest)
+            md_add_pc <=2'd3;
+            else
+            md_add_pc <= 2'd0;
+        end
         default:md_add_pc <= 2'd0;
     endcase
 end
