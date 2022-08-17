@@ -50,7 +50,13 @@ wire axi_r_valid_i;
 wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
+wire [AXI_ID_WIDTH-1:0]           axi_ar_id_o;
+
+
+
+
 wire axi_ena = if_valid;
+wire if_id = 4'd1;
 //wire axi_ena = ena&~control_rest;
 wire r_done;
 always@(posedge clk or negedge rst_n)begin
@@ -112,7 +118,7 @@ u_axi(
     .axi_ar_valid_o(axi_ar_valid_o),
     .axi_ar_addr_o(axi_ar_addr_o),
 //  output [2:0]                        axi_ar_prot_o,
-//output [AXI_ID_WIDTH-1:0]           axi_ar_id_o,
+    .axi_ar_id_o(axi_ar_id_o),
 //output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
 //output [7:0]                        axi_ar_len_o,
 //    output [2:0]                        axi_ar_size_o,
@@ -129,7 +135,7 @@ u_axi(
     .axi_r_last_i(axi_r_last_i),
     .r_done(r_done),
     .ar_hs(ar_hs)
-//    input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
+    .axi_r_id_i(if_id),
 //    input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
 
@@ -143,7 +149,7 @@ u_axi_slave(
     .axi_ar_valid_i(axi_ar_valid_o),
     .axi_ar_addr_i(axi_ar_addr_o),
   //  input [2:0]                         axi_ar_prot_i,    //主设备保护类型
-  //  input [AXI_ID_WIDTH-1:0]            axi_ar_id_i,  //标识读地址组
+ // .axi_ar_id_i(axi_ar_id_o),  //标识读地址组
    // input [AXI_USER_WIDTH-1:0]         axi_ar_user_i,  //用户定义信号
    // input [7:0]                         axi_ar_len_i, //突发长度，这个字段标识每次突发传输的传输次数
    // input [2:0]                        axi_ar_size_i,  //突发大小，这个字段表示每次突发传输的大小

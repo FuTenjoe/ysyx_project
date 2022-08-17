@@ -107,13 +107,13 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__wb_pc_ready;
         CData/*0:0*/ ysyx_22040175_top__DOT__mem_rest_id_mem;
         CData/*0:0*/ ysyx_22040175_top__DOT__wb_cunqu_hazard;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__delay_r_done;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__rw_ready_o;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_resp_i;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_last_i;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__r_done;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__ar_hs;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__axi_ena;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__delay_sig_jalr;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state;

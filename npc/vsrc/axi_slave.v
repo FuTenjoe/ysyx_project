@@ -18,7 +18,7 @@ module axi_slave # (
     input                               axi_ar_valid_i,
     input [AXI_ADDR_WIDTH-1:0]          axi_ar_addr_i,
   //  input [2:0]                         axi_ar_prot_i,    //主设备保护类型
-  //  input [AXI_ID_WIDTH-1:0]            axi_ar_id_i,  //标识读地址组
+    input [AXI_ID_WIDTH-1:0]            axi_ar_id_i,  //标识读地址组
    // input [AXI_USER_WIDTH-1:0]         axi_ar_user_i,  //用户定义信号
    // input [7:0]                         axi_ar_len_i, //突发长度，这个字段标识每次突发传输的传输次数
    // input [2:0]                        axi_ar_size_i,  //突发大小，这个字段表示每次突发传输的大小
@@ -33,7 +33,7 @@ module axi_slave # (
     output  reg [1:0]                       axi_r_resp_o, //读响应，这信号表示读传输的状态
     output  reg [AXI_DATA_WIDTH-1:0]        axi_r_data_o,
     output                              axi_r_last_o,   //该信号用于标识当前传输是否为突发传输中的最后一次传输
- //   output  [AXI_ID_WIDTH-1:0]          axi_r_id_o,  //读数据ID，该信号用于标识读数据传输
+    output  [AXI_ID_WIDTH-1:0]          axi_r_id_o,  //读数据ID，该信号用于标识读数据传输
    // output  [AXI_USER_WIDTH-1:0]        axi_r_user_o   //用户定义信号，可选
 	input r_valid
 );
@@ -41,7 +41,7 @@ module axi_slave # (
 //handshake
 wire ar_hs = axi_ar_ready_o & axi_ar_valid_i;
 wire r_hs = axi_r_ready_i & axi_r_valid_o;  //读数据 
-
+assign axi_r_id_o = axi_ar_id_i;
 
 
 //parameter [1:0] W_STATE_IDLE = 2'b00, W_STATE_ADDR = 2'b01, W_STATE_WRITE = 2'b10, W_STATE_RESP = 2'b11;

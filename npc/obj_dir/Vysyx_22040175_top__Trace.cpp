@@ -2132,8 +2132,8 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
         if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[4U])) {
             tracep->chgIData(oldp+2367,(vlSelf->ysyx_22040175_top__DOT__if_inst),32);
             tracep->chgQData(oldp+2368,(vlSelf->ysyx_22040175_top__DOT__if_pc),64);
-            tracep->chgQData(oldp+2370,((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__if_pc))),64);
-            tracep->chgBit(oldp+2372,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_ena));
+            tracep->chgBit(oldp+2370,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid));
+            tracep->chgQData(oldp+2371,((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__if_pc))),64);
             tracep->chgCData(oldp+2373,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state),2);
             tracep->chgIData(oldp+2374,((IData)(vlSelf->ysyx_22040175_top__DOT__if_pc)),32);
         }
