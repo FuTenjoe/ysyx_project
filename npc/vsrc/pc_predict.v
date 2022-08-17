@@ -143,19 +143,19 @@ always @ (posedge clk or negedge rst_n) begin
         if(sh_fnsh_flag == 1'b0 && md_add_pc!=2'd3)begin
             curr_pc <= curr_pc;
         end
-    /*    else begin
+        else if(md_add_pc==2'd3)begin
             curr_pc <= curr_pc + 4;
            //add_pc <= 1'b1;
-        end*/
+        end
     end
     else if(id_div)begin
         if(div_finish == 1'b0 && md_add_pc!=2'd3)begin
             curr_pc <= curr_pc;
         end
-    /*    else begin
+        else if(md_add_pc==2'd3)begin
             curr_pc <= curr_pc + 4;
             //add_pc <= 1'b1;
-        end*/
+        end
     end
     else if(rest_id_mem == 1'b1)begin
         curr_pc <= curr_pc;  //?
