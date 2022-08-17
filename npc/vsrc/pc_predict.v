@@ -15,7 +15,8 @@ module pc_predict (
     input id_div,
     input div_finish,
     input r_done,
-    output reg if_valid
+    output reg if_valid,
+    input ar_hs
 );
 
 reg delay_sig_jalr;
@@ -44,7 +45,12 @@ always@(posedge clk or negedge rst_n)begin
 end
 always@(*)begin
     case(present_state)
-        IDLE: next_state = EN;
+        IDLE: begin
+            if(ar_hs)
+                next_state = EN;
+            else 
+                next_state = IDLE;
+        end
         EN:begin
             if(r_done)
                 next_state =FN;

@@ -68,7 +68,8 @@ module axi # (
     input  [1:0]                        axi_r_resp_i,
     input  [AXI_DATA_WIDTH-1:0]         axi_r_data_i,
     input                               axi_r_last_i,
-    output r_done
+    output r_done,
+    output ar_hs
  //   input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
  //   input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );

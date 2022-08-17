@@ -32,7 +32,8 @@ pc_predict u_pc_predict(
   .id_div(id_div),
   .div_finish(div_finish),
   .r_done(r_done),
-  .if_valid(axi_ena)
+  .if_valid(axi_ena),
+  .ar_hs(ar_hs)
 
 );
 
@@ -51,6 +52,7 @@ wire axi_r_last_i;
 //wire axi_ena = ena&~control_rest;
 wire r_done;
 assign inst = r_done?rdata[31:0] : 32'b0010011;
+wire ar_hs;
 //wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
 axi # (
 )
@@ -114,7 +116,8 @@ u_axi(
     .axi_r_resp_i(axi_r_resp_i),
     .axi_r_data_i(axi_r_data_i),
     .axi_r_last_i(axi_r_last_i),
-    .r_done(r_done)
+    .r_done(r_done),
+    ,ar_hs(ar_hs)
 //    input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
 //    input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
