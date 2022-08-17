@@ -69,6 +69,15 @@ wire [63:0] rdata;
 assign inst = ((delay_r_done &&(md_r_done!=2'd1)&&(md_r_done!=2'd2))|sh_fnsh_flag|div_finish) ? rdata[31:0] :32'b0010011;
 //assign inst = ((delay_r_done &&(md_r_done!=2'd1)&&(md_r_done!=2'd2))|sh_fnsh_flag|div_finish) ? rdata[31:0] :32'b0010011;
 //assign inst = ((delay_r_done &&(md_r_done!=2'd1))) ? rdata[31:0] :32'b0010011;
+
+
+
+
+
+
+
+
+
 wire rw_ready_o;
 wire [63:0] rw_w_data_i;
 wire axi_ar_ready_i;
@@ -82,7 +91,6 @@ wire axi_r_last_i;
 //wire axi_ena = ena;
 wire axi_ena = ena&~control_rest;
 //wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
-
 axi # (
 )
 u_axi(

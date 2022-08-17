@@ -24,15 +24,17 @@ reg delay_sig_jalr;
 reg [`CPU_WIDTH-1:0] curr_pc;
 
 //reg [`CPU_WIDTH-1:0] reg_axi_curr_pc;
-
+reg [`CPU_WIDTH-1:0] delay_pc;
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         ena <= 1'b0;
         delay_sig_jalr <= 1'b0;
+        delay_pc <= 32'b0;
     end
     else begin
         ena <= 1'b1;      
         delay_sig_jalr <= sig_jalr;
+        delay_pc <= curr_pc;
     end
 end
 //wire dd_r_done;
@@ -158,5 +160,25 @@ always @ (posedge clk or negedge rst_n) begin
 end
 
 assign axi_curr_pc = curr_pc;
+
+reg inst_valid;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        inst_valid <= 1'b0;
+    end
+    else begin
+        if(delay_pc != curr_pc)
+            inst_valid <= 1'b0;
+        else if(r_done)begin
+            inst_valid <= 1'b1;
+        end
+        else
+            inst_valid <= inst_valid;
+    end
+end
+
+
+
+
 
 endmodule
