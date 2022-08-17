@@ -1,6 +1,6 @@
 `include "../vsrc/rvseed_defines.v"
 
-module axi_rw # (
+module axi # (
     parameter RW_DATA_WIDTH     = 64,
     parameter RW_ADDR_WIDTH     = 32,
     parameter AXI_DATA_WIDTH    = 64,
