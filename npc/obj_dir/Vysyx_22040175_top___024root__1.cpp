@@ -5175,9 +5175,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root___sequent__TOP__8\n"); );
     // Body
-    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_ena 
-        = ((IData)(vlSelf->ysyx_22040175_top__DOT__if_ena) 
-           & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest)));
     vlSelf->ysyx_22040175_top__DOT__if_inst = ((((((IData)(vlSelf->ysyx_22040175_top__DOT__if_delay_r_done) 
                                                    & (1U 
                                                       != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__md_r_done))) 
@@ -5191,6 +5188,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
         = vlSelf->__Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc;
     vlSelf->inst = vlSelf->ysyx_22040175_top__DOT__if_inst;
     vlSelf->pc = (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc);
+    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_ena 
+        = (((IData)(vlSelf->ysyx_22040175_top__DOT__if_ena) 
+            & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__id_control_rest))) 
+           & (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__curr_pc 
+              != (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_pc))));
 }
 
 void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175_top___024root* vlSelf);
