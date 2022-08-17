@@ -196,7 +196,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+58,"ysyx_22040175_top u_if_stage u_pc_predict sh_fnsh_flag", false,-1);
         tracep->declBit(c+30,"ysyx_22040175_top u_if_stage u_pc_predict id_div", false,-1);
         tracep->declBit(c+3,"ysyx_22040175_top u_if_stage u_pc_predict div_finish", false,-1);
-        tracep->declBit(c+2016,"ysyx_22040175_top u_if_stage u_pc_predict r_done", false,-1);
+        tracep->declBit(c+101,"ysyx_22040175_top u_if_stage u_pc_predict r_done", false,-1);
         tracep->declBit(c+2370,"ysyx_22040175_top u_if_stage u_pc_predict if_valid", false,-1);
         tracep->declBit(c+2017,"ysyx_22040175_top u_if_stage u_pc_predict ar_hs", false,-1);
         tracep->declBit(c+102,"ysyx_22040175_top u_if_stage u_pc_predict delay_sig_jalr", false,-1);
@@ -4212,7 +4212,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
                                        ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__ar_hs)
                                            ? 1U : 0U)
                                        : ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))
-                                           ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done)
+                                           ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_r_done)
                                                ? 2U
                                                : 1U)
                                            : 0U))),2);

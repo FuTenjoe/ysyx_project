@@ -2147,7 +2147,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                       ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__ar_hs)
                                           ? 1U : 0U)
                                       : ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))
-                                          ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done)
+                                          ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_r_done)
                                               ? 2U : 1U)
                                           : 0U))),2);
         tracep->chgQData(oldp+2383,((vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f

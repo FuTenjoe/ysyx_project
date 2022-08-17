@@ -59,14 +59,14 @@ always@(posedge clock)begin
         r_state <= R_STATE_IDLE;
     end
     else begin
-        if(r_valid)begin
+        //if(r_valid)begin
         case (r_state)
-            R_STATE_IDLE:               r_state <= R_STATE_ADDR;
+            R_STATE_IDLE: if(r_valid)   r_state <= R_STATE_ADDR;
             R_STATE_ADDR: if (ar_hs)    r_state <= R_STATE_READ;
             R_STATE_READ: if (r_done)   r_state <= R_STATE_IDLE;
             default:;
         endcase
-        end
+      //  end
     end
 end
 
