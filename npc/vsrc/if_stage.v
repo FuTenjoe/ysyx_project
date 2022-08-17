@@ -36,7 +36,7 @@ pc_predict u_pc_predict(
   .ar_hs(ar_hs)
 
 );
-
+reg delay_r_done;
 wire [63:0] rdata;
 wire rw_ready_o;
 wire [63:0] rw_w_data_i;
@@ -51,7 +51,16 @@ wire axi_r_last_i;
 //wire axi_ena = ena;
 //wire axi_ena = ena&~control_rest;
 wire r_done;
-assign inst = r_done?rdata[31:0] : 32'b0010011;
+lways@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        delay_r_done <= 1'b0;
+    end
+    else begin
+        delay_r_done <= r_done;
+    end
+end
+
+assign inst = delay_r_done?rdata[31:0] : 32'b0010011;
 wire ar_hs;
 //wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
 axi # (
