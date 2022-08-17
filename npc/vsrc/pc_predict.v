@@ -77,7 +77,7 @@ end
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
-        add_pc <= 1'b0;
+        //add_pc <= 1'b0;
     end
     else if(id_mul)begin
         if(sh_fnsh_flag == 1'b0)begin
