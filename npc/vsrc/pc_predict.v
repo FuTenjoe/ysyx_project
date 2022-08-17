@@ -16,7 +16,8 @@ module pc_predict (
     input div_finish,
     input r_done,
     output dd_r_done,
-    output reg [1:0]md_r_done
+    output reg [1:0]md_r_done,
+    output reg inst_valid
     //output r_valid
 );
 
@@ -161,7 +162,7 @@ end
 
 assign axi_curr_pc = curr_pc;
 
-reg inst_valid;
+
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         inst_valid <= 1'b0;
