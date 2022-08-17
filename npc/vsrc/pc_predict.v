@@ -101,7 +101,10 @@ always@(*)begin
         end
     end
     ARTH:begin
-        if(sh_fnsh_flag | div_finish)begin
+        if((sh_fnsh_flag | div_finish)&r_done)begin
+            md_next_state = TEND;
+        end
+        else if((sh_fnsh_flag | div_finish)& !r_done)begin
             md_next_state = AF;
         end
         else begin
