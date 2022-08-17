@@ -220,7 +220,7 @@ module axi # (
     assign axi_ar_valid_o   = r_state_addr;
     assign axi_ar_addr_o    = rw_addr_i;
  //   assign axi_ar_prot_o    = `AXI_PROT_UNPRIVILEGED_ACCESS | `AXI_PROT_SECURE_ACCESS | `AXI_PROT_DATA_ACCESS;  //初始化信号即可
-    assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
+ //   assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
  //   assign axi_ar_user_o    = axi_user;                                                                         //初始化信号即可
    // assign axi_ar_len_o     = axi_len;                                                                          
    // assign axi_ar_size_o    = axi_size;
