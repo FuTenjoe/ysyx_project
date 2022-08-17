@@ -87,7 +87,7 @@ always@(posedge clk or negedge rst_n)begin
         md_present_state <= MD_IDLE;
     end
     else begin
-        md_present_state <= md_present_state;
+        md_present_state <= md_next_state;
     end
 end
 always@(*)begin
