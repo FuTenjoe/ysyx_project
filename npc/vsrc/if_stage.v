@@ -49,7 +49,7 @@ always @(*) begin
 end*/
 //reg delay_r_done;
 reg delay_sh_fnsh_flag;
-reg delay_pc;
+reg [31:0]delay_pc;
 always@(posedge clk or negedge rst_n)begin
   if(!rst_n)begin
     delay_r_done <= 1'b0;
