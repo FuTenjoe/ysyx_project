@@ -16,6 +16,8 @@ module if_stage (
     input id_div,
     input div_finish
 );
+wire if_valid;
+
 
 pc_predict u_pc_predict(
   .clk(clk),     // system clock
@@ -32,7 +34,7 @@ pc_predict u_pc_predict(
   .id_div(id_div),
   .div_finish(div_finish),
   .r_done(delay_r_done),
-  .if_valid(axi_ena),
+  .if_valid(if_valid),
   .ar_hs(ar_hs)
 
 );
@@ -48,7 +50,7 @@ wire axi_r_valid_i;
 wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
-//wire axi_ena = ena;
+wire axi_ena = if_valid;
 //wire axi_ena = ena&~control_rest;
 wire r_done;
 always@(posedge clk or negedge rst_n)begin

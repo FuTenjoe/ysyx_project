@@ -53,7 +53,7 @@ module axi # (
     output                              axi_ar_valid_o,
     output [AXI_ADDR_WIDTH-1:0]         axi_ar_addr_o,
 //    output [2:0]                        axi_ar_prot_o,
-//    output [AXI_ID_WIDTH-1:0]           axi_ar_id_o,
+//    output [AXI_ID_WIDTH-1:0]           axi_ar_id_o,         //加id
  //   output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
  //   output [7:0]                        axi_ar_len_o,
  //   output [2:0]                        axi_ar_size_o,
@@ -70,7 +70,7 @@ module axi # (
     input                               axi_r_last_i,
     output r_done,
     output ar_hs
- //   input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
+ //   input  [AXI_ID_WIDTH-1:0]           axi_r_id_i      //加id
  //   input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
  //   wire w_trans    = rw_req_i == `REQ_WRITE;
@@ -220,7 +220,7 @@ module axi # (
     assign axi_ar_valid_o   = r_state_addr;
     assign axi_ar_addr_o    = rw_addr_i;
  //   assign axi_ar_prot_o    = `AXI_PROT_UNPRIVILEGED_ACCESS | `AXI_PROT_SECURE_ACCESS | `AXI_PROT_DATA_ACCESS;  //初始化信号即可
- //   assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
+    assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
  //   assign axi_ar_user_o    = axi_user;                                                                         //初始化信号即可
    // assign axi_ar_len_o     = axi_len;                                                                          
    // assign axi_ar_size_o    = axi_size;
@@ -253,6 +253,7 @@ module axi # (
                     end
                     else if (len == i) begin*/
                         data_read_o[i*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= axi_r_data_l;
+
                     end
                 end
         end
