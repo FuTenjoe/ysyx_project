@@ -50,7 +50,7 @@ wire axi_r_valid_i;
 wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
-wire [AXI_ID_WIDTH-1:0]           axi_ar_id_o;
+wire [3:0]           axi_ar_id_o;
 
 
 
