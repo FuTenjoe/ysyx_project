@@ -49,14 +49,17 @@ always @(*) begin
 end*/
 //reg delay_r_done;
 reg delay_sh_fnsh_flag;
+reg delay_pc;
 always@(posedge clk or negedge rst_n)begin
   if(!rst_n)begin
     delay_r_done <= 1'b0;
     delay_sh_fnsh_flag <= 1'b0;
+    delay_pc <= 32'b0;
   end
   else begin
     delay_r_done <= r_done;
     delay_sh_fnsh_flag <= sh_fnsh_flag;
+    delay_pc <= curr_pc;
   end
 end
 wire [63:0] rdata;
@@ -74,7 +77,7 @@ wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
 //wire axi_ena = ena;
-wire axi_ena = ena&~control_rest;
+wire axi_ena = ena&~control_rest&(curr_pc!=delay_pc);
 //wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
 
 axi # (
