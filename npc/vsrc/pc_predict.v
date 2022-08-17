@@ -140,7 +140,7 @@ always @ (posedge clk or negedge rst_n) begin
         //add_pc <= 1'b0;
     end
     else if(id_mul)begin
-        if(sh_fnsh_flag == 1'b0)begin
+        if(sh_fnsh_flag == 1'b0 && md_add_pc!=2'd3)begin
             curr_pc <= curr_pc;
         end
     /*    else begin
@@ -149,7 +149,7 @@ always @ (posedge clk or negedge rst_n) begin
         end*/
     end
     else if(id_div)begin
-        if(div_finish == 1'b0)begin
+        if(div_finish == 1'b0 && md_add_pc!=2'd3)begin
             curr_pc <= curr_pc;
         end
     /*    else begin
