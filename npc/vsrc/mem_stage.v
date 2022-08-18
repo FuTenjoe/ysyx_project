@@ -17,7 +17,9 @@ module mem_stage(
     input [3:0]return_id,
     output  mem_valid,       //clint新加
     output reg [3:0] mem_send_id,
-    output [`CPU_WIDTH-1:0] mem_addr
+    output [`CPU_WIDTH-1:0] mem_addr,
+    input ar_hs,
+    input r_done      //这里实际未延迟一周期的r_done
     
 );
 

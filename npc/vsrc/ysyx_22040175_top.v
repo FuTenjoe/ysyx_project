@@ -28,6 +28,8 @@ assign inst = if_inst;
 
 wire rest_id_mem;
 wire div_finish;
+wire ar_hs;
+wire delay_r_done;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -46,7 +48,9 @@ if_stage u_if_stage(
     .div_finish(div_finish),
     .mem_valid(mem_valid),       //clint新加
     .mem_send_id(mem_send_id),
-    .mem_addr(mem_addr)
+    .mem_addr(mem_addr),
+    .ar_hs(ar_hs),
+    .delay_r_done(delay_r_done)
 
 );
 wire [31:0]id_inst;
@@ -376,7 +380,9 @@ mem_stage u_mem_stage(
     .mem_cunqu_hazard(mem_cunqu_hazard),
     .mem_valid(mem_valid),       //clint新加
     .mem_send_id(mem_send_id),
-    .mem_addr(mem_addr)
+    .mem_addr(mem_addr),
+    .ar_hs(ar_hs),
+    .r_done(delay_r_done)  
    
 );
 wire wb_reg_wen;
