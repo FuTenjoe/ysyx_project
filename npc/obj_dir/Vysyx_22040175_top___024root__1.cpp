@@ -5246,7 +5246,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
                                                   ((1U 
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))
                                                     ? 
-                                                   ((IData)(vlSelf->ysyx_22040175_top__DOT__ar_hs)
+                                                   (((IData)(vlSelf->ysyx_22040175_top__DOT__ar_hs) 
+                                                     & (1U 
+                                                        == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
                                                      ? 2U
                                                      : 1U)
                                                     : 
