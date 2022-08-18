@@ -18,7 +18,8 @@ module pc_predict (
     output reg if_valid,
     input ar_hs,
     input [3:0] return_id,
-    output reg [3:0] if_send_id
+    output reg [3:0] if_send_id,
+    input mem_no_use
 );
 
 reg delay_sig_jalr;
@@ -35,7 +36,7 @@ always @ (posedge clk or negedge rst_n) begin
 end
 
 
-parameter IDLE=2'd0, EN=2'd1,FN=2'd2;
+parameter IDLE=2'd0,MEM=2'd1,EN=2'd2,FN=2'd3;
 reg [1:0] present_state,next_state;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
@@ -47,7 +48,13 @@ always@(posedge clk or negedge rst_n)begin
 end
 always@(*)begin
     case(present_state)
-        IDLE: begin
+        IDLE:begin
+            if(mem_no_use)
+                next_state = MEM;
+            else
+                next_state = IDLE;
+        end
+        MEM: begin
             if(ar_hs)
                 next_state = EN;
             else 
@@ -72,6 +79,9 @@ always@(posedge clk or negedge rst_n)begin
     else begin
         case(present_state)
         IDLE:begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd0;
+        MEM:begin
             if_valid <= 1'b1;
             if_send_id <= 4'd1;
         end

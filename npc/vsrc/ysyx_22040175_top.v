@@ -52,7 +52,8 @@ if_stage u_if_stage(
     .mem_addr(mem_addr),
     .ar_hs(ar_hs),
     .delay_r_done(delay_r_done),
-    .axi_ar_id_o(axi_ar_id_o)
+    .axi_ar_id_o(axi_ar_id_o),
+    .mem_no_use(mem_no_use)
 
 );
 wire [31:0]id_inst;
@@ -366,6 +367,7 @@ wire [63:0] from_mem_alu_res;
 wire [63:0] wb_hazard_result;
 wire [3:0] mem_send_id;
 wire mem_valid;
+wire mem_no_use;
 wire [`CPU_WIDTH-1:0] mem_addr;
 mem_stage u_mem_stage(
     .clk(clk), //clint新加
@@ -385,7 +387,8 @@ mem_stage u_mem_stage(
     .mem_send_id(mem_send_id),
     .mem_addr(mem_addr),
     .ar_hs(ar_hs),
-    .r_done(delay_r_done)  
+    .r_done(delay_r_done),
+    .mem_no_use(mem_no_use)  
    
 );
 wire wb_reg_wen;

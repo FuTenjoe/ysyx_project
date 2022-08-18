@@ -20,7 +20,8 @@ module if_stage (
     input [63:0] mem_addr,
     output ar_hs,
     output reg delay_r_done,
-    output [3:0]axi_ar_id_o
+    output [3:0]axi_ar_id_o,
+    input mem_no_use
 );
 
 pc_predict u_pc_predict(
@@ -41,7 +42,8 @@ pc_predict u_pc_predict(
   .if_valid(if_valid),
   .ar_hs(ar_hs),
   .return_id(axi_ar_id_o),
-  .if_send_id(if_send_id)
+  .if_send_id(if_send_id),
+  .mem_no_use(mem_no_use)
 
 );
 //reg delay_r_done;
