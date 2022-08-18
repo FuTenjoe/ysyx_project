@@ -156,7 +156,7 @@ always@(posedge clk or negedge rst_n)begin
     end
 end
 
- assign mem_addr = (present_state==FN) ? alu_src1 +  alu_src2 : 64'h8000_0000 ;         
+ assign mem_addr = (present_state==MEM) ? alu_src1 +  alu_src2 : 64'h8000_0000 ;         
 
 /*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin

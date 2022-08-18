@@ -165,7 +165,6 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__from_mem_alu_res = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__wb_hazard_result = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__mem_send_id = VL_RAND_RESET_I(4);
-    vlSelf->ysyx_22040175_top__DOT__mem_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__mem_no_use = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__mem_addr = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__wb_reg_wen = VL_RAND_RESET_I(1);

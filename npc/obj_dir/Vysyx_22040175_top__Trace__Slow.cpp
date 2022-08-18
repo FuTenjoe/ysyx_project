@@ -2305,7 +2305,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullQData(oldp+81,(vlSelf->ysyx_22040175_top__DOT__from_mem_alu_res),64);
         tracep->fullQData(oldp+83,(vlSelf->ysyx_22040175_top__DOT__wb_hazard_result),64);
         tracep->fullCData(oldp+85,(vlSelf->ysyx_22040175_top__DOT__mem_send_id),4);
-        tracep->fullBit(oldp+86,(vlSelf->ysyx_22040175_top__DOT__mem_valid));
+        tracep->fullBit(oldp+86,((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))));
         tracep->fullBit(oldp+87,(vlSelf->ysyx_22040175_top__DOT__mem_no_use));
         tracep->fullBit(oldp+88,(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen));
         tracep->fullCData(oldp+89,(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr),5);
