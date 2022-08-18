@@ -118,12 +118,12 @@ always@(posedge clk or negedge rst_n)begin
         case(present_state)
         IDLE:begin
             mem_res_valid <= 1'b0;
-            mem_axi_valid <= 1'b1;
+            mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
         end
         MEM:begin
             mem_res_valid <= 1'b0;
-            mem_axi_valid <= 1'b0;
+            mem_axi_valid <= 1'b1;
             mem_send_id <= 4'd2;
         end
         EN:begin
