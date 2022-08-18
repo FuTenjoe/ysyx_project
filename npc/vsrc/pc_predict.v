@@ -37,7 +37,7 @@ always @ (posedge clk or negedge rst_n) begin
 end
 
 
-parameter IDLE=3'd0,NEXT=3'd1,EN=3'd1,FN=3'd2;
+parameter IDLE=3'd0,NEXT=3'd1,EN=3'd2,FN=3'd3;
 reg [2:0] present_state,next_state;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
