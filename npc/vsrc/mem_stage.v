@@ -1,6 +1,8 @@
 `include "../vsrc/rvseed_defines.v"
 
 module mem_stage(
+    input clk, //clint新加
+    input rst_n,
     input [2:0] rd_buf_flag,
     input [`ALU_OP_WIDTH-1:0] alu_op,
     input [`CPU_WIDTH-1:0] alu_src1,

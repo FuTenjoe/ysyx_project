@@ -362,6 +362,8 @@ wire [3:0] mem_send_id;
 wire mem_valid;
 wire [`CPU_WIDTH-1:0] mem_addr;
 mem_stage u_mem_stage(
+    .clk(clk), //clint新加
+    .rst_n(rst_n),
     .rd_buf_flag(mem_rd_buf_flag),
     .alu_op(mem_alu_op),
     .alu_src1(mem_alu_src1),
