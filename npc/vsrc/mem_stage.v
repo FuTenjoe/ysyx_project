@@ -115,7 +115,7 @@ end
 assign  mem_no_use = (present_state == MEM|present_state==EN) ? 1'b0:1'b1;
 assign mem_res_valid = (present_state==FN) ? 1'b1:1'b0;
 assign mem_axi_valid = (present_state == MEM) ? 1'b1:1'b0;
-assign rd_buf_lw = (present_state==FN) ? axi_rdata :64'd0;
+assign rd_buf_lw = (r_done&&return_id == 4'd2) ? axi_rdata :64'd0;
 reg [63:0] reg_mem_addr;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
