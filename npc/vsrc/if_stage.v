@@ -89,7 +89,7 @@ axi_clint u_axi_clint(
     .axi_valid(axi_valid),
     .axi_id(axi_id),
     .axi_addr(axi_addr)
-)
+);
 
 axi # (
 )
