@@ -150,7 +150,7 @@ always@(*)begin
         end
     end
     ARTH:begin
-        if((sh_fnsh_flag | div_finish)&r_done)begin
+        if((sh_fnsh_flag | div_finish)&&r_done&& (return_id == 4'd1))begin
             md_next_state = TEND;
         end
         else if((sh_fnsh_flag | div_finish)& (!r_done))begin
@@ -228,7 +228,7 @@ always @ (posedge clk or negedge rst_n) begin
              curr_pc <= curr_pc;*/
              curr_pc <= id_next_pc;
         end
-        else if((r_done && md_add_pc!=2'd1 && md_add_pc!=2'd2)|(md_add_pc==2'd3))
+        else if((r_done && md_add_pc!=2'd1 && md_add_pc!=2'd2 &&(return_id == 4'd1))|(md_add_pc==2'd3))
             curr_pc <= curr_pc + 4;
     end
 end    
