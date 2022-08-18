@@ -32,13 +32,13 @@ reg [63:0] alu_res;
 always@(*)begin
     case (alu_op)
         `ALU_ADD: begin 
-        if(rd_buf_flag == 3'd1)
+        if(reg_rd_buf_flag == 3'd1)
             alu_res = rd_buf_lw[31:0];
-        else if(rd_buf_flag == 3'd2)
+        else if(reg_rd_buf_flag == 3'd2)
             alu_res = rd_buf_lw[63:0];
-        else if(rd_buf_flag == 3'd4)
+        else if(reg_rd_buf_flag == 3'd4)
             alu_res = rd_buf_lw[7:0]; 
-        else if(rd_buf_flag == 3'd6)   //lh
+        else if(reg_rd_buf_flag == 3'd6)   //lh
             alu_res = rd_buf_lw[15:0]; 
         end
         default: alu_res = alu_res;
