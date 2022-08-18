@@ -57,7 +57,11 @@ always@(*)begin
                 next_state = NEXT;
         end
         MEM:begin
-            if()
+            if(mem_res_valid)
+                next_state = NEXT;
+            else
+                next_state = MEM;
+        end
         NEXT:begin
             if(ar_hs)
                 next_state = EN;
@@ -83,6 +87,10 @@ always@(posedge clk or negedge rst_n)begin
     else begin
         case(present_state)
         IDLE:begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd0;
+        end
+        MEM:begin
             if_valid <= 1'b0;
             if_send_id <= 4'd0;
         end
