@@ -69,41 +69,42 @@ always@(*)begin
     default :next_state = IDLE;
     endcase
 end
+assign axi_valid = (present_state == 3'd1 |present_state == 3'd2|present_state == 3'd4) ? 1'b1:1'b0;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
-        axi_valid <= 1'b0;
+      //  axi_valid <= 1'b0;
         axi_id <= 4'd0;
         axi_addr <= 64'd0;
     end
     else begin
         case(present_state)
         IDLE:begin
-            axi_valid <= 1'b0;
+       //     axi_valid <= 1'b0;
             axi_id <= 4'd0;
             axi_addr <= 64'd0;
         end
         NEXT:begin
-            axi_valid <= 1'b1;
+        //    axi_valid <= 1'b1;
             axi_id <= (mem_valid) ? mem_send_id :if_send_id;
             axi_addr <= (mem_valid) ?mem_addr:pc;
         end
         F1:begin
-            axi_valid <= 1'b1;
+         //   axi_valid <= 1'b1;
             axi_id <= mem_send_id;
             axi_addr <= mem_addr;
         end
         F2:begin
-            axi_valid <= 1'b1;
+        //    axi_valid <= 1'b1;
             axi_id <= if_send_id;
             axi_addr <= pc;
         end
         FN:begin
-            axi_valid <= 1'b0;
+        //    axi_valid <= 1'b0;
             axi_id <= 4'd0;
             axi_addr <= 64'd0;
         end
         default:begin
-            axi_valid <= 1'b0;
+        //    axi_valid <= 1'b0;
             axi_id <= 4'd0;
             axi_addr <= 64'd0;
         end

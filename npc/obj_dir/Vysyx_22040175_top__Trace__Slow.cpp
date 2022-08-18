@@ -235,7 +235,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+2494,"ysyx_22040175_top u_if_stage u_axi_clint mem_valid", false,-1);
         tracep->declBit(c+112,"ysyx_22040175_top u_if_stage u_axi_clint mem_send_id", false,-1);
         tracep->declQuad(c+2379,"ysyx_22040175_top u_if_stage u_axi_clint mem_addr", false,-1, 63,0);
-        tracep->declBit(c+4,"ysyx_22040175_top u_if_stage u_axi_clint r_done", false,-1);
+        tracep->declBit(c+2028,"ysyx_22040175_top u_if_stage u_axi_clint r_done", false,-1);
         tracep->declBus(c+103,"ysyx_22040175_top u_if_stage u_axi_clint return_id", false,-1, 3,0);
         tracep->declBit(c+2383,"ysyx_22040175_top u_if_stage u_axi_clint axi_valid", false,-1);
         tracep->declBus(c+103,"ysyx_22040175_top u_if_stage u_axi_clint axi_id", false,-1, 3,0);
@@ -4302,19 +4302,19 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
                                                     ? 0U
                                                     : 
-                                                   ((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done)
+                                                   ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done)
                                                      ? 3U
                                                      : 4U)))
                                        : ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
                                            ? ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
                                                ? 0U
-                                               : (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
+                                               : (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done) 
                                                    & (1U 
                                                       == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
                                                    ? 3U
                                                    : 2U))
                                            : ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
-                                               ? (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
+                                               ? (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done) 
                                                    & (2U 
                                                       == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
                                                    ? 2U
