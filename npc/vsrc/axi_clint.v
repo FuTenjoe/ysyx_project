@@ -13,7 +13,7 @@ module axi_clint (
     input [3:0] return_id,
     output reg axi_valid,
     output reg [3:0]axi_id,
-    output reg axi_addr
+    output reg [63:0]axi_addr
 );
 /*assign axi_valid = (mem_valid == 1'b1)?mem_valid:(if_valid == 1'b1)? if_valid:1'b0;
 reg [3:0] reg_id;
