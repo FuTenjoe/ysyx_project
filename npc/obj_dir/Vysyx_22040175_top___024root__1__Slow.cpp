@@ -928,6 +928,7 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__alu_res = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state = VL_RAND_RESET_I(2);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__next_state = VL_RAND_RESET_I(2);
+    vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mem_addr = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__reg_wdata = VL_RAND_RESET_Q(64);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__wb_delay_reg_f[__Vi0] = VL_RAND_RESET_Q(64);
