@@ -20,7 +20,7 @@ module pc_predict (
     input [3:0] return_id,
     output reg [3:0] if_send_id,
     input mem_no_use,
-    inpur [2:0] ex_rd_buf_flag
+    input [2:0] ex_rd_buf_flag
 );
 
 reg delay_sig_jalr;
