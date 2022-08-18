@@ -53,7 +53,8 @@ if_stage u_if_stage(
     .ar_hs(ar_hs),
     .delay_r_done(delay_r_done),
     .axi_ar_id_o(axi_ar_id_o),
-    .mem_no_use(mem_no_use)
+    .mem_no_use(mem_no_use),
+    .ex_rd_buf_flag(rd_buf_flag_id_ex_o)
 
 );
 wire [31:0]id_inst;
