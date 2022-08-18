@@ -73,7 +73,7 @@ always@(posedge clk or negedge rst_n)begin
     else begin
         case(present_state)
         IDLE:begin
-            if_valid <= 1'b0;
+            if_valid <= 1'b1;
             if_send_id <= 4'd1;
         end
         EN: begin
