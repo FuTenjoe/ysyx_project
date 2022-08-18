@@ -37,7 +37,8 @@ module mem_wb_regs(
 	input rest_id_mem_ex_mem_o,
 	
 	input cunqu_hazard_mem_wb_i,
-	output reg cunqu_hazard_mem_wb_o
+	output reg cunqu_hazard_mem_wb_o,
+	input  mem_res_valid
     );
 
 	always@(posedge clk or negedge rst_n)
@@ -61,7 +62,7 @@ module mem_wb_regs(
 			
 			cunqu_hazard_mem_wb_o <= 1'b0;
 		end
-		else if(rest_id_mem_ex_mem_o == 1'b1)begin
+		else if(rest_id_mem_ex_mem_o == 1'b1 )begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_o;
 			reg_waddr_mem_wb_o <= reg_waddr_mem_wb_o;
 			//reg_wdata_mem_wb_o <= reg_wdata_mem_wb_i;

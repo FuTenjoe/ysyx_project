@@ -21,7 +21,7 @@ module mem_stage(
     output [`CPU_WIDTH-1:0] mem_addr,
     input ar_hs,
     input r_done,      //这里实际为延迟一周期的r_done
-    output reg mem_no_use   //没有用到访存时为1
+    output mem_no_use   //没有用到访存时为1
     
 );
 
@@ -110,12 +110,14 @@ always@(*)begin
     default: next_state = IDLE;
     endcase
 end
+assign  mem_no_use = (present_state == MEM|present_state==EN) ? 1'b0:1'b1;
+
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         mem_res_valid <= 1'b0;
         mem_axi_valid <= 1'b0;
         mem_send_id <= 4'd0;
-        mem_no_use <= 1'b1;
+      //  mem_no_use <= 1'b1;
     end
     else begin
         case(present_state)
@@ -123,31 +125,31 @@ always@(posedge clk or negedge rst_n)begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
-            mem_no_use <= 1'b1;
+        //    mem_no_use <= 1'b1;
         end
         MEM:begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b1;
             mem_send_id <= 4'd2;
-            mem_no_use <= 1'b0;
+        //    mem_no_use <= 1'b0;
         end
         EN:begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
-            mem_no_use <= 1'b0;
+        //    mem_no_use <= 1'b0;
         end
         FN:begin
             mem_res_valid <= 1'b1;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
-            mem_no_use <= 1'b1;
+        //    mem_no_use <= 1'b1;
         end
         default:begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
-            mem_no_use <= 1'b0;
+        //    mem_no_use <= 1'b1;
         end
         endcase
     end
