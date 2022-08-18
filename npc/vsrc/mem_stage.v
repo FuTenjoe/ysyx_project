@@ -26,7 +26,7 @@ module mem_stage(
     
 );
 
-wire [63:0] rd_buf_lw;
+reg [63:0] rd_buf_lw;
 //assign rd_buf_lw = (r_done)?axi_rdata:64'd0;
 reg [63:0] alu_res;
 always@(*)begin
@@ -114,7 +114,7 @@ end
 assign  mem_no_use = (present_state == MEM|present_state==EN) ? 1'b0:1'b1;
 assign mem_res_valid = (present_state==FN) ? 1'b1:1'b0;
 assign mem_axi_valid = (present_state == MEM) ? 1'b1:1'b0;
-assign rd_buf_lw = (r_done&&return_id == 4'd2) ? axi_rdata :64'd0;
+//assign rd_buf_lw = (r_done&&return_id == 4'd2) ? axi_rdata :64'd0;
 reg [63:0] reg_mem_addr;
 reg [2:0] reg_rd_buf_flag;
 always@(posedge clk or negedge rst_n)begin
@@ -124,6 +124,7 @@ always@(posedge clk or negedge rst_n)begin
         mem_send_id <= 4'd0;
         reg_mem_addr <= 64'd0;
         reg_rd_buf_flag <= 3'd0;
+        rd_buf_lw <= 64'd0;
       //  mem_no_use <= 1'b1;
     end
     else begin
@@ -134,6 +135,7 @@ always@(posedge clk or negedge rst_n)begin
             mem_send_id <= 4'd2;
             reg_mem_addr <= alu_src1 + alu_src2;
             reg_rd_buf_flag <=rd_buf_flag;
+            rd_buf_lw <= 64'd0;
         //    mem_no_use <= 1'b1;
         end
         MEM:begin
@@ -142,6 +144,7 @@ always@(posedge clk or negedge rst_n)begin
             mem_send_id <= 4'd2;
             reg_mem_addr <= reg_mem_addr;
             reg_rd_buf_flag <= reg_rd_buf_flag;
+            rd_buf_lw <= 64'd0;
         //    mem_no_use <= 1'b0;
         end
         EN:begin
@@ -150,6 +153,7 @@ always@(posedge clk or negedge rst_n)begin
             mem_send_id <= 4'd2;
             reg_mem_addr <= reg_mem_addr;
             reg_rd_buf_flag <= reg_rd_buf_flag;
+            rd_buf_lw <= 64'd0;
         //    mem_no_use <= 1'b0;
         end
         FN:begin
@@ -158,6 +162,7 @@ always@(posedge clk or negedge rst_n)begin
             mem_send_id <= 4'd0;
             reg_mem_addr <= 64'd0;
             reg_rd_buf_flag <= reg_rd_buf_flag;
+            rd_buf_lw <= axi_rdata;
         //    mem_no_use <= 1'b1;
         end
         default:begin
@@ -166,6 +171,7 @@ always@(posedge clk or negedge rst_n)begin
             mem_send_id <= 4'd0;
             reg_mem_addr <= 64'd0;
             reg_rd_buf_flag <= 3'd0;
+            rd_buf_lw <= 64'd0;
         //    mem_no_use <= 1'b1;
         end
         endcase
