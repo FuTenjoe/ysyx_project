@@ -4808,7 +4808,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
                                                 : 0x13U);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__rd_buf_lw 
         = (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
-            & (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
+            & ((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)) 
+               | (3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))))
             ? (QData)((IData)((1U & (IData)(vlSelf->ysyx_22040175_top__DOT____Vcellout__u_if_stage__rdata))))
             : 0ULL);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__next_state 

@@ -373,6 +373,7 @@ wire [3:0] mem_send_id;
 wire mem_valid;
 wire mem_no_use;
 wire [`CPU_WIDTH-1:0] mem_addr;
+wire [2:0] reg_rd_buf_flag;
 mem_stage u_mem_stage(
     .clk(clk), //clint新加
     .rst_n(rst_n),
@@ -394,7 +395,8 @@ mem_stage u_mem_stage(
     .ar_hs(ar_hs),
     .r_done(delay_r_done),
     .mem_no_use(mem_no_use),
-    .axi_rdata(rdata)  
+    .axi_rdata(rdata),
+    .reg_rd_buf_flag(reg_rd_buf_flag)
    
 );
 wire wb_reg_wen;
@@ -434,7 +436,7 @@ mem_wb_regs u_mem_wb_regs(
    //output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]
 
    	.ebreak_flag_mem_wb_i(mem_ebreak_flag),
-	.rd_buf_flag_mem_wb_i(mem_rd_buf_flag),
+	.rd_buf_flag_mem_wb_i(reg_rd_buf_flag),
     .reg_wen_mem_wb_o(wb_reg_wen),    // register write enable
     .reg_waddr_mem_wb_o(wb_reg_waddr),  // register write address
     //.reg_wdata_mem_wb_o(reg_wdata),  // register write data
