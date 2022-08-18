@@ -83,7 +83,7 @@ always@(posedge clk or negedge rst_n)begin
         present_state <= next_state;
     end
 end
-reg mem_res_valid;
+//reg mem_res_valid;
 always@(*)begin
     case(present_state)
     IDLE:begin
