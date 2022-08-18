@@ -27,7 +27,7 @@ always@(posedge clk or negedge rst_n)begin
 end
 assign axi_id = (mem_valid==1'b1) ? mem_send_id:(if_valid == 1'b1)?if_send_id:reg_id;*/
 
-parameter [2:0] IDLE=3'd0,F1=3'd1,F2=3'd2,FN=3'd3,NEXT=3'd4;
+parameter [2:0] IDLE=3'd0,F1=3'd1,F2=3'd2,FN=3'd3,NEXT1=3'd4,NEXT2=3'd5;
 reg [2:0] present_state,next_state;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
@@ -42,16 +42,24 @@ always@(*)begin
     IDLE:begin
         if(if_valid &  mem_valid)
             next_state = F1;
-        else if((if_valid | mem_valid) & !(if_valid &  mem_valid))
-            next_state = NEXT;
+        else if((if_valid) & !(if_valid &  mem_valid))
+            next_state = NEXT1;
+        else if((mem_valid) & !(if_valid &  mem_valid))
+            next_state = NEXT2;
         else
             next_state = IDLE;
     end
-    NEXT:begin
-        if(r_done &(return_id == axi_id))
+    NEXT1:begin
+        if(r_done &(return_id == 4'd1))
             next_state = FN;
         else
-            next_state = NEXT;
+            next_state = NEXT1;
+    end
+    NEXT2:begin
+        if(r_done &(return_id == 4'd2))
+            next_state = FN;
+        else
+            next_state = NEXT2;
     end
     F1:begin
         if(r_done &return_id == 4'd2)
@@ -69,7 +77,7 @@ always@(*)begin
     default :next_state = IDLE;
     endcase
 end
-assign axi_valid = (present_state == 3'd1 |present_state == 3'd2|present_state == 3'd4) ? 1'b1:1'b0;
+assign axi_valid = (present_state == 3'd1 |present_state == 3'd2|present_state == 3'd4|present_state == 3'd5) ? 1'b1:1'b0;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
       //  axi_valid <= 1'b0;
@@ -83,10 +91,15 @@ always@(posedge clk or negedge rst_n)begin
             axi_id <= 4'd0;
             axi_addr <= 64'd0;
         end
-        NEXT:begin
+        NEXT1:begin
         //    axi_valid <= 1'b1;
-            axi_id <= (mem_valid) ? mem_send_id :if_send_id;
-            axi_addr <= (mem_valid) ?mem_addr:pc;
+            axi_id <= if_send_id;
+            axi_addr <= pc;
+        end
+        NEXT2:begin
+        //    axi_valid <= 1'b1;
+            axi_id <=  mem_send_id;
+            axi_addr <= mem_addr;
         end
         F1:begin
          //   axi_valid <= 1'b1;
