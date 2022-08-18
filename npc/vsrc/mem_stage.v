@@ -156,7 +156,7 @@ always@(posedge clk or negedge rst_n)begin
         //    mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
             reg_mem_addr <= 64'd0;
-            rd_buf_lw <=64'd0;
+            rd_buf_lw <=axi_rdata;
         //    mem_no_use <= 1'b1;
         end
         default:begin
@@ -164,7 +164,7 @@ always@(posedge clk or negedge rst_n)begin
         //    mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
             reg_mem_addr <= 64'd0;
-            rd_buf_lw <= axi_rdata;
+            rd_buf_lw <= 64'd0;
         //    mem_no_use <= 1'b1;
         end
         endcase
