@@ -5377,15 +5377,17 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
                     ? 0ULL : ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
                                ? 0ULL : ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_valid)
                                           ? vlSelf->ysyx_22040175_top__DOT__mem_addr
-                                          : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__pc)))))
+                                          : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__if_pc)))))
                 : ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
                     ? ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
-                        ? 0ULL : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__pc)))
+                        ? 0ULL : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__if_pc)))
                     : ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
                         ? vlSelf->ysyx_22040175_top__DOT__mem_addr
                         : 0ULL))) : 0ULL);
     vlSelf->ysyx_22040175_top__DOT__mem_addr = (vlSelf->ysyx_22040175_top__DOT__mem_alu_src1 
                                                 + vlSelf->ysyx_22040175_top__DOT__mem_alu_src2);
+    vlSelf->ysyx_22040175_top__DOT__if_pc = vlSelf->__Vdly__ysyx_22040175_top__DOT__if_pc;
+    vlSelf->pc = (IData)(vlSelf->ysyx_22040175_top__DOT__if_pc);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__next_state)
