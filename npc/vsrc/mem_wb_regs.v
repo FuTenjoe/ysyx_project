@@ -95,8 +95,6 @@ reg [1:0]test;
 			rd_buf_flag_mem_wb_o <= rd_buf_flag_mem_wb_i;
 			from_ex_alu_res_mem_wb_o <= from_ex_alu_res_mem_wb_i;
 			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_i;
-			
-			
 			pc_mem_wb_o <= pc_mem_wb_o;
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_i;
 			test <= 2'd1;
