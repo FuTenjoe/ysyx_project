@@ -21,11 +21,13 @@ module mem_stage(
     output [`CPU_WIDTH-1:0] mem_addr,
     input ar_hs,
     input r_done,      //这里实际为延迟一周期的r_done
-    output mem_no_use   //没有用到访存时为1
+    output mem_no_use,   //没有用到访存时为1
+    input [63:0] axi_rdata
     
 );
 
 reg [63:0] rd_buf_lw;
+assign rd_buf_lw = (r_done)?axi_rdata:64'd0;
 reg [63:0] alu_res;
 always@(*)begin
     case (alu_op)

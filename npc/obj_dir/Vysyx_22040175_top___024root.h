@@ -254,7 +254,6 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         QData/*63:0*/ ysyx_22040175_top__DOT__mem_end_write_addr;
         QData/*63:0*/ ysyx_22040175_top__DOT__from_mem_alu_res;
         QData/*63:0*/ ysyx_22040175_top__DOT__wb_hazard_result;
-        QData/*63:0*/ ysyx_22040175_top__DOT__mem_addr;
         QData/*63:0*/ ysyx_22040175_top__DOT__wb_from_ex_alu_res;
         QData/*63:0*/ ysyx_22040175_top__DOT__wb_from_mem_alu_res;
         QData/*63:0*/ ysyx_22040175_top__DOT__wb_pc;
@@ -294,9 +293,9 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         VlUnpacked<IData/*31:0*/, 32> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__remainder_t;
         VlUnpacked<IData/*31:0*/, 32> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__merchant_t;
         VlUnpacked<QData/*62:0*/, 64> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__dividend_t;
+        VlUnpacked<QData/*63:0*/, 64> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t;
     };
     struct {
-        VlUnpacked<QData/*63:0*/, 64> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t;
         VlUnpacked<QData/*63:0*/, 64> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__remainder_t;
         VlUnpacked<QData/*63:0*/, 64> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t;
         VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__u_wb_stage__DOT__wb_delay_reg_f;
@@ -912,6 +911,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         QData/*63:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__63__KET____DOT__u_divider_step__divisor_kp;
         QData/*63:0*/ __Vdly__ysyx_22040175_top__DOT__if_pc;
         QData/*63:0*/ __Vdly__ysyx_22040175_top__DOT__id_pc;
+        QData/*63:0*/ __Vdly__ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mem_addr;
         VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellinp__u_id_stage__reg_f;
         VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f;
         VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_dt_pipe__reg_f;

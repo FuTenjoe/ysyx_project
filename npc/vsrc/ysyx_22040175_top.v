@@ -56,7 +56,8 @@ if_stage u_if_stage(
     .axi_ar_id_o(axi_ar_id_o),
     .mem_no_use(mem_no_use),
     .ex_rd_buf_flag(ex_rd_buf_flag),
-    .mem_res_valid(mem_res_valid)
+    .mem_res_valid(mem_res_valid),
+    .rdata(rdata)
 
 );
 wire [31:0]id_inst;
@@ -392,7 +393,8 @@ mem_stage u_mem_stage(
     .mem_addr(mem_addr),
     .ar_hs(ar_hs),
     .r_done(delay_r_done),
-    .mem_no_use(mem_no_use)  
+    .mem_no_use(mem_no_use),
+    .axi_rdata(rdata)  
    
 );
 wire wb_reg_wen;

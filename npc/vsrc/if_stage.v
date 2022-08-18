@@ -23,7 +23,8 @@ module if_stage (
     output [3:0]axi_ar_id_o,
     input mem_no_use,
     input [2:0] ex_rd_buf_flag,
-    input mem_res_valid
+    input mem_res_valid,
+    output [63:0] rdata
    // output inst_use
 );
 
