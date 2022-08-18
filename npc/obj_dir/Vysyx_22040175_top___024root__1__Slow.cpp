@@ -167,6 +167,7 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__wb_hazard_result = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__mem_send_id = VL_RAND_RESET_I(4);
     vlSelf->ysyx_22040175_top__DOT__mem_no_use = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_22040175_top__DOT__reg_rd_buf_flag = VL_RAND_RESET_I(3);
     vlSelf->ysyx_22040175_top__DOT__wb_reg_wen = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr = VL_RAND_RESET_I(5);
     vlSelf->ysyx_22040175_top__DOT__wb_wmask = VL_RAND_RESET_I(8);
@@ -928,7 +929,6 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state = VL_RAND_RESET_I(2);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__next_state = VL_RAND_RESET_I(2);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mem_addr = VL_RAND_RESET_Q(64);
-    vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_rd_buf_flag = VL_RAND_RESET_I(3);
     vlSelf->ysyx_22040175_top__DOT__u_mem_wb_regs__DOT__test = VL_RAND_RESET_I(2);
     vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__reg_wdata = VL_RAND_RESET_Q(64);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
