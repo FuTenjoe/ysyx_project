@@ -386,7 +386,7 @@ mem_stage u_mem_stage(
     .mem_expand_signed(mem_expand_signed),
     .mem_cunqu_hazard(mem_cunqu_hazard),
     .return_id(axi_ar_id_o),        //clint新加
-    .mem_res_valid(mem_res_valid)
+    .mem_res_valid(mem_res_valid),
     .mem_axi_valid(mem_valid),       
     .mem_send_id(mem_send_id),
     .mem_addr(mem_addr),
