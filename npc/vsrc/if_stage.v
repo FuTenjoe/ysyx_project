@@ -22,6 +22,7 @@ module if_stage (
     output reg delay_r_done,
     output [3:0]axi_ar_id_o,
     input mem_no_use
+   // output inst_use
 );
 
 pc_predict u_pc_predict(
@@ -76,7 +77,7 @@ always@(posedge clk or negedge rst_n)begin
         delay_r_done <= r_done;
     end
 end
-
+//assign inst_use = delay_r_done? 1'b1:1'b0;
 assign inst = delay_r_done?rdata[31:0] : 32'b0010011;
 //wire ar_hs;
 //wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);

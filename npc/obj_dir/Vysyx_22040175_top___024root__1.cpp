@@ -10,7 +10,6 @@
 void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_id_stage__DOT__u_ctrl__DOT__unknown_inst_TOP();
 extern const VlUnpacked<CData/*0:0*/, 16> Vysyx_22040175_top__ConstPool__TABLE_356b51b5_0;
 extern const VlUnpacked<CData/*3:0*/, 16> Vysyx_22040175_top__ConstPool__TABLE_e1d5c316_0;
-extern const VlUnpacked<CData/*0:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_5f2771d9_0;
 extern const VlUnpacked<CData/*0:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_4129e9c7_0;
 extern const VlUnpacked<CData/*3:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_8174a0c3_0;
 
@@ -3476,9 +3475,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
         [__Vtableidx2];
     __Vtableidx7 = (((IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state) 
                      << 1U) | (IData)(vlSelf->ysyx_22040175_top__DOT__rst_n));
-    vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__mem_res_valid 
-        = Vysyx_22040175_top__ConstPool__TABLE_5f2771d9_0
-        [__Vtableidx7];
     vlSelf->ysyx_22040175_top__DOT__mem_valid = Vysyx_22040175_top__ConstPool__TABLE_4129e9c7_0
         [__Vtableidx7];
     vlSelf->ysyx_22040175_top__DOT__mem_send_id = Vysyx_22040175_top__ConstPool__TABLE_8174a0c3_0

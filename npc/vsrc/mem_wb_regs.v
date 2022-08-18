@@ -38,7 +38,7 @@ module mem_wb_regs(
 	
 	input cunqu_hazard_mem_wb_i,
 	output reg cunqu_hazard_mem_wb_o,
-	input  mem_res_valid
+	input  mem_no_use
     );
 
 	always@(posedge clk or negedge rst_n)
