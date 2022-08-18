@@ -21,7 +21,7 @@ module mem_stage(
     output [`CPU_WIDTH-1:0] mem_addr,
     input ar_hs,
     input r_done,      //这里实际为延迟一周期的r_done
-    output reg mem_no_use
+    output reg mem_no_use   //没有用到访存时为1
     
 );
 
