@@ -561,7 +561,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
     }
     if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
         if ((0U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))) {
-            vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid = 0U;
+            vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid = 1U;
         } else if ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))) {
             vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid = 0U;
         } else if ((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))) {
