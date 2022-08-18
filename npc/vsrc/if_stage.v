@@ -25,7 +25,7 @@ module if_stage (
     input [2:0] ex_rd_buf_flag
    // output inst_use
 );
-wire [2:0] ex_rd_buf_flag;
+
 pc_predict u_pc_predict(
   .clk(clk),     // system clock
   .rst_n(rst_n),   // active low reset
