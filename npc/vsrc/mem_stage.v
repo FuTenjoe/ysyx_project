@@ -15,7 +15,8 @@ module mem_stage(
     output [63:0] wb_hazard_result,
     input mem_cunqu_hazard,
     input [3:0]return_id,
-    output  mem_valid,       //clint新加
+    output mem_axi_valid,       //clint新加
+    output mem_res_valid,
     output reg [3:0] mem_send_id,
     output [`CPU_WIDTH-1:0] mem_addr,
     input ar_hs,
