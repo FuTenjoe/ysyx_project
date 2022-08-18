@@ -113,11 +113,13 @@ end
 assign  mem_no_use = (present_state == MEM|present_state==EN) ? 1'b0:1'b1;
 assign mem_res_valid = (present_state==FN) ? 1'b1:1'b0;
 assign mem_axi_valid = (present_state == MEM) ? 1'b1:1'b0;
+reg [63:0] reg_mem_addr;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
        // mem_res_valid <= 1'b0;
         //mem_axi_valid <= 1'b0;
         mem_send_id <= 4'd0;
+        reg_mem_addr <= 64'd0;
       //  mem_no_use <= 1'b1;
     end
     else begin
@@ -126,37 +128,42 @@ always@(posedge clk or negedge rst_n)begin
         //    mem_res_valid <= 1'b0;
         //    mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
+            reg_mem_addr <= alu_src1 + alu_src2;
         //    mem_no_use <= 1'b1;
         end
         MEM:begin
         //    mem_res_valid <= 1'b0;
        //     mem_axi_valid <= 1'b1;
             mem_send_id <= 4'd2;
+            reg_mem_addr <= reg_mem_addr;
         //    mem_no_use <= 1'b0;
         end
         EN:begin
         //    mem_res_valid <= 1'b0;
         //    mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
+            reg_mem_addr <= reg_mem_addr;
         //    mem_no_use <= 1'b0;
         end
         FN:begin
         //    mem_res_valid <= 1'b1;
         //    mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
+            reg_mem_addr <= 64'd0;
         //    mem_no_use <= 1'b1;
         end
         default:begin
         //    mem_res_valid <= 1'b0;
         //    mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
+            reg_mem_addr <= 64'd0;
         //    mem_no_use <= 1'b1;
         end
         endcase
     end
 end
 
- assign mem_addr = (present_state==MEM) ? alu_src1 +  alu_src2 : 64'h8000_0000 ;         
+assign mem_addr = (present_state==MEM) ? alu_src1 +  alu_src2 : 64'h8000_0000 ;         
 
 /*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin

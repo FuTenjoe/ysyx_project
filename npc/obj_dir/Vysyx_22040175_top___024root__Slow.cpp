@@ -6792,7 +6792,7 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                                                        == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state)) 
                                                       | (2U 
                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state)))));
-    vlSelf->ysyx_22040175_top__DOT__mem_addr = ((3U 
+    vlSelf->ysyx_22040175_top__DOT__mem_addr = ((1U 
                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
                                                  ? 
                                                 (vlSelf->ysyx_22040175_top__DOT__mem_alu_src1 
