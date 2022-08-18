@@ -17,7 +17,7 @@ module if_stage (
     input div_finish,
     input mem_valid,       //clint新加
     input [3:0] mem_send_id,
-    input [63:0] mem_addr,
+    input [63:0] mem_addr
 );
 
 pc_predict u_pc_predict(
