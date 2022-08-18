@@ -15,8 +15,8 @@ module mem_stage(
     output [63:0] wb_hazard_result,
     input mem_cunqu_hazard,
     input [3:0]return_id,
-    output mem_axi_valid,       //clint新加
-    output mem_res_valid,
+    output reg mem_axi_valid,       //clint新加
+    output reg mem_res_valid,
     output reg [3:0] mem_send_id,
     output [`CPU_WIDTH-1:0] mem_addr,
     input ar_hs,
@@ -72,7 +72,7 @@ always@(*)begin
         wb_hazard_result = mem_from_ex_alu_res;
 end
 //wire mem_valid = rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6;
-reg mem_axi_valid;
+//reg mem_axi_valid;
 parameter [1:0]IDLE=2'd0,MEM=2'd1,EN=2'd2,FN=2'd3;
 reg[1:0] present_state,next_state;
 always@(posedge clk or negedge rst_n)begin
