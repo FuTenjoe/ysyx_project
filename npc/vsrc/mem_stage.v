@@ -66,12 +66,14 @@ end
 
 
 always@(*)begin
-    if((rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6) )
+    if((rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6) )begin
         wb_hazard_result = sign_alu_res;
         mem_no_use = 1'b0;
-    else
+    end
+    else begin
         wb_hazard_result = mem_from_ex_alu_res;
         mem_no_use = 1'b1;
+    end
 end
 //wire mem_valid = rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6;
 //reg mem_axi_valid;
