@@ -20,7 +20,8 @@ module pc_predict (
     input [3:0] return_id,
     output reg [3:0] if_send_id,
     input mem_no_use,
-    input [2:0] ex_rd_buf_flag
+    input [2:0] ex_rd_buf_flag,
+    input mem_res_valid
 );
 
 reg delay_sig_jalr;
@@ -37,7 +38,7 @@ always @ (posedge clk or negedge rst_n) begin
 end
 
 
-parameter IDLE=3'd0,NEXT=3'd1,EN=3'd2,FN=3'd3;
+parameter IDLE=3'd0,NEXT=3'd1,EN=3'd2,FN=3'd3,MEM=3'd4;
 reg [2:0] present_state,next_state;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
@@ -51,10 +52,12 @@ always@(*)begin
     case(present_state)
         IDLE:begin
             if(ex_rd_buf_flag==3'd1| ex_rd_buf_flag==3'd2|ex_rd_buf_flag==3'd4|ex_rd_buf_flag==3'd6)
-                next_state = IDLE;
+                next_state = MEM;
             else
                 next_state = NEXT;
         end
+        MEM:begin
+            if()
         NEXT:begin
             if(ar_hs)
                 next_state = EN;
