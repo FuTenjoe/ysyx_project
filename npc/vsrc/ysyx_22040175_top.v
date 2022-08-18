@@ -396,7 +396,7 @@ mem_stage u_mem_stage(
     .r_done(delay_r_done),
     .mem_no_use(mem_no_use),
     .axi_rdata(rdata),
-    .reg_rd_buf_flag(reg_rd_buf_flag)
+    .mem_rd_buf_flag(reg_rd_buf_flag)
    
 );
 wire wb_reg_wen;

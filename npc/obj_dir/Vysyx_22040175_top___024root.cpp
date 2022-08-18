@@ -73,6 +73,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
     CData/*0:0*/ __Vdly__ysyx_22040175_top__DOT__mem_reg_wen;
     CData/*4:0*/ __Vdly__ysyx_22040175_top__DOT__mem_reg_waddr;
     CData/*0:0*/ __Vdly__ysyx_22040175_top__DOT__mem_cunqu_hazard;
+    CData/*2:0*/ __Vdly__ysyx_22040175_top__DOT__reg_rd_buf_flag;
     QData/*63:0*/ __Vdly__ysyx_22040175_top__DOT__mem_from_ex_alu_res;
     // Body
     vlSelf->__Vdly__ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__reg_alu_y[0U] 
@@ -127,6 +128,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
     __Vdly__ysyx_22040175_top__DOT__mem_reg_waddr = vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr;
     __Vdly__ysyx_22040175_top__DOT__mem_expand_signed 
         = vlSelf->ysyx_22040175_top__DOT__mem_expand_signed;
+    __Vdly__ysyx_22040175_top__DOT__reg_rd_buf_flag 
+        = vlSelf->ysyx_22040175_top__DOT__reg_rd_buf_flag;
     vlSelf->__Vdly__ysyx_22040175_top__DOT__if_pc = vlSelf->ysyx_22040175_top__DOT__if_pc;
     vlSelf->ysyx_22040175_top__DOT__ex_ena = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
                                               & (IData)(vlSelf->ysyx_22040175_top__DOT__id_ena));
@@ -458,15 +461,15 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
             = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__en2)
                 ? (0x7fffffffU & vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__sign_dividend)
                 : 0U);
-        vlSelf->ysyx_22040175_top__DOT__u_mem_wb_regs__DOT__test 
-            = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_rest_id_mem)
-                ? 1U : ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_no_use)
-                         ? 2U : 1U));
         vlSelf->ysyx_22040175_top__DOT__wb_time_set 
             = (((IData)(vlSelf->ysyx_22040175_top__DOT__mem_rest_id_mem)
                  ? (IData)(vlSelf->ysyx_22040175_top__DOT__wb_time_set)
                  : (IData)(vlSelf->ysyx_22040175_top__DOT__mem_time_set)) 
                & 1U);
+        vlSelf->ysyx_22040175_top__DOT__u_mem_wb_regs__DOT__test 
+            = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_rest_id_mem)
+                ? 1U : ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_no_use)
+                         ? 2U : 1U));
         vlSelf->ysyx_22040175_top__DOT__wb_ebreak_flag 
             = (((IData)(vlSelf->ysyx_22040175_top__DOT__mem_rest_id_mem)
                  ? (IData)(vlSelf->ysyx_22040175_top__DOT__wb_ebreak_flag)
@@ -1039,8 +1042,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
         vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg2_rdata = 0ULL;
         vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__delay_reg1_rdata = 0ULL;
         vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__u_divider_step0__dividend_kp = 0U;
-        vlSelf->ysyx_22040175_top__DOT__u_mem_wb_regs__DOT__test = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_time_set = 0U;
+        vlSelf->ysyx_22040175_top__DOT__u_mem_wb_regs__DOT__test = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_ebreak_flag = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_pc = 0x80000000ULL;
         vlSelf->ysyx_22040175_top__DOT__wb_wmask = 0U;
@@ -1174,6 +1177,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
     CData/*0:0*/ __Vdly__ysyx_22040175_top__DOT__mem_reg_wen;
     CData/*4:0*/ __Vdly__ysyx_22040175_top__DOT__mem_reg_waddr;
     CData/*0:0*/ __Vdly__ysyx_22040175_top__DOT__mem_cunqu_hazard;
+    CData/*2:0*/ __Vdly__ysyx_22040175_top__DOT__reg_rd_buf_flag;
     VlWide<5>/*159:0*/ __Vtemp13;
     VlWide<5>/*159:0*/ __Vtemp14;
     VlWide<5>/*159:0*/ __Vtemp15;
@@ -1328,6 +1332,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
     VlWide<3>/*95:0*/ __Vtemp231;
     VlWide<3>/*95:0*/ __Vtemp232;
     VlWide<3>/*95:0*/ __Vtemp233;
+    VlWide<3>/*95:0*/ __Vtemp239;
     VlWide<3>/*95:0*/ __Vtemp240;
     VlWide<3>/*95:0*/ __Vtemp241;
     VlWide<3>/*95:0*/ __Vtemp242;
@@ -1390,7 +1395,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
     VlWide<3>/*95:0*/ __Vtemp299;
     VlWide<3>/*95:0*/ __Vtemp300;
     VlWide<3>/*95:0*/ __Vtemp301;
-    VlWide<3>/*95:0*/ __Vtemp302;
     QData/*63:0*/ __Vdly__ysyx_22040175_top__DOT__mem_from_ex_alu_res;
     QData/*63:0*/ __Vdlyvval__ysyx_22040175_top__DOT__u_wb_stage__DOT__wb_delay_reg_f__v0;
     QData/*63:0*/ __Vdlyvval__ysyx_22040175_top__DOT__u_wb_stage__DOT__wb_delay_reg_f__v1;
@@ -4516,7 +4520,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                             ? (IData)(vlSelf->ysyx_22040175_top__DOT__ex_expand_signed)
                             : (IData)(vlSelf->ysyx_22040175_top__DOT__mem_expand_signed))
                         : (IData)(vlSelf->ysyx_22040175_top__DOT__ex_expand_signed))));
-        vlSelf->ysyx_22040175_top__DOT__reg_rd_buf_flag 
+        __Vdly__ysyx_22040175_top__DOT__reg_rd_buf_flag 
             = ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__reg_rd_buf_flag)
                 : ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
@@ -4619,7 +4623,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
         __Vdly__ysyx_22040175_top__DOT__mem_s_flag = 0U;
         __Vdly__ysyx_22040175_top__DOT__mem_reg_waddr = 0U;
         __Vdly__ysyx_22040175_top__DOT__mem_expand_signed = 0U;
-        vlSelf->ysyx_22040175_top__DOT__reg_rd_buf_flag = 0U;
+        __Vdly__ysyx_22040175_top__DOT__reg_rd_buf_flag = 0U;
         vlSelf->ysyx_22040175_top__DOT__mem_alu_src1 = 0ULL;
         vlSelf->ysyx_22040175_top__DOT__mem_alu_src2 = 0ULL;
     }
@@ -5032,12 +5036,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
         vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__sqrt_stepx__BRA__2__KET____DOT__u_divider_step__merchant = 0U;
         vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__sqrt_stepx__BRA__1__KET____DOT__u_divider_step__merchant = 0U;
     }
-    VL_EXTEND_WQ(65,64, __Vtemp240, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp239, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [1U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__63__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 1U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__63__KET____DOT__u_divider_step__dividend, __Vtemp240)
+                              >> 1U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__63__KET____DOT__u_divider_step__dividend, __Vtemp239)
                                            ? (1ULL 
                                               + (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
                                                  [1U] 
@@ -5046,12 +5050,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                               [1U] 
                                               << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp241, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp240, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [2U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__62__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 2U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__62__KET____DOT__u_divider_step__dividend, __Vtemp241)
+                              >> 2U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__62__KET____DOT__u_divider_step__dividend, __Vtemp240)
                                            ? (1ULL 
                                               + (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
                                                  [2U] 
@@ -5060,12 +5064,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                               [2U] 
                                               << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp242, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp241, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [3U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__61__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 3U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__61__KET____DOT__u_divider_step__dividend, __Vtemp242)
+                              >> 3U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__61__KET____DOT__u_divider_step__dividend, __Vtemp241)
                                            ? (1ULL 
                                               + (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
                                                  [3U] 
@@ -5074,12 +5078,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                               [3U] 
                                               << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp243, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp242, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [4U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__60__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 4U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__60__KET____DOT__u_divider_step__dividend, __Vtemp243)
+                              >> 4U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__60__KET____DOT__u_divider_step__dividend, __Vtemp242)
                                            ? (1ULL 
                                               + (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
                                                  [4U] 
@@ -5088,12 +5092,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                               [4U] 
                                               << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp244, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp243, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [5U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__59__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 5U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__59__KET____DOT__u_divider_step__dividend, __Vtemp244)
+                              >> 5U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__59__KET____DOT__u_divider_step__dividend, __Vtemp243)
                                            ? (1ULL 
                                               + (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
                                                  [5U] 
@@ -5102,12 +5106,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                               [5U] 
                                               << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp245, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp244, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [6U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__58__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 6U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__58__KET____DOT__u_divider_step__dividend, __Vtemp245)
+                              >> 6U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__58__KET____DOT__u_divider_step__dividend, __Vtemp244)
                                            ? (1ULL 
                                               + (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
                                                  [6U] 
@@ -5116,12 +5120,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                               [6U] 
                                               << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp246, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp245, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [7U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__57__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 7U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__57__KET____DOT__u_divider_step__dividend, __Vtemp246)
+                              >> 7U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__57__KET____DOT__u_divider_step__dividend, __Vtemp245)
                                            ? (1ULL 
                                               + (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
                                                  [7U] 
@@ -5130,12 +5134,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                               [7U] 
                                               << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp247, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp246, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [8U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__56__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 8U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__56__KET____DOT__u_divider_step__dividend, __Vtemp247)
+                              >> 8U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__56__KET____DOT__u_divider_step__dividend, __Vtemp246)
                                            ? (1ULL 
                                               + (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
                                                  [8U] 
@@ -5144,12 +5148,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                               [8U] 
                                               << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp248, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp247, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [9U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__55__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 9U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__55__KET____DOT__u_divider_step__dividend, __Vtemp248)
+                              >> 9U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__55__KET____DOT__u_divider_step__dividend, __Vtemp247)
                                            ? (1ULL 
                                               + (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
                                                  [9U] 
@@ -5158,12 +5162,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                               [9U] 
                                               << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp249, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp248, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0xaU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__54__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0xaU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__54__KET____DOT__u_divider_step__dividend, __Vtemp249)
+                              >> 0xaU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__54__KET____DOT__u_divider_step__dividend, __Vtemp248)
                                              ? (1ULL 
                                                 + (
                                                    vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5173,12 +5177,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                 [0xaU] 
                                                 << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp250, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp249, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0xbU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__53__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0xbU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__53__KET____DOT__u_divider_step__dividend, __Vtemp250)
+                              >> 0xbU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__53__KET____DOT__u_divider_step__dividend, __Vtemp249)
                                              ? (1ULL 
                                                 + (
                                                    vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5188,12 +5192,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                 [0xbU] 
                                                 << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp251, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp250, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0xcU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__52__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0xcU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__52__KET____DOT__u_divider_step__dividend, __Vtemp251)
+                              >> 0xcU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__52__KET____DOT__u_divider_step__dividend, __Vtemp250)
                                              ? (1ULL 
                                                 + (
                                                    vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5203,12 +5207,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                 [0xcU] 
                                                 << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp252, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp251, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0xdU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__51__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0xdU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__51__KET____DOT__u_divider_step__dividend, __Vtemp252)
+                              >> 0xdU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__51__KET____DOT__u_divider_step__dividend, __Vtemp251)
                                              ? (1ULL 
                                                 + (
                                                    vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5218,12 +5222,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                 [0xdU] 
                                                 << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp253, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp252, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0xeU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__50__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0xeU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__50__KET____DOT__u_divider_step__dividend, __Vtemp253)
+                              >> 0xeU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__50__KET____DOT__u_divider_step__dividend, __Vtemp252)
                                              ? (1ULL 
                                                 + (
                                                    vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5233,12 +5237,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                 [0xeU] 
                                                 << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp254, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp253, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0xfU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__49__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0xfU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__49__KET____DOT__u_divider_step__dividend, __Vtemp254)
+                              >> 0xfU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__49__KET____DOT__u_divider_step__dividend, __Vtemp253)
                                              ? (1ULL 
                                                 + (
                                                    vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5248,12 +5252,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                 [0xfU] 
                                                 << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp255, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp254, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x10U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__48__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x10U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__48__KET____DOT__u_divider_step__dividend, __Vtemp255)
+                              >> 0x10U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__48__KET____DOT__u_divider_step__dividend, __Vtemp254)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5263,12 +5267,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x10U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp256, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp255, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x11U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__47__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x11U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__47__KET____DOT__u_divider_step__dividend, __Vtemp256)
+                              >> 0x11U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__47__KET____DOT__u_divider_step__dividend, __Vtemp255)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5278,12 +5282,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x11U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp257, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp256, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x12U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__46__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x12U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__46__KET____DOT__u_divider_step__dividend, __Vtemp257)
+                              >> 0x12U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__46__KET____DOT__u_divider_step__dividend, __Vtemp256)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5293,12 +5297,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x12U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp258, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp257, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x13U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__45__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x13U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__45__KET____DOT__u_divider_step__dividend, __Vtemp258)
+                              >> 0x13U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__45__KET____DOT__u_divider_step__dividend, __Vtemp257)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5308,12 +5312,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x13U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp259, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp258, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x14U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__44__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x14U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__44__KET____DOT__u_divider_step__dividend, __Vtemp259)
+                              >> 0x14U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__44__KET____DOT__u_divider_step__dividend, __Vtemp258)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5323,12 +5327,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x14U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp260, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp259, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x15U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__43__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x15U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__43__KET____DOT__u_divider_step__dividend, __Vtemp260)
+                              >> 0x15U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__43__KET____DOT__u_divider_step__dividend, __Vtemp259)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5338,12 +5342,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x15U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp261, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp260, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x16U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__42__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x16U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__42__KET____DOT__u_divider_step__dividend, __Vtemp261)
+                              >> 0x16U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__42__KET____DOT__u_divider_step__dividend, __Vtemp260)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5353,12 +5357,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x16U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp262, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp261, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x17U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__41__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x17U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__41__KET____DOT__u_divider_step__dividend, __Vtemp262)
+                              >> 0x17U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__41__KET____DOT__u_divider_step__dividend, __Vtemp261)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5368,12 +5372,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x17U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp263, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp262, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x18U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__40__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x18U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__40__KET____DOT__u_divider_step__dividend, __Vtemp263)
+                              >> 0x18U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__40__KET____DOT__u_divider_step__dividend, __Vtemp262)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5383,12 +5387,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x18U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp264, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp263, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x19U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__39__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x19U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__39__KET____DOT__u_divider_step__dividend, __Vtemp264)
+                              >> 0x19U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__39__KET____DOT__u_divider_step__dividend, __Vtemp263)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5398,12 +5402,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x19U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp265, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp264, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x1aU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__38__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x1aU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__38__KET____DOT__u_divider_step__dividend, __Vtemp265)
+                              >> 0x1aU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__38__KET____DOT__u_divider_step__dividend, __Vtemp264)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5413,12 +5417,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x1aU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp266, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp265, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x1bU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__37__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x1bU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__37__KET____DOT__u_divider_step__dividend, __Vtemp266)
+                              >> 0x1bU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__37__KET____DOT__u_divider_step__dividend, __Vtemp265)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5428,12 +5432,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x1bU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp267, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp266, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x1cU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__36__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x1cU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__36__KET____DOT__u_divider_step__dividend, __Vtemp267)
+                              >> 0x1cU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__36__KET____DOT__u_divider_step__dividend, __Vtemp266)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5443,12 +5447,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x1cU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp268, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp267, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x1dU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__35__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x1dU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__35__KET____DOT__u_divider_step__dividend, __Vtemp268)
+                              >> 0x1dU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__35__KET____DOT__u_divider_step__dividend, __Vtemp267)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5458,12 +5462,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x1dU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp269, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp268, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x1eU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__34__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x1eU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__34__KET____DOT__u_divider_step__dividend, __Vtemp269)
+                              >> 0x1eU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__34__KET____DOT__u_divider_step__dividend, __Vtemp268)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5473,12 +5477,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x1eU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp270, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp269, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x1fU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__33__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x1fU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__33__KET____DOT__u_divider_step__dividend, __Vtemp270)
+                              >> 0x1fU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__33__KET____DOT__u_divider_step__dividend, __Vtemp269)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5488,12 +5492,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x1fU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp271, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp270, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x20U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__32__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x20U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__32__KET____DOT__u_divider_step__dividend, __Vtemp271)
+                              >> 0x20U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__32__KET____DOT__u_divider_step__dividend, __Vtemp270)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5503,12 +5507,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x20U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp272, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp271, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x21U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__31__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x21U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__31__KET____DOT__u_divider_step__dividend, __Vtemp272)
+                              >> 0x21U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__31__KET____DOT__u_divider_step__dividend, __Vtemp271)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5518,12 +5522,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x21U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp273, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp272, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x22U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__30__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x22U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__30__KET____DOT__u_divider_step__dividend, __Vtemp273)
+                              >> 0x22U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__30__KET____DOT__u_divider_step__dividend, __Vtemp272)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5533,12 +5537,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x22U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp274, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp273, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x23U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__29__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x23U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__29__KET____DOT__u_divider_step__dividend, __Vtemp274)
+                              >> 0x23U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__29__KET____DOT__u_divider_step__dividend, __Vtemp273)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5548,12 +5552,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x23U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp275, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp274, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x24U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__28__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x24U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__28__KET____DOT__u_divider_step__dividend, __Vtemp275)
+                              >> 0x24U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__28__KET____DOT__u_divider_step__dividend, __Vtemp274)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5563,12 +5567,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x24U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp276, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp275, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x25U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__27__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x25U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__27__KET____DOT__u_divider_step__dividend, __Vtemp276)
+                              >> 0x25U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__27__KET____DOT__u_divider_step__dividend, __Vtemp275)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5578,12 +5582,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x25U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp277, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp276, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x26U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__26__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x26U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__26__KET____DOT__u_divider_step__dividend, __Vtemp277)
+                              >> 0x26U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__26__KET____DOT__u_divider_step__dividend, __Vtemp276)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5593,12 +5597,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x26U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp278, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp277, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x27U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__25__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x27U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__25__KET____DOT__u_divider_step__dividend, __Vtemp278)
+                              >> 0x27U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__25__KET____DOT__u_divider_step__dividend, __Vtemp277)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5608,12 +5612,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x27U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp279, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp278, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x28U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__24__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x28U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__24__KET____DOT__u_divider_step__dividend, __Vtemp279)
+                              >> 0x28U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__24__KET____DOT__u_divider_step__dividend, __Vtemp278)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5623,12 +5627,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x28U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp280, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp279, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x29U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__23__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x29U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__23__KET____DOT__u_divider_step__dividend, __Vtemp280)
+                              >> 0x29U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__23__KET____DOT__u_divider_step__dividend, __Vtemp279)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5638,12 +5642,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x29U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp281, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp280, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x2aU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__22__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x2aU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__22__KET____DOT__u_divider_step__dividend, __Vtemp281)
+                              >> 0x2aU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__22__KET____DOT__u_divider_step__dividend, __Vtemp280)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5653,12 +5657,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x2aU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp282, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp281, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x2bU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__21__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x2bU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__21__KET____DOT__u_divider_step__dividend, __Vtemp282)
+                              >> 0x2bU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__21__KET____DOT__u_divider_step__dividend, __Vtemp281)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5668,12 +5672,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x2bU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp283, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp282, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x2cU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__20__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x2cU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__20__KET____DOT__u_divider_step__dividend, __Vtemp283)
+                              >> 0x2cU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__20__KET____DOT__u_divider_step__dividend, __Vtemp282)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5683,12 +5687,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x2cU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp284, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp283, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x2dU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__19__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x2dU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__19__KET____DOT__u_divider_step__dividend, __Vtemp284)
+                              >> 0x2dU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__19__KET____DOT__u_divider_step__dividend, __Vtemp283)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5698,12 +5702,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x2dU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp285, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp284, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x2eU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__18__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x2eU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__18__KET____DOT__u_divider_step__dividend, __Vtemp285)
+                              >> 0x2eU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__18__KET____DOT__u_divider_step__dividend, __Vtemp284)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5713,12 +5717,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x2eU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp286, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp285, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x2fU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__17__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x2fU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__17__KET____DOT__u_divider_step__dividend, __Vtemp286)
+                              >> 0x2fU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__17__KET____DOT__u_divider_step__dividend, __Vtemp285)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5728,12 +5732,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x2fU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp287, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp286, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x30U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__16__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x30U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__16__KET____DOT__u_divider_step__dividend, __Vtemp287)
+                              >> 0x30U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__16__KET____DOT__u_divider_step__dividend, __Vtemp286)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5743,12 +5747,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x30U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp288, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp287, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x31U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__15__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x31U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__15__KET____DOT__u_divider_step__dividend, __Vtemp288)
+                              >> 0x31U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__15__KET____DOT__u_divider_step__dividend, __Vtemp287)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5758,12 +5762,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x31U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp289, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp288, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x32U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__14__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x32U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__14__KET____DOT__u_divider_step__dividend, __Vtemp289)
+                              >> 0x32U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__14__KET____DOT__u_divider_step__dividend, __Vtemp288)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5773,12 +5777,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x32U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp290, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp289, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x33U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__13__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x33U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__13__KET____DOT__u_divider_step__dividend, __Vtemp290)
+                              >> 0x33U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__13__KET____DOT__u_divider_step__dividend, __Vtemp289)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5788,12 +5792,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x33U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp291, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp290, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x34U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__12__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x34U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__12__KET____DOT__u_divider_step__dividend, __Vtemp291)
+                              >> 0x34U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__12__KET____DOT__u_divider_step__dividend, __Vtemp290)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5803,12 +5807,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x34U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp292, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp291, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x35U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__11__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x35U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__11__KET____DOT__u_divider_step__dividend, __Vtemp292)
+                              >> 0x35U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__11__KET____DOT__u_divider_step__dividend, __Vtemp291)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5818,12 +5822,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x35U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp293, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp292, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x36U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__10__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x36U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__10__KET____DOT__u_divider_step__dividend, __Vtemp293)
+                              >> 0x36U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__10__KET____DOT__u_divider_step__dividend, __Vtemp292)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5833,12 +5837,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x36U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp294, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp293, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x37U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__9__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x37U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__9__KET____DOT__u_divider_step__dividend, __Vtemp294)
+                              >> 0x37U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__9__KET____DOT__u_divider_step__dividend, __Vtemp293)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5848,12 +5852,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x37U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp295, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp294, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x38U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__8__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x38U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__8__KET____DOT__u_divider_step__dividend, __Vtemp295)
+                              >> 0x38U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__8__KET____DOT__u_divider_step__dividend, __Vtemp294)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5863,12 +5867,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x38U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp296, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp295, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x39U]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__7__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x39U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__7__KET____DOT__u_divider_step__dividend, __Vtemp296)
+                              >> 0x39U))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__7__KET____DOT__u_divider_step__dividend, __Vtemp295)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5878,12 +5882,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x39U] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp297, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp296, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x3aU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__6__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x3aU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__6__KET____DOT__u_divider_step__dividend, __Vtemp297)
+                              >> 0x3aU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__6__KET____DOT__u_divider_step__dividend, __Vtemp296)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5893,12 +5897,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x3aU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp298, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp297, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x3bU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__5__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x3bU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__5__KET____DOT__u_divider_step__dividend, __Vtemp298)
+                              >> 0x3bU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__5__KET____DOT__u_divider_step__dividend, __Vtemp297)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5908,12 +5912,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x3bU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp299, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp298, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x3cU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__4__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x3cU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__4__KET____DOT__u_divider_step__dividend, __Vtemp299)
+                              >> 0x3cU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__4__KET____DOT__u_divider_step__dividend, __Vtemp298)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5923,12 +5927,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x3cU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp300, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp299, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x3dU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__3__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x3dU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__3__KET____DOT__u_divider_step__dividend, __Vtemp300)
+                              >> 0x3dU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__3__KET____DOT__u_divider_step__dividend, __Vtemp299)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5938,12 +5942,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x3dU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp301, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp300, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x3eU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__2__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x3eU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__2__KET____DOT__u_divider_step__dividend, __Vtemp301)
+                              >> 0x3eU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__2__KET____DOT__u_divider_step__dividend, __Vtemp300)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -5953,12 +5957,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                                  [0x3eU] 
                                                  << 1U))
                 : 0ULL) : 0ULL);
-    VL_EXTEND_WQ(65,64, __Vtemp302, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
+    VL_EXTEND_WQ(65,64, __Vtemp301, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                  [0x3fU]);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__1__KET____DOT__u_divider_step__merchant 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? ((1U & (IData)((vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__rdy_t 
-                              >> 0x3fU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__1__KET____DOT__u_divider_step__dividend, __Vtemp302)
+                              >> 0x3fU))) ? (VL_GTE_W(3, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__1__KET____DOT__u_divider_step__dividend, __Vtemp301)
                                               ? (1ULL 
                                                  + 
                                                  (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t
@@ -6087,10 +6091,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                  ? (IData)(vlSelf->ysyx_22040175_top__DOT__wb_cunqu_hazard)
                  : (IData)(vlSelf->ysyx_22040175_top__DOT__mem_cunqu_hazard)) 
                & 1U);
-        vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag 
-            = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_rest_id_mem)
-                ? (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)
-                : (IData)(vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag));
         vlSelf->ysyx_22040175_top__DOT__wb_from_ex_alu_res 
             = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_rest_id_mem)
                 ? vlSelf->ysyx_22040175_top__DOT__wb_from_ex_alu_res
@@ -6099,14 +6099,20 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
             = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_rest_id_mem)
                 ? vlSelf->ysyx_22040175_top__DOT__wb_from_mem_alu_res
                 : vlSelf->ysyx_22040175_top__DOT__from_mem_alu_res);
+        vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag 
+            = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_rest_id_mem)
+                ? (IData)(vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag)
+                : ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_no_use)
+                    ? (IData)(vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag)
+                    : (IData)(vlSelf->ysyx_22040175_top__DOT__reg_rd_buf_flag)));
     } else {
         vlSelf->ysyx_22040175_top__DOT__wb_expand_signed = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_s_flag = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_cunqu_hazard = 0U;
-        vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_from_ex_alu_res = 0ULL;
         vlSelf->ysyx_22040175_top__DOT__wb_from_mem_alu_res = 0ULL;
+        vlSelf->ysyx_22040175_top__DOT__wb_rd_buf_flag = 0U;
     }
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__redy1 
         = vlSelf->__Vdly__ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__redy1;
@@ -6203,10 +6209,12 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
     vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr = __Vdly__ysyx_22040175_top__DOT__mem_reg_waddr;
     vlSelf->ysyx_22040175_top__DOT__mem_cunqu_hazard 
         = __Vdly__ysyx_22040175_top__DOT__mem_cunqu_hazard;
-    vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag 
-        = __Vdly__ysyx_22040175_top__DOT__mem_rd_buf_flag;
     vlSelf->ysyx_22040175_top__DOT__mem_from_ex_alu_res 
         = __Vdly__ysyx_22040175_top__DOT__mem_from_ex_alu_res;
+    vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag 
+        = __Vdly__ysyx_22040175_top__DOT__mem_rd_buf_flag;
+    vlSelf->ysyx_22040175_top__DOT__reg_rd_buf_flag 
+        = __Vdly__ysyx_22040175_top__DOT__reg_rd_buf_flag;
     vlSelf->diff_delay_pc = (IData)(vlSelf->ysyx_22040175_top__DOT__wb_delay_pc);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__divisor_t[0x1fU] 
         = vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__u_divider_step0__divisor_kp;
