@@ -76,7 +76,7 @@ always@(*)begin
             if(ar_hs)
                 next_state = EN;
             else 
-                next_state = MEM;
+                next_state = MEM3;
         end
         EN:begin
             if(r_done && return_id == 4'd1)
