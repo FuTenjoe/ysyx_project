@@ -59,7 +59,7 @@ always@(*)begin
             if(ar_hs)
                 next_state = EN;
             else 
-                next_state = IDLE;
+                next_state = NEXT;
         end
         EN:begin
             if(r_done && return_id == 4'd1)
