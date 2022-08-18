@@ -40,7 +40,7 @@ module mem_wb_regs(
 	output reg cunqu_hazard_mem_wb_o,
 	input  mem_no_use
     );
-
+reg [1:0]test;
 	always@(posedge clk or negedge rst_n)
 	begin
 		if(!rst_n)begin 
@@ -61,6 +61,7 @@ module mem_wb_regs(
 			pc_mem_wb_o <= 32'h8000_0000;
 			
 			cunqu_hazard_mem_wb_o <= 1'b0;
+			test <= 2'd0;
 		end
 		else if(rest_id_mem_ex_mem_o == 1'b1 | mem_no_use == 1'b0)begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_o;
@@ -79,6 +80,7 @@ module mem_wb_regs(
 			pc_mem_wb_o <= pc_mem_wb_o;
 			
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
+			test <= 2'd1;
 		end	
 		else begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
@@ -97,6 +99,7 @@ module mem_wb_regs(
 			
 			pc_mem_wb_o <= pc_mem_wb_i;
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_i;
+			test <= 2'd2;
 		end
 	end
 	
