@@ -6785,9 +6785,7 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
         = ((4U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
             ? ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
                 ? 0U : ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
-                         ? 0U : (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
-                                  & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__return_id) 
-                                     == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
+                         ? 0U : ((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done)
                                   ? 3U : 4U))) : ((2U 
                                                    & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
                                                    ? 
@@ -6796,13 +6794,19 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                                                     ? 0U
                                                     : 
                                                    (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
-                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__return_id))
+                                                     & (1U 
+                                                        == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
                                                      ? 3U
                                                      : 2U))
                                                    : 
                                                   ((1U 
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))
-                                                    ? 1U
+                                                    ? 
+                                                   (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
+                                                     & (2U 
+                                                        == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
+                                                     ? 2U
+                                                     : 1U)
                                                     : 
                                                    (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid) 
                                                      & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_valid))

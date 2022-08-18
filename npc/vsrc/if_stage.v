@@ -86,7 +86,7 @@ axi_clint u_axi_clint(
     .mem_valid(mem_valid),
     .mem_send_id(mem_send_id),
     .mem_addr(mem_addr),
-    .r_done(delay_r_done),
+    .r_done(r_done),
     .return_id(axi_ar_id_o),
     .axi_valid(axi_valid),
     .axi_id(axi_id),
