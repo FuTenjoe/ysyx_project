@@ -5158,7 +5158,7 @@ extern const VlUnpacked<CData/*0:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_5f
 extern const VlUnpacked<CData/*0:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_4129e9c7_0;
 extern const VlUnpacked<CData/*3:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_8174a0c3_0;
 extern const VlUnpacked<CData/*0:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_3bad2de1_0;
-extern const VlUnpacked<CData/*2:0*/, 1024> Vysyx_22040175_top__ConstPool__TABLE_59e3f810_0;
+extern const VlUnpacked<CData/*2:0*/, 1024> Vysyx_22040175_top__ConstPool__TABLE_fdd3f0e9_0;
 
 VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175_top___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -5255,7 +5255,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
                                             << 3U) 
                                            | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state)))));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state 
-        = Vysyx_22040175_top__ConstPool__TABLE_59e3f810_0
+        = Vysyx_22040175_top__ConstPool__TABLE_fdd3f0e9_0
         [__Vtableidx1];
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
