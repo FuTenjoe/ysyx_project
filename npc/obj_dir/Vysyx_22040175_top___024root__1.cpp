@@ -5205,7 +5205,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
     // Variables
     SData/*9:0*/ __Vtableidx3;
     // Body
-    vlSelf->ysyx_22040175_top__DOT__if_inst = ((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done)
+    vlSelf->ysyx_22040175_top__DOT__if_inst = (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
+                                                & (1U 
+                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
                                                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata)
                                                 : 0x13U);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__next_state 
