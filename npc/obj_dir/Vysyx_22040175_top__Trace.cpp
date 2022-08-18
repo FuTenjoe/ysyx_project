@@ -100,7 +100,9 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgQData(oldp+81,(vlSelf->ysyx_22040175_top__DOT__wb_hazard_result),64);
             tracep->chgCData(oldp+83,(vlSelf->ysyx_22040175_top__DOT__mem_send_id),4);
             tracep->chgBit(oldp+84,(vlSelf->ysyx_22040175_top__DOT__mem_valid));
-            tracep->chgBit(oldp+85,(vlSelf->ysyx_22040175_top__DOT__mem_no_use));
+            tracep->chgBit(oldp+85,((1U & (~ ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state)) 
+                                              | (2U 
+                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state)))))));
             tracep->chgBit(oldp+86,(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen));
             tracep->chgCData(oldp+87,(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr),5);
             tracep->chgCData(oldp+88,(vlSelf->ysyx_22040175_top__DOT__wb_wmask),8);

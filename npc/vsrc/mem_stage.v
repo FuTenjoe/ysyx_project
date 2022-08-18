@@ -16,7 +16,7 @@ module mem_stage(
     input mem_cunqu_hazard,
     input [3:0]return_id,         //clint新加
     output reg mem_axi_valid,       
-    output reg mem_res_valid,
+    output  mem_res_valid,
     output reg [3:0] mem_send_id,
     output [`CPU_WIDTH-1:0] mem_addr,
     input ar_hs,
@@ -111,10 +111,10 @@ always@(*)begin
     endcase
 end
 assign  mem_no_use = (present_state == MEM|present_state==EN) ? 1'b0:1'b1;
-
+assign mem_res_valid = (present_state==FN) ? 1'b1:1'b0;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
-        mem_res_valid <= 1'b0;
+       // mem_res_valid <= 1'b0;
         mem_axi_valid <= 1'b0;
         mem_send_id <= 4'd0;
       //  mem_no_use <= 1'b1;
@@ -122,31 +122,31 @@ always@(posedge clk or negedge rst_n)begin
     else begin
         case(present_state)
         IDLE:begin
-            mem_res_valid <= 1'b0;
+        //    mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
         //    mem_no_use <= 1'b1;
         end
         MEM:begin
-            mem_res_valid <= 1'b0;
+        //    mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b1;
             mem_send_id <= 4'd2;
         //    mem_no_use <= 1'b0;
         end
         EN:begin
-            mem_res_valid <= 1'b0;
+        //    mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
         //    mem_no_use <= 1'b0;
         end
         FN:begin
-            mem_res_valid <= 1'b1;
+        //    mem_res_valid <= 1'b1;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
         //    mem_no_use <= 1'b1;
         end
         default:begin
-            mem_res_valid <= 1'b0;
+        //    mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
         //    mem_no_use <= 1'b1;
