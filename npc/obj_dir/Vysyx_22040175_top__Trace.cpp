@@ -116,7 +116,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgBit(oldp+102,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid));
             tracep->chgCData(oldp+103,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_send_id),4);
             tracep->chgBit(oldp+104,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__delay_sig_jalr));
-            tracep->chgCData(oldp+105,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state),2);
+            tracep->chgCData(oldp+105,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state),3);
             tracep->chgCData(oldp+106,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__md_add_pc),2);
             tracep->chgCData(oldp+107,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__md_present_state),2);
             tracep->chgCData(oldp+108,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__md_next_state),2);
@@ -2143,7 +2143,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgQData(oldp+2378,((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_addr))),64);
             tracep->chgBit(oldp+2380,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_valid));
             tracep->chgQData(oldp+2381,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_addr),64);
-            tracep->chgCData(oldp+2383,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state),2);
+            tracep->chgCData(oldp+2383,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state),3);
             tracep->chgIData(oldp+2384,((IData)(vlSelf->ysyx_22040175_top__DOT__if_pc)),32);
             tracep->chgBit(oldp+2385,((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_send_id))));
             tracep->chgCData(oldp+2386,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state),3);
