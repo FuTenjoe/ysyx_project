@@ -75,7 +75,7 @@ end
 assign inst = delay_r_done?rdata[31:0] : 32'b0010011;
 wire ar_hs;
 //wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
-axi_clint (
+axi_clint u_axi_clint(
     .clk(clk),
     .rst_n(rst_n),
     .if_valid(if_valid),
