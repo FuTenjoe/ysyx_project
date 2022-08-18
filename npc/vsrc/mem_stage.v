@@ -20,14 +20,14 @@ module mem_stage(
     output reg [3:0] mem_send_id,
     output [`CPU_WIDTH-1:0] mem_addr,
     input ar_hs,
-    input r_done      //这里实际未延迟一周期的r_done
+    input r_done,      //这里实际为延迟一周期的r_done
+    output reg mem_no_use
     
 );
 
 reg [63:0] rd_buf_lw;
 reg [63:0] alu_res;
 always@(*)begin
-    
     case (alu_op)
         `ALU_ADD: begin 
         if(rd_buf_flag == 3'd1)
@@ -68,8 +68,10 @@ end
 always@(*)begin
     if((rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6) )
         wb_hazard_result = sign_alu_res;
+        mem_no_use = 1'b0;
     else
         wb_hazard_result = mem_from_ex_alu_res;
+        mem_no_use = 1'b1;
 end
 //wire mem_valid = rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6;
 //reg mem_axi_valid;
