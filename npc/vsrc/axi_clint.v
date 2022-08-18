@@ -60,7 +60,7 @@ always@(*)begin
             next_state = F1;
     end
     F2:begin
-        if(r_done 7 return_id == 4'd1)
+        if(r_done & return_id == 4'd1)
             next_state = FN;
         else
             next_state = F2;
