@@ -205,7 +205,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__redy3;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__next_state;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_mem_wb_regs__DOT__mem_res_valid;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_mem_wb_regs__DOT__mem_no_use;
         IData/*31:0*/ ysyx_22040175_top__DOT__if_inst;
         IData/*31:0*/ ysyx_22040175_top__DOT__id_inst;
         IData/*31:0*/ ysyx_22040175_top__DOT__id_s_imm;
