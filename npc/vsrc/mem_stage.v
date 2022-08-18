@@ -11,7 +11,11 @@ module mem_stage(
     input [63:0] mem_from_ex_alu_res,
     input [3:0] mem_expand_signed,
     output [63:0] wb_hazard_result,
-    input mem_cunqu_hazard
+    input mem_cunqu_hazard,
+    input [3:0]return_id,
+    output  mem_valid,       //clint新加
+    output reg [3:0] mem_send_id,
+    output [`CPU_WIDTH-1:0] mem_addr
     
 );
 
@@ -62,12 +66,87 @@ always@(*)begin
     else
         wb_hazard_result = mem_from_ex_alu_res;
 end
-wire mem_valid = rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6;
-import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
+//wire mem_valid = rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6;
+reg mem_axi_valid;
+parameter [1:0]IDLE=2'd0,MEM=2'd1,EN=2'd2,FN=2'd3;
+reg[1:0] present_state,next_state;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        present_state <= IDLE;
+    end
+    else begin
+        present_state <= next_state;
+    end
+end
+reg mem_res_valid;
+always@(*)begin
+    case(present_state)
+    IDLE:begin
+        if(rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)
+            next_state = MEM;
+        else  
+            next_state = IDLE;
+    end
+    MEM:begin
+        if(ar_hs)
+            next_state = EN;
+        else 
+            next_state = MEM;
+    end
+    EN:begin
+        if(r_done&&return_id == 4'd2)
+            next_state = FN;
+        else 
+            next_state = EN;
+    end
+    FN: next_state = IDLE;
+    default: next_state = IDLE;
+    endcase
+end
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        mem_res_valid <= 1'b0;
+        mem_axi_valid <= 1'b0;
+        mem_send_id <= 4'd0;
+    end
+    else begin
+        case(present_state)
+        IDLE:begin
+            mem_res_valid <= 1'b0;
+            mem_axi_valid <= 1'b1;
+            mem_send_id <= 4'd2;
+        end
+        MEM:begin
+            mem_res_valid <= 1'b0;
+            mem_axi_valid <= 1'b0;
+            mem_send_id <= 4'd2;
+        end
+        EN:begin
+            mem_res_valid <= 1'b0;
+            mem_axi_valid <= 1'b0;
+            mem_send_id <= 4'd2;
+        end
+        FN:begin
+            mem_res_valid <= 1'b1;
+            mem_axi_valid <= 1'b0;
+            mem_send_id <= 4'd0;
+        end
+        default:begin
+            mem_res_valid <= 1'b0;
+            mem_axi_valid <= 1'b0;
+            mem_send_id <= 4'd0;
+        end
+        endcase
+    end
+end
+
+ assign mem_addr = alu_src1 +  alu_src2;         
+
+/*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
     if(rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)
         pmem_read(alu_src1 +  alu_src2, rd_buf_lw);
     else
         rd_buf_lw = 64'd0;
-end
+end*/
 endmodule

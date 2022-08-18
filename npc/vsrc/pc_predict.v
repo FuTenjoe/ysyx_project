@@ -16,7 +16,9 @@ module pc_predict (
     input div_finish,
     input r_done,
     output reg if_valid,
-    input ar_hs
+    input ar_hs,
+    input [3:0] return_id,
+    output reg [3:0] if_send_id
 );
 
 reg delay_sig_jalr;
@@ -52,7 +54,7 @@ always@(*)begin
                 next_state = IDLE;
         end
         EN:begin
-            if(r_done)
+            if(r_done && return_id == 4'd1)
                 next_state =FN;
             else
                 next_state =EN;
@@ -65,14 +67,22 @@ end
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         if_valid <= 1'b0;
+        if_send_id <= 4'd0;
     end
     else begin
         case(present_state)
         IDLE:begin
             if_valid <= 1'b1;
+            if_send_id <= 4'd1;
         end
-        EN: if_valid <= 1'b0;
-        FN: if_valid <= 1'b0;
+        EN: begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd1;
+        end
+        FN: begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd0;
+        end
         endcase
     end
 end

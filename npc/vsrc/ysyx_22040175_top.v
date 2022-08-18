@@ -43,9 +43,11 @@ if_stage u_if_stage(
     .sh_fnsh_flag(sh_fnsh_flag),
     .id_mul(id_mul),
     .id_div(id_div),
-    .div_finish(div_finish)
-    
-    
+    .div_finish(div_finish),
+    .mem_valid(mem_valid),       //clint新加
+    .mem_send_id(mem_send_id),
+    .mem_addr(mem_addr)
+
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 
@@ -356,6 +358,9 @@ ex_mem_regs u_ex_mem_regs(
 );
 wire [63:0] from_mem_alu_res;
 wire [63:0] wb_hazard_result;
+wire [3:0] mem_send_id;
+wire mem_valid;
+wire [`CPU_WIDTH-1:0] mem_addr
 mem_stage u_mem_stage(
     .rd_buf_flag(mem_rd_buf_flag),
     .alu_op(mem_alu_op),
@@ -366,7 +371,10 @@ mem_stage u_mem_stage(
     .mem_from_ex_alu_res(mem_from_ex_alu_res),
     .wb_hazard_result(wb_hazard_result),
     .mem_expand_signed(mem_expand_signed),
-    .mem_cunqu_hazard(mem_cunqu_hazard)
+    .mem_cunqu_hazard(mem_cunqu_hazard),
+    .mem_valid(mem_valid),       //clint新加
+    .mem_send_id(mem_send_id),
+    .mem_addr(mem_addr)
    
 );
 wire wb_reg_wen;

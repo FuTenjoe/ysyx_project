@@ -14,10 +14,11 @@ module if_stage (
     input id_mul,
     input sh_fnsh_flag,
     input id_div,
-    input div_finish
+    input div_finish,
+    input mem_valid,       //clint新加
+    input [3:0] mem_send_id,
+    input [63:0] mem_addr,
 );
-wire if_valid;
-
 
 pc_predict u_pc_predict(
   .clk(clk),     // system clock
@@ -35,7 +36,9 @@ pc_predict u_pc_predict(
   .div_finish(div_finish),
   .r_done(delay_r_done),
   .if_valid(if_valid),
-  .ar_hs(ar_hs)
+  .ar_hs(ar_hs),
+  .return_id(axi_ar_id_o),
+  .if_send_id(if_send_id)
 
 );
 reg delay_r_done;
@@ -50,13 +53,14 @@ wire axi_r_valid_i;
 wire [1:0] axi_r_resp_i;
 wire [63:0] axi_r_data_i;
 wire axi_r_last_i;
-wire [3:0]           axi_ar_id_o;
+wire [3:0] axi_ar_id_o;
 
-
-
-
-wire axi_ena = if_valid;
-wire if_id = 4'd1;
+wire if_valid;
+wire [3:0] if_send_id;
+wire axi_valid;
+wire [3:0] axi_id;
+wire [63:0] axi_addr;
+//wire [3:0] axi_send_id = if_send_id
 //wire axi_ena = ena&~control_rest;
 wire r_done;
 always@(posedge clk or negedge rst_n)begin
@@ -71,17 +75,33 @@ end
 assign inst = delay_r_done?rdata[31:0] : 32'b0010011;
 wire ar_hs;
 //wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
+axi_clint (
+    .clk(clk),
+    .rst_n(rst_n),
+    .if_valid(if_valid),
+    .if_send_id(if_send_id),
+    .pc(pc),
+    .mem_valid(mem_valid),
+    .mem_send_id(mem_send_id),
+    .mem_addr(mem_addr),
+    .r_done(delay_r_done),
+    .return_id(return_id),
+    .axi_valid(axi_valid),
+    .axi_id(axi_id),
+    .axi_addr(axi_addr)
+)
+
 axi # (
 )
 u_axi(
     .clock(clk),
     .reset_n(rst_n),
 
-	  .rw_valid_i(axi_ena),         //IF&MEM输入信号
+	  .rw_valid_i(axi_valid),         //IF&MEM输入信号
 	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     //.rw_w_data_i(),        //IF&MEM输入信号
-    .rw_addr_i(curr_pc),          //IF&MEM输入信号
+    .rw_addr_i(axi_addr),          //IF&MEM输入信号
 //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
 
 
@@ -135,7 +155,7 @@ u_axi(
     .axi_r_last_i(axi_r_last_i),
     .r_done(r_done),
     .ar_hs(ar_hs),
-    .axi_r_id_i(if_id)
+    .axi_r_id_i(axi_id)
 //    input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
 
@@ -166,19 +186,8 @@ u_axi_slave(
     .axi_r_last_o(axi_r_last_i),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
  //   output  [AXI_ID_WIDTH-1:0]          axi_r_id_o,  //读数据ID，该信号用于标识读数据传输
    // output  [AXI_USER_WIDTH-1:0]        axi_r_user_o   //用户定义信号，可选
-    .r_valid(axi_ena)
+    .r_valid(axi_valid)
 );
-
-
-
-
-
-
-
-
-
-
-
 
 /*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 //import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
