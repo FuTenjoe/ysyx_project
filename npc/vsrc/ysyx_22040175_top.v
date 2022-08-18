@@ -436,7 +436,7 @@ mem_wb_regs u_mem_wb_regs(
    //output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]
 
    	.ebreak_flag_mem_wb_i(mem_ebreak_flag),
-	.rd_buf_flag_mem_wb_i(reg_rd_buf_flag),
+	.rd_buf_flag_mem_wb_i(mem_rd_buf_flag),
     .reg_wen_mem_wb_o(wb_reg_wen),    // register write enable
     .reg_waddr_mem_wb_o(wb_reg_waddr),  // register write address
     //.reg_wdata_mem_wb_o(reg_wdata),  // register write data
