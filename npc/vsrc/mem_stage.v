@@ -115,7 +115,7 @@ always@(posedge clk or negedge rst_n)begin
         mem_res_valid <= 1'b0;
         mem_axi_valid <= 1'b0;
         mem_send_id <= 4'd0;
-        mem_no_use <= 1'b0;
+        mem_no_use <= 1'b1;
     end
     else begin
         case(present_state)
@@ -123,25 +123,25 @@ always@(posedge clk or negedge rst_n)begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
-            mem_no_use <= 1'b0;
+            mem_no_use <= 1'b1;
         end
         MEM:begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b1;
             mem_send_id <= 4'd2;
-            mem_no_use <= 1'b1;
+            mem_no_use <= 1'b0;
         end
         EN:begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
-            mem_no_use <= 1'b1;
+            mem_no_use <= 1'b0;
         end
         FN:begin
             mem_res_valid <= 1'b1;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
-            mem_no_use <= 1'b0;
+            mem_no_use <= 1'b1;
         end
         default:begin
             mem_res_valid <= 1'b0;

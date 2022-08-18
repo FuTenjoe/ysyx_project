@@ -5154,10 +5154,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__7(Vysyx_22040175_t
     vlSelf->out_mem_rd_buf_flag = vlSelf->ysyx_22040175_top__DOT__sig_jalr;
 }
 
-extern const VlUnpacked<CData/*1:0*/, 512> Vysyx_22040175_top__ConstPool__TABLE_85c7f225_0;
 extern const VlUnpacked<CData/*0:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_5f2771d9_0;
 extern const VlUnpacked<CData/*0:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_4129e9c7_0;
 extern const VlUnpacked<CData/*3:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_8174a0c3_0;
+extern const VlUnpacked<CData/*0:0*/, 8> Vysyx_22040175_top__ConstPool__TABLE_4c74c0c5_0;
+extern const VlUnpacked<CData/*1:0*/, 512> Vysyx_22040175_top__ConstPool__TABLE_85c7f225_0;
 
 VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175_top___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -5170,16 +5171,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
     vlSelf->ysyx_22040175_top__DOT__if_inst = ((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done)
                                                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rdata)
                                                 : 0x13U);
-    __Vtableidx1 = (((IData)(vlSelf->ysyx_22040175_top__DOT__mem_no_use) 
-                     << 8U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__ar_hs) 
-                                << 7U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id) 
-                                           << 3U) | 
-                                          (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
-                                            << 2U) 
-                                           | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state)))));
-    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state 
-        = Vysyx_22040175_top__ConstPool__TABLE_85c7f225_0
-        [__Vtableidx1];
     vlSelf->inst = vlSelf->ysyx_22040175_top__DOT__if_inst;
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_addr 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
@@ -5211,6 +5202,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
     vlSelf->ysyx_22040175_top__DOT__mem_valid = Vysyx_22040175_top__ConstPool__TABLE_4129e9c7_0
         [__Vtableidx7];
     vlSelf->ysyx_22040175_top__DOT__mem_send_id = Vysyx_22040175_top__ConstPool__TABLE_8174a0c3_0
+        [__Vtableidx7];
+    vlSelf->ysyx_22040175_top__DOT__mem_no_use = Vysyx_22040175_top__ConstPool__TABLE_4c74c0c5_0
         [__Vtableidx7];
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_valid 
         = (((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state)) 
@@ -5254,6 +5247,16 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
                                                           & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_valid))))
                                                       ? 4U
                                                       : 0U)))));
+    __Vtableidx1 = (((IData)(vlSelf->ysyx_22040175_top__DOT__mem_no_use) 
+                     << 8U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__ar_hs) 
+                                << 7U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id) 
+                                           << 3U) | 
+                                          (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
+                                            << 2U) 
+                                           | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state)))));
+    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state 
+        = Vysyx_22040175_top__ConstPool__TABLE_85c7f225_0
+        [__Vtableidx1];
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__next_state)

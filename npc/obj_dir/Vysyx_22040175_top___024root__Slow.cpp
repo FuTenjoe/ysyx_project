@@ -818,16 +818,6 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
             = ((0x100073U == vlSelf->ysyx_22040175_top__DOT__id_inst)
                 ? 0ULL : (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)));
     }
-    vlSelf->ysyx_22040175_top__DOT__mem_no_use = (1U 
-                                                  & (~ 
-                                                     ((((1U 
-                                                         == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag)) 
-                                                        | (2U 
-                                                           == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag))) 
-                                                       | (4U 
-                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag))) 
-                                                      | (6U 
-                                                         == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag)))));
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__rdy_t 
         = (((IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__u_divider_step0__rdy) 
             << 0x1fU) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__sqrt_stepx__BRA__1__KET____DOT__u_divider_step__rdy) 
