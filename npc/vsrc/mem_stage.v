@@ -68,11 +68,9 @@ end
 always@(*)begin
     if((rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6) )begin
         wb_hazard_result = sign_alu_res;
-        mem_no_use = 1'b0;
     end
     else begin
         wb_hazard_result = mem_from_ex_alu_res;
-        mem_no_use = 1'b1;
     end
 end
 //wire mem_valid = rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6;
@@ -117,6 +115,7 @@ always@(posedge clk or negedge rst_n)begin
         mem_res_valid <= 1'b0;
         mem_axi_valid <= 1'b0;
         mem_send_id <= 4'd0;
+        mem_no_use <= 1'b0;
     end
     else begin
         case(present_state)
@@ -124,26 +123,31 @@ always@(posedge clk or negedge rst_n)begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
+            mem_no_use <= 1'b0;
         end
         MEM:begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b1;
             mem_send_id <= 4'd2;
+            mem_no_use <= 1'b1;
         end
         EN:begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd2;
+            mem_no_use <= 1'b1;
         end
         FN:begin
             mem_res_valid <= 1'b1;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
+            mem_no_use <= 1'b0;
         end
         default:begin
             mem_res_valid <= 1'b0;
             mem_axi_valid <= 1'b0;
             mem_send_id <= 4'd0;
+            mem_no_use <= 1'b0;
         end
         endcase
     end
