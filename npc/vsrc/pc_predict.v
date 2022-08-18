@@ -36,8 +36,8 @@ always @ (posedge clk or negedge rst_n) begin
 end
 
 
-parameter IDLE=2'd0,MEM=2'd1,EN=2'd2,FN=2'd3;
-reg [1:0] present_state,next_state;
+parameter IDLE=3'd0,MEM1=3'd1,MEM2=3'd2,MEM3=3'd3,MEM4=3'd4,EN=3'd5,FN=3'd6;
+reg [2:0] present_state,next_state;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         present_state<= IDLE;
@@ -50,11 +50,29 @@ always@(*)begin
     case(present_state)
         IDLE:begin
             if(mem_no_use)
-                next_state = MEM;
+                next_state = MEM1;
             else
                 next_state = IDLE;
         end
-        MEM: begin
+        MEM1:begin
+            if(mem_no_use)
+                next_state = MEM2;
+            else
+                next_state = IDLE;
+        end
+        MEM2:begin
+            if(mem_no_use)
+                next_state = MEM3;
+            else
+                next_state = IDLE;
+        end
+        MEM3:begin
+            if(mem_no_use)
+                next_state = MEM4;
+            else
+                next_state = IDLE;
+        end
+        MEM4: begin
             if(ar_hs)
                 next_state = EN;
             else 
@@ -78,11 +96,11 @@ always@(posedge clk or negedge rst_n)begin
     end
     else begin
         case(present_state)
-        IDLE:begin
+        IDLE,MEM1,MEM2,MEM3:begin
             if_valid <= 1'b0;
             if_send_id <= 4'd0;
         end
-        MEM:begin
+        MEM4:begin
             if_valid <= 1'b1;
             if_send_id <= 4'd1;
         end
