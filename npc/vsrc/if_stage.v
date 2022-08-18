@@ -47,7 +47,7 @@ pc_predict u_pc_predict(
   .return_id(axi_ar_id_o),
   .if_send_id(if_send_id),
   .mem_no_use(mem_no_use),
-  .ex_rd_buf_flag(ex_rd_buf_flag)
+  .ex_rd_buf_flag(ex_rd_buf_flag),
   .mem_res_valid(mem_res_valid)
 );
 //reg delay_r_done;
