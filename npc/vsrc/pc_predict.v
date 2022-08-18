@@ -81,6 +81,7 @@ always@(posedge clk or negedge rst_n)begin
         IDLE:begin
             if_valid <= 1'b0;
             if_send_id <= 4'd0;
+        end
         MEM:begin
             if_valid <= 1'b1;
             if_send_id <= 4'd1;
