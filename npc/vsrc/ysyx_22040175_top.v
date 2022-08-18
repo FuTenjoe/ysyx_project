@@ -360,7 +360,7 @@ wire [63:0] from_mem_alu_res;
 wire [63:0] wb_hazard_result;
 wire [3:0] mem_send_id;
 wire mem_valid;
-wire [`CPU_WIDTH-1:0] mem_addr
+wire [`CPU_WIDTH-1:0] mem_addr;
 mem_stage u_mem_stage(
     .rd_buf_flag(mem_rd_buf_flag),
     .alu_op(mem_alu_op),
