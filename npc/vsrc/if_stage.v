@@ -52,7 +52,7 @@ pc_predict u_pc_predict(
   .mem_res_valid(mem_res_valid)
 );
 //reg delay_r_done;
-wire [63:0] rdata;
+//wire [63:0] rdata;
 wire rw_ready_o;
 wire [63:0] rw_w_data_i;
 wire axi_ar_ready_i;
