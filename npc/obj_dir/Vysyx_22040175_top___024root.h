@@ -203,7 +203,6 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__redy1;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__redy2;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__redy3;
-        CData/*3:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__return_id;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__mem_res_valid;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__next_state;
@@ -228,9 +227,9 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         VlWide<5>/*129:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p;
         IData/*31:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__rdy_t;
         IData/*31:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__sign_dividend;
+        IData/*31:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__sign_divisor;
     };
     struct {
-        IData/*31:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__sign_divisor;
         QData/*63:0*/ ysyx_22040175_top__DOT__id_next_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__if_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__id_pc;
@@ -294,9 +293,9 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         VlUnpacked<IData/*31:0*/, 32> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__divisor_t;
         VlUnpacked<IData/*31:0*/, 32> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__remainder_t;
         VlUnpacked<IData/*31:0*/, 32> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__merchant_t;
+        VlUnpacked<QData/*62:0*/, 64> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__dividend_t;
     };
     struct {
-        VlUnpacked<QData/*62:0*/, 64> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__dividend_t;
         VlUnpacked<QData/*63:0*/, 64> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t;
         VlUnpacked<QData/*63:0*/, 64> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__remainder_t;
         VlUnpacked<QData/*63:0*/, 64> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__merchant_t;

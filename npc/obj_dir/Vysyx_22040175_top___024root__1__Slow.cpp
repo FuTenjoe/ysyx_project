@@ -924,7 +924,6 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__63__KET____DOT__u_divider_step__dividend_kp = VL_RAND_RESET_Q(63);
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellout__sqrt_stepx__BRA__63__KET____DOT__u_divider_step__divisor_kp = VL_RAND_RESET_Q(64);
     VL_RAND_RESET_W(65, vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT____Vcellinp__sqrt_stepx__BRA__63__KET____DOT__u_divider_step__dividend);
-    vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__return_id = VL_RAND_RESET_I(4);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__mem_res_valid = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__rd_buf_lw = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__alu_res = VL_RAND_RESET_Q(64);
