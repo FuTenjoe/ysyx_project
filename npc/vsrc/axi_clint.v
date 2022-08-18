@@ -48,7 +48,7 @@ always@(*)begin
             next_state = IDLE;
     end
     NEXT:begin
-        if(r_done &(return_id == axi_send_id))
+        if(r_done &(return_id == axi_id))
             next_state = FN;
         else
             next_state = NEXT;
