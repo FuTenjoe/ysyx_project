@@ -82,7 +82,7 @@ axi_clint u_axi_clint(
     .rst_n(rst_n),
     .if_valid(if_valid),
     .if_send_id(if_send_id),
-    .pc(pc),
+    .pc(curr_pc),
     .mem_valid(mem_valid),
     .mem_send_id(mem_send_id),
     .mem_addr(mem_addr),
