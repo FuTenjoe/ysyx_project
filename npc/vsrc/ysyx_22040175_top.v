@@ -30,6 +30,7 @@ wire rest_id_mem;
 wire div_finish;
 wire ar_hs;
 wire delay_r_done;
+wire [3:0] axi_ar_id_o;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -50,7 +51,8 @@ if_stage u_if_stage(
     .mem_send_id(mem_send_id),
     .mem_addr(mem_addr),
     .ar_hs(ar_hs),
-    .delay_r_done(delay_r_done)
+    .delay_r_done(delay_r_done),
+    .axi_ar_id_o(axi_ar_id_o)
 
 );
 wire [31:0]id_inst;
@@ -378,7 +380,8 @@ mem_stage u_mem_stage(
     .wb_hazard_result(wb_hazard_result),
     .mem_expand_signed(mem_expand_signed),
     .mem_cunqu_hazard(mem_cunqu_hazard),
-    .mem_axi_valid(mem_valid),       //clint新加
+    .return_id(axi_ar_id_o),        //clint新加
+    .mem_axi_valid(mem_valid),       
     .mem_send_id(mem_send_id),
     .mem_addr(mem_addr),
     .ar_hs(ar_hs),
