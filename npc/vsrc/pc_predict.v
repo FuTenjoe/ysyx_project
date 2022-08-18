@@ -63,7 +63,7 @@ always@(*)begin
                 next_state = MEM;
         end
         NEXT:begin
-            if(ar_hs)
+            if(ar_hs && return_id ==4'd1)
                 next_state = EN;
             else 
                 next_state = NEXT;
