@@ -83,13 +83,16 @@ import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
 
 import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
-
+reg test;
 always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(wm_valid==2'd1)) begin
         // end_wb_waddr = reg_f[reg_waddr] + s_imm;
         pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
+        test = 1'd1;
       //pmem_write(end_write_addr + s_imm, reg_wdata, wmask);
     end
+    else
+        test = 1'd0;
 end
 
 import "DPI-C" function void ebreak();
