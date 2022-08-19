@@ -111,6 +111,10 @@
 `define ALU_DIVW `ALU_OP_WIDTH'b10100 //32位除
 `define ALU_DIVYW `ALU_OP_WIDTH'b10101  //32位取余数
 `define ALU_MEM `ALU_OP_WIDTH'b10110   //专用于sd,sh,sb,sw
+`define ALU_DIV `ALU_OP_WIDTH'b10111  //有符号64位除
+
+
+
 // ALU select soure
 `define ALU_SRC_WIDTH 2
 `define ALU_SRC_REG     `ALU_SRC_WIDTH'b00 // src1 = reg1, src2 = reg2
