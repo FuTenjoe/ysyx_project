@@ -90,7 +90,7 @@ end
 			pc_mem_wb_o <= pc_mem_wb_o;
 			
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
-			wm_valid <= 2'd0;
+			wm_valid <= 2'd1;
 		end	
 		else if(mem_no_use == 1'b0)begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_o;
