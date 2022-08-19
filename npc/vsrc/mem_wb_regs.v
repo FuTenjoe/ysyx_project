@@ -39,9 +39,10 @@ module mem_wb_regs(
 	input cunqu_hazard_mem_wb_i,
 	output reg cunqu_hazard_mem_wb_o,
 	input  mem_no_use,
-	input [2:0]reg_rd_buf_flag
+	input [2:0]reg_rd_buf_flag,
+	output reg [1:0] wm_valid
     );
-reg [1:0]test;
+
 reg delay_mem_no_use;
 always@(posedge clk or negedge rst_n)begin
 	if(!rst_n)begin 
@@ -68,12 +69,9 @@ end
 			rd_buf_flag_mem_wb_o <= 3'd0;
 			from_ex_alu_res_mem_wb_o <= 64'd0;
 			from_mem_alu_res_mem_wb_o <= 64'd0;
-			
-			
 			pc_mem_wb_o <= 32'h8000_0000;
-			
 			cunqu_hazard_mem_wb_o <= 1'b0;
-			test <= 2'd0;
+			wm_valid <= 2'd0;
 		end
 		else if(rest_id_mem_ex_mem_o == 1'b1)begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_o;
@@ -92,7 +90,7 @@ end
 			pc_mem_wb_o <= pc_mem_wb_o;
 			
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
-			test <= 2'd1;
+			wm_valid <= 2'd0;
 		end	
 		else if(mem_no_use == 1'b0)begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_o;
@@ -109,7 +107,7 @@ end
 			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_i;  //zhuyi
 			pc_mem_wb_o <= pc_mem_wb_o;
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
-			test <= 2'd2;
+			wm_valid <= 2'd0;
 		end	
 		else if(mem_no_use == 1'b1 &delay_mem_no_use==1'b0)begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_o;
@@ -126,7 +124,7 @@ end
 			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_o;  //zhuyi
 			pc_mem_wb_o <= pc_mem_wb_o;
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
-			test <= 2'd3;
+			wm_valid <= 2'd1;
 		end	
 		else begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
@@ -141,11 +139,9 @@ end
 			rd_buf_flag_mem_wb_o <= rd_buf_flag_mem_wb_i;
 			from_ex_alu_res_mem_wb_o <= from_ex_alu_res_mem_wb_i;
 			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_i;
-			
-			
 			pc_mem_wb_o <= pc_mem_wb_i;
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_i;
-			test <= 2'd2;
+			wm_valid <= 2'd0;
 		end
 	end
 	

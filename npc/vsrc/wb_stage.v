@@ -22,7 +22,8 @@ module wb_stage (
     input [63:0] wb_pc,
     output [63:0] wb_delay_pc,
    // input [63:0] end_write_addr,
-    input cunqu_hazard
+    input cunqu_hazard,
+    input [1:0]wm_valid
    
 );
 reg [63:0] reg_wdata;

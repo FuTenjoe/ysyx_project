@@ -460,7 +460,8 @@ mem_wb_regs u_mem_wb_regs(
     .cunqu_hazard_mem_wb_i(mem_cunqu_hazard),
     .cunqu_hazard_mem_wb_o (wb_cunqu_hazard),
     .mem_no_use(mem_no_use),
-    .reg_rd_buf_flag(reg_rd_buf_flag)
+    .reg_rd_buf_flag(reg_rd_buf_flag),
+    .wm_valid(wm_valid)
     );
 reg [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;
@@ -485,7 +486,8 @@ wb_stage u_wb_stage(
     .wb_pc(wb_pc),
     .wb_delay_pc(wb_delay_pc),
     //.end_write_addr(wb_end_write_addr),
-    .cunqu_hazard(wb_cunqu_hazard)
+    .cunqu_hazard(wb_cunqu_hazard),
+    .wm_valid(wm_valid)
   
    
 );
