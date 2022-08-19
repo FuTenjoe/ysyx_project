@@ -124,7 +124,7 @@ end
 			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_o;  //zhuyi
 			pc_mem_wb_o <= pc_mem_wb_o;
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
-			wm_valid <= 2'd1;
+			wm_valid <= 2'd0;
 		end	
 		else begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
