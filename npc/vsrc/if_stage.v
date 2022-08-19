@@ -59,7 +59,8 @@ pc_predict u_pc_predict(
   .if_send_id(if_send_id),
   .mem_no_use(mem_no_use),
   .ex_rd_buf_flag(ex_rd_buf_flag),
-  .mem_res_valid(mem_res_valid)
+  .mem_res_valid(mem_res_valid),
+  .wb_res_valid(wb_res_valid)
 );
 //reg delay_r_done;
 //wire [63:0] rdata;
