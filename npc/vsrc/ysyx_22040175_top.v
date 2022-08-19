@@ -33,6 +33,8 @@ wire delay_r_done;
 wire [3:0] axi_ar_id_o;
 wire mem_res_valid;
 wire [63:0] rdata;
+wire w_done;
+wire b_hs;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -66,7 +68,9 @@ if_stage u_if_stage(
     .reg_write_data(reg_write_data),
     .reg_write_wmask(reg_write_wmask),
     .wb_res_valid(wb_res_valid),
-    .axi_req(axi_req)
+    .axi_req(axi_req),
+    .w_done(w_done),
+    .b_hs(b_hs)
 
 );
 wire [31:0]id_inst;
@@ -505,7 +509,9 @@ wb_stage u_wb_stage(
     .reg_write_data(reg_write_data),
     .reg_write_wmask(reg_write_wmask),
     .wb_res_valid(wb_res_valid),
-    .axi_req(axi_req)
+    .axi_req(axi_req),
+    .w_done(w_done),
+    .b_hs(b_hs)
   
    
 );

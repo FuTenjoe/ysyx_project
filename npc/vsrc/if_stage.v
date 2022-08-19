@@ -32,7 +32,9 @@ module if_stage (
     input  [63:0] reg_write_data,
     input [7:0] reg_write_wmask,
     input wb_res_valid,
-    input  axi_req
+    input  axi_req,
+    output w_done,
+    output b_hs
    // output inst_use
 );
 
@@ -187,7 +189,10 @@ u_axi(
     .axi_r_last_i(axi_r_last_i),
     .r_done(r_done),
     .ar_hs(ar_hs),
-    .axi_r_id_i(axi_id)
+    .axi_r_id_i(axi_id),
+
+    .w_done(w_done),
+    .b_hs(b_hs)
 //    input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
 

@@ -28,7 +28,9 @@ module wb_stage (
     output reg [63:0] reg_write_data,
     output reg [7:0] reg_write_wmask,
     output wb_res_valid,
-    output  axi_req
+    output  axi_req,
+    input w_done,
+    input b_hs
    
 );
 reg [63:0] reg_wdata;
