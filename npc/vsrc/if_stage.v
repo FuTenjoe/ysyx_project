@@ -245,7 +245,7 @@ u_axi_slave(
   //  output [AXI_USER_WIDTH-1:0]         axi_w_user_o,
     
     .axi_b_ready_i(axi_b_ready_o),                
-    .axi_b_valid_o(axi_b_valid_i),
+    .axi_b_valid_o(axi_b_valid_i)
   //  output  [1:0]                      axi_b_resp_o                 
  //   input  [AXI_ID_WIDTH-1:0]           axi_b_id_i,
  //   input  [AXI_USER_WIDTH-1:0]         axi_b_user_i,
