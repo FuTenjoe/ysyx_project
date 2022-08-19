@@ -40,7 +40,7 @@ module mem_wb_regs(
 	output reg cunqu_hazard_mem_wb_o,
 	input  mem_no_use,
 	input [2:0]reg_rd_buf_flag,
-	output reg [1:0] wm_valid
+	//output reg [1:0] wm_valid
     );
 
 reg delay_mem_no_use;
@@ -52,7 +52,7 @@ always@(posedge clk or negedge rst_n)begin
 		delay_mem_no_use <= mem_no_use;
 	end
 end
-
+reg [1:0] wm_valid;
 
 	always@(posedge clk or negedge rst_n)
 	begin

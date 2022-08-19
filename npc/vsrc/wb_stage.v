@@ -22,8 +22,7 @@ module wb_stage (
     input [63:0] wb_pc,
     output [63:0] wb_delay_pc,
    // input [63:0] end_write_addr,
-    input cunqu_hazard,
-    input [1:0]wm_valid
+    input cunqu_hazard
    
 );
 reg [63:0] reg_wdata;
@@ -85,7 +84,7 @@ import "DPI-C" function void pmem_write(input longint waddr, input longint wdata
 //wire [63:0] rdata;
 reg test;
 always @(*) begin
-    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&&(wm_valid==2'd1)) begin
+    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)) begin
         // end_wb_waddr = reg_f[reg_waddr] + s_imm;
         pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
         test = 1'd1;
