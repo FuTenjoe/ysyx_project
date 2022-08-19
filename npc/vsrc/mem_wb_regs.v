@@ -42,6 +42,17 @@ module mem_wb_regs(
 	input [2:0]reg_rd_buf_flag
     );
 reg [1:0]test;
+reg delay_mem_no_use;
+always@(posedge clk or negedge rst_n)begin
+	if(!rst_n)begin 
+		delay_mem_no_use <= 1'b0;
+	end
+	else begin
+		delay_mem_no_use <= mem_no_use;
+	end
+end
+
+
 	always@(posedge clk or negedge rst_n)
 	begin
 		if(!rst_n)begin 
@@ -76,7 +87,7 @@ reg [1:0]test;
 			ebreak_flag_mem_wb_o <= ebreak_flag_mem_wb_o;
 			rd_buf_flag_mem_wb_o <= rd_buf_flag_mem_wb_o;
 			from_ex_alu_res_mem_wb_o <= from_ex_alu_res_mem_wb_o;
-			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_o;
+			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_i;
 			
 			pc_mem_wb_o <= pc_mem_wb_o;
 			
@@ -95,10 +106,25 @@ reg [1:0]test;
 			ebreak_flag_mem_wb_o <= ebreak_flag_mem_wb_o;
 			rd_buf_flag_mem_wb_o <= rd_buf_flag_mem_wb_o;
 			from_ex_alu_res_mem_wb_o <= from_ex_alu_res_mem_wb_o;
-			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_o;
-			
+			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_i;
 			pc_mem_wb_o <= pc_mem_wb_o;
-			
+			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
+			test <= 2'd2;
+		end	
+		else if(mem_no_use == 1'b1 &delay_mem_no_use==1'b0)begin
+			reg_wen_mem_wb_o <= reg_wen_mem_wb_o;
+			reg_waddr_mem_wb_o <= reg_waddr_mem_wb_o;
+			//reg_wdata_mem_wb_o <= reg_wdata_mem_wb_i;
+			wmask_mem_wb_o <= wmask_mem_wb_o;
+			s_flag_mem_wb_o <= s_flag_mem_wb_o;
+			time_set_mem_wb_o <= time_set_mem_wb_o;
+			s_imm_mem_wb_o <= s_imm_mem_wb_o;
+			expand_signed_mem_wb_o <= expand_signed_mem_wb_o;
+			ebreak_flag_mem_wb_o <= ebreak_flag_mem_wb_o;
+			rd_buf_flag_mem_wb_o <= rd_buf_flag_mem_wb_o;
+			from_ex_alu_res_mem_wb_o <= from_ex_alu_res_mem_wb_o;
+			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_o;
+			pc_mem_wb_o <= pc_mem_wb_o;
 			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
 			test <= 2'd2;
 		end	
