@@ -14,40 +14,41 @@ module axi # (
 
 	input                               rw_valid_i,         //IF&MEM输入信号
 	output                              rw_ready_o,         //IF&MEM输入信号
+    input rw_req_i,
+    input [7:0] rw_mask,
     output reg [RW_DATA_WIDTH-1:0]      data_read_o,        //IF&MEM输入信号
     input  [RW_DATA_WIDTH-1:0]          rw_w_data_i,        //IF&MEM输入信号
     input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号
     input  [1:0]                        rw_size_i,          //IF&MEM输入信号
 
 
-
     // Advanced eXtensible Interface
     input                               axi_aw_ready_i,    //从设备已准备好接收地址和相关的控制信号          
     output                              axi_aw_valid_o,  
     output [AXI_ADDR_WIDTH-1:0]         axi_aw_addr_o,
-    output [2:0]                        axi_aw_prot_o,
-    output [AXI_ID_WIDTH-1:0]           axi_aw_id_o,
-    output [AXI_USER_WIDTH-1:0]         axi_aw_user_o,
-    output [7:0]                        axi_aw_len_o,
-    output [2:0]                        axi_aw_size_o,
-    output [1:0]                        axi_aw_burst_o,
-    output                              axi_aw_lock_o,
-    output [3:0]                        axi_aw_cache_o,
-    output [3:0]                        axi_aw_qos_o,
-    output [3:0]                        axi_aw_region_o,
+   // output [2:0]                        axi_aw_prot_o,
+  //  output [AXI_ID_WIDTH-1:0]           axi_aw_id_o,
+  //  output [AXI_USER_WIDTH-1:0]         axi_aw_user_o,
+  //  output [7:0]                        axi_aw_len_o,
+  //  output [2:0]                        axi_aw_size_o,
+  //  output [1:0]                        axi_aw_burst_o,
+  //  output                              axi_aw_lock_o,
+ //   output [3:0]                        axi_aw_cache_o,
+  //  output [3:0]                        axi_aw_qos_o,
+ //   output [3:0]                        axi_aw_region_o,
 
     input                               axi_w_ready_i,                
     output                              axi_w_valid_o,
     output [AXI_DATA_WIDTH-1:0]         axi_w_data_o,
     output [AXI_DATA_WIDTH/8-1:0]       axi_w_strb_o,
     output                              axi_w_last_o,
-    output [AXI_USER_WIDTH-1:0]         axi_w_user_o,
+  //  output [AXI_USER_WIDTH-1:0]         axi_w_user_o,
     
     output                              axi_b_ready_o,                
     input                               axi_b_valid_i,
-    input  [1:0]                        axi_b_resp_i,                 
-    input  [AXI_ID_WIDTH-1:0]           axi_b_id_i,
-    input  [AXI_USER_WIDTH-1:0]         axi_b_user_i,
+ //   input  [1:0]                        axi_b_resp_i,           //不用？        
+ //   input  [AXI_ID_WIDTH-1:0]           axi_b_id_i,
+ //   input  [AXI_USER_WIDTH-1:0]         axi_b_user_i,
 
     input                               axi_ar_ready_i,                
     output                              axi_ar_valid_o,
@@ -72,20 +73,25 @@ module axi # (
     output ar_hs,
     input  [AXI_ID_WIDTH-1:0]           axi_r_id_i      //加id
  //   input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
+
+    output w_done,
+    output b_hs
 );
- //   wire w_trans    = rw_req_i == `REQ_WRITE;
- //   wire r_trans    = rw_req_i == `REQ_READ;
- //   wire w_valid    = rw_valid_i & w_trans;
+    wire w_trans    = rw_req_i == `REQ_WRITE;
+    wire r_trans    = rw_req_i == `REQ_READ;
+//    wire w_valid    = rw_valid_i & w_trans;
  //   wire r_valid    = rw_valid_i & r_trans;
-    wire r_valid    = rw_valid_i;
+    wire w_valid    = rw_valid_i & w_trans;
+    wire r_valid    = rw_valid_i & r_trans;
+    assign axi_w_strb_o = rw_mask;
     //handshake
     wire aw_hs = axi_aw_ready_i & axi_aw_valid_o;  //写地址
     wire w_hs = axi_w_ready_i & axi_w_valid_o;  //写数据
-    wire b_hs = axi_b_ready_o & axi_b_valid_i;  //写请求
+    assign b_hs = axi_b_ready_o & axi_b_valid_i;  //写请求
     assign ar_hs = axi_ar_ready_i & axi_ar_valid_o;  //读地址
     wire r_hs = axi_r_ready_o & axi_r_valid_i;  //读数据 
 
-    wire w_done = w_hs & axi_w_last_o;  //写数据完标志
+    assign w_done = w_hs & axi_w_last_o;  //写数据完标志
     assign r_done = r_hs & axi_r_last_i;  
 //  wire trans_done = w_trans ? b_hs : r_done;  
 
@@ -98,21 +104,19 @@ module axi # (
     wire w_state_idle = w_state == W_STATE_IDLE, w_state_addr = w_state == W_STATE_ADDR, w_state_write = w_state == W_STATE_WRITE, w_state_resp = w_state == W_STATE_RESP;
     wire r_state_idle = r_state == R_STATE_IDLE, r_state_addr = r_state == R_STATE_ADDR, r_state_read  = r_state == R_STATE_READ;
     // 写通道状态切换
-/*    always @(posedge clock) begin
+    always @(posedge clock) begin
         if (!reset_n) begin
             w_state <= W_STATE_IDLE;
         end
         else begin
-            if (w_valid) begin
                 case (w_state)
-                    W_STATE_IDLE:               w_state <= W_STATE_ADDR;
+                    W_STATE_IDLE:  if (w_valid) w_state <= W_STATE_ADDR;
                     W_STATE_ADDR:  if (aw_hs)   w_state <= W_STATE_WRITE;
                     W_STATE_WRITE: if (w_done)  w_state <= W_STATE_RESP;
                     W_STATE_RESP:  if (b_hs)    w_state <= W_STATE_IDLE;
                 endcase
-            end
         end
-    end*/
+    end
 
     // 读通道状态切换
     always @(posedge clock) begin
@@ -212,8 +216,12 @@ module axi # (
     end
     assign rw_resp_o      = rw_resp;*/
   // ------------------Write Transaction------------------
-   
-
+   assign axi_aw_valid_o =  w_state_addr;
+   assign axi_aw_addr_o = rw_addr_i;
+   assign axi_w_valid_o = w_state_write;
+   assign axi_w_data_o = rw_w_data_i;
+   assign axi_b_ready_o = w_state_resp;
+   assign axi_w_last_o = w_state_write;
     // ------------------Read Transaction------------------
 
     // Read address channel signals
@@ -261,8 +269,7 @@ module axi # (
         
     endgenerate
 
-
-
+    // Write data channel signals
   
 
 

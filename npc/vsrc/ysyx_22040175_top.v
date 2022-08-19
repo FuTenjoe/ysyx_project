@@ -58,7 +58,15 @@ if_stage u_if_stage(
     .mem_no_use(mem_no_use),
     .ex_rd_buf_flag(ex_rd_buf_flag),
     .mem_res_valid(mem_res_valid),
-    .rdata(rdata)
+    .rdata(rdata),
+
+
+    .waxi_valid(waxi_valid),
+    .reg_write_addr(reg_write_addr),
+    .reg_write_data(reg_write_data),
+    .reg_write_wmask(reg_write_wmask),
+    .wb_res_valid(wb_res_valid),
+    .axi_req(axi_req)
 
 );
 wire [31:0]id_inst;
@@ -465,6 +473,12 @@ mem_wb_regs u_mem_wb_regs(
 reg [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;
 wire [63:0] wb_delay_pc;
+wire waxi_valid;
+wire [63:0] reg_write_addr;
+wire [63:0] reg_write_data;
+wire [7:0] reg_write_wmask;
+wire wb_res_valid;
+wire  axi_req;
 wb_stage u_wb_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -485,7 +499,13 @@ wb_stage u_wb_stage(
     .wb_pc(wb_pc),
     .wb_delay_pc(wb_delay_pc),
     //.end_write_addr(wb_end_write_addr),
-    .cunqu_hazard(wb_cunqu_hazard)
+    .cunqu_hazard(wb_cunqu_hazard),
+    .waxi_valid(waxi_valid),
+    .reg_write_addr(reg_write_addr),
+    .reg_write_data(reg_write_data),
+    .reg_write_wmask(reg_write_wmask),
+    .wb_res_valid(wb_res_valid),
+    .axi_req(axi_req)
   
    
 );
