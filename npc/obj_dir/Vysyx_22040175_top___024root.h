@@ -249,10 +249,8 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         QData/*63:0*/ ysyx_22040175_top__DOT__wb_delay_pc;
         QData/*63:0*/ ysyx_22040175_top__DOT__reg_write_addr;
         QData/*63:0*/ ysyx_22040175_top__DOT__reg_write_data;
-        QData/*63:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__rw_w_data_i;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_data_i;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__axi_addr;
-        QData/*63:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__rw_w_data_i;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__rdata;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_rdata;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_rdata;
