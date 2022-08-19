@@ -112,11 +112,11 @@ always@(*)begin
     end
     WRESP:begin
         if(b_hs)
-            next_state = FN;
+            next_state = WFN;
         else
             next_state = WRESP;
     end
-    FN: next_state= IDLE;
+    WFN: next_state= IDLE;
     endcase
 end
 
@@ -146,7 +146,7 @@ always@(posedge clk or negedge rst_n)begin
             reg_write_data <= reg_write_data;
             reg_write_wmask <= reg_write_wmask;
         end
-        FN:begin
+        WFN:begin
             reg_write_addr <= 64'd0;
             reg_write_data <= 64'd0;
             reg_write_wmask <= 8'd0;
