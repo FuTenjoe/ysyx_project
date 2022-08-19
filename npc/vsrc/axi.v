@@ -18,7 +18,7 @@ module axi # (
     input [7:0] rw_mask,
     output reg [RW_DATA_WIDTH-1:0]      data_read_o,        //IF&MEM输入信号
     input  [RW_DATA_WIDTH-1:0]          rw_w_data_i,        //IF&MEM输入信号
-    input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号读通道
+    input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号   读通道
     input  [1:0]                        rw_size_i,          //IF&MEM输入信号
     input  [63:0]           ww_addr_i,
 
