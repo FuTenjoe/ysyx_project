@@ -178,7 +178,7 @@ always @(*) begin
         7'b0010011: begin       //addi
             rd_buf_flag = 3'd0;
             case (funct3)
-                `INST_ADDI: begin
+                `INST_ADDI: begin    //3'b000
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     reg1_raddr  = rs1;
@@ -209,6 +209,24 @@ always @(*) begin
                     rd_flag = 3'd3;
                 end   
                 3'b101:begin      //srai
+                    case(funct7)
+                    7'b0000_000:begin  //srl
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    jalr = 1'b0;
+                    reg1_raddr  = rs1;
+                    reg2_raddr  = rs2;
+                    reg_waddr   = rd;
+                    s_imm =0;
+                    imm_gen_op  = `IMM_GEN_SRAI;   //R型指令
+                    alu_op      = `ALU_SRL;       //流水线后改原算术右移为逻辑右移
+                    alu_src_sel = `ALU_SRC_REG;
+                    wmask =  8'b0;
+                    s_flag = 1'd0;
+                    expand_signed =4'd0;    
+                    rd_flag = 3'd0;
+                    end
+                    7'b0100_00:begin      //srai
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
@@ -223,6 +241,9 @@ always @(*) begin
                     s_flag = 1'd0;
                     expand_signed =4'd0;    
                     rd_flag = 3'd0;
+                    end
+                    default:unknown_code = inst;
+                    endcase
                 end
                 3'b111:begin         //andi
                     jump        = 1'b0;
@@ -587,6 +608,23 @@ always @(*) begin
                     expand_signed =4'd3;       //需扩展符号位
                     rd_flag = 3'd0;  //无用
                     rd_buf_flag = 3'd6;
+                end
+                3'b110:begin     //lwu
+                    jump        = 1'b0;
+                    reg_wen     = 1'b1;
+                    jalr = 1'b0;
+                    reg1_raddr  = rs1;
+                    reg2_raddr  = rs2;
+                    reg_waddr   = rd;
+                    s_imm ={{20{inst[31]}},inst[31:20]};
+                    imm_gen_op  = `IMM_GEN_I;
+                    alu_op      = `ALU_ADD;
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b0;
+                    s_flag = 1'd0;
+                    expand_signed =4'd0;       //不需扩展符号位
+                    rd_flag = 3'd0; //无用
+                    rd_buf_flag = 3'd1;
                 end
                 3'b101:begin      //lhu
                     jump        = 1'b0;
