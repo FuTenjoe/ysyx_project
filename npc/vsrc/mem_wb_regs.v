@@ -39,7 +39,7 @@ module mem_wb_regs(
 	input cunqu_hazard_mem_wb_i,
 	output reg cunqu_hazard_mem_wb_o,
 	input  mem_no_use,
-	input [2:0]reg_rd_buf_flag,
+	input [2:0]reg_rd_buf_flag
 	//output reg [1:0] wm_valid
     );
 
