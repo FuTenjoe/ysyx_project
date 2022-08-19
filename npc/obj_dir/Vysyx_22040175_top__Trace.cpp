@@ -2225,11 +2225,15 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                       ? ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))
                                           ? 0U : ((1U 
                                                    & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))
-                                                   ? 0U
+                                                   ? 
+                                                  ((3U 
+                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state))
+                                                    ? 1U
+                                                    : 5U)
                                                    : 
                                                   ((3U 
                                                     == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
-                                                    ? 1U
+                                                    ? 5U
                                                     : 4U)))
                                       : ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))
                                           ? ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))
