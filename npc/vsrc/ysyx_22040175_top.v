@@ -397,7 +397,13 @@ mem_stage u_mem_stage(
     .r_done(delay_r_done),
     .mem_no_use(mem_no_use),
     .axi_rdata(rdata),
-    .mem_rd_buf_flag(reg_rd_buf_flag)
+    .mem_rd_buf_flag(reg_rd_buf_flag),
+    .reg_wen(mem_reg_wen),                  //写内存
+    .reg_waddr(mem_reg_waddr),
+    .s_flag(mem_s_flag),
+    .s_imm(mem_s_imm),
+    .cunqu_hazard(mem_cunqu_hazard),
+    .wmask(mem_wmask)
    
 );
 wire wb_reg_wen;

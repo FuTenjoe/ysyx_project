@@ -26,15 +26,17 @@ module wb_stage (
    
 );
 reg [63:0] reg_wdata;
-always@(*)begin
+/*always@(*)begin
     if((rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)&(cunqu_hazard == 1'b0) )begin
         reg_wdata = from_mem_alu_res;
     end
     else begin
         reg_wdata = from_ex_alu_res;
     end
+end*/
+always@(*)begin
+    reg_wdata = from_ex_alu_res;
 end
-
 always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)
@@ -83,13 +85,13 @@ import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
 import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
 
-always @(*) begin
+/*always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)) begin
         // end_wb_waddr = reg_f[reg_waddr] + s_imm;
         pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
       //pmem_write(end_write_addr + s_imm, reg_wdata, wmask);
     end
-end
+end*/
 
 import "DPI-C" function void ebreak();
 always@(*)begin

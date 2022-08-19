@@ -23,7 +23,13 @@ module mem_stage(
     input r_done,      //这里实际为延迟一周期的r_done
     output mem_no_use,   //没有用到访存时为1
     input [63:0] axi_rdata,
-    output [2:0] mem_rd_buf_flag
+    output [2:0] mem_rd_buf_flag,
+    input reg_wen,                  //写内存
+    input      [`REG_ADDR_WIDTH-1:0] reg_waddr,
+    input s_flag,
+    input [31:0] s_imm,
+    input cunqu_hazard,
+    input  [7:0] wmask
     
 );
 reg [2:0] reg_rd_buf_flag;
@@ -181,6 +187,17 @@ always@(posedge clk or negedge rst_n)begin
 end
 
 assign mem_addr = reg_mem_addr ;         
+import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
+always @(*) begin
+    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)) begin
+        // end_wb_waddr = reg_f[reg_waddr] + s_imm;
+        pmem_write(reg_f[reg_waddr] + s_imm, reg_wdata, wmask);
+      //pmem_write(end_write_addr + s_imm, reg_wdata, wmask);
+    end
+end
+
+
+
 
 /*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 always @(*) begin
