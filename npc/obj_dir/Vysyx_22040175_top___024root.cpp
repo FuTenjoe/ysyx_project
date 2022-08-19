@@ -498,7 +498,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                                                    : vlSelf->ysyx_22040175_top__DOT__wb_pc));
         vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mem_wb_regs__wm_valid 
             = ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_rest_id_mem)
-                ? 0U : ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_no_use)
+                ? 1U : ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_no_use)
                          ? (((IData)(vlSelf->ysyx_22040175_top__DOT__mem_no_use) 
                              & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_wb_regs__DOT__delay_mem_no_use)))
                              ? 1U : 0U) : 0U));
