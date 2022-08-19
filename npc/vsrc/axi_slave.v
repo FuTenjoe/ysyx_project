@@ -159,7 +159,7 @@ assign axi_b_valid_o = w_state_resp;
 
 always@(*)begin
     if(w_hs)
-    pmem_write(axi_aw_addr_i, axi_w_data_i, wstrb);
+    pmem_write(axi_aw_addr_i, axi_w_data_i, axi_w_strb_i);
 end
 
 
