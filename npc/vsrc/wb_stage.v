@@ -121,7 +121,7 @@ always@(*)begin
 end
 
 assign waxi_valid = (present_state==WRITE) ? 1'b1:1'b0;
-assign wb_res_valid = (present_state == FN) ? 1'b1:1'b0;
+assign wb_res_valid = (present_state == WFN) ? 1'b1:1'b0;
 assign axi_req = (present_state==WRITE|present_state==WRESP) ? 1'b1:1'b0;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
