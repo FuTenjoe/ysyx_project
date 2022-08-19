@@ -84,21 +84,23 @@ reg [1:0]test;
 			test <= 2'd1;
 		end	
 		else if(mem_no_use == 1'b0)begin
-			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
-			reg_waddr_mem_wb_o <= reg_waddr_mem_wb_i;
+			reg_wen_mem_wb_o <= reg_wen_mem_wb_o;
+			reg_waddr_mem_wb_o <= reg_waddr_mem_wb_o;
 			//reg_wdata_mem_wb_o <= reg_wdata_mem_wb_i;
-			wmask_mem_wb_o <= wmask_mem_wb_i;
-			s_flag_mem_wb_o <= s_flag_mem_wb_i;
-			time_set_mem_wb_o <= time_set_mem_wb_i;
-			s_imm_mem_wb_o <= s_imm_mem_wb_i;
-			expand_signed_mem_wb_o <= expand_signed_mem_wb_i;
-			ebreak_flag_mem_wb_o <= ebreak_flag_mem_wb_i;
-			rd_buf_flag_mem_wb_o <= reg_rd_buf_flag;
-			from_ex_alu_res_mem_wb_o <= from_ex_alu_res_mem_wb_i;
-			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_i;
+			wmask_mem_wb_o <= wmask_mem_wb_o;
+			s_flag_mem_wb_o <= s_flag_mem_wb_o;
+			time_set_mem_wb_o <= time_set_mem_wb_o;
+			s_imm_mem_wb_o <= s_imm_mem_wb_o;
+			expand_signed_mem_wb_o <= expand_signed_mem_wb_o;
+			ebreak_flag_mem_wb_o <= ebreak_flag_mem_wb_o;
+			rd_buf_flag_mem_wb_o <= rd_buf_flag_mem_wb_o;
+			from_ex_alu_res_mem_wb_o <= from_ex_alu_res_mem_wb_o;
+			from_mem_alu_res_mem_wb_o <= from_mem_alu_res_mem_wb_o;
+			
 			pc_mem_wb_o <= pc_mem_wb_o;
-			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_i;
-			test <= 2'd1;
+			
+			cunqu_hazard_mem_wb_o <= cunqu_hazard_mem_wb_o;
+			test <= 2'd2;
 		end	
 		else begin
 			reg_wen_mem_wb_o <= reg_wen_mem_wb_i;
