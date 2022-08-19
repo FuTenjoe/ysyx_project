@@ -122,7 +122,10 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgQData(oldp+104,(vlSelf->ysyx_22040175_top__DOT__reg_write_addr),64);
             tracep->chgQData(oldp+106,(vlSelf->ysyx_22040175_top__DOT__reg_write_data),64);
             tracep->chgCData(oldp+108,(vlSelf->ysyx_22040175_top__DOT__reg_write_wmask),8);
-            tracep->chgBit(oldp+109,((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state))));
+            tracep->chgBit(oldp+109,((1U & (~ ((1U 
+                                                == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state)) 
+                                               | (2U 
+                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state)))))));
             tracep->chgBit(oldp+110,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid));
             tracep->chgCData(oldp+111,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_send_id),4);
             tracep->chgQData(oldp+112,((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__reg_write_addr))),64);
@@ -2228,10 +2231,12 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                           ? 0U : ((1U 
                                                    & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))
                                                    ? 
-                                                  ((3U 
-                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state))
-                                                    ? 1U
-                                                    : 5U)
+                                                  (((1U 
+                                                     == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state)) 
+                                                    | (2U 
+                                                       == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state)))
+                                                    ? 5U
+                                                    : 1U)
                                                    : 
                                                   ((3U 
                                                     == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
