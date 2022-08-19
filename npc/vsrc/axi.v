@@ -18,9 +18,9 @@ module axi # (
     input [7:0] rw_mask,
     output reg [RW_DATA_WIDTH-1:0]      data_read_o,        //IF&MEM输入信号
     input  [RW_DATA_WIDTH-1:0]          rw_w_data_i,        //IF&MEM输入信号
-    input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号
+    input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号读通道
     input  [1:0]                        rw_size_i,          //IF&MEM输入信号
-
+    input  [63:0]           ww_addr_i,
 
     // Advanced eXtensible Interface
     input                               axi_aw_ready_i,    //从设备已准备好接收地址和相关的控制信号          
@@ -217,7 +217,7 @@ module axi # (
     assign rw_resp_o      = rw_resp;*/
   // ------------------Write Transaction------------------
    assign axi_aw_valid_o =  w_state_addr;
-   assign axi_aw_addr_o = rw_addr_i;
+   assign axi_aw_addr_o = ww_addr_i;
    assign axi_w_valid_o = w_state_write;
    assign axi_w_data_o = rw_w_data_i;
    assign axi_b_ready_o = w_state_resp;

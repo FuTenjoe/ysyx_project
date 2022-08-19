@@ -65,7 +65,7 @@ pc_predict u_pc_predict(
 //reg delay_r_done;
 //wire [63:0] rdata;
 wire rw_ready_o;
-wire [63:0] rw_w_data_i;
+//wire [63:0] rw_w_data_i;
 wire axi_ar_ready_i;
 wire axi_ar_valid_o;
 wire [63:0] axi_ar_addr_o;
@@ -110,6 +110,7 @@ axi_clint u_axi_clint(
     .axi_valid(axi_valid),
     .axi_id(axi_id),
     .axi_addr(axi_addr)
+
 );
 
 wire axi_aw_ready_i;
@@ -134,10 +135,10 @@ u_axi(
 	.rw_valid_i(axi_valid | waxi_valid),         //IF&MEM输入信号
 	.rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
-    //.rw_w_data_i(),        //IF&MEM输入信号
+    .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
     .rw_addr_i(axi_addr),          //IF&MEM输入信号
 //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
-
+    .ww_addr_i(reg_write_addr),
 
 
     // Advanced eXtensible Interface
