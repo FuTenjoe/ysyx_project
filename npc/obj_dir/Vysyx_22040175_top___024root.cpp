@@ -9227,7 +9227,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                                               & (IData)(
                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                          >> 0x19U))))) {
-                            vlSelf->ysyx_22040175_top__DOT__id_alu_src_sel = 1U;
+                            vlSelf->ysyx_22040175_top__DOT__id_alu_src_sel = 0U;
                         }
                     } else {
                         vlSelf->ysyx_22040175_top__DOT__id_alu_src_sel = 1U;
