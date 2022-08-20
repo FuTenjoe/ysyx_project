@@ -56,6 +56,7 @@ always @(*) begin
                     alu_src2 = mtvec;  
                 end
                 endcase
+            end
         endcase
         end
     
