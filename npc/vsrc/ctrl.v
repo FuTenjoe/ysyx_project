@@ -912,9 +912,9 @@ always @(*) begin
                 reg2_raddr = `REG_ADDR_WIDTH'b0;
                 unnormal_pc = mepc;
                 end    
-                else begin
+            /*    else begin
                 unknown_code = inst ;
-                end
+                end*/
             end
             endcase
         end
