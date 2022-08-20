@@ -25,7 +25,12 @@ module ctrl (
     output reg [2:0]rd_flag,
     output reg [2:0] rd_buf_flag,   //访存标志
     output reg id_mul,
-    output reg id_div
+    output reg id_div,
+    output reg ecall_flag,
+    output reg [11:0] csr_addr,
+    output reg mret_flag,
+    output reg [31:0]unnormal_pc,
+    output reg [63:0] mstatus
    
 );
 
@@ -35,7 +40,7 @@ wire [`FUNCT7_WIDTH-1:0] funct7 = inst[`FUNCT7_WIDTH+`FUNCT7_BASE-1:`FUNCT7_BASE
 wire [`REG_ADDR_WIDTH-1:0] rd   = inst[`REG_ADDR_WIDTH+`RD_BASE-1:`RD_BASE];   //[5+7-1:7]  [11:7]
 wire [`REG_ADDR_WIDTH-1:0] rs1  = inst[`REG_ADDR_WIDTH+`RS1_BASE-1:`RS1_BASE];  //[19:15]
 wire [`REG_ADDR_WIDTH-1:0] rs2  = inst[`REG_ADDR_WIDTH+`RS2_BASE-1:`RS2_BASE];   //[24:20]
-
+wire [11:0] csr = inst[31:20];
 
 always @(*) begin
     branch      = 1'b0;
@@ -57,6 +62,9 @@ always @(*) begin
     rd_buf_flag = 3'd0;
     id_mul = 1'd0;
     id_div = 1'b0;
+    ecall_flag = 1'b0;
+    csr_addr = 12'd0;
+    mret_flag = 1'b0;
     case (opcode)
         7'b0110011: begin                         
             reg_wen     = 1'b1;
@@ -830,10 +838,69 @@ always @(*) begin
                  default:unknown_code = inst;
             endcase
         end
-            
+        7'b1110011:begin
+            case (funct3)     // csrrs
+            3'b010:begin
+                jump        = 1'b0;
+                reg_wen     = 1'b1;
+                jalr = 1'b0;
+                reg1_raddr  = rs1;
+                reg2_raddr  = rs2;
+                reg_waddr   = rd;
+                s_imm =0;
+                imm_gen_op  = `IMM_GEN_SRAI;   //不需要使用R型指令
+                alu_op      = `ALU_CSRRS;
+                alu_src_sel = `ALU_SRC_CSRRS;
+                wmask =  8'b0;
+                s_flag = 1'd0;
+                expand_signed =4'd0;    
+                rd_flag = 3'd0;
+                id_div = 1'b0;
+                csr_addr = csr;
+            end
+            3'b001:begin      //csrrw
+                jump        = 1'b0;
+                reg_wen     = 1'b1;
+                jalr = 1'b0;
+                reg1_raddr  = rs1;
+                reg2_raddr  = rs2;
+                reg_waddr   = rd;
+                s_imm =0;
+                imm_gen_op  = `IMM_GEN_SRAI;   //不需要使用R型指令
+                alu_op      = `ALU_CSRRW;
+                alu_src_sel = `ALU_SRC_CSRRS;   //选1和csr，与CSRRS一样
+                wmask =  8'b0;
+                s_flag = 1'd0;
+                expand_signed =4'd0;    
+                rd_flag = 3'd0;
+                id_div = 1'b0;
+                csr_addr = csr;
+            end
+            default:begin
+                if(inst == 32'h0000_0073)begin   //ecall
+                ecall_flag = 1'b1;
+                mret_flag = 1'b0;
+                unknown_code = 32'h0;
+                reg1_raddr = `REG_ADDR_WIDTH'b0;
+                reg2_raddr = `REG_ADDR_WIDTH'b0;
+                end
+                else if(inst == 32'h3020_0073)begin   //mret
+                ecall_flag = 1'b0;
+                mret_flag = 1'b1;
+                unknown_code = 32'h0;
+                reg1_raddr = `REG_ADDR_WIDTH'b0;
+                reg2_raddr = `REG_ADDR_WIDTH'b0;
+                end    
+                else begin
+                unknown_code = inst ;
+                end
+            end
+            endcase
+        end
         default:begin
-            if(inst == 32'h0010_0073)begin
+            if(inst == 32'h0010_0073)begin    //ebreak
                 ebreak_flag = 1'b1;
+                ecall_flag = 1'b0;
                 unknown_code = 32'h0;
                 reg1_raddr = `REG_ADDR_WIDTH'b0;
                 reg2_raddr = `REG_ADDR_WIDTH'b0;
@@ -856,11 +923,17 @@ import "DPI-C" function void ebreak();
     end
 
 end*/
-
+import "DPI-C" function word_t isa_raise_intr(word_t NO, vaddr_t epc);
+import "DPI-C" function word_t isa_query_intr()
 import "DPI-C" function void unknown_inst();
 always@(*)begin
     if(unknown_code != 32'd0)
         unknown_inst();
 end
-
+always@(*)begin
+    if(ecall_flag)
+        unnoraml_pc = isa_raise_intr(11, id_pc);
+    else if(mret_flag)
+        unnoraml_pc = isa_query_intr;
+end
 endmodule

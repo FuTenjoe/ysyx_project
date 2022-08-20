@@ -36,6 +36,11 @@ void difftest_exec(uint64_t n) {
 
 void difftest_raise_intr(word_t NO) {
   assert(0);
+  //自己加
+/*  cpu.sr[834] = NO;
+  vaddr_t rt = cpu.sr[773];
+  return rt;*/
+
 }
 
 void difftest_init() {

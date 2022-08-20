@@ -23,7 +23,9 @@ module pc_predict (
     input [2:0] ex_rd_buf_flag,
     input mem_res_valid,
    // input waxi_valid,
-    input wb_res_valid
+    input wb_res_valid,
+    input mret_flag,
+    input ecall_flag
 );
 
 reg delay_sig_jalr;

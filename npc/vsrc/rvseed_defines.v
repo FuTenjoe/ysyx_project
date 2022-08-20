@@ -112,15 +112,18 @@
 `define ALU_DIVYW `ALU_OP_WIDTH'b10101  //32位取余数
 `define ALU_MEM `ALU_OP_WIDTH'b10110   //专用于sd,sh,sb,sw
 `define ALU_DIV `ALU_OP_WIDTH'b10111  //有符号64位除
+`define ALU_CSRRS `ALU_OP_WIDTH'b11000  //csrrs
+`define ALU_CSRRW `ALU_OP_WIDTH'b11001  //csrrw
 
 
 
 // ALU select soure
-`define ALU_SRC_WIDTH 2
-`define ALU_SRC_REG     `ALU_SRC_WIDTH'b00 // src1 = reg1, src2 = reg2
-`define ALU_SRC_IMM     `ALU_SRC_WIDTH'b01 // src1 = reg1, src2 = imm
-`define ALU_SRC_FOUR_PC `ALU_SRC_WIDTH'b10 // src1 = 4,    src2 = pc
-`define ALU_SRC_IMM_PC  `ALU_SRC_WIDTH'b11 // src1 = imm,  src2 = pc
+`define ALU_SRC_WIDTH 3
+`define ALU_SRC_REG     `ALU_SRC_WIDTH'b000 // src1 = reg1, src2 = reg2
+`define ALU_SRC_IMM     `ALU_SRC_WIDTH'b001 // src1 = reg1, src2 = imm
+`define ALU_SRC_FOUR_PC `ALU_SRC_WIDTH'b010 // src1 = 4,    src2 = pc
+`define ALU_SRC_IMM_PC  `ALU_SRC_WIDTH'b011 // src1 = imm,  src2 = pc
+`define ALU_SRC_CSRRS   `ALU_SRC_WIDTH'b100 //src1=reg1,    src2=csr
 
 // IMM GEN opcode
 `define IMM_GEN_OP_WIDTH 3

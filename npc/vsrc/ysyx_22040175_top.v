@@ -70,7 +70,10 @@ if_stage u_if_stage(
     .wb_res_valid(wb_res_valid),
     .axi_req(axi_req),
     .w_done(w_done),
-    .b_hs(b_hs)
+    .b_hs(b_hs),
+
+    .mret_flag(mret_flag),
+    .ecall_flag(ecall_flag)
 
 );
 wire [31:0]id_inst;
@@ -126,6 +129,12 @@ wire rest_wb_hazard;
 wire sig_jalr;
 wire id_mul;
 wire id_div;
+wire [63:0] from_mem_mepc;
+wire [63:0] from_mem_mcause;
+wire [63:0] from_mem_mtvec;
+wire [11:0] id_csr_addr;
+wire mret_flag;
+wire ecall_flag;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -182,7 +191,13 @@ id_stage u_id_stage(
     .mem_cunqu_hazard(mem_cunqu_hazard),
     .mem_from_ex_alu_res(mem_from_ex_alu_res),
     .id_mul(id_mul),
-    .id_div(id_div)
+    .id_div(id_div),
+    .mepc(from_mem_mepc),
+    .mcause(from_mem_mcause),
+    .mtvec(from_mem_mtvec),
+    .csr_addr(id_csr_addr),
+    .mret_flag(mret_flag),
+    .ecall_flag(ecall_flag)
 );
 
 wire id_cunqu_hazard;
@@ -218,6 +233,7 @@ wire [63:0] ex_end_write_addr;
 wire ex_cunqu_hazard;
 wire ex_id_mul;
 wire ex_id_div;
+wire [11:0] ex_csr_addr;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -280,7 +296,9 @@ id_ex_regs u_id_ex_regs(
     .id_mul_id_ex_i(id_mul),
 	.id_mul_id_ex_o(ex_id_mul),
     .id_div_id_ex_i(id_div),
-    .id_div_id_ex_o(ex_id_div)
+    .id_div_id_ex_o(ex_id_div),
+    .csr_addr_id_ex_i(id_csr_addr),
+	.csr_addr_id_ex_o(ex_csr_addr)
    
     
     );
@@ -324,6 +342,7 @@ wire [63:0] mem_pc;
 wire fr_ex_no_use;
 wire [63:0] mem_end_write_addr;
 wire mem_cunqu_hazard;
+wire [11:0] mem_csr_addr;
 ex_mem_regs u_ex_mem_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -377,7 +396,9 @@ ex_mem_regs u_ex_mem_regs(
     .id_mul_ex_mem_i(ex_id_mul),
 	.sh_fnsh_flag_ex_mem_i(sh_fnsh_flag),
     .id_div_ex_mem_i(ex_id_div),
-	.div_finish_ex_mem_i(div_finish)
+	.div_finish_ex_mem_i(div_finish),
+    .csr_addr_ex_mem_i(ex_csr_addr),
+    .csr_addr_ex_mem_o(mem_csr_addr)
 	
 );
 wire [63:0] from_mem_alu_res;
@@ -409,7 +430,11 @@ mem_stage u_mem_stage(
     .r_done(delay_r_done),
     .mem_no_use(mem_no_use),
     .axi_rdata(rdata),
-    .mem_rd_buf_flag(reg_rd_buf_flag)
+    .mem_rd_buf_flag(reg_rd_buf_flag),
+    .mem_csr_addr(mem_csr_addr),
+    .mepc(from_mem_mepc),
+    .mcause(from_mem_mcause),
+    .mtvec(from_mem_mtvec)
    
 );
 wire wb_reg_wen;

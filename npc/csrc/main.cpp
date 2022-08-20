@@ -14,7 +14,7 @@
 typedef uint64_t word_t;
 typedef  uint32_t paddr_t;
 typedef  word_t vaddr_t;
-
+typedef unsigned long int	uintptr_t;
 static uint8_t *pimem =NULL;
 
 enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
@@ -24,6 +24,7 @@ uint32_t current_inst = 0;
 typedef struct {
   word_t gpr[32];
   vaddr_t pc;
+  uintptr_t sr[1024];
 } CPU_state; //nemu的CPU状态用于比较
 
 CPU_state cpu = {};
@@ -64,6 +65,7 @@ static void checkregs(CPU_state *ref, vaddr_t pc);
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc);
 //static inline void host_write(void *addr, int len, word_t data);
 void host_write(void *addr, int len, word_t data);
+
 
 //加为DPIC函数
 extern "C" void pmem_read(long long raddr,long long *rdata){
@@ -111,11 +113,23 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   host_write(guest_to_host(waddr),len,wdata);
 }
 
-/*static word_t pmem_read(paddr_t addr, int len) {
-  word_t ret = host_read(guest_to_host(addr), len);
-   //printf("pmem_read success addr");
-  return ret;
-}*/
+extern "C" word_t isa_raise_intr(word_t NO, vaddr_t epc) {
+  //自己加
+  cpu.sr[833] = epc;
+  cpu.sr[834] = NO;
+  vaddr_t rt = cpu.sr[773];
+  return rt;
+}
+
+extern "C" word_t isa_query_intr() {
+  //自家加实现mret
+  //printf("mret cpu.sr[833]=%lx\n", cpu.sr[833]);
+  //cpu.sr[833] = cpu.sr[833] +4;
+  return cpu.sr[833];
+}
+
+
+
 
 VerilatedContext *contextp = new VerilatedContext;
   // init top verilog instance
@@ -312,6 +326,7 @@ int is_exit_status_bad(){
   }
   return !good;
 }
+
 //Difftest初始化
 void init_difftest(long img_size,int port){
   char const *ref_so_file = "/home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so";

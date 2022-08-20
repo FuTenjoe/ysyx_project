@@ -54,7 +54,9 @@ module ex_mem_regs(
 	input id_mul_ex_mem_i,
 	input sh_fnsh_flag_ex_mem_i,
 	input id_div_ex_mem_i,
-	input div_finish_ex_mem_i
+	input div_finish_ex_mem_i,
+	input [11:0]csr_addr_ex_mem_i,
+	output reg [11:0] csr_addr_ex_mem_o
     );
 
 	always@(posedge clk or negedge rst_n)

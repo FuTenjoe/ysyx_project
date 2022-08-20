@@ -23,8 +23,12 @@ module mem_stage(
     input r_done,      //这里实际为延迟一周期的r_done
     output mem_no_use,   //没有用到访存时为1
     input [63:0] axi_rdata,
-    output [2:0] mem_rd_buf_flag
+    output [2:0] mem_rd_buf_flag,
     
+    input [11:0] mem_csr_addr,   //异常中断
+    output reg [63:0] mepc,
+    output reg [63:0] mcause,
+    output reg [63:0] mtvec
 );
 reg [2:0] reg_rd_buf_flag;
 wire [63:0] rd_buf_lw;
@@ -41,6 +45,24 @@ always@(*)begin
             alu_res = rd_buf_lw[7:0]; 
         else if(reg_rd_buf_flag == 3'd6)   //lh
             alu_res = rd_buf_lw[15:0]; 
+        end
+        `ALU_CSRRS:begin
+            alu_res = alu_res;
+            case(mem_csr_addr)
+            12'd833:mepc = alu_src1 | alu_src2;
+            12'd834:mcause = alu_src1 | alu_src2;
+            12'd773:mtvec = alu_src1 | alu_src2;
+            defalut:;
+            endcase
+        end
+        `ALU_CSRRW:begin
+            alu_res = alu_res;
+            case(mem_csr_addr)
+            12'd833:mepc = alu_src1;
+            12'd834:mcause = alu_src1;
+            12'd773:mtvec = alu_src1;
+            defalut:;
+            endcase
         end
         default: alu_res = alu_res;
     endcase
