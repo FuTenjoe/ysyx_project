@@ -33,7 +33,7 @@ module ctrl (
    // output reg [63:0] mstatus
    input [63:0] mepc,
     input [63:0] mcause,
-    input [63:0] mtvec,
+    input [63:0] mtvec
    
 );
 
