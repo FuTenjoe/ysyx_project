@@ -4207,7 +4207,7 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                                                      & (~ (IData)(
                                                                   ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                                    >> 0x1aU))))) {
-                                                    vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op = 5U;
+                                                    vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op = 0U;
                                                 }
                                             }
                                         }
