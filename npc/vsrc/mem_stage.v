@@ -52,7 +52,7 @@ always@(*)begin
             12'd833:mepc = alu_src1 | alu_src2;
             12'd834:mcause = alu_src1 | alu_src2;
             12'd773:mtvec = alu_src1 | alu_src2;
-            defalut:;
+            default:;
             endcase
         end
         `ALU_CSRRW:begin
