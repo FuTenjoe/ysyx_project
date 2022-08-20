@@ -215,7 +215,7 @@ muxpc u_mux_pc(
    .data_rest_cond(data_rest_cond),
    .reg1_rdata(delay_reg1_rdata),
    .sig_jalr(sig_jalr),
-   .delay_sig_jalr(delay_sig_jalr)
+   .delay_sig_jalr(delay_sig_jalr),
    .mret_flag(mret_flag),
    .ecall_flag(ecall_flag),
    .unnormal_pc(unnoraml_pc)

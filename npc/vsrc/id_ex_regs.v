@@ -127,7 +127,7 @@ always@(posedge clk or negedge rst_n)begin
 			cunqu_hazard_id_ex_o <= cunqu_hazard_id_ex_i;
 			id_mul_id_ex_o <= id_mul_id_ex_i;
 			id_div_id_ex_o <= id_div_id_ex_i;
-			csr_addr_id_ex_o <= <= csr_addr_id_ex_i;
+			csr_addr_id_ex_o <= csr_addr_id_ex_i;
 		end
 end
 	

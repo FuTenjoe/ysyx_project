@@ -55,6 +55,7 @@ always @(*) begin
                     alu_src1 = reg1_raddr;
                     alu_src2 = mtvec;  
                 end
+                endcase
         endcase
         end
     
