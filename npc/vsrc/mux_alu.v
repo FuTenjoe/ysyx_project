@@ -44,21 +44,21 @@ always @(*) begin
             `ALU_SRC_CSRRS:begin
                 case(csr_addr)
                 12'd833:begin
-                    alu_src1 = reg1_raddr;
+                    alu_src1 = reg1_rdata;
                     alu_src2 = mepc;  
                 end
                 12'd834:begin
-                    alu_src1 = reg1_raddr;
+                    alu_src1 = reg1_rdata;
                     alu_src2 = mcause;  
                 end
                 12'd733:begin
-                    alu_src1 = reg1_raddr;
+                    alu_src1 = reg1_rdata;
                     alu_src2 = mtvec;  
                 end
                 endcase
             end
             `ALU_SRC_ECALL:begin
-                alu_src1 = reg1_raddr;
+                alu_src1 = reg1_rdata;
                 alu_src2 = reg2_rdata;
             end
         endcase
