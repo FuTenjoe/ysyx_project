@@ -64,6 +64,11 @@ always@(*)begin
             defalut:;
             endcase
         end
+        `ALU_ECALL:begin
+            alu_res = alu_res;
+            mepc = alu_src1;
+            mcause = 11;
+        end
         default: alu_res = alu_res;
     endcase
     

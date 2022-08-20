@@ -57,6 +57,10 @@ always @(*) begin
                 end
                 endcase
             end
+            `ALU_SRC_ECALL:begin
+                alu_src1 = reg1_raddr;
+                alu_src2 = reg2_rdata;
+            end
         endcase
         end
     

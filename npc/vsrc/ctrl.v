@@ -30,7 +30,10 @@ module ctrl (
     output reg [11:0] csr_addr,
     output reg mret_flag,
     output reg [31:0]unnormal_pc,
-    output reg [63:0] mstatus
+   // output reg [63:0] mstatus
+   input [63:0] mepc,
+    input [63:0] mcause,
+    input [63:0] mtvec,
    
 );
 
@@ -881,9 +884,23 @@ always @(*) begin
                 ecall_flag = 1'b1;
                 mret_flag = 1'b0;
                 unknown_code = 32'h0;
-                reg1_raddr = `REG_ADDR_WIDTH'b0;
-                reg2_raddr = `REG_ADDR_WIDTH'b0;
                 unnoraml_pc = mtvec;
+                jump        = 1'b0;
+                reg_wen     = 1'b0;
+                jalr = 1'b0;
+                reg1_raddr  = id_pc;
+                reg2_raddr  = rs2;
+                reg_waddr   = 64'd0;
+                s_imm =0;
+                imm_gen_op  = `IMM_GEN_SRAI;   //不需要使用R型指令
+                alu_op      = `ALU_ECALL;
+                alu_src_sel = `ALU_SRC_ECALL;   //选1和csr，与CSRRS一样
+                wmask =  8'b0;
+                s_flag = 1'd0;
+                expand_signed =4'd0;    
+                rd_flag = 3'd0;
+                id_div = 1'b0;
+                csr_addr = 12'd0;
                 end
                 else if(inst == 32'h3020_0073)begin   //mret
                 ecall_flag = 1'b0;
