@@ -51,7 +51,7 @@ always @(*) begin
                     alu_src1 = reg1_rdata;
                     alu_src2 = mcause;  
                 end
-                12'd733:begin
+                12'd773:begin
                     alu_src1 = reg1_rdata;
                     alu_src2 = mtvec;  
                 end
