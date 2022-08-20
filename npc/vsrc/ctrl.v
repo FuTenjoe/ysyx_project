@@ -904,14 +904,14 @@ always @(*) begin
                 id_div = 1'b0;
                 csr_addr = 12'd0;
                 end
-                else if(inst == 32'h3020_0073)begin   //mret
+            /*    else if(inst == 32'h3020_0073)begin   //mret
                 ecall_flag = 1'b0;
                 mret_flag = 1'b1;
                 unknown_code = 32'h0;
                 reg1_raddr = `REG_ADDR_WIDTH'b0;
                 reg2_raddr = `REG_ADDR_WIDTH'b0;
                 unnormal_pc = mepc;
-                end    
+                end    */
                 else if(inst == 32'h0010_0073)begin    //ebreak
                 ebreak_flag = 1'b1;
                 ecall_flag = 1'b0;
