@@ -919,7 +919,7 @@ always @(*) begin
                 reg1_raddr = `REG_ADDR_WIDTH'b0;
                 reg2_raddr = `REG_ADDR_WIDTH'b0;
                 end
-               else begin
+                else begin
                 unknown_code = inst ;
                 end
             end
