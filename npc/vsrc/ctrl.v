@@ -883,6 +883,7 @@ always @(*) begin
                 unknown_code = 32'h0;
                 reg1_raddr = `REG_ADDR_WIDTH'b0;
                 reg2_raddr = `REG_ADDR_WIDTH'b0;
+                unnoraml_pc = mtvec;
                 end
                 else if(inst == 32'h3020_0073)begin   //mret
                 ecall_flag = 1'b0;
@@ -890,6 +891,7 @@ always @(*) begin
                 unknown_code = 32'h0;
                 reg1_raddr = `REG_ADDR_WIDTH'b0;
                 reg2_raddr = `REG_ADDR_WIDTH'b0;
+                unnoraml_pc = mepc;
                 end    
                 else begin
                 unknown_code = inst ;
@@ -923,17 +925,10 @@ import "DPI-C" function void ebreak();
     end
 
 end*/
-import "DPI-C" function word_t isa_raise_intr(word_t NO, vaddr_t epc);
-import "DPI-C" function word_t isa_query_intr();
 import "DPI-C" function void unknown_inst();
 always@(*)begin
     if(unknown_code != 32'd0)
         unknown_inst();
 end
-always@(*)begin
-    if(ecall_flag)
-        unnoraml_pc = isa_raise_intr(11, id_pc);
-    else if(mret_flag)
-        unnoraml_pc = isa_query_intr;
-end
+
 endmodule
