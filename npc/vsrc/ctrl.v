@@ -239,9 +239,25 @@ always @(*) begin
                     expand_signed =4'd0;    
                     rd_flag = 3'd0;
                     end
-                    7'b0100_000,7'b0100_001:begin      //srai
+                    7'b0100_000:begin      //srai
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
+                    jalr = 1'b0;
+                    reg1_raddr  = rs1;
+                    reg2_raddr  = rs2;
+                    reg_waddr   = rd;
+                    s_imm =0;
+                    imm_gen_op  = `IMM_GEN_SRAI;   //I型指令,不用imm
+                    alu_op      = `ALU_SRA;       //流水线后改原算术右移为逻辑右移
+                    alu_src_sel = `ALU_SRC_IMM;
+                    wmask =  8'b0;
+                    s_flag = 1'd0;
+                    expand_signed =4'd0;    
+                    rd_flag = 3'd0;
+                    end
+                    7'b0100_001:begin      //srai
+                    jump        = 1'b0;
+                    reg_wen     = 1'b0;
                     jalr = 1'b0;
                     reg1_raddr  = rs1;
                     reg2_raddr  = rs2;
