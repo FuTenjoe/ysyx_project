@@ -368,7 +368,7 @@ static void checkregs(CPU_state *ref, vaddr_t dnpc){
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
   int i = 0;
   bool DIF_result = true;
-  if(top->inst==0000_0073){
+  if(top->inst== 115){
     printf("ecall");
   }
   if(ref_r -> pc != dnpc){
