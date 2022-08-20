@@ -68,6 +68,7 @@ always @(*) begin
     ecall_flag = 1'b0;
     csr_addr = 12'd0;
     mret_flag = 1'b0;
+    unnormal_pc = 32'd0;
     case (opcode)
         7'b0110011: begin                         
             reg_wen     = 1'b1;
@@ -884,7 +885,7 @@ always @(*) begin
                 ecall_flag = 1'b1;
                 mret_flag = 1'b0;
                 unknown_code = 32'h0;
-                unnoraml_pc = mtvec;
+                unnormal_pc = mtvec;
                 jump        = 1'b0;
                 reg_wen     = 1'b0;
                 jalr = 1'b0;
@@ -908,7 +909,7 @@ always @(*) begin
                 unknown_code = 32'h0;
                 reg1_raddr = `REG_ADDR_WIDTH'b0;
                 reg2_raddr = `REG_ADDR_WIDTH'b0;
-                unnoraml_pc = mepc;
+                unnormal_pc = mepc;
                 end    
                 else begin
                 unknown_code = inst ;
