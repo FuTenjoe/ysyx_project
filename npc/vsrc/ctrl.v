@@ -863,7 +863,7 @@ always @(*) begin
                 id_div = 1'b0;
                 csr_addr = csr;
             end*/
-            3'b001:begin      //csrrw
+        /*    3'b001:begin      //csrrw
                 jump        = 1'b0;
                 reg_wen     = 1'b1;
                 jalr = 1'b0;
@@ -880,7 +880,7 @@ always @(*) begin
                 rd_flag = 3'd0;
                 id_div = 1'b0;
                 csr_addr = csr;
-            end
+            end*/
             default:begin
                 if(inst == 32'h0000_0073)begin   //ecall
                 ecall_flag = 1'b1;
