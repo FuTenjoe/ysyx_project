@@ -213,6 +213,9 @@ always @(*) begin
         `ALU_CSRRS:begin
             alu_res = alu_src2 ;
         end
+        `ALU_CSRRW:begin
+            alu_res = alu_src2 ;
+        end
         default:begin
             alu_res = alu_src1 -  alu_src2;
             zero = (alu_res == `CPU_WIDTH'b0) ? 1'b1 : 1'b0;
