@@ -231,8 +231,8 @@ always @(*) begin
                     reg2_raddr  = rs2;
                     reg_waddr   = rd;
                     s_imm =0;
-                    imm_gen_op  = `IMM_GEN_SRAI;   //R型指令
-                    alu_op      = `ALU_SRL;       //流水线后改原算术右移为逻辑右移
+                    imm_gen_op  = `IMM_GEN_I;   //R型指令
+                    alu_op      = `ALU_SRC_IMM;       //流水线后改原算术右移为逻辑右移
                     alu_src_sel = `ALU_SRC_REG;
                     wmask =  8'b0;
                     s_flag = 1'd0;
