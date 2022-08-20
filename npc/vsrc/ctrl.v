@@ -1,7 +1,7 @@
 `include "../vsrc/rvseed_defines.v"
 
 module ctrl (
-    input [63:0] id_pc
+    input [63:0] id_pc,
     input      [`CPU_WIDTH-1:0]        inst,       // instruction input
 
     output reg                         branch,     // branch flag
