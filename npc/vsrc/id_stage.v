@@ -70,7 +70,7 @@ wire [`REG_ADDR_WIDTH-1:0]   reg1_raddr; // register 1 read address
 wire [`REG_ADDR_WIDTH-1:0]   reg2_raddr; // register 2 read address
 wire [2:0] data_rest_cond;
 
-wire [31:0] unnoraml_pc;
+wire [31:0] unnormal_pc;
 
 
 ctrl u_ctrl(
@@ -102,7 +102,7 @@ ctrl u_ctrl(
     .csr_addr(csr_addr),
     .mret_flag(mret_flag),
     .ecall_flag(ecall_flag),
-    .unnormal_pc(unnoraml_pc)
+    .unnormal_pc(unnormal_pc)
 );
 imm_gen u_imm_gen(
     .inst(inst),       // instruction input
@@ -218,7 +218,7 @@ muxpc u_mux_pc(
    .delay_sig_jalr(delay_sig_jalr),
    .mret_flag(mret_flag),
    .ecall_flag(ecall_flag),
-   .unnormal_pc(unnoraml_pc)
+   .unnormal_pc(unnormal_pc)
    
    
     );
