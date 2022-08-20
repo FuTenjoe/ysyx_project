@@ -1,6 +1,7 @@
 `include "../vsrc/rvseed_defines.v"
 
 module ctrl (
+    input [63:0] id_pc
     input      [`CPU_WIDTH-1:0]        inst,       // instruction input
 
     output reg                         branch,     // branch flag
@@ -889,7 +890,7 @@ always @(*) begin
                 jump        = 1'b0;
                 reg_wen     = 1'b0;
                 jalr = 1'b0;
-                reg1_raddr  = id_pc;
+                reg1_raddr  = id_pc[31:0];
                 reg2_raddr  = rs2;
                 reg_waddr   = 64'd0;
                 s_imm =0;
