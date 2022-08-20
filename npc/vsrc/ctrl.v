@@ -924,7 +924,7 @@ import "DPI-C" function void ebreak();
 
 end*/
 import "DPI-C" function word_t isa_raise_intr(word_t NO, vaddr_t epc);
-import "DPI-C" function word_t isa_query_intr()
+import "DPI-C" function word_t isa_query_intr();
 import "DPI-C" function void unknown_inst();
 always@(*)begin
     if(unknown_code != 32'd0)
