@@ -239,7 +239,7 @@ always @(*) begin
                     expand_signed =4'd0;    
                     rd_flag = 3'd0;
                     end
-                    7'b0100_000:begin      //srai
+                    7'b0100_000,7'b0100_001:begin      //srai
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
