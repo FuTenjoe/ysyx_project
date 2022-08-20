@@ -2534,7 +2534,7 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                                               & (IData)(
                                                         ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                          >> 0x19U))))) {
-                            vlSelf->ysyx_22040175_top__DOT__id_alu_src_sel = 0U;
+                            vlSelf->ysyx_22040175_top__DOT__id_alu_src_sel = 1U;
                         }
                     } else {
                         vlSelf->ysyx_22040175_top__DOT__id_alu_src_sel = 1U;
@@ -3778,7 +3778,7 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                                                   & (IData)(
                                                             ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__id_inst)) 
                                                              >> 0x19U))))) {
-                                vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op = 0U;
+                                vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__imm_gen_op = 5U;
                             }
                         }
                     }
