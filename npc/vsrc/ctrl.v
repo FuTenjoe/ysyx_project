@@ -223,7 +223,7 @@ always @(*) begin
                 end   
                 3'b101:begin      //srai
                     case(funct7)
-                    7'b0000_000:begin  //srli
+                    7'b0000_000,7'b0000_001:begin  //srli
                     jump        = 1'b0;
                     reg_wen     = 1'b1;
                     jalr = 1'b0;
