@@ -74,7 +74,7 @@ wire [31:0] unnormal_pc;
 
 
 ctrl u_ctrl(
-    .id_pc(id_pc)
+    .id_pc(id_pc),
    .inst(inst),       // instruction input
 
     .branch(branch),     // branch flag
