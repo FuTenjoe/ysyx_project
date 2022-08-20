@@ -113,22 +113,6 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   host_write(guest_to_host(waddr),len,wdata);
 }
 
-extern "C" word_t isa_raise_intr(word_t NO, vaddr_t epc) {
-  //自己加
-  cpu.sr[833] = epc;
-  cpu.sr[834] = NO;
-  vaddr_t rt = cpu.sr[773];
-  return rt;
-}
-
-extern "C" word_t isa_query_intr() {
-  //自家加实现mret
-  //printf("mret cpu.sr[833]=%lx\n", cpu.sr[833]);
-  //cpu.sr[833] = cpu.sr[833] +4;
-  return cpu.sr[833];
-}
-
-
 
 
 VerilatedContext *contextp = new VerilatedContext;
@@ -385,10 +369,10 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
   int i = 0;
   bool DIF_result = true;
   
-  if(ref_r -> pc != dnpc){
+/*  if(ref_r -> pc != dnpc){
     printf("False: PC is false! ref_dnpc is 0x%0lx;npc_dnpc is 0x%0lx; Instruction is 0x%x\n",ref_r->pc,dnpc,top->inst);
     DIF_result = false;
-  }
+  }*/
   for (i=0; i<32;i++){
     if(ref_r->gpr[i] != cpu_gpr[i]){
       printf("False: Reg is false! ref_gpr[%d]: 0x%08lx;npc_gpr[%d]; 0x%08lx; Instruction is 0x%x\n",i,ref_r->gpr[i],i,cpu_gpr[i],top->inst);
