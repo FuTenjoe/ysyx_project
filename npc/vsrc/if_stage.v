@@ -36,7 +36,8 @@ module if_stage (
     output w_done,
     output b_hs,
     input mret_flag,
-    input ecall_flag
+    input ecall_flag,
+    input w_start
    // output inst_use
 
 
@@ -66,7 +67,8 @@ pc_predict u_pc_predict(
   .mem_res_valid(mem_res_valid),
   .wb_res_valid(wb_res_valid),
   .mret_flag(mret_flag),
-  .ecall_flag(ecall_flag)
+  .ecall_flag(ecall_flag),
+  .w_start(w_start)
 );
 //reg delay_r_done;
 //wire [63:0] rdata;

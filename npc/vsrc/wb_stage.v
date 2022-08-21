@@ -30,7 +30,8 @@ module wb_stage (
     output wb_res_valid,
     output  axi_req,
     input w_done,
-    input b_hs
+    input b_hs,
+    output w_start
    
 );
 reg [63:0] reg_wdata;
@@ -42,7 +43,7 @@ always@(*)begin
         reg_wdata = from_ex_alu_res;
     end
 end
-
+assign w_start = rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0);
 always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)

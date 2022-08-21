@@ -25,7 +25,8 @@ module pc_predict (
    // input waxi_valid,
     input wb_res_valid,
     input mret_flag,
-    input ecall_flag
+    input ecall_flag,
+    input w_start
 );
 
 reg delay_sig_jalr;
@@ -57,6 +58,8 @@ always@(*)begin
         IDLE:begin
             if(ex_rd_buf_flag==3'd1| ex_rd_buf_flag==3'd2|ex_rd_buf_flag==3'd4|ex_rd_buf_flag==3'd6)
                 next_state = MEM;
+            else if(w_start)
+                next_state = WRITE;
             else
                 next_state = NEXT;
         end

@@ -73,7 +73,8 @@ if_stage u_if_stage(
     .b_hs(b_hs),
 
     .mret_flag(mret_flag),
-    .ecall_flag(ecall_flag)
+    .ecall_flag(ecall_flag),
+    .w_start(w_start)
 
 );
 wire [31:0]id_inst;
@@ -508,6 +509,7 @@ wire [63:0] reg_write_data;
 wire [7:0] reg_write_wmask;
 wire wb_res_valid;
 wire  axi_req;
+wire w_start;
 wb_stage u_wb_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -536,7 +538,8 @@ wb_stage u_wb_stage(
     .wb_res_valid(wb_res_valid),
     .axi_req(axi_req),
     .w_done(w_done),
-    .b_hs(b_hs)
+    .b_hs(b_hs),
+    .w_start(w_start)
   
    
 );
