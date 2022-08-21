@@ -1,7 +1,7 @@
 #include <am.h>
 #include <klib-macros.h>
 //自己加
-#include <klib.h>
+//#include <klib.h>
 #include <riscv/riscv.h>
 
 extern char _heap_start;
