@@ -43,7 +43,7 @@ always @ (posedge clk or negedge rst_n) begin
 end
 
 
-parameter IDLE=3'd0,NEXT=3'd1,EN=3'd2,FN=3'd3,MEM=3'd4,WRITE=3'd5;
+parameter IDLE=3'd0,NEXT=3'd1,EN=3'd2,FN=3'd3,MEM=3'd4,WRITE=3'd5,NEXT2=3'd6;
 reg [2:0] present_state,next_state;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
@@ -69,7 +69,7 @@ always@(*)begin
         end
         WRITE:begin
             if(wb_res_valid)
-                next_state = NEXT;
+                next_state = NEXT2;
             else
                 next_state = WRITE;
         end
@@ -80,6 +80,12 @@ always@(*)begin
                 next_state = EN;
             else 
                 next_state = NEXT;
+        end
+        NEXT2:begin
+            if(ar_hs && return_id ==4'd1)
+                next_state = EN;
+            else 
+                next_state = NEXT2;
         end
         EN:begin
             if(r_done && return_id == 4'd1)
