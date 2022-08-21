@@ -28,7 +28,8 @@ module mem_stage(
     input [11:0] mem_csr_addr,   //异常中断
     output reg [63:0] mepc,
     output reg [63:0] mcause,
-    output reg [63:0] mtvec
+    output reg [63:0] mtvec,
+    output reg [63:0] mstatus
 );
 reg [2:0] reg_rd_buf_flag;
 wire [63:0] rd_buf_lw;
@@ -52,6 +53,7 @@ always@(*)begin
             12'd833:mepc = alu_src1 | alu_src2;
             12'd834:mcause = alu_src1 | alu_src2;
             12'd773:mtvec = alu_src1 | alu_src2;
+            12'd768:mstatus = alu_src1 | alu_src2;
             default:;
             endcase
         end
@@ -61,6 +63,7 @@ always@(*)begin
             12'd833:mepc = alu_src1;
             12'd834:mcause = alu_src1;
             12'd773:mtvec = alu_src1;
+            12'd768:mstatus = alu_src1;
             default:;
             endcase
         end
