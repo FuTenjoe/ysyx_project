@@ -6956,7 +6956,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__10(Vysyx_22040175_
                 : ((IData)(vlSelf->ysyx_22040175_top__DOT__id_ebreak_flag)
                     ? 0x80000000ULL : (((IData)(vlSelf->ysyx_22040175_top__DOT__ecall_flag) 
                                         | (IData)(vlSelf->ysyx_22040175_top__DOT__mret_flag))
-                                        ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__unnormal_pc))
+                                        ? vlSelf->ysyx_22040175_top__DOT__from_mem_mtvec
                                         : vlSelf->ysyx_22040175_top__DOT__id_pc)));
     }
     vlSelf->out_mem_rd_buf_flag = vlSelf->ysyx_22040175_top__DOT__sig_jalr;

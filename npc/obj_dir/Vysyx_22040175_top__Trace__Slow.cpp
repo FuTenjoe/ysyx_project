@@ -644,6 +644,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+41,"ysyx_22040175_top u_id_stage u_mux_pc mret_flag", false,-1);
         tracep->declBit(c+42,"ysyx_22040175_top u_id_stage u_mux_pc ecall_flag", false,-1);
         tracep->declBus(c+142,"ysyx_22040175_top u_id_stage u_mux_pc unnormal_pc", false,-1, 31,0);
+        tracep->declQuad(c+38,"ysyx_22040175_top u_id_stage u_mux_pc mtvec", false,-1, 63,0);
         tracep->declBit(c+2352,"ysyx_22040175_top u_id_stage u_mux_pc zero", false,-1);
         tracep->declQuad(c+2353,"ysyx_22040175_top u_id_stage u_mux_pc signed_alu_src1", false,-1, 63,0);
         tracep->declQuad(c+2355,"ysyx_22040175_top u_id_stage u_mux_pc signed_alu_src2", false,-1, 63,0);
