@@ -84,6 +84,10 @@ extern "C" void pmem_read(long long raddr,long long *rdata){
 extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   long long addr = waddr;
   int len = 0;
+  if(waddr == 0xa0003f8){
+    printf("mmio");
+  }
+  else if{
   switch(wmask){
     //8bit
     case 0x1: len = 1; break;
@@ -110,6 +114,7 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   printf("wdata = %llx\n",wdata);
   printf("len = %x\n",len);
   //printf("len = %d\n",len);
+  }
   host_write(guest_to_host(waddr),len,wdata);
 }
 
