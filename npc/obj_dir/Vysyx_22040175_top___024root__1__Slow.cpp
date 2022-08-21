@@ -18,9 +18,6 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
     VlWide<5>/*159:0*/ __Vtemp534;
     VlWide<5>/*159:0*/ __Vtemp537;
     // Body
-    vlSelf->ysyx_22040175_top__DOT__from_wb_reg_f[0x1bU] 
-        = vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f
-        [0x1bU];
     vlSelf->ysyx_22040175_top__DOT__from_wb_reg_f[0x1cU] 
         = vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f
         [0x1cU];

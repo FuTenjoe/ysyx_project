@@ -8,9 +8,9 @@
 #include "verilated_dpi.h"
 
 void Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_id_stage__DOT__u_ctrl__DOT__unknown_inst_TOP();
-extern const VlUnpacked<CData/*1:0*/, 16> Vysyx_22040175_top__ConstPool__TABLE_5ecd77c1_0;
-extern const VlUnpacked<CData/*0:0*/, 16> Vysyx_22040175_top__ConstPool__TABLE_a56141a6_0;
-extern const VlUnpacked<CData/*3:0*/, 16> Vysyx_22040175_top__ConstPool__TABLE_96a68b8b_0;
+extern const VlUnpacked<CData/*1:0*/, 16> Vysyx_22040175_top__ConstPool__TABLE_661adae9_0;
+extern const VlUnpacked<CData/*0:0*/, 16> Vysyx_22040175_top__ConstPool__TABLE_ed197e2d_0;
+extern const VlUnpacked<CData/*3:0*/, 16> Vysyx_22040175_top__ConstPool__TABLE_1d425d54_0;
 
 VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175_top___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -4891,16 +4891,16 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
             : 0U);
     __Vtableidx1 = (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state) 
                      << 1U) | (IData)(vlSelf->ysyx_22040175_top__DOT__rst_n));
-    if ((1U & Vysyx_22040175_top__ConstPool__TABLE_5ecd77c1_0
+    if ((1U & Vysyx_22040175_top__ConstPool__TABLE_661adae9_0
          [__Vtableidx1])) {
         vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid 
-            = Vysyx_22040175_top__ConstPool__TABLE_a56141a6_0
+            = Vysyx_22040175_top__ConstPool__TABLE_ed197e2d_0
             [__Vtableidx1];
     }
-    if ((2U & Vysyx_22040175_top__ConstPool__TABLE_5ecd77c1_0
+    if ((2U & Vysyx_22040175_top__ConstPool__TABLE_661adae9_0
          [__Vtableidx1])) {
         vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_send_id 
-            = Vysyx_22040175_top__ConstPool__TABLE_96a68b8b_0
+            = Vysyx_22040175_top__ConstPool__TABLE_1d425d54_0
             [__Vtableidx1];
     }
     vlSelf->ysyx_22040175_top__DOT__mem_send_id = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
@@ -5913,12 +5913,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__8(Vysyx_22040175_t
                                                      != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
                                                  & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_flag))
                                                  ? 5U
-                                                 : 
-                                                (((IData)(vlSelf->ysyx_22040175_top__DOT__ar_hs) 
-                                                  & (1U 
-                                                     == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
-                                                  ? 2U
-                                                  : 1U))
+                                                 : 6U)
                                              : ((((
                                                    (1U 
                                                     == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag)) 
