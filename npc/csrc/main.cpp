@@ -87,7 +87,7 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   if(waddr == 0xa0003f8){
     printf("mmio");
   }
-  else if{
+  else {
   switch(wmask){
     //8bit
     case 0x1: len = 1; break;
