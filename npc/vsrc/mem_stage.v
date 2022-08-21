@@ -76,7 +76,7 @@ always@(*)begin
         default: alu_res = alu_res;
     endcase
 end
-always@(posedge clk or rst_n)begin
+always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         mstatus[3] <= 1'b0;
     end
