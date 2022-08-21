@@ -673,7 +673,7 @@ always @(*) begin
             imm_gen_op  = `INST_TYPE_S;
             alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
-            wmask =  8'b11111111;
+            wmask =  8'b1111_1111;
             s_flag = 1'd1;
             expand_signed = 4'd0;
             rd_flag = 3'd1;  //保留64位
