@@ -5918,7 +5918,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__8(Vysyx_22040175_t
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
                                                    & (0U 
                                                       != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
-                                                  & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_flag)))
+                                                  & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_flag))
                                                   ? 5U
                                                   : 1U)))));
     vlSelf->ysyx_22040175_top__DOT__from_wb_reg_f[0U] 

@@ -9460,7 +9460,7 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
                                                    & (0U 
                                                       != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
-                                                  & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_flag)))
+                                                  & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_flag))
                                                   ? 5U
                                                   : 1U)))));
     vlSelf->inst = vlSelf->ysyx_22040175_top__DOT__if_inst;

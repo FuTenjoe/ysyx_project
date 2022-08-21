@@ -2243,7 +2243,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
         tracep->chgBit(oldp+2453,(((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
                                      & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
                                     & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
-                                   & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_flag)))));
+                                   & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_flag))));
         tracep->chgCData(oldp+2454,(((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
                                       ? ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
                                           ? 0U : (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
