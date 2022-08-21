@@ -281,7 +281,8 @@ inline void host_write(void *addr, int len,word_t data){
     case 2: *(uint16_t *)addr= data; return;
     case 4: *(uint32_t *)addr= data;return;
    // case 8: d =(uint64_t *)addr;printf("host_write data=%ld!\n",data);printf("host_write addr=%ld!\n",addr);*d = data;printf("host_write ok!\n");return;
-    case 8: *(uint64_t *) addr= data;printf("host_write addr=%ld!\n",*(uint64_t *)addr);return;
+   // case 8: *(uint64_t *) addr= data;printf("host_write addr=%ld!\n",*(uint64_t *)addr);return;
+   case 8: *(uint64_t *) addr= data;return;
     default:{printf("host_write is error !\n"); assert(0);};
   }
 }
