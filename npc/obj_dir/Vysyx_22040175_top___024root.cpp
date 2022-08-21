@@ -7215,6 +7215,38 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                     if ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op))) {
                         if ((0x341U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
                             if ((0x342U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
+                                if ((0x305U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
+                                    if ((0x300U == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
+                                        vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__mstatus 
+                                            = vlSelf->ysyx_22040175_top__DOT__mem_alu_src1;
+                                    }
+                                }
+                            }
+                        }
+                    } else if ((0x341U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
+                        if ((0x342U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
+                            if ((0x305U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
+                                if ((0x300U == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
+                                    vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__mstatus 
+                                        = (vlSelf->ysyx_22040175_top__DOT__mem_alu_src1 
+                                           | vlSelf->ysyx_22040175_top__DOT__mem_alu_src2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if ((0x10U & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op))) {
+        if ((8U & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op))) {
+            if ((1U & (~ ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op) 
+                          >> 2U)))) {
+                if ((1U & (~ ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op) 
+                              >> 1U)))) {
+                    if ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op))) {
+                        if ((0x341U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
+                            if ((0x342U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
                                 if ((0x305U == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
                                     vlSelf->ysyx_22040175_top__DOT__from_mem_mtvec 
                                         = vlSelf->ysyx_22040175_top__DOT__mem_alu_src1;
