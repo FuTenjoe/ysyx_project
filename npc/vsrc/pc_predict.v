@@ -76,10 +76,10 @@ always@(*)begin
         NEXT:begin
             if(w_start)
                 next_state = WRITE;
-            else if(ar_hs && return_id ==4'd1)
-                next_state = EN;
+        /*    else if(ar_hs && return_id ==4'd1)
+                next_state = EN;*/
             else 
-                next_state = NEXT;
+                next_state = NEXT2;
         end
         NEXT2:begin
             if(ar_hs && return_id ==4'd1)
@@ -118,6 +118,10 @@ always@(posedge clk or negedge rst_n)begin
             if_send_id <= 4'd0;
         end
         NEXT:begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd0;
+        end
+        NEXT2:begin
             if_valid <= 1'b1;
             if_send_id <= 4'd1;
         end
