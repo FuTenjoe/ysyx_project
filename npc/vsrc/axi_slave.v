@@ -40,7 +40,7 @@ module axi_slave # (
     
     output                        axi_aw_ready_o,    //从设备已准备好接收地址和相关的控制信号          
     input                              axi_aw_valid_i,  
-    input [AXI_ADDR_WIDTH-1:0]         axi_aw_addr_i,
+    input [63:0]         axi_aw_addr_i,
    // output [2:0]                        axi_aw_prot_o,
   //  output [AXI_ID_WIDTH-1:0]           axi_aw_id_o,
   //  output [AXI_USER_WIDTH-1:0]         axi_aw_user_o,
