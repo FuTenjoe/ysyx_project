@@ -58,8 +58,6 @@ always@(*)begin
         IDLE:begin
             if(ex_rd_buf_flag==3'd1| ex_rd_buf_flag==3'd2|ex_rd_buf_flag==3'd4|ex_rd_buf_flag==3'd6)
                 next_state = MEM;
-            else if(w_start)
-                next_state = WRITE;
             else
                 next_state = NEXT;
         end
@@ -76,7 +74,9 @@ always@(*)begin
                 next_state = WRITE;
         end
         NEXT:begin
-            if(ar_hs && return_id ==4'd1)
+            if(w_start)
+                next_state = WRITE;
+            else if(ar_hs && return_id ==4'd1)
                 next_state = EN;
             else 
                 next_state = NEXT;
