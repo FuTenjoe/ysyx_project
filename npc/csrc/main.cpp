@@ -189,8 +189,8 @@ int main(int argc, char **argv, char **env) {
       //top->inst = pmem_read(top->pc,8); //使用DPIC
       
       top->eval ();
-      printf("main_time = %d\n",i);
-      printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
+   //   printf("main_time = %d\n",i);
+    //  printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       //printf("ena=:0x%0x, top->ena);
     /*  printf(" a0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[10],top->inst);
       printf(" npc_gpr[%d]= 0x%08lx; Instruction is 0x%x\n",23,cpu_gpr[23],top->inst);
@@ -221,8 +221,8 @@ int main(int argc, char **argv, char **env) {
       //if((top->diff_pc != end_pc) ){
         
    //     difftest_step(top-> diff_pc);
-        printf("diff_pc = %x",top->diff_pc);
-        printf("diff_delay_pc = %x",top->diff_delay_pc); 
+     //   printf("diff_pc = %x",top->diff_pc);
+    //    printf("diff_delay_pc = %x",top->diff_delay_pc); 
       }
       
      
