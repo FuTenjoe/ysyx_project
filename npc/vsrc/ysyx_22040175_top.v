@@ -133,6 +133,7 @@ wire id_div;
 wire [63:0] from_mem_mepc;
 wire [63:0] from_mem_mcause;
 wire [63:0] from_mem_mtvec;
+wire [63:0] from_mem_mstatus;
 wire [11:0] id_csr_addr;
 wire mret_flag;
 wire ecall_flag;
@@ -196,6 +197,7 @@ id_stage u_id_stage(
     .mepc(from_mem_mepc),
     .mcause(from_mem_mcause),
     .mtvec(from_mem_mtvec),
+    .mstatus(from_mem_mstatus),
     .csr_addr(id_csr_addr),
     .mret_flag(mret_flag),
     .ecall_flag(ecall_flag)
@@ -435,7 +437,8 @@ mem_stage u_mem_stage(
     .mem_csr_addr(mem_csr_addr),
     .mepc(from_mem_mepc),
     .mcause(from_mem_mcause),
-    .mtvec(from_mem_mtvec)
+    .mtvec(from_mem_mtvec),
+    .mstatus(from_mem_mstatus)
    
 );
 wire wb_reg_wen;

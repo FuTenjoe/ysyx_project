@@ -15,7 +15,8 @@ module mux_alu (
     input [11:0] csr_addr,
     input [63:0] mepc,
     input [63:0] mcause,
-    input [63:0] mtvec
+    input [63:0] mtvec,
+    input [63:0] mstatus
    
 );
 
@@ -54,6 +55,10 @@ always @(*) begin
                 12'd773:begin
                     alu_src1 = reg1_rdata;
                     alu_src2 = mtvec;  
+                end
+                12'd768:begin
+                    alu_src1 = reg1_rdata;
+                    alu_src2 = mstatus;  
                 end
                 endcase
             end
