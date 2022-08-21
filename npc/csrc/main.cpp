@@ -374,10 +374,10 @@ static void checkregs(CPU_state *ref, vaddr_t dnpc){
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
   int i = 0;
   bool DIF_result = true;
-/*  if(top->inst== 115){
+  if(top->inst== 115){
     printf("ecall\n");
     assert(1);
-  }*/
+  }
 /*  if(ref_r -> pc != dnpc){
     printf("False: PC is false! ref_dnpc is 0x%0lx;npc_dnpc is 0x%0lx; Instruction is 0x%x\n",ref_r->pc,dnpc,top->inst);
     DIF_result = false;
