@@ -71,19 +71,19 @@ always@(*)begin
             alu_res = alu_res;
             mepc = alu_src1;
             mcause = 11;
-            mstatus[7] = mstatus[3];
+            mstatus[7] = reg_mstatus[3];
+            mstatus[3] = 1'b0;
         end
         default: alu_res = alu_res;
     endcase
 end
+reg [63:0]reg_mstatus;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
-        mstatus[3] <= 1'b0;
+        reg_mstatus<= 64'd0;
     end
-    else if(alu_op == `ALU_ECALL)
-        mstatus[3] <= 1'b0;
     else 
-        mstatus[3] <= mstatus[3];
+        reg_mstatus <= mstatus;
 end
 
 
