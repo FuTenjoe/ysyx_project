@@ -76,6 +76,16 @@ always@(*)begin
         default: alu_res = alu_res;
     endcase
 end
+always@(posedge clk or rst_n)begin
+    if(!rst_n)begin
+        mstatus[3] <= 1'b0;
+    end
+    else if(alu_op == `ALU_ECALL)
+        mstatus[3] <= 1'b0;
+    else 
+        mstatus[3] <= mstatus[3];
+end
+
 
 always@(*)begin
     case(mem_expand_signed)
