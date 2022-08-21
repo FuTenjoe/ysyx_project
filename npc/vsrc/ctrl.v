@@ -845,7 +845,7 @@ always @(*) begin
         end
         7'b1110011:begin
             case (funct3)     // csrrs
-        /*    3'b010:begin
+            3'b010:begin
                 jump        = 1'b0;
                 reg_wen     = 1'b1;
                 jalr = 1'b0;
@@ -862,7 +862,7 @@ always @(*) begin
                 rd_flag = 3'd0;
                 id_div = 1'b0;
                 csr_addr = csr;
-            end*/
+            end
             3'b001:begin      //csrrw
                 jump        = 1'b0;
                 reg_wen     = 1'b1;
