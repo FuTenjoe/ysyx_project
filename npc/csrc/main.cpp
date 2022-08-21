@@ -357,7 +357,7 @@ void init_difftest(long img_size,int port){
 }
 //Difftest在CPU中比较功能的实现
 void difftest_step (vaddr_t dnpc){
-  printf("ok1");
+  //printf("ok1");
   CPU_state ref_r;
   ref_difftest_regcpy(&ref_r, DIFFTEST_TO_DUT);
   
