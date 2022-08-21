@@ -24,7 +24,7 @@ uint32_t current_inst = 0;
 typedef struct {
   word_t gpr[32];
   vaddr_t pc;
-  uintptr_t sr[1024];
+  //uintptr_t sr[1024];
 } CPU_state; //nemu的CPU状态用于比较
 
 CPU_state cpu = {};
