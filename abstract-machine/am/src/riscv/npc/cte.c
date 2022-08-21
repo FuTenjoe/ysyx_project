@@ -12,7 +12,9 @@ Context* __am_irq_handle(Context *c) {
           ev.event = EVENT_SYSCALL;break;
         }
         if(c->gpr[17] == -1){
-          ev.event = EVENT_YIELD;break;
+          ev.event = EVENT_YIELD;
+          c->mepc = c->mepc + 4;
+          break;
         }
         else {
           ev.event = EVENT_ERROR;break;
