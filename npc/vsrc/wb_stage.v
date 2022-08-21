@@ -43,7 +43,7 @@ always@(*)begin
         reg_wdata = from_ex_alu_res;
     end
 end
-assign w_start = rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0);
+assign w_start = rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1);
 always @(*) begin
     if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)
