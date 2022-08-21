@@ -85,7 +85,7 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   long long addr = waddr;
   int len = 0;
   if(waddr == 0xa0003f8){
-    printf("mmio");
+    printf("%c",wdata);
   }
   else {
   switch(wmask){
