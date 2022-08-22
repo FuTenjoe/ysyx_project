@@ -15,11 +15,11 @@ module axi # (
 	input                               rw_valid_i,         //IF&MEM输入信号
 	output                              rw_ready_o,         //IF&MEM输入信号
     input rw_req_i,
-    input [7:0] rw_mask,
+   // input [7:0] rw_mask,
     output reg [RW_DATA_WIDTH-1:0]      data_read_o,        //IF&MEM输入信号
     input  [RW_DATA_WIDTH-1:0]          rw_w_data_i,        //IF&MEM输入信号
     input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号   读通道
-    input  [1:0]                        rw_size_i,          //IF&MEM输入信号
+    input  [7:0]                        rw_size_i,          //IF&MEM输入信号
     input  [63:0]           ww_addr_i,
 
     // Advanced eXtensible Interface
@@ -83,7 +83,7 @@ module axi # (
  //   wire r_valid    = rw_valid_i & r_trans;
     wire w_valid    = rw_valid_i & w_trans;
     wire r_valid    = rw_valid_i & r_trans;
-    assign axi_w_strb_o = rw_mask;
+    assign axi_w_strb_o = rw_size_i;
     //handshake
     wire aw_hs = axi_aw_ready_i & axi_aw_valid_o;  //写地址
     wire w_hs = axi_w_ready_i & axi_w_valid_o;  //写数据

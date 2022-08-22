@@ -222,7 +222,8 @@ muxpc u_mux_pc(
    .mret_flag(mret_flag),
    .ecall_flag(ecall_flag),
    .unnormal_pc(unnormal_pc),
-   .mtvec(mtvec)
+   .mtvec(mtvec),
+   .mepc(mepc)
    
    
     );

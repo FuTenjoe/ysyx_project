@@ -910,6 +910,7 @@ always @(*) begin
                 unknown_code = 32'h0;
                 reg1_raddr = `REG_ADDR_WIDTH'b0;
                 reg2_raddr = `REG_ADDR_WIDTH'b0;
+                alu_op      = `ALU_MRET;
                 unnormal_pc = mepc;
                 end    
                 else if(inst == 32'h0010_0073)begin    //ebreak

@@ -138,7 +138,7 @@ u_axi(
     .clock(clk),
     .reset_n(rst_n),
     .rw_req_i(axi_req),
-    .rw_mask(reg_write_wmask),
+    .rw_size_i(reg_write_wmask),
 
 	.rw_valid_i(axi_valid | waxi_valid),         //IF&MEM输入信号
 	.rw_ready_o(rw_ready_o),         //IF&MEM输入信号

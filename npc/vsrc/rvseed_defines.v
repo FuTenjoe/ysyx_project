@@ -115,7 +115,7 @@
 `define ALU_CSRRS `ALU_OP_WIDTH'b11000  //csrrs
 `define ALU_CSRRW `ALU_OP_WIDTH'b11001  //csrrw
 `define ALU_ECALL `ALU_OP_WIDTH'b11010  //ecall
-
+`define ALU_MREST `ALU_OP_WIDTH'b11011 //mret
 
 
 // ALU select soure
