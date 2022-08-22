@@ -75,6 +75,11 @@ always@(*)begin
             mstatus[7] = reg_mstatus[3];
             mstatus[3] = 1'b0;
         end
+        `ALU_MRET:begin
+            alu_res = alu_res;
+            mstatus[3] = reg_mstatus[7];
+            mstatus[7] = 1'b1;
+        end
         default: alu_res = alu_res;
     endcase
 end
