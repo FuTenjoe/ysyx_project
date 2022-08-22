@@ -957,7 +957,7 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
                     ? 0x80000000ULL : ((IData)(vlSelf->ysyx_22040175_top__DOT__ecall_flag)
                                         ? vlSelf->ysyx_22040175_top__DOT__from_mem_mtvec
                                         : ((IData)(vlSelf->ysyx_22040175_top__DOT__mret_flag)
-                                            ? vlSelf->ysyx_22040175_top__DOT__from_mem_mepc
+                                            ? vlSelf->ysyx_22040175_top__DOT__from_mem_mtvec
                                             : vlSelf->ysyx_22040175_top__DOT__id_pc))));
     }
     vlSelf->out_mem_rd_buf_flag = vlSelf->ysyx_22040175_top__DOT__sig_jalr;
