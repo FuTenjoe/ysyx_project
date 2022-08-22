@@ -60,7 +60,7 @@ always @(*) begin
                     alu_src1 = reg1_rdata;
                     alu_src2 = mstatus;  
                 end
-                defalut:;
+                default:;
                 endcase
             end
             `ALU_SRC_ECALL:begin
