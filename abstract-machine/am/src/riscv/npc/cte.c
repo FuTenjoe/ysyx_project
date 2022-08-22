@@ -1,12 +1,14 @@
 #include <am.h>
 #include <klib.h>
-
+#include <klib-macros.h>
 static Context* (*user_handler)(Event, Context*) = NULL;
 
 Context* __am_irq_handle(Context *c) {
   if (user_handler) {
     Event ev = {0};
     switch (c->mcause) {
+      case 0x8000000000000007:
+        ev.event = EVENT_IRQ_TIMER;break;
       case(11):{
         if((c->gpr[17] >=0) &&(c->gpr[17] <=19)){
           ev.event = EVENT_SYSCALL;break;
@@ -56,4 +58,13 @@ bool ienabled() {
 }
 
 void iset(bool enable) {
+  //自己加
+/*  if(enable){
+    asm volatile("csri mstatus, 8"); //mstatus_MIE
+    set_csr (mie, MIP_MTIP);    //mie_MTIE
+  }
+  else{
+    asm volatile("csri mstatus, 8");
+    clear_csr(mie, MIP_MTIP);
+  }*/
 }

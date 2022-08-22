@@ -1,6 +1,6 @@
 `include "../vsrc/rvseed_defines.v"
 
-module axi_clint (
+module axi_judge (
     input clk,
     input rst_n,
     input if_valid,
