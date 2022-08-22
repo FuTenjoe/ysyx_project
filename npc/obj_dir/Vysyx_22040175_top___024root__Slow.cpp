@@ -2363,7 +2363,7 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                 if ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op))) {
                     if ((1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op)))) {
                         vlSelf->ysyx_22040175_top__DOT__from_mem_mepc 
-                            = vlSelf->ysyx_22040175_top__DOT__mem_alu_src2;
+                            = vlSelf->ysyx_22040175_top__DOT__mem_pc;
                     }
                 } else if ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op))) {
                     if ((0x341U == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_csr_addr))) {
