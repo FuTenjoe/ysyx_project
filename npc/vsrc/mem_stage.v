@@ -69,7 +69,7 @@ always@(*)begin
         end
         `ALU_ECALL:begin
             alu_res = alu_res;
-            mepc = alu_src1;
+            mepc = alu_src2;
             mcause = 11;
             mstatus[7] = reg_mstatus[3];
             mstatus[3] = 1'b0;

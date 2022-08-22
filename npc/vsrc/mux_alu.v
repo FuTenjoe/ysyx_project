@@ -64,7 +64,7 @@ always @(*) begin
             end
             `ALU_SRC_ECALL:begin
                 alu_src1 = reg1_rdata;
-                alu_src2 = reg2_rdata;
+                alu_src2 = curr_pc;
             end
         endcase
         end
