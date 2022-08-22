@@ -896,7 +896,7 @@ always @(*) begin
                 s_imm =0;
                 imm_gen_op  = `IMM_GEN_SRAI;   //不需要使用R型指令
                 alu_op      = `ALU_ECALL;
-                alu_src_sel = `ALU_SRC_ECALL;   //选1和csr，与CSRRS一样
+                alu_src_sel = `ALU_SRC_ECALL;   //选1和curr_pc
                 wmask =  8'b0;
                 s_flag = 1'd0;
                 expand_signed =4'd0;    

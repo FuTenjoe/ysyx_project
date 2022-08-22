@@ -60,10 +60,11 @@ always @(*) begin
                     alu_src1 = reg1_rdata;
                     alu_src2 = mstatus;  
                 end
+                defalut:;
                 endcase
             end
             `ALU_SRC_ECALL:begin
-                alu_src1 = reg1_rdata;
+                alu_src1 = curr_pc;
                 alu_src2 = curr_pc;
             end
         endcase
