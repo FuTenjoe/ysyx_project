@@ -3,6 +3,7 @@
 module mem_stage(
     input clk, //clint新加
     input rst_n,
+    input [63:0] mem_pc,
     input [2:0] rd_buf_flag,
     input [`ALU_OP_WIDTH-1:0] alu_op,
     input [`CPU_WIDTH-1:0] alu_src1,
@@ -69,7 +70,7 @@ always@(*)begin
         end
         `ALU_ECALL:begin
             alu_res = alu_res;
-            mepc = alu_src2;
+            mepc = mem_pc;
             mcause = 11;
             mstatus[7] = reg_mstatus[3];
             mstatus[3] = 1'b0;

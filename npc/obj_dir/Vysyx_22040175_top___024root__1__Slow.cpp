@@ -837,7 +837,7 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
                 }
             } else if ((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_alu_src_sel))) {
                 vlSelf->ysyx_22040175_top__DOT__id_alu_src1 
-                    = vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_rdata;
+                    = vlSelf->ysyx_22040175_top__DOT__id_pc;
             }
         }
     }
