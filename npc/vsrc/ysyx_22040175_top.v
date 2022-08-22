@@ -414,7 +414,7 @@ wire [2:0] reg_rd_buf_flag;
 mem_stage u_mem_stage(
     .clk(clk), //clint新加
     .rst_n(rst_n),
-    . mem_pc(mem_pc)
+    . mem_pc(mem_pc),
     .rd_buf_flag(mem_rd_buf_flag),
     .alu_op(mem_alu_op),
     .alu_src1(mem_alu_src1),
