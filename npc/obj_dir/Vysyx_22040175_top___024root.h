@@ -129,8 +129,8 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*1:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__md_add_pc;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__md_present_state;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__md_next_state;
-        CData/*2:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state;
-        CData/*2:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__next_state;
+        CData/*2:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state;
+        CData/*2:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__next_state;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__w_state;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__r_state;
         CData/*3:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__axi_ar_id_i;

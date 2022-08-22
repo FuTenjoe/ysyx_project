@@ -8239,10 +8239,10 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                                                       | (2U 
                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state)))));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_valid 
-        = ((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state)) 
-             | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))) 
-            | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state))) 
-           | (5U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state)));
+        = ((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state)) 
+             | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state))) 
+            | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state))) 
+           | (5U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state)));
     if ((0ULL != vlSelf->ysyx_22040175_top__DOT__id_unknown_code)) {
         Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_id_stage__DOT__u_ctrl__DOT__unknown_inst_TOP();
     }
@@ -9700,8 +9700,8 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                                            << 4U) | 
                                           (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done) 
                                             << 3U) 
-                                           | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__present_state)))));
-    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_clint__DOT__next_state 
+                                           | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state)))));
+    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__next_state 
         = Vysyx_22040175_top__ConstPool__TABLE_e91ff1ec_0
         [__Vtableidx3];
     vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__en2 

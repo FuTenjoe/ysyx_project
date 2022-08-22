@@ -1,6 +1,22 @@
 #include <am.h>
 #include <klib.h>
 #include <klib-macros.h>
+//加函数
+#define set_csr(reg, bit) ({ unsigned long __tmp; \
+  if (__builtin_constant_p(bit) && (unsigned long)(bit) < 32) \
+    asm volatile ("csrrs %0, " #reg ", %1" : "=r"(__tmp) : "i"(bit)); \
+  else \
+    asm volatile ("csrrs %0, " #reg ", %1" : "=r"(__tmp) : "r"(bit)); \
+  __tmp; })
+
+#define MIP_MTIP            (1 << IRQ_M_TIMER)
+#define IRQ_M_TIMER  7
+#define clear_csr(reg, bit) ({ unsigned long __tmp; \
+  asm volatile ("csrrc %0, " #reg ", %1" : "=r"(__tmp) : "rK"(bit)); \
+  __tmp; })
+
+
+
 static Context* (*user_handler)(Event, Context*) = NULL;
 
 Context* __am_irq_handle(Context *c) {
@@ -59,12 +75,14 @@ bool ienabled() {
 
 void iset(bool enable) {
   //自己加
-/*  if(enable){
-    asm volatile("csri mstatus, 8"); //mstatus_MIE
+  if(enable){
+    asm volatile("csrs mstatus, 8"); //mstatus_MIE
     set_csr (mie, MIP_MTIP);    //mie_MTIE
   }
   else{
-    asm volatile("csri mstatus, 8");
+    asm volatile("csrs mstatus, 8");
     clear_csr(mie, MIP_MTIP);
-  }*/
+  }
 }
+
+
