@@ -118,7 +118,7 @@ always @(*) begin
         sig_jalr = 1'b0;
     end
     else if(mret_flag)begin
-        next_pc = mepc;
+        next_pc = mtvec;
         sig_jalr = 1'b0;
     end
     else begin
