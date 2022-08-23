@@ -249,10 +249,10 @@ module axi # (
        
 always @(posedge clock) begin
     if (!reset_n) begin
-        data_read_o[AXI_DATA_WIDTH-1:0] <= 64'd0;
+        data_read_o[0*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= 0;
     end
     else if (axi_r_ready_o & axi_r_valid_i) begin 
-        data_read_o[AXI_DATA_WIDTH-1:0] <= axi_r_data_l;
+        data_read_o[0*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= axi_r_data_l;
     end
 end
       
