@@ -20,7 +20,7 @@ module axi # (
     input  [RW_DATA_WIDTH-1:0]          rw_w_data_i,        //IF&MEM输入信号
     input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号   读通道
     input  [7:0]                        rw_size_i,          //IF&MEM输入信号
-    input  [63:0]           ww_addr_i,
+   
 
     // Advanced eXtensible Interface
     input                               axi_aw_ready_i,    //从设备已准备好接收地址和相关的控制信号          
@@ -245,29 +245,19 @@ module axi # (
     wire [AXI_DATA_WIDTH-1:0] axi_r_data_l  = axi_r_data_i ;
  //   wire [AXI_DATA_WIDTH-1:0] axi_r_data_h  = (axi_r_data_i & mask_h) << aligned_offset_h;
 
-    generate
-        for (genvar i = 0; i < TRANS_LEN; i += 1) begin
-            always @(posedge clock) begin
-                if (!reset_n) begin
-                    data_read_o[i*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= 0;
-                end
-                else if (axi_r_ready_o & axi_r_valid_i) begin
-                 /*   if (~aligned & overstep) begin
-                        if (len[0]) begin
-                            data_read_o[AXI_DATA_WIDTH-1:0] <= data_read_o[AXI_DATA_WIDTH-1:0] | axi_r_data_h;
-                        end
-                        else begin
-                            data_read_o[AXI_DATA_WIDTH-1:0] <= axi_r_data_l;
-                        end
-                    end
-                    else if (len == i) begin*/
-                        data_read_o[i*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= axi_r_data_l;
-
-                    end
-                end
-        end
+  
+       
+always @(posedge clock) begin
+    if (!reset_n) begin
+        data_read_o[AXI_DATA_WIDTH-1:0] <= 64'd0;
+    end
+    else if (axi_r_ready_o & axi_r_valid_i) begin 
+        data_read_o[iAXI_DATA_WIDTH-1:0] <= axi_r_data_l;
+    end
+end
+      
         
-    endgenerate
+   
 
     // Write data channel signals
   
