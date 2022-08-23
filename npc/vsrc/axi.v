@@ -217,7 +217,7 @@ module axi # (
     assign rw_resp_o      = rw_resp;*/
   // ------------------Write Transaction------------------
    assign axi_aw_valid_o =  w_state_addr;
-   assign axi_aw_addr_o = ww_addr_i;
+   assign axi_aw_addr_o = rw_addr_i;
    assign axi_w_valid_o = w_state_write;
    assign axi_w_data_o = rw_w_data_i;
    assign axi_b_ready_o = w_state_resp;

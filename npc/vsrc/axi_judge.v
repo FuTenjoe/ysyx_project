@@ -94,7 +94,7 @@ always@(posedge clk or negedge rst_n)begin
         NEXT1:begin
         //    axi_valid <= 1'b1;
             axi_id <= if_send_id;
-            axi_addr <= pc;
+            axi_addr <= {32'b0,pc};
         end
         NEXT2:begin
         //    axi_valid <= 1'b1;
@@ -109,7 +109,7 @@ always@(posedge clk or negedge rst_n)begin
         F2:begin
         //    axi_valid <= 1'b1;
             axi_id <= if_send_id;
-            axi_addr <= pc;
+            axi_addr <= {32'b0,pc};
         end
         FN:begin
         //    axi_valid <= 1'b0;
