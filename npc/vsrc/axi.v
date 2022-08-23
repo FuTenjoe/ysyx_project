@@ -252,7 +252,7 @@ always @(posedge clock) begin
         data_read_o[AXI_DATA_WIDTH-1:0] <= 64'd0;
     end
     else if (axi_r_ready_o & axi_r_valid_i) begin 
-        data_read_o[iAXI_DATA_WIDTH-1:0] <= axi_r_data_l;
+        data_read_o[AXI_DATA_WIDTH-1:0] <= axi_r_data_l;
     end
 end
       
