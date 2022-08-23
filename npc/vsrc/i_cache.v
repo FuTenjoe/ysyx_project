@@ -162,7 +162,7 @@ always@(posedge clk)begin
 end
 
 //block counter
-alway@(posedge clk)begin
+always@(posedge clk)begin
   if(!rst_n)
     counter <= 64'd0;
   else if(dram_data_ready)
