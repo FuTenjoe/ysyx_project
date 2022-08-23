@@ -78,6 +78,7 @@ always@(*)begin
     endcase
 end
 assign axi_valid = (present_state == 3'd1 |present_state == 3'd2|present_state == 3'd4|present_state == 3'd5) ? 1'b1:1'b0;
+assign axi_addr = (present_state == NEXT1 |present_state ==F2 ) ? {32'd0,pc}:mem_addr;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
       //  axi_valid <= 1'b0;
