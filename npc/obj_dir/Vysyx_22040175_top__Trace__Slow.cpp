@@ -4474,14 +4474,28 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullQData(oldp+2424,(vlSelf->ysyx_22040175_top__DOT__wb_hazard_result),64);
         tracep->fullQData(oldp+2426,(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mem_addr),64);
         tracep->fullBit(oldp+2428,(vlSelf->ysyx_22040175_top__DOT__axi_req));
-        tracep->fullQData(oldp+2429,((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_addr))),64);
+        tracep->fullQData(oldp+2429,((QData)((IData)(
+                                                     (((4U 
+                                                        == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state)) 
+                                                       | (2U 
+                                                          == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state)))
+                                                       ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__if_pc))
+                                                       : vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mem_addr)))),64);
         tracep->fullBit(oldp+2431,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_valid));
-        tracep->fullQData(oldp+2432,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_addr),64);
+        tracep->fullQData(oldp+2432,((((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state)) 
+                                       | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state)))
+                                       ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__if_pc))
+                                       : vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mem_addr)),64);
         tracep->fullIData(oldp+2434,((IData)(vlSelf->ysyx_22040175_top__DOT__if_pc)),32);
         tracep->fullCData(oldp+2435,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state),3);
         tracep->fullCData(oldp+2436,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__next_state),3);
         tracep->fullBit(oldp+2437,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi__rw_valid_i));
-        tracep->fullIData(oldp+2438,((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_addr)),32);
+        tracep->fullIData(oldp+2438,((IData)((((4U 
+                                                == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state)) 
+                                               | (2U 
+                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state)))
+                                               ? (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__if_pc))
+                                               : vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mem_addr))),32);
         tracep->fullBit(oldp+2439,((1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__axi_req)))));
         tracep->fullBit(oldp+2440,(((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi__rw_valid_i) 
                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__axi_req))));

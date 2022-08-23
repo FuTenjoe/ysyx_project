@@ -131,7 +131,8 @@ wire [7:0] axi_w_strb_o;
 wire axi_w_last_o;
 wire axi_b_ready_o;
 wire axi_b_valid_i;
-
+wire [63:0]rw_addr_i;
+assign rw_addr_i = (axi_valid) ? axi_addr : reg_write_addr;
 axi # (
 )
 u_axi(
@@ -144,7 +145,7 @@ u_axi(
 	.rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
-    .rw_addr_i(axi_addr),          //IF&MEM输入信号
+    .rw_addr_i(rw_addr_i),          //IF&MEM输入信号
 //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
     .ww_addr_i(reg_write_addr),
 
