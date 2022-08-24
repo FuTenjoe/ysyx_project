@@ -178,7 +178,7 @@ end
 always@(posedge clk)begin
   if(!rst_n)
     tag_dly <= 52'd0;
-  else if((~hit & dirty & data_req) & ~dram_wr_req & ~dram_rd_req);
+  else if((~hit & dirty & data_req) & ~dram_wr_req & ~dram_rd_req)
     tag_dly <= D_SRAM_block[307:256];
   else 
     tag_dly <= tag_dly;
