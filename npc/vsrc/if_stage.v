@@ -133,6 +133,22 @@ wire axi_b_ready_o;
 wire axi_b_valid_i;
 wire [63:0]rw_addr_i;
 assign rw_addr_i = (!waxi_valid) ? axi_addr : reg_write_addr;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 axi # (
 )
 u_axi(

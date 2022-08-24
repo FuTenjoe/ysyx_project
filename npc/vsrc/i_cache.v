@@ -1,6 +1,6 @@
 `include "../vsrc/rvseed_defines.v"
 //二路组相连cache 2k*2   256/8=32B, deep = 64
-//tag = 21'b[31:11] index = 6'b[10:5] offset = 5'b[4:2];
+//tag = 53'b[63:11] index = 6'b[10:5] offset = 5'b[4:2];
 
 module i_cache (
     input clk,
@@ -15,7 +15,6 @@ module i_cache (
     input ins_req,                   //instruction request
     output reg [63:0] instruction,   //inst for cpu
     output rom_abort 
-
 );
 parameter BLOCK_SIZE = 4;
 reg [63:0] counter;
@@ -23,13 +22,13 @@ reg [63:0] cpu_addr_dly;
 reg ins_req_dly;
 reg dram_reg_dly;
 reg [63:0] dram_data_shift[3:0];
-reg [277:0] I_SRAM_data0, I_SRAM_data1;                             // {1 , 21, 256} 
-wire [277:0] I_SRAM_data;  //cache
+reg [309:0] I_SRAM_data0, I_SRAM_data1;                             // {1 , 53, 256} 
+wire [3090] I_SRAM_data;  //cache
 wire hit0, hit1;
-wire [277:0] wr_cache_data;
+wire [309:0] wr_cache_data;
 wire dram_data_ready;  //主存信号
-reg [277:0] I_SRAM0[63:0], I_SRAM1[63:0];
-reg [3:0] LRU_c0[63:0],LRU_c1[63:0];
+reg [309:0] I_SRAM0[0:63], I_SRAM1[0:63];
+reg [3:0] LRU_c0[0:63],LRU_c1[0:63];
 integer i;
 assign wr_cache_data = {1'b1, cpu_addr_dly[31:11],dram_data_shift[3],dram_data_shift[2],dram_data_shift[1],dram_data_shift[0]};
 
@@ -41,13 +40,13 @@ always@(posedge clk)begin
     end
   end
   else if(dram_data_ready)begin
-    if(I_SRAM0[cpu_addr_dly[10:5]][277] && I_SRAM1[cpu_addr_dly[10:5]][277])begin
+    if(I_SRAM0[cpu_addr_dly[10:5]][309] && I_SRAM1[cpu_addr_dly[10:5]][309])begin
       if(LRU_c0[cpu_addr_dly[10:5]] > LRU_c1[cpu_addr_dly[10:5]])
         I_SRAM0[cpu_addr_dly[10:5]] <= wr_cache_data;
       else
         I_SRAM1[cpu_addr_dly[10:5]] <= wr_cache_data;
     end
-    else if(I_SRAM0[cpu_addr_dly[10:5]][277])
+    else if(I_SRAM0[cpu_addr_dly[10:5]][309])
       I_SRAM1[cpu_addr_dly[10:5]] <= wr_cache_data;   
     else
       I_SRAM0[cpu_addr_dly[10:5]] <= wr_cache_data;
@@ -94,8 +93,8 @@ end
 
 always@(posedge clk)begin
   if(!rst_n)begin
-    I_SRAM_data0 <= 278'b0;
-    I_SRAM_data1 <= 278'b0;
+    I_SRAM_data0 <= 310'b0;
+    I_SRAM_data1 <= 310'b0;
   end
   else if(ins_req |({dram_reg_dly, dram_req} == 2'b10))begin
     I_SRAM_data0 <= I_SRAM0[cpu_addr[10:5]];
@@ -108,19 +107,19 @@ always@(posedge clk)begin
 end
 
 //output signals
-assign hit0 = I_SRAM_data0[277] & (cpu_addr_dly[31:11] == I_SRAM_data0[276:256]);
-assign hit1 = I_SRAM_data1[277] & (cpu_addr_dly[31:11] == I_SRAM_data1[276:256]);
+assign hit0 = I_SRAM_data0[309] & (I_SRAM_data0[308:256] == cpu_addr_dly[63:11]);
+assign hit1 = I_SRAM_data1[309] & (I_SRAM_data1[308:256] == cpu_addr_dly[63:11]);
 assign hit = hit0 | hit1;
 assign rom_abort = (~hit & ins_req_dly) | dram_req | dram_req_dly;
 assign dram_data_ready = (BLOCK_SIZE == counter);
 assign I_SRAM_data = hit1 ? I_SRAM_data1 : I_SRAM_data0;
 
 always@(*)begin
-  case(cpu_addr_dly[4:0])
-  5'd0: instruction = I_SRAM_data[63:0];
-  5'd1: instruction = I_SRAM_data[127:64];
-  5'd2: instruction = I_SRAM_data[191:128];
-  5'd3: instruction = I_SRAM_data[255:192];
+  case(cpu_addr_dly[4:3])
+  2'd0: instruction = I_SRAM_data[63:0];
+  2'd1: instruction = I_SRAM_data[127:64];
+  2'd2: instruction = I_SRAM_data[191:128];
+  2'd3: instruction = I_SRAM_data[255:192];
   default: instruction = I_SRAM_data[63:0];
   endcase
 end

@@ -56,11 +56,11 @@ module axi # (
  //   output [2:0]                        axi_ar_prot_o,
     output [AXI_ID_WIDTH-1:0]           axi_ar_id_o,         //加id
  //   output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
- //   output [7:0]                        axi_ar_len_o,
- //   output [2:0]                        axi_ar_size_o,
- //   output [1:0]                        axi_ar_burst_o,
+    output [7:0]                        axi_ar_len_o,    //突发长度  设置为64
+    output [2:0]                        axi_ar_size_o,   //突发大小  设置为4
+    output [1:0]                        axi_ar_burst_o,  //突发传输类型01，地址加INCR
  //   output                              axi_ar_lock_o,
- //   output [3:0]                        axi_ar_cache_o,
+    output [3:0]                        axi_ar_cache_o,  //存储器类型 01为ICACHE，
  //   output [3:0]                        axi_ar_qos_o,
  //   output [3:0]                        axi_ar_region_o,
     
