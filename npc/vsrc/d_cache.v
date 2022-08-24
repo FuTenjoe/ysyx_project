@@ -45,8 +45,8 @@ wire dram_wr_ready;
 wire dram_rd_ready;
 reg dram_rd_req_dly;
 reg [63:0] wr_counter, rd_counter   //counter for the block
-reg [63:0] dram_data_shift[3:0];   //4*64 
-reg [309:0] D_SRAM[127:0];    //the data_cache storage space
+reg [63:0] dram_data_shift[0:3];   //4*64 
+reg [309:0] D_SRAM[0:127];    //the data_cache storage space
 
 //physical write/read address for dram
 assign dram_wr_addr = {tag_dly,cpu_addr[11:5],5'b0};
@@ -141,7 +141,7 @@ always@(posedge clk)begin
     case(present_state)
     CPU_EXEC:begin
       if(~hit & dirty & data_req)  //dirty block write back to dram
-        present_state M= WR_DRAM;
+        present_state <= WR_DRAM;
       else if(~hit & data_req)
         present_state <= RD_SRAM;
       else

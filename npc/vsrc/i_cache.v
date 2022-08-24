@@ -23,7 +23,7 @@ reg ins_req_dly;
 reg dram_reg_dly;
 reg [63:0] dram_data_shift[3:0];
 reg [309:0] I_SRAM_data0, I_SRAM_data1;                             // {1 , 53, 256} 
-wire [3090] I_SRAM_data;  //cache
+wire [309:0] I_SRAM_data;  //cache
 wire hit0, hit1;
 wire [309:0] wr_cache_data;
 wire dram_data_ready;  //主存信号
