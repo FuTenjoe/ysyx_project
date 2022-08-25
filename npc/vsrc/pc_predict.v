@@ -26,7 +26,8 @@ module pc_predict (
     input wb_res_valid,
     input mret_flag,
     input ecall_flag,
-    input w_start
+    input w_start,
+    input rom_abort
 );
 
 reg delay_sig_jalr;
@@ -239,7 +240,8 @@ always @ (posedge clk or negedge rst_n) begin
              curr_pc <= curr_pc;*/
              curr_pc <= id_next_pc;
         end
-        else if((r_done && md_add_pc!=2'd1 && md_add_pc!=2'd2 &&(return_id == 4'd1))|(md_add_pc==2'd3))
+       // else if((r_done && md_add_pc!=2'd1 && md_add_pc!=2'd2 &&(return_id == 4'd1))|(md_add_pc==2'd3))
+       else if((!rom_abort && md_add_pc!=2'd1 && md_add_pc!=2'd2 &&(return_id == 4'd1))|(md_add_pc==2'd3))
             curr_pc <= curr_pc + 4;
     end
 end    

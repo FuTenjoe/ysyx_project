@@ -68,7 +68,8 @@ pc_predict u_pc_predict(
   .wb_res_valid(wb_res_valid),
   .mret_flag(mret_flag),
   .ecall_flag(ecall_flag),
-  .w_start(w_start)
+  .w_start(w_start),
+  .rom_abort(rom_abort)
 );
 //reg delay_r_done;
 //wire [63:0] rdata;
