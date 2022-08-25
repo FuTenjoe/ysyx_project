@@ -181,7 +181,7 @@ u_axi(
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
     .rw_addr_i(rw_addr_i),          //IF&MEM输入信号
-//input  [1:0]                        rw_size_i,          //IF&MEM输入信号
+  //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
 
 
 
