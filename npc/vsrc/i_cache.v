@@ -146,9 +146,9 @@ end
 always@(posedge clk)begin
   if(!rst_n)
     cpu_addr_dly <= 63'd0;
-  else if(((ins_req_dly & ~hit) || dram_req) &&(cpu_addr!=64'd0))
+  else if(((ins_req_dly & ~hit) || dram_req))
     cpu_addr_dly <= cpu_addr_dly;
-  else if(ins_req)
+  else if(ins_req  &&(cpu_addr!=64'd0))
     cpu_addr_dly <= cpu_addr;
 end
 
