@@ -5,6 +5,7 @@
 module i_cache (
   input clk,
 	input rst_n,
+  output reg shift_ready,
 	//cpu cache
 	input [63:0] cpu_req_addr,
 	input cpu_req_valid,
@@ -47,7 +48,7 @@ always@(posedge clk)begin
 	else
 		state<=next_state;
 end
-reg shift_ready;
+//reg shift_ready;
 always@(*)begin
 	case(state)
 		IDLE:if(cpu_req_valid)

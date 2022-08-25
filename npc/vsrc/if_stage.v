@@ -69,7 +69,7 @@ pc_predict u_pc_predict(
   .mret_flag(mret_flag),
   .ecall_flag(ecall_flag),
   .w_start(w_start),
-  .rom_abort(rom_abort)
+  .cpu_ready(cpu_ready)
 );
 //reg delay_r_done;
 //wire [63:0] rdata;
@@ -164,10 +164,11 @@ wire cpu_ready;
 wire [63:0] mem_req_addr;
 wire mem_req_valid;
 //wire [63:0] mem_data_read;
-
+wire shift_ready;
 i_cache u_i_cache(
   .clk(clk),
-    .rst_n(rst_n),
+  .rst_n(rst_n),
+ // .shift_ready(shift_ready)
 	//cpu cache
 	.cpu_req_addr(rw_addr_i),
 	.cpu_req_valid(rw_burst),
