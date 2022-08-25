@@ -155,7 +155,7 @@ i_cache u_icache(
     .dram_req_addr(dram_req_addr),
     //cpu side
     .cpu_addr(rw_addr_i),
-    .ins_req(axi_burst),                   //instruction request
+    .ins_req(rw_burst),                   //instruction request
     .instruction(instruction),   //inst for cpu
     .rom_abort(rom_abort) 
 );
