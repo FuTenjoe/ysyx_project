@@ -35,8 +35,8 @@ assign wr_cache_data = {1'b1, cpu_addr_dly[31:11],dram_data_shift[3],dram_data_s
 always@(posedge clk)begin
   if(!rst_n)begin
     for(i=0; i<256; i=i+1)begin
-        I_SRAM0[i] <= 278'b0;
-        I_SRAM1[i] <= 278'b0;
+        I_SRAM0[i] = 278'b0;
+        I_SRAM1[i] = 278'b0;
     end
   end
   else if(dram_data_ready)begin
@@ -65,9 +65,9 @@ always@(posedge clk)begin
     for(i=0;i<63;i=i+1)begin
       LRU_c1[i] <= LRU_c1[i] + (LRU_c1[i]!=4'b1111);   
       if(i == {26'b0,cpu_addr_dly[10:5]} || i == {26'b0,cpu_addr[10:5]})
-        LRU_c0[i] <= 4'b0;
+        LRU_c0[i] = 4'b0;
       else begin
-        LRU_c0[i] <= LRU_c0[i] + (LRU_c0[i]!=4'b1111);
+        LRU_c0[i] = LRU_c0[i] + (LRU_c0[i]!=4'b1111);
       end
     end
   end
