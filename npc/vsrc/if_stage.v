@@ -171,7 +171,7 @@ i_cache u_icache(
 axi # (
 )
 u_axi(
-    .cl:ock(clk),
+    .clock(clk),
     .reset_n(rst_n),
     .rw_req_i(axi_req),
     .rw_size_i(reg_write_wmask),
