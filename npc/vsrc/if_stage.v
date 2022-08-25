@@ -150,7 +150,7 @@ i_cache u_icache(
     .rst_n(rst_n),
     //dram side
     .dram_data(rdata),
-    .dram_val(axi_ar_valid_o),
+    .dram_val(axi_r_ready_o),
     .dram_req(dram_req),
     .dram_req_addr(dram_req_addr),
     //cpu side
