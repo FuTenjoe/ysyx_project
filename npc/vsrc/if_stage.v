@@ -140,7 +140,7 @@ wire dram_req;
 wire [63:0] dram_req_addr;
 wire [63:0] instruction;
 wire rom_abort;
-i_cache (
+i_cache u_icache(
     .clk(clk),
     .rst_n(rst_n),
     //dram side
