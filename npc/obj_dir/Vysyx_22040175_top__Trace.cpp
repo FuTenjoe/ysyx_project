@@ -2000,7 +2000,7 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgBit(oldp+2049,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__ar_hs));
             tracep->chgQData(oldp+2050,(vlSelf->ysyx_22040175_top__DOT__rdata),64);
             tracep->chgBit(oldp+2052,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__w_done));
-            tracep->chgBit(oldp+2053,(vlSelf->ysyx_22040175_top__DOT__b_hs));
+            tracep->chgBit(oldp+2053,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__b_hs));
             tracep->chgBit(oldp+2054,((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__r_state))));
             tracep->chgBit(oldp+2055,((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__r_state))));
             tracep->chgBit(oldp+2056,((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__r_state))));
