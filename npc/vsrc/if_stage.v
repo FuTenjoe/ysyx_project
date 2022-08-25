@@ -103,7 +103,7 @@ always@(posedge clk or negedge rst_n)begin
 end
 
 //assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
-assign inst = instruction[31:0];
+assign inst = cpu_ready ? instruction[31:0] : 32'b0010011;
 axi_judge u_axi_judge(
     .clk(clk),
     .rst_n(rst_n),
@@ -141,12 +141,11 @@ wire [2:0] axi_ar_size_o;
 wire [1:0] axi_ar_burst_o;
 
 //cache
-wire dram_req;
-wire [63:0] dram_req_addr;
-wire [63:0] instruction;
-wire rom_abort;
 
-i_cache u_icache(
+
+
+
+/*i_cache u_icache(
     .clk(clk),
     .rst_n(rst_n),
     //dram side
@@ -159,20 +158,28 @@ i_cache u_icache(
     .ins_req(rw_burst),                   //instruction request
     .instruction(instruction),   //inst for cpu
     .rom_abort(rom_abort) 
+);*/
+wire [63:0] instruction;
+wire cpu_ready;
+wire [63:0] mem_req_addr;
+wire mem_req_valid;
+//wire [63:0] mem_data_read;
+
+i_cache u_i_cache(
+  .clk(clk),
+    .rst_n(rst_n),
+	//cpu cache
+	.cpu_req_addr(rw_addr_i),
+	.cpu_req_valid(rw_burst),
+	//input cpu_req_rw,
+	.cpu_data_read(instruction),
+	.cpu_ready(cpu_ready),
+	//main memory cache
+	.mem_req_addr(mem_req_addr),
+	.mem_req_valid(mem_req_valid),   //读使能
+	.mem_data_read(rdata),
+	.mem_ready(axi_r_ready_o)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 axi # (
 )
@@ -182,11 +189,11 @@ u_axi(
     .rw_req_i(axi_req),
     .rw_size_i(reg_write_wmask),
 
-	.rw_valid_i(axi_valid | waxi_valid),         //IF&MEM输入信号
+	.rw_valid_i(mem_req_valid | waxi_valid),         //IF&MEM输入信号
 	.rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
-    .rw_addr_i(rw_addr_i),          //IF&MEM输入信号
+    .rw_addr_i(mem_req_addr),          //IF&MEM输入信号
   //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
   .rw_burst(rw_burst),
 

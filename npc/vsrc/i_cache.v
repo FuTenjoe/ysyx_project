@@ -3,187 +3,153 @@
 //tag = 53'b[63:11] index = 6'b[10:5] offset = 5'b[4:2];
 
 module i_cache (
-    input clk,
-    input rst_n,
-    //dram side
-    input [63:0] dram_data,
-    input dram_val,
-    output reg dram_req,
-    output [63:0] dram_req_addr,
-    //cpu side
-    input [63:0] cpu_addr,
-    input ins_req,                   //instruction request
-    output reg [63:0] instruction,   //inst for cpu
-    output rom_abort 
+  input clk,
+	input rst_n,
+	//cpu cache
+	input [63:0] cpu_req_addr,
+	input cpu_req_valid,
+	//input cpu_req_rw,
+	output reg [63:0] cpu_data_read,
+	output reg cpu_ready,
+	//main memory cache
+	output reg [63:0] mem_req_addr,
+	output reg mem_req_valid,   //读使能
+	input [63:0] mem_data_read,
+	input mem_ready
 );
-parameter BLOCK_SIZE = 4;
-reg [63:0] counter;
-reg [63:0] cpu_addr_dly;
-reg ins_req_dly;
-reg dram_req_dly;
-reg [63:0] dram_data_shift[3:0];
-reg [309:0] I_SRAM_data0, I_SRAM_data1;                             // {1 , 53, 256} 
-wire [309:0] I_SRAM_data;  //cache
-wire hit0, hit1;
-wire [309:0] wr_cache_data;
-wire dram_data_ready;  //主存信号
-reg [309:0] I_SRAM0[0:63], I_SRAM1[0:63];
-reg [3:0] LRU_c0[0:63],LRU_c1[0:63];
-integer i;
-assign wr_cache_data = {1'b1, cpu_addr_dly[31:11],dram_data_shift[3],dram_data_shift[2],dram_data_shift[1],dram_data_shift[0]};
 
-always@(posedge clk)begin
-  if(!rst_n)begin
-    for(i=0; i<64; i=i+1)begin
-        I_SRAM0[i] = 310'b0;
-        I_SRAM1[i] = 310'b0;
-    end
-  end
-  else if(dram_data_ready)begin
-    if(I_SRAM0[cpu_addr_dly[10:5]][309] && I_SRAM1[cpu_addr_dly[10:5]][309])begin
-      if(LRU_c0[cpu_addr_dly[10:5]] > LRU_c1[cpu_addr_dly[10:5]])
-        I_SRAM0[cpu_addr_dly[10:5]] <= wr_cache_data;
-      else
-        I_SRAM1[cpu_addr_dly[10:5]] <= wr_cache_data;
-    end
-    else if(I_SRAM0[cpu_addr_dly[10:5]][309])
-      I_SRAM1[cpu_addr_dly[10:5]] <= wr_cache_data;   
-    else
-      I_SRAM0[cpu_addr_dly[10:5]] <= wr_cache_data;
-  end
+parameter IDLE= 0,CompareTag = 1, Allocate = 2;
+parameter V= 308;
+parameter TagMSB = 307, TagLSB= 256, BlockMSB =255, BlockLSB = 0;
+reg [308:0] cache_data[0:127];
+reg [1:0] state,next_state;
+reg hit;
+reg hit1,hit2;
+reg way;     //若hit，则way无意义，若miss，则way表示分配的那一路
+
+wire [6:0]cpu_req_index;
+wire [51:0]cpu_req_tag;
+wire [4:0]cpu_req_offset;
+
+assign cpu_req_offset= cpu_req_addr[4:0];
+assign cpu_req_index= cpu_req_addr[63:12];
+assign cpu_req_tag= cpu_req_addr[11:5]; 
+
+integer i;//初始化cache
+initial
+begin
+    for(i=0;i<128;i=i+1)
+        cache_data[i]=309'd0;
 end
-
-//LRU counter block
 always@(posedge clk)begin
-  if(!rst_n)begin
-    for(i=0;i<64;i=i+1)begin
-      LRU_c0[i] = 4'b0;
-      LRU_c1[i] = 4'b0;
-    end
-  end
-  else if(!rom_abort && hit0)begin
-    for(i=0;i<64;i=i+1)begin
-      LRU_c1[i] = LRU_c1[i] + (LRU_c1[i]!=4'b1111);   
-      if(i == {26'b0,cpu_addr_dly[10:5]} || i == {26'b0,cpu_addr[10:5]})
-        LRU_c0[i] <= 4'b0;
-      else begin
-        LRU_c0[i] <= LRU_c0[i] + (LRU_c0[i]!=4'b1111);
-      end
-    end
-  end
-  else if(!rom_abort && hit1)begin
-    for(i=0; i<64; i=i+1)begin
-      LRU_c0[i] <= LRU_c0[i] + (LRU_c0[i]!=4'b1111);
-      if(i == {26'b0,cpu_addr_dly[10:5]} || i == {26'b0,cpu_addr[10:5]})
-        LRU_c1[i] <= 4'b0;
-      else begin
-				LRU_c1[i] <= LRU_c1[i] + (LRU_c1[i]!=4'b1111);   
-      end
-    end
-  end
+	if(!rst_n)
+		state<=IDLE;
+	else
+		state<=next_state;
 end
-
-always@(posedge clk)begin
-  if(!rst_n)begin
-    I_SRAM_data0 <= 310'b0;
-    I_SRAM_data1 <= 310'b0;
-  end
-  else if(ins_req |({dram_req_dly, dram_req} == 2'b10))begin
-    I_SRAM_data0 <= I_SRAM0[cpu_addr[10:5]];
-    I_SRAM_data1 <= I_SRAM1[cpu_addr[10:5]];
-  end
-  else begin
-    I_SRAM_data0 <= I_SRAM_data0;
-    I_SRAM_data1 <= I_SRAM_data1;
-  end
+reg shift_ready;
+always@(*)begin
+	case(state)
+		IDLE:if(cpu_req_valid)
+				next_state=CompareTag;
+			 else
+				next_state=IDLE;
+		CompareTag:if(hit)                     //若hit
+					  next_state=IDLE;
+				   else
+					  next_state=Allocate;
+		Allocate:if(shift_ready)
+					  next_state=CompareTag;
+				 else
+					  next_state=Allocate;
+		default:next_state=IDLE;
+	endcase
 end
-
-//output signals
-assign hit0 = I_SRAM_data0[309] & (I_SRAM_data0[308:256] == cpu_addr_dly[63:11]);
-assign hit1 = I_SRAM_data1[309] & (I_SRAM_data1[308:256] == cpu_addr_dly[63:11]);
-assign hit = hit0 | hit1;
-assign rom_abort = (~hit & ins_req_dly) | dram_req | dram_req_dly;
-assign dram_data_ready = (BLOCK_SIZE == counter);
-assign I_SRAM_data = hit1 ? I_SRAM_data1 : I_SRAM_data0;
 
 always@(*)begin
-  case(cpu_addr_dly[4:3])
-  2'd0: instruction = I_SRAM_data[63:0];
-  2'd1: instruction = I_SRAM_data[127:64];
-  2'd2: instruction = I_SRAM_data[191:128];
-  2'd3: instruction = I_SRAM_data[255:192];
-  default: instruction = I_SRAM_data[63:0];
-  endcase
+	if(state==CompareTag)begin
+		if(cache_data[2*cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==cpu_req_tag)
+			hit1=1'b1;
+		else
+			hit1=1'b0;
+	end
+	else
+		hit1=1'b0;
+end
+
+always@(*)begin
+	if(state==CompareTag)begin
+		if(cache_data[2*cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==cpu_req_tag)
+			hit2=1'b1;
+		else
+			hit2=1'b0;
+	end
+	else
+		hit2=1'b0;
+end
+	
+always@(*)begin
+	if(state==CompareTag)
+		hit=hit1||hit2;
+	else
+		hit=1'b0;
+end
+
+always@(*)begin
+	if((state==CompareTag)&&(hit==1'b0))begin   //未命中
+		case({cache_data[2*cpu_req_index][V],cache_data[2*cpu_req_index+1][V]})
+			2'b01:way=1'b0;                    //第0路可用
+			2'b10:way=1'b1;                    //第1路可用
+			2'b00:way=1'b0;                    //第0、1路均可用
+			2'b11:way=1'b0;                    //第0、1路均不可用，默认替换第0路
+			default:way=1'b0;
+		endcase
+	end
+	else 
+		way = way;
 end
 
 always@(posedge clk)begin
-  if(!rst_n)
-    dram_req <= 1'b0;
-  else if(~hit & ins_req_dly)
-    dram_req <= 1'b1;
-  else if(dram_data_ready)
-    dram_req <= 1'b0;
-  else
-    dram_req <= dram_req;
+	if(state==CompareTag&&hit)begin
+		cpu_ready<=1'b1;
+			if(hit1)
+				cpu_data_read<=cache_data[2*cpu_req_index][64*cpu_req_offset[4:2] +:64];
+			else
+				cpu_data_read<=cache_data[2*cpu_req_index+1][64*cpu_req_offset[4:2] +:64];
+	end
+	else begin
+		cpu_ready<=1'b0;
+		cpu_data_read <= cpu_data_read;
+	end
 end
-
+reg [3:0] count;
 always@(posedge clk)begin
-  if(!rst_n)
-  dram_req_dly <= 1'b0;
-  else
-  dram_req_dly <= dram_req;
+	if(state==Allocate)begin                           //load new block from memory to cache
+		if(!mem_ready)begin
+			mem_req_valid<=1'b1;
+			mem_req_addr<={cpu_req_addr[11:2],2'b00};
+			//mem_req_rw<=1'b0;
+			count <= 4'd0;
+			shift_ready <= 1'd0;
+		end
+		else begin
+			if(count ==3'd3)begin
+				mem_req_valid<=1'b0;
+				cache_data[2*cpu_req_index+way][count*64+:64] <= {1'b1,cpu_req_tag,mem_data_read};
+				count <= 4'd0;
+				shift_ready <= 1'd1;
+			end
+			else begin
+				mem_req_valid<=1'b0;
+				cache_data[2*cpu_req_index+way][count*64+:64] <= {1'b1,cpu_req_tag,mem_data_read};
+				count <= count + 1'b1;
+				shift_ready <= 1'd0;
+			end
+		end
+	end
+	else begin
+		mem_req_valid<=1'b0;
+	end
 end
-//送入总线的地址
-assign dram_req_addr = {32'b0,cpu_addr_dly[31:5],5'b0};
-//input signal buffer
-always@(posedge clk)begin
-  if(!rst_n)
-    ins_req_dly <= 1'b0;
-  else 
-    ins_req_dly <= ins_req;
-end
-
-always@(posedge clk)begin
-  if(!rst_n)
-    cpu_addr_dly <= 63'd0;
-  else if(ins_req  &&(cpu_addr!=64'd0))
-    cpu_addr_dly <= cpu_addr;
-  else if(((ins_req_dly & ~hit) || dram_req)&&(cpu_addr!=64'd0))
-    cpu_addr_dly <= cpu_addr_dly;
-end
-
-//block counter
-always@(posedge clk)begin
-  if(!rst_n)
-    counter <= 64'd0;
-  else if(dram_data_ready)
-    counter <= 64'd0;
-  else if(dram_val)
-    counter <= counter + 1'b1;
-end
-
-//dram data buffer 主存
-always@(posedge clk)begin
-  if(!rst_n)begin
-    dram_data_shift[0] <= 64'd0;
-    dram_data_shift[1] <= 64'd0;
-    dram_data_shift[2] <= 64'd0;
-    dram_data_shift[3] <= 64'd0;
-  end
-  else if(dram_data_ready)begin
-    dram_data_shift[0] <= 64'd0;
-    dram_data_shift[1] <= 64'd0;
-    dram_data_shift[2] <= 64'd0;
-    dram_data_shift[3] <= 64'd0;
-  end
-  else if(dram_val)begin
-    dram_data_shift[0] <= dram_data_shift[1];
-    dram_data_shift[1] <= dram_data_shift[2];
-    dram_data_shift[2] <= dram_data_shift[3];
-    dram_data_shift[3] <= dram_data;
-  end
-end
-
-
-
+	
 endmodule
