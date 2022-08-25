@@ -63,11 +63,11 @@ always@(posedge clk)begin
   end
   else if(!rom_abort && hit0)begin
     for(i=0;i<63;i=i+1)begin
-      LRU_c1[i] <= LRU_c1[i] + (LRU_c1[i]!=4'b1111);   
+      LRU_c1[i] = LRU_c1[i] + (LRU_c1[i]!=4'b1111);   
       if(i == {26'b0,cpu_addr_dly[10:5]} || i == {26'b0,cpu_addr[10:5]})
-        LRU_c0[i] = 4'b0;
+        LRU_c0[i] <= 4'b0;
       else begin
-        LRU_c0[i] = LRU_c0[i] + (LRU_c0[i]!=4'b1111);
+        LRU_c0[i] <= LRU_c0[i] + (LRU_c0[i]!=4'b1111);
       end
     end
   end
