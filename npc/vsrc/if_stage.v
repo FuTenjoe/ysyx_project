@@ -100,10 +100,9 @@ always@(posedge clk or negedge rst_n)begin
         delay_r_done <= r_done;
     end
 end
-//assign inst_use = delay_r_done? 1'b1:1'b0;
-assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
-//wire ar_hs;
-//wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
+
+//assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
+assign inst = instruction[31:0];
 axi_judge u_axi_judge(
     .clk(clk),
     .rst_n(rst_n),
@@ -145,6 +144,7 @@ wire dram_req;
 wire [63:0] dram_req_addr;
 wire [63:0] instruction;
 wire rom_abort;
+
 i_cache u_icache(
     .clk(clk),
     .rst_n(rst_n),
@@ -155,7 +155,7 @@ i_cache u_icache(
     .dram_req_addr(dram_req_addr),
     //cpu side
     .cpu_addr(rw_addr_i),
-    .ins_req(axi_valid),                   //instruction request
+    .ins_req(axi_burst),                   //instruction request
     .instruction(instruction),   //inst for cpu
     .rom_abort(rom_abort) 
 );
