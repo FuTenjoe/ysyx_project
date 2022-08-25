@@ -276,6 +276,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+43,"ysyx_22040175_top u_if_stage u_pc_predict mret_flag", false,-1);
         tracep->declBit(c+44,"ysyx_22040175_top u_if_stage u_pc_predict ecall_flag", false,-1);
         tracep->declBit(c+2527,"ysyx_22040175_top u_if_stage u_pc_predict w_start", false,-1);
+        tracep->declBit(c+2075,"ysyx_22040175_top u_if_stage u_pc_predict rom_abort", false,-1);
         tracep->declBit(c+131,"ysyx_22040175_top u_if_stage u_pc_predict delay_sig_jalr", false,-1);
         tracep->declBus(c+2623,"ysyx_22040175_top u_if_stage u_pc_predict IDLE", false,-1, 2,0);
         tracep->declBus(c+2625,"ysyx_22040175_top u_if_stage u_pc_predict NEXT", false,-1, 2,0);
