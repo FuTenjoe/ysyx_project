@@ -34,7 +34,7 @@ assign wr_cache_data = {1'b1, cpu_addr_dly[31:11],dram_data_shift[3],dram_data_s
 
 always@(posedge clk)begin
   if(!rst_n)begin
-    for(i=0; i<256; i=i+1)begin
+    for(i=0; i<64; i=i+1)begin
         I_SRAM0[i] = 278'b0;
         I_SRAM1[i] = 278'b0;
     end
