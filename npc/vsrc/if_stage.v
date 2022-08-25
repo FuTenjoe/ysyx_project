@@ -117,7 +117,8 @@ axi_judge u_axi_judge(
     .return_id(axi_ar_id_o),
     .axi_valid(axi_valid),
     .axi_id(axi_id),
-    .axi_addr(axi_addr)
+    .axi_addr(axi_addr),
+    .axi_burst(rw_burst)
 
 );
 
@@ -133,7 +134,7 @@ wire axi_b_ready_o;
 wire axi_b_valid_i;
 wire [63:0]rw_addr_i;
 assign rw_addr_i = (!waxi_valid) ? axi_addr : reg_write_addr;
-
+wire rw_burst;
 
 //cache
 wire dram_req;
@@ -182,6 +183,7 @@ u_axi(
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
     .rw_addr_i(rw_addr_i),          //IF&MEM输入信号
   //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
+  .rw_burst(rw_burst),
 
 
 
@@ -220,9 +222,9 @@ u_axi(
 //  output [2:0]                        axi_ar_prot_o,
     .axi_ar_id_o(axi_ar_id_o),
 //output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
-//output [7:0]                        axi_ar_len_o,
-//    output [2:0]                        axi_ar_size_o,
-//    output [1:0]                        axi_ar_burst_o,
+output [7:0]                        axi_ar_len_o,
+    output [2:0]                        axi_ar_size_o,
+    output [1:0]                        axi_ar_burst_o,
  //   output                              axi_ar_lock_o,
 //    output [3:0]                        axi_ar_cache_o,
 //    output [3:0]                        axi_ar_qos_o,
@@ -254,9 +256,9 @@ u_axi_slave(
   //  input [2:0]                         axi_ar_prot_i,    //主设备保护类型
  // .axi_ar_id_i(axi_ar_id_o),  //标识读地址组
    // input [AXI_USER_WIDTH-1:0]         axi_ar_user_i,  //用户定义信号
-   // input [7:0]                         axi_ar_len_i, //突发长度，这个字段标识每次突发传输的传输次数
-   // input [2:0]                        axi_ar_size_i,  //突发大小，这个字段表示每次突发传输的大小
-  //  input [1:0]                         axi_ar_burst_i,  //突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法
+    input [7:0]                         axi_ar_len_i, //突发长度，这个字段标识每次突发传输的传输次数
+    input [2:0]                        axi_ar_size_i,  //突发大小，这个字段表示每次突发传输的大小
+    input [1:0]                         axi_ar_burst_i,  //突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法
   //  input                              axi_ar_lock_i,   //锁定类型，提供关于传输时原子特性的额外信息
   //  input [3:0]                        axi_ar_cache_i,   //存储器类型
   //  input [3:0]                        axi_ar_qos_i,  //服务质量，即每次读传输的QoS标识符，仅AXI4支持
