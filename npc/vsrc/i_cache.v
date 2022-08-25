@@ -57,8 +57,8 @@ end
 always@(posedge clk)begin
   if(!rst_n)begin
     for(i=0;i<256;i=i+1)begin
-      LRU_c0[i] <= 4'b0;
-      LRU_c1[i] <= 4'b0;
+      LRU_c0[i] = 4'b0;
+      LRU_c1[i] = 4'b0;
     end
   end
   else if(!rom_abort && hit0)begin
