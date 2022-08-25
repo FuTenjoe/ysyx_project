@@ -8,8 +8,9 @@ module d_cache (
   //dram side (write)
   output dram_wr_req,    //request writing data to dram
   output [63:0] dram_wr_addr, //write data address
-  output [63:0] dram_wr_data,  //write data
+  output reg [63:0] dram_wr_data,  //write data
   input dram_wr_val,       //valid to write 
+  output [7:0] wmask,
 
   //dram side (read)
   output dram_rd_req,        //request reading data from dram
@@ -24,14 +25,15 @@ module d_cache (
   input [63:0] cpu_wr_data,  // write data come from cpu
   output [63:0] cpu_rd_data, // read data and send to cpu
   output hit,     //cache hit or miss
-  output ram_abort    //waiting for cache
+  output ram_abort,    //waiting for cache
+  input [7:0] cpu_wmask
 );
 
 parameter BLOCK_SIZE = 4;
 parameter CPU_EXEC= 0;
 parameter WR_DRAM = 1;
 parameter RD_DRAM = 2;
-integer i;
+integer i=0;
 
 reg [1:0] present_state;
 wire [309:0] D_SRAM_block;   //{val 1, dir 1, tag52, data256}
@@ -47,7 +49,7 @@ reg dram_rd_req_dly;
 reg [63:0] wr_counter, rd_counter;   //counter for the block
 reg [63:0] dram_data_shift[0:3];   //4*64 
 reg [309:0] D_SRAM [0:127];    //the data_cache storage space
-
+reg [7:0] delay_cpu_wmask;
 //physical write/read address for dram
 assign dram_wr_addr = {tag_dly,cpu_addr[11:5],5'b0};
 assign dram_rd_addr = {cpu_addr_dly[63:5],5'b0};
@@ -143,7 +145,7 @@ always@(posedge clk)begin
       if(~hit & dirty & data_req)  //dirty block write back to dram
         present_state <= WR_DRAM;
       else if(~hit & data_req)
-        present_state <= RD_SRAM;
+        present_state <= RD_DRAM;
       else
         present_state <= CPU_EXEC;
     end
@@ -167,6 +169,7 @@ end
   //dram write/read request
 assign dram_wr_req = (present_state == WR_DRAM);
 assign dram_rd_req = (present_state == RD_DRAM);
+assign wmask = (present_state == WR_DRAM) ? 8'd0 : delay_cpu_wmask;
   //dram read request delay
 always@(posedge clk)begin
   if(!rst_n)
@@ -201,6 +204,17 @@ always@(posedge clk)begin
   else
     cpu_wr_data_dly <= cpu_wr_data_dly;
 end
+
+always@(posedge clk)begin
+  if(!rst_n)
+    delay_cpu_wmask <= 64'd0;
+  else if(~hit & data_req & wren)
+    delay_cpu_wmask <= cpu_wmask;
+  else
+    delay_cpu_wmask <= delay_cpu_wmask;
+end
+
+
 //cpu write wait flag (wait until target block has been moved to cache)
 always@(posedge clk)begin
   if(!rst_n)

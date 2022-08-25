@@ -20,7 +20,7 @@ parameter BLOCK_SIZE = 4;
 reg [63:0] counter;
 reg [63:0] cpu_addr_dly;
 reg ins_req_dly;
-reg dram_reg_dly;
+reg dram_req_dly;
 reg [63:0] dram_data_shift[3:0];
 reg [309:0] I_SRAM_data0, I_SRAM_data1;                             // {1 , 53, 256} 
 wire [309:0] I_SRAM_data;  //cache
@@ -50,10 +50,6 @@ always@(posedge clk)begin
       I_SRAM1[cpu_addr_dly[10:5]] <= wr_cache_data;   
     else
       I_SRAM0[cpu_addr_dly[10:5]] <= wr_cache_data;
-  end
-  else begin
-    I_SRAM0 <= I_SRAM0;
-    I_SRAM1 <= I_SRAM1;
   end
 end
 
@@ -85,10 +81,6 @@ always@(posedge clk)begin
       end
     end
   end
-  else begin
-    LRU_c0 <= LRU_c0;
-    LRU_c1 <= LRU_c1;
-  end
 end
 
 always@(posedge clk)begin
@@ -96,7 +88,7 @@ always@(posedge clk)begin
     I_SRAM_data0 <= 310'b0;
     I_SRAM_data1 <= 310'b0;
   end
-  else if(ins_req |({dram_reg_dly, dram_req} == 2'b10))begin
+  else if(ins_req |({dram_req_dly, dram_req} == 2'b10))begin
     I_SRAM_data0 <= I_SRAM0[cpu_addr[10:5]];
     I_SRAM_data1 <= I_SRAM1[cpu_addr[10:5]];
   end

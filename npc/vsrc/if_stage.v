@@ -135,6 +135,25 @@ wire [63:0]rw_addr_i;
 assign rw_addr_i = (!waxi_valid) ? axi_addr : reg_write_addr;
 
 
+//cache
+wire dram_req;
+wire [63:0] dram_req_addr;
+wire [63:0] instruction;
+wire rom_abort;
+i_cache (
+    .clk(clk),
+    .rst_n(rst_n),
+    //dram side
+    .dram_data(rdata),
+    .dram_val(axi_ar_valid_o),
+    .dram_req(dram_req),
+    .dram_req_addr(dram_req_addr),
+    //cpu side
+    .cpu_addr(rw_addr_i),
+    .ins_req(axi_valid),                   //instruction request
+    .instruction(instruction),   //inst for cpu
+    .rom_abort(rom_abort) 
+);
 
 
 
@@ -152,7 +171,7 @@ assign rw_addr_i = (!waxi_valid) ? axi_addr : reg_write_addr;
 axi # (
 )
 u_axi(
-    .clock(clk),
+    .cl:ock(clk),
     .reset_n(rst_n),
     .rw_req_i(axi_req),
     .rw_size_i(reg_write_wmask),
