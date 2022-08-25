@@ -251,7 +251,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+2075,"ysyx_22040175_top u_if_stage cpu_ready", false,-1);
         tracep->declQuad(c+2076,"ysyx_22040175_top u_if_stage mem_req_addr", false,-1, 63,0);
         tracep->declBit(c+2078,"ysyx_22040175_top u_if_stage mem_req_valid", false,-1);
-        tracep->declBit(c+2579,"ysyx_22040175_top u_if_stage rom_abort", false,-1);
+        tracep->declBit(c+2579,"ysyx_22040175_top u_if_stage shift_ready", false,-1);
         tracep->declBit(c+2470,"ysyx_22040175_top u_if_stage u_pc_predict clk", false,-1);
         tracep->declBit(c+2101,"ysyx_22040175_top u_if_stage u_pc_predict rst_n", false,-1);
         tracep->declBit(c+33,"ysyx_22040175_top u_if_stage u_pc_predict control_rest", false,-1);
@@ -277,7 +277,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+44,"ysyx_22040175_top u_if_stage u_pc_predict mret_flag", false,-1);
         tracep->declBit(c+45,"ysyx_22040175_top u_if_stage u_pc_predict ecall_flag", false,-1);
         tracep->declBit(c+2480,"ysyx_22040175_top u_if_stage u_pc_predict w_start", false,-1);
-        tracep->declBit(c+2579,"ysyx_22040175_top u_if_stage u_pc_predict rom_abort", false,-1);
+        tracep->declBit(c+2075,"ysyx_22040175_top u_if_stage u_pc_predict cpu_ready", false,-1);
         tracep->declBit(c+132,"ysyx_22040175_top u_if_stage u_pc_predict delay_sig_jalr", false,-1);
         tracep->declBus(c+2577,"ysyx_22040175_top u_if_stage u_pc_predict IDLE", false,-1, 2,0);
         tracep->declBus(c+2580,"ysyx_22040175_top u_if_stage u_pc_predict NEXT", false,-1, 2,0);
@@ -319,6 +319,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBus(c+2452,"ysyx_22040175_top u_if_stage u_axi_judge next_state", false,-1, 2,0);
         tracep->declBit(c+2470,"ysyx_22040175_top u_if_stage u_i_cache clk", false,-1);
         tracep->declBit(c+2101,"ysyx_22040175_top u_if_stage u_i_cache rst_n", false,-1);
+        tracep->declBit(c+2079,"ysyx_22040175_top u_if_stage u_i_cache shift_ready", false,-1);
         tracep->declQuad(c+2447,"ysyx_22040175_top u_if_stage u_i_cache cpu_req_addr", false,-1, 63,0);
         tracep->declBit(c+2449,"ysyx_22040175_top u_if_stage u_i_cache cpu_req_valid", false,-1);
         tracep->declQuad(c+2073,"ysyx_22040175_top u_if_stage u_i_cache cpu_data_read", false,-1, 63,0);
@@ -335,7 +336,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBus(c+2594,"ysyx_22040175_top u_if_stage u_i_cache TagLSB", false,-1, 31,0);
         tracep->declBus(c+2595,"ysyx_22040175_top u_if_stage u_i_cache BlockMSB", false,-1, 31,0);
         tracep->declBus(c+2589,"ysyx_22040175_top u_if_stage u_i_cache BlockLSB", false,-1, 31,0);
-        tracep->declBus(c+2079,"ysyx_22040175_top u_if_stage u_i_cache state", false,-1, 1,0);
+        tracep->declBus(c+2080,"ysyx_22040175_top u_if_stage u_i_cache state", false,-1, 1,0);
         tracep->declBus(c+2453,"ysyx_22040175_top u_if_stage u_i_cache next_state", false,-1, 1,0);
         tracep->declBit(c+2454,"ysyx_22040175_top u_if_stage u_i_cache hit", false,-1);
         tracep->declBit(c+2455,"ysyx_22040175_top u_if_stage u_i_cache hit1", false,-1);
@@ -345,7 +346,6 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declQuad(c+2458,"ysyx_22040175_top u_if_stage u_i_cache cpu_req_tag", false,-1, 51,0);
         tracep->declBus(c+2460,"ysyx_22040175_top u_if_stage u_i_cache cpu_req_offset", false,-1, 4,0);
         tracep->declBus(c+1,"ysyx_22040175_top u_if_stage u_i_cache i", false,-1, 31,0);
-        tracep->declBit(c+2080,"ysyx_22040175_top u_if_stage u_i_cache shift_ready", false,-1);
         tracep->declBus(c+2081,"ysyx_22040175_top u_if_stage u_i_cache count", false,-1, 3,0);
         tracep->declBus(c+2596,"ysyx_22040175_top u_if_stage u_axi RW_DATA_WIDTH", false,-1, 31,0);
         tracep->declBus(c+2597,"ysyx_22040175_top u_if_stage u_axi RW_ADDR_WIDTH", false,-1, 31,0);
@@ -4333,8 +4333,8 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullBit(oldp+2075,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__cpu_ready));
         tracep->fullQData(oldp+2076,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__mem_req_addr),64);
         tracep->fullBit(oldp+2078,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__mem_req_valid));
-        tracep->fullCData(oldp+2079,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state),2);
-        tracep->fullBit(oldp+2080,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__shift_ready));
+        tracep->fullBit(oldp+2079,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__shift_ready));
+        tracep->fullCData(oldp+2080,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state),2);
         tracep->fullCData(oldp+2081,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__count),4);
         tracep->fullIData(oldp+2082,((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__mem_req_addr)),32);
         tracep->fullBit(oldp+2083,(((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__w_state)) 
@@ -4697,7 +4697,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullBit(oldp+2576,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_ready_o));
         tracep->fullCData(oldp+2577,(0U),3);
         tracep->fullCData(oldp+2578,(1U),2);
-        tracep->fullBit(oldp+2579,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rom_abort));
+        tracep->fullBit(oldp+2579,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__shift_ready));
         tracep->fullCData(oldp+2580,(1U),3);
         tracep->fullCData(oldp+2581,(2U),3);
         tracep->fullCData(oldp+2582,(3U),3);
