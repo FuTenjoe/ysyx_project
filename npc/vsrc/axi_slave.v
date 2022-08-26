@@ -148,8 +148,6 @@ always@(posedge clock)begin
         else begin
             if(count == axi_ar_len_i)begin
                 axi_r_data_o <=rdata;
-                pmem_read(axi_ar_addr_i+4*count,rdata);
-                
                 axi_r_last_o <= 1'b1;
                 axi_r_resp_o <= 2'b11;
                 count <= 3'd0;
@@ -157,7 +155,6 @@ always@(posedge clock)begin
             else begin
                 axi_r_data_o <= rdata;
                 pmem_read(axi_ar_addr_i+4*count,rdata);
-                
                 axi_r_last_o <= 1'b0;
                 axi_r_resp_o <= 2'b11;
                 count <= count + 1'b1;
