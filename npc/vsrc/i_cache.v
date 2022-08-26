@@ -29,12 +29,12 @@ reg hit1,hit2;
 reg way;     //若hit，则way无意义，若miss，则way表示分配的那一路
 
 wire [6:0]cpu_req_index;
-wire [51:0]cpu_req_tag;
+wire [52:0]cpu_req_tag;
 wire [4:0]cpu_req_offset;
 
 assign cpu_req_offset= cpu_req_addr[4:0];
-assign cpu_req_index= cpu_req_addr[63:12];
-assign cpu_req_tag= cpu_req_addr[11:5]; 
+assign cpu_req_index= cpu_req_addr[10:5];
+assign cpu_req_tag= cpu_req_addr[63:11]; 
 
 integer i;//初始化cache
 initial
