@@ -146,29 +146,6 @@ always@(*)begin
 	end
 end
 
-/*always@(posedge clk)begin
-	if(state==CompareTag && hit)begin
-		if(hit1)begin
-			cpu_ready<=1'b1;
-			cpu_data_read<=cache_data[2*cpu_req_index][64*cpu_req_offset[3:2] +:64];
-		end
-		else begin
-			cpu_ready<=1'b1;
-			cpu_data_read<=cache_data[2*cpu_req_index+1][64*cpu_req_offset[3:2] +:64];
-		end
-	end
-	else if(state==CompareTag2 && hit)begin
-		cpu_ready<=1'b1;
-			if(hit1)
-				cpu_data_read<=cache_data[2*cpu_req_index][64*delay_cpu_req_offset[3:2] +:64];
-			else
-				cpu_data_read<=cache_data[2*cpu_req_index+1][64*delay_cpu_req_offset[3:2] +:64];
-	end
-	else begin 
-		cpu_ready<=1'b0;
-		cpu_data_read <= 64'd0;
-	end
-end*/
 assign cpu_ready = ((state==CompareTag && hit) ||(state==CompareTag2 && hit)) ? 1'b1:1'b0;
 assign cpu_data_read = (state==CompareTag && hit) ? (hit1?cache_data[2*cpu_req_index][64*cpu_req_offset[3:2] +:64] : cache_data[2*cpu_req_index+1][64*cpu_req_offset[3:2] +:64]):(state==CompareTag2 && hit) ?(hit1 ? cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[3:2] +:64]:cache_data[2*delay_cpu_req_index+1][64*delay_cpu_req_offset[3:2] +:64]) : 64'd0;
 
