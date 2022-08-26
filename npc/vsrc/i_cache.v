@@ -87,6 +87,7 @@ always@(*)begin
 end
 
 always@(*)begin
+	if(state==CompareTag)begin
 	if(need_allocate == 1'b0)begin
 		if(cache_data[2*cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==cpu_req_tag)
 			hit2=1'b1;
@@ -98,6 +99,7 @@ always@(*)begin
 			hit2=1'b1;
 		else
 			hit2=1'b0;
+	end
 	end
 	else
 		hit2=1'b0;
