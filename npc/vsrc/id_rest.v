@@ -98,7 +98,7 @@ always @(*) begin
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b0;
                 cunqu_hazard = 1'b0;
-                test = 2'd3;
+                test = 2'd0;
             end
         end
     end
