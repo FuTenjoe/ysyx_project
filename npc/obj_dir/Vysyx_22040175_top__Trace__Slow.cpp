@@ -333,6 +333,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declQuad(c+2054,"ysyx_22040175_top u_if_stage u_i_cache mem_data_read", false,-1, 63,0);
         tracep->declBit(c+2077,"ysyx_22040175_top u_if_stage u_i_cache mem_ready", false,-1);
         tracep->declBit(c+2450,"ysyx_22040175_top u_if_stage u_i_cache mem_done", false,-1);
+        tracep->declBit(c+32,"ysyx_22040175_top u_if_stage u_i_cache control_rest", false,-1);
         tracep->declBus(c+2603,"ysyx_22040175_top u_if_stage u_i_cache IDLE", false,-1, 31,0);
         tracep->declBus(c+2604,"ysyx_22040175_top u_if_stage u_i_cache CompareTag", false,-1, 31,0);
         tracep->declBus(c+2605,"ysyx_22040175_top u_if_stage u_i_cache Allocate", false,-1, 31,0);
