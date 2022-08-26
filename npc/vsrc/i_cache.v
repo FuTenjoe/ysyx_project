@@ -3,9 +3,8 @@
 //tag = 53'b[63:11] index = 6'b[10:5] offset = 5'b[4:2];
 
 module i_cache (
-  input clk,
+ 	input clk,
 	input rst_n,
-  output reg shift_ready,
 	//cpu cache
 	input [63:0] cpu_req_addr,
 	input cpu_req_valid,
@@ -48,7 +47,7 @@ always@(posedge clk)begin
 	else
 		state<=next_state;
 end
-//reg shift_ready;
+reg shift_ready;
 always@(*)begin
 	case(state)
 		IDLE:if(cpu_req_valid)
@@ -124,11 +123,18 @@ always@(posedge clk)begin
 	end
 end
 reg [3:0] count;
+reg test;
 always@(posedge clk)begin
+if(!rst_n)begin
+	count <= 1'b0;
+	shift_ready <= 1'd0;
+	test <= 1'd0;
+end
+else begin
 	if(state==Allocate)begin                           //load new block from memory to cache
 		if(!mem_ready)begin
 			mem_req_valid<=1'b1;
-			mem_req_addr<={cpu_req_addr[63:5],5'd0};
+			mem_req_addr<={cpu_req_addr[11:2],2'b00};
 			//mem_req_rw<=1'b0;
 			count <= 4'd0;
 			shift_ready <= 1'd0;
@@ -136,21 +142,23 @@ always@(posedge clk)begin
 		else begin
 			if(count ==3'd3)begin
 				mem_req_valid<=1'b0;
-				cache_data[2*cpu_req_index+way][count*64+:64] <= {1'b1,cpu_req_tag,mem_data_read};
+				cache_data[2*cpu_req_index+way][308:192] <= {1'b1,cpu_req_tag,mem_data_read};
 				count <= 4'd0;
 				shift_ready <= 1'd1;
+				test <= 1'd1;
 			end
 			else begin
 				mem_req_valid<=1'b0;
-				cache_data[2*cpu_req_index+way][count*64+:64] <= {1'b1,cpu_req_tag,mem_data_read};
+				cache_data[2*cpu_req_index+way][64*count+:64] <= {mem_data_read};
 				count <= count + 1'b1;
-				shift_ready <= 1'd0;
+				shift_ready <= shift_ready;
 			end
 		end
 	end
 	else begin
 		mem_req_valid<=1'b0;
 	end
+end
 end
 	
 endmodule

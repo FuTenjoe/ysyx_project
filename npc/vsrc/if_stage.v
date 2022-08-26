@@ -168,7 +168,6 @@ wire shift_ready;
 i_cache u_i_cache(
   .clk(clk),
   .rst_n(rst_n),
- // .shift_ready(shift_ready)
 	//cpu cache
 	.cpu_req_addr(rw_addr_i),
 	.cpu_req_valid(rw_burst),
