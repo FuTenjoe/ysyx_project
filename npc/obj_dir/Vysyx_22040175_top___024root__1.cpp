@@ -5296,7 +5296,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
                                                & (0U 
                                                   != (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag)))
                                                ? 1U
-                                               : 3U))));
+                                               : 0U))));
         }
     }
     vlSelf->ysyx_22040175_top__DOT__rest_wb_hazard 

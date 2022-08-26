@@ -63,7 +63,7 @@ void Vysyx_22040175_top___024root___settle__TOP__7(Vysyx_22040175_top___024root*
                                                & (0U 
                                                   != (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag)))
                                                ? 1U
-                                               : 3U))));
+                                               : 0U))));
         }
     }
     vlSelf->ysyx_22040175_top__DOT__rest_from_id = 
