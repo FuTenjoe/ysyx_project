@@ -145,7 +145,7 @@ always@(*)begin
 		way = way;
 	end
 end
-
+reg cpu_ready;
 always@(posedge clk)begin
 	if(state==CompareTag && hit)begin
 		if(hit1)begin
