@@ -134,7 +134,7 @@ else begin
 	if(state==Allocate)begin                           //load new block from memory to cache
 		if(!mem_ready)begin
 			mem_req_valid<=1'b1;
-			mem_req_addr<={cpu_req_addr[63:5],4'd0};
+			mem_req_addr<={cpu_req_addr[63:5],5'd0};
 			//mem_req_rw<=1'b0;
 			count <= 4'd0;
 			shift_ready <= 1'd0;
