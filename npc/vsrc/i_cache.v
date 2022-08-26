@@ -123,7 +123,13 @@ always@(*)begin
 	else
 		hit=1'b0;
 end
-
+reg dd_r_done;
+always@(posedge clk)begin
+	if(!rst_n)
+		dd_r_done <= 1'd0;
+	else
+		dd_r_done <= mem_done;
+end
 always@(*)begin
 	if((state==CompareTag)&&(hit==1'b0))begin   //未命中
 		case({cache_data[2*cpu_req_index][V],cache_data[2*cpu_req_index+1][V]})
@@ -170,25 +176,25 @@ else begin
 			shift_ready <= 1'd0;
 		end
 		else begin
-			if(!mem_done && mem_ready)begin
-			if(count ==3'd3)begin
-				mem_req_valid<=1'b0;
-				cache_data[2*cpu_req_index+way][308:192] <= {1'b1,delay_cpu_req_tag,mem_data_read};
+			if(!dd_r_done && mem_ready)begin
+				if(count ==3'd3)begin
+					mem_req_valid<=1'b0;
+					cache_data[2*cpu_req_index+way][308:192] <= {1'b1,delay_cpu_req_tag,mem_data_read};
+					count <= 4'd0;
+					shift_ready <= 1'd1;
+					test <= 1'd1;
+				end
+				else begin
+					mem_req_valid<=1'b0;
+					cache_data[2*cpu_req_index+way][64*count+:64] <= {mem_data_read};
+					count <= count + 1'b1;
+					shift_ready <= shift_ready;
+				end
+			end
+			else begin
+				cache_data <=cache_data;
 				count <= 4'd0;
 				shift_ready <= 1'd1;
-				test <= 1'd1;
-			end
-			else begin
-				mem_req_valid<=1'b0;
-				cache_data[2*cpu_req_index+way][64*count+:64] <= {mem_data_read};
-				count <= count + 1'b1;
-				shift_ready <= shift_ready;
-			end
-			end
-			else begin
-			cache_data <=cache_data;
-			count <= 4'd0;
-			shift_ready <= 1'd1;
 			end
 		end
 	end
