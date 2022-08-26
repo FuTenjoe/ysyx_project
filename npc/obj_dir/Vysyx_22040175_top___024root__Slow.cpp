@@ -9845,11 +9845,10 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
                           | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
                              == (IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr))) 
                          & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_flag)))) 
-                     & ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
-                          == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
-                         | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
-                            == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
-                        & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))));
+                     & (((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr) 
+                         == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)) 
+                        | ((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_raddr) 
+                           == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr)))))));
     VL_EXTEND_WQ(130,64, __Vtemp643, (((- (QData)((IData)(
                                                           (1U 
                                                            & (vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__p[0U] 

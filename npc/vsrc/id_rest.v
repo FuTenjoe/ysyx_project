@@ -84,7 +84,7 @@ always @(*) begin
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
                 cunqu_hazard = 1'b0;
-                test = 2'd2;
+                test = (wb_reg_waddr!= 5'b0)? 2'd2:2'd0;
             end
             else if((reg1_raddr + imm == reg_waddr+ex_s_imm)&(ex_s_flag == 1'b1)&(curr_rd_buf_flag !=0))begin   //因为sb与后一条lbu冲突添加
                 rest_from_id = 1'b1;
