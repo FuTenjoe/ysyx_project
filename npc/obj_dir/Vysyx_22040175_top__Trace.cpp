@@ -2008,10 +2008,10 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgCData(oldp+2079,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state),2);
             tracep->chgBit(oldp+2080,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__shift_ready));
             tracep->chgQData(oldp+2081,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr),64);
-            tracep->chgCData(oldp+2083,((0x1fU & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr))),5);
-            tracep->chgCData(oldp+2084,((0x7fU & (IData)(
+            tracep->chgCData(oldp+2083,((0xfU & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr))),4);
+            tracep->chgCData(oldp+2084,((0xffU & (IData)(
                                                          (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                          >> 5U)))),7);
+                                                          >> 4U)))),8);
             tracep->chgQData(oldp+2085,((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
                                          >> 0xcU)),52);
             tracep->chgBit(oldp+2087,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__dd_r_done));
@@ -2235,12 +2235,12 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgBit(oldp+2465,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit));
             tracep->chgBit(oldp+2466,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit1));
             tracep->chgBit(oldp+2467,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__way));
-            tracep->chgCData(oldp+2468,((0x7fU & (IData)(
+            tracep->chgCData(oldp+2468,((0xffU & (IData)(
                                                          (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                          >> 5U)))),7);
+                                                          >> 4U)))),8);
             tracep->chgQData(oldp+2469,((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
                                          >> 0xcU)),52);
-            tracep->chgCData(oldp+2471,((0x1fU & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i))),5);
+            tracep->chgCData(oldp+2471,((0xfU & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i))),4);
             tracep->chgBit(oldp+2472,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi__rw_valid_i));
             tracep->chgCData(oldp+2473,(((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_judge__DOT__present_state))
                                           ? 4U : 0U)),3);
@@ -2291,10 +2291,10 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                     ? ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                                         [(0x7fU & ((IData)(1U) 
                                                    + 
-                                                   (0xfeU 
+                                                   (0x1feU 
                                                     & ((IData)(
                                                                (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                >> 5U)) 
+                                                                >> 4U)) 
                                                        << 1U))))][9U] 
                                         >> 0x14U) & 
                                        ((0xfffffffffffffULL 
@@ -2304,10 +2304,10 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                                              (0x7fU 
                                                               & ((IData)(1U) 
                                                                  + 
-                                                                 (0xfeU 
+                                                                 (0x1feU 
                                                                   & ((IData)(
                                                                              (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                              >> 5U)) 
+                                                                              >> 4U)) 
                                                                      << 1U))))][9U])) 
                                              << 0x20U) 
                                             | (QData)((IData)(
@@ -2316,10 +2316,10 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                                               (0x7fU 
                                                                & ((IData)(1U) 
                                                                   + 
-                                                                  (0xfeU 
+                                                                  (0x1feU 
                                                                    & ((IData)(
                                                                               (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                               >> 5U)) 
+                                                                               >> 4U)) 
                                                                       << 1U))))][8U])))) 
                                         == (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
                                             >> 0xcU)))
@@ -2327,10 +2327,10 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                        & ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                                            [(0x7fU 
                                              & ((IData)(1U) 
-                                                + (0xfeU 
+                                                + (0x1feU 
                                                    & ((IData)(
                                                               (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                               >> 5U)) 
+                                                               >> 4U)) 
                                                       << 1U))))][9U] 
                                            >> 0x14U) 
                                           & ((0xfffffffffffffULL 
@@ -2340,10 +2340,10 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                                                   (0x7fU 
                                                                    & ((IData)(1U) 
                                                                       + 
-                                                                      (0xfeU 
+                                                                      (0x1feU 
                                                                        & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                                >> 5U)) 
+                                                                                >> 4U)) 
                                                                           << 1U))))][9U])) 
                                                   << 0x20U) 
                                                  | (QData)((IData)(
@@ -2352,10 +2352,10 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                                                    (0x7fU 
                                                                     & ((IData)(1U) 
                                                                        + 
-                                                                       (0xfeU 
+                                                                       (0x1feU 
                                                                         & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                                >> 5U)) 
+                                                                                >> 4U)) 
                                                                            << 1U))))][8U])))) 
                                              == (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
                                                  >> 0xcU)))))));

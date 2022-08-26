@@ -9914,13 +9914,13 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
         = ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state))
             ? ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                 [(0x7eU & ((IData)((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                    >> 5U)) << 1U))][9U] 
+                                    >> 4U)) << 1U))][9U] 
                 >> 0x14U) & ((0xfffffffffffffULL & 
                               (((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                                                 [(0x7eU 
                                                   & ((IData)(
                                                              (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                              >> 5U)) 
+                                                              >> 4U)) 
                                                      << 1U))][9U])) 
                                 << 0x20U) | (QData)((IData)(
                                                             vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
@@ -9928,7 +9928,7 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
                                                             (0x7eU 
                                                              & ((IData)(
                                                                         (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                         >> 5U)) 
+                                                                         >> 4U)) 
                                                                 << 1U))][8U])))) 
                              == (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
                                  >> 0xcU))) : ((3U 
@@ -9938,7 +9938,7 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
                                                    (0x7eU 
                                                     & ((IData)(
                                                                (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                                >> 5U)) 
+                                                                >> 4U)) 
                                                        << 1U))][9U] 
                                                    >> 0x14U) 
                                                   & ((0xfffffffffffffULL 
@@ -9948,7 +9948,7 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
                                                                           (0x7eU 
                                                                            & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                                >> 5U)) 
+                                                                                >> 4U)) 
                                                                               << 1U))][9U])) 
                                                           << 0x20U) 
                                                          | (QData)((IData)(
@@ -9957,7 +9957,7 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
                                                                            (0x7eU 
                                                                             & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                                >> 5U)) 
+                                                                                >> 4U)) 
                                                                                << 1U))][8U])))) 
                                                      == 
                                                      (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 

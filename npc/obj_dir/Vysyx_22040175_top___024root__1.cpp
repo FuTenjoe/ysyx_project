@@ -5999,10 +5999,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
                         __Vdlyvset__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data__v0 = 1U;
                         __Vdlyvlsb__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data__v0 = 0xc0U;
                         __Vdlyvdim0__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data__v0 
-                            = (0x7fU & ((0xfeU & ((IData)(
-                                                          (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                           >> 5U)) 
-                                                  << 1U)) 
+                            = (0x7fU & ((0x1feU & ((IData)(
+                                                           (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
+                                                            >> 4U)) 
+                                                   << 1U)) 
                                         + (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__way)));
                         __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__count = 0U;
                         __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__shift_ready = 1U;
@@ -6021,10 +6021,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
                                 = (0x1ffU & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__count) 
                                              << 6U));
                             __Vdlyvdim0__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data__v1 
-                                = (0x7fU & ((0xfeU 
+                                = (0x7fU & ((0x1feU 
                                              & ((IData)(
                                                         (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                         >> 5U)) 
+                                                         >> 4U)) 
                                                 << 1U)) 
                                             + (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__way)));
                         }
