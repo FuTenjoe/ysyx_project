@@ -33,7 +33,7 @@ always@(posedge clk or negedge rst_n)begin
     else
         delay_rest_id_mem <= rest_id_mem;
 end
-
+reg test;
 always @(*) begin
     if(id_pc != 32'h0000_0000 & id_pc != 32'h8000_0000 & reg_waddr != 1'b0 & delay_rest_id_mem != 1'b1)begin
         if(rd_buf_flag == 3'd1|rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)begin
@@ -70,6 +70,7 @@ always @(*) begin
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
                 cunqu_hazard = 1'b0;
+                test = 1'b0;
             end
             else if((reg1_raddr == reg_waddr | reg2_raddr == reg_waddr)&(ex_s_flag != 1'b1 ))begin
                 rest_from_id = 1'b1;
@@ -82,6 +83,7 @@ always @(*) begin
                 rest_id_mem = 1'b0;
                 rest_wb_hazard = 1'b1;
                 cunqu_hazard = 1'b0;
+                test = 1'b1;
             end
             else if((reg1_raddr + imm == reg_waddr+ex_s_imm)&(ex_s_flag == 1'b1)&(curr_rd_buf_flag !=0))begin   //因为sb与后一条lbu冲突添加
                 rest_from_id = 1'b1;

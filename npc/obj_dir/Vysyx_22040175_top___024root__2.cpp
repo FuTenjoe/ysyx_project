@@ -968,7 +968,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
             }
         }
     }
-    vlSelf->ysyx_22040175_top__DOT__if_inst = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__cpu_ready)
+    vlSelf->ysyx_22040175_top__DOT__if_inst = (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__cpu_ready) 
+                                                & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_control_rest)))
                                                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__instruction)
                                                 : 0x13U);
     vlSelf->ysyx_22040175_top__DOT__from_mem_alu_res 

@@ -949,7 +949,8 @@ void Vysyx_22040175_top___024root___settle__TOP__7(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellinp__u_mux_dt_pipe__reg_f[0x1fU] 
         = vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_id_stage__reg_f
         [0x1fU];
-    vlSelf->ysyx_22040175_top__DOT__if_inst = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__cpu_ready)
+    vlSelf->ysyx_22040175_top__DOT__if_inst = (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__cpu_ready) 
+                                                & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_control_rest)))
                                                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__instruction)
                                                 : 0x13U);
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond 
@@ -1591,6 +1592,7 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id = VL_RAND_RESET_I(4);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_addr = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_control_rest = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__instruction = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__cpu_ready = VL_RAND_RESET_I(1);
