@@ -182,13 +182,13 @@ always@(*)begin
 end
 
 
-pmem_read(axi_ar_addr_i+4*count,rdata);
+
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 //import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 
-/*always @(*) begin
-  pmem_read(32'h8000_0000, rdata);
-end*/
+always @(*) begin
+  pmem_read(axi_ar_addr_i+4*count,rdata);
+end
 
 
 
