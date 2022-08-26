@@ -200,6 +200,17 @@ always@(posedge clk or negedge rst_n)begin
     endcase
 end
 
+reg delay_control_rest;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        delay_control_rest <= 1'b0;
+    end
+    else begin
+        delay_control_rest <= control_rest;
+    end
+end
+
+
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
@@ -241,7 +252,7 @@ always @ (posedge clk or negedge rst_n) begin
              curr_pc <= id_next_pc;
         end
        // else if((r_done && md_add_pc!=2'd1 && md_add_pc!=2'd2 &&(return_id == 4'd1))|(md_add_pc==2'd3))
-       else if((cpu_ready && md_add_pc!=2'd1 && md_add_pc!=2'd2 )|(md_add_pc==2'd3))
+       else if((cpu_ready && md_add_pc!=2'd1 && md_add_pc!=2'd2 && !delay_control_rest )|(md_add_pc==2'd3))
             curr_pc <= curr_pc + 4;
     end
 end    
