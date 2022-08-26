@@ -152,8 +152,8 @@ wire [63:0] instruction;
 wire cpu_ready;
 wire [63:0] mem_req_addr;
 wire mem_req_valid;
-reg dd_r_ready_o;
-reg d_r_ready_o;
+reg dd_r_ready_o2;
+reg d_r_ready_o2;
 //wire [63:0] mem_data_read;
 reg delay_rw_burst;
 always@(posedge clk)begin
@@ -164,12 +164,12 @@ always@(posedge clk)begin
 end
 always@(posedge clk)begin
   if(!rst_n)begin
-    d_r_ready_o <= 1'b0;
-    dd_r_ready_o <= 1'b0;
+    d_r_ready_o2 <= 1'b0;
+    dd_r_ready_o2 <= 1'b0;
   end
   else begin
-    d_r_ready_o <= axi_r_ready_o;
-    dd_r_ready_o <= d_r_ready_o;
+    d_r_ready_o2 <= axi_r_ready_o2;
+    dd_r_ready_o2 <= d_r_ready_o2;
   end
 end
 
@@ -185,7 +185,7 @@ i_cache u_i_cache(
 	.mem_req_addr(mem_req_addr),
 	.mem_req_valid(mem_req_valid),   //读使能
 	.mem_data_read(axi_r_data_i2),
-	.mem_ready(dd_r_ready_o),
+	.mem_ready(dd_r_ready_o2),
   .mem_done(delay_r_done2),
   .control_rest(control_rest)
 );
