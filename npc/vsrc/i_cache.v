@@ -9,8 +9,8 @@ module i_cache (
 	input [63:0] cpu_req_addr,
 	input cpu_req_valid,
 	//input cpu_req_rw,
-	output reg [63:0] cpu_data_read,
-	output reg cpu_ready,
+	output [63:0] cpu_data_read,
+	output  cpu_ready,
 	//main memory cache
 	output reg [63:0] mem_req_addr,
 	output reg mem_req_valid,   //读使能
@@ -145,7 +145,7 @@ always@(*)begin
 	end
 end
 
-always@(posedge clk)begin
+/*always@(posedge clk)begin
 	if(state==CompareTag && hit)begin
 		if(hit1)begin
 			cpu_ready<=1'b1;
@@ -167,7 +167,16 @@ always@(posedge clk)begin
 		cpu_ready<=1'b0;
 		cpu_data_read <= 64'd0;
 	end
-end
+end*/
+assign cpu_ready = ((state==CompareTag && hit) ||(state==CompareTag2 && hit)) ? 1'b1:1'b0;
+assign cpu_data_read = (state==CompareTag && hit) ? (hit1?cache_data[2*cpu_req_index][64*cpu_req_offset[4:2] +:64] : \
+						cache_data[2*cpu_req_index+1][64*cpu_req_offset[4:2] +:64]):\
+						:(state==CompareTag2 && hit) ?(hit1 ? cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[4:2] +:64]:\
+						cache_data[2*delay_cpu_req_index+1][64*delay_cpu_req_offset[4:2] +:64]) : 64'd0;
+						
+
+
+
 reg [3:0] count;
 
 always@(posedge clk)begin
