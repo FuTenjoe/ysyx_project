@@ -482,7 +482,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
         = ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state)) 
            & ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                [(0x7eU & ((IData)((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                   >> 0xcU)) << 1U))][9U] 
+                                   >> 5U)) << 1U))][9U] 
                >> 0x14U) & ((0xfffffffffffffULL & (
                                                    ((QData)((IData)(
                                                                     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
@@ -490,7 +490,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
                                                                     (0x7eU 
                                                                      & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                                >> 0xcU)) 
+                                                                                >> 5U)) 
                                                                         << 1U))][9U])) 
                                                     << 0x20U) 
                                                    | (QData)((IData)(
@@ -499,21 +499,19 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
                                                                      (0x7eU 
                                                                       & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                                >> 0xcU)) 
+                                                                                >> 5U)) 
                                                                          << 1U))][8U])))) 
-                            == (QData)((IData)((0x7fU 
-                                                & (IData)(
-                                                          (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                           >> 5U))))))));
+                            == (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
+                                >> 0xbU))));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit 
         = ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state)) 
            & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit1) 
               | ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state)) 
                  & ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
-                     [(0x7fU & ((IData)(1U) + (0xfeU 
+                     [(0x7fU & ((IData)(1U) + (0x7eU 
                                                & ((IData)(
                                                           (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                           >> 0xcU)) 
+                                                           >> 5U)) 
                                                   << 1U))))][9U] 
                      >> 0x14U) & ((0xfffffffffffffULL 
                                    & (((QData)((IData)(
@@ -522,10 +520,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
                                                        (0x7fU 
                                                         & ((IData)(1U) 
                                                            + 
-                                                           (0xfeU 
+                                                           (0x7eU 
                                                             & ((IData)(
                                                                        (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                        >> 0xcU)) 
+                                                                        >> 5U)) 
                                                                << 1U))))][9U])) 
                                        << 0x20U) | (QData)((IData)(
                                                                    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
@@ -533,16 +531,13 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
                                                                    (0x7fU 
                                                                     & ((IData)(1U) 
                                                                        + 
-                                                                       (0xfeU 
+                                                                       (0x7eU 
                                                                         & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                                >> 0xcU)) 
+                                                                                >> 5U)) 
                                                                            << 1U))))][8U])))) 
-                                  == (QData)((IData)(
-                                                     (0x7fU 
-                                                      & (IData)(
-                                                                (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                 >> 5U))))))))));
+                                  == (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
+                                      >> 0xbU))))));
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__rd_buf_lw 
         = (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
             & (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
@@ -593,15 +588,16 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
         vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__way 
             = (1U & ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                       [(0x7eU & ((IData)((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                          >> 0xcU)) 
-                                 << 1U))][9U] >> 0x14U) 
-                     & (~ (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
-                           [(0x7fU & ((IData)(1U) + 
-                                      (0xfeU & ((IData)(
-                                                        (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                         >> 0xcU)) 
-                                                << 1U))))][9U] 
-                           >> 0x14U))));
+                                          >> 5U)) << 1U))][9U] 
+                      >> 0x14U) & (~ (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
+                                      [(0x7fU & ((IData)(1U) 
+                                                 + 
+                                                 (0x7eU 
+                                                  & ((IData)(
+                                                             (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
+                                                              >> 5U)) 
+                                                     << 1U))))][9U] 
+                                      >> 0x14U))));
     }
     __Vtableidx4 = (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__shift_ready) 
                      << 4U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit) 

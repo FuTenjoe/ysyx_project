@@ -1,6 +1,6 @@
 `include "../vsrc/rvseed_defines.v"
 //二路组相连cache 2k*2   256/8=32B, deep = 64
-//tag = 53'b[63:11] index = 6'b[10:5] offset = 5'b[4:2];
+//tag = 52'b[63:12] index = 7'b[11:5] offset = 5'b[4:2];
 
 module i_cache (
  	input clk,
@@ -29,12 +29,12 @@ reg hit1,hit2;
 reg way;     //若hit，则way无意义，若miss，则way表示分配的那一路
 
 wire [6:0]cpu_req_index;
-wire [52:0]cpu_req_tag;
+wire [51:0]cpu_req_tag;
 wire [4:0]cpu_req_offset;
 
 assign cpu_req_offset= cpu_req_addr[4:0];
-assign cpu_req_index= cpu_req_addr[10:5];
-assign cpu_req_tag= cpu_req_addr[63:11]; 
+assign cpu_req_index= cpu_req_addr[11:5];
+assign cpu_req_tag= cpu_req_addr[63:12]; 
 
 integer i;//初始化cache
 initial
@@ -69,22 +69,36 @@ end
 
 always@(*)begin
 	if(state==CompareTag)begin
-		if(cache_data[2*cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==cpu_req_tag)
-			hit1=1'b1;
-		else
-			hit1=1'b0;
+		if(need_allocate == 1'b0)begin
+			if(cache_data[2*cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==cpu_req_tag)
+				hit1=1'b1;
+			else
+				hit1=1'b0;
+		end
+		else(need_allocate)begin
+			if(cache_data[2*delay_cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==delay_cpu_req_tag)
+				hit1=1'b1;
+			else
+				hit1=1'b0;
+		end
 	end
 	else
 		hit1=1'b0;
 end
 
 always@(*)begin
-	if(state==CompareTag)begin
-		if(cache_data[2*cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==cpu_req_tag)
-			hit2=1'b1;
-		else
-			hit2=1'b0;
-	end
+	if(need_allocate == 1'b0)begin
+			if(cache_data[2*cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==cpu_req_tag)
+				hit2=1'b1;
+			else
+				hit2=1'b0;
+		end
+		else(need_allocate)begin
+			if(cache_data[2*delay_cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==delay_cpu_req_tag)
+				hit2=1'b1;
+			else
+				hit2=1'b0;
+		end
 	else
 		hit2=1'b0;
 end
@@ -95,9 +109,10 @@ always@(*)begin
 	else
 		hit=1'b0;
 end
-
+reg need_allocate;
 always@(*)begin
 	if((state==CompareTag)&&(hit==1'b0))begin   //未命中
+		 need_allocate <= 1'b1;
 		case({cache_data[2*cpu_req_index][V],cache_data[2*cpu_req_index+1][V]})
 			2'b01:way=1'b0;                    //第0路可用
 			2'b10:way=1'b1;                    //第1路可用
@@ -108,7 +123,21 @@ always@(*)begin
 	end
 	else 
 		way = way;
+		need_allocate <= 1'b0;
 end
+reg [63:0] delay_cpu_req_addr;
+always@(*)begin
+	if((state==CompareTag)&&(hit==1'b0))begin   //未命中
+		delay_cpu_req_addr <= cpu_addr;
+	end
+	else begin
+		delay_cpu_req_addr <= delay_cpu_req_addr;
+	end
+end
+wire delay_cpu_req_offset= delay_cpu_req_addr[4:0];
+wire delay_cpu_req_index= delay_cpu_req_addr[11:5];
+wire delay_cpu_req_tag= delay_cpu_req_addr[63:12]; 
+
 
 always@(posedge clk)begin
 	if(state==CompareTag&&hit)begin
