@@ -106,7 +106,7 @@ always@(posedge clk or negedge rst_n)begin
 end
 
 //assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
-assign inst = (cpu_ready & !elay_control_rest) ? instruction[31:0] : 32'b0010011;
+assign inst = (cpu_ready & !delay_control_rest) ? instruction[31:0] : 32'b0010011;
 axi_judge u_axi_judge(
     .clk(clk),
     .rst_n(rst_n),
