@@ -112,9 +112,9 @@ always@(posedge clk)begin
 		delay_cpu_req_addr <= delay_cpu_req_addr;
 end
 
-wire delay_cpu_req_offset= delay_cpu_req_addr[4:0];
-wire delay_cpu_req_index= delay_cpu_req_addr[11:5];
-wire delay_cpu_req_tag= delay_cpu_req_addr[63:12]; 
+wire [4:0] delay_cpu_req_offset= delay_cpu_req_addr[4:0];
+wire [6:0] delay_cpu_req_index= delay_cpu_req_addr[11:5];
+wire [51:0] delay_cpu_req_tag= delay_cpu_req_addr[63:12]; 
 
 always@(*)begin
 	if(state==CompareTag | state==CompareTag2)
