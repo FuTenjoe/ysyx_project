@@ -94,13 +94,14 @@ wire [63:0] axi_addr;
 //wire axi_ena = ena&~control_rest;
 wire r_done;
 reg delay_control_rest;
+reg delay_r_done2;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
-        delay_r_done <= 1'b0;
+        delay_r_done2 <= 1'b0;
         delay_control_rest <= 1'b0;
     end
     else begin
-        delay_r_done <= r_done;
+        delay_r_done2 <= r_done2;
         delay_control_rest <= control_rest;
     end
 end
@@ -176,9 +177,8 @@ i_cache u_i_cache(
   .clk(clk),
   .rst_n(rst_n),
 	//cpu cache
-	.cpu_req_addr(rw_addr_i),
-	.cpu_req_valid(delay_rw_burst),
-	//input cpu_req_rw,
+	.cpu_req_addr(axi_addr),
+	.cpu_req_valid(if_valid),
 	.cpu_data_read(instruction),
 	.cpu_ready(cpu_ready),
 	//main memory cache
@@ -186,9 +186,80 @@ i_cache u_i_cache(
 	.mem_req_valid(mem_req_valid),   //读使能
 	.mem_data_read(rdata),
 	.mem_ready(dd_r_ready_o),
-  .mem_done(delay_r_done),
+  .mem_done(delay_r_done2),
   .control_rest(control_rest)
 );
+
+
+wire axi_ar_ready_i2;
+wire axi_ar_valid_o2;
+wire [63:0]axi_ar_addr_o2;
+wire axi_ar_id_o2;
+wire [2:0] axi_ar_len_o2;
+wire [7:0]  axi_ar_size_o2;
+wire [1:0]  axi_ar_burst_o2;
+wire axi_r_ready_o2;
+wire axi_r_valid_i2;
+wire [1:0] axi_r_resp_i2;
+wire [AXI_DATA_WIDTH-1:0]         axi_r_data_i2;
+wire axi_r_last_i2;
+wire r_done2;
+
+
+axi # (
+)
+u_axi2(
+    .clock(clk),
+    .reset_n(rst_n),
+    .rw_req_i(1'b0),
+   // .rw_size_i(reg_write_wmask),
+
+	  .rw_valid_i(mem_req_valid),         //IF&MEM输入信号
+	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
+    .data_read_o(rdata),        //IF&MEM输入信号
+    //.rw_w_data_i(reg_write_data),        //IF&MEM输入信号
+    .rw_addr_i(mem_req_addr),          //IF&MEM输入信号
+    //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
+    .rw_burst(mem_req_valid),
+    // Advanced eXtensible Interface
+    .axi_ar_ready_i(axi_ar_ready_i2),                
+    .axi_ar_valid_o(axi_ar_valid_o2),
+    .axi_ar_addr_o(axi_ar_addr_o2),
+    .axi_ar_id_o(axi_ar_id_o2),
+    .axi_ar_len_o(axi_ar_len_o2),
+    .axi_ar_size_o(axi_ar_size_o2),
+    .axi_ar_burst_o(axi_ar_burst_o2),
+    .axi_r_ready_o(axi_r_ready_o2),                 
+    .axi_r_valid_i(axi_r_valid_i2),                
+    .axi_r_resp_i(axi_r_resp_i2),
+    .axi_r_data_i(axi_r_data_i2),
+    .axi_r_last_i(axi_r_last_i2),
+    .r_done(r_done2),
+    
+    .axi_r_id_i(1'b1)
+);
+
+
+axi_slave # (
+)
+u_axi_slave2(
+    .clock(clk),
+    .reset_n(rst_n),
+    .axi_ar_ready_o(axi_ar_ready_i2),    //从设备已准备好接收地址和相关的控制信号            
+    .axi_ar_valid_i(axi_ar_valid_o2),
+    .axi_ar_addr_i(axi_ar_addr_o2),
+    .axi_ar_len_i(axi_ar_len_o2), //突发长度，这个字段标识每次突发传输的传输次数
+    .axi_ar_size_i(axi_ar_size_o2),  //突发大小，这个字段表示每次突发传输的大小
+    .axi_ar_burst_i(axi_ar_burst_o2),  //突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法
+    .axi_r_ready_i(axi_r_ready_o2),   //  	主设备已准备好接收读取的数据和响应信息              
+    .axi_r_valid_o(axi_r_valid_i2),  //从设备给出的数据和响应信息有效              
+    .axi_r_resp_o(axi_r_resp_i2), //读响应，这信号表示读传输的状态
+    .axi_r_data_o(axi_r_data_i2),
+    .axi_r_last_o(axi_r_last_i2),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
+    .r_valid(mem_req_valid)
+    //.axi_req(1'b0)
+);
+
 
 axi # (
 )
@@ -198,8 +269,8 @@ u_axi(
     .rw_req_i(axi_req),
     .rw_size_i(reg_write_wmask),
 
-	.rw_valid_i(mem_req_valid | waxi_valid),         //IF&MEM输入信号
-	.rw_ready_o(rw_ready_o),         //IF&MEM输入信号
+	  .rw_valid_i(mem_req_valid | waxi_valid),         //IF&MEM输入信号
+	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
     .rw_addr_i(mem_req_addr),          //IF&MEM输入信号
@@ -209,45 +280,27 @@ u_axi(
     .axi_aw_ready_i(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_o(axi_aw_valid_o),  
     .axi_aw_addr_o(axi_aw_addr_o),
-   // output [2:0]                        axi_aw_prot_o,
-  //  output [AXI_ID_WIDTH-1:0]           axi_aw_id_o,
-  //  output [AXI_USER_WIDTH-1:0]         axi_aw_user_o,
-  //  output [7:0]                        axi_aw_len_o,
-  //  output [2:0]                        axi_aw_size_o,
-  //  output [1:0]                        axi_aw_burst_o,
-  //  output                              axi_aw_lock_o,
- //   output [3:0]                        axi_aw_cache_o,
-  //  output [3:0]                        axi_aw_qos_o,
- //   output [3:0]                        axi_aw_region_o,
+
 
     .axi_w_ready_i(axi_w_ready_i),                
     .axi_w_valid_o(axi_w_valid_o),
     .axi_w_data_o(axi_w_data_o),
     .axi_w_strb_o(axi_w_strb_o),
     .axi_w_last_o(axi_w_last_o),
-  //  output [AXI_USER_WIDTH-1:0]         axi_w_user_o,
     
     .axi_b_ready_o(axi_b_ready_o),                
     .axi_b_valid_i(axi_b_valid_i),
- //   input  [1:0]axi_b_resp_i,                 
- //   input  [AXI_ID_WIDTH-1:0]           axi_b_id_i,
- //   input  [AXI_USER_WIDTH-1:0]         axi_b_user_i,
 
 
     .axi_ar_ready_i(axi_ar_ready_i),                
     .axi_ar_valid_o(axi_ar_valid_o),
     .axi_ar_addr_o(axi_ar_addr_o),
-//  output [2:0]                        axi_ar_prot_o,
+
     .axi_ar_id_o(axi_ar_id_o),
-//output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
+
     .axi_ar_len_o(axi_ar_len_o),
     .axi_ar_size_o(axi_ar_size_o),
     .axi_ar_burst_o(axi_ar_burst_o),
- //   output                              axi_ar_lock_o,
-//    output [3:0]                        axi_ar_cache_o,
-//    output [3:0]                        axi_ar_qos_o,
-//    output [3:0]                        axi_ar_region_o,
-    
     .axi_r_ready_o(axi_r_ready_o),                 
     .axi_r_valid_i(axi_r_valid_i),                
     .axi_r_resp_i(axi_r_resp_i),
@@ -259,7 +312,6 @@ u_axi(
 
     .w_done(w_done),
     .b_hs(b_hs)
-//    input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 );
 
 
@@ -297,38 +349,19 @@ u_axi_slave(
     .axi_aw_ready_o(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_i(axi_aw_valid_o),  
     .axi_aw_addr_i(axi_aw_addr_o),
-   // output [2:0]                        axi_aw_prot_o,
-  //  output [AXI_ID_WIDTH-1:0]           axi_aw_id_o,
-  //  output [AXI_USER_WIDTH-1:0]         axi_aw_user_o,
-  //  output [7:0]                        axi_aw_len_o,
-  //  output [2:0]                        axi_aw_size_o,
-  //  output [1:0]                        axi_aw_burst_o,
-  //  output                              axi_aw_lock_o,
- //   output [3:0]                        axi_aw_cache_o,
-  //  output [3:0]                        axi_aw_qos_o,
- //   output [3:0]                        axi_aw_region_o,
-
     .axi_w_ready_o(axi_w_ready_i),                
     .axi_w_valid_i(axi_w_valid_o),
     .axi_w_data_i(axi_w_data_o),
     .axi_w_strb_i(axi_w_strb_o),
     .axi_w_last_i(axi_w_last_o),
-  //  output [AXI_USER_WIDTH-1:0]         axi_w_user_o,
-    
     .axi_b_ready_i(axi_b_ready_o),                
     .axi_b_valid_o(axi_b_valid_i)
-  //  output  [1:0]                      axi_b_resp_o                 
- //   input  [AXI_ID_WIDTH-1:0]           axi_b_id_i,
- //   input  [AXI_USER_WIDTH-1:0]         axi_b_user_i,
-
-
 );
 
-/*import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
-//import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
-wire [63:0] rdata;
-always @(*) begin
-  pmem_read(curr_pc, rdata);
-end
-assign inst = rdata[31:0];*/
+
+
+
+
+
+
 endmodule

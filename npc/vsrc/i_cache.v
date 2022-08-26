@@ -149,9 +149,6 @@ end
 assign cpu_ready = ((state==CompareTag && hit) ||(state==CompareTag2 && hit)) ? 1'b1:1'b0;
 assign cpu_data_read = (state==CompareTag && hit) ? (hit1?cache_data[2*cpu_req_index][64*cpu_req_offset[3:2] +:64] : cache_data[2*cpu_req_index+1][64*cpu_req_offset[3:2] +:64]):(state==CompareTag2 && hit) ?(hit1 ? cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[3:2] +:64]:cache_data[2*delay_cpu_req_index+1][64*delay_cpu_req_offset[3:2] +:64]) : 64'd0;
 
-
-
-
 reg [3:0] count;
 
 always@(posedge clk)begin
