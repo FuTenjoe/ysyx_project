@@ -15,6 +15,7 @@ class Vysyx_22040175_top__Syms;
 class Vysyx_22040175_top___024root;
 class VerilatedVcdC;
 class Vysyx_22040175_top_VerilatedVcd;
+class Vysyx_22040175_top_ysyx_22040175_top;
 
 
 // This class is the main interface to the Verilated model
@@ -41,6 +42,7 @@ class Vysyx_22040175_top VL_NOT_FINAL {
     // CELLS
     // Public to allow access to /* verilator public */ items.
     // Otherwise the application code can consider these internals.
+    Vysyx_22040175_top_ysyx_22040175_top* const __PVT__ysyx_22040175_top;
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.

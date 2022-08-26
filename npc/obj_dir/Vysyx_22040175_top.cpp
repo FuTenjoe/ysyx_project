@@ -20,6 +20,7 @@ Vysyx_22040175_top::Vysyx_22040175_top(VerilatedContext* _vcontextp__, const cha
     , diff_pc{vlSymsp->TOP.diff_pc}
     , diff_delay_pc{vlSymsp->TOP.diff_delay_pc}
     , out_mem_rd_buf_flag{vlSymsp->TOP.out_mem_rd_buf_flag}
+    , __PVT__ysyx_22040175_top{vlSymsp->TOP.__PVT__ysyx_22040175_top}
     , rootp{&(vlSymsp->TOP)}
 {
 }
