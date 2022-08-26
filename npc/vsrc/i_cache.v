@@ -75,7 +75,7 @@ always@(*)begin
 			else
 				hit1=1'b0;
 		end
-		else(need_allocate)begin
+		else if (need_allocate)begin
 			if(cache_data[2*delay_cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==delay_cpu_req_tag)
 				hit1=1'b1;
 			else
@@ -93,7 +93,7 @@ always@(*)begin
 			else
 				hit2=1'b0;
 		end
-		else(need_allocate)begin
+		else if(need_allocate)begin
 			if(cache_data[2*delay_cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==delay_cpu_req_tag)
 				hit2=1'b1;
 			else
