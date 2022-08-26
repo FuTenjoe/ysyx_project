@@ -93,17 +93,20 @@ wire [63:0] axi_addr;
 //wire [3:0] axi_send_id = if_send_id
 //wire axi_ena = ena&~control_rest;
 wire r_done;
+reg delay_control_rest;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         delay_r_done <= 1'b0;
+        delay_control_rest <= 1'b0;
     end
     else begin
         delay_r_done <= r_done;
+        delay_control_rest <= control_rest;
     end
 end
 
 //assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
-assign inst = cpu_ready ? instruction[31:0] : 32'b0010011;
+assign inst = (cpu_ready & !elay_control_rest) ? instruction[31:0] : 32'b0010011;
 axi_judge u_axi_judge(
     .clk(clk),
     .rst_n(rst_n),
@@ -142,23 +145,6 @@ wire [1:0] axi_ar_burst_o;
 
 //cache
 
-
-
-
-/*i_cache u_icache(
-    .clk(clk),
-    .rst_n(rst_n),
-    //dram side
-    .dram_data(rdata),
-    .dram_val(axi_r_ready_o),
-    .dram_req(dram_req),
-    .dram_req_addr(dram_req_addr),
-    //cpu side
-    .cpu_addr(rw_addr_i),
-    .ins_req(rw_burst),                   //instruction request
-    .instruction(instruction),   //inst for cpu
-    .rom_abort(rom_abort) 
-);*/
 wire [63:0] instruction;
 wire cpu_ready;
 wire [63:0] mem_req_addr;
