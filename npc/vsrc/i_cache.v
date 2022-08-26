@@ -22,7 +22,7 @@ module i_cache (
 parameter IDLE= 0,CompareTag = 1, Allocate = 2,CompareTag2 = 3;
 parameter V= 308;
 parameter TagMSB = 307, TagLSB= 256, BlockMSB =255, BlockLSB = 0;
-reg [308:0] cache_data[0:127];
+(*KEEP = "TRUE"*) reg [308:0] cache_data[0:127];
 reg [1:0] state,next_state;
 reg hit;
 reg hit1,hit2;

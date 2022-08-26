@@ -5860,12 +5860,15 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__pmem_read__0__rdata;
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__pmem_read__1__rdata;
     QData/*63:0*/ __Vtask_ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__pmem_read__2__rdata;
+    QData/*63:0*/ __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr;
     QData/*63:0*/ __Vdlyvval__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data__v1;
     QData/*63:0*/ __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_data_i;
     QData/*63:0*/ __Vtemp436;
     // Body
     __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__r_state 
         = vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi__DOT__r_state;
+    __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
+        = vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr;
     __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__count 
         = vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__count;
     __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_data_i 
@@ -6064,7 +6067,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
                                        : 0ULL)) : vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__instruction);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__instruction 
         = __Vtemp436;
-    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
+    __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
         = (((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state)) 
             & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit)))
             ? vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i
@@ -6098,11 +6101,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
                             = (IData)((vlSelf->ysyx_22040175_top__DOT__rdata 
                                        >> 0x20U));
                         __Vdlyvval__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data__v0[2U] 
-                            = (IData)((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
+                            = (IData)((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
                                        >> 0xcU));
                         __Vdlyvval__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data__v0[3U] 
                             = (0x100000U | (IData)(
-                                                   ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
+                                                   ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
                                                      >> 0xcU) 
                                                     >> 0x20U)));
                         __Vdlyvset__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data__v0 = 1U;
@@ -10005,6 +10008,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
         = __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__count;
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__shift_ready 
         = __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__shift_ready;
+    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
+        = __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr;
     if (__Vdlyvset__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data__v0) {
         VL_ASSIGNSEL_WIIW(309,117,(IData)(__Vdlyvlsb__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data__v0), 
                           vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
