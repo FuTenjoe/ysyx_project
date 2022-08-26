@@ -141,6 +141,7 @@ else begin
 			shift_ready <= 1'd0;
 		end
 		else begin
+			if(!r_done)begin
 			if(count ==3'd3)begin
 				mem_req_valid<=1'b0;
 				cache_data[2*cpu_req_index+way][308:192] <= {1'b1,cpu_req_tag,mem_data_read};
@@ -154,7 +155,12 @@ else begin
 				count <= count + 1'b1;
 				shift_ready <= shift_ready;
 			end
-		end
+			end
+			else begin
+			cache_data <=cache_data;
+			count <= 4'd0;
+			shift_ready <= 1'd1;
+			end
 	end
 	else begin
 		mem_req_valid<=1'b0;
