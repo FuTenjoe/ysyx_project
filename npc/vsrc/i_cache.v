@@ -161,6 +161,7 @@ else begin
 			count <= 4'd0;
 			shift_ready <= 1'd1;
 			end
+		end
 	end
 	else begin
 		mem_req_valid<=1'b0;
