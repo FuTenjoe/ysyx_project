@@ -184,7 +184,7 @@ i_cache u_i_cache(
 	//main memory cache
 	.mem_req_addr(mem_req_addr),
 	.mem_req_valid(mem_req_valid),   //读使能
-	.mem_data_read(rdata),
+	.mem_data_read(axi_r_data_i2),
 	.mem_ready(dd_r_ready_o),
   .mem_done(delay_r_done2),
   .control_rest(control_rest)
