@@ -88,17 +88,17 @@ end
 
 always@(*)begin
 	if(need_allocate == 1'b0)begin
-			if(cache_data[2*cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==cpu_req_tag)
-				hit2=1'b1;
-			else
-				hit2=1'b0;
-		end
-		else if(need_allocate)begin
-			if(cache_data[2*delay_cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==delay_cpu_req_tag)
-				hit2=1'b1;
-			else
-				hit2=1'b0;
-		end
+		if(cache_data[2*cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==cpu_req_tag)
+			hit2=1'b1;
+		else
+			hit2=1'b0;
+	end
+	else if(need_allocate)begin
+		if(cache_data[2*delay_cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==delay_cpu_req_tag)
+			hit2=1'b1;
+		else
+			hit2=1'b0;
+	end
 	else
 		hit2=1'b0;
 end
@@ -128,7 +128,7 @@ end
 reg [63:0] delay_cpu_req_addr;
 always@(*)begin
 	if((state==CompareTag)&&(hit==1'b0))begin   //未命中
-		delay_cpu_req_addr <= cpu_addr;
+		delay_cpu_req_addr <= cpu_req_addr;
 	end
 	else begin
 		delay_cpu_req_addr <= delay_cpu_req_addr;
