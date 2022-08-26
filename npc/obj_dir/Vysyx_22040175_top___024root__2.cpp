@@ -841,44 +841,33 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
         = (((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state)) 
             & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit))
             ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit1)
-                ? ((0x134U >= (0x1c0U & ((IData)((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                  >> 2U)) 
+                ? ((0x134U >= (0x1c0U & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i) 
                                          << 6U))) ? 
                    (((QData)((IData)(__Vtemp695[(((IData)(0x3fU) 
                                                   + 
                                                   (0x1c0U 
-                                                   & ((IData)(
-                                                              (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                               >> 2U)) 
+                                                   & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i) 
                                                       << 6U))) 
                                                  >> 5U)])) 
                      << 0x20U) | (QData)((IData)(__Vtemp695[
                                                  (0xeU 
-                                                  & ((IData)(
-                                                             (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                              >> 2U)) 
+                                                  & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i) 
                                                      << 1U))])))
                     : 0ULL) : ((0x134U >= (0x1c0U & 
-                                           ((IData)(
-                                                    (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                     >> 2U)) 
+                                           ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i) 
                                             << 6U)))
                                 ? (((QData)((IData)(
                                                     __Vtemp696[
                                                     (((IData)(0x3fU) 
                                                       + 
                                                       (0x1c0U 
-                                                       & ((IData)(
-                                                                  (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                   >> 2U)) 
+                                                       & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i) 
                                                           << 6U))) 
                                                      >> 5U)])) 
                                     << 0x20U) | (QData)((IData)(
                                                                 __Vtemp696[
                                                                 (0xeU 
-                                                                 & ((IData)(
-                                                                            (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i 
-                                                                             >> 2U)) 
+                                                                 & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i) 
                                                                     << 1U))])))
                                 : 0ULL)) : (((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state)) 
                                              & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit))
@@ -887,9 +876,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
                                                 ((0x134U 
                                                   >= 
                                                   (0x1c0U 
-                                                   & ((IData)(
-                                                              (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                               >> 2U)) 
+                                                   & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr) 
                                                       << 6U)))
                                                   ? 
                                                  (((QData)((IData)(
@@ -897,27 +884,21 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
                                                                    (((IData)(0x3fU) 
                                                                      + 
                                                                      (0x1c0U 
-                                                                      & ((IData)(
-                                                                                (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                                                >> 2U)) 
+                                                                      & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr) 
                                                                          << 6U))) 
                                                                     >> 5U)])) 
                                                    << 0x20U) 
                                                   | (QData)((IData)(
                                                                     __Vtemp697[
                                                                     (0xeU 
-                                                                     & ((IData)(
-                                                                                (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                                                >> 2U)) 
+                                                                     & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr) 
                                                                         << 1U))])))
                                                   : 0ULL)
                                                  : 
                                                 ((0x134U 
                                                   >= 
                                                   (0x1c0U 
-                                                   & ((IData)(
-                                                              (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                               >> 2U)) 
+                                                   & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr) 
                                                       << 6U)))
                                                   ? 
                                                  (((QData)((IData)(
@@ -925,18 +906,14 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
                                                                    (((IData)(0x3fU) 
                                                                      + 
                                                                      (0x1c0U 
-                                                                      & ((IData)(
-                                                                                (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                                                >> 2U)) 
+                                                                      & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr) 
                                                                          << 6U))) 
                                                                     >> 5U)])) 
                                                    << 0x20U) 
                                                   | (QData)((IData)(
                                                                     __Vtemp698[
                                                                     (0xeU 
-                                                                     & ((IData)(
-                                                                                (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                                                >> 2U)) 
+                                                                     & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr) 
                                                                         << 1U))])))
                                                   : 0ULL))
                                              : 0ULL));
