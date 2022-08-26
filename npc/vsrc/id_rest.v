@@ -109,7 +109,7 @@ always @(*) begin
         cunqu_hazard = 1'b0;
     end
 end
-wire test2 = ((reg1_raddr == wb_reg_waddr) || (reg2_raddr == wb_reg_waddr)) ?1'b1:1'b0;
+wire test2 = ((reg1_raddr == wb_reg_waddr || reg2_raddr == wb_reg_waddr)& (wb_reg_waddr!= 5'b0)) ?1'b1:1'b0;
 
 wire  test3 = reg1_raddr == wb_reg_waddr? 1'b1:1'b0;
 
