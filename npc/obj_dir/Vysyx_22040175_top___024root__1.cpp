@@ -5287,15 +5287,16 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__3(Vysyx_22040175
                                            == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                                        & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
                                       & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__mem_s_flag)))
-                                      ? ((0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))
-                                          ? 2U : 0U)
-                                      : ((((((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr)) 
-                                             + vlSelf->ysyx_22040175_top__DOT__id_imm) 
-                                            == ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
-                                                + (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_imm)))) 
-                                           & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_flag)) 
-                                          & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag)))
-                                          ? 1U : 0U))));
+                                      ? 2U : ((((((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg1_raddr)) 
+                                                  + vlSelf->ysyx_22040175_top__DOT__id_imm) 
+                                                 == 
+                                                 ((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__ex_reg_waddr)) 
+                                                  + (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_imm)))) 
+                                                & (IData)(vlSelf->ysyx_22040175_top__DOT__ex_s_flag)) 
+                                               & (0U 
+                                                  != (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag)))
+                                               ? 1U
+                                               : 0U))));
         }
     }
     vlSelf->ysyx_22040175_top__DOT__rest_wb_hazard 
