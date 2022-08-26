@@ -428,11 +428,11 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ __Vdly__ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__redy2;
         CData/*0:0*/ __Vdly__ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__redy1;
         CData/*0:0*/ __Vdly__ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__redy2;
+        CData/*7:0*/ __Vdly__ysyx_22040175_top__DOT__wb_wmask;
         CData/*0:0*/ __VinpClk__TOP__ysyx_22040175_top__DOT__rst_n;
         CData/*0:0*/ __Vclklast__TOP__clk;
         CData/*0:0*/ __Vclklast__TOP____VinpClk__TOP__ysyx_22040175_top__DOT__rst_n;
         CData/*0:0*/ __Vchglast__TOP__ysyx_22040175_top__DOT__rst_n;
-        CData/*0:0*/ __Vchglast__TOP__ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit;
         SData/*11:0*/ ysyx_22040175_top__DOT__u_id_stage__DOT____Vcellout__u_ctrl__csr_addr;
         IData/*31:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT____Vcellout__u_div32__div_res;
         IData/*31:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__u_divider_step0__remainder;

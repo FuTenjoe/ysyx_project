@@ -127,16 +127,17 @@ always@(*)begin
 	end
 end
 reg [63:0] delay_cpu_req_addr;
-always@(posedge clk)begin
+always@(*)begin
 	if((state==CompareTag)&&(hit==1'b0))begin   //未命中
-		delay_cpu_req_addr <= cpu_req_addr;
-		need_allocate <= 1'b1;
+		delay_cpu_req_addr = cpu_req_addr;
+		need_allocate = 1'b1;
 	end
 	else begin
-		delay_cpu_req_addr <= delay_cpu_req_addr;
-		need_allocate <= 1'b0;
+		delay_cpu_req_addr = delay_cpu_req_addr;
+		need_allocate = 1'b0;
 	end
 end
+
 wire delay_cpu_req_offset= delay_cpu_req_addr[4:0];
 wire delay_cpu_req_index= delay_cpu_req_addr[11:5];
 wire delay_cpu_req_tag= delay_cpu_req_addr[63:12]; 
