@@ -210,6 +210,7 @@ else begin
 	end
 	else begin
 		mem_req_valid<=1'b0;
+		shift_ready <= 1'd0;
 	end
 end
 end
