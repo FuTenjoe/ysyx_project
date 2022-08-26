@@ -165,6 +165,7 @@ always@(posedge clock)begin
         axi_r_data_o <= axi_r_data_o;
         axi_r_last_o <= 1'b0;
         axi_r_resp_o <= axi_r_resp_o;
+        count <= 3'd0;
     end
 end
 
