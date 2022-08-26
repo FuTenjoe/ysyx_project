@@ -127,7 +127,7 @@ always@(*)begin
 	end
 end
 reg [63:0] delay_cpu_req_addr;
-always@(*)begin
+always@(posedge clk)begin
 	if((state==CompareTag)&&(hit==1'b0))begin   //未命中
 		delay_cpu_req_addr <= cpu_req_addr;
 	end
