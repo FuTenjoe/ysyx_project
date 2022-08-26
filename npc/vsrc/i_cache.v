@@ -172,7 +172,7 @@ else begin
 			if(!mem_done && mem_ready)begin
 			if(count ==3'd3)begin
 				mem_req_valid<=1'b0;
-				cache_data[2*cpu_req_index+way][308:192] <= {1'b1,cpu_req_tag,mem_data_read};
+				cache_data[2*cpu_req_index+way][308:192] <= {1'b1,delay_cpu_req_tag,mem_data_read};
 				count <= 4'd0;
 				shift_ready <= 1'd1;
 				test <= 1'd1;
