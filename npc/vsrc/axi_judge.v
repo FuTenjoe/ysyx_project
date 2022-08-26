@@ -80,7 +80,7 @@ always@(*)begin
     endcase
 end
 assign axi_valid = (present_state == 3'd1 |present_state == 3'd2|present_state == 3'd4|present_state == 3'd5) ? 1'b1:1'b0;
-assign axi_burst = (present_state == 3'd4 & !control_rest) ? 1'b1:1'b0;
+assign axi_burst = (present_state == 3'd4 ) ? 1'b1:1'b0;
 
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
