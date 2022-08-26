@@ -1,6 +1,6 @@
 `include "../vsrc/rvseed_defines.v"
 //二路组相连cache 2k*2   256/8=32B, deep = 64
-//tag = 52'b[63:12] index = 7'b[11:5] offset = 5'b[4:2];
+//tag = 52'b[63:12] index = 8'b[11:4] offset = 4'b[3:0];
 
 module i_cache (
  	input clk,
@@ -29,12 +29,12 @@ reg hit;
 reg hit1,hit2;
 reg way;     //若hit，则way无意义，若miss，则way表示分配的那一路
 
-wire [6:0]cpu_req_index;
+wire [7:0]cpu_req_index;
 wire [51:0]cpu_req_tag;
-wire [4:0]cpu_req_offset;
+wire [3:0]cpu_req_offset;
 
-assign cpu_req_offset= cpu_req_addr[4:0];
-assign cpu_req_index= cpu_req_addr[11:5];
+assign cpu_req_offset= cpu_req_addr[3:0];
+assign cpu_req_index= cpu_req_addr[11:4];
 assign cpu_req_tag= cpu_req_addr[63:12]; 
 
 integer i;//初始化cache
@@ -113,8 +113,8 @@ always@(posedge clk)begin
 		delay_cpu_req_addr <= delay_cpu_req_addr;
 end
 
-wire [4:0] delay_cpu_req_offset= delay_cpu_req_addr[4:0];
-wire [6:0] delay_cpu_req_index= delay_cpu_req_addr[11:5];
+wire [3:0] delay_cpu_req_offset= delay_cpu_req_addr[3:0];
+wire [7:0] delay_cpu_req_index= delay_cpu_req_addr[11:4];
 wire [51:0] delay_cpu_req_tag= delay_cpu_req_addr[63:12]; 
 
 always@(*)begin
