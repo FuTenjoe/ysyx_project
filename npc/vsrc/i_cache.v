@@ -112,7 +112,7 @@ end
 reg need_allocate;
 always@(*)begin
 	if((state==CompareTag)&&(hit==1'b0))begin   //未命中
-		 need_allocate <= 1'b1;
+		 need_allocate = 1'b1;
 		case({cache_data[2*cpu_req_index][V],cache_data[2*cpu_req_index+1][V]})
 			2'b01:way=1'b0;                    //第0路可用
 			2'b10:way=1'b1;                    //第1路可用
@@ -121,9 +121,10 @@ always@(*)begin
 			default:way=1'b0;
 		endcase
 	end
-	else 
+	else begin
 		way = way;
-		need_allocate <= 1'b0;
+		need_allocate = 1'b0;
+	end
 end
 reg [63:0] delay_cpu_req_addr;
 always@(*)begin
