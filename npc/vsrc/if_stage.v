@@ -185,7 +185,8 @@ i_cache u_i_cache(
 	.mem_req_valid(mem_req_valid),   //读使能
 	.mem_data_read(rdata),
 	.mem_ready(dd_r_ready_o),
-  .mem_done(delay_r_done)
+  .mem_done(delay_r_done),
+  .control_rest(control_rest)
 );
 
 axi # (

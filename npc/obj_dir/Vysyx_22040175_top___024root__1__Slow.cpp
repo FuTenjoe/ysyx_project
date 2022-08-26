@@ -25,9 +25,6 @@ void Vysyx_22040175_top___024root___settle__TOP__7(Vysyx_22040175_top___024root*
     VlWide<10>/*319:0*/ __Vtemp683;
     VlWide<10>/*319:0*/ __Vtemp684;
     // Body
-    vlSelf->ysyx_22040175_top__DOT__from_wb_reg_f[0xdU] 
-        = vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f
-        [0xdU];
     vlSelf->ysyx_22040175_top__DOT__from_wb_reg_f[0xeU] 
         = vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f
         [0xeU];
@@ -1623,7 +1620,6 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_control_rest = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_addr_i = VL_RAND_RESET_Q(64);
-    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__rw_burst = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__instruction = VL_RAND_RESET_Q(64);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__cpu_ready = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__mem_req_addr = VL_RAND_RESET_Q(64);

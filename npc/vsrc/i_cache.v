@@ -17,7 +17,8 @@ module i_cache (
 	input [63:0] mem_data_read,
 	input mem_ready,
 	input mem_done,
-	output reg [308:0] cache_data[0:127]
+	output reg [308:0] cache_data[0:127],
+	input control_rest
 );
 
 parameter IDLE= 0,CompareTag = 1, Allocate = 2,CompareTag2 = 3;
@@ -52,7 +53,7 @@ end
 
 always@(*)begin
 	case(state)
-		IDLE:if(cpu_req_valid)
+		IDLE:if(cpu_req_valid & !control_rest)
 				next_state=CompareTag;
 			 else
 				next_state=IDLE;
