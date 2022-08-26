@@ -19,7 +19,7 @@ module i_cache (
 	input mem_done
 );
 
-parameter IDLE= 0,CompareTag = 1, Allocate = 2;
+parameter IDLE= 0,CompareTag = 1, Allocate = 2,CompareTag2 = 3;
 parameter V= 308;
 parameter TagMSB = 307, TagLSB= 256, BlockMSB =255, BlockLSB = 0;
 reg [308:0] cache_data[0:127];
@@ -60,8 +60,12 @@ always@(*)begin
 				   else
 					  next_state=Allocate;
 		Allocate:if(shift_ready)
-					  next_state=CompareTag;
+					  next_state=CompareTag2;
 				 else
+					  next_state=Allocate;
+		CompareTag2:if(hit)                     //若hit
+					  next_state=IDLE;
+				   else
 					  next_state=Allocate;
 		default:next_state=IDLE;
 	endcase
@@ -69,18 +73,16 @@ end
 
 always@(*)begin
 	if(state==CompareTag)begin
-		if(need_allocate == 1'b0)begin
-			if(cache_data[2*cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==cpu_req_tag)
+		if(cache_data[2*cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==cpu_req_tag)
 				hit1=1'b1;
 			else
 				hit1=1'b0;
 		end
-		else if (need_allocate)begin
-			if(cache_data[2*delay_cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==delay_cpu_req_tag)
-				hit1=1'b1;
-			else
-				hit1=1'b0;
-		end
+	else if (state==CompareTag2)begin
+		if(cache_data[2*delay_cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==delay_cpu_req_tag)
+			hit1=1'b1;
+		else
+			hit1=1'b0;
 	end
 	else
 		hit1=1'b0;
@@ -88,30 +90,39 @@ end
 
 always@(*)begin
 	if(state==CompareTag)begin
-	if(need_allocate == 1'b0)begin
 		if(cache_data[2*cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==cpu_req_tag)
 			hit2=1'b1;
 		else
 			hit2=1'b0;
 	end
-	else if(need_allocate)begin
+	else if(state==CompareTag2)begin
 		if(cache_data[2*delay_cpu_req_index+1][V]==1'b1&&cache_data[2*cpu_req_index+1][TagMSB:TagLSB]==delay_cpu_req_tag)
 			hit2=1'b1;
 		else
 			hit2=1'b0;
 	end
-	end
 	else
 		hit2=1'b0;
 end
-	
+reg [63:0] delay_cpu_req_addr;
 always@(*)begin
-	if(state==CompareTag)
+	if(state==CompareTag2)
+		delay_cpu_req_addr <= cpu_req_addr;
+	else
+		delay_cpu_req_addr <= delay_cpu_req_addr;
+end
+
+wire delay_cpu_req_offset= delay_cpu_req_addr[4:0];
+wire delay_cpu_req_index= delay_cpu_req_addr[11:5];
+wire delay_cpu_req_tag= delay_cpu_req_addr[63:12]; 
+
+always@(*)begin
+	if(state==CompareTag | state==CompareTag2)
 		hit=hit1||hit2;
 	else
 		hit=1'b0;
 end
-reg need_allocate;
+
 always@(*)begin
 	if((state==CompareTag)&&(hit==1'b0))begin   //未命中
 		case({cache_data[2*cpu_req_index][V],cache_data[2*cpu_req_index+1][V]})
@@ -126,22 +137,6 @@ always@(*)begin
 		way = way;
 	end
 end
-reg [63:0] delay_cpu_req_addr;
-always@(*)begin
-	if((state==CompareTag)&&(hit==1'b0))begin   //未命中
-		delay_cpu_req_addr = cpu_req_addr;
-		need_allocate = 1'b1;
-	end
-	else begin
-		delay_cpu_req_addr = delay_cpu_req_addr;
-		need_allocate = 1'b0;
-	end
-end
-
-wire delay_cpu_req_offset= delay_cpu_req_addr[4:0];
-wire delay_cpu_req_index= delay_cpu_req_addr[11:5];
-wire delay_cpu_req_tag= delay_cpu_req_addr[63:12]; 
-
 
 always@(posedge clk)begin
 	if(state==CompareTag&&hit)begin
