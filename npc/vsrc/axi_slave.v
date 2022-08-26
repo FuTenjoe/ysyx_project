@@ -135,7 +135,7 @@ always@(posedge clock)begin
         count <= 3'd0;
     end
     else if(ar_hs)begin
-        pmem_read(axi_ar_addr_i,rdata);
+       // pmem_read(axi_ar_addr_i,rdata);
         axi_r_last_o <= 1'b0;
         axi_r_resp_o <= 2'b0;
     end
@@ -147,14 +147,14 @@ always@(posedge clock)begin
         end
         else begin
             if(count == axi_ar_len_i)begin
-                pmem_read(axi_ar_addr_i+4*count,rdata);
+             //   pmem_read(axi_ar_addr_i+4*count,rdata);
                 axi_r_data_o <=rdata;
                 axi_r_last_o <= 1'b1;
                 axi_r_resp_o <= 2'b11;
                 count <= 3'd0;
             end
             else begin
-                pmem_read(axi_ar_addr_i+4*count,rdata);
+               // pmem_read(axi_ar_addr_i+4*count,rdata);
                 axi_r_data_o <= rdata;
                 axi_r_last_o <= 1'b0;
                 axi_r_resp_o <= 2'b11;
@@ -182,7 +182,7 @@ always@(*)begin
 end
 
 
-
+pmem_read(axi_ar_addr_i+4*count,rdata);
 import "DPI-C" function void pmem_read(input longint raddr, output longint rdata);
 //import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 
