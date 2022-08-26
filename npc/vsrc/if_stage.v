@@ -121,7 +121,8 @@ axi_judge u_axi_judge(
     .axi_valid(axi_valid),
     .axi_id(axi_id),
     .axi_addr(axi_addr),
-    .axi_burst(rw_burst)
+    .axi_burst(rw_burst),
+    .control_rest(control_rest)
 
 );
 
