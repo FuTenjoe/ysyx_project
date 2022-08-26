@@ -144,7 +144,7 @@ always@(*)begin
 		way = way;
 	end
 end
-reg [1:0] test2;
+(*KEEP = "TRUE"*)reg [1:0] test2;
 always@(posedge clk)begin
 	if(state==CompareTag && hit)begin
 		test2 <= 2'd1;
@@ -172,12 +172,12 @@ always@(posedge clk)begin
 	end
 end
 reg [3:0] count;
-reg test;
+
 always@(posedge clk)begin
 if(!rst_n)begin
 	count <= 1'b0;
 	shift_ready <= 1'd0;
-	test <= 1'd0;
+	
 end
 else begin
 	if(state==Allocate)begin                           //load new block from memory to cache
@@ -195,7 +195,7 @@ else begin
 					cache_data[2*cpu_req_index+way][308:192] <= {1'b1,delay_cpu_req_tag,mem_data_read};
 					count <= 4'd0;
 					shift_ready <= 1'd1;
-					test <= 1'd1;
+					
 				end
 				else begin
 					mem_req_valid<=1'b0;
