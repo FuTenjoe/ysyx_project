@@ -105,11 +105,11 @@ always@(*)begin
 		hit2=1'b0;
 end
 reg [63:0] delay_cpu_req_addr;
-always@(*)begin
+always@(posedge clk)begin
 	if(state==CompareTag2)
-		delay_cpu_req_addr = cpu_req_addr;
+		delay_cpu_req_addr <= cpu_req_addr;
 	else
-		delay_cpu_req_addr = delay_cpu_req_addr;
+		delay_cpu_req_addr <= delay_cpu_req_addr;
 end
 
 wire delay_cpu_req_offset= delay_cpu_req_addr[4:0];
