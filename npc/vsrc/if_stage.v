@@ -201,7 +201,7 @@ wire [1:0]  axi_ar_burst_o2;
 wire axi_r_ready_o2;
 wire axi_r_valid_i2;
 wire [1:0] axi_r_resp_i2;
-wire [AXI_DATA_WIDTH-1:0]         axi_r_data_i2;
+wire [63:0]         axi_r_data_i2;
 wire axi_r_last_i2;
 wire r_done2;
 
