@@ -15,7 +15,8 @@ module i_cache (
 	output reg [63:0] mem_req_addr,
 	output reg mem_req_valid,   //读使能
 	input [63:0] mem_data_read,
-	input mem_ready
+	input mem_ready,
+	input mem_done
 );
 
 parameter IDLE= 0,CompareTag = 1, Allocate = 2;

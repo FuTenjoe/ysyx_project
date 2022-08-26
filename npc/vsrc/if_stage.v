@@ -163,6 +163,8 @@ wire [63:0] instruction;
 wire cpu_ready;
 wire [63:0] mem_req_addr;
 wire mem_req_valid;
+reg dd_r_ready_o;
+reg d_r_ready_o;
 //wire [63:0] mem_data_read;
 reg delay_rw_burst;
 always@(posedge clk)begin
@@ -171,7 +173,16 @@ always@(posedge clk)begin
   else
     delay_rw_burst <= rw_burst;
 end
-
+always@(posedge clk)begin
+  if(!rst_n)begin
+    d_r_ready_o <= 1'b0;
+    dd_r_ready_o <= 1'b0;
+  end
+  else begin
+    d_r_ready_o <= axi_r_ready_o;
+    dd_r_ready_o <= d_r_ready_o;
+  end
+end
 
 i_cache u_i_cache(
   .clk(clk),
@@ -186,7 +197,8 @@ i_cache u_i_cache(
 	.mem_req_addr(mem_req_addr),
 	.mem_req_valid(mem_req_valid),   //读使能
 	.mem_data_read(rdata),
-	.mem_ready(axi_r_ready_o)
+	.mem_ready(dd_r_ready_o),
+  .mem_done(delay_r_done)
 );
 
 axi # (
@@ -204,9 +216,6 @@ u_axi(
     .rw_addr_i(mem_req_addr),          //IF&MEM输入信号
   //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
   .rw_burst(rw_burst),
-
-
-
     // Advanced eXtensible Interface
     .axi_aw_ready_i(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_o(axi_aw_valid_o),  
