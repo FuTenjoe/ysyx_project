@@ -164,13 +164,21 @@ wire cpu_ready;
 wire [63:0] mem_req_addr;
 wire mem_req_valid;
 //wire [63:0] mem_data_read;
-wire shift_ready;
+reg delay_rw_burst;
+always@(posedge clk)begin
+  if(!rst_n)
+    delay_rw_burst <= 1'b0;
+  else
+    delay_rw_burst <= rw_burst;
+end
+
+
 i_cache u_i_cache(
   .clk(clk),
   .rst_n(rst_n),
 	//cpu cache
 	.cpu_req_addr(rw_addr_i),
-	.cpu_req_valid(rw_burst),
+	.cpu_req_valid(delay_rw_burst),
 	//input cpu_req_rw,
 	.cpu_data_read(instruction),
 	.cpu_ready(cpu_ready),
