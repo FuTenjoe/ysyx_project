@@ -125,7 +125,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__r_done;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__cpu_ready;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__mem_req_valid;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__shift_ready;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__delay_rw_burst;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__delay_sig_jalr;
         CData/*2:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state;
         CData/*2:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state;
