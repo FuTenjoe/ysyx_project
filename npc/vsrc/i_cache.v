@@ -16,13 +16,14 @@ module i_cache (
 	output reg mem_req_valid,   //读使能
 	input [63:0] mem_data_read,
 	input mem_ready,
-	input mem_done
+	input mem_done,
+	output reg [308:0] cache_data[0:127]
 );
 
 parameter IDLE= 0,CompareTag = 1, Allocate = 2,CompareTag2 = 3;
 parameter V= 308;
 parameter TagMSB = 307, TagLSB= 256, BlockMSB =255, BlockLSB = 0;
-(*KEEP = "TRUE"*) reg [308:0] cache_data[0:127];
+//(*KEEP = "TRUE"*) reg [308:0] cache_data[0:127];
 reg [1:0] state,next_state;
 reg hit;
 reg hit1,hit2;
@@ -73,13 +74,13 @@ end
 
 always@(*)begin
 	if(state==CompareTag)begin
-		if(cache_data[2*cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==cpu_req_tag)
+		if(cache_data[2*cpu_req_index][V]==1'b1 && cache_data[2*cpu_req_index][TagMSB:TagLSB]==cpu_req_tag)
 				hit1=1'b1;
 			else
 				hit1=1'b0;
 		end
 	else if (state==CompareTag2)begin
-		if(cache_data[2*delay_cpu_req_index][V]==1'b1&&cache_data[2*cpu_req_index][TagMSB:TagLSB]==delay_cpu_req_tag)
+		if(cache_data[2*delay_cpu_req_index][V]==1'b1 && cache_data[2*cpu_req_index][TagMSB:TagLSB]==delay_cpu_req_tag)
 			hit1=1'b1;
 		else
 			hit1=1'b0;
