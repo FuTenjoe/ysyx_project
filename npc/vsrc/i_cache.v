@@ -106,7 +106,7 @@ always@(*)begin
 end
 reg [63:0] delay_cpu_req_addr;
 always@(posedge clk)begin
-	if(state==CompareTag2)
+	if(state==CompareTag && ~hit)
 		delay_cpu_req_addr <= cpu_req_addr;
 	else
 		delay_cpu_req_addr <= delay_cpu_req_addr;
