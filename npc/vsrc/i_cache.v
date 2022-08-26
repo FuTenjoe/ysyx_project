@@ -9,8 +9,8 @@ module i_cache (
 	input [63:0] cpu_req_addr,
 	input cpu_req_valid,
 	//input cpu_req_rw,
-	output [63:0] cpu_data_read,
-	output  cpu_ready,
+	output reg [63:0] cpu_data_read,
+	output  reg cpu_ready,
 	//main memory cache
 	output reg [63:0] mem_req_addr,
 	output reg mem_req_valid,   //读使能
@@ -145,7 +145,7 @@ always@(*)begin
 		way = way;
 	end
 end
-reg cpu_ready;
+
 always@(posedge clk)begin
 	if(state==CompareTag && hit)begin
 		if(hit1)begin
