@@ -19,8 +19,7 @@ module if_id_regs(
 	input sh_fnsh_flag,
 	input id_div,
 	input div_finish
-	
-	
+	//input inst_use
     );
 
 always@(posedge clk or negedge rst_n)begin
