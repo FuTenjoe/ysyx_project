@@ -6091,7 +6091,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
     if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
         if ((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state))) {
             if (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__dd_r_ready_o) {
-                if (((~ (IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done)) 
+                if (((~ (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__dd_r_done)) 
                      & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__dd_r_ready_o))) {
                     if ((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__count))) {
                         vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__mem_req_valid = 0U;
@@ -12658,6 +12658,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
     } else {
         vlSelf->ysyx_22040175_top__DOT__rdata = 0ULL;
     }
+    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__dd_r_done 
+        = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
+           & (IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done));
     vlSelf->inst = vlSelf->ysyx_22040175_top__DOT__if_inst;
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_resp_i 
         = __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_resp_i;
