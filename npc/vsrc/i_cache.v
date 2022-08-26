@@ -146,7 +146,7 @@ always@(*)begin
 end
 
 always@(posedge clk)begin
-	if(state==CompareTag&&hit)begin
+	if(state==CompareTag && hit)begin
 		cpu_ready<=1'b1;
 			if(hit1)
 				cpu_data_read<=cache_data[2*cpu_req_index][64*cpu_req_offset[4:2] +:64];
@@ -156,9 +156,9 @@ always@(posedge clk)begin
 	else if(state==CompareTag2 && hit)begin
 		cpu_ready<=1'b1;
 			if(hit1)
-				cpu_data_read<=cache_data[2*cpu_req_index][64*cpu_req_offset[4:2] +:64];
+				cpu_data_read<=cache_data[2*cpu_req_index][64*delay_cpu_req_offset[4:2] +:64];
 			else
-				cpu_data_read<=cache_data[2*cpu_req_index+1][64*cpu_req_offset[4:2] +:64];
+				cpu_data_read<=cache_data[2*cpu_req_index+1][64*delay_cpu_req_offset[4:2] +:64];
 	end
 	else begin
 		cpu_ready<=1'b0;
