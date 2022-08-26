@@ -144,7 +144,7 @@ always@(*)begin
 		way = way;
 	end
 end
-(*KEEP = "TRUE"*)reg [1:0] test;
+reg [1:0] test;
 always@(posedge clk)begin
 	test <=2'd0;
 	if(state==CompareTag && hit)begin
