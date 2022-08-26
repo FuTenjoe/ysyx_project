@@ -20,7 +20,7 @@ module axi # (
     input  [RW_DATA_WIDTH-1:0]          rw_w_data_i,        //IF&MEM输入信号
     input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号   读通道
     input  [7:0]                        rw_size_i,          //IF&MEM输入信号
-    input rw_burst,
+   
 
     // Advanced eXtensible Interface
     input                               axi_aw_ready_i,    //从设备已准备好接收地址和相关的控制信号          
@@ -56,11 +56,11 @@ module axi # (
  //   output [2:0]                        axi_ar_prot_o,
     output [AXI_ID_WIDTH-1:0]           axi_ar_id_o,         //加id
  //   output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
-    output [2:0]                        axi_ar_len_o,    //突发长度  设置为64
-    output [7:0]                        axi_ar_size_o,   //突发大小  设置为4
-    output [1:0]                        axi_ar_burst_o,  //突发传输类型01，地址加INCR
+ //   output [7:0]                        axi_ar_len_o,
+ //   output [2:0]                        axi_ar_size_o,
+ //   output [1:0]                        axi_ar_burst_o,
  //   output                              axi_ar_lock_o,
-    output [3:0]                        axi_ar_cache_o,  //存储器类型 01为ICACHE，
+ //   output [3:0]                        axi_ar_cache_o,
  //   output [3:0]                        axi_ar_qos_o,
  //   output [3:0]                        axi_ar_region_o,
     
@@ -231,9 +231,9 @@ module axi # (
  //   assign axi_ar_prot_o    = `AXI_PROT_UNPRIVILEGED_ACCESS | `AXI_PROT_SECURE_ACCESS | `AXI_PROT_DATA_ACCESS;  //初始化信号即可
  //   assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
  //   assign axi_ar_user_o    = axi_user;                                                                         //初始化信号即可
-    assign axi_ar_len_o     = rw_burst? 3'd4:3'd0;                                                                          
-    assign axi_ar_size_o    = 8'd64;
-    assign axi_ar_burst_o   = `AXI_BURST_TYPE_INCR;
+   // assign axi_ar_len_o     = axi_len;                                                                          
+   // assign axi_ar_size_o    = axi_size;
+    //assign axi_ar_burst_o   = `AXI_BURST_TYPE_INCR;
    // assign axi_ar_lock_o    = 1'b0;                                                                             //初始化信号即可
    // assign axi_ar_cache_o   = `AXI_ARCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE;                                 //初始化信号即可
  //   assign axi_ar_qos_o     = 4'h0;                                                                             //初始化信号即可
@@ -244,19 +244,30 @@ module axi # (
 //    wire [AXI_DATA_WIDTH-1:0] axi_r_data_l  = (axi_r_data_i & mask_l) >> aligned_offset_l;
     wire [AXI_DATA_WIDTH-1:0] axi_r_data_l  = axi_r_data_i ;
  //   wire [AXI_DATA_WIDTH-1:0] axi_r_data_h  = (axi_r_data_i & mask_h) << aligned_offset_h;
-  
-       
-always @(posedge clock) begin
-    if (!reset_n) begin
-        data_read_o[AXI_DATA_WIDTH-1:0] <= 0;
-    end
-    else if (axi_r_ready_o & axi_r_valid_i) begin 
-        data_read_o[AXI_DATA_WIDTH-1:0] <= axi_r_data_l;
-    end
-end
-      
+
+    generate
+        for (genvar i = 0; i < TRANS_LEN; i += 1) begin
+            always @(posedge clock) begin
+                if (!reset_n) begin
+                    data_read_o[i*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= 0;
+                end
+                else if (axi_r_ready_o & axi_r_valid_i) begin
+                 /*   if (~aligned & overstep) begin
+                        if (len[0]) begin
+                            data_read_o[AXI_DATA_WIDTH-1:0] <= data_read_o[AXI_DATA_WIDTH-1:0] | axi_r_data_h;
+                        end
+                        else begin
+                            data_read_o[AXI_DATA_WIDTH-1:0] <= axi_r_data_l;
+                        end
+                    end
+                    else if (len == i) begin*/
+                        data_read_o[i*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= axi_r_data_l;
+
+                    end
+                end
+        end
         
-   
+    endgenerate
 
     // Write data channel signals
   

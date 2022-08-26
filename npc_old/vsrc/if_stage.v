@@ -68,8 +68,7 @@ pc_predict u_pc_predict(
   .wb_res_valid(wb_res_valid),
   .mret_flag(mret_flag),
   .ecall_flag(ecall_flag),
-  .w_start(w_start),
-  .cpu_ready(cpu_ready)
+  .w_start(w_start)
 );
 //reg delay_r_done;
 //wire [63:0] rdata;
@@ -101,9 +100,10 @@ always@(posedge clk or negedge rst_n)begin
         delay_r_done <= r_done;
     end
 end
-
-//assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
-assign inst = cpu_ready ? instruction[31:0] : 32'b0010011;
+//assign inst_use = delay_r_done? 1'b1:1'b0;
+assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
+//wire ar_hs;
+//wire axi_ena = ena & ~control_rest & (~id_mul | sh_fnsh_flag);
 axi_judge u_axi_judge(
     .clk(clk),
     .rst_n(rst_n),
@@ -117,8 +117,7 @@ axi_judge u_axi_judge(
     .return_id(axi_ar_id_o),
     .axi_valid(axi_valid),
     .axi_id(axi_id),
-    .axi_addr(axi_addr),
-    .axi_burst(rw_burst)
+    .axi_addr(axi_addr)
 
 );
 
@@ -134,73 +133,6 @@ wire axi_b_ready_o;
 wire axi_b_valid_i;
 wire [63:0]rw_addr_i;
 assign rw_addr_i = (!waxi_valid) ? axi_addr : reg_write_addr;
-wire rw_burst;
-
-wire [7:0] axi_ar_len_o;
-wire [2:0] axi_ar_size_o;
-wire [1:0] axi_ar_burst_o;
-
-//cache
-
-
-
-
-/*i_cache u_icache(
-    .clk(clk),
-    .rst_n(rst_n),
-    //dram side
-    .dram_data(rdata),
-    .dram_val(axi_r_ready_o),
-    .dram_req(dram_req),
-    .dram_req_addr(dram_req_addr),
-    //cpu side
-    .cpu_addr(rw_addr_i),
-    .ins_req(rw_burst),                   //instruction request
-    .instruction(instruction),   //inst for cpu
-    .rom_abort(rom_abort) 
-);*/
-wire [63:0] instruction;
-wire cpu_ready;
-wire [63:0] mem_req_addr;
-wire mem_req_valid;
-reg dd_r_ready_o;
-reg d_r_ready_o;
-//wire [63:0] mem_data_read;
-reg delay_rw_burst;
-always@(posedge clk)begin
-  if(!rst_n)
-    delay_rw_burst <= 1'b0;
-  else
-    delay_rw_burst <= rw_burst;
-end
-always@(posedge clk)begin
-  if(!rst_n)begin
-    d_r_ready_o <= 1'b0;
-    dd_r_ready_o <= 1'b0;
-  end
-  else begin
-    d_r_ready_o <= axi_r_ready_o;
-    dd_r_ready_o <= d_r_ready_o;
-  end
-end
-
-i_cache u_i_cache(
-  .clk(clk),
-  .rst_n(rst_n),
-	//cpu cache
-	.cpu_req_addr(rw_addr_i),
-	.cpu_req_valid(delay_rw_burst),
-	//input cpu_req_rw,
-	.cpu_data_read(instruction),
-	.cpu_ready(cpu_ready),
-	//main memory cache
-	.mem_req_addr(mem_req_addr),
-	.mem_req_valid(mem_req_valid),   //读使能
-	.mem_data_read(rdata),
-	.mem_ready(dd_r_ready_o),
-  .mem_done(delay_r_done)
-);
-
 axi # (
 )
 u_axi(
@@ -209,13 +141,15 @@ u_axi(
     .rw_req_i(axi_req),
     .rw_size_i(reg_write_wmask),
 
-	.rw_valid_i(mem_req_valid | waxi_valid),         //IF&MEM输入信号
+	.rw_valid_i(axi_valid | waxi_valid),         //IF&MEM输入信号
 	.rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
-    .rw_addr_i(mem_req_addr),          //IF&MEM输入信号
-  //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
-  .rw_burst(rw_burst),
+    .rw_addr_i(rw_addr_i),          //IF&MEM输入信号
+//input  [1:0]                        rw_size_i,          //IF&MEM输入信号
+
+
+
     // Advanced eXtensible Interface
     .axi_aw_ready_i(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_o(axi_aw_valid_o),  
@@ -251,9 +185,9 @@ u_axi(
 //  output [2:0]                        axi_ar_prot_o,
     .axi_ar_id_o(axi_ar_id_o),
 //output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
-    .axi_ar_len_o(axi_ar_len_o),
-    .axi_ar_size_o(axi_ar_size_o),
-    .axi_ar_burst_o(axi_ar_burst_o),
+//output [7:0]                        axi_ar_len_o,
+//    output [2:0]                        axi_ar_size_o,
+//    output [1:0]                        axi_ar_burst_o,
  //   output                              axi_ar_lock_o,
 //    output [3:0]                        axi_ar_cache_o,
 //    output [3:0]                        axi_ar_qos_o,
@@ -285,9 +219,9 @@ u_axi_slave(
   //  input [2:0]                         axi_ar_prot_i,    //主设备保护类型
  // .axi_ar_id_i(axi_ar_id_o),  //标识读地址组
    // input [AXI_USER_WIDTH-1:0]         axi_ar_user_i,  //用户定义信号
-    .axi_ar_len_i(axi_ar_len_o), //突发长度，这个字段标识每次突发传输的传输次数
-    .axi_ar_size_i(axi_ar_size_o),  //突发大小，这个字段表示每次突发传输的大小
-    .axi_ar_burst_i(axi_ar_burst_o),  //突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法
+   // input [7:0]                         axi_ar_len_i, //突发长度，这个字段标识每次突发传输的传输次数
+   // input [2:0]                        axi_ar_size_i,  //突发大小，这个字段表示每次突发传输的大小
+  //  input [1:0]                         axi_ar_burst_i,  //突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法
   //  input                              axi_ar_lock_i,   //锁定类型，提供关于传输时原子特性的额外信息
   //  input [3:0]                        axi_ar_cache_i,   //存储器类型
   //  input [3:0]                        axi_ar_qos_i,  //服务质量，即每次读传输的QoS标识符，仅AXI4支持

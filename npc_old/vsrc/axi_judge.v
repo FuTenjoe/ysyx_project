@@ -13,8 +13,7 @@ module axi_judge (
     input [3:0] return_id,
     output reg axi_valid,
     output reg [3:0]axi_id,
-    output reg [63:0]axi_addr,
-    output axi_burst
+    output reg [63:0]axi_addr
 );
 /*assign axi_valid = (mem_valid == 1'b1)?mem_valid:(if_valid == 1'b1)? if_valid:1'b0;
 reg [3:0] reg_id;
@@ -79,7 +78,6 @@ always@(*)begin
     endcase
 end
 assign axi_valid = (present_state == 3'd1 |present_state == 3'd2|present_state == 3'd4|present_state == 3'd5) ? 1'b1:1'b0;
-assign axi_burst = (present_state == 3'd4) ? 1'b1:1'b0;
 
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
