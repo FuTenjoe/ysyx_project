@@ -334,6 +334,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+2509,"ysyx_22040175_top u_if_stage u_axi_judge axi_burst", false,-1);
         tracep->declBit(c+31,"ysyx_22040175_top u_if_stage u_axi_judge control_rest", false,-1);
         tracep->declQuad(c+138,"ysyx_22040175_top u_if_stage u_axi_judge i_cache_addr", false,-1, 63,0);
+        tracep->declBit(c+7,"ysyx_22040175_top u_if_stage u_axi_judge id_mem_cache", false,-1);
         tracep->declBus(c+2645,"ysyx_22040175_top u_if_stage u_axi_judge IDLE", false,-1, 2,0);
         tracep->declBus(c+2652,"ysyx_22040175_top u_if_stage u_axi_judge F1", false,-1, 2,0);
         tracep->declBus(c+2653,"ysyx_22040175_top u_if_stage u_axi_judge F2", false,-1, 2,0);

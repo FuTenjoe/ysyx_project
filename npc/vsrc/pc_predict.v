@@ -27,7 +27,8 @@ module pc_predict (
     input mret_flag,
     input ecall_flag,
     input w_start,
-    input cpu_ready
+    input cpu_ready,
+    input id_mem_cache
 );
 
 reg delay_sig_jalr;
@@ -57,7 +58,8 @@ end
 always@(*)begin
     case(present_state)
         IDLE:begin
-            if(ex_rd_buf_flag==3'd1| ex_rd_buf_flag==3'd2|ex_rd_buf_flag==3'd4|ex_rd_buf_flag==3'd6)
+            //if(ex_rd_buf_flag==3'd1| ex_rd_buf_flag==3'd2|ex_rd_buf_flag==3'd4|ex_rd_buf_flag==3'd6)
+            if(id_mem_cache)
                 next_state = MEM;
             else
                 next_state = NEXT;

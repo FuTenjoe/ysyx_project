@@ -1476,7 +1476,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__13(Vysyx_2204017
     // Variables
     CData/*6:0*/ __Vtableidx5;
     // Body
-    __Vtableidx5 = (((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state)) 
+    __Vtableidx5 = ((((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag)) 
+                        | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
+                       | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
+                      | (6U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
                      << 6U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid) 
                                 << 5U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done2) 
                                            << 4U) | 

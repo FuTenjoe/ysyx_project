@@ -45,11 +45,11 @@ end
 always@(*)begin
     case(present_state)
     IDLE:begin
-        if(if_valid &  id_mem_cache)
+        if(if_valid &  mem_valid)
             next_state = F1;
-        else if((if_valid) & !(if_valid &  id_mem_cache))
+        else if((if_valid) & !(if_valid &  mem_valid))
             next_state = NEXT1;
-        else if((id_mem_cache) & !(if_valid &  id_mem_cache))
+        else if((mem_valid) & !(if_valid &  mem_valid))
             next_state = NEXT2;
         else
             next_state = IDLE;

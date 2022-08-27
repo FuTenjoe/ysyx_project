@@ -70,7 +70,8 @@ pc_predict u_pc_predict(
   .mret_flag(mret_flag),
   .ecall_flag(ecall_flag),
   .w_start(w_start),
-  .cpu_ready(cpu_ready)
+  .cpu_ready(cpu_ready),
+  .id_mem_cache(id_mem_cache)
 );
 //reg delay_r_done;
 //wire [63:0] rdata;
