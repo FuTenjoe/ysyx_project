@@ -185,7 +185,7 @@ i_cache u_i_cache(
 	//main memory cache
 	.mem_req_addr(mem_req_addr),
 	.mem_req_valid(mem_req_valid),   //读使能
-	.mem_data_read(axi_r_data_i2),
+	.mem_data_read(rdata2),
 	.mem_ready(d_r_ready_o2),
   .mem_done(delay_r_done2),
   .control_rest(control_rest)
@@ -217,7 +217,7 @@ u_axi2(
 
 	  .rw_valid_i(mem_req_valid),         //IF&MEM输入信号
 	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
-    .data_read_o(rdata),        //IF&MEM输入信号
+    .data_read_o(rdata2),        //IF&MEM输入信号
     //.rw_w_data_i(reg_write_data),        //IF&MEM输入信号
     .rw_addr_i(mem_req_addr),          //IF&MEM输入信号
     //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
@@ -316,9 +316,7 @@ u_axi_slave(
     .axi_ar_ready_o(axi_ar_ready_i),    //从设备已准备好接收地址和相关的控制信号            
     .axi_ar_valid_i(axi_ar_valid_o),
     .axi_ar_addr_i(axi_ar_addr_o),
-  //  input [2:0]                         axi_ar_prot_i,    //主设备保护类型
- // .axi_ar_id_i(axi_ar_id_o),  //标识读地址组
-   // input [AXI_USER_WIDTH-1:0]         axi_ar_user_i,  //用户定义信号
+ 
     .axi_ar_len_i(4'b0), //突发长度，这个字段标识每次突发传输的传输次数
     .axi_ar_size_i(axi_ar_size_o),  //突发大小，这个字段表示每次突发传输的大小
     .axi_ar_burst_i(axi_ar_burst_o),  //突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法
