@@ -34,7 +34,8 @@ module ctrl (
    // output reg [63:0] mstatus
    input [63:0] mepc,
     input [63:0] mcause,
-    input [63:0] mtvec
+    input [63:0] mtvec,
+    output id_mem_cache
    
 );
 
@@ -939,7 +940,7 @@ always @(*) begin
         end
     endcase 
 end
-
+assign id_mem_cache = rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6;
 import "DPI-C" function void ebreak();
 /*always@(*)begin
     if(inst == 32'h0010_0073)begin

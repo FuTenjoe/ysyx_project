@@ -35,6 +35,7 @@ wire mem_res_valid;
 wire [63:0] rdata;
 wire w_done;
 wire b_hs;
+wire id_mem_cache;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -74,7 +75,8 @@ if_stage u_if_stage(
 
     .mret_flag(mret_flag),
     .ecall_flag(ecall_flag),
-    .w_start(w_start)
+    .w_start(w_start),
+    .id_mem_cache(id_mem_cache)
 
 );
 wire [31:0]id_inst;
@@ -200,7 +202,8 @@ id_stage u_id_stage(
    // .mstatus(from_mem_mstatus),
     .csr_addr(id_csr_addr),
     .mret_flag(mret_flag),
-    .ecall_flag(ecall_flag)
+    .ecall_flag(ecall_flag),
+    .id_mem_cache(id_mem_cache)
 );
 
 wire id_cunqu_hazard;
