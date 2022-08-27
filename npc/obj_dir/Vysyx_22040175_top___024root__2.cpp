@@ -991,16 +991,19 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
             : vlSelf->ysyx_22040175_top__DOT__mem_from_ex_alu_res);
 }
 
-extern const VlUnpacked<CData/*2:0*/, 1024> Vysyx_22040175_top__ConstPool__TABLE_502bc202_0;
+extern const VlUnpacked<CData/*2:0*/, 256> Vysyx_22040175_top__ConstPool__TABLE_aa1bc380_0;
 
 VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__11(Vysyx_22040175_top___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root___combo__TOP__11\n"); );
     // Variables
-    SData/*9:0*/ __Vtableidx1;
+    CData/*7:0*/ __Vtableidx1;
     // Body
-    __Vtableidx1 = (((IData)(vlSelf->ysyx_22040175_top__DOT__ex_rd_buf_flag) 
+    __Vtableidx1 = ((((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag)) 
+                        | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
+                       | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
+                      | (6U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
                      << 7U) | ((((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
                                    & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
                                   & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
@@ -1018,7 +1021,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__11(Vysyx_22040175_
                                                 << 3U)) 
                                               | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))))));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state 
-        = Vysyx_22040175_top__ConstPool__TABLE_502bc202_0
+        = Vysyx_22040175_top__ConstPool__TABLE_aa1bc380_0
         [__Vtableidx1];
     vlSelf->ysyx_22040175_top__DOT__rst_n = (1U & (~ (IData)(vlSelf->rst)));
     vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__data_rest_cond 
@@ -1476,10 +1479,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__13(Vysyx_2204017
     // Variables
     CData/*6:0*/ __Vtableidx5;
     // Body
-    __Vtableidx5 = ((((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag)) 
-                        | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
-                       | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
-                      | (6U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
+    __Vtableidx5 = (((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state)) 
                      << 6U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid) 
                                 << 5U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done2) 
                                            << 4U) | 

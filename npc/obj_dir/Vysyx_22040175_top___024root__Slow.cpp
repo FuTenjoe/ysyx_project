@@ -9890,10 +9890,7 @@ void Vysyx_22040175_top___024root___settle__TOP__5(Vysyx_22040175_top___024root*
                 == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
             & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr))) 
            & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__mem_s_flag)));
-    __Vtableidx5 = ((((((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag)) 
-                        | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
-                       | (4U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
-                      | (6U == (IData)(vlSelf->ysyx_22040175_top__DOT__id_rd_buf_flag))) 
+    __Vtableidx5 = (((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state)) 
                      << 6U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__if_valid) 
                                 << 5U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done2) 
                                            << 4U) | 
