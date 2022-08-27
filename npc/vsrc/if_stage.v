@@ -108,7 +108,7 @@ end
 
 //assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
 assign inst = (cpu_ready & !delay_control_rest) ? instruction[31:0] : 32'b0010011;
-/*axi_judge u_axi_judge(
+axi_judge u_axi_judge(
     .clk(clk),
     .rst_n(rst_n),
     .if_valid(if_valid),
@@ -124,8 +124,7 @@ assign inst = (cpu_ready & !delay_control_rest) ? instruction[31:0] : 32'b001001
     .axi_addr(axi_addr),
     .axi_burst(rw_burst),
     .control_rest(control_rest)
-
-);*/
+);
 
 
 wire axi_aw_ready_i;

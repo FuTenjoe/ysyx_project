@@ -253,8 +253,8 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+2076,"ysyx_22040175_top u_if_stage cpu_ready", false,-1);
         tracep->declQuad(c+2077,"ysyx_22040175_top u_if_stage mem_req_addr", false,-1, 63,0);
         tracep->declBit(c+2079,"ysyx_22040175_top u_if_stage mem_req_valid", false,-1);
-        tracep->declBit(c+2080,"ysyx_22040175_top u_if_stage dd_r_ready_o", false,-1);
-        tracep->declBit(c+2081,"ysyx_22040175_top u_if_stage d_r_ready_o", false,-1);
+        tracep->declBit(c+2080,"ysyx_22040175_top u_if_stage dd_r_ready_o2", false,-1);
+        tracep->declBit(c+2081,"ysyx_22040175_top u_if_stage d_r_ready_o2", false,-1);
         tracep->declBit(c+2082,"ysyx_22040175_top u_if_stage delay_rw_burst", false,-1);
         tracep->declBit(c+2083,"ysyx_22040175_top u_if_stage axi_ar_ready_i2", false,-1);
         tracep->declBit(c+2084,"ysyx_22040175_top u_if_stage axi_ar_valid_o2", false,-1);
@@ -4480,8 +4480,8 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullBit(oldp+2076,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__cpu_ready));
         tracep->fullQData(oldp+2077,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__mem_req_addr),64);
         tracep->fullBit(oldp+2079,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__mem_req_valid));
-        tracep->fullBit(oldp+2080,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__dd_r_ready_o));
-        tracep->fullBit(oldp+2081,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__d_r_ready_o));
+        tracep->fullBit(oldp+2080,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__dd_r_ready_o2));
+        tracep->fullBit(oldp+2081,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__d_r_ready_o2));
         tracep->fullBit(oldp+2082,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_rw_burst));
         tracep->fullBit(oldp+2083,((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__r_state))));
         tracep->fullBit(oldp+2084,((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi2__DOT__r_state))));
@@ -4603,7 +4603,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullBit(oldp+2120,((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__w_state))));
         tracep->fullBit(oldp+2121,((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__w_state))));
         tracep->fullBit(oldp+2122,((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__w_state))));
-        tracep->fullBit(oldp+2123,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi2__DOT__ar_hs));
+        tracep->fullBit(oldp+2123,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__ar_hs));
         tracep->fullBit(oldp+2124,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__r_hs));
         tracep->fullBit(oldp+2125,(((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__w_state)) 
                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__axi_aw_valid_i))));
