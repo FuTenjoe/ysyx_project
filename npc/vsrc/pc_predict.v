@@ -82,8 +82,10 @@ always@(*)begin
         /*    else if(ar_hs && return_id ==4'd1)
                 next_state = EN;*/
             
-            else 
-                next_state = MEM;
+            else if(id_mem_cache)
+                next_state = NEXT2;
+            else
+                next_state = NMEM;
         end
         NMEM:begin
                 if(!id_mem_cache)
