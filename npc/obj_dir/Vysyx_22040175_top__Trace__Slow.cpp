@@ -373,14 +373,14 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+2517,"ysyx_22040175_top u_if_stage u_i_cache hit1", false,-1);
         tracep->declBit(c+2549,"ysyx_22040175_top u_if_stage u_i_cache hit2", false,-1);
         tracep->declBit(c+2518,"ysyx_22040175_top u_if_stage u_i_cache way", false,-1);
-        tracep->declBus(c+2519,"ysyx_22040175_top u_if_stage u_i_cache cpu_req_index", false,-1, 7,0);
-        tracep->declQuad(c+2520,"ysyx_22040175_top u_if_stage u_i_cache cpu_req_tag", false,-1, 51,0);
+        tracep->declBus(c+2519,"ysyx_22040175_top u_if_stage u_i_cache cpu_req_index", false,-1, 6,0);
+        tracep->declQuad(c+2520,"ysyx_22040175_top u_if_stage u_i_cache cpu_req_tag", false,-1, 52,0);
         tracep->declBus(c+2522,"ysyx_22040175_top u_if_stage u_i_cache cpu_req_offset", false,-1, 3,0);
         tracep->declBus(c+1,"ysyx_22040175_top u_if_stage u_i_cache i", false,-1, 31,0);
         tracep->declQuad(c+2096,"ysyx_22040175_top u_if_stage u_i_cache delay_cpu_req_addr", false,-1, 63,0);
         tracep->declBus(c+2098,"ysyx_22040175_top u_if_stage u_i_cache delay_cpu_req_offset", false,-1, 3,0);
-        tracep->declBus(c+2099,"ysyx_22040175_top u_if_stage u_i_cache delay_cpu_req_index", false,-1, 7,0);
-        tracep->declQuad(c+2100,"ysyx_22040175_top u_if_stage u_i_cache delay_cpu_req_tag", false,-1, 51,0);
+        tracep->declBus(c+2099,"ysyx_22040175_top u_if_stage u_i_cache delay_cpu_req_index", false,-1, 6,0);
+        tracep->declQuad(c+2100,"ysyx_22040175_top u_if_stage u_i_cache delay_cpu_req_tag", false,-1, 52,0);
         tracep->declBit(c+2102,"ysyx_22040175_top u_if_stage u_i_cache dd_r_done", false,-1);
         tracep->declBus(c+2103,"ysyx_22040175_top u_if_stage u_i_cache count", false,-1, 3,0);
         tracep->declBit(c+2104,"ysyx_22040175_top u_if_stage u_i_cache shift_ready", false,-1);
@@ -4518,11 +4518,11 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullCData(oldp+2095,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state),2);
         tracep->fullQData(oldp+2096,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr),64);
         tracep->fullCData(oldp+2098,((0xfU & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr))),4);
-        tracep->fullCData(oldp+2099,((0xffU & (IData)(
+        tracep->fullCData(oldp+2099,((0x7fU & (IData)(
                                                       (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                       >> 4U)))),8);
+                                                       >> 4U)))),7);
         tracep->fullQData(oldp+2100,((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                      >> 0xcU)),52);
+                                      >> 0xbU)),53);
         tracep->fullBit(oldp+2102,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__dd_r_done));
         tracep->fullCData(oldp+2103,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__count),4);
         tracep->fullBit(oldp+2104,((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__count))));
@@ -4785,11 +4785,11 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullBit(oldp+2516,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit));
         tracep->fullBit(oldp+2517,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit1));
         tracep->fullBit(oldp+2518,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__way));
-        tracep->fullCData(oldp+2519,((0xffU & (IData)(
+        tracep->fullCData(oldp+2519,((0x7fU & (IData)(
                                                       (vlSelf->ysyx_22040175_top__DOT__if_pc 
-                                                       >> 4U)))),8);
+                                                       >> 4U)))),7);
         tracep->fullQData(oldp+2520,((vlSelf->ysyx_22040175_top__DOT__if_pc 
-                                      >> 0xcU)),52);
+                                      >> 0xbU)),53);
         tracep->fullCData(oldp+2522,((0xfU & (IData)(vlSelf->ysyx_22040175_top__DOT__if_pc))),4);
         tracep->fullBit(oldp+2523,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi__rw_valid_i));
         tracep->fullIData(oldp+2524,((IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mem_addr)),32);
@@ -4824,20 +4824,20 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
                                      ? ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                                          [(0x7fU & 
                                            ((IData)(1U) 
-                                            + (0x1feU 
+                                            + (0xfeU 
                                                & ((IData)(
                                                           (vlSelf->ysyx_22040175_top__DOT__if_pc 
                                                            >> 4U)) 
                                                   << 1U))))][9U] 
-                                         >> 0x14U) 
-                                        & ((0xfffffffffffffULL 
+                                         >> 0x15U) 
+                                        & ((0x1fffffffffffffULL 
                                             & (((QData)((IData)(
                                                                 vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                                                                 [
                                                                 (0x7fU 
                                                                  & ((IData)(1U) 
                                                                     + 
-                                                                    (0x1feU 
+                                                                    (0xfeU 
                                                                      & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__if_pc 
                                                                                 >> 4U)) 
@@ -4849,32 +4849,32 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
                                                                  (0x7fU 
                                                                   & ((IData)(1U) 
                                                                      + 
-                                                                     (0x1feU 
+                                                                     (0xfeU 
                                                                       & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__if_pc 
                                                                                 >> 4U)) 
                                                                          << 1U))))][8U])))) 
                                            == (vlSelf->ysyx_22040175_top__DOT__if_pc 
-                                               >> 0xcU)))
+                                               >> 0xbU)))
                                      : ((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state)) 
                                         & ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                                             [(0x7fU 
                                               & ((IData)(1U) 
                                                  + 
-                                                 (0x1feU 
+                                                 (0xfeU 
                                                   & ((IData)(
                                                              (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
                                                               >> 4U)) 
                                                      << 1U))))][9U] 
-                                            >> 0x14U) 
-                                           & ((0xfffffffffffffULL 
+                                            >> 0x15U) 
+                                           & ((0x1fffffffffffffULL 
                                                & (((QData)((IData)(
                                                                    vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                                                                    [
                                                                    (0x7fU 
                                                                     & ((IData)(1U) 
                                                                        + 
-                                                                       (0x1feU 
+                                                                       (0xfeU 
                                                                         & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__if_pc 
                                                                                 >> 4U)) 
@@ -4886,13 +4886,13 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
                                                                     (0x7fU 
                                                                      & ((IData)(1U) 
                                                                         + 
-                                                                        (0x1feU 
+                                                                        (0xfeU 
                                                                          & ((IData)(
                                                                                 (vlSelf->ysyx_22040175_top__DOT__if_pc 
                                                                                 >> 4U)) 
                                                                             << 1U))))][8U])))) 
                                               == (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
-                                                  >> 0xcU)))))));
+                                                  >> 0xbU)))))));
         tracep->fullQData(oldp+2550,(vlSelf->ysyx_22040175_top__DOT__to_id_reg_f[0]),64);
         tracep->fullQData(oldp+2552,(vlSelf->ysyx_22040175_top__DOT__to_id_reg_f[1]),64);
         tracep->fullQData(oldp+2554,(vlSelf->ysyx_22040175_top__DOT__to_id_reg_f[2]),64);
@@ -4968,8 +4968,8 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullIData(oldp+2663,(1U),32);
         tracep->fullIData(oldp+2664,(2U),32);
         tracep->fullIData(oldp+2665,(3U),32);
-        tracep->fullIData(oldp+2666,(0x134U),32);
-        tracep->fullIData(oldp+2667,(0x133U),32);
+        tracep->fullIData(oldp+2666,(0x135U),32);
+        tracep->fullIData(oldp+2667,(0x134U),32);
         tracep->fullIData(oldp+2668,(0x100U),32);
         tracep->fullIData(oldp+2669,(0xffU),32);
         tracep->fullIData(oldp+2670,(0x40U),32);
