@@ -18,7 +18,8 @@ module axi_judge (
     output axi_burst,
     input control_rest,
     output reg [63:0] i_cache_addr,
-    input id_mem_cache
+    input id_mem_cache,
+    input cpu_ready
 );
 /*assign axi_valid = (mem_valid == 1'b1)?mem_valid:(if_valid == 1'b1)? if_valid:1'b0;
 reg [3:0] reg_id;
@@ -55,7 +56,7 @@ always@(*)begin
             next_state = IDLE;
     end
     NEXT1:begin
-        if(r_done2)
+        if(cpu_ready)
             next_state = FN;
         else
             next_state = NEXT1;
@@ -73,7 +74,7 @@ always@(*)begin
             next_state = F1;
     end
     F2:begin
-        if(r_done2)
+        if(cpu_ready)
             next_state = FN;
         else
             next_state = F2;
