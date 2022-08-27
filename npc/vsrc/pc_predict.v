@@ -83,7 +83,7 @@ always@(*)begin
                 next_state = EN;*/
             
             else if(id_mem_cache)
-                next_state = NEXT2;
+                next_state = MEM;
             else
                 next_state = NMEM;
         end
