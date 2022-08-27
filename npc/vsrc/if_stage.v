@@ -57,7 +57,7 @@ pc_predict u_pc_predict(
   .sh_fnsh_flag(sh_fnsh_flag),
   .id_div(id_div),
   .div_finish(div_finish),
-  .r_done(delay_r_done),
+  //.r_done(delay_r_done),
   .if_valid(if_valid),
   .ar_hs(ar_hs),
   .return_id(axi_ar_id_o),
