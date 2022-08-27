@@ -331,12 +331,14 @@ u_axi_slave(
     .axi_r_data_o(axi_r_data_i),
     .axi_r_last_o(axi_r_last_i),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
  
-    .r_valid(waxi_valid),
+    .r_valid(waxi_valid|mem_valid),
     .axi_req(axi_req),
     
     .axi_aw_ready_o(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_i(axi_aw_valid_o),  
-    .axi_aw_addr_i(axi_aw_addr_o),
+    //.axi_aw_addr_i(axi_aw_addr_o),
+
+    .axi_aw_addr_i(0x80000_0000),
     .axi_w_ready_o(axi_w_ready_i),                
     .axi_w_valid_i(axi_w_valid_o),
     .axi_w_data_i(axi_w_data_o),
