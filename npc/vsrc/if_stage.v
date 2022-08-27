@@ -113,7 +113,7 @@ end
 
 //assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
 assign inst = (cpu_ready & !delay_control_rest) ? instruction[31:0] : 32'b0010011;
-/*axi_judge u_axi_judge(
+axi_judge u_axi_judge(
     .clk(clk),
     .rst_n(rst_n),
     .if_valid(if_valid),
@@ -123,13 +123,14 @@ assign inst = (cpu_ready & !delay_control_rest) ? instruction[31:0] : 32'b001001
     .mem_send_id(mem_send_id),
     .mem_addr(mem_addr),
     .r_done(r_done),
+    .r_done2(r_done2)
     .return_id(axi_ar_id_o),
     .axi_valid(axi_valid),
     .axi_id(axi_id),
     .axi_addr(axi_addr),
     .axi_burst(rw_burst),
     .control_rest(control_rest)
-);*/
+);
 
 
 wire axi_aw_ready_i;
@@ -183,7 +184,7 @@ i_cache u_i_cache(
   .rst_n(rst_n),
 	//cpu cache
 	.cpu_req_addr(curr_pc),
-	.cpu_req_valid(if_valid),
+	.cpu_req_valid(rw_burst),
 	.cpu_data_read(instruction),
 	.cpu_ready(cpu_ready),
 	//main memory cache

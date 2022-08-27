@@ -10,6 +10,7 @@ module axi_judge (
     input [3:0]mem_send_id,
     input [63:0] mem_addr,
     input r_done,
+    input r_done2,
     input [3:0] return_id,
     output reg axi_valid,
     output reg [3:0]axi_id,
@@ -53,25 +54,25 @@ always@(*)begin
             next_state = IDLE;
     end
     NEXT1:begin
-        if(r_done &(return_id == 4'd1))
+        if(r_done2)
             next_state = FN;
         else
             next_state = NEXT1;
     end
     NEXT2:begin
-        if(r_done &(return_id == 4'd2))
+        if(r_done)
             next_state = FN;
         else
             next_state = NEXT2;
     end
     F1:begin
-        if(r_done &return_id == 4'd2)
+        if(r_done)
             next_state = F2;
         else 
             next_state = F1;
     end
     F2:begin
-        if(r_done & return_id == 4'd1)
+        if(r_done2)
             next_state = FN;
         else
             next_state = F2;
@@ -81,7 +82,7 @@ always@(*)begin
     endcase
 end
 assign axi_valid = (present_state == 3'd1 |present_state == 3'd2|present_state == 3'd4|present_state == 3'd5) ? 1'b1:1'b0;
-assign axi_burst = (present_state == 3'd4 ) ? 1'b1:1'b0;
+assign axi_burst = (present_state == 3'd4 |present_state == 3'd2) ? 1'b1:1'b0;
 
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
