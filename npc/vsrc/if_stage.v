@@ -95,16 +95,19 @@ wire [63:0] axi_addr;
 wire r_done;
 reg delay_control_rest;
 reg delay_r_done2;
+reg dd_r_done2;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         delay_r_done2 <= 1'b0;
         delay_control_rest <= 1'b0;
         delay_r_done <= 1'd0;
+        dd_r_done2 <= 1'd0;
     end
     else begin
         delay_r_done2 <= r_done2;
         delay_control_rest <= control_rest;
         delay_r_done <= r_done;
+        dd_r_done2 <= delay_r_done;
     end
 end
 
@@ -188,7 +191,7 @@ i_cache u_i_cache(
 	.mem_req_valid(mem_req_valid),   //读使能
 	.mem_data_read(rdata2),
 	.mem_ready(d_r_ready_o2),
-  .mem_done(delay_r_done2),
+  .mem_done(dd_r_done2),
   .control_rest(control_rest)
 );
 
