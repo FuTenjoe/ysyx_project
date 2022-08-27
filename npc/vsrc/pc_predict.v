@@ -95,9 +95,7 @@ always@(*)begin
             
         end
         NEXT2:begin
-                next_state = EN;
-                
-            
+                next_state = EN;  
         end
         EN:begin
             if(cpu_ready )
