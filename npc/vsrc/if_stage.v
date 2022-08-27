@@ -108,7 +108,7 @@ end
 
 //assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
 assign inst = (cpu_ready & !delay_control_rest) ? instruction[31:0] : 32'b0010011;
-axi_judge u_axi_judge(
+/*axi_judge u_axi_judge(
     .clk(clk),
     .rst_n(rst_n),
     .if_valid(if_valid),
@@ -124,7 +124,7 @@ axi_judge u_axi_judge(
     .axi_addr(axi_addr),
     .axi_burst(rw_burst),
     .control_rest(control_rest)
-);
+);*/
 
 
 wire axi_aw_ready_i;
@@ -234,7 +234,6 @@ u_axi2(
     .axi_r_data_i(axi_r_data_i2),
     .axi_r_last_i(axi_r_last_i2),
     .r_done(r_done2),
-    
     .axi_r_id_i(1'b1)
 );
 
@@ -256,7 +255,6 @@ u_axi_slave2(
     .axi_r_data_o(axi_r_data_i2),
     .axi_r_last_o(axi_r_last_i2),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
     .r_valid(mem_req_valid)
-    //.axi_req(1'b0)
 );
 
 
@@ -269,12 +267,12 @@ u_axi(
     .rw_size_i(reg_write_wmask),
 
 	  .rw_valid_i(mem_req_valid | waxi_valid),         //IF&MEM输入信号
-	  .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
+	  //.rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
     .rw_addr_i(mem_req_addr),          //IF&MEM输入信号
   //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
-  .rw_burst(rw_burst),
+    //.rw_burst(rw_burst),
     // Advanced eXtensible Interface
     .axi_aw_ready_i(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_o(axi_aw_valid_o),  
@@ -325,7 +323,7 @@ u_axi_slave(
   //  input [2:0]                         axi_ar_prot_i,    //主设备保护类型
  // .axi_ar_id_i(axi_ar_id_o),  //标识读地址组
    // input [AXI_USER_WIDTH-1:0]         axi_ar_user_i,  //用户定义信号
-    .axi_ar_len_i(axi_ar_len_o), //突发长度，这个字段标识每次突发传输的传输次数
+    .axi_ar_len_i(4'b0), //突发长度，这个字段标识每次突发传输的传输次数
     .axi_ar_size_i(axi_ar_size_o),  //突发大小，这个字段表示每次突发传输的大小
     .axi_ar_burst_i(axi_ar_burst_o),  //突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法
   //  input                              axi_ar_lock_i,   //锁定类型，提供关于传输时原子特性的额外信息
@@ -338,8 +336,7 @@ u_axi_slave(
     .axi_r_resp_o(axi_r_resp_i), //读响应，这信号表示读传输的状态
     .axi_r_data_o(axi_r_data_i),
     .axi_r_last_o(axi_r_last_i),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
- //   output  [AXI_ID_WIDTH-1:0]          axi_r_id_o,  //读数据ID，该信号用于标识读数据传输
-   // output  [AXI_USER_WIDTH-1:0]        axi_r_user_o   //用户定义信号，可选
+ 
     .r_valid(axi_valid),
     .axi_req(axi_req),
     
