@@ -190,7 +190,7 @@ i_cache u_i_cache(
 	.mem_req_addr(mem_req_addr),
 	.mem_req_valid(mem_req_valid),   //读使能
 	.mem_data_read(rdata2),
-	.mem_ready(d_r_ready_o2),
+	.mem_ready(dd_r_ready_o2),
   .mem_done(dd_r_done2),
   .control_rest(control_rest)
 );
