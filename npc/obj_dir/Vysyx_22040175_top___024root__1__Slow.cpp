@@ -961,7 +961,7 @@ void Vysyx_22040175_top___024root___initial__TOP__7(Vysyx_22040175_top___024root
 
 extern const VlUnpacked<CData/*1:0*/, 64> Vysyx_22040175_top__ConstPool__TABLE_4a8f4832_0;
 extern const VlUnpacked<CData/*1:0*/, 128> Vysyx_22040175_top__ConstPool__TABLE_d1af7cb1_0;
-extern const VlUnpacked<CData/*2:0*/, 256> Vysyx_22040175_top__ConstPool__TABLE_28bbc844_0;
+extern const VlUnpacked<CData/*2:0*/, 256> Vysyx_22040175_top__ConstPool__TABLE_d3a21f1a_0;
 
 void Vysyx_22040175_top___024root___settle__TOP__10(Vysyx_22040175_top___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -1429,7 +1429,7 @@ void Vysyx_22040175_top___024root___settle__TOP__10(Vysyx_22040175_top___024root
                                                  << 3U) 
                                                 | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__present_state))))));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__next_state 
-        = Vysyx_22040175_top__ConstPool__TABLE_28bbc844_0
+        = Vysyx_22040175_top__ConstPool__TABLE_d3a21f1a_0
         [__Vtableidx1];
     vlSelf->inst = vlSelf->ysyx_22040175_top__DOT__if_inst;
 }
