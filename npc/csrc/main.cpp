@@ -110,7 +110,7 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
      case -1: len = 8 ;break;
      default:printf("False: Wmask is %x false!",wmask);
   }
-  printf("waddr = %llx\n",waddr);
+  //printf("waddr = %llx\n",waddr);
  // printf("wdata = %llx\n",wdata);
  // printf("len = %x\n",len);
   //printf("len = %d\n",len);
