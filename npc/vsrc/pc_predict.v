@@ -103,7 +103,12 @@ always@(*)begin
             else
                 next_state =EN;
         end
-        FN:next_state =IDLE;
+        FN:begin
+            if(id_mem_cache)
+                next_state = MEM;
+            else
+            next_state =IDLE;
+        end
     default:next_state = IDLE;
     endcase
 end
