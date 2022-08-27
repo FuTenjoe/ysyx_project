@@ -73,7 +73,6 @@ wire [`REG_ADDR_WIDTH-1:0]   reg2_raddr; // register 2 read address
 wire [2:0] data_rest_cond;
 
 wire [31:0] unnormal_pc;
-wire id_mem_cache;
 
 ctrl u_ctrl(
     .id_pc(id_pc),
