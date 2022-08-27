@@ -176,7 +176,7 @@ i_cache u_i_cache(
   .clk(clk),
   .rst_n(rst_n),
 	//cpu cache
-	.cpu_req_addr(axi_addr),
+	.cpu_req_addr(curr_pc),
 	.cpu_req_valid(if_valid),
 	.cpu_data_read(instruction),
 	.cpu_ready(cpu_ready),
