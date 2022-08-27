@@ -81,12 +81,15 @@ always@(*)begin
                 next_state = WRITE;
         /*    else if(ar_hs && return_id ==4'd1)
                 next_state = EN;*/
+            
             else 
                 next_state = NEXT2;
         end
         NEXT2:begin
-            
+                if(!id_mem_cache)
                 next_state = EN;
+                else
+                next_state = MEM;
             
         end
         EN:begin
