@@ -130,7 +130,8 @@ axi_judge u_axi_judge(
     .axi_id(axi_id),
     .axi_addr(axi_addr),
     .axi_burst(rw_burst),
-    .control_rest(control_rest)
+    .control_rest(control_rest),
+    ,id_mem_cache(id_mem_cache)
 );
 
 
