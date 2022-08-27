@@ -338,7 +338,7 @@ u_axi_slave(
     .axi_aw_valid_i(axi_aw_valid_o),  
     //.axi_aw_addr_i(axi_aw_addr_o),
 
-    .axi_aw_addr_i(32'h80000_0000),
+    .axi_aw_addr_i(test),
     .axi_w_ready_o(axi_w_ready_i),                
     .axi_w_valid_i(axi_w_valid_o),
     .axi_w_data_i(axi_w_data_o),
@@ -350,7 +350,7 @@ u_axi_slave(
 
 
 
-
+wire [63:0]test = 64'h80000_0000;
 
 
 
