@@ -286,17 +286,12 @@ u_axi(
     .axi_w_data_o(axi_w_data_o),
     .axi_w_strb_o(axi_w_strb_o),
     .axi_w_last_o(axi_w_last_o),
-    
     .axi_b_ready_o(axi_b_ready_o),                
     .axi_b_valid_i(axi_b_valid_i),
-
-
     .axi_ar_ready_i(axi_ar_ready_i),                
     .axi_ar_valid_o(axi_ar_valid_o),
     .axi_ar_addr_o(axi_ar_addr_o),
-
     .axi_ar_id_o(axi_ar_id_o),
-
     .axi_ar_len_o(axi_ar_len_o),
     .axi_ar_size_o(axi_ar_size_o),
     .axi_ar_burst_o(axi_ar_burst_o),
@@ -308,7 +303,6 @@ u_axi(
     .r_done(r_done),
     .ar_hs(ar_hs),
     .axi_r_id_i(axi_id),
-
     .w_done(w_done),
     .b_hs(b_hs)
 );
@@ -339,7 +333,7 @@ u_axi_slave(
     .axi_r_data_o(axi_r_data_i),
     .axi_r_last_o(axi_r_last_i),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
  
-    .r_valid(axi_valid),
+    .r_valid(mem_valid | waxi_valid),
     .axi_req(axi_req),
     
 
