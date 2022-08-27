@@ -268,7 +268,7 @@ u_axi(
     .rw_req_i(axi_req),
     .rw_size_i(reg_write_wmask),
 
-	  .rw_valid_i(mem_req_valid | waxi_valid),         //IF&MEM输入信号
+	  .rw_valid_i(mem_valid | waxi_valid),         //IF&MEM输入信号
 	  //.rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
