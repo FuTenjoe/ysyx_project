@@ -364,7 +364,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     // LOCAL VARIABLES
     // Anonymous structures to workaround compiler member-count bugs
     struct {
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi__rw_valid_i;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi_slave__r_valid;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__u_divider_step0__rdy;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__sqrt_stepx__BRA__1__KET____DOT__u_divider_step__rdy;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__sqrt_stepx__BRA__2__KET____DOT__u_divider_step__rdy;

@@ -333,7 +333,7 @@ u_axi_slave(
     .axi_r_data_o(axi_r_data_i),
     .axi_r_last_o(axi_r_last_i),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
  
-    .r_valid(mem_valid | waxi_valid),
+    .r_valid(waxi_valid),
     .axi_req(axi_req),
     
 

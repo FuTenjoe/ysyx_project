@@ -2288,12 +2288,12 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgQData(oldp+2504,((vlSelf->ysyx_22040175_top__DOT__if_pc 
                                          >> 0xcU)),52);
             tracep->chgCData(oldp+2506,((0xfU & (IData)(vlSelf->ysyx_22040175_top__DOT__if_pc))),4);
-            tracep->chgBit(oldp+2507,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi__rw_valid_i));
+            tracep->chgBit(oldp+2507,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi_slave__r_valid));
             tracep->chgIData(oldp+2508,((IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mem_addr)),32);
             tracep->chgBit(oldp+2509,((1U & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__axi_req)))));
-            tracep->chgBit(oldp+2510,(((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi__rw_valid_i) 
+            tracep->chgBit(oldp+2510,(((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi_slave__r_valid) 
                                        & (IData)(vlSelf->ysyx_22040175_top__DOT__axi_req))));
-            tracep->chgBit(oldp+2511,(((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi__rw_valid_i) 
+            tracep->chgBit(oldp+2511,(((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi_slave__r_valid) 
                                        & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__axi_req)))));
             tracep->chgQData(oldp+2512,(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__rd_buf_lw),64);
             tracep->chgQData(oldp+2514,(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__alu_res),64);
