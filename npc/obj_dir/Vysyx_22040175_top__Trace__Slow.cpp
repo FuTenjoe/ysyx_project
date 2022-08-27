@@ -337,6 +337,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+31,"ysyx_22040175_top u_if_stage u_axi_judge control_rest", false,-1);
         tracep->declQuad(c+138,"ysyx_22040175_top u_if_stage u_axi_judge i_cache_addr", false,-1, 63,0);
         tracep->declBit(c+7,"ysyx_22040175_top u_if_stage u_axi_judge id_mem_cache", false,-1);
+        tracep->declBit(c+2512,"ysyx_22040175_top u_if_stage u_axi_judge cpu_ready", false,-1);
         tracep->declBus(c+2645,"ysyx_22040175_top u_if_stage u_axi_judge IDLE", false,-1, 2,0);
         tracep->declBus(c+2652,"ysyx_22040175_top u_if_stage u_axi_judge F1", false,-1, 2,0);
         tracep->declBus(c+2653,"ysyx_22040175_top u_if_stage u_axi_judge F2", false,-1, 2,0);
@@ -4549,7 +4550,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullBit(oldp+2119,((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__w_state))));
         tracep->fullBit(oldp+2120,((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__w_state))));
         tracep->fullBit(oldp+2121,((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__w_state))));
-        tracep->fullBit(oldp+2122,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi2__DOT__ar_hs));
+        tracep->fullBit(oldp+2122,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__ar_hs));
         tracep->fullBit(oldp+2123,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__r_hs));
         tracep->fullBit(oldp+2124,(((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__w_state)) 
                                     & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__axi_aw_valid_i))));
