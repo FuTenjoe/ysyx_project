@@ -430,7 +430,7 @@ mem_stage u_mem_stage(
     .mem_axi_valid(mem_valid),       
     .mem_send_id(mem_send_id),
     .mem_addr(mem_addr),
-    .ar_hs(ar_hs),
+    //.ar_hs(ar_hs),
     .r_done(delay_r_done),
     .mem_no_use(mem_no_use),
     .axi_rdata(rdata),
