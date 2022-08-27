@@ -264,7 +264,7 @@ u_axi_slave2(
     .r_valid(mem_req_valid)
 );
 
-/*
+
 axi # (
 )
 u_axi(
@@ -337,9 +337,9 @@ u_axi_slave(
     
     .axi_aw_ready_o(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_i(axi_aw_valid_o),  
-    //.axi_aw_addr_i(axi_aw_addr_o),
+    .axi_aw_addr_i(axi_aw_addr_o),
 
-    .axi_aw_addr_i(test),
+    //.axi_aw_addr_i(test),
     .axi_w_ready_o(axi_w_ready_i),                
     .axi_w_valid_i(axi_w_valid_o),
     .axi_w_data_i(axi_w_data_o),
@@ -351,9 +351,7 @@ u_axi_slave(
 
 
 
-wire [63:0]test = 64'h80000_0000;
 
-*/
 
 
 
