@@ -263,7 +263,7 @@ u_axi_slave2(
     .r_valid(mem_req_valid)
 );
 
-
+/*
 axi # (
 )
 u_axi(
@@ -351,6 +351,8 @@ u_axi_slave(
 
 
 wire [63:0]test = 64'h80000_0000;
+
+*/
 
 
 
