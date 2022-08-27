@@ -45,7 +45,7 @@ always @ (posedge clk or negedge rst_n) begin
 end
 
 
-parameter IDLE=3'd0,NEXT=3'd1,EN=3'd2,FN=3'd3,MEM=3'd4,WRITE=3'd5,NEXT2=3'd6;
+parameter IDLE=3'd0,NEXT=3'd1,EN=3'd2,FN=3'd3,MEM=3'd4,WRITE=3'd5,NEXT2=3'd6,NMEM=7;
 reg [2:0] present_state,next_state;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
@@ -83,13 +83,18 @@ always@(*)begin
                 next_state = EN;*/
             
             else 
-                next_state = NEXT2;
+                next_state = NMEM;
         end
-        NEXT2:begin
+        NMEM:begin
                 if(!id_mem_cache)
-                next_state = EN;
+                next_state = NEXT2;
                 else
                 next_state = MEM;
+            
+        end
+        NEXT2:begin
+                next_state = EN;
+                
             
         end
         EN:begin
