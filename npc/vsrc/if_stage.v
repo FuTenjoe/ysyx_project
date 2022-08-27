@@ -155,6 +155,7 @@ wire [63:0] mem_req_addr;
 wire mem_req_valid;
 reg dd_r_ready_o2;
 reg d_r_ready_o2;
+wire [63:0] rdata2;
 //wire [63:0] mem_data_read;
 reg delay_rw_burst;
 always@(posedge clk)begin
