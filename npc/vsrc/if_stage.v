@@ -191,7 +191,7 @@ i_cache u_i_cache(
 	.mem_req_valid(mem_req_valid),   //读使能
 	.mem_data_read(rdata2),
 	.mem_ready(dd_r_ready_o2),
-  .mem_done(d_r_done2),
+  .mem_done(dd_r_done2),
   .control_rest(control_rest)
 );
 
@@ -263,7 +263,7 @@ u_axi_slave2(
     .r_valid(mem_req_valid)
 );
 
-
+/*
 axi # (
 )
 u_axi(
@@ -352,7 +352,7 @@ u_axi_slave(
     .axi_b_valid_o(axi_b_valid_i)
 );
 
-
+*/
 
 
 
