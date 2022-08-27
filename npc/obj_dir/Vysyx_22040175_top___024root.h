@@ -352,7 +352,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         QData/*63:0*/ ysyx_22040175_top__DOT__u_wb_stage__DOT__reg_wdata;
         VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__to_id_reg_f;
         VlUnpacked<QData/*63:0*/, 32> ysyx_22040175_top__DOT__from_wb_reg_f;
-        VlUnpacked<VlWide<10>/*309:0*/, 128> ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data;
+        VlUnpacked<VlWide<10>/*310:0*/, 128> ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data;
         VlUnpacked<IData/*30:0*/, 32> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__dividend_t;
         VlUnpacked<IData/*31:0*/, 32> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__divisor_t;
         VlUnpacked<IData/*31:0*/, 32> ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__remainder_t;
