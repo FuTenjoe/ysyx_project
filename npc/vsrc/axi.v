@@ -21,6 +21,7 @@ module axi # (
     input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号   读通道
     input  [7:0]                        rw_size_i,          //IF&MEM输入信号
     input rw_burst,
+    input [63:0] ww_addr_i,
 
     // Advanced eXtensible Interface
     input                               axi_aw_ready_i,    //从设备已准备好接收地址和相关的控制信号          
@@ -161,7 +162,7 @@ module axi # (
 
   // ------------------Write Transaction------------------
    assign axi_aw_valid_o =  w_state_addr;
-   assign axi_aw_addr_o = rw_addr_i;
+   assign axi_aw_addr_o = ww_addr_i;
    assign axi_w_valid_o = w_state_write;
    assign axi_w_data_o = rw_w_data_i;
    assign axi_b_ready_o = w_state_resp;

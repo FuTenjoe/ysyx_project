@@ -278,6 +278,7 @@ u_axi(
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
     .rw_addr_i(mem_addr),          //IF&MEM输入信号
+    .ww_addr_i(reg_write_addr),
   //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
     //.rw_burst(rw_burst),
     // Advanced eXtensible Interface
