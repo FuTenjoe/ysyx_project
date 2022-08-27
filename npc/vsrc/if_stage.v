@@ -37,7 +37,8 @@ module if_stage (
     output b_hs,
     input mret_flag,
     input ecall_flag,
-    input w_start
+    input w_start,
+    input id_mem_cache;
    // output inst_use
 
 
