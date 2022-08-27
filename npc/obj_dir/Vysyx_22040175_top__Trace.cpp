@@ -2296,22 +2296,23 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
             tracep->chgBit(oldp+2509,(((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi__rw_valid_i) 
                                        & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__axi_req)))));
             tracep->chgQData(oldp+2510,(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__alu_res),64);
+            tracep->chgCData(oldp+2512,(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__next_state),2);
         }
-        tracep->chgBit(oldp+2512,(vlSelf->clk));
-        tracep->chgBit(oldp+2513,(vlSelf->rst));
-        tracep->chgIData(oldp+2514,(vlSelf->inst),32);
-        tracep->chgIData(oldp+2515,(vlSelf->pc),32);
-        tracep->chgQData(oldp+2516,(vlSelf->unknown_code),64);
-        tracep->chgBit(oldp+2518,(vlSelf->time_set));
-        tracep->chgIData(oldp+2519,(vlSelf->diff_pc),32);
-        tracep->chgIData(oldp+2520,(vlSelf->diff_delay_pc),32);
-        tracep->chgBit(oldp+2521,(vlSelf->out_mem_rd_buf_flag));
-        tracep->chgBit(oldp+2522,(((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
+        tracep->chgBit(oldp+2513,(vlSelf->clk));
+        tracep->chgBit(oldp+2514,(vlSelf->rst));
+        tracep->chgIData(oldp+2515,(vlSelf->inst),32);
+        tracep->chgIData(oldp+2516,(vlSelf->pc),32);
+        tracep->chgQData(oldp+2517,(vlSelf->unknown_code),64);
+        tracep->chgBit(oldp+2519,(vlSelf->time_set));
+        tracep->chgIData(oldp+2520,(vlSelf->diff_pc),32);
+        tracep->chgIData(oldp+2521,(vlSelf->diff_delay_pc),32);
+        tracep->chgBit(oldp+2522,(vlSelf->out_mem_rd_buf_flag));
+        tracep->chgBit(oldp+2523,(((((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
                                      & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_wen)) 
                                     & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr))) 
                                    & (IData)(vlSelf->ysyx_22040175_top__DOT__wb_s_flag))));
-        tracep->chgBit(oldp+2523,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done2));
-        tracep->chgBit(oldp+2524,(((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state))
+        tracep->chgBit(oldp+2524,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__r_done2));
+        tracep->chgBit(oldp+2525,(((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state))
                                     ? ((vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
                                         [(0x7fU & ((IData)(1U) 
                                                    + 
@@ -2383,25 +2384,6 @@ void Vysyx_22040175_top___024root__traceChgSub0(Vysyx_22040175_top___024root* vl
                                                                            << 1U))))][8U])))) 
                                              == (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__delay_cpu_req_addr 
                                                  >> 0xcU)))))));
-        tracep->chgCData(oldp+2525,(((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
-                                      ? ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
-                                          ? 0U : (((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done) 
-                                                   & (2U 
-                                                      == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_id)))
-                                                   ? 3U
-                                                   : 2U))
-                                      : ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
-                                          ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave__DOT__ar_hs)
-                                              ? 2U : 1U)
-                                          : (((((1U 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag)) 
-                                                | (2U 
-                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag))) 
-                                               | (4U 
-                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag))) 
-                                              | (6U 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__mem_rd_buf_flag)))
-                                              ? 1U : 0U)))),2);
     }
 }
 

@@ -144,10 +144,8 @@ always@(*)begin
             next_state = IDLE;
     end
     MEM:begin
-        if(ar_hs)
+       // if(ar_hs)
             next_state = EN;
-        else 
-            next_state = MEM;
     end
     EN:begin
         if(r_done)
