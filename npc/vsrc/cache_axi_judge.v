@@ -2,8 +2,7 @@
 
 module cache_axi_judge (
     input mem_req,
-    input mem_valid,
-    input 
+    input mem_valid
 );
 
 
