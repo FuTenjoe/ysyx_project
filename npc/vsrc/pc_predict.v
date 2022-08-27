@@ -131,6 +131,10 @@ always@(posedge clk or negedge rst_n)begin
             if_valid <= 1'b0;
             if_send_id <= 4'd0;
         end
+        NMEM:begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd0;
+        end
         NEXT2:begin
             if_valid <= 1'b1;
             if_send_id <= 4'd1;
