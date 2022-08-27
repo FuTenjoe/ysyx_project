@@ -1,6 +1,6 @@
 `include "../vsrc/rvseed_defines.v"
 //二路组相连cache 2k*2   256/8=32B, deep = 64
-//tag = 53'b[63:11] index = 7'b[10:4] offset = 4'b[3:0];
+//tag = 54'b[63:10] index = 7'b[10:4] offset = 4'b[3:0];
 
 module i_cache (
  	input clk,
@@ -17,13 +17,13 @@ module i_cache (
 	input [63:0] mem_data_read,
 	input mem_ready,
 	input mem_done,
-	output reg [309:0] cache_data[0:127],
+	output reg [310:0] cache_data[0:127],
 	input control_rest
 );
 
 parameter IDLE= 0,CompareTag = 1, Allocate = 2,CompareTag2 = 3;
-parameter V= 309;
-parameter TagMSB = 308, TagLSB= 256, BlockMSB =255, BlockLSB = 0;
+parameter V= 310;
+parameter TagMSB = 309, TagLSB= 256, BlockMSB =255, BlockLSB = 0;
 //(*KEEP = "TRUE"*) reg [308:0] cache_data[0:127];
 reg [1:0] state,next_state;
 reg hit;
@@ -31,18 +31,18 @@ reg hit1,hit2;
 reg way;     //若hit，则way无意义，若miss，则way表示分配的那一路
 
 wire [6:0]cpu_req_index;
-wire [52:0]cpu_req_tag;
+wire [53:0]cpu_req_tag;
 wire [3:0]cpu_req_offset;
 
 assign cpu_req_offset= cpu_req_addr[3:0];
 assign cpu_req_index= cpu_req_addr[10:4];
-assign cpu_req_tag= cpu_req_addr[63:11]; 
+assign cpu_req_tag= cpu_req_addr[63:10]; 
 
 integer i;//初始化cache
 initial
 begin
     for(i=0;i<128;i=i+1)
-        cache_data[i]=310'd0;
+        cache_data[i]=311'd0;
 end
 always@(posedge clk)begin
 	if(!rst_n)
@@ -116,7 +116,7 @@ end
 
 wire [3:0] delay_cpu_req_offset= delay_cpu_req_addr[3:0];
 wire [6:0] delay_cpu_req_index= delay_cpu_req_addr[10:4];
-wire [52:0] delay_cpu_req_tag= delay_cpu_req_addr[63:11]; 
+wire [53:0] delay_cpu_req_tag= delay_cpu_req_addr[63:10]; 
 
 always@(*)begin
 	if(state==CompareTag | state==CompareTag2)
