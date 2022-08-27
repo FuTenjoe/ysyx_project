@@ -14,7 +14,7 @@ module pc_predict (
     input sh_fnsh_flag,
     input id_div,
     input div_finish,
-    input r_done,
+   // input r_done,
     output reg if_valid,
     input ar_hs,
     input [3:0] return_id,
@@ -83,13 +83,12 @@ always@(*)begin
                 next_state = NEXT2;
         end
         NEXT2:begin
-            if(ar_hs && return_id ==4'd1)
+            
                 next_state = EN;
-            else 
-                next_state = NEXT2;
+            
         end
         EN:begin
-            if(r_done && return_id == 4'd1)
+            if(cpu_ready )
                 next_state =FN;
             else
                 next_state =EN;
@@ -162,10 +161,10 @@ always@(*)begin
         end
     end
     ARTH:begin
-        if((sh_fnsh_flag | div_finish)&&r_done&& (return_id == 4'd1))begin
+        if((sh_fnsh_flag | div_finish)&&cpu_ready)begin
             md_next_state = TEND;
         end
-        else if((sh_fnsh_flag | div_finish)& (!r_done))begin
+        else if((sh_fnsh_flag | div_finish)& (!cpu_ready))begin
             md_next_state = AF;
         end
         else begin
@@ -173,7 +172,7 @@ always@(*)begin
         end
     end
     AF:begin
-        if(r_done)
+        if(cpu_ready)
             md_next_state = TEND;
         else
             md_next_state = AF;
