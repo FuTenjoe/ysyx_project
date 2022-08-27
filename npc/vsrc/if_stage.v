@@ -263,7 +263,7 @@ u_axi_slave2(
     .r_valid(mem_req_valid)
 );
 
-/*
+
 axi # (
 )
 u_axi(
@@ -283,7 +283,6 @@ u_axi(
     .axi_aw_ready_i(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_o(axi_aw_valid_o),  
     .axi_aw_addr_o(axi_aw_addr_o),
-
 
     .axi_w_ready_i(axi_w_ready_i),                
     .axi_w_valid_o(axi_w_valid_o),
@@ -324,10 +323,7 @@ u_axi_slave(
     .axi_ar_len_i(4'b0), //突发长度，这个字段标识每次突发传输的传输次数
     .axi_ar_size_i(axi_ar_size_o),  //突发大小，这个字段表示每次突发传输的大小
     .axi_ar_burst_i(axi_ar_burst_o),  //突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法
-  //  input                              axi_ar_lock_i,   //锁定类型，提供关于传输时原子特性的额外信息
-  //  input [3:0]                        axi_ar_cache_i,   //存储器类型
-  //  input [3:0]                        axi_ar_qos_i,  //服务质量，即每次读传输的QoS标识符，仅AXI4支持
-   // input [3:0]                        axi_ar_region_i,  //区域标识符，允许一个从设备的单个物理接口用作多个逻辑接口，仅AXI4支持
+  
     
     .axi_r_ready_i(axi_r_ready_o),   //  	主设备已准备好接收读取的数据和响应信息              
     .axi_r_valid_o(axi_r_valid_i),  //从设备给出的数据和响应信息有效              
@@ -337,8 +333,6 @@ u_axi_slave(
  
     .r_valid(waxi_valid),
     .axi_req(axi_req),
-    
-
     
     .axi_aw_ready_o(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_i(axi_aw_valid_o),  
@@ -352,7 +346,7 @@ u_axi_slave(
     .axi_b_valid_o(axi_b_valid_i)
 );
 
-*/
+
 
 
 
