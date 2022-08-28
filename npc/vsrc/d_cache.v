@@ -160,15 +160,10 @@ always@(*)begin
 end
 
 assign cpu_ready = ((state==CompareTag && hit) ||(state==CompareTag2 && hit)) ? 1'b1:1'b0;
+assign cpu_data_read = (state==CompareTag && hit && !cpu_req_rw) ? (hit1?cache_data[2*cpu_req_index][64*cpu_req_offset[3:2] +:64] : cache_data[2*cpu_req_index+1][64*cpu_req_offset[3:2] +:64]):(state==CompareTag2 && hit && !delay_cpu_req_rw) ?(hit1 ? cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[3:2] +:64]:cache_data[2*delay_cpu_req_index+1][64*delay_cpu_req_offset[3:2] +:64]) : 64'd0;
 always@(*)begin
 	if(state == CompareTag)begin
-		if(!cpu_req_rw)begin
-			if(hit1)
-				cpu_data_read = cache_data[2*cpu_req_index][64*cpu_req_offset[3:2]+:64];
-			else
-				cpu_data_read = cache_data[2*cpu_req_index+1][64*cpu_req_offset[3:2]+:64];
-		end
-		else begin
+		if(cpu_req_rw) begin
 			if(hit1)begin
 				cache_data[2*cpu_req_index][64*cpu_req_offset[3:2]+:64] = cpu_data_write;
 				cache_data[2*cpu_req_index][D] = 1'b1;
@@ -180,13 +175,7 @@ always@(*)begin
 		end
 	end
 	else if(state == CompareTag2)begin
-		if(!delay_cpu_req_rw)begin
-			if(hit1)
-				cpu_data_read = cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[3:2]+:64];
-			else
-				cpu_data_read = cache_data[2*delay_cpu_req_index+1][64*delay_cpu_req_offset[3:2]+:64];
-		end
-		else begin
+		if(delay_cpu_req_rw) begin
 			if(hit1)begin
 				cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[3:2]+:64] = cpu_data_write;
 				cache_data[2*delay_cpu_req_index][D] = 1'b1;
