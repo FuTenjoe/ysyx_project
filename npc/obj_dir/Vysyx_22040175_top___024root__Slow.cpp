@@ -9962,10 +9962,10 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
            & (~ (IData)(vlSelf->ysyx_22040175_top__DOT__mem_s_flag)));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi2__rw_valid_i 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_valid) 
-           | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__w_axi_valid));
+           | (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state)));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi_slave2__r_valid 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_valid) 
-           | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__w_axi_valid));
+           | (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state)));
     if ((1U & (~ ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op) 
                   >> 4U)))) {
         if ((1U & (~ ((IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op) 

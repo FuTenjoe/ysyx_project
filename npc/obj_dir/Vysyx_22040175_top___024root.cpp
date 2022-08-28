@@ -583,6 +583,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
         = Vysyx_22040175_top__ConstPool__TABLE_1d425d54_0
         [__Vtableidx2];
     if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
+        vlSelf->ysyx_22040175_top__DOT__mem_send_id 
+            = ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
+                ? ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
+                    ? 0U : 2U) : 2U);
         vlSelf->ysyx_22040175_top__DOT__reg_write_wmask 
             = ((4U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state))
                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__wb_wmask)
@@ -592,10 +596,6 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                     : ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state))
                         ? (IData)(vlSelf->ysyx_22040175_top__DOT__reg_write_wmask)
                         : (IData)(vlSelf->ysyx_22040175_top__DOT__wb_wmask))));
-        vlSelf->ysyx_22040175_top__DOT__mem_send_id 
-            = ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
-                ? ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
-                    ? 0U : 2U) : 2U);
         vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg2_rdata 
             = vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__reg2_rdata;
         vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__delay_reg1_rdata 
@@ -987,8 +987,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                               >> 0x2bU))) ? vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                [0x2bU] : 0ULL);
     } else {
-        vlSelf->ysyx_22040175_top__DOT__reg_write_wmask = 0U;
         vlSelf->ysyx_22040175_top__DOT__mem_send_id = 0U;
+        vlSelf->ysyx_22040175_top__DOT__reg_write_wmask = 0U;
         vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg2_rdata = 0ULL;
         vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__delay_reg1_rdata = 0ULL;
         vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__u_divider_step0__dividend_kp = 0U;

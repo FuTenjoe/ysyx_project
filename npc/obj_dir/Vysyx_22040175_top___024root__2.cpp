@@ -896,10 +896,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__9(Vysyx_22040175
            & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi2__rw_valid_i 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_valid) 
-           | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__w_axi_valid));
+           | (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state)));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi_slave2__r_valid 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_valid) 
-           | (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__w_axi_valid));
+           | (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state)));
     __Vtableidx3 = (((IData)(vlSelf->ysyx_22040175_top__DOT__id_div) 
                      << 6U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__id_mul) 
                                 << 5U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__div_finish) 
