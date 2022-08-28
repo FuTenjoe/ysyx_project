@@ -1,6 +1,8 @@
 `include "../vsrc/rvseed_defines.v"
 
 module cache_axi_judge (
+    input clk,
+    input rst_n,
     input if_mem_req_valid,
     input mem_valid,
     input dd_r_done2,

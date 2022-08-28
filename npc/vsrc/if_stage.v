@@ -191,6 +191,8 @@ wire [3:0] send_axi_ar_id;
 wire axi_burst;
 wire [63:0] axi_r_addr;
 cache_axi_judge u_cache_axi_judge(
+    .clk(clk),
+    .rst_n(rst_n),
     .if_mem_req_valid(mem_req_valid),
     .mem_valid(mem_valid),
     //.dd_r_done2(dd_r_done2),
