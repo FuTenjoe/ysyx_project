@@ -127,8 +127,8 @@ axi_judge u_axi_judge(
     .mem_valid(mem_valid),
     .mem_send_id(mem_send_id),
     .mem_addr(mem_addr),
-    .r_done(r_done),
-    .r_done2(r_done2),
+   // .r_done(r_done),
+   // .r_done2(r_done2),
     //.return_id(axi_ar_id_o),
    // .axi_valid(axi_valid),
     .axi_id(axi_id),
@@ -136,6 +136,7 @@ axi_judge u_axi_judge(
     .axi_burst(rw_burst),
     .control_rest(control_rest),
     .id_mem_cache(id_mem_cache),
+    .cpu_ready2(cpu_ready2),
     .cpu_ready(cpu_ready)
 );
 
@@ -161,7 +162,7 @@ wire [1:0] axi_ar_burst_o;
 //cache
 
 wire [63:0] instruction;
-wire cpu_ready;
+wire cpu_ready2;
 wire [63:0] mem_req_addr2;
 wire mem_req_valid2;
 reg dd_r_ready_o2;
@@ -193,7 +194,7 @@ i_cache u_i_cache(
 	.cpu_req_addr(curr_pc),
 	.cpu_req_valid(rw_burst),
 	.cpu_data_read(instruction),
-	.cpu_ready(cpu_ready),
+	.cpu_ready(cpu_ready2),
 	//main memory cache
 	.mem_req_addr(mem_req_addr2),
 	.mem_req_valid(mem_req_valid2),   //读使能
@@ -306,7 +307,7 @@ always@(posedge clk)begin
   end
 end
 
-
+wire cpu_ready;
 d_cache u_d_cache(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -316,8 +317,8 @@ d_cache u_d_cache(
 	.cpu_req_rw(axi_req),
 	.cpu_data_write(reg_write_data),
 	.cpu_wmask(reg_write_wmask),
-	output reg  [63:0] cpu_data_read(rdata),
-	output  cpu_ready,
+	.cpu_data_read(rdata),
+	.cpu_ready(cpu_ready),
 	//
 	.mem_req_addr(mem_req_addr),
 	.mem_req_rw(mem_req_rw),
