@@ -2,7 +2,7 @@
 
 module clint # (
     input clk,
-    input rst_n,
+    input rst_n
 );
     
 
