@@ -15,9 +15,9 @@ extern "C" {
     // DPI IMPORTS
     // DPI import at vsrc/ctrl.v:944:30
     extern void ebreak();
-    // DPI import at vsrc/axi_slave.v:185:30
+    // DPI import at vsrc/axi_slave.v:186:30
     extern void pmem_read(long long raddr, long long* rdata);
-    // DPI import at vsrc/axi_slave.v:194:30
+    // DPI import at vsrc/axi_slave.v:195:30
     extern void pmem_write(long long waddr, long long wdata, char wmask);
     // DPI import at vsrc/wb_stage.v:164:30
     extern void set_gpr_ptr(const svOpenArrayHandle a);

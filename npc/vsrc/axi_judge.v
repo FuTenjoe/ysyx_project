@@ -9,8 +9,8 @@ module axi_judge (
     input mem_valid,
     input [3:0]mem_send_id,
     input [63:0] mem_addr,
-   // input r_done,
-   // input r_done2,
+    input r_done,
+    input r_done2,
     input [3:0] return_id,
     output reg axi_valid,
     output reg [3:0]axi_id,
@@ -19,7 +19,6 @@ module axi_judge (
     input control_rest,
     output reg [63:0] i_cache_addr,
     input id_mem_cache,
-    input cpu_ready2,
     input cpu_ready
 );
 /*assign axi_valid = (mem_valid == 1'b1)?mem_valid:(if_valid == 1'b1)? if_valid:1'b0;
@@ -57,25 +56,25 @@ always@(*)begin
             next_state = IDLE;
     end
     NEXT1:begin
-        if(cpu_ready2)
+        if(cpu_ready)
             next_state = FN;
         else
             next_state = NEXT1;
     end
     NEXT2:begin
-        if(cpu_ready)
+        if(r_done)
             next_state = FN;
         else
             next_state = NEXT2;
     end
     F1:begin
-        if(cpu_ready)
+        if(r_done)
             next_state = F2;
         else 
             next_state = F1;
     end
     F2:begin
-        if(cpu_ready2)
+        if(cpu_ready)
             next_state = FN;
         else
             next_state = F2;
