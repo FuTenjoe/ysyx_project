@@ -49,13 +49,13 @@ always@(*)begin
             next_state = NEXT1;
     end
     NEXT2:begin
-        if(r_done && return_id == 1'd2)
+        if(r_done && return_id == 4'd2)
             next_state = FN;
         else
             next_state = NEXT2;
     end
     F1:begin
-        if(r_done && return_id == 1'd2 )
+        if(r_done && return_id == 4'd2 )
             next_state = F2;
         else 
             next_state = F1;
