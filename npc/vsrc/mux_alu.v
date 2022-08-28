@@ -63,6 +63,27 @@ always @(*) begin
                 default:;
                 endcase
             end
+            `ALU_SRC_CSRRSI:begin
+                case(csr_addr)
+                12'd833:begin
+                    alu_src1 = imm;
+                    alu_src2 = mepc;  
+                end
+                12'd834:begin
+                    alu_src1 = imm;
+                    alu_src2 = mcause;  
+                end
+                12'd773:begin
+                    alu_src1 = imm;
+                    alu_src2 = mtvec;  
+                end
+                12'd768:begin
+                    alu_src1 = imm;
+                    alu_src2 = mstatus;  
+                end
+                default:;
+                endcase
+            end
             `ALU_SRC_ECALL:begin
                 alu_src1 = curr_pc;
                 alu_src2 = curr_pc;

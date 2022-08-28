@@ -126,6 +126,7 @@
 `define ALU_SRC_IMM_PC  `ALU_SRC_WIDTH'b011 // src1 = imm,  src2 = pc
 `define ALU_SRC_CSRRS   `ALU_SRC_WIDTH'b100 //src1=reg1,    src2=csr
 `define ALU_SRC_ECALL   `ALU_SRC_WIDTH'b101  //src1=reg1,src2=reg2
+`define ALU_SRC_CSRRSI   `ALU_SRC_WIDTH'b110
 
 // IMM GEN opcode
 `define IMM_GEN_OP_WIDTH 3

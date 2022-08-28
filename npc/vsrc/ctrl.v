@@ -892,7 +892,7 @@ always @(*) begin
                 s_imm =0;
                 imm_gen_op  = `IMM_GEN_CSRRSI;   //不需要使用R型指令
                 alu_op      = `ALU_CSRRS;
-                alu_src_sel = `ALU_SRC_CSRRS;
+                alu_src_sel = `ALU_SRC_CSRRSI;
                 wmask =  8'b0;
                 s_flag = 1'd0;
                 expand_signed =4'd0;    
