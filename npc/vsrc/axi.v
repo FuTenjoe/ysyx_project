@@ -30,9 +30,9 @@ module axi # (
    // output [2:0]                        axi_aw_prot_o,
   //  output [AXI_ID_WIDTH-1:0]           axi_aw_id_o,
   //  output [AXI_USER_WIDTH-1:0]         axi_aw_user_o,
-  //  output [7:0]                        axi_aw_len_o,
-  //  output [2:0]                        axi_aw_size_o,
-  //  output [1:0]                        axi_aw_burst_o,
+    output [63:0]                        axi_aw_len_o,
+    output [7:0]                        axi_aw_size_o,
+    output [1:0]                        axi_aw_burst_o,
   //  output                              axi_aw_lock_o,
  //   output [3:0]                        axi_aw_cache_o,
   //  output [3:0]                        axi_aw_qos_o,
@@ -166,7 +166,14 @@ module axi # (
    assign axi_w_valid_o = w_state_write;
    assign axi_w_data_o = rw_w_data_i;
    assign axi_b_ready_o = w_state_resp;
-   assign axi_w_last_o = w_state_write;
+   assign axi_w_last_o = w_state_write & shift_ready;
+
+   assign axi_aw_len_o     = 3'd4;                                                                          
+   assign axi_aw_size_o    = 8'd64;
+   assign axi_aw_burst_o = `AXI_BURST_TYPE_INCR;
+
+
+
     // ------------------Read Transaction------------------
 
     // Read address channel signals
@@ -204,9 +211,28 @@ end
    
 
     // Write data channel signals
-  
-
-
+reg shift_ready;
+reg [2:0] w_count; 
+always@(posedge clock)begin
+    if(!reset_n)begin
+        shift_ready <= 1'b0;
+        w_count <= 1'b0;
+    end
+    else if(w_state_write)begin
+        if(w_count == 3'd3)begin
+            w_count <= 3'd0;
+            shift_ready <= 1'b1;
+        end
+        else begin
+            w_count <= w_count + 1'b1;
+            shift_ready <= 1'b0;
+        end
+    end
+    else begin
+        shift_ready <= 1'b0;
+        w_count <= 1'b0;
+    end
+end
 
 
 endmodule

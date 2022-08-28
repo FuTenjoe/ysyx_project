@@ -44,9 +44,9 @@ module axi_slave # (
    // output [2:0]                        axi_aw_prot_o,
   //  output [AXI_ID_WIDTH-1:0]           axi_aw_id_o,
   //  output [AXI_USER_WIDTH-1:0]         axi_aw_user_o,
-  //  output [7:0]                        axi_aw_len_o,
-  //  output [2:0]                        axi_aw_size_o,
-  //  output [1:0]                        axi_aw_burst_o,
+    input [63:0]                        axi_aw_len_i,
+    input [7:0]                        axi_aw_size_i,
+    input [1:0]                        axi_aw_burst_i,
   //  output                              axi_aw_lock_o,
  //   output [3:0]                        axi_aw_cache_o,
   //  output [3:0]                        axi_aw_qos_o,
@@ -174,7 +174,6 @@ end
 assign axi_aw_ready_o = w_state_addr;
 assign axi_w_ready_o = w_state_write;
 assign axi_b_valid_o = w_state_resp;
-
 
 always@(*)begin
     if(w_hs&&axi_req==1'b1)
