@@ -328,7 +328,6 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBus(c+94,"ysyx_22040175_top u_if_stage u_axi_judge mem_send_id", false,-1, 3,0);
         tracep->declQuad(c+2503,"ysyx_22040175_top u_if_stage u_axi_judge mem_addr", false,-1, 63,0);
         tracep->declBit(c+2071,"ysyx_22040175_top u_if_stage u_axi_judge r_done", false,-1);
-        tracep->declBit(c+2548,"ysyx_22040175_top u_if_stage u_axi_judge r_done2", false,-1);
         tracep->declBus(c+2661,"ysyx_22040175_top u_if_stage u_axi_judge return_id", false,-1, 3,0);
         tracep->declBit(c+127,"ysyx_22040175_top u_if_stage u_axi_judge axi_valid", false,-1);
         tracep->declBus(c+6,"ysyx_22040175_top u_if_stage u_axi_judge axi_id", false,-1, 3,0);
