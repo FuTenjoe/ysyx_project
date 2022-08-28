@@ -282,6 +282,7 @@ wire mem_req_valid;
 wire [63:0] mem_data_write;
 wire [7:0] mem_wmask;
 wire [63:0] mem_data_read;
+wire axi_r_last_i;
 reg d_r_ready_o;
 reg dd_r_ready_o;
 reg d_w_done;
@@ -390,7 +391,7 @@ u_axi(
     .ar_hs(ar_hs),
     .axi_r_id_i(2'd2),
     .w_done(w_done),
-    .b_hs(b_hs),
+    .b_hs(b_hs)
   
 );
 
