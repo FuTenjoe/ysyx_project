@@ -10,6 +10,12 @@ extern const VlWide<10>/*319:0*/ Vysyx_22040175_top__ConstPool__CONST_726d283c_0
     0x00000000, 0x00000000
 }};
 
+extern const VlWide<10>/*319:0*/ Vysyx_22040175_top__ConstPool__CONST_c1613866_0 = {{
+    0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000
+}};
+
 extern const VlUnpacked<CData/*2:0*/, 128> Vysyx_22040175_top__ConstPool__TABLE_0b5e556c_0 = {{
     0x00, 0x01, 0x02, 0x00, 0x04, 0x05, 0x00, 0x00,
     0x00, 0x02, 0x02, 0x00, 0x04, 0x03, 0x00, 0x00,

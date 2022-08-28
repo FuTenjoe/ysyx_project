@@ -170,11 +170,11 @@ always@(*)begin
 		end
 		else begin
 			if(hit1)begin
-				cache_data[2*cpu_req_index][64*cpu_req_offset[3:2]+:64] <= cpu_data_write;
+				cache_data[2*cpu_req_index][64*cpu_req_offset[3:2]+:64] = cpu_data_write;
 				cache_data[2*cpu_req_index][D] = 1'b1;
 			end
 			else begin
-				cache_data[2*cpu_req_index+1][64*cpu_req_offset[3:2]+:64] <= cpu_data_write;
+				cache_data[2*cpu_req_index+1][64*cpu_req_offset[3:2]+:64] = cpu_data_write;
 				cache_data[2*cpu_req_index+1][D] = 1'b1;
 			end
 		end
@@ -188,11 +188,11 @@ always@(*)begin
 		end
 		else begin
 			if(hit1)begin
-				cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[3:2]+:64] <= cpu_data_write;
+				cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[3:2]+:64] = cpu_data_write;
 				cache_data[2*delay_cpu_req_index][D] = 1'b1;
 			end
 			else begin
-				cache_data[2*delay_cpu_req_index+1][64*delay_cpu_req_offset[3:2]+:64] <= cpu_data_write;
+				cache_data[2*delay_cpu_req_index+1][64*delay_cpu_req_offset[3:2]+:64] = cpu_data_write;
 				cache_data[2*delay_cpu_req_index+1][D] = 1'b1;
 			end
 		end
