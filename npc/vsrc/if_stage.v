@@ -243,7 +243,7 @@ u_axi2(
     .rw_addr_i(axi_r_addr),          //IF&MEM输入信号
     //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
     .rw_burst(axi_burst),
-    ww_addr_i(reg_write_addr),
+    .ww_addr_i(reg_write_addr),
 
 
     // Advanced eXtensible Interface
