@@ -90,7 +90,7 @@ wire axi_r_last_i;
 wire if_valid;
 wire [3:0] if_send_id;
 wire axi_valid;
-wire [3:0] axi_id;
+//wire [3:0] axi_id;
 wire [63:0] axi_addr;
 //wire [3:0] axi_send_id = if_send_id
 //wire axi_ena = ena&~control_rest;
@@ -115,26 +115,7 @@ end
 
 //assign inst = (delay_r_done && axi_ar_id_o==4'd1)?rdata[31:0] : 32'b0010011;
 assign inst = (cpu_ready & !delay_control_rest) ? instruction[31:0] : 32'b0010011;
-/*axi_judge u_axi_judge(
-    .clk(clk),
-    .rst_n(rst_n),
-    .if_valid(if_valid),
-    .if_send_id(if_send_id),
-    .pc(curr_pc),
-    .mem_valid(mem_valid),
-    .mem_send_id(mem_send_id),
-    .mem_addr(mem_addr),
-    .r_done(r_done),
-   // .r_done2(r_done2),
-    //.return_id(axi_ar_id_o),
-    .axi_valid(axi_valid),
-    .axi_id(axi_id),
-    .axi_addr(axi_addr),
-    .axi_burst(rw_burst),
-    .control_rest(control_rest),
-    .id_mem_cache(id_mem_cache),
-    .cpu_ready(cpu_ready)
-);*/
+
 
 
 wire axi_aw_ready_i;
@@ -147,8 +128,8 @@ wire [7:0] axi_w_strb_o;
 wire axi_w_last_o;
 wire axi_b_ready_o;
 wire axi_b_valid_i;
-wire [63:0]rw_addr_i;
-assign rw_addr_i = (!waxi_valid) ? mem_addr : reg_write_addr;
+//wire [63:0]rw_addr_i;
+//assign rw_addr_i = (!waxi_valid) ? mem_addr : reg_write_addr;
 wire rw_burst;
 
 wire [7:0] axi_ar_len_o;
@@ -205,21 +186,24 @@ i_cache u_i_cache(
   .mem_done(dd_r_done2),
   .control_rest(control_rest)
 );
-
+wire cache_axi_req;
+wire [3:0] send_axi_ar_id;
+wire axi_burst;
+wire [63:0] axi_r_addr;
 cache_axi_judge u_cache_axi_judge(
     .if_mem_req_valid(mem_req_valid),
     .mem_valid(mem_valid),
-    .dd_r_done2(dd_r_done2),
-    input [3:0] return_id,
-    input [63:0] if_mem_req_addr,
-    input [63:0] mem_addr,
-    input w_axi_valid,
+    //.dd_r_done2(dd_r_done2),
+    .return_id(axi_ar_id_o2),
+    .if_mem_req_addr(mem_req_addr),
+    .mem_addr(mem_addr),
+    .w_axi_valid(waxi_valid),
 
-    output axi_valid,
-    output axi_req,
-    output [3:0] axi_ar_id,
-    output axi_burst,
-    output reg [63:0] axi_r_addr
+    .axi_valid(axi_valid),
+    .axi_req(cache_axi_req),
+    .axi_ar_id(send_axi_ar_id),
+    .axi_burst(axi_burst),
+    .axi_r_addr(axi_r_addr)
 );
 
 
@@ -245,7 +229,7 @@ axi # (
 u_axi2(
     .clock(clk),
     .reset_n(rst_n),
-    .rw_req_i(axi_req),
+    .rw_req_i(cache_axi_req),
     .rw_size_i(reg_write_wmask),
 
 	  .rw_valid_i(axi_valid | w_axi_valid),         //IF&MEM输入信号
@@ -272,7 +256,7 @@ u_axi2(
     .axi_r_data_i(axi_r_data_i2),
     .axi_r_last_i(axi_r_last_i2),
     .r_done(r_done2),
-    .axi_r_id_i(axi_id),
+    .axi_r_id_i(send_axi_ar_id),
 
 
 
@@ -315,7 +299,7 @@ u_axi_slave2(
     .axi_r_last_o(axi_r_last_i2),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
     .r_valid(axi_valid | w_axi_valid)
 
-    .axi_req(axi_req),
+    .axi_req(cache_axi_req),
     
     .axi_aw_ready_o(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_i(axi_aw_valid_o),  
