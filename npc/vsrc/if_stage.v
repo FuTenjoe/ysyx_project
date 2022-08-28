@@ -181,7 +181,7 @@ i_cache u_i_cache(
 	//main memory cache
 	.mem_req_addr(mem_req_addr),
 	.mem_req_valid(mem_req_valid),   //读使能
-	.mem_data_read(rdata2),
+	.mem_data_read(rdata),
 	.mem_ready(mem_ready),    //dd&dd_return_id=1
   .mem_done(dd_r_done2),
   .control_rest(control_rest)
@@ -196,6 +196,8 @@ cache_axi_judge u_cache_axi_judge(
     .if_mem_req_valid(mem_req_valid),
     .mem_valid(mem_valid),
     //.dd_r_done2(dd_r_done2),
+    .cpu_ready(cpu_ready),
+    .r_done(r_done2)
     .return_id(axi_ar_id_o2),
     .if_mem_req_addr(mem_req_addr),
     .mem_addr(mem_addr),
@@ -236,7 +238,7 @@ u_axi2(
 
 	  .rw_valid_i(axi_valid | w_axi_valid),         //IF&MEM输入信号
 	 // .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
-    .data_read_o(rdata2),        //IF&MEM输入信号
+    .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
     .rw_addr_i(axi_r_addr),          //IF&MEM输入信号
     //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
