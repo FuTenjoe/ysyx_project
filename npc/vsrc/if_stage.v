@@ -307,7 +307,7 @@ always@(posedge clk)begin
 end
 
 
-d_cache(
+d_cache u_d_cache(
 	.clk(clk),
 	.rst_n(rst_n),
 	//cpu - cache
