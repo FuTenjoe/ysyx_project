@@ -2,8 +2,8 @@
 //直接相连cache 4k   256/8=32B, deep = 128
 //tag = 52'b[63:12] index = 7'b[11:5] offset = 5'b[4:2];
 
-module d_cache (
-  input clk,
+module d_cache(
+	input clk,
 	input rst_n,
 	//cpu - cache
 	input [63:0] cpu_req_addr,
@@ -27,26 +27,26 @@ module d_cache (
 	
     );
 parameter IDLE = 0, CompareTag=1, Allocate = 2, CompareTag2 = 3,WriteBack = 4;
-parameter V= 309,D=308;
-parameter TagMSB = 307, TagLSB= 256, BlockMSB =255, BlockLSB = 0;
-reg [309:0] cache_data [0:127];
+parameter V= 311,D=310;
+parameter TagMSB = 309, TagLSB= 256, BlockMSB =255, BlockLSB = 0;
+reg [311:0] cache_data [0:127];
 reg [2:0] state,next_state;
 reg hit;
 reg hit1,hit2;
 reg way;
 
-wire [7:0]cpu_req_index;
-wire [51:0]cpu_req_tag;
+wire [6:0]cpu_req_index;
+wire [53:0]cpu_req_tag;
 wire [3:0]cpu_req_offset;
 
 assign cpu_req_offset= cpu_req_addr[3:0];
-assign cpu_req_index= cpu_req_addr[11:4];
-assign cpu_req_tag= cpu_req_addr[63:12]; 
+assign cpu_req_index= cpu_req_addr[10:4];
+assign cpu_req_tag= cpu_req_addr[63:10]; 
 
 integer i;
 initial begin
     for(i=0;i<128;i=i+1)
-        cache_data[i]=309'd0;
+        cache_data[i]=312'd0;
 end
 	
 always@(posedge clk)begin
@@ -101,8 +101,8 @@ always@(posedge clk)begin
 end
 
 wire [3:0] delay_cpu_req_offset= delay_cpu_req_addr[3:0];
-wire [7:0] delay_cpu_req_index= delay_cpu_req_addr[11:4];
-wire [51:0] delay_cpu_req_tag= delay_cpu_req_addr[63:12];
+wire [6:0] delay_cpu_req_index= delay_cpu_req_addr[10:4];
+wire [53:0] delay_cpu_req_tag= delay_cpu_req_addr[63:10];
 
 always@(*)begin
 	if(state == CompareTag)begin
@@ -227,7 +227,7 @@ always@(posedge clk)begin
 			if(!dd_r_done && mem_ready)begin
 				if(count ==3'd3)begin
 					mem_req_valid<=1'b0;
-					cache_data[2*cpu_req_index+way][308:192] <= {1'b1,delay_cpu_req_tag,mem_data_read};
+					cache_data[2*cpu_req_index+way][311:192] <= {1'b1,1'b0,delay_cpu_req_tag,mem_data_read};
 					count <= 4'd0;
 					//shift_ready <= 1'd1;
 					
@@ -259,7 +259,7 @@ always@(posedge clk)begin
 			end
 			else begin
 				mem_req_valid <= 1'b1;
-				mem_req_addr <= {cpu_req_addr[63:4],count[1:0],2'b00};
+				mem_req_addr <= {cpu_req_addr[63:4],w_count[1:0],2'b00};
 				mem_data_write <= cache_data[2*cpu_req_index+way][64*w_count+:64];
 				mem_wmask <= cpu_wmask;
 				mem_req_rw <= 1'b1;

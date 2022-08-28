@@ -268,6 +268,45 @@ u_axi_slave2(
     .r_valid(mem_req_valid)
 );
 
+wire [63:0] cpu_req_addr = axi_req? reg_write_addr : mem_addr;
+/*
+d_cache(
+	.clk(clk),
+	.rst_n(rst_n),
+	//cpu - cache
+	input [63:0] cpu_req_addr,
+	input cpu_req_valid,
+	.cpu_req_rw(axi_req),
+	input [63:0] cpu_data_write,
+	.cpu_wmask(reg_write_wmask),
+	output reg  [63:0] cpu_data_read,
+	output  cpu_ready,
+	//
+	output reg [63:0] mem_req_addr,
+	output reg	mem_req_rw,
+	output reg mem_req_valid,
+	output reg [63:0] mem_data_write,
+	input [63:0] mem_data_read,
+	input mem_ready,
+	input mem_r_done,
+	input mem_w_done,
+	input mem_w_ready,
+	output reg [7:0] mem_wmask
+	
+    );*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 axi # (
 )
@@ -281,8 +320,8 @@ u_axi(
 	  //.rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
-    .rw_addr_i(mem_addr),          //IF&MEM输入信号
-    .ww_addr_i(reg_write_addr),
+    .rw_addr_i(cpu_req_addr),          //IF&MEM输入信号
+    .ww_addr_i(cpu_req_addr),
   //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
     //.rw_burst(rw_burst),
     // Advanced eXtensible Interface
