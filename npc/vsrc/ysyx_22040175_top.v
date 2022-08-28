@@ -57,7 +57,7 @@ if_stage u_if_stage(
     .mem_addr(mem_addr),
     .ar_hs(ar_hs),
     .delay_r_done2(delay_r_done),
-    .axi_ar_id_o2(axi_ar_id_o),
+    .d_ar_id_o(axi_ar_id_o),
     .mem_no_use(mem_no_use),
     .ex_rd_buf_flag(ex_rd_buf_flag),
     .mem_res_valid(mem_res_valid),
