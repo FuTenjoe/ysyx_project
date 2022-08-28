@@ -61,7 +61,7 @@ pc_predict u_pc_predict(
   //.r_done(delay_r_done),
   .if_valid(if_valid),
   .ar_hs(ar_hs),
-  .return_id(axi_ar_id_o),
+  .return_id(axi_ar_id_o2),
   .if_send_id(if_send_id),
   .mem_no_use(mem_no_use),
   .ex_rd_buf_flag(ex_rd_buf_flag),

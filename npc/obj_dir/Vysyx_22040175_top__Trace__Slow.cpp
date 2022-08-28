@@ -4596,7 +4596,7 @@ void Vysyx_22040175_top___024root__traceFullSub0(Vysyx_22040175_top___024root* v
         tracep->fullBit(oldp+2470,((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__send_axi_ar_id))));
         tracep->fullCData(oldp+2471,((((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_cache_axi_judge__DOT__present_state)) 
                                        | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_cache_axi_judge__DOT__present_state)))
-                                       ? 1U : 4U)),3);
+                                       ? 4U : 1U)),3);
         tracep->fullCData(oldp+2472,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_pc_predict__DOT__md_next_state),2);
         tracep->fullCData(oldp+2473,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__next_state),2);
         tracep->fullBit(oldp+2474,(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__hit));

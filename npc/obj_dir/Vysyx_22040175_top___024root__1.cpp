@@ -12505,7 +12505,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
         } else if (vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__r_hs) {
             if ((1U == (((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_cache_axi_judge__DOT__present_state)) 
                          | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_cache_axi_judge__DOT__present_state)))
-                         ? 1U : 4U))) {
+                         ? 4U : 1U))) {
                 __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_data_i2 
                     = vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__rdata;
                 vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_last_i2 = 1U;
@@ -12513,7 +12513,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
             } else if (((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__count) 
                         == ((((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_cache_axi_judge__DOT__present_state)) 
                               | (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_cache_axi_judge__DOT__present_state)))
-                              ? 1U : 4U) - (IData)(1U)))) {
+                              ? 4U : 1U) - (IData)(1U)))) {
                 __Vdly__ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_data_i2 
                     = vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_axi_slave2__DOT__rdata;
                 vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_r_last_i2 = 1U;
