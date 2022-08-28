@@ -220,7 +220,7 @@ int main(int argc, char **argv, char **env) {
        if((top->diff_pc != top-> diff_delay_pc)){
       //if((top->diff_pc != end_pc) ){
         
-        difftest_step(top-> diff_pc);
+//        difftest_step(top-> diff_pc);
      //   printf("diff_pc = %x",top->diff_pc);
     //    printf("diff_delay_pc = %x",top->diff_delay_pc); 
       }
@@ -228,7 +228,7 @@ int main(int argc, char **argv, char **env) {
      
         }  
       else if(a <= 2){
-          init_difftest(img_size,port);
+       //   init_difftest(img_size,port);
         }
      }
      
