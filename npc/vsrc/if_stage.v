@@ -297,7 +297,7 @@ u_axi_slave2(
     .axi_r_resp_o(axi_r_resp_i2), //读响应，这信号表示读传输的状态
     .axi_r_data_o(axi_r_data_i2),
     .axi_r_last_o(axi_r_last_i2),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
-    .r_valid(axi_valid | w_axi_valid)
+    .r_valid(axi_valid | w_axi_valid),
 
     .axi_req(cache_axi_req),
     
