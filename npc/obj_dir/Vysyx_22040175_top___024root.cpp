@@ -130,6 +130,8 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
     __Vdly__ysyx_22040175_top__DOT__mem_s_flag = vlSelf->ysyx_22040175_top__DOT__mem_s_flag;
     __Vdly__ysyx_22040175_top__DOT__mem_reg_waddr = vlSelf->ysyx_22040175_top__DOT__mem_reg_waddr;
     vlSelf->__Vdly__ysyx_22040175_top__DOT__id_pc = vlSelf->ysyx_22040175_top__DOT__id_pc;
+    vlSelf->__Vdly__ysyx_22040175_top__DOT__reg_write_addr 
+        = vlSelf->ysyx_22040175_top__DOT__reg_write_addr;
     vlSelf->ysyx_22040175_top__DOT__ex_ena = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n) 
                                               & (IData)(vlSelf->ysyx_22040175_top__DOT__id_ena));
     if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
@@ -6186,7 +6188,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                     : ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state))
                         ? vlSelf->ysyx_22040175_top__DOT__reg_write_data
                         : vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__reg_wdata)));
-        vlSelf->ysyx_22040175_top__DOT__reg_write_addr 
+        vlSelf->__Vdly__ysyx_22040175_top__DOT__reg_write_addr 
             = ((4U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state))
                 ? (vlSelf->ysyx_22040175_top__DOT____Vcellout__u_wb_stage__reg_f
                    [vlSelf->ysyx_22040175_top__DOT__wb_reg_waddr] 
@@ -6276,7 +6278,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__2(Vysyx_22040175
                     : vlSelf->ysyx_22040175_top__DOT__from_mem_alu_res));
     } else {
         vlSelf->ysyx_22040175_top__DOT__reg_write_data = 0ULL;
-        vlSelf->ysyx_22040175_top__DOT__reg_write_addr = 0ULL;
+        vlSelf->__Vdly__ysyx_22040175_top__DOT__reg_write_addr = 0ULL;
         vlSelf->ysyx_22040175_top__DOT__wb_reg_wen = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_expand_signed = 0U;
         vlSelf->ysyx_22040175_top__DOT__wb_s_flag = 0U;
