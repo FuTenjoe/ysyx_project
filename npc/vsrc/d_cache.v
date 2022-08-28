@@ -197,7 +197,7 @@ always@(posedge clk)begin
 		delay_cache_data_orin1 <= cache_data[2*cpu_req_index][64*cpu_req_offset[3:2]+:64];
 		delay_cache_data_orin2 <= cache_data[2*cpu_req_index+1][64*cpu_req_offset[3:2]+:64];
 		delay_cache_data_orin_d_1 <= cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[3:2]+:64];
-		delay_cache_data_orin_d_2 <= [2*delay_cpu_req_index+1][64*delay_cpu_req_offset[3:2]+:64] = cpu_data_write;
+		delay_cache_data_orin_d_2 <= cache_data[2*delay_cpu_req_index+1][64*delay_cpu_req_offset[3:2]+:64] = cpu_data_write;
 	end
 end
 
