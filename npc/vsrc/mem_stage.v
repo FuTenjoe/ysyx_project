@@ -38,8 +38,6 @@ wire [63:0] rd_buf_lw;
 reg [63:0] alu_res;
 
 
-
-
 always@(*)begin
     case (alu_op)
         `ALU_ADD: begin 
@@ -75,7 +73,7 @@ always@(*)begin
         `ALU_ECALL:begin
             alu_res = alu_res;
             mepc = mem_pc;
-            mcause = 11;
+            mcause = 64'd11;
             mstatus[7] = reg_mstatus[3];
             mstatus[3] = 1'b0;
         end
