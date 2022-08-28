@@ -236,7 +236,7 @@ u_axi2(
     .rw_req_i(cache_axi_req),
     .rw_size_i(reg_write_wmask),
 
-	  .rw_valid_i(axi_valid | w_axi_valid),         //IF&MEM输入信号
+	  .rw_valid_i(axi_valid | waxi_valid),         //IF&MEM输入信号
 	 // .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
@@ -301,7 +301,7 @@ u_axi_slave2(
     .axi_r_resp_o(axi_r_resp_i2), //读响应，这信号表示读传输的状态
     .axi_r_data_o(axi_r_data_i2),
     .axi_r_last_o(axi_r_last_i2),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
-    .r_valid(axi_valid | w_axi_valid),
+    .r_valid(axi_valid | waxi_valid),
 
     .axi_req(cache_axi_req),
     
