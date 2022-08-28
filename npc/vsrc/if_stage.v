@@ -19,7 +19,7 @@ module if_stage (
     input [3:0] mem_send_id,
     input [63:0] mem_addr,
     output ar_hs,
-    output reg delay_r_done,
+    output reg delay_r_done2,
     output [3:0]axi_ar_id_o,
     input mem_no_use,
     input [2:0] ex_rd_buf_flag,
