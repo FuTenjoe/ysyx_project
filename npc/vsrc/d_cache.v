@@ -177,10 +177,10 @@ assign cpu_data_read = (state==CompareTag && hit && !cpu_req_rw) ? (hit1?cache_d
 //assign cache_data[2*delay_cpu_req_index][D] = (state == CompareTag2 && hit1 && delay_cpu_req_rw) ? 1'b1:1'b0;
 //assign cache_data[2*delay_cpu_req_index+1][D] = (state == CompareTag2 && hit2 && delay_cpu_req_rw) ? 1'b1:1'b0;
 
-assign cache_data[2*cpu_req_index][64*cpu_req_offset[3:2]+:64] = (state==CompareTag && hit1 && cpu_req_rw) ? cpu_data_write : delay_cache_data_orin1;
-assign cache_data[2*cpu_req_index+1][64*cpu_req_offset[3:2]+:64] = (state==CompareTag && hit2 && cpu_req_rw) ? cpu_data_write : delay_cache_data_orin2;
-assign cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[3:2]+:64] = (state == CompareTag2 && hit1 && delay_cpu_req_rw) ? delay_cpu_data_write: delay_cache_data_orin_d_1;
-assign cache_data[2*delay_cpu_req_index+1][64*delay_cpu_req_offset[3:2]+:64] = (state == CompareTag2 && hit2 && delay_cpu_req_rw) ? delay_cpu_data_write: delay_cache_data_orin_d_2;
+//assign cache_data[2*cpu_req_index][64*cpu_req_offset[3:2]+:64] = (state==CompareTag && hit1 && cpu_req_rw) ? cpu_data_write : delay_cache_data_orin1;
+//assign cache_data[2*cpu_req_index+1][64*cpu_req_offset[3:2]+:64] = (state==CompareTag && hit2 && cpu_req_rw) ? cpu_data_write : delay_cache_data_orin2;
+//assign cache_data[2*delay_cpu_req_index][64*delay_cpu_req_offset[3:2]+:64] = (state == CompareTag2 && hit1 && delay_cpu_req_rw) ? delay_cpu_data_write: delay_cache_data_orin_d_1;
+//assign cache_data[2*delay_cpu_req_index+1][64*delay_cpu_req_offset[3:2]+:64] = (state == CompareTag2 && hit2 && delay_cpu_req_rw) ? delay_cpu_data_write: delay_cache_data_orin_d_2;
 
 reg [63:0] delay_cache_data_orin1;
 reg [63:0] delay_cache_data_orin2;
