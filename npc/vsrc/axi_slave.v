@@ -140,7 +140,7 @@ always@(posedge clock)begin
         axi_r_resp_o <= 2'b0;
     end
     else if(r_hs)begin
-        if(axi_ar_len_i == 3'd0)begin
+        if(axi_ar_len_i == 3'd1)begin
             axi_r_data_o <= rdata;
             axi_r_last_o <= 1'b1;
             axi_r_resp_o <= 2'b11;

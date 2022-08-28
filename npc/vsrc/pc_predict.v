@@ -270,7 +270,8 @@ always @ (posedge clk or negedge rst_n) begin
              curr_pc <= id_next_pc;
         end
        // else if((r_done && md_add_pc!=2'd1 && md_add_pc!=2'd2 &&(return_id == 4'd1))|(md_add_pc==2'd3))
-       else if((cpu_ready && md_add_pc!=2'd1 && md_add_pc!=2'd2 && !delay_control_rest )|(md_add_pc==2'd3))
+       //else if((cpu_ready && md_add_pc!=2'd1 && md_add_pc!=2'd2 && !delay_control_rest )|(md_add_pc==2'd3))
+       else if((cpu_ready && md_add_pc!=2'd1 && md_add_pc!=2'd2 && !delay_control_rest &&(return_id == 4'd1))|(md_add_pc==2'd3))
             curr_pc <= curr_pc + 4;
     end
 end    

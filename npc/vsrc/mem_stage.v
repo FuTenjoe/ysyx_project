@@ -148,7 +148,7 @@ always@(*)begin
             next_state = EN;
     end
     EN:begin
-        if(r_done)
+        if(r_done && return_id==4'd2)
             next_state = FN;
         else 
             next_state = EN;
