@@ -36,6 +36,10 @@ reg [2:0] reg_rd_buf_flag;
 wire [63:0] rd_buf_lw;
 ///assign rd_buf_lw = (present_state == FN)?axi_rdata:64'd0;
 reg [63:0] alu_res;
+
+
+
+
 always@(*)begin
     case (alu_op)
         `ALU_ADD: begin 
