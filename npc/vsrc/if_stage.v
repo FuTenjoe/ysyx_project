@@ -109,7 +109,7 @@ always@(posedge clk or negedge rst_n)begin
         delay_r_done2 <= r_done2;
         delay_control_rest <= control_rest;
         delay_r_done <= r_done;
-        dd_r_done2 <= delay_r_done;
+        dd_r_done2 <= delay_r_done2;
     end
 end
 
