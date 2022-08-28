@@ -12604,7 +12604,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
     }
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__mem_ready 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__dd_r_ready_o2) 
-           & (0U != (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__dd_ar_id_o)));
+           & (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__dd_ar_id_o)));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__state 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__rst_n)
             ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__next_state)
