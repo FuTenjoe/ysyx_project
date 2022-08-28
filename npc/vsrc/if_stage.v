@@ -169,7 +169,7 @@ always@(posedge clk)begin
     dd_ar_id_o <= d_ar_id_o;
   end
 end
-wire mem_ready = dd_r_ready_o2 && dd_ar_id_o;
+wire mem_ready = dd_r_ready_o2 && (dd_ar_id_o==4'd1);
 i_cache u_i_cache(
   .clk(clk),
   .rst_n(rst_n),
