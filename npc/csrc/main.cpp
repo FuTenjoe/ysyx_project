@@ -189,7 +189,7 @@ int main(int argc, char **argv, char **env) {
       //top->inst = pmem_read(top->pc,8); //使用DPIC
       
       top->eval ();
-  /*    printf("main_time = %d\n",i);
+      printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       //printf("ena=:0x%0x, top->ena);
       printf(" a0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[10],top->inst);
@@ -198,13 +198,13 @@ int main(int argc, char **argv, char **env) {
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
       printf(" a2= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[18],top->inst);
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
-      printf("mem_rd_buf_flag is 0x%08lx\n",top->out_mem_rd_buf_flag);*/
+      printf("mem_rd_buf_flag is 0x%08lx\n",top->out_mem_rd_buf_flag);
      }
      if(top->clk==0){
         
         top->eval ();
         a= a+1;
-  /*     printf("main_time = %d\n",i);
+       printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       
       printf(" a4= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[14],top->inst);
@@ -212,7 +212,7 @@ int main(int argc, char **argv, char **env) {
        printf(" ra= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[1],top->inst);
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
-      printf("mem_rd_buf_flag is 0x%08lx\n",top->out_mem_rd_buf_flag);  */
+      printf("mem_rd_buf_flag is 0x%08lx\n",top->out_mem_rd_buf_flag);  
       //init_difftest(img_size,port);
       if (a>1){
         //if (a%4==1 & a/4>=1){
