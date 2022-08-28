@@ -20,7 +20,7 @@ module if_stage (
     input [63:0] mem_addr,
     output ar_hs,
     output reg delay_r_done2,
-    output [3:0]axi_ar_id_o,
+    output [3:0]axi_ar_id_o2,
     input mem_no_use,
     input [2:0] ex_rd_buf_flag,
     input mem_res_valid,
@@ -146,7 +146,7 @@ reg dd_r_ready_o2;
 reg d_r_ready_o2;
 reg [3:0] d_ar_id_o;
 reg [3:0] dd_ar_id_o;
-wire [63:0] rdata2;
+//wire [63:0] rdata2;
 //wire [63:0] mem_data_read;
 reg delay_rw_burst;
 always@(posedge clk)begin
