@@ -94,21 +94,21 @@ wire axi_valid;
 wire [63:0] axi_addr;
 //wire [3:0] axi_send_id = if_send_id
 //wire axi_ena = ena&~control_rest;
-wire r_done;
+//wire r_done;
 reg delay_control_rest;
-reg delay_r_done2;
+//reg delay_r_done2;
 reg dd_r_done2;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         delay_r_done2 <= 1'b0;
         delay_control_rest <= 1'b0;
-        delay_r_done <= 1'd0;
+       
         dd_r_done2 <= 1'd0;
     end
     else begin
         delay_r_done2 <= r_done2;
         delay_control_rest <= control_rest;
-        delay_r_done <= r_done;
+       
         dd_r_done2 <= delay_r_done2;
     end
 end
