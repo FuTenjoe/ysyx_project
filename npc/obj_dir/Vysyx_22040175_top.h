@@ -13,9 +13,6 @@
 
 class Vysyx_22040175_top__Syms;
 class Vysyx_22040175_top___024root;
-class VerilatedVcdC;
-class Vysyx_22040175_top_VerilatedVcd;
-
 
 // This class is the main interface to the Verilated model
 class Vysyx_22040175_top VL_NOT_FINAL {
@@ -69,8 +66,6 @@ class Vysyx_22040175_top VL_NOT_FINAL {
     void eval_end_step() {}
     /// Simulation complete, run final blocks.  Application must call on completion.
     void final();
-    /// Trace signals in the model; called by application code
-    void trace(VerilatedVcdC* tfp, int levels, int options = 0);
     /// Return current simulation context for this model.
     /// Used to get to e.g. simulation time via contextp()->time()
     VerilatedContext* contextp() const;
