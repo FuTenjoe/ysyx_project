@@ -16,7 +16,7 @@ module wb_clint  (
    
 );
 
-reg [63:0] mtimecmp = 64'd100;
+//reg [63:0] mtimecmp = 64'd100;
 
 always@(posedge clk)begin
     if(!rst_n)begin
