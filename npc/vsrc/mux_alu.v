@@ -16,7 +16,8 @@ module mux_alu (
     input [63:0] mepc,
     input [63:0] mcause,
     input [63:0] mtvec,
-    input [63:0] mstatus
+    input [63:0] mstatus,
+    input [63:0] mie
    
 );
 
@@ -60,6 +61,10 @@ always @(*) begin
                     alu_src1 = reg1_rdata;
                     alu_src2 = mstatus;  
                 end
+                12'd772:begin
+                    alu_src1 = reg1_rdata;
+                    alu_src2 = mie;  
+                end
                 default:;
                 endcase
             end
@@ -80,6 +85,10 @@ always @(*) begin
                 12'd768:begin
                     alu_src1 = imm;
                     alu_src2 = mstatus;  
+                end
+                12'd772:begin
+                    alu_src1 = imm;
+                    alu_src2 = mie;  
                 end
                 default:;
                 endcase

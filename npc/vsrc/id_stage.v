@@ -57,6 +57,7 @@ module id_stage (
     input [63:0] mepc,
     input [63:0] mcause,
     input [63:0] mtvec,
+    input [63:0] mie,
    // input [63:0] mstatus,
     output  [63:0] csr_addr,
     output mret_flag,
@@ -197,7 +198,8 @@ mux_alu u_mux_alu(
     .mepc(mepc),
     .mcause(mcause),
     .mtvec(mtvec),
-    .mstatus(mstatus)
+    .mstatus(mstatus),
+    .mie(mie)
 );
 
 muxpc u_mux_pc(
