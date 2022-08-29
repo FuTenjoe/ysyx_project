@@ -9983,7 +9983,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
                                                      == vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__wbmmio_waddr))
                                                   ? vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__reg_wdata
                                                   : vlSelf->ysyx_22040175_top__DOT__mtimecmp)
-                                                 : 0x64ULL);
+                                                 : 0x186a0ULL);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime 
         = __Vdly__ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime;
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__count 
