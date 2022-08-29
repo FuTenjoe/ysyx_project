@@ -472,7 +472,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
         vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__no_latch_y[0U] = 0U;
         vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__no_latch_y[1U] = 0U;
         vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_mul__DOT__no_latch_y[2U] = 0U;
-        vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mstatus = 0xa0001800ULL;
+        vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mstatus = 0ULL;
         vlSelf->ysyx_22040175_top__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_control_rest = 0U;
         vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__delay_control_rest = 0U;
         vlSelf->ysyx_22040175_top__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__u_divider_step0__rdy = 0U;

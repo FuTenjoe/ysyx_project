@@ -92,8 +92,9 @@ always@(*)begin
         end
         `ALU_MRET:begin
             alu_res = alu_res;
-            mstatus[3] = reg_mstatus[7];
-            mstatus[7] = 1'b1;
+           // mstatus[3] = reg_mstatus[7];
+          //  mstatus[7] = 1'b1;
+          mstatus= 64'h88;
         end
         default: alu_res = alu_res;
     endcase
@@ -103,7 +104,7 @@ reg [63:0]reg_mstatus;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
     //    reg_mstatus<= 64'ha000_1800;
-    reg_mstatus<= 64'd0;
+        reg_mstatus<= 64'd0;
     end
     else 
         reg_mstatus <= mstatus;
