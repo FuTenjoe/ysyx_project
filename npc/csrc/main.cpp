@@ -241,7 +241,7 @@ int main(int argc, char **argv, char **env) {
     }
   
 
-  tfp->close();
+//  tfp->close();
   delete top;
   delete contextp;
   return is_exit_status_bad();
