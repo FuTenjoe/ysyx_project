@@ -58,7 +58,7 @@ module id_stage (
     input [63:0] mcause,
     input [63:0] mtvec,
     input [63:0] mie,
-   // input [63:0] mstatus,
+    input [63:0] mstatus,
     output  [63:0] csr_addr,
     output mret_flag,
     output ecall_flag,

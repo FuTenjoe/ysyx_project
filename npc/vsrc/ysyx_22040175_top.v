@@ -140,6 +140,7 @@ wire [63:0] from_mem_mie;
 wire [11:0] id_csr_addr;
 wire mret_flag;
 wire ecall_flag;
+wire [63:0] from_mem_mstatus;
 id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -200,8 +201,9 @@ id_stage u_id_stage(
     .mepc(from_mem_mepc),
     .mcause(from_mem_mcause),
     .mtvec(from_mem_mtvec),
+    //.mstatus(mstatus)
     .mie(from_mem_mie),
-   // .mstatus(from_mem_mstatus),
+    .mstatus(from_mem_mstatus),
     .csr_addr(id_csr_addr),
     .mret_flag(mret_flag),
     .ecall_flag(ecall_flag),
