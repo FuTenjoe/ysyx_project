@@ -140,7 +140,7 @@ wb_clint u_wb_clint (
     .clk(clk),
     .rst_n(rst_n),
     .mmio_reg_waddr(wbmmio_waddr),
-    .mmio_reg_wdata(reg_wdata),
+    .reg_wdata(reg_wdata),
     .wr_mmio_valid(wr_mmio_valid),
 
     .mtimecmp(mtimecmp),
