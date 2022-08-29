@@ -32,14 +32,15 @@ module mem_stage(
     output reg [63:0] mtvec,
     output reg [63:0] mstatus,
     input [63:0] mtimecmp,
-    output clint_timer_irq
+    output clint_timer_irq,
+    output reg [63:0] mie
 );
 reg [2:0] reg_rd_buf_flag;
 wire [63:0] rd_buf_lw;
 ///assign rd_buf_lw = (present_state == FN)?axi_rdata:64'd0;
 reg [63:0] alu_res;
 
-
+wire o_core_ready = mstatus[3] & mie[7];
 always@(*)begin
     if(clint_timer_irq)begin
             mepc = mem_pc;
@@ -199,6 +200,7 @@ mem_clint  u_mem_clint(
 
     .alu_src1(alu_src1),
     .alu_src2(alu_src2),
+    .o_core_ready(o_core_ready),
     .clint_timer_irq(clint_timer_irq),
     .read_data(mem_io_r_data),
     .clint(clint)
