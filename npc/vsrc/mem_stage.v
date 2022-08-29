@@ -102,7 +102,8 @@ end
 reg [63:0]reg_mstatus;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
-        reg_mstatus<= 64'ha000_1800;
+    //    reg_mstatus<= 64'ha000_1800;
+    reg_mstatus<= 64'd0;
     end
     else 
         reg_mstatus <= mstatus;
