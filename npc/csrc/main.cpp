@@ -125,7 +125,7 @@ VerilatedContext *contextp = new VerilatedContext;
 Vysyx_22040175_top* top = new Vysyx_22040175_top;
   // init trace dump
 
-VerilatedVcdC* tfp = new VerilatedVcdC;
+//VerilatedVcdC* tfp = new VerilatedVcdC;
 
 
 
