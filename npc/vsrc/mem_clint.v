@@ -9,6 +9,8 @@ module mem_clint  (
     input [63:0] alu_src1,
     input [63:0] alu_src2,
     input o_core_ready,
+    input [63:0] mie,
+    input [63:0] mstatus,
     output reg clint_timer_irq,
     output reg [63:0] read_data,
     output reg clint
@@ -51,7 +53,10 @@ always@(posedge clk)begin
         clint_timer_irq <= 1'b0;
     end
     else if(mtime == mtimecmp)begin
+        if(mstatus[3] == 1'b1 && mie[7] == 1'b1)
         clint_timer_irq <= 1'b1;
+        else 
+        clint_timer_irq <= 1'b0;
     end
     else if(o_core_ready)begin
         clint_timer_irq <= 1'b0;
