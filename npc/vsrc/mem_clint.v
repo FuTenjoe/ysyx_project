@@ -47,12 +47,14 @@ always@(*)begin
         read_data = 64'd0;
     end
 end
-
+reg test;
 always@(posedge clk)begin
     if(!rst_n)begin
         clint_timer_irq <= 1'b0;
+        test <= 1'b0;
     end
     else if(mtime == mtimecmp)begin
+        test <= 1'b1;
         if(mstatus[3] == 1'b1 && mie[7] == 1'b1)
         clint_timer_irq <= 1'b1;
         else 
