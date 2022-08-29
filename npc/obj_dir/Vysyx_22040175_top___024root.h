@@ -332,8 +332,6 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         QData/*63:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__alu_res;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mstatus;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mem_addr;
-        QData/*63:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mie;
-        QData/*63:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mstatus;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_wb_stage__DOT__reg_wdata;
         QData/*63:0*/ ysyx_22040175_top__DOT__u_wb_stage__DOT__wbmmio_waddr;
