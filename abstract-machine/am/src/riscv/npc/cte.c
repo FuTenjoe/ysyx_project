@@ -77,11 +77,11 @@ void iset(bool enable) {
   //自己加
   if(enable){
     asm volatile("csrsi mstatus, 8"); //mstatus_MIE  由csri改为csrs
-    set_csr (mie, MIP_MTIP);    //mie_MTIE
+    asm volatile ("csrsi mie, 8");    //mie_MTIE
   }
   else{
     asm volatile("csrsi mstatus, 8");
-    clear_csr(mie, MIP_MTIP);
+    asm volatile("csrsi mie, 8");
   }
 }
 

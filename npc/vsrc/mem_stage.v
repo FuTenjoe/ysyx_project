@@ -68,6 +68,7 @@ always@(*)begin
             12'd834:mcause = alu_src1 | alu_src2;
             12'd773:mtvec = alu_src1 | alu_src2;
             12'd768:mstatus = alu_src1 | alu_src2;
+            12'd772:mie = alu_src1 | alu_src2;
             default:;
             endcase
         end
@@ -78,6 +79,7 @@ always@(*)begin
             12'd834:mcause = alu_src1;
             12'd773:mtvec = alu_src1;
             12'd768:mstatus = alu_src1;
+            12'd772:mie = alu_src1;
             default:;
             endcase
         end
