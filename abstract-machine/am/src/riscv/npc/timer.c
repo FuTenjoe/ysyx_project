@@ -1,12 +1,16 @@
 #include <am.h>
 //自己加
-//#include <abstract-machine/am/src/riscv/riscv.h>
+#include "include/npc.h"
+#include <riscv/riscv.h>
 void __am_timer_init() {
 }
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) {
-  uptime->us = 0;
+  //uptime->us = 0;
   //自己加
+  uint64_t high_time = (uint64_t)inl(RTC_ADDR+4) <<32;
+  uint64_t low_time = (uint64_t)inl(RTC_ADDR);
+  uptime ->us = high_time | low_time;
   
 }
 
