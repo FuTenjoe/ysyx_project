@@ -31,6 +31,18 @@ void Vysyx_22040175_top___024root___settle__TOP__7(Vysyx_22040175_top___024root*
     VlWide<10>/*319:0*/ __Vtemp686;
     VlWide<10>/*319:0*/ __Vtemp687;
     // Body
+    vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__rd_buf_lw 
+        = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__clint)
+            ? ((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__present_state))
+                ? ((0x2004000ULL == (vlSelf->ysyx_22040175_top__DOT__mem_alu_src1 
+                                     + vlSelf->ysyx_22040175_top__DOT__mem_alu_src2))
+                    ? vlSelf->ysyx_22040175_top__DOT__mtimecmp
+                    : ((0x200bff8ULL == (vlSelf->ysyx_22040175_top__DOT__mem_alu_src1 
+                                         + vlSelf->ysyx_22040175_top__DOT__mem_alu_src2))
+                        ? vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime
+                        : 0ULL)) : 0ULL) : ((IData)(vlSelf->ysyx_22040175_top__DOT__delay_r_done)
+                                             ? vlSelf->ysyx_22040175_top__DOT__rdata
+                                             : 0ULL));
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT____Vcellinp__u_axi_slave2__r_valid 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__axi_valid) 
            | (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__present_state)));

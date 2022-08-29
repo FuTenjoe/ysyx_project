@@ -81,7 +81,7 @@ void iset(bool enable) {
   }
   else{
     asm volatile("csrsi mstatus, 8");
-    asm volatile("csrsi mie, 8");
+    asm volatile("csrsi mie, 0");
   }
 }
 
