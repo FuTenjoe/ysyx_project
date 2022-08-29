@@ -52,7 +52,7 @@ always@(posedge clk)begin
     if(!rst_n)begin
         clint_timer_irq <= 1'b0;
     end
-    else if(mtime == mtimecmp)begin
+    else if(mtime >= mtimecmp)begin
         if(mstatus[3] == 1'b1 && mie[7] == 1'b1)
         clint_timer_irq <= 1'b1;
         else 
