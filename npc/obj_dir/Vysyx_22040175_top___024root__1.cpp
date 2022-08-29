@@ -6060,7 +6060,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
             = (((vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime 
                  == vlSelf->ysyx_22040175_top__DOT__mtimecmp) 
                 | ((~ ((IData)((vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mem_stage__mstatus 
-                                >> 3U)) & (IData)((vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__mie 
+                                >> 3U)) & (IData)((vlSelf->ysyx_22040175_top__DOT__from_mem_mie 
                                                    >> 7U)))) 
                    & (IData)(vlSelf->ysyx_22040175_top__DOT__clint_timer_irq))) 
                & 1U);
