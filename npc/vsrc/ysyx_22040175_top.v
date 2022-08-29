@@ -203,7 +203,8 @@ id_stage u_id_stage(
     .csr_addr(id_csr_addr),
     .mret_flag(mret_flag),
     .ecall_flag(ecall_flag),
-    .id_mem_cache(id_mem_cache)
+    .id_mem_cache(id_mem_cache),
+    .clint_timer_irq(clint_timer_irq)
 );
 
 wire id_cunqu_hazard;
@@ -414,6 +415,8 @@ wire mem_valid;
 wire mem_no_use;
 wire [`CPU_WIDTH-1:0] mem_addr;
 wire [2:0] reg_rd_buf_flag;
+wire [63:0] mtimecmp;
+wire clint_timer_irq;
 mem_stage u_mem_stage(
     .clk(clk), //clint新加
     .rst_n(rst_n),
@@ -442,7 +445,9 @@ mem_stage u_mem_stage(
     .mepc(from_mem_mepc),
     .mcause(from_mem_mcause),
     .mtvec(from_mem_mtvec),
-    .mstatus(from_mem_mstatus)
+    .mstatus(from_mem_mstatus),
+    .mtimecmp(mtimecmp),
+    .clint_timer_irq(clint_timer_irq)
    
 );
 wire wb_reg_wen;
@@ -546,7 +551,8 @@ wb_stage u_wb_stage(
     .axi_req(axi_req),
     .w_done(w_done),
     .b_hs(b_hs),
-    .w_start(w_start)
+    .w_start(w_start),
+    .mtimecmp(mtimecmp)
   
    
 );

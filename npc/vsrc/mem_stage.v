@@ -30,7 +30,9 @@ module mem_stage(
     output reg [63:0] mepc,
     output reg [63:0] mcause,
     output reg [63:0] mtvec,
-    output reg [63:0] mstatus
+    output reg [63:0] mstatus,
+    input [63:0] mtimecmp,
+    output clint_timer_irq
 );
 reg [2:0] reg_rd_buf_flag;
 wire [63:0] rd_buf_lw;
@@ -39,6 +41,14 @@ reg [63:0] alu_res;
 
 
 always@(*)begin
+    if(clint_timer_irq)begin
+            mepc = mem_pc;
+            mcause = 64'h8000_0000_0000_0007;
+           // mtvec = alu_src1 | alu_src2;
+            mstatus[7] = reg_mstatus[3];
+            mstatus[3] = 1'b0;
+    end
+    else begin
     case (alu_op)
         `ALU_ADD: begin 
         if(reg_rd_buf_flag == 3'd1)
@@ -84,6 +94,7 @@ always@(*)begin
         end
         default: alu_res = alu_res;
     endcase
+    end
 end
 reg [63:0]reg_mstatus;
 always@(posedge clk or negedge rst_n)begin
@@ -126,8 +137,8 @@ always@(*)begin
 end
 //wire mem_valid = rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6;
 //reg mem_axi_valid;
-parameter [1:0]IDLE=2'd0,MEM=2'd1,EN=2'd2,FN=2'd3;
-reg[1:0] present_state,next_state;
+parameter [2:0]IDLE=0, MEM=1, EN=2, FN=3, MMIOMEM=4;
+reg[2:0] present_state,next_state;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         present_state <= IDLE;
@@ -140,10 +151,18 @@ end
 always@(*)begin
     case(present_state)
     IDLE:begin
-        if(rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6)
+        if((rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6) &&(alu_src1 + alu_src2!=64'h0000_0000_0200_4000 && alu_src1 + alu_src2!= 64'h0000_0000_0200_BFF8 ))
             next_state = MEM;
+        else if(alu_src1 + alu_src2==64'h0000_0000_0200_4000 || alu_src1 + alu_src2== 64'h0000_0000_0200_BFF8 )
+            next_state =    MMIOMEM ;
         else  
             next_state = IDLE;
+    end
+    MMIOMEM:begin
+        if(clint)
+            next_state = FN;
+        else 
+            next_state = MMIOMEM;
     end
     MEM:begin
        // if(ar_hs)
@@ -159,12 +178,31 @@ always@(*)begin
     default: next_state = IDLE;
     endcase
 end
+wire [63:0] mem_io_r_data;
 assign  mem_no_use = (present_state == MEM|present_state==EN) ? 1'b0:1'b1;
 assign mem_res_valid = (present_state==FN) ? 1'b1:1'b0;
 assign mem_axi_valid = (present_state == MEM) ? 1'b1:1'b0;
-assign rd_buf_lw = (r_done) ? axi_rdata :64'd0;
+assign rd_buf_lw = (clint)? mem_io_r_data :((r_done) ? axi_rdata :64'd0);
 assign mem_rd_buf_flag = (present_state == FN) ? reg_rd_buf_flag:3'd0;
+wire mem_mmio_valid = (present_state == MMIOMEM) ? 1'b1:1'b0;
+
 reg [63:0] reg_mem_addr;
+wire clint;
+
+
+
+mem_clint  u_mem_clint(
+    .clk(clk),
+    .rst_n(rst_n),
+    .mem_mmio_valid(mem_mmio_valid),
+    .mtimecmp(mtimecmp),
+
+    .alu_src1(alu_src1),
+    .alu_src2(alu_src2),
+    .clint_timer_irq(clint_timer_irq),
+    .read_data(mem_io_r_data),
+    .clint(clint)
+);
 //reg [2:0] reg_rd_buf_flag;
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
@@ -186,6 +224,11 @@ always@(posedge clk or negedge rst_n)begin
             reg_rd_buf_flag <=rd_buf_flag;
         //    rd_buf_lw <= 64'd0;
         //    mem_no_use <= 1'b1;
+        end
+        MMIOMEM:begin
+             mem_send_id <= 4'd2;
+            reg_mem_addr <=reg_mem_addr;
+            reg_rd_buf_flag <= reg_rd_buf_flag;
         end
         MEM:begin
         //    mem_res_valid <= 1'b0;

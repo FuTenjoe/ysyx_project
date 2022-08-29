@@ -61,7 +61,8 @@ module id_stage (
     output  [63:0] csr_addr,
     output mret_flag,
     output ecall_flag,
-    output id_mem_cache
+    output id_mem_cache,
+    input clint_timer_irq
 );
 wire branch;
 wire jump;
@@ -146,7 +147,8 @@ id_control_rest u_id_control_rest(
     .control_rest(control_rest),
     .rest_from_id(rest_from_id),
     .mret_flag(mret_flag),
-    .ecall_flag(ecall_flag)
+    .ecall_flag(ecall_flag),
+    .clint_timer_irq(clint_timer_irq)
 );
 reg [63:0] delay_reg1_rdata;
 
@@ -224,7 +226,8 @@ muxpc u_mux_pc(
    .ecall_flag(ecall_flag),
    .unnormal_pc(unnormal_pc),
    .mtvec(mtvec),
-   .mepc(mepc)
+   .mepc(mepc),
+   .clint_timer_irq(clint_timer_irq)
    
    
     );

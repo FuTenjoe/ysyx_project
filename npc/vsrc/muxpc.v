@@ -27,7 +27,8 @@ module muxpc (
    input ecall_flag,
    input [31:0] unnormal_pc,
    input [63:0] mtvec,
-   input [63:0] mepc
+   input [63:0] mepc,
+   input clint_timer_irq
    
     );
 reg zero;
@@ -119,6 +120,10 @@ always @(*) begin
     end
     else if(mret_flag)begin
         next_pc = mepc;
+        sig_jalr = 1'b0;
+    end
+    else if(clint_timer_irq)begin
+        next_pc = mtvec;
         sig_jalr = 1'b0;
     end
     else begin

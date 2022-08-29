@@ -31,7 +31,8 @@ module wb_stage (
     output  axi_req,
     input w_done,
     input b_hs,
-    output w_start
+    output w_start,
+    output reg [63:0] mtimecmp
    
 );
 reg [63:0] reg_wdata;
@@ -85,7 +86,7 @@ always @(posedge clk or negedge rst_n) begin
         wb_delay_reg_f <= reg_f;
 end
 
-parameter IDLE = 3'd0,WRITE=3'd1,WRESP=3'd2,WFN=3'd3;
+parameter IDLE = 0, WRITE=1, WRESP=2, WFN=3, WRMMIO=4;
 reg[2:0] present_state,next_state;
 
 always@(posedge clk or negedge rst_n)begin
@@ -100,10 +101,18 @@ end
 always@(*)begin
     case(present_state)
     IDLE:begin
-        if(rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1))
+        if(rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&& (reg_f[reg_waddr] + s_imm != 64'h0000_0000_0200_4000))
             next_state = WRITE;
+        else if(rst_n && reg_wen && (reg_f[reg_waddr] + s_imm == 64'h0000_0000_0200_4000) &&(s_flag==1'd1))
+            next_state = WRMMIO;
         else 
             next_state = IDLE;
+    end
+    WRMMIO:begin
+        if(wr_finish)
+            next_state = WFN;
+        else
+            next_state = WRMMIO;
     end
     WRITE:begin
         if(w_done)
@@ -124,6 +133,21 @@ end
 assign waxi_valid = (present_state==WRITE) ? 1'b1:1'b0;
 assign wb_res_valid = (present_state==WRITE|present_state==WRESP) ? 1'b0:1'b1;
 assign axi_req = (present_state==WRITE|present_state==WRESP) ? 1'b1:1'b0;
+wire wr_mmio_valid = (present_state == WRMMIO)? 1'b1:1'b0;
+wire [63:0] wbmmio_waddr = reg_f[reg_waddr] + s_imm;
+wire wr_finish;
+wb_clint u_wb_clint (
+    .clk(clk),
+    .rst_n(rst_n),
+    .mmio_reg_waddr(wbmmio_waddr),
+    .mmio_reg_wdata(reg_wdata),
+    .wr_mmio_valid(wr_mmio_valid),
+
+    .mtimecmp(mtimecmp),
+    .wr_finish(wr_finish)
+);
+
+
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         reg_write_addr <= 64'd0;
@@ -136,6 +160,11 @@ always@(posedge clk or negedge rst_n)begin
             reg_write_addr <= reg_f[reg_waddr] + s_imm;
             reg_write_data <= reg_wdata;
             reg_write_wmask <= wmask;
+        end
+        WRMMIO:begin
+            reg_write_addr <= reg_write_addr;
+            reg_write_data <= reg_write_data;
+            reg_write_wmask <= reg_write_wmask;
         end
         WRITE:begin
             reg_write_addr <= reg_write_addr;
