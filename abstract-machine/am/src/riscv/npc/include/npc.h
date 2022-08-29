@@ -1,5 +1,5 @@
-#ifndef NEMU_H__
-#define NEMU_H__
+//#ifndef NEMU_H__
+//#define NEMU_H__
 
 #include <klib-macros.h>
 
@@ -30,4 +30,4 @@ typedef uintptr_t PTE;
 
 #define PGSIZE    4096
 
-#endif
+//#endif
