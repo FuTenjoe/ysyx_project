@@ -66,8 +66,9 @@ always@(posedge clk)begin
         test2 <=  2'd2;
         end
     end
-    else if(o_core_ready &&(mtime != mtimecmp))begin
+    else if(o_core_ready &&(mtime != mtimecmp) &&(clint_timer_irq=1'b1))begin
         clint_timer_irq <= 1'b0;
+        test2 <=  2'd3;
     end
     else begin
         clint_timer_irq <= clint_timer_irq;
