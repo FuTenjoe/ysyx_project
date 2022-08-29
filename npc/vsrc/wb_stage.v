@@ -135,12 +135,24 @@ assign wb_res_valid = (present_state==WRITE|present_state==WRESP) ? 1'b0:1'b1;
 assign axi_req = (present_state==WRITE|present_state==WRESP) ? 1'b1:1'b0;
 wire wr_mmio_valid = (present_state == WRMMIO)? 1'b1:1'b0;
 wire [63:0] wbmmio_waddr = reg_f[reg_waddr] + s_imm;
+reg [63:0]delay_wbmmio_waddr;
+reg [63:0] delay_wb_mmio_wdata;
+always@(posedge clk )begin
+    if(!rst_n)begin
+        delay_wb_mmio_wdata <= 64'd0;
+        delay_wbmmio_waddr <= 64'd0;
+    end
+    else begin
+        delay_wb_mmio_wdata <= reg_wdata;
+        delay_wbmmio_waddr <= wbmmio_waddr;
+    end
+end
 wire wr_finish;
 wb_clint u_wb_clint (
     .clk(clk),
     .rst_n(rst_n),
-    .mmio_reg_waddr(wbmmio_waddr),
-    .reg_wdata(reg_wdata),
+    .mmio_reg_waddr(delay_wbmmio_waddr),
+    .reg_wdata(delay_wb_mmio_wdata),
     .wr_mmio_valid(wr_mmio_valid),
 
     .mtimecmp(mtimecmp),
