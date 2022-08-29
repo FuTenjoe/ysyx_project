@@ -21,7 +21,7 @@ module wb_clint  (
 always@(posedge clk)begin
     if(!rst_n)begin
         wr_finish <= 1'b0;
-        mtimecmp <= 64'd10;
+        mtimecmp <= 64'd100000;
     end
     else begin
         if(wr_mmio_valid && mmio_reg_waddr == 64'h0000_0000_0200_4000)begin
