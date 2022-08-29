@@ -5737,7 +5737,16 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
                           >> 2U)))) {
                 if ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op))) {
                     if ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__mem_alu_op))) {
-                        vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mem_stage__mstatus = 0x88ULL;
+                        vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mem_stage__mstatus 
+                            = ((0xfffffffffffffff7ULL 
+                                & vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mem_stage__mstatus) 
+                               | ((QData)((IData)((1U 
+                                                   & (IData)(
+                                                             (vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__reg_mstatus 
+                                                              >> 7U))))) 
+                                  << 3U));
+                        vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mem_stage__mstatus 
+                            = (0x80ULL | vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mem_stage__mstatus);
                     } else {
                         vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mem_stage__mstatus 
                             = ((0xffffffffffffff7fULL 
