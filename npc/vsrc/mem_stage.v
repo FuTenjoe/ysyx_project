@@ -41,6 +41,13 @@ wire [63:0] rd_buf_lw;
 reg [63:0] alu_res;
 
 wire o_core_ready = mstatus[3] & mie[7];
+reg delay_o_core_ready;
+always@(posedge clk)begin
+    if(!rst_n)
+        delay_o_core_ready <= 1'b0;
+    else
+        delay_o_core_ready <= o_core_ready;
+end
 always@(*)begin
     if(clint_timer_irq)begin
             mepc = mem_pc;
@@ -204,7 +211,7 @@ mem_clint  u_mem_clint(
 
     .alu_src1(alu_src1),
     .alu_src2(alu_src2),
-    .o_core_ready(o_core_ready),
+    .o_core_ready(delay_o_core_ready),
     .clint_timer_irq(clint_timer_irq),
     .read_data(mem_io_r_data),
     .clint(clint),
