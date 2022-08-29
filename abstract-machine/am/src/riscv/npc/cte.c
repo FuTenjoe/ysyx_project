@@ -75,9 +75,10 @@ bool ienabled() {
 
 void iset(bool enable) {
   //自己加
+  int mie_set = 0x80;
   if(enable){
     asm volatile("csrsi mstatus, 8"); //mstatus_MIE  由csri改为csrs
-    asm volatile ("csrsi mie, 10");    //mie_MTIE
+    asm volatile ("csrs mie,%0"  :"=r"(mie_set));    //mie_MTIE
   }
   else{
     asm volatile("csrsi mstatus, 8");
