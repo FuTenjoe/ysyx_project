@@ -6058,7 +6058,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
             = (1ULL + vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime);
         vlSelf->ysyx_22040175_top__DOT__clint_timer_irq 
             = (((vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime 
-                 >= vlSelf->ysyx_22040175_top__DOT__mtimecmp)
+                 == vlSelf->ysyx_22040175_top__DOT__mtimecmp)
                  ? ((IData)((vlSelf->ysyx_22040175_top__DOT____Vcellout__u_mem_stage__mstatus 
                              >> 3U)) & (IData)((vlSelf->ysyx_22040175_top__DOT__from_mem_mie 
                                                 >> 7U)))
@@ -9988,7 +9988,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
                                                      == vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__wbmmio_waddr))
                                                   ? vlSelf->ysyx_22040175_top__DOT__u_wb_stage__DOT__reg_wdata
                                                   : vlSelf->ysyx_22040175_top__DOT__mtimecmp)
-                                                 : 0xaULL);
+                                                 : 0x186a0ULL);
     vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime 
         = __Vdly__ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime;
     vlSelf->ysyx_22040175_top__DOT__u_if_stage__DOT__u_i_cache__DOT__count 
