@@ -200,7 +200,7 @@ id_stage u_id_stage(
     .mepc(from_mem_mepc),
     .mcause(from_mem_mcause),
     .mtvec(from_mem_mtvec),
-    .mie(from_mem_mie)
+    .mie(from_mem_mie),
    // .mstatus(from_mem_mstatus),
     .csr_addr(id_csr_addr),
     .mret_flag(mret_flag),
