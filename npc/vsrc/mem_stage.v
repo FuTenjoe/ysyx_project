@@ -207,7 +207,7 @@ mem_clint  u_mem_clint(
     .read_data(mem_io_r_data),
     .clint(clint),
     .mie(mie),
-    .mstatus(mstatus),
+    .mstatus(mstatus)
 );
 //reg [2:0] reg_rd_buf_flag;
 always@(posedge clk or negedge rst_n)begin
