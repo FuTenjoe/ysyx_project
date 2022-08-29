@@ -1,10 +1,13 @@
 #include <am.h>
-
+//自己加
+//#include <abstract-machine/am/src/riscv/riscv.h>
 void __am_timer_init() {
 }
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) {
   uptime->us = 0;
+  //自己加
+  
 }
 
 void __am_timer_rtc(AM_TIMER_RTC_T *rtc) {
