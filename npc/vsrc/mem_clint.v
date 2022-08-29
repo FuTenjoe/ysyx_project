@@ -48,17 +48,23 @@ always@(*)begin
     end
 end
 reg test;
+reg [1:0]test2;
 always@(posedge clk)begin
     if(!rst_n)begin
         clint_timer_irq <= 1'b0;
         test <= 1'b0;
+        test2 <= 2'b0;
     end
     else if(mtime == mtimecmp)begin
         test <= 1'b1;
-        if(mstatus[3] == 1'b1 && mie[7] == 1'b1)
+        if(mstatus[3] == 1'b1 && mie[7] == 1'b1)begin
         clint_timer_irq <= 1'b1;
-        else 
+        test2 <=  2'b1;
+        end
+        else begin
         clint_timer_irq <= 1'b0;
+        test2 <=  2'd2;
+        end
     end
     else if(o_core_ready &&(mtime != mtimecmp))begin
         clint_timer_irq <= 1'b0;

@@ -6054,6 +6054,14 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
             [__Vtableidx10];
     }
     if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
+        if ((vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime 
+             == vlSelf->ysyx_22040175_top__DOT__mtimecmp)) {
+            vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__test = 1U;
+        }
+    } else {
+        vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__test = 0U;
+    }
+    if (vlSelf->ysyx_22040175_top__DOT__rst_n) {
         __Vdly__ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime 
             = (1ULL + vlSelf->ysyx_22040175_top__DOT__u_mem_stage__DOT__u_mem_clint__DOT__mtime);
         vlSelf->ysyx_22040175_top__DOT__clint_timer_irq 
