@@ -125,7 +125,7 @@ VerilatedContext *contextp = new VerilatedContext;
 Vysyx_22040175_top* top = new Vysyx_22040175_top;
   // init trace dump
 
-//VerilatedVcdC* tfp = new VerilatedVcdC;
+VerilatedVcdC* tfp = new VerilatedVcdC;
 
 
 
@@ -140,7 +140,7 @@ int main(int argc, char **argv, char **env) {
   int a = 0;
 
   //top->trace (tfp, 99);
-//  tfp->open ("Vysyx_22040175.vcd");
+  tfp->open ("Vysyx_22040175.vcd");
   // initialize simulation inputs
   top->clk = 1;
   top->rst = 1;
@@ -241,7 +241,7 @@ int main(int argc, char **argv, char **env) {
     }
   
 
-//  tfp->close();
+  tfp->close();
   delete top;
   delete contextp;
   return is_exit_status_bad();
