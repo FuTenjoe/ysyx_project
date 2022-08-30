@@ -7,6 +7,7 @@
 #include "Vysyx_22040175_top.h"
 #include "assert.h"
 #include <dlfcn.h>  //动态链接库相关函数
+#include "npc.h"
 
 enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
 typedef uint64_t word_t;
@@ -60,19 +61,16 @@ static void timer_intr() {
 #endif
 
 //自己加
-typedef void(*io_callback_t)(uint32_t, int, bool);
-uint8_t* new_space(int size);
-static uint8_t *io_space = NULL;
-static uint8_t *p_space = NULL;
-#define PAGE_SHIFT        12
-#define PAGE_SIZE         (1ul << PAGE_SHIFT)
-#define PAGE_MASK         (PAGE_SIZE - 1)
+
 uint8_t* new_space(int size) {
   uint8_t *p = p_space;
   size = (size + (PAGE_SIZE - 1)) & ~PAGE_MASK;
   p_space += size;
   return p;
 }
+
+
+
 void add_mmio_map(const char *name, paddr_t addr,
         void *space, uint32_t len, io_callback_t callback);
 typedef void (*alarm_handler_t) ();
