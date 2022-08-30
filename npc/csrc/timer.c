@@ -1,6 +1,13 @@
-#include <device/map.h>
-#include <device/alarm.h>
-#include <utils.h>
+//#include <device/map.h>
+//#include <device/alarm.h>
+//#include <utils.h>
+//自己加
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "assert.h"
+#include <dlfcn.h>  //动态链接库相关函数
+
 
 static uint32_t *rtc_port_base = NULL;
 
