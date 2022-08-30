@@ -7,7 +7,7 @@
 #include "Vysyx_22040175_top.h"
 #include "assert.h"
 #include <dlfcn.h>  //动态链接库相关函数
-#include <npc.h>
+#include "npc/include/npc.h"
 
 enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
 typedef uint64_t word_t;
