@@ -13,7 +13,7 @@ typedef uint64_t word_t;
 typedef  uint32_t paddr_t;
 typedef  word_t vaddr_t;
 typedef unsigned long int	uintptr_t;
-int npc_state = NPC_STOP; 
+int npc_state2 = NPC_STOP; 
 uint64_t get_time();
 //自己加结束
 static uint32_t *rtc_port_base = NULL;
@@ -29,7 +29,7 @@ static void rtc_io_handler(uint32_t offset, int len, bool is_write) {
 
 #ifndef CONFIG_TARGET_AM
 static void timer_intr() {
-  if (npc_state == NPC_RUNNING) {
+  if (npc_state2 == NPC_RUNNING) {
     extern void dev_raise_intr();
     dev_raise_intr();
   }
