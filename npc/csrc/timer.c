@@ -14,6 +14,29 @@ typedef  uint32_t paddr_t;
 typedef  word_t vaddr_t;
 typedef unsigned long int	uintptr_t;
 int npc_state2 = NPC_STOP; 
+static uint64_t boot_time = 0;
+
+static uint64_t get_time_internal() {
+#if defined(CONFIG_TARGET_AM)
+  uint64_t us = io_read(AM_TIMER_UPTIME).us;
+#elif defined(CONFIG_TIMER_GETTIMEOFDAY)
+  struct timeval now;
+  gettimeofday(&now, NULL);
+  uint64_t us = now.tv_sec * 1000000 + now.tv_usec;
+#else
+  struct timespec now;
+  clock_gettime(CLOCK_MONOTONIC_COARSE, &now);
+  uint64_t us = now.tv_sec * 1000000 + now.tv_nsec / 1000;
+#endif
+  return us;
+}
+
+uint64_t get_time() {
+  if (boot_time == 0) boot_time = get_time_internal();
+  uint64_t now = get_time_internal();
+  return now - boot_time;
+}
+
 uint64_t get_time();
 //自己加结束
 static uint32_t *rtc_port_base = NULL;
