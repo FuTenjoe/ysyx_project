@@ -7,6 +7,12 @@
 #include "Vysyx_22040175_top.h"
 #include "assert.h"
 #include <dlfcn.h>  //动态链接库相关函数
+void dev_raise_intr() {
+#ifndef __ICS_EXPORT
+  cpu.INTR = true;
+#endif
+}
+
 
 enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
 typedef uint64_t word_t;
