@@ -41,6 +41,9 @@ typedef void(*io_callback_t)(uint32_t, int, bool);
 uint8_t* new_space(int size);
 void add_mmio_map(const char *name, paddr_t addr,
         void *space, uint32_t len, io_callback_t callback);
+typedef void (*alarm_handler_t) ();
+void add_alarm_handle(alarm_handler_t h);
+#define MAX_HANDLER 8
 static alarm_handler_t handler[MAX_HANDLER] = {};
 static int idx = 0;
 void add_alarm_handle(alarm_handler_t h) {
