@@ -1,5 +1,5 @@
 #加入spike
-
+INCLUDE = ./npc/include
 all:
 	@echo "Write this Makefile by your self."
 sim:
