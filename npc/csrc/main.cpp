@@ -7,7 +7,7 @@
 #include "verilated_dpi.h"
 #include "assert.h"
 #include <dlfcn.h>  //动态链接库相关函数
-#include <npc/include/npc.h>
+
 //加run和target
 #define CONFIG_MBASE 0x80000000
 //#define CONFIG_MSIZE 0X2800000
