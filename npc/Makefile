@@ -1,12 +1,12 @@
 #加入spike
-INCLUDE = ./npc/include
+
 all:
 	@echo "Write this Makefile by your self."
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
 	@$(clean)
-	verilator -Wno-lint --trace -cc $(wildcard ./vsrc/*.v ) -I INCLUDE --exe ./csrc/main.cpp ./csrc/timer.c -LDFLAGS -ldl --top ysyx_22040175_top
+	verilator -Wno-lint --trace -cc $(wildcard ./vsrc/*.v ) -I include/npc.h --exe ./csrc/main.cpp ./csrc/timer.c -LDFLAGS -ldl --top ysyx_22040175_top
 	make -C obj_dir -j -f Vysyx_22040175_top.mk Vysyx_22040175_top
 	./obj_dir/Vysyx_22040175_top $(IMG)
 	gtkwave ./obj_dir/Vysyx_22040175.vcd
