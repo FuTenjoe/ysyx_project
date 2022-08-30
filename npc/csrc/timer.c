@@ -87,17 +87,15 @@ typedef struct {
 static IOMap maps[NR_MAP] = {};
 static int nr_map = 0;
 
-#define Log(format, ...) \
-    _Log("\33[1;34m[%s,%d,%s] " format "\33[0m\n", \
-        __FILE__, __LINE__, __func__, ## __VA_ARGS__)
+
+void add_mmio_map(const char *name, paddr_t addr,
+        void *space, uint32_t len, io_callback_t callback);
 
 
 void add_mmio_map(const char *name, paddr_t addr, void *space, uint32_t len, io_callback_t callback) {
   assert(nr_map < NR_MAP);
   maps[nr_map] = (IOMap){ .name = name, .low = addr, .high = addr + len - 1,
     .space = space, .callback = callback };
-  Log("Add mmio map '%s' at [" FMT_PADDR ", " FMT_PADDR "]",
-      maps[nr_map].name, maps[nr_map].low, maps[nr_map].high);
   fflush(stdout);
 
   nr_map ++;
