@@ -62,6 +62,8 @@ static void timer_intr() {
 //自己加
 typedef void(*io_callback_t)(uint32_t, int, bool);
 uint8_t* new_space(int size);
+static uint8_t *io_space = NULL;
+static uint8_t *p_space = NULL;
 uint8_t* new_space(int size) {
   uint8_t *p = p_space;
   // page aligned;
