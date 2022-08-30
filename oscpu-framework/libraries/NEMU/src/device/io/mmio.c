@@ -1,7 +1,14 @@
 #include <device/map.h>
 
 #define NR_MAP 16
-
+typedef struct {
+  const char *name;
+  // we treat ioaddr_t as paddr_t here
+  paddr_t low;
+  paddr_t high;
+  void *space;
+  io_callback_t callback;
+} IOMap;
 static IOMap maps[NR_MAP] = {};
 static int nr_map = 0;
 
