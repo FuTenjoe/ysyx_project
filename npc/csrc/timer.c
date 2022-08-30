@@ -62,7 +62,14 @@ static void timer_intr() {
 //自己加
 typedef void(*io_callback_t)(uint32_t, int, bool);
 uint8_t* new_space(int size);
-
+uint8_t* new_space(int size) {
+  uint8_t *p = p_space;
+  // page aligned;
+  size = (size + (PAGE_SIZE - 1)) & ~PAGE_MASK;
+  p_space += size;
+  assert(p_space - io_space < IO_SPACE_MAX);
+  return p;
+}
 void add_mmio_map(const char *name, paddr_t addr,
         void *space, uint32_t len, io_callback_t callback);
 typedef void (*alarm_handler_t) ();
