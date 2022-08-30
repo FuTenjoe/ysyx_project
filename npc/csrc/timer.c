@@ -41,7 +41,10 @@ typedef void(*io_callback_t)(uint32_t, int, bool);
 uint8_t* new_space(int size);
 void add_mmio_map(const char *name, paddr_t addr,
         void *space, uint32_t len, io_callback_t callback);
-
+void add_alarm_handle(alarm_handler_t h) {
+  assert(idx < MAX_HANDLER);
+  handler[idx ++] = h;
+}
 
 void init_timer() {
   rtc_port_base = (uint32_t *)new_space(8);
@@ -50,7 +53,7 @@ void init_timer() {
 #else
   add_mmio_map("rtc", 0xa1000048, rtc_port_base, 8, rtc_io_handler);
 #endif
-   add_alarm_handle(timer_intr);
+  add_alarm_handle(timer_intr);
 }
 
 
