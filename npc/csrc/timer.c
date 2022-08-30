@@ -52,7 +52,11 @@ static void rtc_io_handler(uint32_t offset, int len, bool is_write) {
   }
 }
 
-
+#ifndef CONFIG_TARGET_AM
+static void timer_intr() {
+ 
+}
+#endif
 
 //自己加
 
@@ -90,9 +94,9 @@ void init_timer() {
 #ifdef CONFIG_HAS_PORT_IO
   add_pio_map ("rtc", CONFIG_RTC_PORT, rtc_port_base, 8, rtc_io_handler);
 #else
-  add_mmio_map("rtc", 0xa1000048, rtc_port_base, 8, rtc_io_handler);
+  //add_mmio_map("rtc", 0xa1000048, rtc_port_base, 8, rtc_io_handler);
 #endif
-  add_alarm_handle();
+  add_alarm_handle(timer_intr);
 }
 
 
