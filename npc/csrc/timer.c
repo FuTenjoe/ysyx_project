@@ -7,11 +7,7 @@
 #include "Vysyx_22040175_top.h"
 #include "assert.h"
 #include <dlfcn.h>  //动态链接库相关函数
-void dev_raise_intr() {
-#ifndef __ICS_EXPORT
-  cpu.INTR = true;
-#endif
-}
+
 
 
 enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
@@ -55,7 +51,7 @@ static void rtc_io_handler(uint32_t offset, int len, bool is_write) {
     rtc_port_base[1] = us >> 32;
   }
 }
-
+/*
 #ifndef CONFIG_TARGET_AM
 static void timer_intr() {
   if (npc_state2 == NPC_RUNNING) {
@@ -63,7 +59,7 @@ static void timer_intr() {
     dev_raise_intr();
   }
 }
-#endif
+#endif*/
 
 //自己加
 
