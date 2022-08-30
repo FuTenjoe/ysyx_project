@@ -13,7 +13,7 @@ typedef uint64_t word_t;
 typedef  uint32_t paddr_t;
 typedef  word_t vaddr_t;
 typedef unsigned long int	uintptr_t;
-//int npc_state = NPC_STOP; 
+int npc_state = NPC_STOP; 
 uint64_t get_time();
 //自己加结束
 static uint32_t *rtc_port_base = NULL;
