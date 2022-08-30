@@ -38,6 +38,9 @@ static void timer_intr() {
 
 //自己加
 uint8_t* new_space(int size);
+void add_mmio_map(const char *name, paddr_t addr,
+        void *space, uint32_t len, io_callback_t callback);
+
 
 void init_timer() {
   rtc_port_base = (uint32_t *)new_space(8);
@@ -47,4 +50,18 @@ void init_timer() {
   add_mmio_map("rtc", 0xa1000048, rtc_port_base, 8, rtc_io_handler);
 #endif
   IFNDEF(CONFIG_TARGET_AM, add_alarm_handle(timer_intr));
+}
+
+
+
+
+void add_mmio_map(const char *name, paddr_t addr, void *space, uint32_t len, io_callback_t callback) {
+  assert(nr_map < NR_MAP);
+  maps[nr_map] = (IOMap){ .name = name, .low = addr, .high = addr + len - 1,
+    .space = space, .callback = callback };
+  Log("Add mmio map '%s' at [" FMT_PADDR ", " FMT_PADDR "]",
+      maps[nr_map].name, maps[nr_map].low, maps[nr_map].high);
+  fflush(stdout);
+
+  nr_map ++;
 }
