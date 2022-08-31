@@ -16,6 +16,8 @@ typedef unsigned long int	uintptr_t;
 typedef void(*io_callback_t)(uint32_t, int, bool);
 enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
 extern "C" uint64_t get_time();
+uint8_t* new_space(int size);
+
 
 static uint32_t *rtc_port_base = NULL;
 
