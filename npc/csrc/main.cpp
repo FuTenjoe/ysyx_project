@@ -7,6 +7,7 @@
 #include "verilated_dpi.h"
 #include "assert.h"
 #include <dlfcn.h>  //动态链接库相关函数
+#include "include/common.h"
 
 //加run和target
 #define CONFIG_MBASE 0x80000000
@@ -18,7 +19,7 @@ typedef  word_t vaddr_t;
 typedef unsigned long int	uintptr_t;
 static uint8_t *pimem =NULL;
 
-enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
+//enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
 uint32_t current_inst = 0;
 
 //加ebreak
@@ -46,7 +47,7 @@ void (*ref_difftest_regcpy)(void *dut, bool direction) = NULL;
 void (*ref_difftest_exec)(uint64_t n) = NULL;
 void (*ref_difftest_raise_intr)(word_t NO) = NULL;
 
-extern int npc_state = NPC_STOP;
+int npc_state = NPC_STOP;
 static int port = 1234;
 
 //导出寄存器值 DPIC
