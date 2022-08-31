@@ -46,7 +46,7 @@ void (*ref_difftest_regcpy)(void *dut, bool direction) = NULL;
 void (*ref_difftest_exec)(uint64_t n) = NULL;
 void (*ref_difftest_raise_intr)(word_t NO) = NULL;
 
-int npc_state = NPC_STOP;
+extern int npc_state = NPC_STOP;
 static int port = 1234;
 
 //导出寄存器值 DPIC
