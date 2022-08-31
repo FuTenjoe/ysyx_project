@@ -19,7 +19,7 @@ typedef  word_t vaddr_t;
 typedef unsigned long int	uintptr_t;
 static uint8_t *pimem =NULL;
 
-//enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
+enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
 uint32_t current_inst = 0;
 
 //加ebreak
