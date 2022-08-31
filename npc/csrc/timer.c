@@ -1,7 +1,13 @@
 //#include <device/map.h>
 //#include <device/alarm.h>
 //#include <utils.h>
-
+#include <cassert>
+#include <stdio.h>
+#include <stdlib.h>
+#include "Vysyx_22040175_top.h"
+#include "verilated_dpi.h"
+#include "assert.h"
+#include <dlfcn.h>  //动态链接库相关函数
 typedef uint64_t word_t;
 typedef  uint32_t paddr_t;
 typedef  word_t vaddr_t;
