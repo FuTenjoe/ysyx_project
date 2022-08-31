@@ -24,7 +24,7 @@ static void rtc_io_handler(uint32_t offset, int len, bool is_write) {
     rtc_port_base[1] = us >> 32;
   }
 }
-int npc_state = NPC_STOP;
+extern int npc_state = NPC_STOP;
 #ifndef CONFIG_TARGET_AM
 static void timer_intr() {
   if (npc_state == NPC_RUNNING) {
