@@ -210,10 +210,6 @@ cache_axi_judge u_cache_axi_judge(
     .axi_r_addr(axi_r_addr)
 );
 
-
-
-
-
 wire axi_ar_ready_i2;
 wire axi_ar_valid_o2;
 wire [63:0]axi_ar_addr_o2;
@@ -261,8 +257,6 @@ u_axi2(
     .axi_r_last_i(axi_r_last_i2),
     .r_done(r_done2),
     .axi_r_id_i(send_axi_ar_id),
-
-
 
     .axi_aw_ready_i(axi_aw_ready_i),    //从设备已准备好接收地址和相关的控制信号          
     .axi_aw_valid_o(axi_aw_valid_o),  
