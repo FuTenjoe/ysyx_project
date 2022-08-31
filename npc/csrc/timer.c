@@ -13,6 +13,8 @@ typedef uint64_t word_t;
 typedef  uint32_t paddr_t;
 typedef  word_t vaddr_t;
 typedef unsigned long int	uintptr_t;
+enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
+
 
 static uint32_t *rtc_port_base = NULL;
 
