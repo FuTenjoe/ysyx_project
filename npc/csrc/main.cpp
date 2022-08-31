@@ -7,7 +7,7 @@
 #include "verilated_dpi.h"
 #include "assert.h"
 #include <dlfcn.h>  //动态链接库相关函数
-#include "./include/common.h"
+
 
 //加run和target
 #define CONFIG_MBASE 0x80000000
