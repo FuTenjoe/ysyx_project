@@ -3,7 +3,7 @@
 //tag = 52'b[63:12] index = 7'b[11:5] offset = 5'b[4:2];
 
 module d_cache (
-  input clk,
+  	input clk,
 	input rst_n,
 	//cpu - cache
 	input [63:0] cpu_req_addr,
