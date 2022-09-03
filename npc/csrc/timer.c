@@ -18,6 +18,9 @@ enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
 extern "C" uint64_t get_time();
 uint8_t* new_space(int size);
 
+extern "C" void add_alarm_handle(alarm_handler_t h);
+
+
 
 static uint32_t *rtc_port_base = NULL;
 
