@@ -17,7 +17,7 @@ typedef void(*io_callback_t)(uint32_t, int, bool);
 enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
 extern "C" uint64_t get_time();
 uint8_t* new_space(int size);
-
+typedef void (*alarm_handler_t) ();
 extern "C" void add_alarm_handle(alarm_handler_t h);
 
 
