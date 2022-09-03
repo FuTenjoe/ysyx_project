@@ -46,7 +46,10 @@ void init_timer() {
 #ifdef CONFIG_HAS_PORT_IO
   add_pio_map ("rtc", CONFIG_RTC_PORT, rtc_port_base, 8, rtc_io_handler);
 #else
-  add_mmio_map("rtc", CONFIG_RTC_MMIO, rtc_port_base, 8, rtc_io_handler);
+  add_mmio_map("rtc", 0xa1000048, rtc_port_base, 8, rtc_io_handler);
 #endif
-  IFNDEF(CONFIG_TARGET_AM, add_alarm_handle(timer_intr));
+  //IFNDEF(CONFIG_TARGET_AM, add_alarm_handle(timer_intr));
+#ifndef CONFIG_TARGET_AM
+  add_alarm_handle(timer_intr);
+#endif
 }
