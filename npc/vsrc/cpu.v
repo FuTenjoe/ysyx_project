@@ -26,7 +26,9 @@ module  cpu(
     input r_done2,
     input axi_r_ready_o2,
     input [3:0]axi_ar_id_o2,
-    input [63:0] rdata
+    input [63:0] rdata,w_done
+    input w_done,
+    input b_hs
    // output[`CPU_WIDTH-1:0]        next_pc
 );
 assign out_mem_rd_buf_flag = sig_jalr;
@@ -87,8 +89,6 @@ if_stage u_if_stage(
     .reg_write_wmask(reg_write_wmask),
     .wb_res_valid(wb_res_valid),
     .axi_req(axi_req),
-    .w_done(w_done),
-    .b_hs(b_hs),
 
     .mret_flag(mret_flag),
     .ecall_flag(ecall_flag),

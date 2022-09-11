@@ -40,7 +40,9 @@ cpu u_cpu(
     .r_done2(r_done2),
     .axi_r_ready_o2(axi_r_ready_o2),
     .axi_ar_id_o2(axi_ar_id_o2),
-    .rdata(rdata)
+    .rdata(rdata),
+    .w_done(w_done),
+    .b_hs(b_hs)
    // output[`CPU_WIDTH-1:0]        next_pc
 );
 
@@ -101,6 +103,8 @@ wire [1:0] axi_ar_burst_o;
 
 
 
+wire b_hs;
+wire w_done;
 wire [63:0] reg_write_addr;
 wire [63:0] reg_write_data;
 wire [63:0] rdata;

@@ -367,7 +367,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__8(Vysyx_22040175
     if ((((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__w_state)) 
           & (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__w_state))) 
          & (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state)))) {
-        Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_axi_slave2__DOT__pmem_write_TOP((QData)((IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__reg_write_addr)))), (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__reg_write_data)), vlSelf->ysyx_22040175_top__DOT__reg_write_wmask);
+        Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_axi_slave2__DOT__pmem_write_TOP((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT____Vcellout__u_wb_stage__reg_write_addr)), vlSelf->ysyx_22040175_top__DOT__reg_write_data, (IData)(vlSelf->ysyx_22040175_top__DOT__reg_write_wmask));
     }
     vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__delay_r_done 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n) 
@@ -1880,7 +1880,7 @@ VL_INLINE_OPT QData Vysyx_22040175_top___024root___change_request_1(Vysyx_220401
     // Change detection
     QData __req = false;  // Logically a bool
     __req |= ((vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n));
-    VL_DEBUG_IF( if(__req && ((vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n))) VL_DBG_MSGF("        CHANGE: vsrc/cpu.v:34: ysyx_22040175_top.u_cpu.rst_n\n"); );
+    VL_DEBUG_IF( if(__req && ((vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n))) VL_DBG_MSGF("        CHANGE: vsrc/cpu.v:35: ysyx_22040175_top.u_cpu.rst_n\n"); );
     // Final
     vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n 
         = vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n;
