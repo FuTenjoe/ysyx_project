@@ -96,7 +96,7 @@ wire [7:0] axi_ar_len_o;
 wire [2:0] axi_ar_size_o;
 wire [1:0] axi_ar_burst_o;
 
-
+wire rst_n = !rst;
 axi # (
 )
 u_axi2(
