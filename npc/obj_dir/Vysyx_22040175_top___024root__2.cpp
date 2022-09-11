@@ -1880,7 +1880,7 @@ VL_INLINE_OPT QData Vysyx_22040175_top___024root___change_request_1(Vysyx_220401
     // Change detection
     QData __req = false;  // Logically a bool
     __req |= ((vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n));
-    VL_DEBUG_IF( if(__req && ((vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n))) VL_DBG_MSGF("        CHANGE: vsrc/cpu.v:33: ysyx_22040175_top.u_cpu.rst_n\n"); );
+    VL_DEBUG_IF( if(__req && ((vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n))) VL_DBG_MSGF("        CHANGE: vsrc/cpu.v:34: ysyx_22040175_top.u_cpu.rst_n\n"); );
     // Final
     vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n 
         = vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n;

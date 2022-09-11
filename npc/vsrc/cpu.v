@@ -17,7 +17,8 @@ module  cpu(
     output axi_valid,
     output waxi_valid,
     output [7:0] reg_write_wmask,
-    
+    output [63:0] reg_write_data,
+    output [63:0] [63:0] reg_write_addr,
 
 
 
@@ -549,8 +550,8 @@ reg [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;
 wire [63:0] wb_delay_pc;
 //wire waxi_valid;
-wire [63:0] reg_write_addr;
-wire [63:0] reg_write_data;
+//wire [63:0] reg_write_addr;
+//wire [63:0] reg_write_data;
 //wire [7:0] reg_write_wmask;
 wire wb_res_valid;
 wire  axi_req;

@@ -33,7 +33,8 @@ cpu u_cpu(
     .axi_valid(axi_valid),
     .waxi_valid(waxi_valid),
     .reg_write_wmask(reg_write_wmask),
-
+    .reg_write_addr(reg_write_addr),
+    .reg_write_data(reg_write_data),
 
 
     .r_done2(r_done2),
@@ -97,6 +98,11 @@ wire axi_b_valid_i;
 wire [7:0] axi_ar_len_o;
 wire [2:0] axi_ar_size_o;
 wire [1:0] axi_ar_burst_o;
+
+
+
+wire [63:0] reg_write_addr
+wire [63:0] reg_write_data;
 wire [63:0] rdata;
 wire [7:0] reg_write_wmask;
 wire rst_n = !rst;

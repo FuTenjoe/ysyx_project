@@ -588,15 +588,15 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
         = Vysyx_22040175_top__ConstPool__TABLE_1d425d54_0
         [__Vtableidx2];
     if (vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n) {
-        vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__reg_write_wmask 
+        vlSelf->ysyx_22040175_top__DOT__reg_write_wmask 
             = ((0U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state))
                 ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__wb_wmask)
                 : ((4U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state))
-                    ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__reg_write_wmask)
+                    ? (IData)(vlSelf->ysyx_22040175_top__DOT__reg_write_wmask)
                     : ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state))
-                        ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__reg_write_wmask)
+                        ? (IData)(vlSelf->ysyx_22040175_top__DOT__reg_write_wmask)
                         : ((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state))
-                            ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__reg_write_wmask)
+                            ? (IData)(vlSelf->ysyx_22040175_top__DOT__reg_write_wmask)
                             : ((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state))
                                 ? 0U : (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__wb_wmask))))));
         vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg2_rdata 
@@ -979,7 +979,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__1(Vysyx_22040175
                               >> 0x2aU))) ? vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_ex_stage__DOT__u_alu__DOT__u_div64__DOT__divisor_t
                [0x2aU] : 0ULL);
     } else {
-        vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__reg_write_wmask = 0U;
+        vlSelf->ysyx_22040175_top__DOT__reg_write_wmask = 0U;
         vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_id_stage__DOT__u_mux_dt_pipe__DOT__delay_reg2_rdata = 0ULL;
         vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_id_stage__DOT__delay_reg1_rdata = 0ULL;
         vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__u_divider_step0__dividend_kp = 0U;
