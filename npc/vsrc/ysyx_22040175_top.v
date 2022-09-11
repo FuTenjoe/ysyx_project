@@ -13,7 +13,7 @@ module  ysyx_22040175_top(
    // output[`CPU_WIDTH-1:0]        next_pc
 );
 
-ysyx_22040175_top_cpu u_cpu(
+cpu u_cpu(
 	.clk(clk),
     .rst(rst),
 	.inst(inst),

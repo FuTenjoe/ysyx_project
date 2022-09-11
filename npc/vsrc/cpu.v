@@ -1,6 +1,6 @@
 //top.vcache_axi_req
 `include "../vsrc/rvseed_defines.v"
-module  ysyx_22040175_top_cpu(
+module  cpu(
 	input                         clk,
     input                         rst,
 	output [31:0]                 inst,
