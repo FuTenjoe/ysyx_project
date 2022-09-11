@@ -53,24 +53,6 @@ ysyx_22040175_top_cpu u_cpu(
 //wire axi_r_ready_o2,
 //wire [3:0]axi_ar_id_o2
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 wire axi_ar_ready_i2;
 wire axi_ar_valid_o2;
 wire [63:0]axi_ar_addr_o2;
