@@ -16,6 +16,7 @@ module  cpu(
     output cache_axi_req,
     output axi_valid,
     output waxi_valid,
+    output [7:0] reg_write_wmask,
     
 
 
@@ -550,7 +551,7 @@ wire [63:0] wb_delay_pc;
 //wire waxi_valid;
 wire [63:0] reg_write_addr;
 wire [63:0] reg_write_data;
-wire [7:0] reg_write_wmask;
+//wire [7:0] reg_write_wmask;
 wire wb_res_valid;
 wire  axi_req;
 wire w_start;

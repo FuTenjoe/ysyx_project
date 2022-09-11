@@ -83,7 +83,7 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
     Vysyx_22040175_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_22040175_top___024root___settle__TOP__6\n"); );
     // Variables
-    QData/*63:0*/ __Vtemp583;
+    QData/*63:0*/ __Vtemp567;
     // Body
     if (vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__wb_ebreak_flag) {
         Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_cpu__DOT__u_id_stage__DOT__u_ctrl__DOT__ebreak_TOP();
@@ -7965,7 +7965,7 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
         }
     } else if ((4U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_alu_op))) {
         if ((2U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_alu_op))) {
-            __Vtemp583 = ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_alu_op))
+            __Vtemp567 = ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_alu_op))
                            ? ((0U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_rd_flag))
                                ? VL_SHIFTRS_QQQ(64,64,64, vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_alu_src1, vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_alu_src2)
                                : ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_rd_flag))
@@ -7987,7 +7987,7 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
                                               & (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_alu_src2)))
                                        : vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res))));
             vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res 
-                = __Vtemp583;
+                = __Vtemp567;
         } else if ((1U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_alu_op))) {
             vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_ex_stage__DOT__u_alu__DOT__alu_res 
                 = VL_SHIFTL_QQQ(64,64,64, vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_alu_src1, vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__ex_alu_src2);

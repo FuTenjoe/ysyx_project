@@ -32,6 +32,7 @@ cpu u_cpu(
     .cache_axi_req(cache_axi_req),
     .axi_valid(axi_valid),
     .waxi_valid(waxi_valid),
+    .reg_write_wmask(reg_write_wmask),
 
 
 
@@ -97,7 +98,7 @@ wire [7:0] axi_ar_len_o;
 wire [2:0] axi_ar_size_o;
 wire [1:0] axi_ar_burst_o;
 wire [63:0] rdata;
-
+wire [7:0] reg_write_wmask;
 wire rst_n = !rst;
 axi # (
 )
