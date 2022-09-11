@@ -6172,6 +6172,9 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
          & (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state)))) {
         Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_axi_slave2__DOT__pmem_write_TOP((QData)((IData)((QData)((IData)(vlSelf->ysyx_22040175_top__DOT__reg_write_addr)))), (QData)((IData)(vlSelf->ysyx_22040175_top__DOT__reg_write_data)), vlSelf->ysyx_22040175_top__DOT__reg_write_wmask);
     }
+    vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_axi2__rw_valid_i 
+        = ((IData)(vlSelf->ysyx_22040175_top__DOT__axi_valid) 
+           | (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state)));
     vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_axi_slave2__r_valid 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__axi_valid) 
            | (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state)));
