@@ -915,11 +915,11 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___combo__TOP__9(Vysyx_22040175_t
                 ? 3U : 4U);
     } else if ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state))) {
         vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__next_state 
-            = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__w_done)
+            = ((IData)(vlSelf->ysyx_22040175_top__DOT__w_done)
                 ? 2U : 1U);
     } else if ((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state))) {
         vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__next_state 
-            = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__b_hs)
+            = ((IData)(vlSelf->ysyx_22040175_top__DOT__b_hs)
                 ? 3U : 2U);
     } else if ((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state))) {
         vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__next_state = 0U;
@@ -1880,7 +1880,7 @@ VL_INLINE_OPT QData Vysyx_22040175_top___024root___change_request_1(Vysyx_220401
     // Change detection
     QData __req = false;  // Logically a bool
     __req |= ((vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n));
-    VL_DEBUG_IF( if(__req && ((vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n))) VL_DBG_MSGF("        CHANGE: vsrc/cpu.v:35: ysyx_22040175_top.u_cpu.rst_n\n"); );
+    VL_DEBUG_IF( if(__req && ((vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n ^ vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n))) VL_DBG_MSGF("        CHANGE: vsrc/cpu.v:37: ysyx_22040175_top.u_cpu.rst_n\n"); );
     // Final
     vlSelf->__Vchglast__TOP__ysyx_22040175_top__DOT__u_cpu__DOT__rst_n 
         = vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n;

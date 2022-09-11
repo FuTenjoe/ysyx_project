@@ -497,14 +497,6 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__aw_hs 
         = ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__w_state)) 
            & (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__w_state)));
-    vlSelf->ysyx_22040175_top__DOT__b_hs = ((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__w_state)) 
-                                            & (3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__w_state)));
-    vlSelf->ysyx_22040175_top__DOT__w_done = (((2U 
-                                                == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__w_state)) 
-                                               & (2U 
-                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__w_state))) 
-                                              & (2U 
-                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__w_state)));
     vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__aw_hs 
         = ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__w_state)) 
            & (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__w_state)));
@@ -1071,6 +1063,14 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
             }
         }
     }
+    vlSelf->ysyx_22040175_top__DOT__b_hs = ((3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__w_state)) 
+                                            & (3U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__w_state)));
+    vlSelf->ysyx_22040175_top__DOT__w_done = (((2U 
+                                                == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__w_state)) 
+                                               & (2U 
+                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__w_state))) 
+                                              & (2U 
+                                                 == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__w_state)));
     vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT__rdy_t 
         = (((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__u_divider_step0__rdy) 
             << 0x1fU) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_ex_stage__DOT__u_alu__DOT__u_div32__DOT____Vcellout__sqrt_stepx__BRA__1__KET____DOT__u_divider_step__rdy) 
