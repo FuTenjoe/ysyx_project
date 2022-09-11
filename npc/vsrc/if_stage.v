@@ -24,7 +24,7 @@ module if_stage (
     input mem_no_use,
     input [2:0] ex_rd_buf_flag,
     input mem_res_valid,
-    output [63:0] rdata,
+    input [63:0] rdata,
 
 
     input waxi_valid,
