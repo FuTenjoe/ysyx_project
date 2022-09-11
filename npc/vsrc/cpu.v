@@ -26,7 +26,7 @@ module  cpu(
     input r_done2,
     input axi_r_ready_o2,
     input [3:0]axi_ar_id_o2,
-    input [63:0] rdata,w_done
+    input [63:0] rdata,
     input w_done,
     input b_hs
    // output[`CPU_WIDTH-1:0]        next_pc
