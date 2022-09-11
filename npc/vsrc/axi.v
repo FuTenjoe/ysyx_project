@@ -127,8 +127,7 @@ module axi # (
         else begin
             //if (r_valid) begin
                 case (r_state)
-                    //R_STATE_IDLE: if (r_valid)  r_state <= R_STATE_ADDR;
-                    R_STATE_IDLE: if (rw_valid_i)  r_state <= R_STATE_ADDR;
+                    R_STATE_IDLE: if (r_valid)  r_state <= R_STATE_ADDR;
                     R_STATE_ADDR:begin
                          if (ar_hs)    r_state <= R_STATE_READ;
                     end
