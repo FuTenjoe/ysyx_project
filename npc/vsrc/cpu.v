@@ -52,8 +52,7 @@ wire delay_r_done;
 wire [3:0] axi_ar_id_o;
 wire mem_res_valid;
 //wire [63:0] rdata;
-wire w_done;
-wire b_hs;
+
 wire id_mem_cache;
 if_stage u_if_stage(
     .clk(clk),
