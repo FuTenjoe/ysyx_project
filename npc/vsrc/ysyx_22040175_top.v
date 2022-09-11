@@ -30,7 +30,8 @@ cpu u_cpu(
     .axi_burst(axi_burst),
     .send_axi_ar_id(send_axi_ar_id),
     .cache_axi_req(cache_axi_req),
-
+    .axi_valid(axi_valid),
+    .waxi_valid(waxi_valid),
 
 
 
@@ -52,6 +53,10 @@ cpu u_cpu(
 //wire r_done2,
 //wire axi_r_ready_o2,
 //wire [3:0]axi_ar_id_o2
+wire axi_valid,
+wire waxi_valid,
+
+
 
 wire axi_ar_ready_i2;
 wire axi_ar_valid_o2;

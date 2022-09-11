@@ -10,13 +10,13 @@ module  cpu(
     output[31:0]        diff_pc,
     output [31:0] diff_delay_pc,
     output out_mem_rd_buf_flag,
-    
-    
-    
     output [63:0] axi_r_addr,
     output axi_burst,
     output [3:0] send_axi_ar_id,
     output cache_axi_req,
+    output axi_valid,
+    output waxi_valid,
+    
 
 
 
@@ -546,14 +546,14 @@ mem_wb_regs u_mem_wb_regs(
 reg [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;
 wire [63:0] wb_delay_pc;
-wire waxi_valid;
+//wire waxi_valid;
 wire [63:0] reg_write_addr;
 wire [63:0] reg_write_data;
 wire [7:0] reg_write_wmask;
 wire wb_res_valid;
 wire  axi_req;
 wire w_start;
-wire axi_valid;
+//wire axi_valid;
 
 
 wb_stage u_wb_stage(
@@ -590,6 +590,21 @@ wb_stage u_wb_stage(
   
    
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //wire [3:0]axi_ar_id_o2;
 
