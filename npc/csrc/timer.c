@@ -21,7 +21,6 @@ typedef void (*alarm_handler_t) ();
 extern "C" void add_alarm_handle(alarm_handler_t h);
 
 
-
 static uint32_t *rtc_port_base = NULL;
 
 static void rtc_io_handler(uint32_t offset, int len, bool is_write) {
