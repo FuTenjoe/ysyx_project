@@ -37,7 +37,8 @@ cpu u_cpu(
 
     .r_done2(r_done2),
     .axi_r_ready_o2(axi_r_ready_o2),
-    .axi_ar_id_o2(axi_ar_id_o2)
+    .axi_ar_id_o2(axi_ar_id_o2),
+    .rdata(rdata)
    // output[`CPU_WIDTH-1:0]        next_pc
 );
 
@@ -95,6 +96,7 @@ wire axi_b_valid_i;
 wire [7:0] axi_ar_len_o;
 wire [2:0] axi_ar_size_o;
 wire [1:0] axi_ar_burst_o;
+wire [63:0] rdata;
 
 wire rst_n = !rst;
 axi # (

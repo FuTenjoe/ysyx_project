@@ -304,9 +304,6 @@ void Vysyx_22040175_top___024root___settle__TOP__7(Vysyx_22040175_top___024root*
                         : 0ULL)) : 0ULL) : ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__delay_r_done)
                                              ? vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rdata
                                              : 0ULL));
-    vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_axi2__rw_valid_i 
-        = ((IData)(vlSelf->ysyx_22040175_top__DOT__axi_valid) 
-           | (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state)));
     vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_axi_slave2__r_valid 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__axi_valid) 
            | (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_wb_stage__DOT__present_state)));
@@ -1965,9 +1962,7 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__axi_ar_size_o = VL_RAND_RESET_I(3);
     vlSelf->ysyx_22040175_top__DOT__axi_ar_burst_o = VL_RAND_RESET_I(2);
     vlSelf->ysyx_22040175_top__DOT____Vcellout__u_axi2__data_read_o = VL_RAND_RESET_Q(64);
-    vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_axi2__rw_valid_i = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT____Vcellinp__u_axi_slave2__r_valid = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_22040175_top__DOT__rst_n = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__reg_write_wmask = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__reg_write_data = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__reg_write_addr = VL_RAND_RESET_I(1);
