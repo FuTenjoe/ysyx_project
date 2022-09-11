@@ -53,8 +53,8 @@ cpu u_cpu(
 //wire r_done2,
 //wire axi_r_ready_o2,
 //wire [3:0]axi_ar_id_o2
-wire axi_valid,
-wire waxi_valid,
+wire axi_valid;
+wire waxi_valid;
 
 
 
