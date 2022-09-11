@@ -48,7 +48,7 @@ module if_stage (
     output [63:0] axi_r_addr,
     output axi_valid,
 
-    input [3:0] send_axi_ar_id
+    output [3:0] send_axi_ar_id
 
 
 );
