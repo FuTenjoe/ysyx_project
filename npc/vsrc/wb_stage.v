@@ -32,7 +32,8 @@ module wb_stage (
     input w_done,
     input b_hs,
     output w_start,
-    output reg [63:0] mtimecmp
+    output reg [63:0] mtimecmp,
+    output reg [63:0] real_reg_wb_data
    
 );
 reg [63:0] reg_wdata;
@@ -67,7 +68,38 @@ always @(*) begin
             default:reg_f[reg_waddr] = reg_wdata[31:0];  
             endcase
         end
-    end
+end
+
+
+always @(*) begin
+    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
+            case(expand_signed)
+            4'd0:begin
+                real_reg_wb_data = reg_wdata;   //jalr
+                
+            end
+            4'd1:begin
+                real_reg_wb_data = {{32{reg_wdata[31]}},reg_wdata[31:0]};   //lw  addw  divw
+                
+            end
+            4'd2:begin
+                real_reg_wb_data = reg_wdata[31:0];            //addw错误
+                
+            end
+            4'd3:begin
+                real_reg_wb_data = {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
+                
+            end
+            default:real_reg_wb_data = reg_wdata[31:0];  
+            endcase
+        end
+end
+
+
+
+
+
+
 
 /*reg [63:0] end_wb_waddr;
 always@(*)begin
