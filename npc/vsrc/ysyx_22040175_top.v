@@ -176,29 +176,8 @@ u_axi_slave2(
 );
 
 
-
-
-
-
-
-
 wire axi_valid;
 wire waxi_valid;
-
-//wire axi_ar_ready_i2;
-//wire axi_ar_valid_o2;
-//wire [63:0]axi_ar_addr_o2;
-//wire [3:0]axi_ar_id_o2;
-//wire [2:0] axi_ar_len_o2;
-//wire [7:0]  axi_ar_size_o2;
-//wire [1:0]  axi_ar_burst_o2;
-//wire axi_r_ready_o2;
-//wire axi_r_valid_i2;
-//wire [1:0] axi_r_resp_i2;
-//wire [63:0]         axi_r_data_i2;
-//wire [3:0] send_axi_ar_id;
-//wire axi_r_last_i2;
-
 
 wire r_done2;
 wire cache_axi_req;
@@ -206,29 +185,11 @@ wire cache_axi_req;
 wire axi_burst;
 wire [63:0] axi_r_addr;
 
-
-
-//wire axi_aw_ready_i;
 wire axi_aw_valid_o;
-//wire [63:0] axi_aw_addr_o;
-//wire axi_w_ready_i;
-//wire axi_w_valid_o;
-//wire [63:0] axi_w_data_o;
-//wire [7:0] axi_w_strb_o;
-//wire axi_w_last_o;
-//wire axi_b_ready_o;
-//wire axi_b_valid_i;
-
-
-//wire [63:0]rw_addr_i;
-//assign rw_addr_i = (!waxi_valid) ? mem_addr : reg_write_addr;
-
 
 wire [7:0] axi_ar_len_o;
 wire [2:0] axi_ar_size_o;
 wire [1:0] axi_ar_burst_o;
-
-
 
 wire b_hs;
 wire w_done;
@@ -238,13 +199,9 @@ wire [63:0] rdata;
 wire [7:0] reg_write_wmask;
 wire rst_n = !reset;
 
-
-
-
-
 cpu u_cpu(
-	.clk(clock),
-    .rst(reset),
+	.clk(clk),
+    .rst(rst),
 	.unknown_code(unknown_code),
     .time_set(time_set),
     .diff_pc(diff_pc),
