@@ -1819,7 +1819,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__10(Vysyx_2204017
                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__r_state)) 
                                                 & (2U 
                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_state))) 
-                                               & (IData)(vlSelf->ysyx_22040175_top__DOT__axi_r_last_i2));
+                                               & (IData)(vlSelf->ysyx_22040175_top__DOT__r_last));
 }
 
 extern const VlUnpacked<CData/*2:0*/, 2048> Vysyx_22040175_top__ConstPool__TABLE_815565d4_0;

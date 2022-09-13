@@ -8585,7 +8585,7 @@ void Vysyx_22040175_top___024root___settle__TOP__6(Vysyx_22040175_top___024root*
                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi2__DOT__r_state)) 
                                                 & (2U 
                                                    == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_state))) 
-                                               & (IData)(vlSelf->ysyx_22040175_top__DOT__axi_r_last_i2));
+                                               & (IData)(vlSelf->ysyx_22040175_top__DOT__r_last));
     vlSelf->pc = (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__if_pc);
     vlSelf->ysyx_22040175_top__DOT__axi_valid = (((
                                                    (1U 
