@@ -608,7 +608,7 @@ wire [7:0] cmt_wdest = {3'b0,wb_reg_waddr};
 //wire [63:0] real_reg_wb_data;
 wire [63:0] cmt_wdata;
 //wire [63:0] regs_diff [0:31] = from_wb_reg_f;
-
+/*
 DifftestInstrCommit DifftestInstrCommit(
   .clock              (clk),
   .coreid             (0),
@@ -731,5 +731,5 @@ DifftestArchFpRegState DifftestArchFpRegState(
   .fpr_30             (0),
   .fpr_31             (0)
 );
-
+*/
 endmodule
