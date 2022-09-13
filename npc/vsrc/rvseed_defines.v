@@ -184,9 +184,4 @@
 `define AXI_SIZE_BYTES_128                                  3'b111
 
 
-//读写
-`define REQ_READ            1'b0
-`define REQ_WRITE           1'b1
-
-
 
