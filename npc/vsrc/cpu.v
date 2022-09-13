@@ -34,9 +34,9 @@ module cpu(
 
 
 //assign out_mem_rd_buf_flag = sig_jalr;
-wire [31:0] diff_pc;
+//wire [31:0] diff_pc;
 assign diff_pc = wb_pc[31:0];
-wire[31:0] diff_delay_pc;
+//wire[31:0] diff_delay_pc;
 assign diff_delay_pc = wb_delay_pc[31:0];
 wire rst_n;
 assign rst_n = !rst;
