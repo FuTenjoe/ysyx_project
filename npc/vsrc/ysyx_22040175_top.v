@@ -166,7 +166,7 @@ wire aw_ready;
 
 
 
-axi # (
+axi_yuan # (
 )
 u_axi2(
     .clock(clk),
