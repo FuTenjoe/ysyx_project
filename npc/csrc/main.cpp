@@ -215,7 +215,7 @@ int main(int argc, char **argv, char **env) {
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
       printf("mem_rd_buf_flag is 0x%08lx\n",top->out_mem_rd_buf_flag);  */
       //init_difftest(img_size,port);
-      if (a>2){
+      if (a>10){
         //if (a%4==1 & a/4>=1){
        //printf("a =%d \n",a);
        if((top->diff_pc != top-> diff_delay_pc)){
