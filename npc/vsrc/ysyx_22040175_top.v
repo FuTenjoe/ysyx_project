@@ -23,12 +23,18 @@ wire [31:0]if_inst;
 wire [63:0]if_pc;
 assign pc = if_pc;
 assign inst = if_inst;
-wire if_delay_r_done;
 
-wire axi_ena;
-assign axi_ena = (diff_pc !=diff_delay_pc && diff_pc!=0 ) ? 1'b1:1'b0;
+
+
 wire rest_id_mem;
 wire div_finish;
+wire ar_hs;
+wire delay_r_done;
+wire [3:0] axi_ar_id_o;
+wire mem_res_valid;
+wire [63:0] rdata;
+wire w_done;
+wire b_hs;
 if_stage u_if_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -45,16 +51,33 @@ if_stage u_if_stage(
     .id_mul(id_mul),
     .id_div(id_div),
     .div_finish(div_finish),
-    .delay_r_done(if_delay_r_done)
-    //.axi_ena(axi_ena)
-    
+    .mem_valid(mem_valid),       //clint新加
+    .mem_send_id(mem_send_id),
+    .mem_addr(mem_addr),
+    .ar_hs(ar_hs),
+    .delay_r_done(delay_r_done),
+    .axi_ar_id_o(axi_ar_id_o),
+    .mem_no_use(mem_no_use),
+    .ex_rd_buf_flag(ex_rd_buf_flag),
+    .mem_res_valid(mem_res_valid),
+    .rdata(rdata),
+
+
+    .waxi_valid(waxi_valid),
+    .reg_write_addr(reg_write_addr),
+    .reg_write_data(reg_write_data),
+    .reg_write_wmask(reg_write_wmask),
+    .wb_res_valid(wb_res_valid),
+    .axi_req(axi_req),
+    .w_done(w_done),
+    .b_hs(b_hs)
+
 );
 wire [31:0]id_inst;
 wire [63:0]id_pc; 
 wire id_ena;
 wire id_time_set;
 wire delay_sig_jalr;
-wire id_delay_r_done;
 if_id_regs u_if_id_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -73,9 +96,7 @@ if_id_regs u_if_id_regs(
     .id_mul(id_mul),
 	.sh_fnsh_flag(sh_fnsh_flag),
     .id_div(id_div),
-    .div_finish(div_finish),
-    .delay_r_done_if_id_i(if_delay_r_done),
-    .delay_r_done_if_id_o(id_delay_r_done)
+    .div_finish(div_finish)
     
     
 );
@@ -197,7 +218,6 @@ wire [63:0] ex_end_write_addr;
 wire ex_cunqu_hazard;
 wire ex_id_mul;
 wire ex_id_div;
-wire ex_delay_r_done;
 id_ex_regs u_id_ex_regs(
 	.clk(clk),
 	.rst_n(rst_n),
@@ -260,9 +280,7 @@ id_ex_regs u_id_ex_regs(
     .id_mul_id_ex_i(id_mul),
 	.id_mul_id_ex_o(ex_id_mul),
     .id_div_id_ex_i(id_div),
-    .id_div_id_ex_o(ex_id_div),
-    .delay_r_done_id_ex_i(id_delay_r_done),
-    .delay_r_done_id_ex_o(ex_delay_r_done)
+    .id_div_id_ex_o(ex_id_div)
    
     
     );
@@ -359,13 +377,19 @@ ex_mem_regs u_ex_mem_regs(
     .id_mul_ex_mem_i(ex_id_mul),
 	.sh_fnsh_flag_ex_mem_i(sh_fnsh_flag),
     .id_div_ex_mem_i(ex_id_div),
-	.div_finish_ex_mem_i(div_finish),
-    .delay_r_done_ex_mem_i(ex_delay_r_done)
+	.div_finish_ex_mem_i(div_finish)
 	
 );
 wire [63:0] from_mem_alu_res;
 wire [63:0] wb_hazard_result;
+wire [3:0] mem_send_id;
+wire mem_valid;
+wire mem_no_use;
+wire [`CPU_WIDTH-1:0] mem_addr;
+wire [2:0] reg_rd_buf_flag;
 mem_stage u_mem_stage(
+    .clk(clk), //clint新加
+    .rst_n(rst_n),
     .rd_buf_flag(mem_rd_buf_flag),
     .alu_op(mem_alu_op),
     .alu_src1(mem_alu_src1),
@@ -375,7 +399,17 @@ mem_stage u_mem_stage(
     .mem_from_ex_alu_res(mem_from_ex_alu_res),
     .wb_hazard_result(wb_hazard_result),
     .mem_expand_signed(mem_expand_signed),
-    .mem_cunqu_hazard(mem_cunqu_hazard)
+    .mem_cunqu_hazard(mem_cunqu_hazard),
+    .return_id(axi_ar_id_o),        //clint新加
+    .mem_res_valid(mem_res_valid),
+    .mem_axi_valid(mem_valid),       
+    .mem_send_id(mem_send_id),
+    .mem_addr(mem_addr),
+    .ar_hs(ar_hs),
+    .r_done(delay_r_done),
+    .mem_no_use(mem_no_use),
+    .axi_rdata(rdata),
+    .mem_rd_buf_flag(reg_rd_buf_flag)
    
 );
 wire wb_reg_wen;
@@ -436,11 +470,19 @@ mem_wb_regs u_mem_wb_regs(
     //.end_write_add_mem_wb_i(mem_end_write_addr),
 	//.end_write_add_mem_wb_o(wb_end_write_addr),
     .cunqu_hazard_mem_wb_i(mem_cunqu_hazard),
-    .cunqu_hazard_mem_wb_o (wb_cunqu_hazard)
+    .cunqu_hazard_mem_wb_o (wb_cunqu_hazard),
+    .mem_no_use(mem_no_use),
+    .reg_rd_buf_flag(reg_rd_buf_flag)
     );
 reg [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
 wire wb_ebreak_flag;
 wire [63:0] wb_delay_pc;
+wire waxi_valid;
+wire [63:0] reg_write_addr;
+wire [63:0] reg_write_data;
+wire [7:0] reg_write_wmask;
+wire wb_res_valid;
+wire  axi_req;
 wb_stage u_wb_stage(
     .clk(clk),
     .rst_n(rst_n),
@@ -461,7 +503,15 @@ wb_stage u_wb_stage(
     .wb_pc(wb_pc),
     .wb_delay_pc(wb_delay_pc),
     //.end_write_addr(wb_end_write_addr),
-    .cunqu_hazard(wb_cunqu_hazard)
+    .cunqu_hazard(wb_cunqu_hazard),
+    .waxi_valid(waxi_valid),
+    .reg_write_addr(reg_write_addr),
+    .reg_write_data(reg_write_data),
+    .reg_write_wmask(reg_write_wmask),
+    .wb_res_valid(wb_res_valid),
+    .axi_req(axi_req),
+    .w_done(w_done),
+    .b_hs(b_hs)
   
    
 );

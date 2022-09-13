@@ -6,7 +6,7 @@ module pc_predict (
     input  control_rest,
     input      [`CPU_WIDTH-1:0] id_next_pc, // from ex
     output reg                  ena, 
-    output reg [`CPU_WIDTH-1:0] axi_curr_pc,  // current pc addr
+    output reg [`CPU_WIDTH-1:0] curr_pc,  // current pc addr
     input rest_id_mem,
     input [`CPU_WIDTH-1:0] id_curr_pc,
     input sig_jalr,
@@ -15,14 +15,18 @@ module pc_predict (
     input id_div,
     input div_finish,
     input r_done,
-    output dd_r_done
-    //output r_valid
+    output reg if_valid,
+    input ar_hs,
+    input [3:0] return_id,
+    output reg [3:0] if_send_id,
+    input mem_no_use,
+    input [2:0] ex_rd_buf_flag,
+    input mem_res_valid,
+   // input waxi_valid,
+    input wb_res_valid
 );
 
 reg delay_sig_jalr;
-reg [`CPU_WIDTH-1:0] curr_pc;
-
-//reg [`CPU_WIDTH-1:0] reg_axi_curr_pc;
 
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
@@ -34,44 +38,175 @@ always @ (posedge clk or negedge rst_n) begin
         delay_sig_jalr <= sig_jalr;
     end
 end
-//wire dd_r_done;
-reg reg_dd_r_done;
-reg delay_sh_fnsh_flag;
-always @ (posedge clk or negedge rst_n) begin
-    if(~rst_n)begin
-       reg_dd_r_done <= 1'b0;
-       delay_sh_fnsh_flag<=1'b0;
+
+
+parameter IDLE=3'd0,NEXT=3'd1,EN=3'd2,FN=3'd3,MEM=3'd4,WRITE=3'd5;
+reg [2:0] present_state,next_state;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        present_state<= IDLE;
     end
     else begin
-        reg_dd_r_done <= r_done;
-        delay_sh_fnsh_flag <= sh_fnsh_flag;
+        present_state<= next_state;
     end
 end
-//assign dd_r_done = (id_mul |  id_div | rest_id_mem|sig_jalr|delay_sig_jalr|control_rest) ? (reg_dd_r_done):1'b0;
-reg test;
+always@(*)begin
+    case(present_state)
+        IDLE:begin
+            if(ex_rd_buf_flag==3'd1| ex_rd_buf_flag==3'd2|ex_rd_buf_flag==3'd4|ex_rd_buf_flag==3'd6)
+                next_state = MEM;
+            else
+                next_state = NEXT;
+        end
+        MEM:begin
+            if(mem_res_valid)
+                next_state = WRITE;
+            else
+                next_state = MEM;
+        end
+        WRITE:begin
+            if(wb_res_valid)
+                next_state = NEXT;
+            else
+                next_state = WRITE;
+        end
+        NEXT:begin
+            if(ar_hs && return_id ==4'd1)
+                next_state = EN;
+            else 
+                next_state = NEXT;
+        end
+        EN:begin
+            if(r_done && return_id == 4'd1)
+                next_state =FN;
+            else
+                next_state =EN;
+        end
+        FN:next_state =IDLE;
+    default:next_state = IDLE;
+    endcase
+end
+
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        if_valid <= 1'b0;
+        if_send_id <= 4'd0;
+    end
+    else begin
+        case(present_state)
+        IDLE:begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd0;
+        end
+        MEM:begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd0;
+        end
+        WRITE:begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd0;
+        end
+        NEXT:begin
+            if_valid <= 1'b1;
+            if_send_id <= 4'd1;
+        end
+        EN: begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd1;
+        end
+        FN: begin
+            if_valid <= 1'b0;
+            if_send_id <= 4'd0;
+        end
+        endcase
+    end
+end
+
+
+
+reg [1:0]md_add_pc;
+parameter [1:0] MD_IDLE=2'd0,ARTH=2'd1,AF=2'd2,TEND=2'd3;
+reg [1:0] md_present_state,md_next_state;
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        md_present_state <= MD_IDLE;
+    end
+    else begin
+        md_present_state <= md_next_state;
+    end
+end
+always@(*)begin
+    case(md_present_state)
+    MD_IDLE:begin
+        if(id_mul | id_div)begin
+            md_next_state = ARTH;
+        end
+        else begin
+            md_next_state = MD_IDLE;
+        end
+    end
+    ARTH:begin
+        if((sh_fnsh_flag | div_finish)&&r_done&& (return_id == 4'd1))begin
+            md_next_state = TEND;
+        end
+        else if((sh_fnsh_flag | div_finish)& (!r_done))begin
+            md_next_state = AF;
+        end
+        else begin
+            md_next_state =ARTH;
+        end
+    end
+    AF:begin
+        if(r_done)
+            md_next_state = TEND;
+        else
+            md_next_state = AF;
+    end
+    TEND: md_next_state = MD_IDLE;
+    default: md_next_state = MD_IDLE;
+    endcase
+end
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
+        md_add_pc <= 2'd0;
+    end
+    case(md_present_state)
+        MD_IDLE:md_add_pc <= 2'd0;
+        ARTH:md_add_pc <= 2'd1;
+        AF: md_add_pc <= 2'd2;
+        TEND:begin
+            if(!control_rest)
+            md_add_pc <=2'd3;
+            else
+            md_add_pc <= 2'd0;
+        end
+        default:md_add_pc <= 2'd0;
+    endcase
+end
 
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
         curr_pc <= 32'h8000_0000; 
-        test <= 1'b1; 
+        //add_pc <= 1'b0;
     end
-    else if(r_done|dd_r_done)begin
-    if(id_mul)begin
-        if(sh_fnsh_flag == 1'b0)begin
+    else if(id_mul)begin
+        if(sh_fnsh_flag == 1'b0 && md_add_pc!=2'd3)begin
             curr_pc <= curr_pc;
         end
-        else begin
+        else if(md_add_pc==2'd3)begin
             curr_pc <= curr_pc + 4;
+           //add_pc <= 1'b1;
         end
     end
     else if(id_div)begin
-       if(div_finish == 1'b0)begin
+        if(div_finish == 1'b0 && md_add_pc!=2'd3)begin
             curr_pc <= curr_pc;
         end
-        else begin
+        else if(md_add_pc==2'd3)begin
             curr_pc <= curr_pc + 4;
+            //add_pc <= 1'b1;
         end
-    end        
+    end
     else if(rest_id_mem == 1'b1)begin
         curr_pc <= curr_pc;  //?
     end
@@ -83,15 +218,15 @@ always @ (posedge clk or negedge rst_n) begin
     end
     else if (rest_id_mem == 1'b0)begin
         if(control_rest == 1'b1)begin
-            curr_pc <= id_next_pc;
-            test <= 1'b1;
+         /*   if(id_next_pc != curr_pc +4)
+             curr_pc <= id_next_pc;
+             else 
+             curr_pc <= curr_pc;*/
+             curr_pc <= id_next_pc;
         end
-        else 
+        else if((r_done && md_add_pc!=2'd1 && md_add_pc!=2'd2 &&(return_id == 4'd1))|(md_add_pc==2'd3))
             curr_pc <= curr_pc + 4;
     end
-    end
-end
-
-assign axi_curr_pc = curr_pc;
+end    
 
 endmodule
