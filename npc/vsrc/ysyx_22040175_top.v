@@ -1,5 +1,5 @@
 
-`include "defines.v"
+`include "../vsrc/rvseed_defines.v"
 `define AXI_TOP_INTERFACE(name) io_memAXI_0_``name
 
 module ysyx_22040175(
