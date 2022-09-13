@@ -18,7 +18,7 @@ module if_stage (
     input mem_valid,       //clint新加
     input [3:0] mem_send_id,
     input [63:0] mem_addr,
-    //output ar_hs,
+    output ar_hs,
     output reg delay_r_done2,
     output reg [3:0]d_ar_id_o,
     input mem_no_use,
@@ -69,7 +69,7 @@ pc_predict u_pc_predict(
   .div_finish(div_finish),
   //.r_done(delay_r_done),
   .if_valid(if_valid),
-
+  .ar_hs(ar_hs),
   .return_id(axi_ar_id_o2),
   .if_send_id(if_send_id),
   .mem_no_use(mem_no_use),

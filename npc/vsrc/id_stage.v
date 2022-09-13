@@ -59,7 +59,7 @@ module id_stage (
     input [63:0] mtvec,
     input [63:0] mie,
     input [63:0] mstatus,
-    output  [11:0] csr_addr,
+    output  [63:0] csr_addr,
     output mret_flag,
     output ecall_flag,
     output id_mem_cache,
@@ -74,7 +74,7 @@ wire [`REG_ADDR_WIDTH-1:0]   reg1_raddr; // register 1 read address
 wire [`REG_ADDR_WIDTH-1:0]   reg2_raddr; // register 2 read address
 wire [2:0] data_rest_cond;
 
-//wire [31:0] unnormal_pc;
+wire [31:0] unnormal_pc;
 
 ctrl u_ctrl(
     .id_pc(id_pc),
@@ -106,7 +106,7 @@ ctrl u_ctrl(
     .csr_addr(csr_addr),
     .mret_flag(mret_flag),
     .ecall_flag(ecall_flag),
-    //.unnormal_pc(unnormal_pc),
+    .unnormal_pc(unnormal_pc),
     .id_mem_cache(id_mem_cache)
 );
 imm_gen u_imm_gen(
@@ -226,7 +226,7 @@ muxpc u_mux_pc(
    .delay_sig_jalr(delay_sig_jalr),
    .mret_flag(mret_flag),
    .ecall_flag(ecall_flag),
-   //.unnormal_pc(unnormal_pc),
+   .unnormal_pc(unnormal_pc),
    .mtvec(mtvec),
    .mepc(mepc),
    .clint_timer_irq(clint_timer_irq)

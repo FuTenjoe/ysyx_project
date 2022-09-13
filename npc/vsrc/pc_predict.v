@@ -16,7 +16,7 @@ module pc_predict (
     input div_finish,
    // input r_done,
     output reg if_valid,
-    
+    input ar_hs,
     input [3:0] return_id,
     output reg [3:0] if_send_id,
     input mem_no_use,
@@ -234,7 +234,7 @@ end
 
 always @ (posedge clk or negedge rst_n) begin
     if(~rst_n)begin
-        curr_pc <= 64'h8000_0000; 
+        curr_pc <= 32'h8000_0000; 
         //add_pc <= 1'b0;
     end
     else if(id_mul)begin

@@ -47,41 +47,7 @@ always@(*)begin
 end
 assign w_start = rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1);
 always @(*) begin
-    if(!rst_n)begin
-        reg_f[ 0] = `ZERO_WORD;
-		reg_f[ 1] = `ZERO_WORD;
-		reg_f[ 2] = `ZERO_WORD;
-		reg_f[ 3] = `ZERO_WORD;
-		reg_f[ 4] = `ZERO_WORD;
-		reg_f[ 5] = `ZERO_WORD;
-		reg_f[ 6] = `ZERO_WORD;
-		reg_f[ 7] = `ZERO_WORD;
-		reg_f[ 8] = `ZERO_WORD;
-		reg_f[ 9] = `ZERO_WORD;
-		reg_f[10] = `ZERO_WORD;
-		reg_f[11] = `ZERO_WORD;
-		reg_f[12] = `ZERO_WORD;
-		reg_f[13] = `ZERO_WORD;
-		reg_f[14] = `ZERO_WORD;
-		reg_f[15] = `ZERO_WORD;
-		reg_f[16] = `ZERO_WORD;
-		reg_f[17] = `ZERO_WORD;
-		reg_f[18] = `ZERO_WORD;
-		reg_f[19] = `ZERO_WORD;
-		reg_f[20] = `ZERO_WORD;
-		reg_f[21] = `ZERO_WORD;
-		reg_f[22] = `ZERO_WORD;
-		reg_f[23] = `ZERO_WORD;
-		reg_f[24] = `ZERO_WORD;
-		reg_f[25] = `ZERO_WORD;
-		reg_f[26] = `ZERO_WORD;
-		reg_f[27] = `ZERO_WORD;
-		reg_f[28] = `ZERO_WORD;
-		reg_f[29] = `ZERO_WORD;
-		reg_f[30] = `ZERO_WORD;
-		reg_f[31] = `ZERO_WORD;
-    end
-    else if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
+    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
             case(expand_signed)
             4'd0:begin
                 reg_f[reg_waddr] = reg_wdata;   //jalr
@@ -92,14 +58,14 @@ always @(*) begin
                 
             end
             4'd2:begin
-                reg_f[reg_waddr] = {{32{1'b0}},reg_wdata[31:0]};            //addw错误
+                reg_f[reg_waddr] = reg_wdata[31:0];            //addw错误
                 
             end
             4'd3:begin
                 reg_f[reg_waddr] = {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
                 
             end
-            default: reg_f[reg_waddr] = {{32{1'b0}},reg_wdata[31:0]};  
+            default:reg_f[reg_waddr] = reg_wdata[31:0];  
             endcase
         end
 end
@@ -117,19 +83,16 @@ always @(*) begin
                 
             end
             4'd2:begin
-                real_reg_wb_data = {{32{1'b0}},reg_wdata[31:0]};            //addw错误
+                real_reg_wb_data = reg_wdata[31:0];            //addw错误
                 
             end
             4'd3:begin
                 real_reg_wb_data = {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
                 
             end
-            default:real_reg_wb_data = {{32{1'b0}},reg_wdata[31:0]};  
+            default:real_reg_wb_data = reg_wdata[31:0];  
             endcase
         end
-    else begin
-        real_reg_wb_data = reg_wdata;   //jalr    
-    end
 end
 
 
@@ -170,9 +133,9 @@ end
 always@(*)begin
     case(present_state)
     IDLE:begin
-        if(rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&& (reg_f[reg_waddr] + {{32{1'b0}},s_imm} != 64'h0000_0000_0200_4000))
+        if(rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&& (reg_f[reg_waddr] + s_imm != 64'h0000_0000_0200_4000))
             next_state = WRITE;
-        else if(rst_n && reg_wen && (reg_f[reg_waddr] + {{32{1'b0}},s_imm} == 64'h0000_0000_0200_4000) &&(s_flag==1'd1))
+        else if(rst_n && reg_wen && (reg_f[reg_waddr] + s_imm == 64'h0000_0000_0200_4000) &&(s_flag==1'd1))
             next_state = WRMMIO;
         else 
             next_state = IDLE;
@@ -203,7 +166,7 @@ assign waxi_valid = (present_state==WRITE) ? 1'b1:1'b0;
 assign wb_res_valid = (present_state==WRITE|present_state==WRESP) ? 1'b0:1'b1;
 assign axi_req = (present_state==WRITE|present_state==WRESP) ? 1'b1:1'b0;
 wire wr_mmio_valid = (present_state == WRMMIO)? 1'b1:1'b0;
-wire [63:0] wbmmio_waddr = reg_f[reg_waddr] + {{32{1'b0}},s_imm};
+wire [63:0] wbmmio_waddr = reg_f[reg_waddr] + s_imm;
 reg [63:0]delay_wbmmio_waddr;
 reg [63:0] delay_wb_mmio_wdata;
 always@(posedge clk )begin
@@ -238,7 +201,7 @@ always@(posedge clk or negedge rst_n)begin
     else begin
         case(present_state)
         IDLE:begin
-            reg_write_addr <= reg_f[reg_waddr] + {{32{1'b0}},s_imm};
+            reg_write_addr <= reg_f[reg_waddr] + s_imm;
             reg_write_data <= reg_wdata;
             reg_write_wmask <= wmask;
         end
@@ -263,18 +226,16 @@ always@(posedge clk or negedge rst_n)begin
             reg_write_wmask <= 8'd0;
         end
         default:begin
-            reg_write_addr <= reg_f[reg_waddr] + {{32{1'b0}},s_imm};
+            reg_write_addr <= reg_f[reg_waddr] + s_imm;
             reg_write_data <= reg_wdata;
             reg_write_wmask <= wmask;
         end
     endcase
     end
 end
-/*
+
 import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
     initial    set_gpr_ptr(wb_delay_reg_f);  // rf为通用寄存器的二维数组变量
-
-*/
 
 /*import "DPI-C" function void pmem_write(input longint waddr, input longint wdata, input byte wmask);
 //wire [63:0] rdata;
@@ -286,13 +247,10 @@ always @(*) begin
       //pmem_write(end_write_addr + s_imm, reg_wdata, wmask);
 end*/
 
-
-/*
 import "DPI-C" function void ebreak();
 always@(*)begin
     if(ebreak_flag == 1'b1)begin
         ebreak();
     end
 end
-*/
 endmodule

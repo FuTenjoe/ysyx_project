@@ -19,7 +19,7 @@ module divider_cell
       output reg [N-M:0]        merchant ,  //运算单元输出商
       output reg [M-1:0]        remainder   //运算单元输出余数
     );
-wire [M:0] remainder_d = dividend - {1'b0, divisor};  //求余
+
     always @(posedge clk or negedge rstn) begin
         if (!rstn) begin
             rdy            <= 'b0 ;
@@ -34,11 +34,11 @@ wire [M:0] remainder_d = dividend - {1'b0, divisor};  //求余
             dividend_kp    <= dividend_ci ;  //原始被除数传递
             if (dividend >= {1'b0, divisor}) begin
                 merchant    <= (merchant_ci<<1) + 1'b1 ; //商为1
-                remainder   <= remainder_d[M-1:0] ; //求余
+                remainder   <= dividend - {1'b0, divisor} ; //求余
             end
             else begin
                 merchant    <= merchant_ci<<1 ;  //商为0
-                remainder   <= dividend[M-1:0] ;        //余数不变
+                remainder   <= dividend ;        //余数不变
             end
         end // if (en)
         else begin
