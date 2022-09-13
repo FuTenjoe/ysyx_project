@@ -2349,7 +2349,7 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declQuad(c+2182,"ysyx_22040175_top u_axi2 data_read_o", false,-1, 63,0);
         tracep->declQuad(c+4,"ysyx_22040175_top u_axi2 rw_w_data_i", false,-1, 63,0);
         tracep->declBus(c+2216,"ysyx_22040175_top u_axi2 rw_addr_i", false,-1, 31,0);
-        tracep->declBus(c+6,"ysyx_22040175_top u_axi2 rw_size_i", false,-1, 7,0);
+        tracep->declBus(c+6,"ysyx_22040175_top u_axi2 rw_mask", false,-1, 7,0);
         tracep->declBit(c+2240,"ysyx_22040175_top u_axi2 rw_burst", false,-1);
         tracep->declQuad(c+7,"ysyx_22040175_top u_axi2 ww_addr_i", false,-1, 63,0);
         tracep->declBit(c+2174,"ysyx_22040175_top u_axi2 axi_aw_ready_i", false,-1);
