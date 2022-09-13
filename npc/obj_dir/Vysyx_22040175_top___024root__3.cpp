@@ -30,6 +30,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__15(Vysyx_2204017
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n)
             ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__u_cache_axi_judge__DOT__next_state)
             : 0U);
+    vlSelf->pc = (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__if_pc);
     vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__u_i_cache__DOT__hit1 
         = ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__u_i_cache__DOT__state))
             ? ((vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__u_i_cache__DOT__cache_data
@@ -493,7 +494,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___multiclk__TOP__16(Vysyx_220401
         = (((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__len) 
             != (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__axi_len)) 
            & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__w_hs) 
-              | (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_hs)));
+              | (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_hs)));
 }
 
 extern const VlUnpacked<CData/*2:0*/, 2048> Vysyx_22040175_top__ConstPool__TABLE_815565d4_0;
@@ -676,5 +677,7 @@ void Vysyx_22040175_top___024root___eval_debug_assertions(Vysyx_22040175_top___0
         Verilated::overWidthError("clk");}
     if (VL_UNLIKELY((vlSelf->rst & 0xfeU))) {
         Verilated::overWidthError("rst");}
+    if (VL_UNLIKELY((vlSelf->time_set & 0xfeU))) {
+        Verilated::overWidthError("time_set");}
 }
 #endif  // VL_DEBUG

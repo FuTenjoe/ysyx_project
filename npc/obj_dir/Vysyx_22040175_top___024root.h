@@ -21,6 +21,8 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     // PORTS
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
+    VL_IN8(time_set,0,0);
+    VL_OUT(pc,31,0);
     VL_OUT(diff_pc,31,0);
     VL_OUT(diff_delay_pc,31,0);
     VL_OUT64(unknown_code,63,0);
@@ -68,7 +70,6 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__mem_req_valid2;
         CData/*0:0*/ ysyx_22040175_top__DOT__reset;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_axi_rw__DOT__w_hs;
-        CData/*0:0*/ ysyx_22040175_top__DOT__u_axi_rw__DOT__r_hs;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_axi_rw__DOT__trans_done;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_axi_rw__DOT__w_state;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_axi_rw__DOT__r_state;
@@ -86,6 +87,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
         CData/*0:0*/ ysyx_22040175_top__DOT__u_axi_slave2__DOT__axi_w_last_i;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_axi_slave2__DOT__axi_b_ready_i;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_axi_slave2__DOT__ar_hs;
+        CData/*0:0*/ ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_hs;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_axi_slave2__DOT__aw_hs;
         CData/*0:0*/ ysyx_22040175_top__DOT__u_axi_slave2__DOT__b_hs;
         CData/*1:0*/ ysyx_22040175_top__DOT__u_axi_slave2__DOT__w_state;

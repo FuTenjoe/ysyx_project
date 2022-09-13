@@ -2448,18 +2448,16 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__5(Vysyx_22040175
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n) 
            & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_mul)
                ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__sh_fnsh_flag)
-                   ? (IData)(vlSelf->ysyx_22040175_top__DOT__clock)
-                   : (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_time_set))
+                   ? (IData)(vlSelf->time_set) : (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_time_set))
                : ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_div)
                    ? ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__div_finish)
-                       ? (IData)(vlSelf->ysyx_22040175_top__DOT__clock)
-                       : (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_time_set))
+                       ? (IData)(vlSelf->time_set) : (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_time_set))
                    : ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rest_id_mem)
                        ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_time_set)
                        : (((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_control_rest) 
                            | (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__delay_sig_jalr))
                            ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_time_set)
-                           : (IData)(vlSelf->ysyx_22040175_top__DOT__clock))))));
+                           : (IData)(vlSelf->time_set))))));
     vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_ena 
         = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n) 
            & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_mul)

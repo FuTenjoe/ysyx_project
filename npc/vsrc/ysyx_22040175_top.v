@@ -6,6 +6,7 @@ module ysyx_22040175_top(
     input                               clk,
     input                               rst,
     output[31:0]        pc,
+    output [31:0]                 inst,
     input time_set,
 /*    input  [63:0]                       io_logCtrl_log_begin,
     input  [63:0]                       io_logCtrl_log_end,
@@ -299,6 +300,7 @@ cpu u_cpu(
     .time_set(time_set),
     .diff_pc(diff_pc),
     .pc(pc),
+    .inst(inst),
     .diff_delay_pc(diff_delay_pc),
     
     .axi_r_addr(axi_r_addr),

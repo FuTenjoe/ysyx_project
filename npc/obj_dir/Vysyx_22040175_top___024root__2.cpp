@@ -5956,7 +5956,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__7(Vysyx_22040175
             = Vysyx_22040175_top__ConstPool__TABLE_97f8acd6_0
             [__Vtableidx2];
     }
-    __Vtableidx4 = ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_hs) 
+    __Vtableidx4 = ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_hs) 
                       & (IData)(vlSelf->ysyx_22040175_top__DOT__r_last)) 
                      << 6U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__ar_hs) 
                                 << 5U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__axi_req) 
@@ -6024,7 +6024,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__7(Vysyx_22040175
                 = __Vtask_ysyx_22040175_top__DOT__u_axi_slave2__DOT__pmem_read__0__rdata;
             vlSelf->ysyx_22040175_top__DOT__r_last = 0U;
             __Vdly__ysyx_22040175_top__DOT__r_resp = 0U;
-        } else if (vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_hs) {
+        } else if (vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_hs) {
             if ((1U == (7U & (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__axi_len)))) {
                 __Vdly__ysyx_22040175_top__DOT__r_data 
                     = vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__rdata;
@@ -6080,10 +6080,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__7(Vysyx_22040175
         = ((1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_state)) 
            & (1U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_state)));
     vlSelf->ysyx_22040175_top__DOT__r_data = __Vdly__ysyx_22040175_top__DOT__r_data;
-    vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_hs 
+    vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_hs 
         = ((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_state)) 
            & (2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_state)));
-    vlSelf->ysyx_22040175_top__DOT__r_done2 = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_hs) 
+    vlSelf->ysyx_22040175_top__DOT__r_done2 = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_hs) 
                                                & (IData)(vlSelf->ysyx_22040175_top__DOT__r_last));
 }
 

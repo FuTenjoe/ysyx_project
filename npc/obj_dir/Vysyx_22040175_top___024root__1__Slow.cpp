@@ -198,7 +198,7 @@ void Vysyx_22040175_top___024root___settle__TOP__2(Vysyx_22040175_top___024root*
         = (((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__len) 
             != (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__axi_len)) 
            & ((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__w_hs) 
-              | (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_hs)));
+              | (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_hs)));
     vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rest_wb_hazard 
         = ((((0ULL != vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_pc) 
              & (0x80000000ULL != vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__id_pc)) 
@@ -1923,6 +1923,8 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     // Body
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->rst = VL_RAND_RESET_I(1);
+    vlSelf->pc = VL_RAND_RESET_I(32);
+    vlSelf->time_set = VL_RAND_RESET_I(1);
     vlSelf->unknown_code = VL_RAND_RESET_Q(64);
     vlSelf->diff_pc = VL_RAND_RESET_I(32);
     vlSelf->diff_delay_pc = VL_RAND_RESET_I(32);
@@ -1973,7 +1975,6 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__reset = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__clock = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__w_hs = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_hs = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__trans_done = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__w_state = VL_RAND_RESET_I(2);
     vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_state = VL_RAND_RESET_I(2);
@@ -1994,6 +1995,7 @@ void Vysyx_22040175_top___024root___ctor_var_reset(Vysyx_22040175_top___024root*
     vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__axi_w_last_i = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__axi_b_ready_i = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__ar_hs = VL_RAND_RESET_I(1);
+    vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_hs = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__aw_hs = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__b_hs = VL_RAND_RESET_I(1);
     vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__w_state = VL_RAND_RESET_I(2);
