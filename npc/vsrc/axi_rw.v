@@ -1,5 +1,5 @@
 
-`include "defines.v"
+`include "../vsrc/rvseed_defines.v"
 
 // Burst types
 `define AXI_BURST_TYPE_FIXED                                2'b00
