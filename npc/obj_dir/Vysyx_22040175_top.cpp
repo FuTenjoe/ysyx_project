@@ -11,8 +11,8 @@
 
 Vysyx_22040175_top::Vysyx_22040175_top(VerilatedContext* _vcontextp__, const char* _vcname__)
     : vlSymsp{new Vysyx_22040175_top__Syms(_vcontextp__, _vcname__, this)}
-    , clock{vlSymsp->TOP.clock}
-    , reset{vlSymsp->TOP.reset}
+    , clk{vlSymsp->TOP.clk}
+    , rst{vlSymsp->TOP.rst}
     , unknown_code{vlSymsp->TOP.unknown_code}
     , diff_pc{vlSymsp->TOP.diff_pc}
     , diff_delay_pc{vlSymsp->TOP.diff_delay_pc}

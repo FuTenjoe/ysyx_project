@@ -5,7 +5,8 @@
 module ysyx_22040175_top(
     input                               clk,
     input                               rst,
-
+    output[31:0]        pc,
+    input time_set,
 /*    input  [63:0]                       io_logCtrl_log_begin,
     input  [63:0]                       io_logCtrl_log_end,
     input  [63:0]                       io_logCtrl_log_level,
@@ -228,59 +229,6 @@ u_axi_slave2(
 
 
 
-/*
-axi # (
-)
-u_axi2(
-    .clock(clock),
-    .reset(reset),
-    .rw_req_i(cache_axi_req),
-    .rw_size_i(reg_write_wmask),
-	.rw_valid_i(axi_valid | waxi_valid),         //IF&MEM输入信号
-    .data_read_o(rdata),        //IF&MEM输入信号
-    .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
-    .rw_addr_i(axi_r_addr),          //IF&MEM输入信号
-    .rw_burst(axi_burst),
-    .ww_addr_i(reg_write_addr),
-
-
-
-    // Advanced eXtensible Interface
-    .axi_ar_ready_i(ar_ready),                
-    .axi_ar_valid_o(ar_valid),
-    .axi_ar_addr_o(ar_addr),
-    .axi_ar_id_o(ar_id),       //此处应该没有用？
-    .axi_ar_len_o(ar_len),
-    .axi_ar_size_o(ar_size),
-    .axi_ar_burst_o(ar_burst),
-
-
-    .axi_r_ready_o(r_ready),                 
-    .axi_r_valid_i(r_valid),                
-    .axi_r_resp_i(r_resp),
-    .axi_r_data_i(r_data),
-    .axi_r_last_i(r_last),
-    .r_done(r_done2),
-    .axi_r_id_i(4'b0),
-
-
-    .axi_aw_ready_i(aw_ready),    //从设备已准备好接收地址和相关的控制信号          
-    .axi_aw_valid_o(aw_valid),  
-    .axi_aw_addr_o(aw_addr),
-
-    .axi_w_ready_i(w_ready),                
-    .axi_w_valid_o(w_valid),
-    .axi_w_data_o(w_data),
-    .axi_w_strb_o(w_strb),
-    .axi_w_last_o(w_last),
-    .axi_b_ready_o(b_ready),                
-    .axi_b_valid_i(b_valid),
-
-  //  .ar_hs(ar_hs),
-    .w_done(w_done),
-    .b_hs(b_hs)
-);
-*/
 
 
 
@@ -348,8 +296,9 @@ cpu u_cpu(
 	.clk(clock),
     .rst(reset),
 	.unknown_code(unknown_code),
-    .time_set(clock),
+    .time_set(time_set),
     .diff_pc(diff_pc),
+    .pc(pc),
     .diff_delay_pc(diff_delay_pc),
     
     .axi_r_addr(axi_r_addr),

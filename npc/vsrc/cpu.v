@@ -8,7 +8,7 @@ module cpu(
     input                         clk,
     input                         rst,
    // output [31:0]                 inst,
-	//  output[31:0]        pc,
+	output[31:0]        pc,
     output [`CPU_WIDTH-1:0]       unknown_code,
     input time_set,
     output[31:0]        diff_pc,
@@ -44,7 +44,7 @@ wire [63:0] id_next_pc;
 wire if_ena;
 wire [31:0]if_inst;
 wire [63:0]if_pc;
-//assign pc = if_pc;
+assign pc = if_pc;
 wire [31:0]  inst;
 assign inst = if_inst;
 
