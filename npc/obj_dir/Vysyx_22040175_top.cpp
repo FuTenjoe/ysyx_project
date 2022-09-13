@@ -11,15 +11,11 @@
 
 Vysyx_22040175_top::Vysyx_22040175_top(VerilatedContext* _vcontextp__, const char* _vcname__)
     : vlSymsp{new Vysyx_22040175_top__Syms(_vcontextp__, _vcname__, this)}
-    , clk{vlSymsp->TOP.clk}
-    , rst{vlSymsp->TOP.rst}
-    , inst{vlSymsp->TOP.inst}
-    , pc{vlSymsp->TOP.pc}
+    , clock{vlSymsp->TOP.clock}
+    , reset{vlSymsp->TOP.reset}
     , unknown_code{vlSymsp->TOP.unknown_code}
-    , time_set{vlSymsp->TOP.time_set}
     , diff_pc{vlSymsp->TOP.diff_pc}
     , diff_delay_pc{vlSymsp->TOP.diff_delay_pc}
-    , out_mem_rd_buf_flag{vlSymsp->TOP.out_mem_rd_buf_flag}
     , rootp{&(vlSymsp->TOP)}
 {
 }
@@ -66,7 +62,7 @@ static void _eval_initial_loop(Vysyx_22040175_top__Syms* __restrict vlSymsp) {
             Verilated::debug(1);
             __Vchange = Vysyx_22040175_top___024root___change_request(&(vlSymsp->TOP));
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("vsrc/ysyx_22040175_top.v", 3, "",
+            VL_FATAL_MT("vsrc/ysyx_22040175_top.v", 5, "",
                 "Verilated model didn't DC converge\n"
                 "- See https://verilator.org/warn/DIDNOTCONVERGE");
         } else {
@@ -97,7 +93,7 @@ void Vysyx_22040175_top::eval_step() {
             Verilated::debug(1);
             __Vchange = Vysyx_22040175_top___024root___change_request(&(vlSymsp->TOP));
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("vsrc/ysyx_22040175_top.v", 3, "",
+            VL_FATAL_MT("vsrc/ysyx_22040175_top.v", 5, "",
                 "Verilated model didn't converge\n"
                 "- See https://verilator.org/warn/DIDNOTCONVERGE");
         } else {

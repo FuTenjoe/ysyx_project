@@ -3,8 +3,8 @@
 `define AXI_TOP_INTERFACE(name) io_memAXI_0_``name
 
 module ysyx_22040175_top(
-    input                               clock,
-    input                               reset,
+    input                               clk,
+    input                               rst,
 
 /*    input  [63:0]                       io_logCtrl_log_begin,
     input  [63:0]                       io_logCtrl_log_end,
@@ -138,8 +138,8 @@ module ysyx_22040175_top(
  //   assign r_user                                   = `AXI_TOP_INTERFACE(r_bits_user);
 
 axi u_axi_rw (
-        .clock                          (clock),
-        .reset                          (reset),
+        .clock                          (clk),
+        .reset                          (rst),
 
         .rw_valid_i                     (axi_valid | waxi_valid),
         //.rw_ready_o                     (if_ready),
@@ -204,7 +204,7 @@ axi u_axi_rw (
         .b_hs(b_hs)
 
     );
-
+wire rst_n = !rst;
 axi_slave # (
 )
 u_axi_slave2(
