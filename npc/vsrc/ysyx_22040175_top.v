@@ -165,7 +165,7 @@ wire aw_ready;
 
 
 
-/*
+
 axi # (
 )
 u_axi2(
@@ -253,7 +253,8 @@ u_axi_slave2(
     .axi_b_ready_i(axi_b_ready_o),                
     .axi_b_valid_o(axi_b_valid_i)
 );
-*/
+
+/*
 axi u_axi_rw (
         .clock                          (clk),
         .reset_n                          (rst_n),
@@ -343,4 +344,6 @@ u_axi_slave2(
     .axi_r_last_o(r_last),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
     .r_valid(mem_req_valid2)
 );
+
+*/
 endmodule
