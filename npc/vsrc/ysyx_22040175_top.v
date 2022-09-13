@@ -205,6 +205,27 @@ axi u_axi_rw (
 
     );
 
+axi_slave # (
+)
+u_axi_slave2(
+    .clock(clk),
+    .reset_n(rst_n),
+    .axi_ar_ready_o(ar_ready),    //从设备已准备好接收地址和相关的控制信号            
+    .axi_ar_valid_i(ar_valid),
+    .axi_ar_addr_i(ar_addr),
+    .axi_ar_len_i(ar_len), //突发长度，这个字段标识每次突发传输的传输次数
+    .axi_ar_size_i(ar_size),  //突发大小，这个字段表示每次突发传输的大小
+    .axi_ar_burst_i(ar_burst),  //突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法
+    .axi_r_ready_i(r_ready),   //  	主设备已准备好接收读取的数据和响应信息              
+    .axi_r_valid_o(r_valid),  //从设备给出的数据和响应信息有效              
+    .axi_r_resp_o(r_resp), //读响应，这信号表示读传输的状态
+    .axi_r_data_o(r_data),
+    .axi_r_last_o(r_last),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
+    .r_valid(mem_req_valid2)
+);
+
+
+
 
 
 /*
@@ -318,14 +339,6 @@ wire [63:0] reg_write_data;
 wire [63:0] rdata;
 wire [7:0] reg_write_wmask;
 wire rst_n = !reset;
-
-
-
-
-
-
-
-
 
 
 
