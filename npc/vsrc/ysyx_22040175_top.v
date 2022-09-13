@@ -139,17 +139,20 @@ module ysyx_22040175_top(
   //  assign r_id                                     = `AXI_TOP_INTERFACE(r_bits_id);
  //   assign r_user                                   = `AXI_TOP_INTERFACE(r_bits_user);
 
-axi u_axi_rw (
+axi_yuan u_axi_rw (
         .clock                          (clk),
         .reset                          (rst),
-
         .rw_valid_i                     (axi_valid | waxi_valid),
         //.rw_ready_o                     (if_ready),
         .rw_req_i                       (cache_axi_req),
         .data_read_o                    (rdata),
-        .data_write_i                   (reg_write_data),
+        //.data_write_i                   (reg_write_data),
+        .rw_w_data_i                    (reg_write_data),
         .rw_addr_i                      (axi_r_addr),
-        .rw_size_i                      (4'b0),
+
+        .rw_mask                      (reg_write_wmask),
+        .rw_burst(axi_burst),
+        .ww_addr_i(reg_write_addr),
         //.rw_resp_o                      (if_resp),
 
         .axi_aw_ready_i                 (aw_ready),
