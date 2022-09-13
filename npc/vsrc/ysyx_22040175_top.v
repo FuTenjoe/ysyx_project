@@ -116,7 +116,7 @@ module ysyx_22040175_top(
     wire [`AXI_ID_WIDTH-1:0] r_id;
     wire [`AXI_USER_WIDTH-1:0] r_user;
 
-    assign ar_ready                                 = `AXI_TOP_INTERFACE(ar_ready);
+//    assign ar_ready                                 = `AXI_TOP_INTERFACE(ar_ready);
     assign `AXI_TOP_INTERFACE(ar_valid)             = ar_valid;
     assign `AXI_TOP_INTERFACE(ar_bits_addr)         = ar_addr;
     assign `AXI_TOP_INTERFACE(ar_bits_prot)         = ar_prot;
@@ -130,12 +130,12 @@ module ysyx_22040175_top(
     assign `AXI_TOP_INTERFACE(ar_bits_qos)          = ar_qos;
     
     assign `AXI_TOP_INTERFACE(r_ready)              = r_ready;
-    assign r_valid                                  = `AXI_TOP_INTERFACE(r_valid);
-    assign r_resp                                   = `AXI_TOP_INTERFACE(r_bits_resp);
-    assign r_data                                   = `AXI_TOP_INTERFACE(r_bits_data)[0];
-    assign r_last                                   = `AXI_TOP_INTERFACE(r_bits_last);
-    assign r_id                                     = `AXI_TOP_INTERFACE(r_bits_id);
-    assign r_user                                   = `AXI_TOP_INTERFACE(r_bits_user);
+//    assign r_valid                                  = `AXI_TOP_INTERFACE(r_valid);
+//    assign r_resp                                   = `AXI_TOP_INTERFACE(r_bits_resp);
+ //   assign r_data                                   = `AXI_TOP_INTERFACE(r_bits_data)[0];
+ //   assign r_last                                   = `AXI_TOP_INTERFACE(r_bits_last);
+  //  assign r_id                                     = `AXI_TOP_INTERFACE(r_bits_id);
+ //   assign r_user                                   = `AXI_TOP_INTERFACE(r_bits_user);
 
 axi u_axi_rw (
         .clock                          (clock),
