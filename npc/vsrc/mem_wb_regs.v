@@ -69,7 +69,7 @@ reg [1:0] wm_valid;
 			rd_buf_flag_mem_wb_o <= 3'd0;
 			from_ex_alu_res_mem_wb_o <= 64'd0;
 			from_mem_alu_res_mem_wb_o <= 64'd0;
-			pc_mem_wb_o <= 32'h8000_0000;
+			pc_mem_wb_o <= 64'h8000_0000;
 			cunqu_hazard_mem_wb_o <= 1'b0;
 			wm_valid <= 2'd0;
 		end

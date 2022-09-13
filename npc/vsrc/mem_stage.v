@@ -20,7 +20,7 @@ module mem_stage(
     output  mem_res_valid,
     output reg [3:0] mem_send_id,
     output [`CPU_WIDTH-1:0] mem_addr,
-    input ar_hs,
+    
     input r_done,      //这里实际为延迟一周期的r_done
     output mem_no_use,   //没有用到访存时为1
     input [63:0] axi_rdata,
@@ -60,13 +60,13 @@ always@(*)begin
     case (alu_op)
         `ALU_ADD: begin 
         if(reg_rd_buf_flag == 3'd1)
-            alu_res = rd_buf_lw[31:0];
+            alu_res = {{32{1'b0}},rd_buf_lw[31:0]};
         else if(reg_rd_buf_flag == 3'd2)
             alu_res = rd_buf_lw[63:0];
         else if(reg_rd_buf_flag == 3'd4)
-            alu_res = rd_buf_lw[7:0]; 
+            alu_res = {{56{1'b0}},rd_buf_lw[7:0]}; 
         else if(reg_rd_buf_flag == 3'd6)   //lh
-            alu_res = rd_buf_lw[15:0]; 
+            alu_res = {{48{1'b0}},rd_buf_lw[15:0]}; 
         end
         `ALU_CSRRS:begin
             alu_res = alu_res;
@@ -127,7 +127,7 @@ always@(*)begin
        
     end
     4'd2:begin
-        sign_alu_res = alu_res[31:0];            //addw错误
+        sign_alu_res = {{32{1'b0}},alu_res[31:0]};            //addw错误
     end
     4'd3:begin
         sign_alu_res = {{48{alu_res[15]}},alu_res[15:0]}; //lh

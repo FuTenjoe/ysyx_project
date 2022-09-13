@@ -97,6 +97,10 @@ always @(*) begin
                 alu_src1 = curr_pc;
                 alu_src2 = curr_pc;
             end
+            default:begin
+                alu_src1 = curr_pc;
+                alu_src2 = curr_pc;
+            end
         endcase
         end
     

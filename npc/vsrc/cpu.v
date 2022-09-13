@@ -1,15 +1,19 @@
-//top.vcache_axi_req
+
+//--xuezhen--
+
 `include "../vsrc/rvseed_defines.v"
-module  cpu(
-	input                         clk,
+
+module cpu(
+
+    input                         clk,
     input                         rst,
-	output [31:0]                 inst,
-	output[31:0]        pc,
+   // output [31:0]                 inst,
+	//  output[31:0]        pc,
     output [`CPU_WIDTH-1:0]       unknown_code,
     input time_set,
     output[31:0]        diff_pc,
     output [31:0] diff_delay_pc,
-    output out_mem_rd_buf_flag,
+  //  output out_mem_rd_buf_flag,
     output [63:0] axi_r_addr,
     output axi_burst,
     output [3:0] send_axi_ar_id,
@@ -18,10 +22,7 @@ module  cpu(
     output waxi_valid,
     output [7:0] reg_write_wmask,
     output [63:0] reg_write_data,
-    output [63:0] [63:0] reg_write_addr,
-
-
-
+    output [63:0] reg_write_addr,
 
     input r_done2,
     input axi_r_ready_o2,
@@ -29,10 +30,13 @@ module  cpu(
     input [63:0] rdata,
     input w_done,
     input b_hs
-   // output[`CPU_WIDTH-1:0]        next_pc
 );
-assign out_mem_rd_buf_flag = sig_jalr;
+
+
+//assign out_mem_rd_buf_flag = sig_jalr;
+wire [31:0] diff_pc;
 assign diff_pc = wb_pc[31:0];
+wire[31:0] diff_delay_pc;
 assign diff_delay_pc = wb_delay_pc[31:0];
 wire rst_n;
 assign rst_n = !rst;
@@ -40,14 +44,15 @@ wire [63:0] id_next_pc;
 wire if_ena;
 wire [31:0]if_inst;
 wire [63:0]if_pc;
-assign pc = if_pc;
+//assign pc = if_pc;
+wire [31:0]  inst;
 assign inst = if_inst;
 
 
 
 wire rest_id_mem;
 wire div_finish;
-wire ar_hs;
+
 wire delay_r_done;
 wire [3:0] axi_ar_id_o;
 wire mem_res_valid;
@@ -73,7 +78,7 @@ if_stage u_if_stage(
     .mem_valid(mem_valid),       //clint新加
     .mem_send_id(mem_send_id),
     .mem_addr(mem_addr),
-    .ar_hs(ar_hs),
+    
     .delay_r_done2(delay_r_done),
     .d_ar_id_o(axi_ar_id_o),
     .mem_no_use(mem_no_use),
@@ -173,7 +178,7 @@ id_stage u_id_stage(
     .clk(clk),
     .rst_n(rst_n),
     .id_pc(id_pc),
-    .inst(id_inst),       // instruction input
+    .inst({{32{1'b0}},id_inst}),       // instruction input
     //.reg_f (to_id_reg_f),
     .reg_f (from_wb_reg_f),
     .ex_reg_waddr(ex_reg_waddr), //改为执行阶段的1写回地址，应该是上一条指令
@@ -211,7 +216,7 @@ id_stage u_id_stage(
     .alu_src1(id_alu_src1),   // alu source 1
     .alu_src2(id_alu_src2),    // alu source 2
     .rest_id_mem(rest_id_mem),
-    .ex_inst(ex_inst),
+    .ex_inst(ex_inst[31:0]),
     
     .wb_hazard_result(wb_hazard_result),
     .mem_reg_waddr(mem_reg_waddr),
@@ -267,7 +272,7 @@ wire ex_time_set;
 //wire [63:0] ex_reg_wdata;
 wire id_rest_no_use;
 wire ex_rest_id_mem;
-wire [31:0] ex_inst;
+wire [63:0] ex_inst;
 wire [63:0] ex_end_write_addr;
 wire ex_cunqu_hazard;
 wire ex_id_mul;
@@ -316,8 +321,6 @@ id_ex_regs u_id_ex_regs(
     
 	
 	.time_set_id_ex_o(ex_time_set),
-	
-
 	.ena_id_ex_i(id_ena),
 	.ena_id_ex_o(ex_ena),
 	.alu_src1_id_ex_i(id_alu_src1),   // alu source 1
@@ -326,7 +329,7 @@ id_ex_regs u_id_ex_regs(
 	.alu_src1_id_ex_o(ex_alu_src1),   // alu source 1
     .alu_src2_id_ex_o(ex_alu_src2),    // alu source 2
     .rest_id_mem_id_ex_o(ex_rest_id_mem),
-    .id_inst(id_inst),
+    .id_inst({{32{1'b0}},id_inst}),
 	.ex_inst(ex_inst),
     //.end_write_addr_id_ex_i(id_end_write_addr),
 	//.end_write_addr_id_ex_o(ex_end_write_addr),
@@ -588,39 +591,145 @@ wb_stage u_wb_stage(
     .w_done(w_done),
     .b_hs(b_hs),
     .w_start(w_start),
-    .mtimecmp(mtimecmp)
+    .mtimecmp(mtimecmp),
+    .real_reg_wb_data(cmt_wdata)
   
    
 );
 
 
+wire [63:0]cmt_wdata;
 
+// Difftest
+wire cmt_valid = (diff_delay_pc != diff_pc && inst != 32'b0010011) ? 1'b1:1'b0;
+//wire cmt_valid = (diff_delay_pc != diff_pc ) ? 1'b1:1'b0;
+wire cmt_wen = wb_reg_wen &(!wb_s_flag);
+wire [7:0] cmt_wdest = {3'b0,wb_reg_waddr};
+//wire [63:0] real_reg_wb_data;
+wire [63:0] cmt_wdata;
+//wire [63:0] regs_diff [0:31] = from_wb_reg_f;
 
+DifftestInstrCommit DifftestInstrCommit(
+  .clock              (clk),
+  .coreid             (0),
+  .index              (0),
+  .valid              (cmt_valid),
+  .pc                 (diff_pc),
+  .instr              (inst),
+  .skip               (0),
+  .isRVC              (0),
+  .scFailed           (0),
+  .wen                (cmt_wen),
+  .wdest              (cmt_wdest),
+  .wdata              (cmt_wdata)
+);
 
+DifftestArchIntRegState DifftestArchIntRegState (
+  .clock              (clk),
+  .coreid             (0),
+  .gpr_0              (from_wb_reg_f[0]),
+  .gpr_1              (from_wb_reg_f[1]),
+  .gpr_2              (from_wb_reg_f[2]),
+  .gpr_3              (from_wb_reg_f[3]),
+  .gpr_4              (from_wb_reg_f[4]),
+  .gpr_5              (from_wb_reg_f[5]),
+  .gpr_6              (from_wb_reg_f[6]),
+  .gpr_7              (from_wb_reg_f[7]),
+  .gpr_8              (from_wb_reg_f[8]),
+  .gpr_9              (from_wb_reg_f[9]),
+  .gpr_10             (from_wb_reg_f[10]),
+  .gpr_11             (from_wb_reg_f[11]),
+  .gpr_12             (from_wb_reg_f[12]),
+  .gpr_13             (from_wb_reg_f[13]),
+  .gpr_14             (from_wb_reg_f[14]),
+  .gpr_15             (from_wb_reg_f[15]),
+  .gpr_16             (from_wb_reg_f[16]),
+  .gpr_17             (from_wb_reg_f[17]),
+  .gpr_18             (from_wb_reg_f[18]),
+  .gpr_19             (from_wb_reg_f[19]),
+  .gpr_20             (from_wb_reg_f[20]),
+  .gpr_21             (from_wb_reg_f[21]),
+  .gpr_22             (from_wb_reg_f[22]),
+  .gpr_23             (from_wb_reg_f[23]),
+  .gpr_24             (from_wb_reg_f[24]),
+  .gpr_25             (from_wb_reg_f[25]),
+  .gpr_26             (from_wb_reg_f[26]),
+  .gpr_27             (from_wb_reg_f[27]),
+  .gpr_28             (from_wb_reg_f[28]),
+  .gpr_29             (from_wb_reg_f[29]),
+  .gpr_30             (from_wb_reg_f[30]),
+  .gpr_31             (from_wb_reg_f[31])
+);
+/*
+DifftestTrapEvent DifftestTrapEvent(
+  .clock              (clk),
+  .coreid             (0),
+ // .valid              (trap),
+ .valid              (wb_ebreak_flag),
+ // .code               (trap_code),
+  .pc                 (diff_pc)
+ // .cycleCnt           (cycleCnt),
+ // .instrCnt           (instrCnt)
+);
+*/
+DifftestCSRState DifftestCSRState(
+  .clock              (clk),
+  .coreid             (0),
+  .priviledgeMode     (`RISCV_PRIV_MODE_M),
+  .mstatus            (0),
+  .sstatus            (0),
+  .mepc               (0),
+  .sepc               (0),
+  .mtval              (0),
+  .stval              (0),
+  .mtvec              (0),
+  .stvec              (0),
+  .mcause             (0),
+  .scause             (0),
+  .satp               (0),
+  .mip                (0),
+  .mie                (0),
+  .mscratch           (0),
+  .sscratch           (0),
+  .mideleg            (0),
+  .medeleg            (0)
+);
 
-
-
-
-
-
-
-
-
-
-
-//wire [3:0]axi_ar_id_o2;
-
-
-
-//wire axi_r_ready_o2;
-
-//wire r_done2;
-//wire cache_axi_req;
-//wire [3:0] send_axi_ar_id;
-//wire axi_burst;
-//wire [63:0] axi_r_addr;
-
-
-
+DifftestArchFpRegState DifftestArchFpRegState(
+  .clock              (clk),
+  .coreid             (0),
+  .fpr_0              (0),
+  .fpr_1              (0),
+  .fpr_2              (0),
+  .fpr_3              (0),
+  .fpr_4              (0),
+  .fpr_5              (0),
+  .fpr_6              (0),
+  .fpr_7              (0),
+  .fpr_8              (0),
+  .fpr_9              (0),
+  .fpr_10             (0),
+  .fpr_11             (0),
+  .fpr_12             (0),
+  .fpr_13             (0),
+  .fpr_14             (0),
+  .fpr_15             (0),
+  .fpr_16             (0),
+  .fpr_17             (0),
+  .fpr_18             (0),
+  .fpr_19             (0),
+  .fpr_20             (0),
+  .fpr_21             (0),
+  .fpr_22             (0),
+  .fpr_23             (0),
+  .fpr_24             (0),
+  .fpr_25             (0),
+  .fpr_26             (0),
+  .fpr_27             (0),
+  .fpr_28             (0),
+  .fpr_29             (0),
+  .fpr_30             (0),
+  .fpr_31             (0)
+);
 
 endmodule

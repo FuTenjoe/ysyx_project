@@ -24,10 +24,10 @@ always @(*) begin
         `IMM_GEN_U: 
              imm = {{32{inst[31]}},inst[31:12],12'b0};
         `IMM_GEN_SRAI:
-             imm = inst[25:20];
+             imm ={{58{1'b0}},inst[25:20]};
         `IMM_GEN_CSRRSI:
-             imm = inst[19:15];
-          default :imm = {{25{inst[31]}},inst[6:0]};
+             imm = {{59{1'b0}},inst[19:15]};
+          default :imm = {{57{inst[31]}},inst[6:0]};
     endcase
 end
 

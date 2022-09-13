@@ -17,10 +17,10 @@ module i_cache (
 	input [63:0] mem_data_read,
 	input mem_ready,
 	input mem_done,
-	output reg [310:0] cache_data[0:127],
+	//output reg [310:0] cache_data[0:127],
 	input control_rest
 );
-
+reg [310:0] cache_data[0:127];
 parameter IDLE= 0,CompareTag = 1, Allocate = 2,CompareTag2 = 3;
 parameter V= 310;
 parameter TagMSB = 309, TagLSB= 256, BlockMSB =255, BlockLSB = 0;
@@ -142,7 +142,7 @@ always@(*)begin
 		endcase
 	end
 	else begin
-		way = way;
+		way = 1'b0;
 	end
 end
 
@@ -153,9 +153,8 @@ reg [3:0] count;
 
 always@(posedge clk)begin
 if(!rst_n)begin
-	count <= 1'b0;
+	count <= 4'b0;
 	//shift_ready <= 1'd0;
-	
 end
 else begin
 	if(state==Allocate)begin                           //load new block from memory to cache
@@ -168,16 +167,16 @@ else begin
 		end
 		else begin
 			if(!dd_r_done && mem_ready)begin
-				if(count ==3'd3)begin
+				if(count == 4'd3)begin
 					mem_req_valid<=1'b0;
-					cache_data[2*cpu_req_index+way][310:192] <= {1'b1,delay_cpu_req_tag,mem_data_read};
+					cache_data[2*cpu_req_index + {{6{1'b0}},way}][310:192] <= {1'b1,delay_cpu_req_tag,mem_data_read};
 					count <= 4'd0;
 					//shift_ready <= 1'd1;
 					
 				end
 				else begin
 					mem_req_valid<=1'b0;
-					cache_data[2*cpu_req_index+way][64*count+:64] <= {mem_data_read};
+					cache_data[2*cpu_req_index + {{6{1'b0}},way}][64*count+:64] <= {mem_data_read};
 					count <= count + 1'b1;
 					//shift_ready <= shift_ready;
 				end
@@ -195,5 +194,5 @@ else begin
 	end
 end
 end
-wire shift_ready = (count == 3'd3) ? 1'b1: 1'b0;
+wire shift_ready = (count == 4'd3) ? 1'b1: 1'b0;
 endmodule

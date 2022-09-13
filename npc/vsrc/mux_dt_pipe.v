@@ -72,7 +72,7 @@ always@(*)begin
                     reg2_rdata = 64'd0;
                 end
                 4'd2:begin
-                    reg1_rdata = from_ex_alu_res[31:0];            //addw错误
+                    reg1_rdata = {{32{1'b0}},from_ex_alu_res[31:0]};            //addw错误
                     reg2_rdata = 64'd0;
                 end
                 4'd3:begin

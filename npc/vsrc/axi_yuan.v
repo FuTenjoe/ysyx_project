@@ -1,16 +1,16 @@
 `include "../vsrc/rvseed_defines.v"
 
-module axi_yuan # (
+module axi # (
     parameter RW_DATA_WIDTH     = 64,
-    parameter RW_ADDR_WIDTH     = 32,
+    parameter RW_ADDR_WIDTH     = 64,
     parameter AXI_DATA_WIDTH    = 64,
-    parameter AXI_ADDR_WIDTH    = 32,
+    parameter AXI_ADDR_WIDTH    = 64,
     parameter AXI_ID_WIDTH      = 4,
     parameter AXI_STRB_WIDTH    = AXI_DATA_WIDTH/8,
     parameter AXI_USER_WIDTH    = 1
 )(
     input                               clock,
-    input                               reset_n,
+    input                               reset,
 
 	input                               rw_valid_i,         //IF&MEM输入信号
 //	output                              rw_ready_o,         //IF&MEM输入信号
@@ -22,6 +22,8 @@ module axi_yuan # (
     input  [7:0]                        rw_size_i,          //IF&MEM输入信号
     input rw_burst,
     input [63:0] ww_addr_i,
+
+
 
     // Advanced eXtensible Interface
     input                               axi_aw_ready_i,    //从设备已准备好接收地址和相关的控制信号          
@@ -57,11 +59,11 @@ module axi_yuan # (
  //   output [2:0]                        axi_ar_prot_o,
     output [AXI_ID_WIDTH-1:0]           axi_ar_id_o,         //加id
  //   output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
-    output [2:0]                        axi_ar_len_o,    //突发长度  设置为64
-    output [7:0]                        axi_ar_size_o,   //突发大小  设置为4
+    output [7:0]                        axi_ar_len_o,    //突发长度  设置为64
+    output [2:0]                        axi_ar_size_o,   //突发大小  设置为4
     output [1:0]                        axi_ar_burst_o,  //突发传输类型01，地址加INCR
  //   output                              axi_ar_lock_o,
-    output [3:0]                        axi_ar_cache_o,  //存储器类型 01为ICACHE，
+  //  output [3:0]                        axi_ar_cache_o,  //存储器类型 01为ICACHE，
  //   output [3:0]                        axi_ar_qos_o,
  //   output [3:0]                        axi_ar_region_o,
     
@@ -71,7 +73,7 @@ module axi_yuan # (
     input  [AXI_DATA_WIDTH-1:0]         axi_r_data_i,
     input                               axi_r_last_i,
     output r_done,
-    output ar_hs,
+   // output ar_hs,
     input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,      //加id
  //   input  [AXI_USER_WIDTH-1:0]         axi_r_user_i   //用户定义信号，可选
 
@@ -89,7 +91,7 @@ module axi_yuan # (
     wire aw_hs = axi_aw_ready_i & axi_aw_valid_o;  //写地址
     wire w_hs = axi_w_ready_i & axi_w_valid_o;  //写数据
     assign b_hs = axi_b_ready_o & axi_b_valid_i;  //写请求
-    assign ar_hs = axi_ar_ready_i & axi_ar_valid_o;  //读地址
+    wire ar_hs = axi_ar_ready_i & axi_ar_valid_o;  //读地址
     wire r_hs = axi_r_ready_o & axi_r_valid_i;  //读数据 
 
     assign w_done = w_hs & axi_w_last_o;  //写数据完标志
@@ -106,7 +108,7 @@ module axi_yuan # (
     wire r_state_idle = r_state == R_STATE_IDLE, r_state_addr = r_state == R_STATE_ADDR, r_state_read  = r_state == R_STATE_READ;
     // 写通道状态切换
     always @(posedge clock) begin
-        if (!reset_n) begin
+        if (reset) begin
             w_state <= W_STATE_IDLE;
         end
         else begin
@@ -121,7 +123,7 @@ module axi_yuan # (
 
     // 读通道状态切换
     always @(posedge clock) begin
-        if (!reset_n) begin
+        if (reset) begin
             r_state <= R_STATE_IDLE;
         end
         else begin
@@ -164,8 +166,14 @@ module axi_yuan # (
     assign axi_ar_addr_o    = rw_addr_i;
     assign axi_ar_id_o = axi_r_id_i;
 
-    assign axi_ar_len_o     = rw_burst ? 3'd4: 3'd1;                                                                          
-    assign axi_ar_size_o    = 8'd64;
+    //wire [7:0] axi_len      = aligned ? TRANS_LEN - 1 : {{7{1'b0}}, overstep};
+ //wire [7:0] axi_len      = aligned ? TRANS_LEN - 1 : {{7{1'b0}}, overstep};
+   // wire [2:0] axi_size     = AXI_SIZE[2:0];
+
+
+    //assign axi_ar_len_o     = rw_burst ? AXI_SIZE[2:0] +1'b1 : 8'd1 ;         
+    assign axi_ar_len_o     = rw_burst ? 8'd1 : 8'd0 ;                                                                          
+    assign axi_ar_size_o    = rw_burst ? 3'd4 : 3'd1;   //传输字节数
     assign axi_ar_burst_o   = `AXI_BURST_TYPE_INCR;
    
     // Read data channel signals
@@ -177,7 +185,7 @@ module axi_yuan # (
   
        
 always @(posedge clock) begin
-    if (!reset_n) begin
+    if (reset) begin
         data_read_o[AXI_DATA_WIDTH-1:0] <= 0;
     end
     else if (axi_r_ready_o & axi_r_valid_i) begin 

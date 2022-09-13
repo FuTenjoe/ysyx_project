@@ -30,7 +30,7 @@ reg div_signed;
 reg alu_sec;
 wire [63:0] div_res; 
 reg div64_valid;
-wire [63:0] div_res32;
+wire [31:0] div_res32;
 wire [63:0] div_res64;
 wire div_finish32;
 wire div_finish64;
@@ -50,7 +50,7 @@ always @(*) begin
         `ALU_ADD: begin  //0011
         if(rd_flag == 3'd0)begin
             alu_res = (alu_src1 +  alu_src2);
-            alu_res = alu_res[31:0];
+            alu_res = {{32{1'b0}},alu_res[31:0]};
             //test = 3'd3;
         end
    /*     else if(rd_flag == 3'd1)
@@ -110,11 +110,11 @@ always @(*) begin
         end
         `ALU_SLTU:begin//1001
             if(alu_src1 < alu_src2)begin
-                alu_res = 32'd1;
+                alu_res = 64'd1;
                // test = 3'd7;
             end
             else begin
-                 alu_res = 32'd0;
+                 alu_res = 64'd0;
                  //test = 3'd6;
             end
         end
@@ -122,17 +122,17 @@ always @(*) begin
             signed_alu_src1 = $signed (alu_src1);
             signed_alu_src2 = $signed (alu_src2);
             if(signed_alu_src1<signed_alu_src2)
-                alu_res = 32'd1;
+                alu_res = 64'd1;
             else
-                 alu_res = 32'd0;
+                 alu_res = 64'd0;
         end
         `ALU_SRA: begin   //算术右移
             if(rd_flag == 3'd0)
                 alu_res = ($signed(alu_src1))>>>alu_src2;
             else if(rd_flag == 3'd1)  //sraiw
-                alu_res = ($signed(alu_src1[31:0]))>>>alu_src2;
+                alu_res = {{32{alu_src1[31]}},($signed(alu_src1[31:0]))>>>alu_src2};
             else if(rd_flag == 3'd3)  //sraw
-                alu_res = ($signed(alu_src1[31:0]))>>>alu_src2[4:0];
+                alu_res = {{32{alu_src1[31]}},($signed(alu_src1[31:0]))>>>alu_src2[4:0]};
             else
                  alu_res = alu_res;
         end
@@ -140,9 +140,9 @@ always @(*) begin
             if(rd_flag == 3'd0)
                 alu_res = alu_src1 >> alu_src2;
             else if(rd_flag == 3'd1)  //sraiw
-                alu_res = alu_src1[31:0] >> alu_src2;
+                alu_res = {{32{1'b0}},alu_src1[31:0] >> alu_src2};
             else if(rd_flag == 3'd2)  //srlw
-                alu_res = alu_src1[31:0] >> alu_src2[4:0];
+                alu_res = {{32{1'b0}},alu_src1[31:0] >> alu_src2[4:0]};
             else
                 alu_res = alu_res;
         end
@@ -151,7 +151,7 @@ always @(*) begin
         end
         `ALU_SLLW:begin
                 alu_res = alu_src1 <<  alu_src2;
-                alu_res = alu_res[31:0];
+                alu_res = {{32{1'b0}},alu_res[31:0]};
         end
         `ALU_SLLI:
                 alu_res = alu_src1 <<  alu_src2;
@@ -191,8 +191,8 @@ always @(*) begin
                 //alu_res = alu_src1[31:0] / alu_src2[31:0];
         end
         `ALU_DIVYW:begin
-                signed_alu_src1 = $signed (alu_src1[31:0]);
-                signed_alu_src2 = $signed (alu_src2[31:0]);
+                signed_alu_src1 = {{32{alu_src1[31]}},$signed (alu_src1[31:0])};
+                signed_alu_src2 = {{32{alu_src2[31]}},$signed (alu_src2[31:0])};
                 //alu_res = signed_alu_src1[31:0] % signed_alu_src2[31:0] ;    //不确定 */
                 div32_valid = 1'b1;
                 div_signed = 1'b1;
@@ -202,11 +202,11 @@ always @(*) begin
             if(rd_flag == 3'd1)
                 alu_res = alu_src2[63:0];
             else if(rd_flag == 3'd2)
-                alu_res = alu_src2[15:0];
+                alu_res = {{48{1'b0}},alu_src2[15:0]};
             else if(rd_flag == 3'd3)
-                 alu_res = alu_src2[7:0];
+                 alu_res = {{56{1'b0}},alu_src2[7:0]};
             else if(rd_flag == 3'd4)
-                alu_res = alu_src2[31:0];
+                alu_res = {{32{1'b0}},alu_src2[31:0]};
             else 
                 alu_res = alu_res;
         end
@@ -224,7 +224,7 @@ always @(*) begin
 end
 
 wire [63:0] alu_res2;
-assign alu_res2 = div32_valid ? (div_finish32 ? div_res32 : delay_div_res32): (div64_valid ? (div_finish64 ? div_res64: delay_div_res64) :((mul_valid) ? ((sh_fnsh_flag)? mul_res : delay_mul_res) : alu_res)) ;
+assign alu_res2 = div32_valid ? (div_finish32 ? {{32{1'b0}},div_res32} : {{32{1'b0}},delay_div_res32}): (div64_valid ? (div_finish64 ? div_res64: delay_div_res64) :((mul_valid) ? ((sh_fnsh_flag)? mul_res[63:0] : delay_mul_res[63:0]) : alu_res)) ;
 
 reg [129:0] delay_mul_res;
 reg delay_sh_fg;
@@ -254,7 +254,7 @@ always @(*) begin
             alu_res_ex_sign = {{32{alu_res2[31]}},alu_res2[31:0]};   //lw  addw  divw
         end
         4'd2:begin
-            alu_res_ex_sign = alu_res2[31:0];            //addw错误
+            alu_res_ex_sign = {{32{1'b0}},alu_res2[31:0]};            //addw错误
         end
         4'd3:begin
             alu_res_ex_sign = {{48{ alu_res2[15]}}, alu_res2[15:0]}; //lh
@@ -292,6 +292,9 @@ div #(.N(32),
       .div_valid(div32_valid) ,  //数据使能
       .dividend(alu_src1[31:0]),   //被除数
       .divisor(alu_src2[31:0]),    //除数
+
+      .div_sign(1'b0),    //????
+
       .alu_sec(alu_sec),
 
       .res_rdy(div_finish32) ,
@@ -311,6 +314,9 @@ div #(.N(64),
       .div_valid(div64_valid) ,  //数据使能
       .dividend(alu_src1[63:0]),   //被除数
       .divisor(alu_src2[63:0]),    //除数
+
+      .div_sign(1'b0),  //????
+
       .alu_sec(alu_sec),
 
       .res_rdy(div_finish64) ,

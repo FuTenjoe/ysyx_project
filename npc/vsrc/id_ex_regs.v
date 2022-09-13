@@ -76,7 +76,7 @@ module id_ex_regs(
 
 always@(posedge clk or negedge rst_n)begin
 		if(!rst_n)begin
-			pc_id_ex_o <= 32'h8000_0000;
+			pc_id_ex_o <= 64'h8000_0000;
 			
 			reg_wen_id_ex_o <= 1'd0;
 			reg_waddr_id_ex_o <= 5'd0;
@@ -96,7 +96,7 @@ always@(posedge clk or negedge rst_n)begin
 			alu_src1_id_ex_o <= 64'd0;   // alu source 1
     		alu_src2_id_ex_o <= 64'd0;    // alu source 2
     		rest_id_mem_id_ex_o <= 1'd0;
-			ex_inst <= 32'd0;
+			ex_inst <= 64'd0;
 			
 			cunqu_hazard_id_ex_o <= 1'd0;
 			id_mul_id_ex_o <= 1'd0;

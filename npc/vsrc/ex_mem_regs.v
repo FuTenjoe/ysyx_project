@@ -79,7 +79,7 @@ module ex_mem_regs(
 			alu_src2_ex_mem_o <= 64'd0;
 			from_ex_alu_res_ex_mem_o <= 64'd0;
 			
-			pc_ex_mem_o <= 32'h8000_0000;
+			pc_ex_mem_o <= 64'h8000_0000;
 			rest_id_mem_ex_mem_o <= 1'b0;
 			
 			cunqu_hazard_ex_mem_o <= 1'd0;
