@@ -671,7 +671,7 @@ DifftestTrapEvent DifftestTrapEvent(
  // .cycleCnt           (cycleCnt),
  // .instrCnt           (instrCnt)
 );
-*/
+
 DifftestCSRState DifftestCSRState(
   .clock              (clk),
   .coreid             (0),
