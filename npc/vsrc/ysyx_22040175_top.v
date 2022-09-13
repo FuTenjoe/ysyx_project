@@ -254,9 +254,9 @@ u_axi_slave2(
     .axi_b_valid_o(axi_b_valid_i)
 );
 */
-axi_yuan u_axi_rw (
+axi u_axi_rw (
         .clock                          (clk),
-        .reset                          (rst),
+        .rst                          (rst),
         .rw_valid_i                     (axi_valid | waxi_valid),
         //.rw_ready_o                     (if_ready),
         .rw_req_i                       (cache_axi_req),
