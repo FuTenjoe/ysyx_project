@@ -8,62 +8,7 @@ module ysyx_22040175_top(
     output[31:0]        pc,
     output [31:0]                 inst,
     input time_set,
-/*    input  [63:0]                       io_logCtrl_log_begin,
-    input  [63:0]                       io_logCtrl_log_end,
-    input  [63:0]                       io_logCtrl_log_level,
-    input                               io_perfInfo_clean,
-    input                               io_perfInfo_dump,
 
-    output                              io_uart_out_valid,
-    output [7:0]                        io_uart_out_ch,
-    output                              io_uart_in_valid,
-    input  [7:0]                        io_uart_in_ch,
-
-    input                               `AXI_TOP_INTERFACE(aw_ready),
-    output                              `AXI_TOP_INTERFACE(aw_valid),
-    output [`AXI_ADDR_WIDTH-1:0]        `AXI_TOP_INTERFACE(aw_bits_addr),
-    output [2:0]                        `AXI_TOP_INTERFACE(aw_bits_prot),
-    output [`AXI_ID_WIDTH-1:0]          `AXI_TOP_INTERFACE(aw_bits_id),
-    output [`AXI_USER_WIDTH-1:0]        `AXI_TOP_INTERFACE(aw_bits_user),
-    output [7:0]                        `AXI_TOP_INTERFACE(aw_bits_len),
-    output [2:0]                        `AXI_TOP_INTERFACE(aw_bits_size),
-    output [1:0]                        `AXI_TOP_INTERFACE(aw_bits_burst),
-    output                              `AXI_TOP_INTERFACE(aw_bits_lock),
-    output [3:0]                        `AXI_TOP_INTERFACE(aw_bits_cache),
-    output [3:0]                        `AXI_TOP_INTERFACE(aw_bits_qos),
-    
-    input                               `AXI_TOP_INTERFACE(w_ready),
-    output                              `AXI_TOP_INTERFACE(w_valid),
-    output [`AXI_DATA_WIDTH-1:0]        `AXI_TOP_INTERFACE(w_bits_data)         [3:0],
-    output [`AXI_DATA_WIDTH/8-1:0]      `AXI_TOP_INTERFACE(w_bits_strb),
-    output                              `AXI_TOP_INTERFACE(w_bits_last),
-    
-    output                              `AXI_TOP_INTERFACE(b_ready),
-    input                               `AXI_TOP_INTERFACE(b_valid),
-    input  [1:0]                        `AXI_TOP_INTERFACE(b_bits_resp),
-    input  [`AXI_ID_WIDTH-1:0]          `AXI_TOP_INTERFACE(b_bits_id),
-    input  [`AXI_USER_WIDTH-1:0]        `AXI_TOP_INTERFACE(b_bits_user),
-
-    input                               `AXI_TOP_INTERFACE(ar_ready),
-    output                              `AXI_TOP_INTERFACE(ar_valid),
-    output [`AXI_ADDR_WIDTH-1:0]        `AXI_TOP_INTERFACE(ar_bits_addr),
-    output [2:0]                        `AXI_TOP_INTERFACE(ar_bits_prot),
-    output [`AXI_ID_WIDTH-1:0]          `AXI_TOP_INTERFACE(ar_bits_id),
-    output [`AXI_USER_WIDTH-1:0]        `AXI_TOP_INTERFACE(ar_bits_user),
-    output [7:0]                        `AXI_TOP_INTERFACE(ar_bits_len),
-    output [2:0]                        `AXI_TOP_INTERFACE(ar_bits_size),
-    output [1:0]                        `AXI_TOP_INTERFACE(ar_bits_burst),
-    output                              `AXI_TOP_INTERFACE(ar_bits_lock),
-    output [3:0]                        `AXI_TOP_INTERFACE(ar_bits_cache),
-    output [3:0]                        `AXI_TOP_INTERFACE(ar_bits_qos),
-    
-    output                              `AXI_TOP_INTERFACE(r_ready),
-    input                               `AXI_TOP_INTERFACE(r_valid),
-    input  [1:0]                        `AXI_TOP_INTERFACE(r_bits_resp),
-    input  [`AXI_DATA_WIDTH-1:0]        `AXI_TOP_INTERFACE(r_bits_data)         [3:0],
-    input                               `AXI_TOP_INTERFACE(r_bits_last),
-    input  [`AXI_ID_WIDTH-1:0]          `AXI_TOP_INTERFACE(r_bits_id),
-    input  [`AXI_USER_WIDTH-1:0]        `AXI_TOP_INTERFACE(r_bits_user)*/
     output [`CPU_WIDTH-1:0]       unknown_code,
     output[31:0]        diff_pc,
     output [31:0] diff_delay_pc 
@@ -118,7 +63,7 @@ module ysyx_22040175_top(
     wire [`AXI_ID_WIDTH-1:0] r_id;
     wire [`AXI_USER_WIDTH-1:0] r_user;
 
-//    assign ar_ready                                 = `AXI_TOP_INTERFACE(ar_ready);
+/*    assign ar_ready                                 = `AXI_TOP_INTERFACE(ar_ready);
     assign `AXI_TOP_INTERFACE(ar_valid)             = ar_valid;
     assign `AXI_TOP_INTERFACE(ar_bits_addr)         = ar_addr;
     assign `AXI_TOP_INTERFACE(ar_bits_prot)         = ar_prot;
@@ -138,6 +83,7 @@ module ysyx_22040175_top(
  //   assign r_last                                   = `AXI_TOP_INTERFACE(r_bits_last);
   //  assign r_id                                     = `AXI_TOP_INTERFACE(r_bits_id);
  //   assign r_user                                   = `AXI_TOP_INTERFACE(r_bits_user);
+ */
 
 axi_yuan u_axi_rw (
         .clock                          (clk),
