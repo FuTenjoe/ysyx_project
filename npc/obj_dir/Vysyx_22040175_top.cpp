@@ -14,6 +14,7 @@ Vysyx_22040175_top::Vysyx_22040175_top(VerilatedContext* _vcontextp__, const cha
     , clk{vlSymsp->TOP.clk}
     , rst{vlSymsp->TOP.rst}
     , pc{vlSymsp->TOP.pc}
+    , inst{vlSymsp->TOP.inst}
     , time_set{vlSymsp->TOP.time_set}
     , unknown_code{vlSymsp->TOP.unknown_code}
     , diff_pc{vlSymsp->TOP.diff_pc}

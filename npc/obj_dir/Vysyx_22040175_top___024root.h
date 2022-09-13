@@ -23,6 +23,7 @@ VL_MODULE(Vysyx_22040175_top___024root) {
     VL_IN8(rst,0,0);
     VL_IN8(time_set,0,0);
     VL_OUT(pc,31,0);
+    VL_OUT(inst,31,0);
     VL_OUT(diff_pc,31,0);
     VL_OUT(diff_delay_pc,31,0);
     VL_OUT64(unknown_code,63,0);

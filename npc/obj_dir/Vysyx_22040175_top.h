@@ -31,6 +31,7 @@ class Vysyx_22040175_top VL_NOT_FINAL {
     VL_IN8(&clk,0,0);
     VL_IN8(&rst,0,0);
     VL_OUT(&pc,31,0);
+    VL_OUT(&inst,31,0);
     VL_IN8(&time_set,0,0);
     VL_OUT64(&unknown_code,63,0);
     VL_OUT(&diff_pc,31,0);
