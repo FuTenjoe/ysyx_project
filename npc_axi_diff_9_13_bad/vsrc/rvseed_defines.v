@@ -220,8 +220,8 @@
 `define SIZE_W              2'b10
 `define SIZE_D              2'b11
 
-`define REQ_READ            1'b0
-`define REQ_WRITE           1'b1
+//`define REQ_READ            1'b0
+//`define REQ_WRITE           1'b1
 
 `define RISCV_PRIV_MODE_U   0
 `define RISCV_PRIV_MODE_S   1
