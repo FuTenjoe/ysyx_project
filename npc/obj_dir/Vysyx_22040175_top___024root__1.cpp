@@ -6032,13 +6032,16 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
             = Vysyx_22040175_top__ConstPool__TABLE_f1dff6ef_0
             [__Vtableidx7];
     }
-    vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__dd_r_ready_o2 
-        = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n) 
-           & (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__d_r_ready_o2));
-    vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__dd_ar_id_o 
-        = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n)
-            ? (IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__axi_ar_id_o)
-            : 0U);
+    if (vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n) {
+        vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__dd_ar_id_o 
+            = vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__axi_ar_id_o;
+        vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__dd_r_ready_o2 
+            = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__d_r_ready_o2) 
+               & 1U);
+    } else {
+        vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__dd_ar_id_o = 0U;
+        vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__dd_r_ready_o2 = 0U;
+    }
     __Vtableidx10 = ((((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_hs) 
                        & (IData)(vlSelf->ysyx_22040175_top__DOT__r_last)) 
                       << 6U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__ar_hs) 
@@ -12621,13 +12624,16 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
                                                   == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__w_state))) 
                                               & (2U 
                                                  == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__w_state)));
-    vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__d_r_ready_o2 
-        = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n) 
-           & (IData)(vlSelf->ysyx_22040175_top__DOT__axi_r_ready_o2));
-    vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__axi_ar_id_o 
-        = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n)
-            ? (IData)(vlSelf->ysyx_22040175_top__DOT__axi_ar_id_o2)
-            : 0U);
+    if (vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n) {
+        vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__axi_ar_id_o 
+            = vlSelf->ysyx_22040175_top__DOT__r_id;
+        vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__d_r_ready_o2 
+            = ((2U == (IData)(vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_state)) 
+               & 1U);
+    } else {
+        vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__axi_ar_id_o = 0U;
+        vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__d_r_ready_o2 = 0U;
+    }
     if (vlSelf->rst) {
         Vysyx_22040175_top___024root____Vdpiimwrap_ysyx_22040175_top__DOT__u_axi_slave2__DOT__pmem_read_TOP(0x80000000ULL, __Vtask_ysyx_22040175_top__DOT__u_axi_slave2__DOT__pmem_read__5__rdata);
         vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__rdata 
@@ -12709,10 +12715,10 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__4(Vysyx_22040175
     vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__count 
         = __Vdly__ysyx_22040175_top__DOT__u_axi_slave2__DOT__count;
     vlSelf->ysyx_22040175_top__DOT__r_data = __Vdly__ysyx_22040175_top__DOT__r_data;
-    vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_state 
-        = __Vdly__ysyx_22040175_top__DOT__u_axi_rw__DOT__r_state;
     vlSelf->ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_state 
         = __Vdly__ysyx_22040175_top__DOT__u_axi_slave2__DOT__r_state;
+    vlSelf->ysyx_22040175_top__DOT__u_axi_rw__DOT__r_state 
+        = __Vdly__ysyx_22040175_top__DOT__u_axi_rw__DOT__r_state;
     vlSelf->ysyx_22040175_top__DOT__axi_r_addr = ((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__rst_n)
                                                    ? 
                                                   ((4U 

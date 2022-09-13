@@ -38,8 +38,10 @@ cpu u_cpu(
 
 
     .r_done2(r_done2),
-    .axi_r_ready_o2(r_ready),   //总线变化
-    .axi_ar_id_o2(ar_id),   //
+    .axi_r_ready_o2(axi_r_ready_o2),   //总线变化
+    .axi_ar_id_o2(axi_ar_id_o2),   //
+    //.axi_r_ready_o2(r_ready),   //总线变化
+   // .axi_ar_id_o2(ar_id),   //
     .rdata(rdata),
     .w_done(w_done),
     .b_hs(b_hs)
@@ -47,17 +49,6 @@ cpu u_cpu(
 );
 
 
-//wire[63:0] axi_r_addr,
-//wire axi_burst,
-//wire [3:0] send_axi_ar_id,
-//wire cache_axi_req,
-
-
-
-
-//wire r_done2,
-//wire axi_r_ready_o2,
-//wire [3:0]axi_ar_id_o2
 wire axi_valid;
 wire waxi_valid;
 
@@ -165,7 +156,7 @@ wire aw_ready;
 
 
 
-/*
+
 axi_yuan # (
 )
 u_axi2(
@@ -253,23 +244,9 @@ u_axi_slave2(
     .axi_b_ready_i(axi_b_ready_o),                
     .axi_b_valid_o(axi_b_valid_i)
 );
-*/
 
+/*
 axi_yuan u_axi_rw (
-    /*    .clock                          (clk),
-        .reset_n                          (rst_n),
-        .rw_valid_i                     (axi_valid | waxi_valid),
-        //.rw_ready_o                     (if_ready),
-        .rw_req_i                       (cache_axi_req),
-        .data_read_o                    (rdata),
-        //.data_write_i                   (reg_write_data),
-        .rw_w_data_i                    (reg_write_data),
-        .rw_addr_i                      (axi_r_addr),
-
-        .rw_mask                      (reg_write_wmask),
-        .rw_burst(axi_burst),
-        .ww_addr_i(reg_write_addr),
-        //.rw_resp_o                      (if_resp),*/
         .clock(clk),
         .reset_n(rst_n),
         .rw_req_i(cache_axi_req),
@@ -377,5 +354,5 @@ u_axi_slave2(
     .axi_b_valid_o(b_valid)
 
 );
-
+*/
 endmodule

@@ -1829,7 +1829,7 @@ VL_INLINE_OPT void Vysyx_22040175_top___024root___sequent__TOP__11(Vysyx_2204017
                      << 0xaU) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__mem_req_valid) 
                                   << 9U) | (((IData)(vlSelf->ysyx_22040175_top__DOT__u_cpu__DOT__u_if_stage__DOT__cpu_ready) 
                                              << 8U) 
-                                            | (((IData)(vlSelf->ysyx_22040175_top__DOT__axi_ar_id_o2) 
+                                            | (((IData)(vlSelf->ysyx_22040175_top__DOT__r_id) 
                                                 << 4U) 
                                                | (((IData)(vlSelf->ysyx_22040175_top__DOT__r_done2) 
                                                    << 3U) 
