@@ -111,22 +111,12 @@
 `define ALU_DIVW `ALU_OP_WIDTH'b10100 //32位除
 `define ALU_DIVYW `ALU_OP_WIDTH'b10101  //32位取余数
 `define ALU_MEM `ALU_OP_WIDTH'b10110   //专用于sd,sh,sb,sw
-`define ALU_DIV `ALU_OP_WIDTH'b10111  //有符号64位除
-`define ALU_CSRRS `ALU_OP_WIDTH'b11000  //csrrs
-`define ALU_CSRRW `ALU_OP_WIDTH'b11001  //csrrw
-`define ALU_ECALL `ALU_OP_WIDTH'b11010  //ecall
-`define ALU_MRET `ALU_OP_WIDTH'b11011 //mret
-
-
 // ALU select soure
-`define ALU_SRC_WIDTH 3
-`define ALU_SRC_REG     `ALU_SRC_WIDTH'b000 // src1 = reg1, src2 = reg2
-`define ALU_SRC_IMM     `ALU_SRC_WIDTH'b001 // src1 = reg1, src2 = imm
-`define ALU_SRC_FOUR_PC `ALU_SRC_WIDTH'b010 // src1 = 4,    src2 = pc
-`define ALU_SRC_IMM_PC  `ALU_SRC_WIDTH'b011 // src1 = imm,  src2 = pc
-`define ALU_SRC_CSRRS   `ALU_SRC_WIDTH'b100 //src1=reg1,    src2=csr
-`define ALU_SRC_ECALL   `ALU_SRC_WIDTH'b101  //src1=reg1,src2=reg2
-`define ALU_SRC_CSRRSI   `ALU_SRC_WIDTH'b110
+`define ALU_SRC_WIDTH 2
+`define ALU_SRC_REG     `ALU_SRC_WIDTH'b00 // src1 = reg1, src2 = reg2
+`define ALU_SRC_IMM     `ALU_SRC_WIDTH'b01 // src1 = reg1, src2 = imm
+`define ALU_SRC_FOUR_PC `ALU_SRC_WIDTH'b10 // src1 = 4,    src2 = pc
+`define ALU_SRC_IMM_PC  `ALU_SRC_WIDTH'b11 // src1 = imm,  src2 = pc
 
 // IMM GEN opcode
 `define IMM_GEN_OP_WIDTH 3
@@ -136,7 +126,6 @@
 `define IMM_GEN_J `IMM_GEN_OP_WIDTH'b011
 `define IMM_GEN_U `IMM_GEN_OP_WIDTH'b100
 `define IMM_GEN_SRAI `IMM_GEN_OP_WIDTH'b101 
-`define IMM_GEN_CSRRSI `IMM_GEN_OP_WIDTH'b110
 
 
 //流水
@@ -200,12 +189,11 @@
 `define REQ_WRITE           1'b1
 
 
-`timescale 1ns / 1ps
-
 `define ZERO_WORD  64'h00000000_00000000
 `define PC_START   64'h00000000_80000000  
 `define REG_BUS    63 : 0     
 `define INST_ADD   8'h11
+
 
 `define AXI_ADDR_WIDTH      64
 `define AXI_DATA_WIDTH      64
@@ -217,11 +205,6 @@
 `define SIZE_W              2'b10
 `define SIZE_D              2'b11
 
-//`define REQ_READ            1'b0
-//`define REQ_WRITE           1'b1
-
 `define RISCV_PRIV_MODE_U   0
 `define RISCV_PRIV_MODE_S   1
 `define RISCV_PRIV_MODE_M   3
-
-

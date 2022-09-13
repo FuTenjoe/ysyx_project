@@ -18,8 +18,11 @@ module if_id_regs(
 	input id_mul,
 	input sh_fnsh_flag,
 	input id_div,
-	input div_finish
-	//input inst_use
+	input div_finish,
+	input delay_r_done_if_id_i,
+    output delay_r_done_if_id_o
+	
+	
     );
 
 always@(posedge clk or negedge rst_n)begin
@@ -28,7 +31,7 @@ always@(posedge clk or negedge rst_n)begin
 		instr_if_id_o<= instr_if_id_i;
 		ena_if_id_o <= 1'd0;
 		time_set_if_id_o <= 1'd0;
-		
+		delay_r_done_if_id_o <= 1'd0;
 	end
 	else if(id_mul)begin
 		if(sh_fnsh_flag == 1'b0)begin
@@ -36,12 +39,14 @@ always@(posedge clk or negedge rst_n)begin
 			instr_if_id_o<= instr_if_id_o;
 			ena_if_id_o <= ena_if_id_o;
 			time_set_if_id_o <= time_set_if_id_o;
+			delay_r_done_if_id_o <= delay_r_done_if_id_o;
 		end
 		else begin
 			pc_if_id_o<=pc_if_id_i;
 			instr_if_id_o<=instr_if_id_i;
 			ena_if_id_o <= ena_if_id_i;
 			time_set_if_id_o <= time_set_if_id_i;
+			delay_r_done_if_id_o <= delay_r_done_if_id_i;
 		end
 	end
 	else if(id_div)begin
@@ -50,12 +55,14 @@ always@(posedge clk or negedge rst_n)begin
 			instr_if_id_o<= instr_if_id_o;
 			ena_if_id_o <= ena_if_id_o;
 			time_set_if_id_o <= time_set_if_id_o;
+			delay_r_done_if_id_o <= delay_r_done_if_id_o;
 		end
 		else begin
 			pc_if_id_o<=pc_if_id_i;
 			instr_if_id_o<=instr_if_id_i;
 			ena_if_id_o <= ena_if_id_i;
 			time_set_if_id_o <= time_set_if_id_i;
+			delay_r_done_if_id_o <= delay_r_done_if_id_i;
 		end
 	end
 	else if(rest_id_mem == 1'b1)begin
@@ -63,6 +70,7 @@ always@(posedge clk or negedge rst_n)begin
 		instr_if_id_o<= instr_if_id_o;
 		ena_if_id_o <= ena_if_id_o;
 		time_set_if_id_o <= time_set_if_id_o;
+		delay_r_done_if_id_o <= delay_r_done_if_id_o;
 	end
 	
 	else if(control_rest == 1'b1 | delay_sig_jalr == 1'b1)begin
@@ -70,13 +78,14 @@ always@(posedge clk or negedge rst_n)begin
 		instr_if_id_o<= 32'b0010011;
 		ena_if_id_o <= ena_if_id_o;
 		time_set_if_id_o <= time_set_if_id_o;
+		delay_r_done_if_id_o <= delay_r_done_if_id_o;
 	end
 	else begin
 		pc_if_id_o<=pc_if_id_i;
 		instr_if_id_o<=instr_if_id_i;
 		ena_if_id_o <= ena_if_id_i;
 		time_set_if_id_o <= time_set_if_id_i;
-		
+		delay_r_done_if_id_o <= delay_r_done_if_id_i;
 	end
 end
 	

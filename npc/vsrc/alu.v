@@ -161,19 +161,12 @@ always @(*) begin
                 alu_sec = 1'b0;
                 //alu_res = alu_src1 / alu_src2;
         end
-        `ALU_DIV:begin
-                div64_valid = 1'b1;
-                div_signed = 1'b1;
-                alu_sec = 1'b0;
-                //alu_res = alu_src1 / alu_src2;
-        end
         `ALU_DIVYU:begin
                 div64_valid = 1'b1;
                 div_signed = 1'b0;
                 alu_sec = 1'b1;
             //alu_res = alu_src1 % alu_src2;
         end
-
     /*    `ALU_SLTU:
             alu_res = (alu_src1 < alu_src2) ? 64'd1 : 64'd0;*/
         `ALU_XOR:
@@ -209,12 +202,6 @@ always @(*) begin
                 alu_res = alu_src2[31:0];
             else 
                 alu_res = alu_res;
-        end
-        `ALU_CSRRS:begin
-            alu_res = alu_src2 ;
-        end
-        `ALU_CSRRW:begin
-            alu_res = alu_src2 ;
         end
         default:begin
             alu_res = alu_src1 -  alu_src2;

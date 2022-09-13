@@ -12,231 +12,457 @@ module  ysyx_22040175_top(
     output out_mem_rd_buf_flag
    // output[`CPU_WIDTH-1:0]        next_pc
 );
+assign out_mem_rd_buf_flag = sig_jalr;
+assign diff_pc = wb_pc[31:0];
+assign diff_delay_pc = wb_delay_pc[31:0];
+wire rst_n;
+assign rst_n = !rst;
+wire [63:0] id_next_pc;
+wire if_ena;
+wire [31:0]if_inst;
+wire [63:0]if_pc;
+assign pc = if_pc;
+assign inst = if_inst;
+wire if_delay_r_done;
 
-cpu u_cpu(
+wire axi_ena;
+assign axi_ena = (diff_pc !=diff_delay_pc && diff_pc!=0 ) ? 1'b1:1'b0;
+wire rest_id_mem;
+wire div_finish;
+if_stage u_if_stage(
+    .clk(clk),
+    .rst_n(rst_n),
+    
+    .id_next_pc(id_next_pc),
+    .ena(if_ena),
+    .inst(if_inst),
+    .curr_pc(if_pc),
+    .control_rest(id_control_rest),
+    .rest_id_mem(rest_id_mem),
+    .id_pc(id_pc),
+    .sig_jalr(sig_jalr),
+    .sh_fnsh_flag(sh_fnsh_flag),
+    .id_mul(id_mul),
+    .id_div(id_div),
+    .div_finish(div_finish),
+    .delay_r_done(if_delay_r_done)
+    //.axi_ena(axi_ena)
+    
+);
+wire [31:0]id_inst;
+wire [63:0]id_pc; 
+wire id_ena;
+wire id_time_set;
+wire delay_sig_jalr;
+wire id_delay_r_done;
+if_id_regs u_if_id_regs(
 	.clk(clk),
-    .rst(rst),
-	.inst(inst),
-	.pc(pc),
-    .unknown_code(unknown_code),
+	.rst_n(rst_n),
+	.pc_if_id_i(if_pc),
+	.instr_if_id_i(if_inst),
+    .ena_if_id_i(if_ena),
+    .time_set_if_id_i(time_set),
+	.pc_if_id_o(id_pc),
+	.instr_if_id_o(id_inst),
+    .ena_if_id_o(id_ena),
+    .time_set_if_id_o(id_time_set),
+    .control_rest(id_control_rest),
+    .id_pc(id_pc),
+    .rest_id_mem(rest_id_mem),
+    .delay_sig_jalr(delay_sig_jalr),
+    .id_mul(id_mul),
+	.sh_fnsh_flag(sh_fnsh_flag),
+    .id_div(id_div),
+    .div_finish(div_finish),
+    .delay_r_done_if_id_i(if_delay_r_done),
+    .delay_r_done_if_id_o(id_delay_r_done)
+    
+    
+);
+wire [63:0] to_id_reg_f [0:`REG_DATA_DEPTH-1];
+wire id_branch;
+wire id_jump;
+wire id_reg_wen;
+wire [`REG_ADDR_WIDTH-1:0] id_reg_waddr;
+wire [63:0] id_alu_src1;
+wire [63:0] id_alu_src2;
+wire [`CPU_WIDTH-1:0] id_imm;
+wire [`ALU_OP_WIDTH-1:0]     id_alu_op;     // alu opcode
+wire [`ALU_SRC_WIDTH-1:0]    id_alu_src_sel ;// alu source select flag
+wire [`CPU_WIDTH-1:0]        id_unknown_code;
+wire    id_jalr;
+wire id_ebreak_flag;
+wire [7:0] id_wmask;
+wire id_s_flag;
+wire [31:0] id_s_imm;
+wire [3:0] id_expand_signed;
+wire [2:0] id_rd_flag;
+wire [2:0] id_rd_buf_flag;   //访存标志
+wire rest_from_id;
+wire id_control_rest;
+wire [63:0] id_end_write_addr;
+wire rest_wb_hazard;
+wire sig_jalr;
+wire id_mul;
+wire id_div;
+id_stage u_id_stage(
+    .clk(clk),
+    .rst_n(rst_n),
+    .id_pc(id_pc),
+    .inst(id_inst),       // instruction input
+    //.reg_f (to_id_reg_f),
+    .reg_f (from_wb_reg_f),
+    .ex_reg_waddr(ex_reg_waddr), //改为执行阶段的1写回地址，应该是上一条指令
+    .rest_from_id(rest_from_id),
+
+    
+
+    .reg_wen(id_reg_wen),    // register write enable
+    .reg_waddr(id_reg_waddr),  // register write address
+    
+    
+    //output reg [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op, // immediate extend opcode
+    .imm(id_imm), 
+    .alu_op(id_alu_op),     // alu opcode
+    .alu_src_sel(id_alu_src_sel) ,// alu source select flag
+    .unknown_code(id_unknown_code),
+    .jalr(id_jalr),
+    .ebreak_flag(id_ebreak_flag),
+    .wmask(id_wmask),
+    .s_flag(id_s_flag),
+    .s_imm(id_s_imm),
+    .expand_signed(id_expand_signed),
+    .rd_flag(id_rd_flag),
+    .rd_buf_flag(id_rd_buf_flag),   //访存标志
+    .control_rest(id_control_rest),
+    .from_ex_alu_res(from_ex_alu_res),
+    .from_mem_alu_res(from_mem_alu_res),
+    
+    .ex_rd_buf_flag(ex_rd_buf_flag),
+    
+    .next_pc(id_next_pc),
+
+    //output reg [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op, // immediate extend opcode
+   
+    .alu_src1(id_alu_src1),   // alu source 1
+    .alu_src2(id_alu_src2),    // alu source 2
+    .rest_id_mem(rest_id_mem),
+    .ex_inst(ex_inst),
+    
+    .wb_hazard_result(wb_hazard_result),
+    .mem_reg_waddr(mem_reg_waddr),
+    .ex_s_flag(ex_s_flag),
+    .mem_s_flag(mem_s_flag),
+    .rest_wb_hazard(rest_wb_hazard),
+    .sig_jalr(sig_jalr),
+    .delay_sig_jalr(delay_sig_jalr),
+    .ex_s_imm(ex_s_imm),
+    .cunqu_hazard(id_cunqu_hazard),
+    .mem_cunqu_hazard(mem_cunqu_hazard),
+    .mem_from_ex_alu_res(mem_from_ex_alu_res),
+    .id_mul(id_mul),
+    .id_div(id_div)
+);
+
+wire id_cunqu_hazard;
+wire [63:0] ex_pc;
+wire        ex_branch;     // branch flag
+wire        ex_jump;       // jump flag
+
+wire        ex_reg_wen;    // register write enable
+wire [`REG_ADDR_WIDTH-1:0]   ex_reg_waddr;  // register write address
+  
+wire [`CPU_WIDTH-1:0]        ex_imm; 
+wire [`ALU_OP_WIDTH-1:0]     ex_alu_op;   // alu opcode
+wire [`ALU_SRC_WIDTH-1:0]    ex_alu_src_sel; // alu source select flag
+wire [`CPU_WIDTH-1:0]        ex_unknown_code;
+wire    ex_jalr;
+wire    ex_ebreak_flag;
+wire [7:0] ex_wmask;
+wire ex_s_flag;
+wire [31:0] ex_s_imm;
+wire [3:0] ex_expand_signed;
+wire [2:0] ex_rd_flag;
+wire [2:0] ex_rd_buf_flag;
+wire [63:0]   ex_reg1_rdata; // register 1 read data
+wire [63:0]   ex_reg2_rdata; // register 2 read data
+
+wire ex_ena;
+wire ex_time_set;
+//wire [63:0] ex_reg_wdata;
+wire id_rest_no_use;
+wire ex_rest_id_mem;
+wire [31:0] ex_inst;
+wire [63:0] ex_end_write_addr;
+wire ex_cunqu_hazard;
+wire ex_id_mul;
+wire ex_id_div;
+wire ex_delay_r_done;
+id_ex_regs u_id_ex_regs(
+	.clk(clk),
+	.rst_n(rst_n),
+	.pc_id_ex_i(id_pc),
+	.pc_id_ex_o(ex_pc),
+
+
+    .reg_wen_id_ex_i(id_reg_wen),    // register write enable
+    .reg_waddr_id_ex_i(id_reg_waddr),  // register write address
+
+    .alu_op_id_ex_i(id_alu_op),     // alu opcode
+  
+    .unknown_code_id_ex_i(id_unknown_code),
+    .ebreak_flag_id_ex_i(id_ebreak_flag),
+    .wmask_id_ex_i(id_wmask),
+    .s_flag_id_ex_i(id_s_flag),
+    .s_imm_id_ex_i(id_s_imm),
+    .expand_signed_id_ex_i(id_expand_signed),
+    .rd_flag_id_ex_i(id_rd_flag),
+	.rd_buf_flag_id_ex_i(id_rd_buf_flag), 
+	
+
+    .reg_wen_id_ex_o(ex_reg_wen),    // register write enable
+    .reg_waddr_id_ex_o(ex_reg_waddr),  // register write address
+ 
+	
+    .alu_op_id_ex_o(ex_alu_op),    // alu opcode
+    
+    .unknown_code_id_ex_o(ex_unknown_code),
+    
+    .ebreak_flag_id_ex_o(ex_ebreak_flag),
+    .wmask_id_ex_o(ex_wmask),
+    .s_flag_id_ex_o(ex_s_flag),
+    .s_imm_id_ex_o(ex_s_imm),
+    .expand_signed_id_ex_o(ex_expand_signed),
+    .rd_flag_id_ex_o(ex_rd_flag),
+	.rd_buf_flag_id_ex_o(ex_rd_buf_flag), 
+
+   
+    .time_set_id_ex_i(id_time_set),
+    
+	
+	.time_set_id_ex_o(ex_time_set),
+	
+
+	.ena_id_ex_i(id_ena),
+	.ena_id_ex_o(ex_ena),
+	.alu_src1_id_ex_i(id_alu_src1),   // alu source 1
+    .alu_src2_id_ex_i(id_alu_src2),    // alu source 2
+    .rest_id_mem_id_ex_i(rest_id_mem),
+	.alu_src1_id_ex_o(ex_alu_src1),   // alu source 1
+    .alu_src2_id_ex_o(ex_alu_src2),    // alu source 2
+    .rest_id_mem_id_ex_o(ex_rest_id_mem),
+    .id_inst(id_inst),
+	.ex_inst(ex_inst),
+    //.end_write_addr_id_ex_i(id_end_write_addr),
+	//.end_write_addr_id_ex_o(ex_end_write_addr),
+    .cunqu_hazard_id_ex_i(id_cunqu_hazard),
+    .cunqu_hazard_id_ex_o(ex_cunqu_hazard),
+    .id_mul_id_ex_i(id_mul),
+	.id_mul_id_ex_o(ex_id_mul),
+    .id_div_id_ex_i(id_div),
+    .id_div_id_ex_o(ex_id_div),
+    .delay_r_done_id_ex_i(id_delay_r_done),
+    .delay_r_done_id_ex_o(ex_delay_r_done)
+   
+    
+    );
+wire [63:0] from_ex_alu_res;
+wire [63:0]    ex_alu_src1;
+wire [`CPU_WIDTH-1:0]    ex_alu_src2;
+wire [`CPU_WIDTH-1:0] ex_next_pc;
+wire write_ready;
+wire ex_pc_ready;
+wire sh_fnsh_flag;
+ex_stage u_ex_stage(
+    .clk(clk),
+    .rst_n(rst_n),
+    .alu_op(ex_alu_op),   // alu opcode
+    .alu_src1(ex_alu_src1), // alu source 1
+    .alu_src2(ex_alu_src2), // alu source 2
+    .alu_res(from_ex_alu_res),   // alu result
+    .rd_flag(ex_rd_flag),
+    .expand_signed(ex_expand_signed),
+    .sh_fnsh_flag(sh_fnsh_flag),
+    .div_finish(div_finish)
+  
+);
+wire mem_reg_wen;
+wire [`REG_ADDR_WIDTH-1:0] mem_reg_waddr;
+wire mem_ebreak_flag;
+wire [7:0] mem_wmask;
+wire mem_s_flag;
+wire mem_time_set;
+wire [31:0] mem_s_imm;
+wire [3:0] mem_expand_signed;
+	
+wire [2:0] mem_rd_buf_flag;
+wire [`ALU_OP_WIDTH-1:0]  mem_alu_op;
+wire [`CPU_WIDTH-1:0]    mem_alu_src1; // alu source 1
+wire     [`CPU_WIDTH-1:0]    mem_alu_src2;// alu source 2
+wire [63:0] mem_from_ex_alu_res;
+
+wire mem_pc_ready;
+wire [63:0] mem_pc;
+wire fr_ex_no_use;
+wire [63:0] mem_end_write_addr;
+wire mem_cunqu_hazard;
+ex_mem_regs u_ex_mem_regs(
+	.clk(clk),
+	.rst_n(rst_n),
+	//input [31:0]pc_ex_mem_i,
+	.reg_wen_ex_mem_i(ex_reg_wen),    // register write enable
+    .reg_waddr_ex_mem_i(ex_reg_waddr),  // register write address
+    
+    .from_ex_alu_res_ex_mem_i(from_ex_alu_res),
+
+    .wmask_ex_mem_i(ex_wmask),
+    .s_flag_ex_mem_i(ex_s_flag),
+    .time_set_ex_mem_i(ex_time_set),
+    .s_imm_ex_mem_i(ex_s_imm),
+    .expand_signed_ex_mem_i(ex_expand_signed),
+	.ebreak_flag_ex_mem_i(ex_ebreak_flag),
+
+	
+	.rd_buf_flag_ex_mem_i(ex_rd_buf_flag),
+	.alu_op_ex_mem_i(ex_alu_op),
+	.alu_src1_ex_mem_i(ex_alu_src1), // alu source 1
+    .alu_src2_ex_mem_i(ex_alu_src2), // alu source 2
+    
+	//output reg [31:0]pc_ex_mem_o,
+	.reg_wen_ex_mem_o(mem_reg_wen),    // register write enable
+    .reg_waddr_ex_mem_o(mem_reg_waddr),  // register write address
+    //output      [63:0]      reg_wdata_ex_mem_o,  // register write data
+    .ebreak_flag_ex_mem_o(mem_ebreak_flag),
+
+    
+    .wmask_ex_mem_o(mem_wmask),
+    .s_flag_ex_mem_o(mem_s_flag),
+    .time_set_ex_mem_o(mem_time_set),
+    .s_imm_ex_mem_o(mem_s_imm),
+    .expand_signed_ex_mem_o(mem_expand_signed),
+	
+	.rd_buf_flag_ex_mem_o(mem_rd_buf_flag),
+	.alu_op_ex_mem_o(mem_alu_op),
+	.alu_src1_ex_mem_o(mem_alu_src1), // alu source 1
+    .alu_src2_ex_mem_o(mem_alu_src2), // alu source 2
+    .from_ex_alu_res_ex_mem_o(mem_from_ex_alu_res),
+   
+   
+    .pc_ex_mem_i(ex_pc),
+	.pc_ex_mem_o(mem_pc),
+    .rest_id_mem_ex_mem_i(ex_rest_id_mem),
+	.rest_id_mem_ex_mem_o(mem_rest_id_mem),
+    //.end_write_addr_ex_mem_i(ex_end_write_addr),
+	//.end_write_addr_ex_mem_o(mem_end_write_addr),
+    .cunqu_hazard_ex_mem_i(ex_cunqu_hazard),
+    .cunqu_hazard_ex_mem_o(mem_cunqu_hazard),
+    .id_mul_ex_mem_i(ex_id_mul),
+	.sh_fnsh_flag_ex_mem_i(sh_fnsh_flag),
+    .id_div_ex_mem_i(ex_id_div),
+	.div_finish_ex_mem_i(div_finish),
+    .delay_r_done_ex_mem_i(ex_delay_r_done)
+	
+);
+wire [63:0] from_mem_alu_res;
+wire [63:0] wb_hazard_result;
+mem_stage u_mem_stage(
+    .rd_buf_flag(mem_rd_buf_flag),
+    .alu_op(mem_alu_op),
+    .alu_src1(mem_alu_src1),
+    .alu_src2(mem_alu_src2),
+    //output reg [63:0] rd_buf_lw,
+    .sign_alu_res(from_mem_alu_res),
+    .mem_from_ex_alu_res(mem_from_ex_alu_res),
+    .wb_hazard_result(wb_hazard_result),
+    .mem_expand_signed(mem_expand_signed),
+    .mem_cunqu_hazard(mem_cunqu_hazard)
+   
+);
+wire wb_reg_wen;
+wire    [`REG_ADDR_WIDTH-1:0] wb_reg_waddr;  // register write address
+//wire    [63:0]      wb_reg_wdata;  // register write data
+wire [7:0] wb_wmask;
+wire wb_s_flag;
+wire wb_time_set;
+wire [31:0] wb_s_imm;
+wire [3:0] wb_expand_signed;
+wire wb_ebreak_flag;
+wire [2:0] wb_rd_buf_flag;
+wire  [63:0] wb_from_ex_alu_res;
+wire [63:0] wb_from_mem_alu_res;
+
+wire wb_pc_ready;
+wire [63:0] wb_pc;
+wire mem_rest_id_mem;
+wire [63:0] wb_end_write_addr;
+wire wb_cunqu_hazard;
+mem_wb_regs u_mem_wb_regs(
+	.clk(clk),
+    .rst_n(rst_n),
+    
+    .reg_wen_mem_wb_i(mem_reg_wen),    // register write enable
+    .reg_waddr_mem_wb_i(mem_reg_waddr),  // register write address
+    //input      [63:0]      reg_wdata_mem_wb_i,  // register write data即alu_res
+	
+	
+    .from_ex_alu_res_mem_wb_i(mem_from_ex_alu_res),
+	.from_mem_alu_res_mem_wb_i(from_mem_alu_res),
+    .wmask_mem_wb_i(mem_wmask),
+    .s_flag_mem_wb_i(mem_s_flag),
+    .time_set_mem_wb_i(mem_time_set),
+    .s_imm_mem_wb_i(mem_s_imm),
+    .expand_signed_mem_wb_i(mem_expand_signed),
+   //output reg [63:0] reg_f [0:`REG_DATA_DEPTH-1]
+
+   	.ebreak_flag_mem_wb_i(mem_ebreak_flag),
+	.rd_buf_flag_mem_wb_i(mem_rd_buf_flag),
+    .reg_wen_mem_wb_o(wb_reg_wen),    // register write enable
+    .reg_waddr_mem_wb_o(wb_reg_waddr),  // register write address
+    //.reg_wdata_mem_wb_o(reg_wdata),  // register write data
+    .wmask_mem_wb_o(wb_wmask),
+    .s_flag_mem_wb_o(wb_s_flag),
+    .time_set_mem_wb_o(wb_time_set),
+    .s_imm_mem_wb_o(wb_s_imm),
+    .expand_signed_mem_wb_o(wb_expand_signed),
+	.ebreak_flag_mem_wb_o(wb_ebreak_flag),
+	.rd_buf_flag_mem_wb_o(wb_rd_buf_flag),
+	.from_ex_alu_res_mem_wb_o(wb_from_ex_alu_res),
+	.from_mem_alu_res_mem_wb_o(wb_from_mem_alu_res),
+   
+    
+    .pc_mem_wb_i(mem_pc),
+	.pc_mem_wb_o(wb_pc),
+    .rest_id_mem_ex_mem_o(mem_rest_id_mem),
+    //.end_write_add_mem_wb_i(mem_end_write_addr),
+	//.end_write_add_mem_wb_o(wb_end_write_addr),
+    .cunqu_hazard_mem_wb_i(mem_cunqu_hazard),
+    .cunqu_hazard_mem_wb_o (wb_cunqu_hazard)
+    );
+reg [63:0] from_wb_reg_f [0:`REG_DATA_DEPTH-1];
+wire wb_ebreak_flag;
+wire [63:0] wb_delay_pc;
+wb_stage u_wb_stage(
+    .clk(clk),
+    .rst_n(rst_n),
+    
+    .reg_wen(wb_reg_wen),    // register write enable
+    .reg_waddr(wb_reg_waddr),  // register write address
+    //input      [63:0]      reg_wdata,  // register write data
+    .from_ex_alu_res(wb_from_ex_alu_res),
+    .from_mem_alu_res(wb_from_mem_alu_res),
+    .wmask(wb_wmask),
+    .s_flag(wb_s_flag),
     .time_set(time_set),
-    .diff_pc(diff_pc),
-    .diff_delay_pc(diff_delay_pc),
-    .out_mem_rd_buf_flag(out_mem_rd_buf_flag),
-    
-    
-    
-    .axi_r_addr(axi_r_addr),
-    .axi_burst(axi_burst),
-    .send_axi_ar_id(send_axi_ar_id),
-    .cache_axi_req(cache_axi_req),
-    .axi_valid(axi_valid),
-    .waxi_valid(waxi_valid),
-    .reg_write_wmask(reg_write_wmask),
-    .reg_write_addr(reg_write_addr),
-    .reg_write_data(reg_write_data),
-
-
-    .r_done2(r_done2),
-    .axi_r_ready_o2(r_ready),   //总线变化
-    .axi_ar_id_o2(ar_id),   //
-    //.axi_r_ready_o2(r_ready),   //总线变化
-   // .axi_ar_id_o2(ar_id),   //
-    .rdata(rdata),
-    .w_done(w_done),
-    .b_hs(b_hs)
-   // output[`CPU_WIDTH-1:0]        next_pc
-);
-
-
-wire axi_valid;
-wire waxi_valid;
-
-
-
-wire axi_ar_ready_i2;
-wire axi_ar_valid_o2;
-wire [63:0]axi_ar_addr_o2;
-wire [3:0]axi_ar_id_o2;
-wire [2:0] axi_ar_len_o2;
-wire [7:0]  axi_ar_size_o2;
-wire [1:0]  axi_ar_burst_o2;
-wire axi_r_ready_o2;
-wire axi_r_valid_i2;
-wire [1:0] axi_r_resp_i2;
-wire [63:0]         axi_r_data_i2;
-wire axi_r_last_i2;
-wire r_done2;
-wire cache_axi_req;
-wire [3:0] send_axi_ar_id;
-wire axi_burst;
-wire [63:0] axi_r_addr;
-
-
-
-wire axi_aw_ready_i;
-wire axi_aw_valid_o; 
-wire [63:0] axi_aw_addr_o;
-wire axi_w_ready_i;
-wire axi_w_valid_o;
-wire [63:0] axi_w_data_o;
-wire [7:0] axi_w_strb_o;
-wire axi_w_last_o;
-wire axi_b_ready_o;
-wire axi_b_valid_i;
-//wire [63:0]rw_addr_i;
-//assign rw_addr_i = (!waxi_valid) ? mem_addr : reg_write_addr;
-
-
-wire [7:0] axi_ar_len_o;
-wire [2:0] axi_ar_size_o;
-wire [1:0] axi_ar_burst_o;
-
-
-
-wire b_hs;
-wire w_done;
-wire [63:0] reg_write_addr;
-wire [63:0] reg_write_data;
-wire [63:0] rdata;
-wire [7:0] reg_write_wmask;
-wire rst_n = !rst;
-
-//移植接口
-    wire aw_ready;
-    wire aw_valid;
-    wire [`AXI_ADDR_WIDTH-1:0] aw_addr;
-    wire [2:0] aw_prot;
-    wire [`AXI_ID_WIDTH-1:0] aw_id;
-    wire [`AXI_USER_WIDTH-1:0] aw_user;
-    wire [7:0] aw_len;
-    wire [2:0] aw_size;
-    wire [1:0] aw_burst;
-    wire aw_lock;
-    wire [3:0] aw_cache;
-    wire [3:0] aw_qos;
-    wire [3:0] aw_region;
-
-    wire w_ready;
-    wire w_valid;
-    wire [`AXI_DATA_WIDTH-1:0] w_data;
-    wire [`AXI_DATA_WIDTH/8-1:0] w_strb;
-    wire w_last;
-    wire [`AXI_USER_WIDTH-1:0] w_user;
-    
-    wire b_ready;
-    wire b_valid;
-    wire [1:0] b_resp;
-    wire [`AXI_ID_WIDTH-1:0] b_id;
-    wire [`AXI_USER_WIDTH-1:0] b_user;
-
-    wire ar_ready;
-    wire ar_valid;
-    wire [`AXI_ADDR_WIDTH-1:0] ar_addr;
-    wire [2:0] ar_prot;
-    wire [`AXI_ID_WIDTH-1:0] ar_id;
-    wire [`AXI_USER_WIDTH-1:0] ar_user;
-    wire [7:0] ar_len;
-    wire [2:0] ar_size;
-    wire [1:0] ar_burst;
-    wire ar_lock;
-    wire [3:0] ar_cache;
-    wire [3:0] ar_qos;
-    wire [3:0] ar_region;
-    
-    wire r_ready;
-    wire r_valid;
-    wire [1:0] r_resp;
-    wire [`AXI_DATA_WIDTH-1:0] r_data;
-    wire r_last;
-    wire [`AXI_ID_WIDTH-1:0] r_id;
-    wire [`AXI_USER_WIDTH-1:0] r_user;
-
-axi # (
-)
-u_axi2(
-    .clock(clk),
-    .reset_n(rst_n),
-    .rw_req_i(cache_axi_req),
-    .rw_mask(reg_write_wmask),
-
-	.rw_valid_i(axi_valid | waxi_valid),         //IF&MEM输入信号
-	 
-    .data_read_o(rdata),        //IF&MEM输入信号
-    .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
-    .rw_addr_i(axi_r_addr),          //IF&MEM输入信号
-    
-    .rw_burst(axi_burst),
-    .ww_addr_i(reg_write_addr),
-
-
-    .axi_ar_ready_i(ar_ready),                
-    .axi_ar_valid_o(ar_valid),
-    .axi_ar_addr_o(ar_addr),
-    .axi_ar_id_o(ar_id),
-    .axi_ar_len_o(ar_len),
-    .axi_ar_size_o(ar_size),
-    .axi_ar_burst_o(ar_burst),
-    .axi_r_ready_o(r_ready),                 
-    .axi_r_valid_i(r_valid),                
-    .axi_r_resp_i(r_resp),
-    .axi_r_data_i(r_data),
-    .axi_r_last_i(r_last),
-    .r_done(r_done2),
-    .axi_r_id_i(send_axi_ar_id),
-
-    .axi_aw_ready_i(aw_ready),    //从设备已准备好接收地址和相关的控制信号          
-    .axi_aw_valid_o(aw_valid),  
-    .axi_aw_addr_o(aw_addr),
-
-    .axi_w_ready_i(w_ready),                
-    .axi_w_valid_o(w_valid),
-    .axi_w_data_o(w_data),
-    .axi_w_strb_o(w_strb),
-    .axi_w_last_o(w_last),
-    .axi_b_ready_o(b_ready),                
-    .axi_b_valid_i(b_valid),
-
-
-    .ar_hs(ar_hs),
-    .w_done(w_done),
-    .b_hs(b_hs)
-
-
-);
-
-
-axi_slave # (
-)
-u_axi_slave2(
-    .clock(clk),
-    .reset_n(rst_n),
-    .axi_ar_ready_o(ar_ready),    //从设备已准备好接收地址和相关的控制信号            
-    .axi_ar_valid_i(ar_valid),
-    .axi_ar_addr_i(ar_addr),
-    .axi_ar_len_i(ar_len), //突发长度，这个字段标识每次突发传输的传输次数
-    .axi_ar_size_i(ar_size),  //突发大小，这个字段表示每次突发传输的大小
-    .axi_ar_burst_i(ar_burst),  //突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法
-    .axi_r_ready_i(r_ready),   //  	主设备已准备好接收读取的数据和响应信息              
-    .axi_r_valid_o(r_valid),  //从设备给出的数据和响应信息有效              
-    .axi_r_resp_o(r_resp), //读响应，这信号表示读传输的状态
-    .axi_r_data_o(r_data),
-    .axi_r_last_o(r_last),  //该信号用于标识当前传输是否为突发传输中的最后一次传输
-    .r_valid(axi_valid | waxi_valid),
-
-    .axi_req(cache_axi_req),
-    
-    .axi_aw_ready_o(aw_ready),    //从设备已准备好接收地址和相关的控制信号          
-    .axi_aw_valid_i(aw_valid),  
-    .axi_aw_addr_i(aw_addr),
-
-    //.axi_aw_addr_i(test),
-    .axi_w_ready_o(w_ready),                
-    .axi_w_valid_i(w_valid),
-    .axi_w_data_i(w_data),
-    .axi_w_strb_i(w_strb),
-    .axi_w_last_i(w_last),
-    .axi_b_ready_i(b_ready),                
-    .axi_b_valid_o(b_valid)
+    .s_imm(wb_s_imm),
+    .expand_signed(wb_expand_signed),
+    .rd_buf_flag(wb_rd_buf_flag),
+    .ebreak_flag(wb_ebreak_flag),
+    .reg_f(from_wb_reg_f),
+    .wb_pc(wb_pc),
+    .wb_delay_pc(wb_delay_pc),
+    //.end_write_addr(wb_end_write_addr),
+    .cunqu_hazard(wb_cunqu_hazard)
+  
+   
 );
 endmodule
