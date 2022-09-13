@@ -116,19 +116,18 @@ u_axi2(
     .clock(clk),
     .reset_n(rst_n),
     .rw_req_i(cache_axi_req),
-    .rw_size_i(reg_write_wmask),
+    .rw_mask(reg_write_wmask),
 
-	  .rw_valid_i(axi_valid | waxi_valid),         //IF&MEM输入信号
-	 // .rw_ready_o(rw_ready_o),         //IF&MEM输入信号
+	.rw_valid_i(axi_valid | waxi_valid),         //IF&MEM输入信号
+	 
     .data_read_o(rdata),        //IF&MEM输入信号
     .rw_w_data_i(reg_write_data),        //IF&MEM输入信号
     .rw_addr_i(axi_r_addr),          //IF&MEM输入信号
-    //input  [1:0]                        rw_size_i,          //IF&MEM输入信号
+    
     .rw_burst(axi_burst),
     .ww_addr_i(reg_write_addr),
 
 
-    // Advanced eXtensible Interface
     .axi_ar_ready_i(axi_ar_ready_i2),                
     .axi_ar_valid_o(axi_ar_valid_o2),
     .axi_ar_addr_o(axi_ar_addr_o2),
