@@ -256,7 +256,7 @@ u_axi_slave2(
 */
 axi u_axi_rw (
         .clock                          (clk),
-        .reset                          (rst),
+        .reset_n                          (rst_n),
         .rw_valid_i                     (axi_valid | waxi_valid),
         //.rw_ready_o                     (if_ready),
         .rw_req_i                       (cache_axi_req),
