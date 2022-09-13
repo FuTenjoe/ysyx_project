@@ -38,8 +38,8 @@ cpu u_cpu(
 
 
     .r_done2(r_done2),
-    .axi_r_ready_o2(axi_r_ready_o2),
-    .axi_ar_id_o2(axi_ar_id_o2),
+    .axi_r_ready_o2(r_ready),   //总线变化
+    .axi_ar_id_o2(ar_id),   //
     .rdata(rdata),
     .w_done(w_done),
     .b_hs(b_hs)
