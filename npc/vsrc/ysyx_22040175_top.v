@@ -197,7 +197,7 @@ wire [63:0] reg_write_addr;
 wire [63:0] reg_write_data;
 wire [63:0] rdata;
 wire [7:0] reg_write_wmask;
-wire rst_n = !reset;
+wire rst_n = !rst;
 
 cpu u_cpu(
 	.clk(clk),
