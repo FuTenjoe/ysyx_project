@@ -19,13 +19,12 @@ module if_id_regs(
 	input sh_fnsh_flag,
 	input id_div,
 	input div_finish
-	
-	
+	//input inst_use
     );
 
 always@(posedge clk or negedge rst_n)begin
 	if(!rst_n)begin
-		pc_if_id_o<= 32'h8000_0000;
+		pc_if_id_o <= 64'h8000_0000;
 		instr_if_id_o<= instr_if_id_i;
 		ena_if_id_o <= 1'd0;
 		time_set_if_id_o <= 1'd0;

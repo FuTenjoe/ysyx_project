@@ -54,7 +54,9 @@ module ex_mem_regs(
 	input id_mul_ex_mem_i,
 	input sh_fnsh_flag_ex_mem_i,
 	input id_div_ex_mem_i,
-	input div_finish_ex_mem_i
+	input div_finish_ex_mem_i,
+	input [11:0]csr_addr_ex_mem_i,
+	output reg [11:0] csr_addr_ex_mem_o
     );
 
 	always@(posedge clk or negedge rst_n)
@@ -77,10 +79,11 @@ module ex_mem_regs(
 			alu_src2_ex_mem_o <= 64'd0;
 			from_ex_alu_res_ex_mem_o <= 64'd0;
 			
-			pc_ex_mem_o <= 32'h8000_0000;
+			pc_ex_mem_o <= 64'h8000_0000;
 			rest_id_mem_ex_mem_o <= 1'b0;
 			
 			cunqu_hazard_ex_mem_o <= 1'd0;
+			csr_addr_ex_mem_o <= 12'd0;
 		end
 		else if(rest_id_mem_ex_mem_i == 1'b1)begin
 			reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
@@ -107,6 +110,7 @@ module ex_mem_regs(
 			cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_i;
 			
 			rest_id_mem_ex_mem_o <= 1'b1;
+			csr_addr_ex_mem_o <= csr_addr_ex_mem_i;
 		end
 		else if(id_mul_ex_mem_i == 1'b1)begin
 			if(sh_fnsh_flag_ex_mem_i != 1'b1)begin
@@ -131,6 +135,7 @@ module ex_mem_regs(
 				pc_ex_mem_o <= pc_ex_mem_o;
 				rest_id_mem_ex_mem_o <= 1'b0;
 				cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_o;
+				csr_addr_ex_mem_o <= csr_addr_ex_mem_o;
 			end
 			else begin
 				reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
@@ -153,6 +158,7 @@ module ex_mem_regs(
 			pc_ex_mem_o <= pc_ex_mem_i;
 			rest_id_mem_ex_mem_o <= 1'b0;
 			cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_i;
+			csr_addr_ex_mem_o <= csr_addr_ex_mem_i;
 			end
 		end
 		else if(id_div_ex_mem_i == 1'b1)begin
@@ -178,6 +184,7 @@ module ex_mem_regs(
 				pc_ex_mem_o <= pc_ex_mem_o;
 				rest_id_mem_ex_mem_o <= 1'b0;
 				cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_o;
+				csr_addr_ex_mem_o <= csr_addr_ex_mem_o;
 			end
 			else begin
 				reg_wen_ex_mem_o <= reg_wen_ex_mem_i;
@@ -200,6 +207,7 @@ module ex_mem_regs(
 			pc_ex_mem_o <= pc_ex_mem_i;
 			rest_id_mem_ex_mem_o <= 1'b0;
 			cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_i;
+			csr_addr_ex_mem_o <= csr_addr_ex_mem_i;
 			end
 		end
 		else begin
@@ -226,6 +234,7 @@ module ex_mem_regs(
 			pc_ex_mem_o <= pc_ex_mem_i;
 			rest_id_mem_ex_mem_o <= 1'b0;
 			cunqu_hazard_ex_mem_o <= cunqu_hazard_ex_mem_i;
+			csr_addr_ex_mem_o <= csr_addr_ex_mem_i;
 			
 		end
 	end

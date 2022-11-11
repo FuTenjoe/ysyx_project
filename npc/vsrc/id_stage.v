@@ -53,7 +53,17 @@ module id_stage (
     input mem_cunqu_hazard,
     input [63:0] mem_from_ex_alu_res,
     output id_mul,
-    output id_div
+    output id_div,
+    input [63:0] mepc,
+    input [63:0] mcause,
+    input [63:0] mtvec,
+    input [63:0] mie,
+    input [63:0] mstatus,
+    output  [11:0] csr_addr,
+    output mret_flag,
+    output ecall_flag,
+    output id_mem_cache,
+    input clint_timer_irq
 );
 wire branch;
 wire jump;
@@ -63,7 +73,11 @@ wire [`IMM_GEN_OP_WIDTH-1:0] imm_gen_op;
 wire [`REG_ADDR_WIDTH-1:0]   reg1_raddr; // register 1 read address
 wire [`REG_ADDR_WIDTH-1:0]   reg2_raddr; // register 2 read address
 wire [2:0] data_rest_cond;
+
+//wire [31:0] unnormal_pc;
+
 ctrl u_ctrl(
+    .id_pc(id_pc),
    .inst(inst),       // instruction input
 
     .branch(branch),     // branch flag
@@ -88,8 +102,12 @@ ctrl u_ctrl(
     .rd_flag(rd_flag),
     .rd_buf_flag(rd_buf_flag),   //访存标志
     .id_mul(id_mul),
-    .id_div(id_div)
-   
+    .id_div(id_div),
+    .csr_addr(csr_addr),
+    .mret_flag(mret_flag),
+    .ecall_flag(ecall_flag),
+    //.unnormal_pc(unnormal_pc),
+    .id_mem_cache(id_mem_cache)
 );
 imm_gen u_imm_gen(
     .inst(inst),       // instruction input
@@ -128,7 +146,10 @@ id_control_rest u_id_control_rest(
     .branch(branch),     // branch flag
     .jump(jump),       // jump flag
     .control_rest(control_rest),
-    .rest_from_id(rest_from_id)
+    .rest_from_id(rest_from_id),
+    .mret_flag(mret_flag),
+    .ecall_flag(ecall_flag),
+    .clint_timer_irq(clint_timer_irq)
 );
 reg [63:0] delay_reg1_rdata;
 
@@ -172,7 +193,13 @@ mux_alu u_mux_alu(
 
     .alu_src1(alu_src1),   // alu source 1
     .alu_src2(alu_src2),    // alu source 2
-    .cunqu_hazard(cunqu_hazard)
+    .cunqu_hazard(cunqu_hazard),
+    .csr_addr(csr_addr),
+    .mepc(mepc),
+    .mcause(mcause),
+    .mtvec(mtvec),
+    .mstatus(mstatus),
+    .mie(mie)
 );
 
 muxpc u_mux_pc(
@@ -196,8 +223,13 @@ muxpc u_mux_pc(
    .data_rest_cond(data_rest_cond),
    .reg1_rdata(delay_reg1_rdata),
    .sig_jalr(sig_jalr),
-   .delay_sig_jalr(delay_sig_jalr)
-   
+   .delay_sig_jalr(delay_sig_jalr),
+   .mret_flag(mret_flag),
+   .ecall_flag(ecall_flag),
+   //.unnormal_pc(unnormal_pc),
+   .mtvec(mtvec),
+   .mepc(mepc),
+   .clint_timer_irq(clint_timer_irq)
    
    
     );

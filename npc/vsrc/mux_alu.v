@@ -11,7 +11,13 @@ module mux_alu (
 
     output reg [63:0]     alu_src1,   // alu source 1
     output reg [63:0]     alu_src2,    // alu source 2
-    input cunqu_hazard
+    input cunqu_hazard,
+    input [11:0] csr_addr,
+    input [63:0] mepc,
+    input [63:0] mcause,
+    input [63:0] mtvec,
+    input [63:0] mstatus,
+    input [63:0] mie
    
 );
 
@@ -35,6 +41,64 @@ always @(*) begin
             end
             `ALU_SRC_IMM_PC: begin //select imm and pc
                 alu_src1 = imm;
+                alu_src2 = curr_pc;
+            end
+            `ALU_SRC_CSRRS:begin
+                case(csr_addr)
+                12'd833:begin
+                    alu_src1 = reg1_rdata;
+                    alu_src2 = mepc;  
+                end
+                12'd834:begin
+                    alu_src1 = reg1_rdata;
+                    alu_src2 = mcause;  
+                end
+                12'd773:begin
+                    alu_src1 = reg1_rdata;
+                    alu_src2 = mtvec;  
+                end
+                12'd768:begin
+                    alu_src1 = reg1_rdata;
+                    alu_src2 = mstatus;  
+                end
+                12'd772:begin
+                    alu_src1 = reg1_rdata;
+                    alu_src2 = mie;  
+                end
+                default:;
+                endcase
+            end
+            `ALU_SRC_CSRRSI:begin
+                case(csr_addr)
+                12'd833:begin
+                    alu_src1 = imm;
+                    alu_src2 = mepc;  
+                end
+                12'd834:begin
+                    alu_src1 = imm;
+                    alu_src2 = mcause;  
+                end
+                12'd773:begin
+                    alu_src1 = imm;
+                    alu_src2 = mtvec;  
+                end
+                12'd768:begin
+                    alu_src1 = imm;
+                    alu_src2 = mstatus;  
+                end
+                12'd772:begin
+                    alu_src1 = imm;
+                    alu_src2 = mie;  
+                end
+                default:;
+                endcase
+            end
+            `ALU_SRC_ECALL:begin
+                alu_src1 = curr_pc;
+                alu_src2 = curr_pc;
+            end
+            default:begin
+                alu_src1 = curr_pc;
                 alu_src2 = curr_pc;
             end
         endcase

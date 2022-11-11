@@ -7,14 +7,16 @@
 #include "verilated_dpi.h"
 #include "assert.h"
 #include <dlfcn.h>  //动态链接库相关函数
+
+
 //加run和target
 #define CONFIG_MBASE 0x80000000
-#define CONFIG_MSIZE 0X2800000
-
+//#define CONFIG_MSIZE 0X2800000
+#define CONFIG_MSIZE 0X28000000
 typedef uint64_t word_t;
 typedef  uint32_t paddr_t;
 typedef  word_t vaddr_t;
-
+typedef unsigned long int	uintptr_t;
 static uint8_t *pimem =NULL;
 
 enum{DIFFTEST_TO_DUT,DIFFTEST_TO_REF,NPC_STOP,NPC_RUNNING,NPC_END,NPC_ABORT};
@@ -24,6 +26,7 @@ uint32_t current_inst = 0;
 typedef struct {
   word_t gpr[32];
   vaddr_t pc;
+  //uintptr_t sr[1024];
 } CPU_state; //nemu的CPU状态用于比较
 
 CPU_state cpu = {};
@@ -33,7 +36,7 @@ uint32_t unknown_code_flag = 0;
 //DPIC
 extern "C" void ebreak(){
   ebreak_flag = 1;
-  printf("ebreakexternc\n");
+  printf("\nebreakexternc\n");
 }
 extern "C" void unknown_inst(){
   unknown_code_flag = 1;
@@ -65,12 +68,13 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc);
 //static inline void host_write(void *addr, int len, word_t data);
 void host_write(void *addr, int len, word_t data);
 
+
 //加为DPIC函数
 extern "C" void pmem_read(long long raddr,long long *rdata){
   if(raddr >= CONFIG_MBASE){
     *rdata = host_read(guest_to_host(raddr), 8);
     //printf("raddr = 0x%llx\n",raddr);
-    printf("rdata = 0x%llx\n",*rdata);
+   // printf("rdata = 0x%llx\n",*rdata);
   }
   else{
     printf("raddr = %llx\n",raddr);
@@ -82,6 +86,10 @@ extern "C" void pmem_read(long long raddr,long long *rdata){
 extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
   long long addr = waddr;
   int len = 0;
+  if(waddr == 0xa0003f8){
+    printf("%c",wdata);
+  }
+  else {
   switch(wmask){
     //8bit
     case 0x1: len = 1; break;
@@ -104,18 +112,15 @@ extern "C" void pmem_write(long long waddr,long long wdata,char wmask){
      case -1: len = 8 ;break;
      default:printf("False: Wmask is %x false!",wmask);
   }
-  printf("waddr = %llx\n",waddr);
-  printf("wdata = %llx\n",wdata);
-  printf("len = %x\n",len);
+  //printf("waddr = %llx\n",waddr);
+ // printf("wdata = %llx\n",wdata);
+ // printf("len = %x\n",len);
   //printf("len = %d\n",len);
-  host_write(guest_to_host(waddr),len,wdata);
+  
+  host_write(guest_to_host(waddr),len,wdata);}
 }
 
-/*static word_t pmem_read(paddr_t addr, int len) {
-  word_t ret = host_read(guest_to_host(addr), len);
-   //printf("pmem_read success addr");
-  return ret;
-}*/
+
 
 VerilatedContext *contextp = new VerilatedContext;
   // init top verilog instance
@@ -186,7 +191,7 @@ int main(int argc, char **argv, char **env) {
       //top->inst = pmem_read(top->pc,8); //使用DPIC
       
       top->eval ();
- /*     printf("main_time = %d\n",i);
+      printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       //printf("ena=:0x%0x, top->ena);
       printf(" a0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[10],top->inst);
@@ -195,13 +200,12 @@ int main(int argc, char **argv, char **env) {
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
       printf(" a2= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[18],top->inst);
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
-      printf("mem_rd_buf_flag is 0x%08lx",top->out_mem_rd_buf_flag);*/
      }
      if(top->clk==0){
         
         top->eval ();
         a= a+1;
-   /*      printf("main_time = %d\n",i);
+       printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       
       printf(" a4= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[14],top->inst);
@@ -209,7 +213,7 @@ int main(int argc, char **argv, char **env) {
        printf(" ra= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[1],top->inst);
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
-      printf("mem_rd_buf_flag is 0x%08lx",top->out_mem_rd_buf_flag);*/
+      
       //init_difftest(img_size,port);
       if (a>1){
         //if (a%4==1 & a/4>=1){
@@ -218,12 +222,12 @@ int main(int argc, char **argv, char **env) {
       //if((top->diff_pc != end_pc) ){
         
         difftest_step(top-> diff_pc);
-        printf("diff_pc = %x",top->diff_pc);
-        printf("diff_delay_pc = %x",top->diff_delay_pc);
+     //   printf("diff_pc = %x",top->diff_pc);
+    //    printf("diff_delay_pc = %x",top->diff_delay_pc); 
       }
       
      
-        }
+        }  
       else if(a <= 2){
           init_difftest(img_size,port);
         }
@@ -255,7 +259,7 @@ void init_imem(){
 uint8_t *guest_to_host(paddr_t paddr){
   //uint8_t *tmpl = pimem + paddr -CONFIG_MBASE;
   //printf("guest to host success pimem = %hhn\n",pimem);
-  printf("guest to host success paddr  = %x\n",paddr );
+/*  printf("guest to host success paddr  = %x\n",paddr );*/
   //printf("guest to host success addr = %hhn\n",pimem + paddr -CONFIG_MBASE);
   return pimem + paddr -CONFIG_MBASE;
 }
@@ -278,7 +282,8 @@ inline void host_write(void *addr, int len,word_t data){
     case 2: *(uint16_t *)addr= data; return;
     case 4: *(uint32_t *)addr= data;return;
    // case 8: d =(uint64_t *)addr;printf("host_write data=%ld!\n",data);printf("host_write addr=%ld!\n",addr);*d = data;printf("host_write ok!\n");return;
-    case 8: *(uint64_t *) addr= data;printf("host_write addr=%ld!\n",*(uint64_t *)addr);return;
+   // case 8: *(uint64_t *) addr= data;printf("host_write addr=%ld!\n",*(uint64_t *)addr);return;
+   case 8: *(uint64_t *) addr= data;return;
     default:{printf("host_write is error !\n"); assert(0);};
   }
 }
@@ -312,6 +317,7 @@ int is_exit_status_bad(){
   }
   return !good;
 }
+
 //Difftest初始化
 void init_difftest(long img_size,int port){
   char const *ref_so_file = "/home/melissa/ysyx-workbench/nemu/tools/spike-diff/build/riscv64-spike-so";
@@ -352,7 +358,7 @@ void init_difftest(long img_size,int port){
 }
 //Difftest在CPU中比较功能的实现
 void difftest_step (vaddr_t dnpc){
-  printf("ok1");
+  //printf("ok1");
   CPU_state ref_r;
   ref_difftest_regcpy(&ref_r, DIFFTEST_TO_DUT);
   
@@ -369,7 +375,10 @@ static void checkregs(CPU_state *ref, vaddr_t dnpc){
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t dnpc){
   int i = 0;
   bool DIF_result = true;
-  
+/*  if(top->inst== 115){
+    printf("ecall\n");
+    assert(1);
+  }*/
   if(ref_r -> pc != dnpc){
     printf("False: PC is false! ref_dnpc is 0x%0lx;npc_dnpc is 0x%0lx; Instruction is 0x%x\n",ref_r->pc,dnpc,top->inst);
     DIF_result = false;
