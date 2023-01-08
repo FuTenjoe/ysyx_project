@@ -304,7 +304,6 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+221,"ysyx_22040175_top u_cpu u_if_stage mem_valid", false,-1);
         tracep->declBus(c+220,"ysyx_22040175_top u_cpu u_if_stage mem_send_id", false,-1, 3,0);
         tracep->declQuad(c+2260,"ysyx_22040175_top u_cpu u_if_stage mem_addr", false,-1, 63,0);
-        tracep->declBit(c+2709,"ysyx_22040175_top u_cpu u_if_stage ar_hs", false,-1);
         tracep->declBit(c+2244,"ysyx_22040175_top u_cpu u_if_stage delay_r_done2", false,-1);
         tracep->declBus(c+2185,"ysyx_22040175_top u_cpu u_if_stage d_ar_id_o", false,-1, 3,0);
         tracep->declBit(c+222,"ysyx_22040175_top u_cpu u_if_stage mem_no_use", false,-1);
@@ -355,7 +354,6 @@ void Vysyx_22040175_top___024root__traceInitSub0(Vysyx_22040175_top___024root* v
         tracep->declBit(c+167,"ysyx_22040175_top u_cpu u_if_stage u_pc_predict id_div", false,-1);
         tracep->declBit(c+139,"ysyx_22040175_top u_cpu u_if_stage u_pc_predict div_finish", false,-1);
         tracep->declBit(c+241,"ysyx_22040175_top u_cpu u_if_stage u_pc_predict if_valid", false,-1);
-        tracep->declBit(c+2709,"ysyx_22040175_top u_cpu u_if_stage u_pc_predict ar_hs", false,-1);
         tracep->declBus(c+2238,"ysyx_22040175_top u_cpu u_if_stage u_pc_predict return_id", false,-1, 3,0);
         tracep->declBus(c+242,"ysyx_22040175_top u_cpu u_if_stage u_pc_predict if_send_id", false,-1, 3,0);
         tracep->declBit(c+222,"ysyx_22040175_top u_cpu u_if_stage u_pc_predict mem_no_use", false,-1);
