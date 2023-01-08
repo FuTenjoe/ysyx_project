@@ -86,13 +86,13 @@ always@(*)begin
 			next_state = IDLE;
 	end
 	NEXT:begin
-		if((delay_alu_y == 130'b111 && (mul_signed[0] == 1'b0)) || (delay_alu_y == 130'b0 && (mul_signed[0]==1'b1 )))
+		if((delay_alu_y == 66'b111 && (mul_signed[0] == 1'b0)) || (delay_alu_y == 66'b0 && (mul_signed[0]==1'b1 )))
 			next_state = LAST;
 		else
 			next_state = SHIFT;
 	end
 	SHIFT:begin
-		if((delay_alu_y == 130'b111 && (mul_signed[0] == 1'b0)) || (delay_alu_y == 130'b0 && (mul_signed[0]==1'b1 )))
+		if((delay_alu_y == 66'b111 && (mul_signed[0] == 1'b0)) || (delay_alu_y == 66'b0 && (mul_signed[0]==1'b1 )))
 			next_state = LAST;
 		else
 			next_state = SHIFT;
@@ -126,14 +126,14 @@ always@(posedge clk or negedge rst_n)begin
 			sh_fnsh_flag <= 1'd0;
 			add_p <= 130'd0;
 			p <= 130'd0;
-			reg_alu_y <= {64'b0,alu_y};
-			delay_alu_y <= {64'b0,alu_y};
+			reg_alu_y <= alu_y;
+			delay_alu_y <= alu_y;
 		end
 		NEXT:begin
 			x <= alu_x;
 			y <= {alu_y[1],alu_y[0],1'b0};
-			reg_alu_y <= {64'b0,alu_y >>>3'd2};
-			delay_alu_y <= reg_alu_y >>> 3'd1 ;
+			reg_alu_y <= alu_y >>>3'd2;
+			delay_alu_y <= reg_alu_y >>> 3'd1;
 			sh_fnsh_flag <= 1'd0;
 			case(y)
 			3'b000,3'b111:begin p <= p + 130'd0;add_p <= 130'd0; end
@@ -163,7 +163,7 @@ always@(posedge clk or negedge rst_n)begin
 		end
 		LAST:begin
 			x <= 130'd0;
-			y <= 3'd0;
+			y <= 66'd0;
 			case(y)
 			3'b000,3'b111:begin p <= p + 130'd0;add_p <= 130'd0; end
 			3'b001,3'b010:begin p <= p +x; add_p <= x;end
@@ -178,7 +178,7 @@ always@(posedge clk or negedge rst_n)begin
 		end
 		default: begin
 			x <= 130'd0;
-			y <= 3'd0;
+			y <= 66'd0;
 			p <= 130'd0;
 			sh_fnsh_flag <= 1'd1;
 			add_p <= 130'd0;
@@ -196,13 +196,13 @@ always @(*) begin
              ex_p =p;   //jalr
         end
         4'd1:begin
-            ex_p = {{98{p[31]}},p[31:0]};   //lw  addw  divw
+            ex_p = {{32{p[31]}},p[31:0]};   //lw  addw  divw
         end
         4'd2:begin
-            ex_p = {{98{1'b0}},p[31:0]};            //addw错误
+            ex_p = p[31:0];            //addw错误
         end
         4'd3:begin
-            ex_p = {{114{ p[15]}},p[15:0]}; //lh
+            ex_p = {{48{ p[15]}},p[15:0]}; //lh
                 
         end
         default:begin

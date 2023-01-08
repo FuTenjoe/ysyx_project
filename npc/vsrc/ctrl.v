@@ -30,11 +30,11 @@ module ctrl (
     output reg ecall_flag,
     output reg [11:0] csr_addr,
     output reg mret_flag,
-   // output reg [31:0]unnormal_pc,
+    output reg [31:0]unnormal_pc,
    // output reg [63:0] mstatus
-  // input [63:0] mepc,
-   // input [63:0] mcause,
-   // input [63:0] mtvec,
+   input [63:0] mepc,
+    input [63:0] mcause,
+    input [63:0] mtvec,
     output id_mem_cache
    
 );
@@ -58,19 +58,19 @@ always @(*) begin
     imm_gen_op  = `IMM_GEN_I;
     alu_op      = `ALU_AND;
     alu_src_sel = `ALU_SRC_REG;
-    unknown_code = 64'h0;
+    unknown_code = 32'h0;
     ebreak_flag = 1'd0;
     wmask = 8'd0;
     s_flag = 1'd0;
     expand_signed = 4'd0;
-    rd_flag = 3'd0;
+    rd_flag = 1'd0;
     rd_buf_flag = 3'd0;
     id_mul = 1'd0;
     id_div = 1'b0;
     ecall_flag = 1'b0;
     csr_addr = 12'd0;
     mret_flag = 1'b0;
-  //  unnormal_pc = 32'd0;
+    unnormal_pc = 32'd0;
     case (opcode)
         7'b0110011: begin                         
             reg_wen     = 1'b1;
@@ -103,27 +103,6 @@ always @(*) begin
                         expand_signed = 4'd0;
                         rd_flag = 3'd0;
                         id_mul = 1'd1;
-                    end
-                    default:unknown_code = inst;
-                    endcase
-                end
-                3'b001:begin
-                    case(funct7)    //sll
-                    7'b0000_000:begin
-                    jump        = 1'b0;
-                    reg_wen     = 1'b1;
-                    jalr = 1'b0;
-                    reg1_raddr  = rs1;
-                    reg2_raddr  = rs2;
-                    reg_waddr   = rd;
-                    s_imm =0;
-                    imm_gen_op  = `IMM_GEN_SRAI;   
-                    alu_op      = `ALU_SLLI;
-                    alu_src_sel = `ALU_SRC_REG;
-                    wmask =  8'b0;
-                    s_flag = 1'd0;
-                    expand_signed =4'd0;    //有符号扩展 
-                    rd_flag = 3'd0;
                     end
                     default:unknown_code = inst;
                     endcase
@@ -600,7 +579,7 @@ always @(*) begin
                     reg1_raddr  = rs1;
                     reg2_raddr  = rs2;
                     reg_waddr   = rd;
-                    s_imm = 32'd0;
+                    s_imm = 64'd0;
                     imm_gen_op  = `IMM_GEN_I;
                     alu_op      = `ALU_ADD;
                     alu_src_sel = `ALU_SRC_IMM;
@@ -617,7 +596,7 @@ always @(*) begin
                     reg1_raddr  = rs1;
                     reg2_raddr  = 0;
                     reg_waddr   = rd;
-                    s_imm = 32'd0;
+                    s_imm = 64'd0;
                     imm_gen_op  = `IMM_GEN_I;
                     alu_op      = `ALU_ADD;
                     alu_src_sel = `ALU_SRC_IMM;
@@ -634,7 +613,7 @@ always @(*) begin
                     reg1_raddr  = rs1;
                     reg2_raddr  = 0;
                     reg_waddr   = rd;
-                    s_imm = 32'd0;
+                    s_imm = 64'd0;
                     imm_gen_op  = `IMM_GEN_I;
                     alu_op      = `ALU_ADD;
                     alu_src_sel = `ALU_SRC_IMM;
@@ -668,7 +647,7 @@ always @(*) begin
                     reg1_raddr  = rs1;
                     reg2_raddr  = 0;
                     reg_waddr   = rd;
-                    s_imm = 32'd0;
+                    s_imm = 64'd0;
                     imm_gen_op  = `IMM_GEN_I;
                     alu_op      = `ALU_ADD;
                     alu_src_sel = `ALU_SRC_IMM;
@@ -692,7 +671,7 @@ always @(*) begin
             reg2_raddr  = rs2;
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
-            imm_gen_op  = `IMM_GEN_S;
+            imm_gen_op  = `INST_TYPE_S;
             alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'b1111_1111;
@@ -708,7 +687,7 @@ always @(*) begin
             reg2_raddr  = rs2;
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
-            imm_gen_op  = `IMM_GEN_S;
+            imm_gen_op  = `INST_TYPE_S;
             alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'h3;
@@ -724,7 +703,7 @@ always @(*) begin
             reg2_raddr  = rs2;
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
-            imm_gen_op  = `IMM_GEN_S;
+            imm_gen_op  = `INST_TYPE_S;
             alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'h1;
@@ -741,7 +720,7 @@ always @(*) begin
             reg2_raddr  = rs2;
             reg_waddr   = rs1;
             s_imm = {{20{inst[31]}},inst[31:25],inst[11:7]};
-            imm_gen_op  = `IMM_GEN_S;
+            imm_gen_op  = `INST_TYPE_S;
             alu_op      = `ALU_MEM;
             alu_src_sel = `ALU_SRC_REG;
             wmask =  8'hf;
@@ -769,7 +748,7 @@ always @(*) begin
         end
         `INST_LUI: begin // only lui
                 reg_wen     = 1'b1;
-                reg1_raddr  = 5'b0; // x0 = 0
+                reg1_raddr  = 64'b0; // x0 = 0
                 reg_waddr   = rd;
                 imm_gen_op  = `IMM_GEN_U;
                 alu_op      = `ALU_ADD;
@@ -808,7 +787,7 @@ always @(*) begin
                 s_flag = 1'd0;
                 wmask =  8'b0;
                 expand_signed = 4'd0;
-                s_imm = {{27{1'b0}},rs1};
+                s_imm = rs1;
                 rd_flag = 3'd0;
 
                 //后加
@@ -903,36 +882,18 @@ always @(*) begin
                 id_div = 1'b0;
                 csr_addr = csr;
             end
-            3'b110:begin    //csrrsi
-                jump        = 1'b0;
-                reg_wen     = 1'b1;
-                jalr = 1'b0;
-                reg1_raddr  = rs1;
-                reg2_raddr  = rs2;
-                reg_waddr   = rd;
-                s_imm =0;
-                imm_gen_op  = `IMM_GEN_CSRRSI;   //不需要使用R型指令
-                alu_op      = `ALU_CSRRS;
-                alu_src_sel = `ALU_SRC_CSRRSI;
-                wmask =  8'b0;
-                s_flag = 1'd0;
-                expand_signed =4'd0;    
-                rd_flag = 3'd0;
-                id_div = 1'b0;
-                csr_addr = csr;
-            end
             default:begin
-                if(inst == 64'h0000_0073)begin   //ecall
+                if(inst == 32'h0000_0073)begin   //ecall
                 ecall_flag = 1'b1;
                 mret_flag = 1'b0;
-                unknown_code = 64'h0;
-            //    unnormal_pc = mtvec;
+                unknown_code = 32'h0;
+                unnormal_pc = mtvec;
                 jump        = 1'b0;
                 reg_wen     = 1'b0;
                 jalr = 1'b0;
-                reg1_raddr  = rs1;
+                reg1_raddr  = id_pc[31:0];
                 reg2_raddr  = rs2;
-                reg_waddr   = 5'd0;
+                reg_waddr   = 64'd0;
                 s_imm =0;
                 imm_gen_op  = `IMM_GEN_SRAI;   //不需要使用R型指令
                 alu_op      = `ALU_ECALL;
@@ -944,19 +905,19 @@ always @(*) begin
                 id_div = 1'b0;
                 csr_addr = 12'd0;
                 end
-                else if(inst == 64'h3020_0073)begin   //mret
+                else if(inst == 32'h3020_0073)begin   //mret
                 ecall_flag = 1'b0;
                 mret_flag = 1'b1;
-                unknown_code = 64'h0;
+                unknown_code = 32'h0;
                 reg1_raddr = `REG_ADDR_WIDTH'b0;
                 reg2_raddr = `REG_ADDR_WIDTH'b0;
                 alu_op      = `ALU_MRET;
-            //    unnormal_pc = mepc;
+                unnormal_pc = mepc;
                 end    
-                else if(inst == 64'h0010_0073)begin    //ebreak
+                else if(inst == 32'h0010_0073)begin    //ebreak
                 ebreak_flag = 1'b1;
                 ecall_flag = 1'b0;
-                unknown_code = 64'h0;
+                unknown_code = 32'h0;
                 reg1_raddr = `REG_ADDR_WIDTH'b0;
                 reg2_raddr = `REG_ADDR_WIDTH'b0;
                 end
@@ -980,8 +941,8 @@ always @(*) begin
     endcase 
 end
 assign id_mem_cache = rd_buf_flag == 3'd1 | rd_buf_flag == 3'd2 |rd_buf_flag == 3'd4 |rd_buf_flag == 3'd6;
-/*import "DPI-C" function void ebreak();
-always@(*)begin
+import "DPI-C" function void ebreak();
+/*always@(*)begin
     if(inst == 32'h0010_0073)begin
         ebreak_flag = 1'b1;
         unknown_code = 32'h0;
@@ -990,16 +951,10 @@ always@(*)begin
     end
 
 end*/
-
-
-
-
-
-/*
 import "DPI-C" function void unknown_inst();
 always@(*)begin
     if(unknown_code != 32'd0)
         unknown_inst();
 end
-*/
+
 endmodule

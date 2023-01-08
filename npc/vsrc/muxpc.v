@@ -25,10 +25,9 @@ module muxpc (
    output reg delay_sig_jalr,
    input mret_flag,
    input ecall_flag,
-  // input [31:0] unnormal_pc,
+   input [31:0] unnormal_pc,
    input [63:0] mtvec,
-   input [63:0] mepc,
-   input clint_timer_irq
+   input [63:0] mepc
    
     );
 reg zero;
@@ -111,7 +110,7 @@ always @(*) begin
         sig_jalr = 1'b0;
     end
     else if (ebreak_flag)begin    
-        next_pc = 64'h8000_0000;   
+        next_pc = 32'h8000_0000;   
         sig_jalr = 1'b0;
     end
     else if(ecall_flag)begin
@@ -120,10 +119,6 @@ always @(*) begin
     end
     else if(mret_flag)begin
         next_pc = mepc;
-        sig_jalr = 1'b0;
-    end
-    else if(clint_timer_irq)begin
-        next_pc = mtvec;
         sig_jalr = 1'b0;
     end
     else begin
