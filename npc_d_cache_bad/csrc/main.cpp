@@ -7,12 +7,10 @@
 #include "verilated_dpi.h"
 #include "assert.h"
 #include <dlfcn.h>  //动态链接库相关函数
-
-
 //加run和target
 #define CONFIG_MBASE 0x80000000
-//#define CONFIG_MSIZE 0X2800000
-#define CONFIG_MSIZE 0X28000000
+#define CONFIG_MSIZE 0X2800000
+
 typedef uint64_t word_t;
 typedef  uint32_t paddr_t;
 typedef  word_t vaddr_t;
@@ -36,7 +34,7 @@ uint32_t unknown_code_flag = 0;
 //DPIC
 extern "C" void ebreak(){
   ebreak_flag = 1;
-  printf("\nebreakexternc\n");
+  printf("ebreakexternc\n");
 }
 extern "C" void unknown_inst(){
   unknown_code_flag = 1;
@@ -206,7 +204,7 @@ int main(int argc, char **argv, char **env) {
         
         top->eval ();
         a= a+1;
-    /*   printf("main_time = %d\n",i);
+       printf("main_time = %d\n",i);
       printf("PC:0x%0x;Inst:0x%x;\n",top->pc,top->inst);
       
       printf(" a4= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[14],top->inst);
@@ -214,7 +212,7 @@ int main(int argc, char **argv, char **env) {
        printf(" ra= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[1],top->inst);
       printf(" a5= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[15],top->inst);
       printf(" s0= 0x%08lx; Instruction is 0x%x\n",cpu_gpr[8],top->inst);
-      printf("mem_rd_buf_flag is 0x%08lx\n",top->out_mem_rd_buf_flag);  */
+      printf("mem_rd_buf_flag is 0x%08lx\n",top->out_mem_rd_buf_flag);  
       //init_difftest(img_size,port);
       if (a>1){
         //if (a%4==1 & a/4>=1){

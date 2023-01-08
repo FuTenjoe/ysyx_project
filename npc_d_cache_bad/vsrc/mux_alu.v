@@ -16,8 +16,7 @@ module mux_alu (
     input [63:0] mepc,
     input [63:0] mcause,
     input [63:0] mtvec,
-    input [63:0] mstatus,
-    input [63:0] mie
+    input [63:0] mstatus
    
 );
 
@@ -60,35 +59,6 @@ always @(*) begin
                 12'd768:begin
                     alu_src1 = reg1_rdata;
                     alu_src2 = mstatus;  
-                end
-                12'd772:begin
-                    alu_src1 = reg1_rdata;
-                    alu_src2 = mie;  
-                end
-                default:;
-                endcase
-            end
-            `ALU_SRC_CSRRSI:begin
-                case(csr_addr)
-                12'd833:begin
-                    alu_src1 = imm;
-                    alu_src2 = mepc;  
-                end
-                12'd834:begin
-                    alu_src1 = imm;
-                    alu_src2 = mcause;  
-                end
-                12'd773:begin
-                    alu_src1 = imm;
-                    alu_src2 = mtvec;  
-                end
-                12'd768:begin
-                    alu_src1 = imm;
-                    alu_src2 = mstatus;  
-                end
-                12'd772:begin
-                    alu_src1 = imm;
-                    alu_src2 = mie;  
                 end
                 default:;
                 endcase

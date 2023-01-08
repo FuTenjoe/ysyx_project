@@ -31,9 +31,7 @@ module wb_stage (
     output  axi_req,
     input w_done,
     input b_hs,
-    output w_start,
-    output reg [63:0] mtimecmp,
-    output reg [63:0] real_reg_wb_data
+    output w_start
    
 );
 reg [63:0] reg_wdata;
@@ -68,38 +66,7 @@ always @(*) begin
             default:reg_f[reg_waddr] = reg_wdata[31:0];  
             endcase
         end
-end
-
-
-always @(*) begin
-    if (rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd0))begin // x0 read only
-            case(expand_signed)
-            4'd0:begin
-                real_reg_wb_data = reg_wdata;   //jalr
-                
-            end
-            4'd1:begin
-                real_reg_wb_data = {{32{reg_wdata[31]}},reg_wdata[31:0]};   //lw  addw  divw
-                
-            end
-            4'd2:begin
-                real_reg_wb_data = reg_wdata[31:0];            //addw错误
-                
-            end
-            4'd3:begin
-                real_reg_wb_data = {{48{reg_wdata[15]}},reg_wdata[15:0]}; //lh
-                
-            end
-            default:real_reg_wb_data = reg_wdata[31:0];  
-            endcase
-        end
-end
-
-
-
-
-
-
+    end
 
 /*reg [63:0] end_wb_waddr;
 always@(*)begin
@@ -118,7 +85,7 @@ always @(posedge clk or negedge rst_n) begin
         wb_delay_reg_f <= reg_f;
 end
 
-parameter IDLE = 0, WRITE=1, WRESP=2, WFN=3, WRMMIO=4;
+parameter IDLE = 3'd0,WRITE=3'd1,WRESP=3'd2,WFN=3'd3;
 reg[2:0] present_state,next_state;
 
 always@(posedge clk or negedge rst_n)begin
@@ -133,18 +100,10 @@ end
 always@(*)begin
     case(present_state)
     IDLE:begin
-        if(rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1)&& (reg_f[reg_waddr] + s_imm != 64'h0000_0000_0200_4000))
+        if(rst_n && reg_wen && (reg_waddr != `REG_ADDR_WIDTH'b0)&&(s_flag==1'd1))
             next_state = WRITE;
-        else if(rst_n && reg_wen && (reg_f[reg_waddr] + s_imm == 64'h0000_0000_0200_4000) &&(s_flag==1'd1))
-            next_state = WRMMIO;
         else 
             next_state = IDLE;
-    end
-    WRMMIO:begin
-        if(wr_finish)
-            next_state = WFN;
-        else
-            next_state = WRMMIO;
     end
     WRITE:begin
         if(w_done)
@@ -165,33 +124,6 @@ end
 assign waxi_valid = (present_state==WRITE) ? 1'b1:1'b0;
 assign wb_res_valid = (present_state==WRITE|present_state==WRESP) ? 1'b0:1'b1;
 assign axi_req = (present_state==WRITE|present_state==WRESP) ? 1'b1:1'b0;
-wire wr_mmio_valid = (present_state == WRMMIO)? 1'b1:1'b0;
-wire [63:0] wbmmio_waddr = reg_f[reg_waddr] + s_imm;
-reg [63:0]delay_wbmmio_waddr;
-reg [63:0] delay_wb_mmio_wdata;
-always@(posedge clk )begin
-    if(!rst_n)begin
-        delay_wb_mmio_wdata <= 64'd0;
-        delay_wbmmio_waddr <= 64'd0;
-    end
-    else begin
-        delay_wb_mmio_wdata <= reg_wdata;
-        delay_wbmmio_waddr <= wbmmio_waddr;
-    end
-end
-wire wr_finish;
-wb_clint u_wb_clint (
-    .clk(clk),
-    .rst_n(rst_n),
-    .mmio_reg_waddr(delay_wbmmio_waddr),
-    .reg_wdata(delay_wb_mmio_wdata),
-    .wr_mmio_valid(wr_mmio_valid),
-
-    .mtimecmp(mtimecmp),
-    .wr_finish(wr_finish)
-);
-
-
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         reg_write_addr <= 64'd0;
@@ -204,11 +136,6 @@ always@(posedge clk or negedge rst_n)begin
             reg_write_addr <= reg_f[reg_waddr] + s_imm;
             reg_write_data <= reg_wdata;
             reg_write_wmask <= wmask;
-        end
-        WRMMIO:begin
-            reg_write_addr <= reg_write_addr;
-            reg_write_data <= reg_write_data;
-            reg_write_wmask <= reg_write_wmask;
         end
         WRITE:begin
             reg_write_addr <= reg_write_addr;

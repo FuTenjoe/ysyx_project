@@ -57,13 +57,11 @@ module id_stage (
     input [63:0] mepc,
     input [63:0] mcause,
     input [63:0] mtvec,
-    input [63:0] mie,
-    input [63:0] mstatus,
+   // input [63:0] mstatus,
     output  [63:0] csr_addr,
     output mret_flag,
     output ecall_flag,
-    output id_mem_cache,
-    input clint_timer_irq
+    output id_mem_cache
 );
 wire branch;
 wire jump;
@@ -148,8 +146,7 @@ id_control_rest u_id_control_rest(
     .control_rest(control_rest),
     .rest_from_id(rest_from_id),
     .mret_flag(mret_flag),
-    .ecall_flag(ecall_flag),
-    .clint_timer_irq(clint_timer_irq)
+    .ecall_flag(ecall_flag)
 );
 reg [63:0] delay_reg1_rdata;
 
@@ -198,8 +195,7 @@ mux_alu u_mux_alu(
     .mepc(mepc),
     .mcause(mcause),
     .mtvec(mtvec),
-    .mstatus(mstatus),
-    .mie(mie)
+    .mstatus(mstatus)
 );
 
 muxpc u_mux_pc(
@@ -228,8 +224,7 @@ muxpc u_mux_pc(
    .ecall_flag(ecall_flag),
    .unnormal_pc(unnormal_pc),
    .mtvec(mtvec),
-   .mepc(mepc),
-   .clint_timer_irq(clint_timer_irq)
+   .mepc(mepc)
    
    
     );

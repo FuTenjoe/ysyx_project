@@ -16,7 +16,7 @@ module pc_predict (
     input div_finish,
    // input r_done,
     output reg if_valid,
-    //input ar_hs,
+    input ar_hs,
     input [3:0] return_id,
     output reg [3:0] if_send_id,
     input mem_no_use,
@@ -161,9 +161,6 @@ end
 reg [1:0]md_add_pc;
 parameter [1:0] MD_IDLE=2'd0,ARTH=2'd1,AF=2'd2,TEND=2'd3;
 reg [1:0] md_present_state,md_next_state;
-//reg [3:0] delay_id;
-
-
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         md_present_state <= MD_IDLE;
@@ -273,7 +270,6 @@ always @ (posedge clk or negedge rst_n) begin
              curr_pc <= id_next_pc;
         end
        // else if((r_done && md_add_pc!=2'd1 && md_add_pc!=2'd2 &&(return_id == 4'd1))|(md_add_pc==2'd3))
-       //else if((cpu_ready && md_add_pc!=2'd1 && md_add_pc!=2'd2 && !delay_control_rest )|(md_add_pc==2'd3))
        else if((cpu_ready && md_add_pc!=2'd1 && md_add_pc!=2'd2 && !delay_control_rest )|(md_add_pc==2'd3))
             curr_pc <= curr_pc + 4;
     end

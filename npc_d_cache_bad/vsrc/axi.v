@@ -13,13 +13,13 @@ module axi # (
     input                               reset_n,
 
 	input                               rw_valid_i,         //IF&MEM输入信号
-//	output                              rw_ready_o,         //IF&MEM输入信号
+	output                              rw_ready_o,         //IF&MEM输入信号
     input rw_req_i,
    // input [7:0] rw_mask,
     output reg [RW_DATA_WIDTH-1:0]      data_read_o,        //IF&MEM输入信号
     input  [RW_DATA_WIDTH-1:0]          rw_w_data_i,        //IF&MEM输入信号
     input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号   读通道
-    input  [7:0]                        rw_mask,          //IF&MEM输入信号
+    input  [7:0]                        rw_size_i,          //IF&MEM输入信号
     input rw_burst,
     input [63:0] ww_addr_i,
 
@@ -30,9 +30,9 @@ module axi # (
    // output [2:0]                        axi_aw_prot_o,
   //  output [AXI_ID_WIDTH-1:0]           axi_aw_id_o,
   //  output [AXI_USER_WIDTH-1:0]         axi_aw_user_o,
-  //  output [7:0]                        axi_aw_len_o,
-  //  output [2:0]                        axi_aw_size_o,
-  //  output [1:0]                        axi_aw_burst_o,
+    output [63:0]                        axi_aw_len_o,
+    output [7:0]                        axi_aw_size_o,
+    output [1:0]                        axi_aw_burst_o,
   //  output                              axi_aw_lock_o,
  //   output [3:0]                        axi_aw_cache_o,
   //  output [3:0]                        axi_aw_qos_o,
@@ -84,7 +84,7 @@ module axi # (
  //   wire r_valid    = rw_valid_i & r_trans;
     wire w_valid    = rw_valid_i & w_trans;
     wire r_valid    = rw_valid_i & r_trans;
-    assign axi_w_strb_o = rw_mask;
+    assign axi_w_strb_o = rw_size_i;
     //handshake
     wire aw_hs = axi_aw_ready_i & axi_aw_valid_o;  //写地址
     wire w_hs = axi_w_ready_i & axi_w_valid_o;  //写数据
@@ -139,7 +139,17 @@ module axi # (
     end
 
 // ------------------Number of transmission------------------
-
+/*    reg [7:0] len;
+    wire len_reset      = ~reset_n | (w_trans & w_state_idle) | (r_trans & r_state_idle);
+    //wire len_incr_en    = (len != axi_len) & (w_hs | r_hs);
+    always @(posedge clock) begin
+        if (len_reset) begin
+            len <= 0;
+        end
+        else if (len_incr_en) begin
+            len <= len + 1;
+        end
+    end*/
 
 
     // ------------------Process Data------------------
@@ -156,18 +166,30 @@ module axi # (
    assign axi_w_valid_o = w_state_write;
    assign axi_w_data_o = rw_w_data_i;
    assign axi_b_ready_o = w_state_resp;
-   assign axi_w_last_o = w_state_write;
+   assign axi_w_last_o = w_state_write & shift_ready;
+
+   assign axi_aw_len_o     = 3'd4;                                                                          
+   assign axi_aw_size_o    = 8'd64;
+   assign axi_aw_burst_o = `AXI_BURST_TYPE_INCR;
+
+
+
     // ------------------Read Transaction------------------
 
     // Read address channel signals
     assign axi_ar_valid_o   = r_state_addr;
     assign axi_ar_addr_o    = rw_addr_i;
     assign axi_ar_id_o = axi_r_id_i;
-
-    assign axi_ar_len_o     = rw_burst ? 3'd4: 3'd1;                                                                          
+ //   assign axi_ar_prot_o    = `AXI_PROT_UNPRIVILEGED_ACCESS | `AXI_PROT_SECURE_ACCESS | `AXI_PROT_DATA_ACCESS;  //初始化信号即可
+ //   assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
+ //   assign axi_ar_user_o    = axi_user;                                                                         //初始化信号即可
+    assign axi_ar_len_o     = 3'd4;                                                                          
     assign axi_ar_size_o    = 8'd64;
     assign axi_ar_burst_o   = `AXI_BURST_TYPE_INCR;
-   
+   // assign axi_ar_lock_o    = 1'b0;                                                                             //初始化信号即可
+   // assign axi_ar_cache_o   = `AXI_ARCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE;                                 //初始化信号即可
+ //   assign axi_ar_qos_o     = 4'h0;                                                                             //初始化信号即可
+
     // Read data channel signals
      assign axi_r_ready_o    = r_state_read;
 
@@ -189,9 +211,28 @@ end
    
 
     // Write data channel signals
-  
-
-
+reg shift_ready;
+reg [2:0] w_count; 
+always@(posedge clock)begin
+    if(!reset_n)begin
+        shift_ready <= 1'b0;
+        w_count <= 1'b0;
+    end
+    else if(w_state_write)begin
+        if(w_count == 3'd3)begin
+            w_count <= 3'd0;
+            shift_ready <= 1'b1;
+        end
+        else begin
+            w_count <= w_count + 1'b1;
+            shift_ready <= 1'b0;
+        end
+    end
+    else begin
+        shift_ready <= 1'b0;
+        w_count <= 1'b0;
+    end
+end
 
 
 endmodule

@@ -125,8 +125,7 @@
 `define ALU_SRC_FOUR_PC `ALU_SRC_WIDTH'b010 // src1 = 4,    src2 = pc
 `define ALU_SRC_IMM_PC  `ALU_SRC_WIDTH'b011 // src1 = imm,  src2 = pc
 `define ALU_SRC_CSRRS   `ALU_SRC_WIDTH'b100 //src1=reg1,    src2=csr
-`define ALU_SRC_ECALL   `ALU_SRC_WIDTH'b101  //src1=reg1,src2=reg2
-`define ALU_SRC_CSRRSI   `ALU_SRC_WIDTH'b110
+`define ALU_SRC_ECALL   `ALU_SRC_WIDTH'b100  //src1=reg1,src2=reg2
 
 // IMM GEN opcode
 `define IMM_GEN_OP_WIDTH 3
@@ -136,7 +135,6 @@
 `define IMM_GEN_J `IMM_GEN_OP_WIDTH'b011
 `define IMM_GEN_U `IMM_GEN_OP_WIDTH'b100
 `define IMM_GEN_SRAI `IMM_GEN_OP_WIDTH'b101 
-`define IMM_GEN_CSRRSI `IMM_GEN_OP_WIDTH'b110
 
 
 //流水
@@ -199,29 +197,5 @@
 `define REQ_READ            1'b0
 `define REQ_WRITE           1'b1
 
-
-`timescale 1ns / 1ps
-
-`define ZERO_WORD  64'h00000000_00000000
-`define PC_START   64'h00000000_80000000  
-`define REG_BUS    63 : 0     
-`define INST_ADD   8'h11
-
-`define AXI_ADDR_WIDTH      64
-`define AXI_DATA_WIDTH      64
-`define AXI_ID_WIDTH        4
-`define AXI_USER_WIDTH      1
-
-`define SIZE_B              2'b00
-`define SIZE_H              2'b01
-`define SIZE_W              2'b10
-`define SIZE_D              2'b11
-
-//`define REQ_READ            1'b0
-//`define REQ_WRITE           1'b1
-
-`define RISCV_PRIV_MODE_U   0
-`define RISCV_PRIV_MODE_S   1
-`define RISCV_PRIV_MODE_M   3
 
 
