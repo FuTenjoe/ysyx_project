@@ -16,3 +16,6 @@ In the "vsrc" folder, you can find Verilog code that implements a single-core, f
 The "csrc" folder contains diff-test code, named "main.cpp." This difftest works by comparing the program counter (PC) and the values of 32 general-purpose registers after each clock cycle between NEMU(you can see its codes in nemu folder) and the CPU. It allows for precise debugging by identifying the cycles where errors occur in the hardware code.
 ## tests 
 The test files are located in the "am-kernels/tests/cpu-tests" directory.
+## notes
+You can find some notes and the results in the ysyx_22040175--Report 
+一生一芯的学习笔记是ysyx_22040175--Report，使用中文编写，仅供学习参考
